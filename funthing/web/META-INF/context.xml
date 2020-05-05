@@ -17,8 +17,8 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 --><!-- The contents of this file will be loaded for each web application -->
-
-<Context workDir="C:\Users\choisangwon\Desktop\semi_project\jsp_servlet\workspace\funthing_project\funthing\web\WEB-INF\jspwork">
+<!-- 데스크탑 -->
+<Context workDir="D:\Funthing\master\workspace\funthing_project\funthing\web\WEB-INF\jspwork">
 
 
     <!-- Default set of monitored resources. If one of these changes, the    -->
