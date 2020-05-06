@@ -9,10 +9,14 @@
 		<link rel="stylesheet" href="<%=request.getContextPath() %>/css/main.css">
 		<link rel="stylesheet" href="<%=request.getContextPath() %>/css/reset.css">
 		<link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
+	    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/slick/slick.css"/>
+	    <!-- Add the new slick-theme.css if you want the default styling -->
+	    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/slick/slick-theme.css"/>
 		
   		  <script src="https://kit.fontawesome.com/39b470622c.js" crossorigin="anonymous"></script>
 		<script src="<%=request.getContextPath()%>/js/action.js"></script>
-		<script src="<%=request.getContextPath()%>/js/swiper.min.js"></script>
+		<!--script src="<%=request.getContextPath()%>/js/swiper.min.js"></script-->
+		<script type="text/javascript" src="<%=request.getContextPath()%>/slick/slick.min.js"></script>
 	</head>
 	<body>
 		<header id="header">
