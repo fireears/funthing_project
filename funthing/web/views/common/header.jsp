@@ -65,7 +65,7 @@
 	        <!-- nav end -->
 	    </header>
 	</body>
-	
+	 
 	<script>
 		//헤더 상단 고정
 		var headerTop = $("#header").offset();
