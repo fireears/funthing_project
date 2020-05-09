@@ -10,8 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import notice.model.service.NoticeService;
+import notice.model.vo.Notice;
 import product.model.service.ProductService;
 import product.model.vo.Product;
+import qna.model.service.QnaService;
+import qna.model.vo.QnA;
 
 /**
  * Servlet implementation class MainViewServlet
@@ -32,16 +36,23 @@ public class MainViewServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		ProductService pService = new ProductService();
+		QnaService qService = new QnaService();
+		NoticeService nService = new NoticeService();
 		
 		ArrayList<Product> arriProduct = new ArrayList<>();
 		ArrayList<Product> bestProduct = new ArrayList<>();
 		ArrayList<Product> closeProduct = new ArrayList<>();
-		
-		ProductService pService = new ProductService();
+		ArrayList<QnA> qnalist = new ArrayList<>();
+		ArrayList<Notice> noticelist = new ArrayList<>();
 		
 		arriProduct = pService.arriSelctProduct();		//신상품
 		bestProduct = pService.bestSelectProduct();		//best상품
 		closeProduct = pService.closeSelectProduct();	//종료임박상품
+		qnalist = qService.mainselectQnaService();
+		noticelist = nService.mainselectNoticeService();
+		
 		
 //		Product p = arriProduct.get(0);
 //		String url = "/images/thumbnail/" + p.getThumbnail() + ".jsp";
@@ -52,6 +63,8 @@ public class MainViewServlet extends HttpServlet {
 		request.setAttribute("arriProduct", arriProduct);
 		request.setAttribute("bestProduct", bestProduct);
 		request.setAttribute("closeProduct", closeProduct);
+		request.setAttribute("qnalist", qnalist);
+		request.setAttribute("noticelist", noticelist);
 		view.forward(request, response);
 		
 	}

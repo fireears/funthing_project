@@ -1,12 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ page import="product.model.vo.Product" %>
+    <%@ page import="qna.model.vo.QnA" %>
+    <%@ page import="notice.model.vo.Notice" %>
     <%@ page import="java.util.ArrayList" %>
     <%@ page import="java.sql.Date" %>
     <%
     	ArrayList<Product> arriProduct = (ArrayList<Product>)request.getAttribute("arriProduct");
     	ArrayList<Product> bestProduct = (ArrayList<Product>)request.getAttribute("bestProduct");
     	ArrayList<Product> closeProduct = (ArrayList<Product>)request.getAttribute("closeProduct");
+    	ArrayList<QnA> qnalist = (ArrayList<QnA>)request.getAttribute("qnalist");
+    	ArrayList<Notice> noticelist = (ArrayList<Notice>)request.getAttribute("noticelist");
     %>
 <!DOCTYPE html>
 <html>
@@ -141,20 +145,33 @@
 	            <div class="bt-sec left">
 	                <h3>QNA</h3>
 	                <ul>
-	                    <li><a href="#none">title</a><span>date</span></li>
-	                    <li><a href="#none">title</a><span>date</span></li>
-	                    <li><a href="#none">title</a><span>date</span></li>
-	                    <li><a href="#none">title</a><span>date</span></li>
+	                	<%if(qnalist != null) { %>
+	                	<%	for(int i =0; i<4; i++) { %>
+	                	<%		QnA q = qnalist.get(i);
+	                			
+	                			String title = q.getQnaTitle();
+	                			Date qnaDate = q.getQnaDate();
+	                	%>
+	                    		<li><a href="#none"><%=title %></a><span><%=qnaDate %></span></li>
+	                    <%	} %>
+	                    <%}else{} %>
 	                </ul>
 	            </div><!-- left end -->
 	            
 	            <div class="bt-sec bcenter">
 	                <h3>NOTICE</h3>
 	                <ul>
-	                    <li><a href="#none">title</a><span>date</span></li>
-	                    <li><a href="#none">title</a><span>date</span></li>
-	                    <li><a href="#none">title</a><span>date</span></li>
-	                    <li><a href="#none">title</a><span>date</span></li>
+	                	<%if(noticelist != null) { %>
+	                	<%	for(int i=0;i<4;i++) { %>
+	                	<%		Notice n = noticelist.get(i);
+	                			
+	                			String title = n.getnTitle();
+	                			Date date = n.getnDate();
+	                	%>
+	                    	<li><a href="#none"><%=title %></a><span><%=date %></span></li>
+	                    
+	                    <%	} %>
+	                    <%} else {} %>
 	                </ul>
 	            </div><!-- center end -->
 	            
