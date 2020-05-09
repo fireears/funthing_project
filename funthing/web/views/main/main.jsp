@@ -49,6 +49,7 @@
 	                	
 	                			String thumbnail = p.getThumbnail();
 	                			String pName = p.getpName();
+	                			int pPrice = p.getpPrice();
 	                			Date fStartDate = p.getfStartDate();
 	                			Date fEndDate = p.getfEndDate();
 	                			
@@ -63,6 +64,7 @@
 		                        <ul class="prod-cont">
 		                            <!-- <li class="prod-brand">brand</li> -->
 		                            <li class="prod-tit"><a href="#none"><%=pName %></a></li>
+		                            <li class="prod-tit"><a href="#none"><%=pPrice %></a></li>
 		                            <li class="fun-sdate"><%=fStartDate %>~<%=fEndDate %></li>
 		                        </ul>
 		                    </li>
@@ -93,9 +95,6 @@
                     	<%		 Product p = bestProduct.get(i);
 	                			
 								 String thumbnail = p.getThumbnail();
-								 String pName = p.getpName();
-								 Date fStartDate = p.getfStartDate();
-								 Date fEndDate = p.getfEndDate();
 						%>
 		                        <div>
 		                            <img src="<%=request.getContextPath()+"/images/thumbnail/" + thumbnail + ".jpg" %>">
@@ -117,6 +116,7 @@
 	                			
 			                	String thumbnail = p.getThumbnail();
 		            			String pName = p.getpName();
+		            			int pPrice = p.getpPrice();
 		            			Date fStartDate = p.getfStartDate();
 		            			Date fEndDate = p.getfEndDate();
 	                	%>
@@ -127,6 +127,7 @@
 	                        <ul class="prod-cont">
 	                            <!-- <li class="prod-brand">brand</li> -->
 	                            <li class="prod-tit"><a href="#none"><%=pName %></a></li>
+	                            <li class="prod-tit"><a href="#none"><%=pPrice %>원</a></li>
 	                            <li class="fun-sdate"><%=fStartDate %>~<%=fEndDate %></li>
 	                        </ul>
 	                    </li>

@@ -33,11 +33,20 @@ public class Product implements Serializable{
 	public Product() {
 		super();
 	}
-
+	
 	public Product(String thumbnail, String pName, Date fStartDate, Date fEndDate) {
 		super();
 		this.thumbnail = thumbnail;
 		this.pName = pName;
+		this.fStartDate = fStartDate;
+		this.fEndDate = fEndDate;
+	}
+
+	public Product(String thumbnail, String pName, int pPrice, Date fStartDate, Date fEndDate) {
+		super();
+		this.thumbnail = thumbnail;
+		this.pName = pName;
+		this.pPrice = pPrice;
 		this.fStartDate = fStartDate;
 		this.fEndDate = fEndDate;
 	}

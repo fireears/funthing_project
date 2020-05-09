@@ -32,6 +32,7 @@ public class ProductDao {
 			{
 				p = new Product(rset.getString("thumbnail"),
 								rset.getString("p_name"),
+								rset.getInt("p_price"),
 								rset.getDate("f_start_date"),
 								rset.getDate("f_end_date"));
 				
@@ -108,6 +109,7 @@ public class ProductDao {
 			{
 				p = new Product(rset.getString("thumbnail"),
 						rset.getString("p_name"),
+						rset.getInt("p_price"),
 						rset.getDate("f_start_date"),
 						rset.getDate("f_end_date"));
 		
