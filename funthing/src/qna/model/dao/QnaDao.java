@@ -1,15 +1,38 @@
 package qna.model.dao;
 
+import static common.JDBCTemplate.*;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Properties;
+
 
 import qna.model.vo.QnA;
-
-import static common.JDBCTemplate.*;
 public class QnaDao {
+	
+	Properties prop = new Properties();
+	
+	public QnaDao()
+	{
+		String fileName = QnaDao.class.getResource("/sql/QnA/QnA-query.properties").getPath();
+		
+		
+		try {
+			prop.load(new FileReader(fileName));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	public ArrayList<QnA> selectQnaDao(Connection conn) {
 		
@@ -19,6 +42,7 @@ public class QnaDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
+//		String query = prop.getProperty("mainSelectQnA");
 		String query = "SELECT QNA_TITLE, QNA_DATE FROM QNA ";
 		
 		try {

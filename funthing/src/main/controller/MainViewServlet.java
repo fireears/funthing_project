@@ -50,14 +50,8 @@ public class MainViewServlet extends HttpServlet {
 		arriProduct = pService.arriSelctProduct();		//신상품
 		bestProduct = pService.bestSelectProduct();		//best상품
 		closeProduct = pService.closeSelectProduct();	//종료임박상품
-		qnalist = qService.mainselectQnaService();
-		noticelist = nService.mainselectNoticeService();
-		
-		
-//		Product p = arriProduct.get(0);
-//		String url = "/images/thumbnail/" + p.getThumbnail() + ".jsp";
-//		String web = request.getContextPath();
-//		System.out.println(web + url);
+		qnalist = qService.mainselectQnaService();		//QnA
+		noticelist = nService.mainselectNoticeService();//공지사항
 		
 		RequestDispatcher view = request.getRequestDispatcher("/views/main/main.jsp");
 		request.setAttribute("arriProduct", arriProduct);
