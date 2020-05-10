@@ -8,13 +8,9 @@
 
 </head>
 <body>
-	<%@include file = "views/common/header.jsp" %>
-	
-	
-	
-	<%@include file = "views/main/main.jsp" %>
-	
-	
-	<%@include file = "views/common/footer.jsp" %>
+	<%
+		response.sendRedirect(request.getContextPath()+"/main/mainView");
+		
+	%>
 </body>
 </html>

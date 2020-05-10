@@ -1,19 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="product.model.vo.Product" %>
+    <%@ page import="qna.model.vo.QnA" %>
+    <%@ page import="notice.model.vo.Notice" %>
+    <%@ page import="java.util.ArrayList" %>
+    <%@ page import="java.sql.Date" %>
+    <%
+    	ArrayList<Product> arriProduct = (ArrayList<Product>)request.getAttribute("arriProduct");
+    	ArrayList<Product> bestProduct = (ArrayList<Product>)request.getAttribute("bestProduct");
+    	ArrayList<Product> closeProduct = (ArrayList<Product>)request.getAttribute("closeProduct");
+    	ArrayList<QnA> qnalist = (ArrayList<QnA>)request.getAttribute("qnalist");
+    	ArrayList<Notice> noticelist = (ArrayList<Notice>)request.getAttribute("noticelist");
+    %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Insert title here</title>
-	
-		
 		
 		<script src="<%=request.getContextPath()%>/js/action.js"></script>
 		<script src="<%=request.getContextPath()%>/js/swiper.min.js"></script>
 	
 	</head>
 	<body>
+		
+		<%@ include file="/views/common/header.jsp" %>
+		
 		<div class="searchWrap">
 	        <form id="search" action="#" method="post">
 	            <input type="text" id="search" name="search" /><i class="fas fa-search"></i>
@@ -29,66 +42,46 @@
 	            <div class="con-box discover">
 	                <h2>DISCOVER THE LATEST ARRIVALS</h2>
 	                <ul class="product">
-	                    <li>
-	                        <div class="prod-img">
-	                            <a href="#none"><img src="<%=request.getContextPath()%>/images/thumbnail/thumb001.jpg"></a>
-	                        </div>
-	                        <ul class="prod-cont">
-	                            <li class="prod-brand">brand</li>
-	                            <li class="prod-tit"><a href="#none">product title</a></li>
-	                            <li class="fun-sdate">2020/05/30~</li>
-	                        </ul>
-	                    </li>
-	                    <li>
-	                        <div class="prod-img">
-	                            <a href="#none"><img src="<%=request.getContextPath()%>/images/thumbnail/thumb002.jpg"></a>
-	                        </div>
-	                        <ul class="prod-cont">
-	                            <li class="prod-brand">brand</li>
-	                            <li class="prod-tit"><a href="#none">product title</a></li>
-	                            <li class="fun-sdate">2020/05/30~</li>
-	                        </ul>
-	                    </li>
-	                    <li>
-	                        <div class="prod-img">
-	                            <a href="#none"><img src="<%=request.getContextPath()%>/images/thumbnail/thumb003.jpg"></a>
-	                        </div>
-	                        <ul class="prod-cont">
-	                            <li class="prod-brand">brand</li>
-	                            <li class="prod-tit"><a href="#none">product title</a></li>
-	                            <li class="fun-sdate">2020/05/30~</li>
-	                        </ul>
-	                    </li>
-	                    <li>
-	                        <div class="prod-img">
-	                            <a href="#none"><img src="<%=request.getContextPath()%>/images/thumbnail/thumb002.jpg"></a>
-	                        </div>
-	                        <ul class="prod-cont">
-	                            <li class="prod-brand">brand</li>
-	                            <li class="prod-tit"><a href="#none">product title</a></li>
-	                            <li class="fun-sdate">2020/05/30~</li>
-	                        </ul>
-	                    </li>
-	                    <li>
-	                        <div class="prod-img">
-	                            <a href="#none"><img src="<%=request.getContextPath()%>/images/thumbnail/thumb003.jpg"></a>
-	                        </div>
-	                        <ul class="prod-cont">
-	                            <li class="prod-brand">brand</li>
-	                            <li class="prod-tit"><a href="#none">product title</a></li>
-	                            <li class="fun-sdate">2020/05/30~</li>
-	                        </ul>
-	                    </li>
-	                    <li>
-	                        <div class="prod-img">
-	                            <a href="#none"><img src="<%=request.getContextPath()%>/images/thumbnail/thumb001.jpg"></a>
-	                        </div>
-	                        <ul class="prod-cont">
-	                            <li class="prod-brand">brand</li>
-	                            <li class="prod-tit"><a href="#none">product title</a></li>
-	                            <li class="fun-sdate">2020/05/30~</li>
-	                        </ul>
-	                    </li>
+	                
+	                	<%if(arriProduct != null) { %>
+	                	<%	for(int i = 0; i<8; i++) { %>
+	                	<%		Product p = arriProduct.get(i);
+	                	
+	                			String thumbnail = p.getThumbnail();
+	                			String pName = p.getpName();
+	                			int pPrice = p.getpPrice();
+	                			Date fStartDate = p.getfStartDate();
+	                			Date fEndDate = p.getfEndDate();
+	                			
+	                			String thumbnailUrl = "web/images/thumbnail/" + thumbnail + ".jsp";
+	                	%>
+		                    <li>
+		                        <div class="prod-img">
+		                            <%-- <a href="#none"><img src=<%=thumbnailUrl %>></a> --%>
+		                            <a href="#none"><img src="<%=request.getContextPath()+"/images/thumbnail/" + thumbnail + ".jpg" %>"></a>
+		                            <%-- <img src="<%=request.getContextPath()+"/images/book/"+b.getBookImage() %> --%>
+		                        </div>
+		                        <ul class="prod-cont">
+		                            <!-- <li class="prod-brand">brand</li> -->
+		                            <li class="prod-tit"><a href="#none"><%=pName %></a></li>
+		                            <li class="prod-tit"><a href="#none"><%=pPrice %></a></li>
+		                            <li class="fun-sdate"><%=fStartDate %>~<%=fEndDate %></li>
+		                        </ul>
+		                    </li>
+	                    <%} 
+	                	}else { %>
+		                    <li>
+		                        <div class="prod-img">
+		                            <a href="#none"><img src="<%=request.getContextPath()%>/images/thumbnail/thumb001.jpg"></a>
+		                        </div>
+		                        <ul class="prod-cont">
+		                            <li class="prod-brand">brand</li>
+		                            <li class="prod-tit"><a href="#none">product title</a></li>
+		                            <li class="fun-sdate">2020/05/30~</li>
+		                        </ul>
+		                    </li>
+	                    <%} %>
+	                    
 	                </ul>
 	            </div>
 	            <!-- discover end -->
@@ -97,131 +90,52 @@
                 <h2>BEST SELLING</h2>
                 <section id="features" class="blue">
                     <div class="slider center">
-                        <div>
-                            <img src="images/thumbnail/thumb001.jpg">
-                        </div>
-                        <div>
-                            <img src="images/thumbnail/thumb002.jpg">
-                        </div>
-                        <div>
-                            <img src="images/thumbnail/thumb003.jpg">
-                        </div>
-                        <div>
-                            <img src="images/thumbnail/thumb001.jpg">
-                        </div>
-                        <div>
-                            <img src="images/thumbnail/thumb002.jpg">
-                        </div>
-                        <div>
-                            <img src="images/thumbnail/thumb003.jpg">
-                        </div>
+                    	<%if(bestProduct != null) { %>
+                    	<%	for(int i=0; i<6;i++) { %>
+                    	<%		 Product p = bestProduct.get(i);
+	                			
+								 String thumbnail = p.getThumbnail();
+						%>
+		                        <div>
+		                            <img src="<%=request.getContextPath()+"/images/thumbnail/" + thumbnail + ".jpg" %>">
+		                        </div>
+	                   <%	} %>
+                       <%}else { %>
+                       
+                       <%} %>
                     </div>
-                    
-                    <script>
-                        $('.center').slick({
-                        centerMode: true,
-                        centerPadding: '200px',
-                        infinite : true, 	//무한 반복 옵션	 
-                        slidesToShow : 3,		// 한 화면에 보여질 컨텐츠 개수
-                        slidesToScroll : 1,		//스크롤 한번에 움직일 컨텐츠 개수
-                        speed : 100,	 // 다음 버튼 누르고 다음 화면 뜨는데까지 걸리는 시간(ms)
-                        arrows : true, 		// 옆으로 이동하는 화살표 표시 여부
-                        dots : true, 		// 스크롤바 아래 점으로 페이지네이션 여부
-                        autoplay : true,			// 자동 스크롤 사용 여부
-                        autoplaySpeed : 5000, 		// 자동 스크롤 시 다음으로 넘어가는데 걸리는 시간 (ms)
-                        pauseOnHover : true,		// 슬라이드 이동	시 마우스 호버하면 슬라이더 멈추게 설정
-                        // prevArrow : "<button type='button' class='slick-prev'>Previous</button>",		// 이전 화살표 모양 설정
-                        // nextArrow : "<button type='button' class='slick-next'>Next</button>",		// 다음 화살표 모양 설정
-                        dotsClass : "slick-dots", 	//아래 나오는 페이지네이션(점) css class 지정
-                        draggable : true, 	//드래그 가능 여부 
-                        responsive: [
-                            {
-                            breakpoint: 768,
-                            settings: {
-                                arrows: false,
-                                centerMode: true,
-                                centerPadding: '40px',
-                                slidesToShow: 3
-                            }
-                            },
-                            {
-                            breakpoint: 480,
-                            settings: {
-                                arrows: false,
-                                centerMode: true,
-                                centerPadding: '40px',
-                                slidesToShow: 1
-                            }
-                            }
-                        ]
-                        });
-                    </script>
                 </section>
             </div>
             
 	            <div class="con-box completion">
 	                <h2>CLOSE TO COMPLETION</h2>
 	                <ul class="product">
+	                	<%if(closeProduct != null) { %>
+	                	<%	for(int i = 0; i<8; i++) { %>
+	                	<%		Product p = closeProduct.get(i);
+	                			
+			                	String thumbnail = p.getThumbnail();
+		            			String pName = p.getpName();
+		            			int pPrice = p.getpPrice();
+		            			Date fStartDate = p.getfStartDate();
+		            			Date fEndDate = p.getfEndDate();
+	                	%>
 	                    <li>
 	                        <div class="prod-img">
-	                            <a href="#none"><img src="<%=request.getContextPath()%>/images/thumbnail/thumb001.jpg"></a>
+	                            <a href="#none"><img src="<%=request.getContextPath()+"/images/thumbnail/" + thumbnail + ".jpg" %>"></a>
 	                        </div>
 	                        <ul class="prod-cont">
-	                            <li class="prod-brand">brand</li>
-	                            <li class="prod-tit"><a href="#none">product title</a></li>
-	                            <li class="fun-sdate">2020/05/30~</li>
+	                            <!-- <li class="prod-brand">brand</li> -->
+	                            <li class="prod-tit"><a href="#none"><%=pName %></a></li>
+	                            <li class="prod-tit"><a href="#none"><%=pPrice %>원</a></li>
+	                            <li class="fun-sdate"><%=fStartDate %>~<%=fEndDate %></li>
 	                        </ul>
 	                    </li>
-	                    <li>
-	                        <div class="prod-img">
-	                            <a href="#none"><img src="<%=request.getContextPath()%>/images/thumbnail/thumb002.jpg"></a>
-	                        </div>
-	                        <ul class="prod-cont">
-	                            <li class="prod-brand">brand</li>
-	                            <li class="prod-tit"><a href="#none">product title</a></li>
-	                            <li class="fun-sdate">2020/05/30~</li>
-	                        </ul>
-	                    </li>
-	                    <li>
-	                        <div class="prod-img">
-	                            <a href="#none"><img src="<%=request.getContextPath()%>/images/thumbnail/thumb003.jpg"></a>
-	                        </div>
-	                        <ul class="prod-cont">
-	                            <li class="prod-brand">brand</li>
-	                            <li class="prod-tit"><a href="#none">product title</a></li>
-	                            <li class="fun-sdate">2020/05/30~</li>
-	                        </ul>
-	                    </li>
-	                    <li>
-	                        <div class="prod-img">
-	                            <a href="#none"><img src="<%=request.getContextPath()%>/images/thumbnail/thumb002.jpg"></a>
-	                        </div>
-	                        <ul class="prod-cont">
-	                            <li class="prod-brand">brand</li>
-	                            <li class="prod-tit"><a href="#none">product title</a></li>
-	                            <li class="fun-sdate">2020/05/30~</li>
-	                        </ul>
-	                    </li>
-	                    <li>
-	                        <div class="prod-img">
-	                            <a href="#none"><img src="<%=request.getContextPath()%>/images/thumbnail/thumb003.jpg"></a>
-	                        </div>
-	                        <ul class="prod-cont">
-	                            <li class="prod-brand">brand</li>
-	                            <li class="prod-tit"><a href="#none">product title</a></li>
-	                            <li class="fun-sdate">2020/05/30~</li>
-	                        </ul>
-	                    </li>
-	                    <li>
-	                        <div class="prod-img">
-	                            <a href="#none"><img src="<%=request.getContextPath()%>/images/thumbnail/thumb001.jpg"></a>
-	                        </div>
-	                        <ul class="prod-cont">
-	                            <li class="prod-brand">brand</li>
-	                            <li class="prod-tit"><a href="#none">product title</a></li>
-	                            <li class="fun-sdate">2020/05/30~</li>
-	                        </ul>
-	                    </li>
+	                    
+	                    <%	} %>
+	                    <%}else{ %>
+	                    
+	                    <%} %>
 	                </ul>
 	            </div>
 	            </div>
@@ -232,20 +146,33 @@
 	            <div class="bt-sec left">
 	                <h3>QNA</h3>
 	                <ul>
-	                    <li><a href="#none">title</a><span>date</span></li>
-	                    <li><a href="#none">title</a><span>date</span></li>
-	                    <li><a href="#none">title</a><span>date</span></li>
-	                    <li><a href="#none">title</a><span>date</span></li>
+	                	<%if(qnalist != null) { %>
+	                	<%	for(int i =0; i<4; i++) { %>
+	                	<%		QnA q = qnalist.get(i);
+	                			
+	                			String title = q.getQnaTitle();
+	                			Date qnaDate = q.getQnaDate();
+	                	%>
+	                    		<li><a href="#none"><%=title %></a><span><%=qnaDate %></span></li>
+	                    <%	} %>
+	                    <%}else{} %>
 	                </ul>
 	            </div><!-- left end -->
 	            
-	            <div class="bt-sec center">
+	            <div class="bt-sec bcenter">
 	                <h3>NOTICE</h3>
 	                <ul>
-	                    <li><a href="#none">title</a><span>date</span></li>
-	                    <li><a href="#none">title</a><span>date</span></li>
-	                    <li><a href="#none">title</a><span>date</span></li>
-	                    <li><a href="#none">title</a><span>date</span></li>
+	                	<%if(noticelist != null) { %>
+	                	<%	for(int i=0;i<4;i++) { %>
+	                	<%		Notice n = noticelist.get(i);
+	                			
+	                			String title = n.getnTitle();
+	                			Date date = n.getnDate();
+	                	%>
+	                    	<li><a href="#none"><%=title %></a><span><%=date %></span></li>
+	                    
+	                    <%	} %>
+	                    <%} else {} %>
 	                </ul>
 	            </div><!-- center end -->
 	            
@@ -262,5 +189,47 @@
 	
 	        </div><!-- content end -->
 	    </div><!-- container end -->
+	    
+	    <%@include file="/views/common/footer.jsp" %>
 	</body>
+	
+	<script>
+	    $('.center').slick({
+	    centerMode: true,
+	    centerPadding: '200px',
+	    infinite : true, 	//무한 반복 옵션	 
+	    slidesToShow : 3,		// 한 화면에 보여질 컨텐츠 개수
+	    slidesToScroll : 1,		//스크롤 한번에 움직일 컨텐츠 개수
+	    speed : 100,	 // 다음 버튼 누르고 다음 화면 뜨는데까지 걸리는 시간(ms)
+	    arrows : true, 		// 옆으로 이동하는 화살표 표시 여부
+	    dots : true, 		// 스크롤바 아래 점으로 페이지네이션 여부
+	    autoplay : true,			// 자동 스크롤 사용 여부
+	    autoplaySpeed : 5000, 		// 자동 스크롤 시 다음으로 넘어가는데 걸리는 시간 (ms)
+	    pauseOnHover : true,		// 슬라이드 이동	시 마우스 호버하면 슬라이더 멈추게 설정
+	    // prevArrow : "<button type='button' class='slick-prev'>Previous</button>",		// 이전 화살표 모양 설정
+	    // nextArrow : "<button type='button' class='slick-next'>Next</button>",		// 다음 화살표 모양 설정
+	    dotsClass : "slick-dots", 	//아래 나오는 페이지네이션(점) css class 지정
+	    draggable : true, 	//드래그 가능 여부 
+	    responsive: [
+	        {
+	        breakpoint: 768,
+	        settings: {
+	            arrows: false,
+	            centerMode: true,
+	            centerPadding: '40px',
+	            slidesToShow: 3
+	        }
+	        },
+	        {
+	        breakpoint: 480,
+	        settings: {
+	            arrows: false,
+	            centerMode: true,
+	            centerPadding: '40px',
+	            slidesToShow: 1
+	        }
+	        }
+	    ]
+	    });
+	</script>
 </html>
