@@ -24,13 +24,14 @@
             #area table th{background-color: rgb(199, 196, 196); color: rgb(53, 52, 52);}
             #area table tr button{width: 50%; height: 30px; background-color: gray; border: 1px solid; border-color: white; font-weight: 600; color: rgb(255, 255, 255);}
 
+			#pageBtn{margin:auto; width:50%}
 
         </style>
     </head>
     <body>
         <header>
             <br>
-            <h1 style="text-align: center;">상품 관리</h1>
+            <h1 style="text-align: center;">FUN-THING ADMIN</h1>
             <br>
             <div id="nav">
                 <div id="nav_header">
@@ -60,7 +61,7 @@
 	<script>
 		function productManage()
 		{
-			location.href="views/admin/productManage.jsp";
+			location.href="<%=request.getContextPath()%>/admin/mainView?table=" + "PRODUCT";
 		}
 		
 		
