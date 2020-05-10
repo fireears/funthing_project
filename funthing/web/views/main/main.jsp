@@ -27,12 +27,7 @@
 		
 		<%@ include file="/views/common/header.jsp" %>
 		
-		<div class="searchWrap">
-	        <form id="search" action="#" method="post">
-	            <input type="text" id="search" name="search" /><i class="fas fa-search"></i>
-	        </form>
-	        <div class="close"><i class="fas fa-times"></i></div>
-	    </div>
+		
 	    <!-- search end -->
 	    <div id="container">
 	        <div id="content">

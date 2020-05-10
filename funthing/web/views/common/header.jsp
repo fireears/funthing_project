@@ -39,7 +39,9 @@
 	        <div id="nav-wrap">
 	            <div class="logo-wrap">
 	                <h1 class="logo"><a href="#none">FUN-THING</a></h1>
+	                
 	                <div class="search-box"><span><i class="fas fa-search"></i></span></div>
+	                
 	            </div>
 	            <nav id="nav">
 	                <ul>
@@ -68,6 +70,14 @@
 	        </div>
 	        <!-- nav end -->
 	    </header>
+	    
+	    <div class="searchWrap">
+	        <form id="search" action="<%=request.getContextPath() %>/MainSearch" method="GET">
+	        
+	            <input type="text" id="search" name="search" /><button type="submit" id="submitBtn" style="background-color:transparent; border:0px;"><i class="fas fa-search"></i></button>
+	        </form>
+	        <div class="close"><i class="fas fa-times"></i></div>
+	    </div>
 	</body>
 	 
 	<script>
