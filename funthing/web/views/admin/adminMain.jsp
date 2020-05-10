@@ -18,13 +18,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<style>
+		h2{text-align:center;}
+		form{height: 100px; background-color: rgb(199, 196, 196);}
+		#nav_section{margin:auto; width: 90%;}
+		#nav_section ul{height: 100px; margin: auto; width: 100%; padding: 0px;}
+		#nav_section ul li{float: left; list-style-type: none; padding-left: 20px; padding-right: 10px; line-height: 50px;}
+		#nav_section ul li .box{width: 150px;}
+		#nav_section ul li:last-child { float:right;}
+		
+		#area{margin: auto; width: 100%;}
+		#area table{width: 100%; border: 1px solid;}
+		#area table th{background-color: rgb(199, 196, 196); color: rgb(53, 52, 52);}
+		#area table tr button{width: 50%; height: 30px; background-color: gray; border: 1px solid; border-color: white; font-weight: 600; color: rgb(255, 255, 255);}
+		
+		/* 상품계시판 밑에 버튼 */
+		#pageBtn{margin:auto; width:48%;}
+		#pageBtn>button{margin:auto; width:4.2%; height:30px; text-align: center;}
+	</style>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
 </head>
 <body>
 
 	<%@ include file="/views/common/adminheader.jsp" %>
-	
+	<h2>상품관리</h1>
 	<form action="" method="GET">
 		<div id="nav_section">
 		    <ul>
@@ -56,7 +74,11 @@
         <article>
             <table>
 
-                <tr><th>번호</th> <th>상품번호</th> <th>상품명</th> <th>상품종류</th> <th>정가</th> <th>할인율</th> <th>판매가</th> <th>펀딩 진행 유무</th> <th>펀딩 시작 날짜</th> <th>펀딩 종료 날짜</th> <th>변경</th></tr>
+                <tr>
+	                <th>번호</th> <th>상품번호</th> <th>상품명</th> <th>상품종류</th> <th>정가</th> <th>할인율</th> <th>판매가</th> 
+	                <th>펀딩 진행 유무</th> <th>펀딩 시작 날짜</th> <th>펀딩 종료 날짜</th> <th>변경</th>
+                </tr>
+                
 	            <%for(Product p : list) {
 	            	num++;
 	            %>
@@ -66,12 +88,16 @@
 	            </tr>
                 <%} %>
 	        </table>
+	        <br><br>
 	        <div id="pageBtn">
 	        	<button onclick="location.href='<%=request.getContextPath() %>/admin/mainView?currentPage=<%=1 %>'"> << </button>
 	        	
-	        	<button> < </button>
-	        	
-	        	<%for(int p = startPage; p<endPage; p++) { %>
+	        	<%if(currentPage <= 1) { %>
+	        		<button disabled> < </button>
+	        	<%} else {%>
+	        		<button onclick="location.href='<%=request.getContextPath()%>/admin/mainView?currentPage=<%=currentPage-1%>'"> < </button>
+	        	<%} %>
+	        	<%for(int p = startPage; p<=endPage; p++) { %>
 	        	<%	if(p == currentPage) { %>
 	        			<button disabled><%=p %></button>
 	        	
@@ -79,13 +105,18 @@
 	        			<button onclick="location.href='<%=request.getContextPath()%>/admin/mainView?currentPage=<%=p%>'"><%=p %></button>
 	        	<%} %>	
 	        	<%} %>
-	        	<button> > </button>
 	        	
+	        	<%if(currentPage == maxPage) {%>
+	        		<button disabled> > </button>
+	        	<%} else { %>
+	        		<button onclick="location.href='<%=request.getContextPath() %>/admin/mainView?currentPage=<%=currentPage+1 %>'"> > </button>
+	        	<%} %>
 	        	<button onclick="location.href='<%=request.getContextPath()%>/admin/mainView?currentPage=<%=maxPage%>'"> >> </button>
 	        	
 	        	
 	        </div>
 	    </article>
 	</section>
+	<br><br>
 </body>
 </html>

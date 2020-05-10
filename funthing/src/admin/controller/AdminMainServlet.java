@@ -62,9 +62,9 @@ public class AdminMainServlet extends HttpServlet {
 		//페이지 확인용
 		System.out.println(currentPage);
 		
-		maxPage = (int)((double)listCount/limit + 0.9);
+		maxPage = (int)((double)listCount/limit + 0.95);
 		
-		startPage = ((int)(((double)currentPage/limit + 0.9)-1) * limit) +1;
+		startPage = ((int)(((double)currentPage/limit + 0.95)-1) * limit) +1;
 		
 		endPage = startPage + limit -1;
 		
