@@ -10,7 +10,7 @@
 <body>
 	<%
 		response.sendRedirect(request.getContextPath()+"/main/mainView");
-		
+		/* response.sendRedirect(request.getContextPath()+"/admin/mainView"); */
 	%>
 </body>
 </html>

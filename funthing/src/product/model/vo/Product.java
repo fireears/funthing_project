@@ -11,12 +11,14 @@ public class Product implements Serializable{
 	 */
 	private static final long serialVersionUID = 966603566480994713L;
 
+	private String pNo;
 	private String bNo;
 	private String thumbnail;
 	private String pName;
 	private int retailPrice;
 	private int dcRate;
 	private int pPrice;
+	private int pCategory;
 	private int sNo;
 	private String pDetail;
 	private String imgRouter;
@@ -49,6 +51,40 @@ public class Product implements Serializable{
 		this.pPrice = pPrice;
 		this.fStartDate = fStartDate;
 		this.fEndDate = fEndDate;
+	}
+
+	public Product(String pNo, String bNo, String thumbnail, String pName, int retailPrice, int dcRate, int pPrice,
+			int pCategory, int sNo, String pDetail, String imgRouter, int pPoint, Date shipDate, Date fStartDate,
+			Date fEndDate, int fGoal, int fSelPrice, String fYn, String calNo, int fPrgRate) {
+		super();
+		this.pNo = pNo;
+		this.bNo = bNo;
+		this.thumbnail = thumbnail;
+		this.pName = pName;
+		this.retailPrice = retailPrice;
+		this.dcRate = dcRate;
+		this.pPrice = pPrice;
+		this.pCategory = pCategory;
+		this.sNo = sNo;
+		this.pDetail = pDetail;
+		this.imgRouter = imgRouter;
+		this.pPoint = pPoint;
+		this.shipDate = shipDate;
+		this.fStartDate = fStartDate;
+		this.fEndDate = fEndDate;
+		this.fGoal = fGoal;
+		this.fSelPrice = fSelPrice;
+		this.fYn = fYn;
+		this.calNo = calNo;
+		this.fPrgRate = fPrgRate;
+	}
+
+	public String getpNo() {
+		return pNo;
+	}
+
+	public void setpNo(String pNo) {
+		this.pNo = pNo;
 	}
 
 	public String getbNo() {
@@ -97,6 +133,14 @@ public class Product implements Serializable{
 
 	public void setpPrice(int pPrice) {
 		this.pPrice = pPrice;
+	}
+
+	public int getpCategory() {
+		return pCategory;
+	}
+
+	public void setpCategory(int pCategory) {
+		this.pCategory = pCategory;
 	}
 
 	public int getsNo() {
@@ -201,12 +245,19 @@ public class Product implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Product [bNo=" + bNo + ", thumbnail=" + thumbnail + ", pName=" + pName + ", retailPrice=" + retailPrice
-				+ ", dcRate=" + dcRate + ", pPrice=" + pPrice + ", sNo=" + sNo + ", pDetail=" + pDetail + ", imgRouter="
-				+ imgRouter + ", pPoint=" + pPoint + ", shipDate=" + shipDate + ", fStartDate=" + fStartDate
-				+ ", fEndDate=" + fEndDate + ", fGoal=" + fGoal + ", fSelPrice=" + fSelPrice + ", fYn=" + fYn
-				+ ", calNo=" + calNo + ", fPrgRate=" + fPrgRate + "]";
+		return "Product [pNo=" + pNo + ", bNo=" + bNo + ", thumbnail=" + thumbnail + ", pName=" + pName
+				+ ", retailPrice=" + retailPrice + ", dcRate=" + dcRate + ", pPrice=" + pPrice + ", pCategory="
+				+ pCategory + ", sNo=" + sNo + ", pDetail=" + pDetail + ", imgRouter=" + imgRouter + ", pPoint="
+				+ pPoint + ", shipDate=" + shipDate + ", fStartDate=" + fStartDate + ", fEndDate=" + fEndDate
+				+ ", fGoal=" + fGoal + ", fSelPrice=" + fSelPrice + ", fYn=" + fYn + ", calNo=" + calNo + ", fPrgRate="
+				+ fPrgRate + "]";
 	}
+	
+	
+
+	
+
+	
 	
 	
 	
