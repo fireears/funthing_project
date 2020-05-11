@@ -5,12 +5,18 @@
     <%@ page import="notice.model.vo.Notice" %>
     <%@ page import="java.util.ArrayList" %>
     <%@ page import="java.sql.Date" %>
+    
+    <!--  돈 , 표시 import -->
+    <%@ page import="java.text.DecimalFormat" %>
     <%
     	ArrayList<Product> arriProduct = (ArrayList<Product>)request.getAttribute("arriProduct");
     	ArrayList<Product> bestProduct = (ArrayList<Product>)request.getAttribute("bestProduct");
     	ArrayList<Product> closeProduct = (ArrayList<Product>)request.getAttribute("closeProduct");
     	ArrayList<QnA> qnalist = (ArrayList<QnA>)request.getAttribute("qnalist");
     	ArrayList<Notice> noticelist = (ArrayList<Notice>)request.getAttribute("noticelist");
+    	
+    	//돈 , 표시에 필요한 객체
+    	DecimalFormat formatter = new DecimalFormat("###,###");
     %>
 <!DOCTYPE html>
 <html>
@@ -59,7 +65,7 @@
 		                        <ul class="prod-cont">
 		                            <!-- <li class="prod-brand">brand</li> -->
 		                            <li class="prod-tit"><a href="#none"><%=pName %></a></li>
-		                            <li class="prod-tit"><a href="#none"><%=pPrice %></a></li>
+		                            <li class="prod-tit"><a href="#none"><%=formatter.format(pPrice) %>원</a></li>
 		                            <li class="fun-sdate"><%=fStartDate %>~<%=fEndDate %></li>
 		                        </ul>
 		                    </li>
@@ -122,7 +128,7 @@
 	                        <ul class="prod-cont">
 	                            <!-- <li class="prod-brand">brand</li> -->
 	                            <li class="prod-tit"><a href="#none"><%=pName %></a></li>
-	                            <li class="prod-tit"><a href="#none"><%=pPrice %>원</a></li>
+	                            <li class="prod-tit"><a href="#none"><%=formatter.format(pPrice) %>원</a></li>
 	                            <li class="fun-sdate"><%=fStartDate %>~<%=fEndDate %></li>
 	                        </ul>
 	                    </li>
