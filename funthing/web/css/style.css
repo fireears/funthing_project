@@ -17,7 +17,7 @@ body { position:relative; overflow-x:hidden; }
 #header .log-menu .log-sec a { color:#fff; font-size:14px; }
 
 /* 로그아웃 시 */
-#header .log-menu .log-sec.login { display:none; }
+#header .log-menu .log-sec.login {  }
 
 /* 로그인 시 */
 /* #header .log-menu .log-sec.logout{ display:none; } */
