@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="member.model.vo.Member" %>
+    
+    <%
+    	Member loginUser = (Member)session.getAttribute("loginUser");
+    %>
 <!DOCTYPE html>
 	<html>
 	<head>
@@ -22,18 +27,23 @@
 		<header id="header">
 	        <div class="menu-wrap">
 	            <div class="log-menu">
+	            
+	            <% if(loginUser != null){ %>
 	                <ul class="log-sec login">
 	                    <li><a href="#none">HELF</a></li>
-	                    <li><a href="#none">LOGOUT</a></li>
+	                    <li><a href="<%=request.getContextPath() %>/logout.me">LOGOUT</a></li>
 	                    <li><a href="#none">MY PAGE</a></li>
 	                    <li><a href="#none"><i class="fas fa-shopping-cart"></i></a></li>
 	                </ul>
+	                <% }else{ %>
 	                <ul class="log-sec logout">
 	                    <li><a href="#none">HELF</a></li>
 	                    <li><a href="#none">JOIN</a></li>
-	                    <li><a href="#none">LOGIN</a></li>
+	                    <li><a href="<%=request.getContextPath()%>/views/member/memberLogin.jsp">LOGIN</a></li>
 	                    <li><a href="#none"><i class="fas fa-shopping-cart"></i></a></li>
 	                </ul>
+	                <% } %>
+	                
 	            </div>
 	        </div>
 	        <div id="nav-wrap">

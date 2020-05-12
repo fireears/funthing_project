@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import notice.model.service.NoticeService;
 import notice.model.vo.Notice;
@@ -60,7 +61,11 @@ public class MainViewServlet extends HttpServlet {
 		request.setAttribute("closeProduct", closeProduct);
 		request.setAttribute("qnalist", qnalist);
 		request.setAttribute("noticelist", noticelist);
+		
+		
 		view.forward(request, response);
+		
+		
 		
 	}
 

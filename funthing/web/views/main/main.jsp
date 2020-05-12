@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ page import="product.model.vo.Product" %>
-    <%@ page import="qna.model.vo.QnA" %>
+    <%@ page import="productQnA.model.vo.ProductQnA" %>
     <%@ page import="notice.model.vo.Notice" %>
     <%@ page import="java.util.ArrayList" %>
     <%@ page import="java.sql.Date" %>
+    
     
     <!--  돈 , 표시 import -->
     <%@ page import="java.text.DecimalFormat" %>
@@ -12,12 +13,13 @@
     	ArrayList<Product> arriProduct = (ArrayList<Product>)request.getAttribute("arriProduct");
     	ArrayList<Product> bestProduct = (ArrayList<Product>)request.getAttribute("bestProduct");
     	ArrayList<Product> closeProduct = (ArrayList<Product>)request.getAttribute("closeProduct");
-    	ArrayList<QnA> qnalist = (ArrayList<QnA>)request.getAttribute("qnalist");
+    	ArrayList<ProductQnA> qnalist = (ArrayList<ProductQnA>)request.getAttribute("qnalist");
     	ArrayList<Notice> noticelist = (ArrayList<Notice>)request.getAttribute("noticelist");
     	
     	//돈 , 표시에 필요한 객체
     	DecimalFormat formatter = new DecimalFormat("###,###");
     %>
+    
 <!DOCTYPE html>
 <html>
 	<head>
@@ -149,7 +151,7 @@
 	                <ul>
 	                	<%if(qnalist != null) { %>
 	                	<%	for(int i =0; i<4; i++) { %>
-	                	<%		QnA q = qnalist.get(i);
+	                	<%		ProductQnA q = qnalist.get(i);
 	                			
 	                			String title = q.getQnaTitle();
 	                			Date qnaDate = q.getQnaDate();

@@ -14,6 +14,7 @@ import java.util.Properties;
 
 
 import productQnA.model.vo.ProductQnA;
+
 public class ProductQnADao {
 	
 	Properties prop = new Properties();
