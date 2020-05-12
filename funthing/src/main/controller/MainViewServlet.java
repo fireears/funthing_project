@@ -17,10 +17,7 @@ import product.model.service.ProductService;
 import product.model.vo.Product;
 import productQnA.model.service.ProductQnAService;
 import productQnA.model.vo.ProductQnA;
-<<<<<<< HEAD
-=======
 
->>>>>>> refs/remotes/origin/dev4
 
 /**
  * Servlet implementation class MainViewServlet
