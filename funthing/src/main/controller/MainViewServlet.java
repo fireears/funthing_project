@@ -14,8 +14,8 @@ import notice.model.service.NoticeService;
 import notice.model.vo.Notice;
 import product.model.service.ProductService;
 import product.model.vo.Product;
-import qna.model.service.QnaService;
-import qna.model.vo.QnA;
+import productQnA.model.service.ProductQnAService;
+import productQnA.model.vo.ProductQnA;
 
 /**
  * Servlet implementation class MainViewServlet
@@ -38,13 +38,13 @@ public class MainViewServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		ProductService pService = new ProductService();
-		QnaService qService = new QnaService();
+		ProductQnAService qService = new ProductQnAService();
 		NoticeService nService = new NoticeService();
 		
 		ArrayList<Product> arriProduct = new ArrayList<>();
 		ArrayList<Product> bestProduct = new ArrayList<>();
 		ArrayList<Product> closeProduct = new ArrayList<>();
-		ArrayList<QnA> qnalist = new ArrayList<>();
+		ArrayList<ProductQnA> qnalist = new ArrayList<>();
 		ArrayList<Notice> noticelist = new ArrayList<>();
 		
 		arriProduct = pService.arriSelctProduct();		//신상품
