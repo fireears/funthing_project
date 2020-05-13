@@ -1,117 +1,81 @@
 package product.model.service;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
+import brand.model.dao.BrandDao;
+import brand.model.vo.Brand;
 import product.model.dao.ProductDao;
 import product.model.vo.Product;
 
+import static common.JDBCTemplate.*;
 public class ProductService {
 	
-	String driver = "oracle.jdbc.driver.OracleDriver";
-	String url = "jdbc:oracle:thin:@localhost:1521:xe";
-	String user = "FUNTHING";
-	String password = "FUNTHING";
+
 	public ProductService() {
 		super();
 	}
 	
 	public ArrayList<Product> arriSelctProduct() {
 		
-		Connection conn = null;
+		Connection conn = getConnection();
 		ArrayList<Product> list = new ArrayList<>();
 		
-		try {
-			Class.forName(driver);
-			conn = DriverManager.getConnection(url, user, password);
+		ProductDao pDao = new ProductDao();
+		list = pDao.arriSelectProduct(conn);
 			
-			conn.setAutoCommit(false);
-			
-			ProductDao pDao = new ProductDao();
-			list = pDao.arriSelectProduct(conn);
-			
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		finally
-		{
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+		close(conn);
 		return list;
 	}
 	public ArrayList<Product> bestSelectProduct() {
-		Connection conn = null;
+		Connection conn = getConnection();
 		ArrayList<Product> list = new ArrayList<>();
+			
+		ProductDao pDao = new ProductDao();
+		list = pDao.bestSelectProduct(conn);
 		
-		try {
-			Class.forName(driver);
-			conn = DriverManager.getConnection(url, user, password);
-			
-			conn.setAutoCommit(false);
-			
-			ProductDao pDao = new ProductDao();
-			list = pDao.bestSelectProduct(conn);
-			
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		finally
-		{
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+		close(conn);
+		
 		return list;
 	}
 	public ArrayList<Product> closeSelectProduct() {
-		Connection conn = null;
+		Connection conn = getConnection();
 		ArrayList<Product> list = new ArrayList<>();
 		
-		try {
-			Class.forName(driver);
-			conn = DriverManager.getConnection(url, user, password);
+		ProductDao pDao = new ProductDao();
+		list = pDao.closeSelectProduct(conn);
 			
-			conn.setAutoCommit(false);
-			
-			ProductDao pDao = new ProductDao();
-			list = pDao.closeSelectProduct(conn);
-			
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		finally
-		{
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+		close(conn);
 		return list;
 		
+	}
+
+	public ArrayList<Product> productSearch(String search) {
+		
+		Connection conn = getConnection();
+		
+		ProductDao pDao = new ProductDao();
+		
+		ArrayList<Product> plist = new ArrayList<>();
+		
+		plist = pDao.productSearch(conn, search);
+		
+		close(conn);
+		
+		return plist;
+	}
+
+	public ArrayList<Product> brandSearch(String search) {
+		Connection conn = getConnection();
+		
+		ProductDao pDao = new ProductDao();
+		
+		ArrayList<Product> blist = new ArrayList<>();
+		
+		blist = pDao.brandSearch(conn, search);
+		
+		close(conn);
+		return blist;
 	}
 	
 	
