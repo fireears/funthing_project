@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import brand.model.service.BrandService;
-import brand.model.vo.Brand;
 import product.model.service.ProductService;
 import product.model.vo.Product;
 

@@ -10,7 +10,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import brand.model.vo.Brand;
 import product.model.vo.Product;
 
 import static common.JDBCTemplate.*;
