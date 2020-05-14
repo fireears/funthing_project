@@ -42,8 +42,8 @@
 </head>
 <body>
 
-	<%@ include file="/views/common/adminheader.jsp" %>
-	<h2>상품관리</h1>
+	<%@ include file="../common/adminHeader.jsp" %>
+	<h2>상품관리</h2>
 	<form action="" method="GET">
 		<div id="nav_section">
 		    <ul>

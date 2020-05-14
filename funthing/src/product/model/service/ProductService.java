@@ -3,8 +3,6 @@ package product.model.service;
 import java.sql.Connection;
 import java.util.ArrayList;
 
-import brand.model.dao.BrandDao;
-import brand.model.vo.Brand;
 import product.model.dao.ProductDao;
 import product.model.vo.Product;
 

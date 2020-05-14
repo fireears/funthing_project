@@ -10,6 +10,7 @@
 	ArrayList<Product> plist = (ArrayList<Product>)request.getAttribute("plist");
 	ArrayList<Product> blist = (ArrayList<Product>)request.getAttribute("blist");
 	String search = (String)request.getAttribute("search");
+	String msg = (String)request.getAttribute("msg");
 	
 	DecimalFormat formatter = new DecimalFormat("###,###");
 %>
@@ -71,7 +72,7 @@
 	            			
 	            			String thumbnailUrl = "web/images/thumbnail/" + thumbnail + ".jsp";
 	                	%>
-			                    <li>
+		                    <li>
 		                        <div class="prod-img">
 		                            <%-- <a href="#none"><img src=<%=thumbnailUrl %>></a> --%>
 		                            <a href="#none"><img src="<%=request.getContextPath()+"/images/thumbnail/" + thumbnail + ".jpg" %>"></a>
@@ -85,9 +86,12 @@
 		                        </ul>
 		                    </li>
 		                    <%} %>
-	                    <%} %>
 	                    
 	                </ul>
+	                    <%} else if(plist.isEmpty() && blist.isEmpty()){ %>
+	                    	<h2><%=msg %></h2>
+	                    	<br>
+	                    <%} %>
 	            </div>
             </div>
        	</div>

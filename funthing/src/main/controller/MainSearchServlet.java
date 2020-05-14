@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import brand.model.service.BrandService;
-import brand.model.vo.Brand;
 import product.model.service.ProductService;
 import product.model.vo.Product;
 
@@ -73,6 +71,11 @@ public class MainSearchServlet extends HttpServlet {
 		}
 		else
 		{
+			view = request.getRequestDispatcher("views/main/mainSearch.jsp");
+			request.setAttribute("plist", plist);
+			request.setAttribute("blist", blist);
+			request.setAttribute("search", search);
+			request.setAttribute("msg", "해당 제품은 없습니다.");
 			System.out.println("검색 결과 없습니다.");
 		}
 		view.forward(request, response);
