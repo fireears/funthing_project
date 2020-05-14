@@ -46,9 +46,14 @@ public class AdminBrandServlet extends HttpServlet {
 		int startPage;
 		int endPage;
 		
-		currentPage = 0;
 		
-//		if()
+		if(request.getParameter("currentPage") != null) {
+			currentPage = Integer.valueOf(request.getParameter("currentPage"));
+		}else {
+			currentPage = 1;
+		}
+		
+		
 		
 		
 		
