@@ -6,7 +6,7 @@
     <title>admin_brand</title>
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
     <style>
-        a { text-decoration:none; color:#666; }
+        a { text-decoration:none; color:#666; } 
 
         ul {
             list-style-type: none;
