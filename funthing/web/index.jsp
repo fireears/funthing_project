@@ -9,8 +9,10 @@
 </head>
 <body>
 	<%
-		response.sendRedirect(request.getContextPath()+"/main/mainView");
+		/* response.sendRedirect(request.getContextPath()+"/main/mainView"); */
 		/* response.sendRedirect(request.getContextPath()+"/admin/mainView"); */
+		
+		response.sendRedirect(request.getContextPath()+"/views/payment/orderDetail.jsp");
 	%>
 </body>
 </html>
