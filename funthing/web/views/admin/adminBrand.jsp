@@ -96,7 +96,7 @@
             </div>
         </form>
        
-        <br clear="both">
+        <br clear="both"> 
 
         <div class="brand-List">
             <table class="list-tb">
