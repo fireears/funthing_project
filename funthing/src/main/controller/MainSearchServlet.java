@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import product.model.service.ProductService;
 import product.model.vo.Product;
 
 /**
@@ -32,11 +33,37 @@ public class MainSearchServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		System.out.println("MainSearchServlet");
-		ArrayList<Product> list = new ArrayList<>();
-		
+		ArrayList<Product> plist = new ArrayList<>();
+		ArrayList<Product> blist = new ArrayList<>();
 		
 		String search = request.getParameter("search");
 		
+		ProductService pService = new ProductService();
+		
+		
+		plist = pService.productSearch(search);
+		blist = pService.brandSearch(search);
+		
+		
+		if(!plist.isEmpty())
+		{
+			for(Product p : plist)
+			{
+				System.out.println(p);
+			}
+			
+		}
+		else if(!blist.isEmpty())
+		{
+			for(Product b : blist)
+			{
+				System.out.println(b);
+			}
+		}
+		else
+		{
+			System.out.println("검색 결과 없습니다.");
+		}
 		
 	}
 

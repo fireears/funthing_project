@@ -45,6 +45,8 @@ public class MemberLoginServlet extends HttpServlet {
 			
 			HttpSession session = request.getSession();
 			
+			session.setMaxInactiveInterval(1800);	//session객체의 time out 설정 30분
+			
 			session.setAttribute("loginUser", loginMember);
 			
 			response.sendRedirect(request.getContextPath() + "/main/mainView");
