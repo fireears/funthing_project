@@ -48,7 +48,7 @@
 	        </div>
 	        <div id="nav-wrap">
 	            <div class="logo-wrap">
-	                <h1 class="logo"><a href="#none">FUN-THING</a></h1>
+	                <h1 class="logo"><a href="index.jsp">FUN-THING</a></h1>
 	                
 	                <div class="search-box"><span><i class="fas fa-search"></i></span></div>
 	                
