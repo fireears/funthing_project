@@ -7,11 +7,7 @@
 <title>Insert title here</title>
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<style>
-            #loginform{
-                width : 600px;
-                margin: 0 auto;
-                /* border: 1px solid black; */
-            }
+            
             #h2{
                 text-align: center;
             }
@@ -61,9 +57,27 @@
                 border-radius: 8px; 
                 font-size: 16px;
             }
+            
+            .cont{
+            	width:1460px;
+            	margin:0 auto;            
+            }
+            
+            #loginform{
+				width: 600px;
+				margin: 0 auto;
+				/* border: 1px solid black; */
+				text-align: center;
+            }
+            
+            
+            
+            
     </style>
 </head>
 <body>
+
+	<%@ include file="../common/header.jsp" %>
 	<div id="div1">
             LOGIN
         </div>
@@ -71,6 +85,8 @@
         <br>
         <br>
         <br>
+        
+        
         <form id="loginform" method="get" action="<%=request.getContextPath() %>/login.me">
             <h2 id="h2">회원 로그인</h2>
             <hr>
@@ -196,5 +212,7 @@
             // 아이디 저장 코드 end
             
         </script>
+        
+        <%@ include file="../common/footer.jsp" %>
 </body>
 </html>
