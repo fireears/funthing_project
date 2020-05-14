@@ -35,4 +35,17 @@ public class AdminService {
 		return list;
 	}
 
+	
+	// 브랜드 관리자 페이지(리스트 카운트 메소드)_희지
+	public int getBrandListCount() {
+		
+		Connection conn = getConnection();
+		
+		int brandListCount = new AdminDao().getBrandListCount(conn);
+		
+		close(conn);
+		
+		return brandListCount;
+	}
+
 }

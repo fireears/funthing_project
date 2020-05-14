@@ -84,4 +84,33 @@ public class AdminDao {
 		return list;
 	}
 
+	
+	// 브랜드 관리자 페이지(리스트 카운트 메소드)_희지
+	public int getBrandListCount(Connection conn) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int brandListCount = 0;
+		
+		String query = "SELECT COUNT(*) FROM BRAND";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) 
+			{
+				brandListCount = rset.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return brandListCount;
+	}
+
 }
