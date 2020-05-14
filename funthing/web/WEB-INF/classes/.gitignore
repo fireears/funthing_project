@@ -1,6 +1,9 @@
 /brand/
 /product/
 /main/
+<<<<<<< HEAD
 /product/
 /brand/
+=======
+>>>>>>> refs/remotes/origin/dev3
 /member/

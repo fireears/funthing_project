@@ -3,6 +3,7 @@ package main.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -44,9 +45,13 @@ public class MainSearchServlet extends HttpServlet {
 		plist = pService.productSearch(search);
 		blist = pService.brandSearch(search);
 		
-		
+		RequestDispatcher view = null;
 		if(!plist.isEmpty())
 		{
+			view = request.getRequestDispatcher("views/main/mainSearch.jsp");
+			request.setAttribute("plist", plist);
+			request.setAttribute("blist", blist);
+			request.setAttribute("search", search);
 			for(Product p : plist)
 			{
 				System.out.println(p);
@@ -55,6 +60,10 @@ public class MainSearchServlet extends HttpServlet {
 		}
 		else if(!blist.isEmpty())
 		{
+			view = request.getRequestDispatcher("views/main/mainSearch.jsp");
+			request.setAttribute("plist", plist);
+			request.setAttribute("blist", blist);
+			request.setAttribute("search", search);
 			for(Product b : blist)
 			{
 				System.out.println(b);
@@ -64,7 +73,7 @@ public class MainSearchServlet extends HttpServlet {
 		{
 			System.out.println("검색 결과 없습니다.");
 		}
-		
+		view.forward(request, response);
 	}
 
 	/**
