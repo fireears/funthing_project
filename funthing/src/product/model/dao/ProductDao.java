@@ -12,6 +12,7 @@ import java.util.Properties;
 
 import product.model.vo.Product;
 
+import static common.JDBCTemplate.*;
 public class ProductDao {
 	
 	Properties prop = new Properties();
@@ -67,13 +68,8 @@ public class ProductDao {
 		}
 		finally
 		{
-			try {
-				pstmt.close();
-				rset.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			close(pstmt);
+			close(rset);
 		}
 		
 		return list;
@@ -108,6 +104,11 @@ public class ProductDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		finally
+		{
+			close(pstmt);
+			close(rset);
 		}
 		
 		return list;
@@ -146,16 +147,119 @@ public class ProductDao {
 		}
 		finally
 		{
-			try {
-				pstmt.close();
-				rset.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			close(pstmt);
+			close(rset);
 		}
 		
 		return list;
+	}
+
+	public ArrayList<Product> productSearch(Connection conn, String search) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Product p = null;
+		ArrayList<Product> plist = new ArrayList<>();
+		
+		String query = "SELECT * FROM PRODUCT WHERE P_NAME = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, search);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next())
+			{
+				p = new Product(rset.getString("p_no"),
+								rset.getString("b_no"),
+								rset.getString("thumbnail"),
+								rset.getString("p_name"),
+								rset.getInt("retail_price"),
+								rset.getInt("dc_rate"),
+								rset.getInt("p_price"),
+								rset.getInt("p_category"),
+								rset.getInt("s_no"),
+								rset.getString("p_detail"),
+								rset.getString("img_router"),
+								rset.getInt("p_point"),
+								rset.getDate("ship_date"),
+								rset.getDate("f_start_date"),
+								rset.getDate("f_end_date"),
+								rset.getInt("f_goal"),
+								rset.getInt("f_sel_price"),
+								rset.getString("f_yn"),
+								rset.getString("cal_no"),
+								rset.getInt("f_prg_rate"));
+				plist.add(p);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally
+		{
+			close(pstmt);
+			close(rset);
+		}
+		
+		return plist;
+	}
+
+	public ArrayList<Product> brandSearch(Connection conn, String search) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Product p = null;
+		ArrayList<Product> blist = new ArrayList<>();
+		
+		String query = "SELECT * FROM \r\n" + 
+				"PRODUCT P\r\n" + 
+				"JOIN BRAND B ON P.B_NO = B.B_NO\r\n" + 
+				"WHERE B_NAME = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, search);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next())
+			{
+				p = new Product(rset.getString("p_no"),
+						rset.getString("b_no"),
+						rset.getString("thumbnail"),
+						rset.getString("p_name"),
+						rset.getInt("retail_price"),
+						rset.getInt("dc_rate"),
+						rset.getInt("p_price"),
+						rset.getInt("p_category"),
+						rset.getInt("s_no"),
+						rset.getString("p_detail"),
+						rset.getString("img_router"),
+						rset.getInt("p_point"),
+						rset.getDate("ship_date"),
+						rset.getDate("f_start_date"),
+						rset.getDate("f_end_date"),
+						rset.getInt("f_goal"),
+						rset.getInt("f_sel_price"),
+						rset.getString("f_yn"),
+						rset.getString("cal_no"),
+						rset.getInt("f_prg_rate"));	
+				
+				blist.add(p);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally
+		{
+			close(pstmt);
+			close(rset);
+		}
+		
+		return blist;
+		
 	}
 
 }
