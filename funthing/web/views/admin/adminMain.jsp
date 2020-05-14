@@ -44,15 +44,15 @@
 
 	<%@ include file="../common/adminHeader.jsp" %>
 	<h2>상품관리</h2>
-	<form action="" method="GET">
+	<form action="<%=request.getContextPath() %>/admin/productSearch" method="GET">
 		<div id="nav_section">
 		    <ul>
 		        <li><label>상품번호 : </label><input type="text" class="box" id="p_no" name="p_no"></li>
 		        <li><label>스타일 번호 : </label><input type="text" class="box" id="s_no" name="s_no"></li>
 		        <li><label>상품명 : </label><input type="text" class="box" id="p_name" name="p_name"></li>
 		        <li><label>상품종류 : </label><input type="text" class="box" id="p_category" name="p_category" placeholder="category"></li>
-		        <li><label>상품가격 : </label><input type="number" class="box" id="p_price" name="p_price" min="0"></li>
-		        <li><label>펀딩 시작 날짜 : </label><input type="date" class="box" id="f_start_date" name="f_start_date"></li>
+		        <li><label>상품가격 : </label><input type="number" class="box" id="p_price" name="p_price" min="0" ></li>
+		        <li><label>펀딩 시작 날짜 : </label><input type="date" class="box" id="f_start_date" name="f_start_date" value="sysdate"></li>
 		        <li><label>펀딩 종료 날짜 : </label><input type="date" class="box" id="f_end_date" name="f_end_date"></li>
 		        <li><label>펀딩 진행 유무 : </label>
 	            <select name="f_yn" id="f_yn" style="height: 28px;">

@@ -11,9 +11,7 @@
             #nav_header{margin:auto; width:100%; height: 90px;}
             #nav_header ul li{float: left; width:7.5%; list-style-type: none; padding-right: 15px; padding-left: 15px; padding-top: 20px; line-height: auto;}
             #nav_header ul li button{width: 100%; height: 50px; background-color: gray; border-radius: 10px; border: 0px; font-size: 16px; font-weight: 600; color: white;}
-
             
-
         </style>
     </head>
     <body>

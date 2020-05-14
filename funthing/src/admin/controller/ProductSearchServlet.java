@@ -1,6 +1,8 @@
 package admin.controller;
 
 import java.io.IOException;
+import java.sql.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,8 +28,21 @@ public class ProductSearchServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		System.out.println("adminProductSearch");
+		
+		String pNo = request.getParameter("p_no");
+		String sNo = request.getParameter("s_no");
+		String pName = request.getParameter("p_name");
+		int pCategory = Integer.valueOf(request.getParameter("p_category"));
+		int pPrice = Integer.valueOf(request.getParameter("p_price"));
+		Date fStartDate = Date.valueOf(request.getParameter("f_start_date"));
+		Date fEndDate = Date.valueOf(request.getParameter("f_end_date"));
+		String fYn = request.getParameter("f_yn");
+		
+		
+		
+		
 	}
 
 	/**
