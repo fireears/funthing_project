@@ -2,6 +2,9 @@
 package admin.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import admin.model.service.AdminService;
+import board.model.vo.PageInfo;
+import brand.model.vo.Brand;
 
 /**
  * Servlet implementation class AdminBrandServlet
@@ -36,6 +41,7 @@ public class AdminBrandServlet extends HttpServlet {
 		// 리스트 카운트 하기
 		int brandListCount = aService.getBrandListCount();
 		
+		
 //		System.out.println("Servlet에서 브랜드 리스트 : " + brandListCount);
 		
 		
@@ -54,16 +60,44 @@ public class AdminBrandServlet extends HttpServlet {
 		}
 		
 		
+		limit = 20;
+		
+		maxPage = (int)((double)brandListCount/limit + 0.95);
+		
+		startPage = ((int)(((double)currentPage/limit + 0.95)-1)* limit) +1;
+		
+		endPage = startPage + limit -1;
+		
+		if(endPage > maxPage) 
+		{
+			endPage = maxPage;
+		}
+		
+		PageInfo pi = new PageInfo(currentPage, brandListCount, limit, maxPage, startPage, endPage);
 		
 		
+		// 게시판 조회해서 뽑아오기
+		ArrayList<Brand> list = aService.selectBrandList(currentPage, limit);
 		
 		
+		// 확인용 출력
+//		for(int i =0; i<list.size(); i++) {
+//			System.out.println(list.get(i));
+//			
+//		}
 		
+		// jsp 화면단으로 넘기기
+		RequestDispatcher view = null;
+		if(!list.isEmpty()) {
+			view = request.getRequestDispatcher("/views/admin/adminBrand.jsp");
+			request.setAttribute("list", list);
+			request.setAttribute("pi", pi);
+		}else {
+//			view = request.getRequestDispatcher("");
+			System.out.println("brandServlet단에 리스트가 비었음!");
+		}
 		
-		
-		
-		
-		
+		view.forward(request, response);
 		
 		
 	}

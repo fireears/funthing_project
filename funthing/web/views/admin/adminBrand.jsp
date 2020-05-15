@@ -1,5 +1,23 @@
+<!-- 브랜드 관리자 페이지_희지 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, brand.model.vo.*, board.model.vo.*" %>
+
+<%
+	ArrayList<Brand> list = (ArrayList<Brand>)request.getAttribute("list");
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+
+	// PageIngo값 뽑아내기
+	int currentPage = pi.getCurrentPage();
+	/* int listCount = pi.getBrandListCount(); */
+	int limit = pi.getLimit();
+	int maxPage = pi.getMaxPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	
+%>
+
+
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -73,16 +91,29 @@
             border-bottom: 0px;
         }
         
+        .pagingArea{
+        	margin: 0 auto;
+        	margin-top:20px;
+        	margin-bottom:20px
+        }
+        
+        .pagingArea button{
+        	border:0; 
+        	font-size:middle;
+        	background:white;
+        	cursor:pointer;
+        }
+        
+        
+        
     </style>
 </head>
 <body>
-
-    <!-- 상원이 admin header include 하기 -->
 	
 	<%@ include file="../common/adminHeader.jsp" %>
 
     <section id="area">
-        <h1 style="text-align: center;">브랜드 관리</h1>
+        <h2 style="text-align: center;">브랜드 관리</h2>
         <form method="post" action="#">
             <div class="brand-select">
                 <ul>
@@ -96,8 +127,10 @@
             </div>
         </form>
        
-        <br clear="both">
-
+       	<br>
+        <hr clear="both">
+		<br>
+		
         <div class="brand-List">
             <table class="list-tb">
                 <tr style="background-color: lightgray;">
@@ -112,40 +145,106 @@
                     <th class="tb-last">변경</th>
                 </tr>
 
-                <tr>
-                    <td>브랜드 코드</td>
-                    <td>브랜드 명</td>
-                    <td>대표 명</td>
-                    <td>연락처</td>
-                    <td>회사 주소</td>
-                    <td>이메일</td>
-                    <td>입점 날짜</td>
-                    <td>입점 유무</td>
-                    <td class="tb-last">
-                        <button type="button">수정</button>
-                        <button type="button">삭제</button>
-                    </td>
-                </tr>
 
+                <%for(Brand b : list){ %>
                 <tr>
-                    <td>브랜드 코드</td>
-                    <td>브랜드 명</td>
-                    <td>대표 명</td>
-                    <td>연락처</td>
-                    <td>회사 주소</td>
-                    <td>이메일</td>
-                    <td>입점 날짜</td>
-                    <td>입점 유무</td>
-                    <td class="tb-last">
-                        <button type="button">수정</button>
-                        <button type="button">삭제</button>
-                    </td>
-                </tr>
-
+                	<input type="hidden" value="<%=b.getbNo() %>">
+                	<td><%=b.getbNo() %></td>
+                	<td><%=b.getbName() %></td>
+					<td><%=b.getbCeo() %></td>
+					<td><%=b.getbPhone() %></td>
+					<td><%=b.getbAddress() %></td>
+					<td><%=b.getbEmail() %></td>
+					<td><%=b.getbLchDate() %></td>
+					<td><%=b.getbLchYn() %></td>
+					<td class="tb-last">
+						<button type="button" id="modifyBrand" onclick="modifyBrand();">수정</button>
+						<button type="button" id="deleteBrand" onclick="deleteBrand();">삭제</button>
+					</td>
+				</tr>
+				<%} %>
+				
             </table>
         </div>
 
+
+		<!-- 페이징 처리 시작 -->
+		<div class="pagingArea" align="center">
+		
+			<!-- 맨 처음으로 -->
+			<button onclick="location.href='<%=request.getContextPath() %>/admin/brandServlet?currntPage=1'"> << </button>
+		
+		
+			<!-- 이전 페이지로 -->
+			<%if(currentPage == 1){ %>
+				<button disabled> < </button>
+		
+			<%}else{ %>
+				<button onclick="location.href='<%=request.getContextPath() %>/admin/brandServlet?currentPage=<%=currentPage -1 %>'"> < </button>
+			<%} %>
+		
+		
+			<!-- 10개의 페이지 목록 -->
+			<%for(int p = startPage; p <= endPage; p++){ %>
+				<%if(currentPage == p){ %>
+					<button disabled><%=p %></button>
+					
+				<%}else{ %>
+					<button onclick="location.href='<%=request.getContextPath() %>/admin/brandServlet?currentPage=<%=p %>'"><%=p %></button>
+				<%} %>
+			<%} %>
+			
+			
+			<!-- 다음 페이지로 -->
+			<%if(currentPage == maxPage){ %>
+				<button disabled> > </button>
+			<%}else{ %>
+				<button onclick="location.href='<%=request.getContextPath() %>/admin/brandServlet?currntPage=<%=currentPage + 1 %>'"> > </button>
+			<%} %>
+		
+		
+			<!-- 맨 뒷 페이지로  -->
+			<button onclick="location.href='<%=request.getContextPath() %>/admin/brandServlet?currentPage=<%=maxPage %>'"> >> </button>
+		</div>
+
     </section>
+    
+    <script>
+    	// 리스트 한줄 한줄 효과 주는 것
+    	$(".list-tb td").mouseenter(function(){
+    		$(this).parent().css({"background" : "darkgray","cursor" : "pointer"});
+    	}).mouseout(function(){
+    		$(this).parent().css({"background" : "white"});
+    	});
+    	
+    	
+    	// 수정 삭제 버튼 이동 함수
+    	function modifyBrand(){
+    		
+    	};
+    	
+    	
+    	function deleteBrand(){
+    		
+    	};
+    	
+    	
+    	
+    </script>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 </body>
 </html>

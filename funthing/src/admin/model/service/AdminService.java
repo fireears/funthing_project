@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import admin.model.dao.AdminDao;
+import brand.model.vo.Brand;
 import product.model.vo.Product;
 public class AdminService {
 	
@@ -48,4 +49,34 @@ public class AdminService {
 		return brandListCount;
 	}
 
+	
+	// 브랜드 관리자 페이지(브랜드 조회하는 메소드)_희지
+	public ArrayList<Brand> selectBrandList(int currentPage, int limit) {
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Brand> brandList = new AdminDao().selectBrandList(conn, currentPage, limit);
+		
+		close(conn);
+		
+		return brandList;
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

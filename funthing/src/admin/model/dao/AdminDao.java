@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import brand.model.vo.Brand;
 import product.model.vo.Product;
 
 import static common.JDBCTemplate.*;
@@ -113,4 +114,55 @@ public class AdminDao {
 		return brandListCount;
 	}
 
+	
+	// 브랜드 관리자 페이지(브랜드 조회하는 메소드)_희지
+	public ArrayList<Brand> selectBrandList(Connection conn, int currentPage, int limit) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		ArrayList<Brand> brandList = new ArrayList<>();
+	
+		
+		String query = "SELECT B_NO, B_NAME, B_CEO, B_PHONE, B_ADDRESS, B_EMAIL, B_LCH_DATE, B_LCH_YN FROM BRANDLIST WHERE RNUM BETWEEN ? AND ?";
+		
+		
+		int startRow = (currentPage -1) * limit +1;
+		
+		int endRow = startRow + (limit -1);
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Brand b = new Brand(rset.getString("B_NO"),
+						rset.getString("B_NAME"),
+						rset.getString("B_CEO"),
+						rset.getString("B_PHONE"),
+						rset.getString("B_ADDRESS"),
+						rset.getString("B_EMAIL"),
+						rset.getDate("B_LCH_DATE"),
+						rset.getString("B_LCH_YN"));
+				
+				brandList.add(b);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return brandList;
+	}
+
+	
+	
+	
+	
 }
