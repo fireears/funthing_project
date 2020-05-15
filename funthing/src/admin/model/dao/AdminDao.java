@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import payment.model.vo.OrderInfo;
 import product.model.vo.Product;
 
 import static common.JDBCTemplate.*;
@@ -84,4 +85,89 @@ public class AdminDao {
 		return list;
 	}
 
+	public ArrayList<OrderInfo> selectSearch(Connection conn, int currentPage, int limit, String searchKind,
+			String searchText) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<OrderInfo> searchList = new ArrayList<>();
+		String query = null;
+		
+		int startRow = (currentPage -1) * limit + 1;	// 현재 페이지에서 보여주는 게시글 목록의 행번호 값
+		int endRow = startRow + (limit - 1);			// 현재 페이지에서 보여주는 게시글 행번호 마지막 값
+		
+		
+		
+		try {
+		if(searchKind == null && searchText == null ) {	
+			query = "SELECT * FROM ORDER_INFO WHERE RNUM BETWEEN ? AND ? ";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+		}else if(searchKind != null && searchText.equals("")) {
+			query = "SELECT * FROM ORDER_INFO WHERE RNUM BETWEEN ? AND ? ";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+		}else if(searchKind != null && searchText != null) {
+			query = "SELECT * FROM ORDER_INFO WHERE "+searchKind+"= ?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, searchText);
+//			System.out.println("Dao query : " + query);
+		}
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()){
+				OrderInfo om = new OrderInfo(
+						rset.getString("O_NO"),
+						rset.getString("M_ID"),
+						rset.getString("PMNT_MTHD"),
+						rset.getString("PAID_YN"),
+						rset.getString("PRCS_STATUS"),
+						rset.getInt("PMNT_PRICE"),
+						rset.getString("CANCEL_YN"),
+						rset.getInt("RNUM"));
+				searchList.add(om);
+			}
+			
+			System.out.println("dao searchList : " + searchList);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				close(pstmt);
+				close(rset);
+			}
+		return searchList;
+		
+	}
+
+	public int getOrderListCount(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		int listCount = 0;
+		
+		String query = "SELECT COUNT(*) FROM ORDER_INFO";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next())
+			{
+				listCount = rset.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		close(pstmt);
+		close(rset);
+		
+		
+		return listCount;
+	}
+
+	
 }
