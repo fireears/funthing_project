@@ -55,7 +55,7 @@
 		
 		function orderManage()
 		{
-			
+			location.href="<%=request.getContextPath()%>/admin/orderInfo";
 		}
 		function memberManage()
 		{

@@ -40,7 +40,7 @@ public class AdminMainServlet extends HttpServlet {
 		
 		int listCount = aService.getListCount();
 		
-		System.out.println("listCount : " + listCount);
+//		System.out.println("listCount : " + listCount);
 		
 		int currentPage;
 		int maxPage;
