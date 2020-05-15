@@ -15,6 +15,8 @@ public class Product implements Serializable{
 	private String bNo;
 	private String thumbnail;
 	private String pName;
+	private String p_color;
+	private String p_size;
 	private int retailPrice;
 	private int dcRate;
 	private int pPrice;
@@ -62,6 +64,37 @@ public class Product implements Serializable{
 		this.pPrice = pPrice;
 		this.fStartDate = fStartDate;
 		this.fEndDate = fEndDate;
+	}
+	
+	
+
+	public Product(String pNo, String bNo, String thumbnail, String pName, String p_color, String p_size,
+			int retailPrice, int dcRate, int pPrice, int pCategory, int sNo, String pDetail, String imgRouter,
+			int pPoint, Date shipDate, Date fStartDate, Date fEndDate, int fGoal, int fSelPrice, String fYn,
+			String calNo, int fPrgRate) {
+		super();
+		this.pNo = pNo;
+		this.bNo = bNo;
+		this.thumbnail = thumbnail;
+		this.pName = pName;
+		this.p_color = p_color;
+		this.p_size = p_size;
+		this.retailPrice = retailPrice;
+		this.dcRate = dcRate;
+		this.pPrice = pPrice;
+		this.pCategory = pCategory;
+		this.sNo = sNo;
+		this.pDetail = pDetail;
+		this.imgRouter = imgRouter;
+		this.pPoint = pPoint;
+		this.shipDate = shipDate;
+		this.fStartDate = fStartDate;
+		this.fEndDate = fEndDate;
+		this.fGoal = fGoal;
+		this.fSelPrice = fSelPrice;
+		this.fYn = fYn;
+		this.calNo = calNo;
+		this.fPrgRate = fPrgRate;
 	}
 
 	public Product(String pNo, String bNo, String thumbnail, String pName, int retailPrice, int dcRate, int pPrice,
@@ -120,6 +153,23 @@ public class Product implements Serializable{
 
 	public void setpName(String pName) {
 		this.pName = pName;
+	}
+	
+	
+	public String getP_color() {
+		return p_color;
+	}
+
+	public void setP_color(String p_color) {
+		this.p_color = p_color;
+	}
+
+	public String getP_size() {
+		return p_size;
+	}
+
+	public void setP_size(String p_size) {
+		this.p_size = p_size;
 	}
 
 	public int getRetailPrice() {

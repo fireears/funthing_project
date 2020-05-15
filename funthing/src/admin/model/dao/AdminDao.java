@@ -214,5 +214,59 @@ public class AdminDao {
 		return od;
 	}
 
+	public Product selectOneProductDetail(Connection conn, String pNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Product p = null;
+		
+		String query = "SELECT * FROM PRODUCT WHERE P_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, pNo);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next())
+			{
+				p = new Product(rset.getString("p_no"),
+								rset.getString("b_no"),
+								rset.getString("thumbnail"),
+								rset.getString("p_name"),
+								rset.getString("p_color"),
+								rset.getString("p_size"),
+								rset.getInt("retail_Price"),
+								rset.getInt("dc_rate"),
+								rset.getInt("p_price"),
+								rset.getInt("p_category"),
+								rset.getInt("s_no"),
+								rset.getString("p_detail"),
+								rset.getString("img_router"),
+								rset.getInt("p_point"),
+								rset.getDate("ship_date"),
+								rset.getDate("f_start_date"),
+								rset.getDate("f_end_date"),
+								rset.getInt("f_goal"),
+								rset.getInt("f_sel_price"),
+								rset.getString("f_yn"),
+								rset.getString("cal_no"),
+								rset.getInt("f_prg_rate"));
+								
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally
+		{
+			close(pstmt);
+			close(rset);
+		}
+		return p;
+	}
+
+	
+
 	
 }

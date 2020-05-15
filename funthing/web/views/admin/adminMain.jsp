@@ -38,7 +38,8 @@
 		#pageBtn>button{margin:auto; width:3%; height:30px; text-align: center;}
 	</style>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>FUN-THING ADMIN</title>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
 
@@ -74,7 +75,7 @@
 
 	<section id=area>
         <article>
-            <table>
+            <table id="product_table">
 
                 <tr>
 	                <th>번호</th> <th>상품번호</th> <th>상품명</th> <th>상품종류</th> <th>정가</th> <th>할인율</th> <th>판매가</th> 
@@ -90,6 +91,24 @@
 	            </tr>
                 <%} %>
 	        </table>
+	        
+	        
+			<script>
+			$(function() {
+				$("#product_table td").mouseenter(function() {
+					$(this).parent().css({"background" : "darkgrey","cursor" : "pointer"});
+				}).mouseout(function() {
+					$(this).parent().css({"background" : "white"});
+				}).click(function() {
+					var pNo = $(this).parent().children("input").val();
+
+					location.href = "<%=request.getContextPath()%>/admin/productDetail?pNo="+ pNo
+
+				})
+			})
+			</script>
+			
+			
 	        <br><br>
 	        <div id="pageBtn" align="center">
 	        	<button onclick="location.href='<%=request.getContextPath() %>/admin/mainView?currentPage=<%=1 %>'"> << </button>
@@ -121,4 +140,6 @@
 	</section>
 	<br><br>
 </body>
+
+
 </html>

@@ -77,6 +77,14 @@ public class AdminService {
 		
 	}
 
+	public Product selectOneProductDetail(String pNo) {
+		Connection conn = getConnection();
+		Product product = new AdminDao().selectOneProductDetail(conn, pNo);
+		
+		close(conn);
+		return product;
+	}
+
 	
 
 }

@@ -4,12 +4,13 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Insert title here</title>
+		<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
         <style>
             body{margin: auto; width: 100%;}
             /* #nav{margin: auto; width: 50%;} */
             #nav{background-color: rgb(199, 196, 196);}
             #nav_header{margin:auto; width:100%; height: 90px;}
-            #nav_header ul li{float: left; width:7.5%; list-style-type: none; padding-right: 15px; padding-left: 15px; padding-top: 20px; line-height: auto;}
+            #nav_header ul li{float: left; width:7%; list-style-type: none; padding-right: 15px; padding-left: 15px; padding-top: 20px; line-height: auto;}
             #nav_header ul li button{width: 100%; height: 50px; background-color: gray; border-radius: 10px; border: 0px; font-size: 16px; font-weight: 600; color: white;}
 
             
@@ -21,8 +22,8 @@
             <br>
             <h1 style="text-align: center;">FUN-THING ADMIN</h1>
             <br>
-            <div id="nav">
-                <div id="nav_header">
+            <div id="nav" align="center">
+                <div id="nav_header" align="center">
                     <ul>
                         <li><button type="button" onclick="productManage();">상품관리</button></li>
                         <li><button type="button" onclick="">상품문의</button></li>
