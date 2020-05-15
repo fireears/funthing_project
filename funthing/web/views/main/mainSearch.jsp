@@ -32,13 +32,14 @@
 	                <img src="<%=request.getContextPath()%>/images/main_img.jpg" />
 	            </div>
 	            <div class="con-box discover">
-	                <h2><%=search %> 검색 결과</h2>
+	                <h2 id="title"><%=search %> 검색 결과</h2>
 	                <ul class="product">
 	                
 	                
 	                	<%if(!plist.isEmpty() && blist.isEmpty()) { %>
 	                	<%	for(Product p : plist) { %>
 	                	<%		
+	                			String pNo = p.getpNo();
 	                			String thumbnail = p.getThumbnail();
 	                			String pName = p.getpName();
 	                			int pPrice = p.getpPrice();
@@ -50,6 +51,7 @@
 		                    <li>
 		                        <div class="prod-img">
 		                            <%-- <a href="#none"><img src=<%=thumbnailUrl %>></a> --%>
+		                            <%-- ex) <a href="<%=requset.getContextPath()%>/서블릿 앱핑?pNo="+<%=pNo%> + > --%>
 		                            <a href="#none"><img src="<%=request.getContextPath()+"/images/thumbnail/" + thumbnail + ".jpg" %>"></a>
 		                            <%-- <img src="<%=request.getContextPath()+"/images/book/"+b.getBookImage() %> --%>
 		                        </div>

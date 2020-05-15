@@ -19,8 +19,8 @@
             <br>
             <h1 style="text-align: center;">FUN-THING ADMIN</h1>
             <br>
-            <div id="nav">
-                <div id="nav_header">
+            <div id="nav" align="center">
+                <div id="nav_header" align="center">
                     <ul>
                         <li><button type="button" onclick="productManage();">상품관리</button></li>
                         <!-- <li><button>상품등록</button></li> -->

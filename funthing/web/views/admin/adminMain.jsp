@@ -34,8 +34,8 @@
 		#area table tr button{width: 50%; height: 30px; background-color: gray; border: 1px solid; border-color: white; font-weight: 600; color: rgb(255, 255, 255);}
 		
 		/* 상품계시판 밑에 버튼 */
-		#pageBtn{margin:auto; width:48%;}
-		#pageBtn>button{margin:auto; width:4.2%; height:30px; text-align: center;}
+		#pageBtn{margin:auto; width:50%;}
+		#pageBtn>button{margin:auto; width:3%; height:30px; text-align: center;}
 	</style>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
@@ -90,7 +90,7 @@
                 <%} %>
 	        </table>
 	        <br><br>
-	        <div id="pageBtn">
+	        <div id="pageBtn" align="center">
 	        	<button onclick="location.href='<%=request.getContextPath() %>/admin/mainView?currentPage=<%=1 %>'"> << </button>
 	        	
 	        	<%if(currentPage <= 1) { %>
