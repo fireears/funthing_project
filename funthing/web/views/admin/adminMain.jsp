@@ -48,6 +48,7 @@
 		<div id="nav_section">
 		    <ul>
 		        <li><label>상품번호 : </label><input type="text" class="box" id="p_no" name="p_no"></li>
+		        <li><label>브랜드 : </label><input type="text" class="box" id="b_name" name="b_name"></li>
 		        <li><label>스타일 번호 : </label><input type="text" class="box" id="s_no" name="s_no"></li>
 		        <li><label>상품명 : </label><input type="text" class="box" id="p_name" name="p_name"></li>
 		        <li><label>상품종류 : </label><input type="text" class="box" id="p_category" name="p_category" placeholder="category"></li>

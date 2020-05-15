@@ -11,7 +11,9 @@
             #nav_header{margin:auto; width:100%; height: 90px;}
             #nav_header ul li{float: left; width:7.5%; list-style-type: none; padding-right: 15px; padding-left: 15px; padding-top: 20px; line-height: auto;}
             #nav_header ul li button{width: 100%; height: 50px; background-color: gray; border-radius: 10px; border: 0px; font-size: 16px; font-weight: 600; color: white;}
+
             
+
         </style>
     </head>
     <body>
@@ -19,11 +21,11 @@
             <br>
             <h1 style="text-align: center;">FUN-THING ADMIN</h1>
             <br>
-            <div id="nav" align="center">
-                <div id="nav_header" align="center">
+            <div id="nav">
+                <div id="nav_header">
                     <ul>
                         <li><button type="button" onclick="productManage();">상품관리</button></li>
-                        <!-- <li><button>상품등록</button></li> -->
+                        <li><button type="button" onclick="">상품문의</button></li>
                         <li><button type="button" onclick="orderManage();">주문관리</button></li>
                         <li><button type="button" onclick="">매출관리</button></li>
                         <li><button type="button" onclick="">상품통계</button></li>
@@ -49,9 +51,11 @@
 		{
 			location.href="<%=request.getContextPath()%>/admin/mainView?table=" + "PRODUCT";
 		}
+		//상품 문의
+		
 		function orderManage()
 		{
-			
+			location.href="<%=request.getContextPath()%>/admin/orderInfo";
 		}
 		function memberManage()
 		{
