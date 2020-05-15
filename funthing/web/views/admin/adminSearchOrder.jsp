@@ -1,17 +1,18 @@
-<!-- 주문관리페이지_혜린 -->
+<!-- 주문관리 검색페이지_혜린 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"
 	import="payment.model.vo.*, java.util.ArrayList, board.model.vo.*"%>
 <%
-	/* ArrayList<OrderInfo> list = (ArrayList<OrderInfo>)request.getAttribute("list");   */
-ArrayList<OrderInfo> searchList = (ArrayList<OrderInfo>) request.getAttribute("searchList");
-PageInfo pi = (PageInfo) request.getAttribute("pi");
-
-int listCount = pi.getListCount();
-int currentPage = pi.getCurrentPage();
-int maxPage = pi.getMaxPage();
-int startPage = pi.getStartPage();
-int endPage = pi.getEndPage();
+	
+	ArrayList<OrderInfo> searchList = (ArrayList<OrderInfo>) request.getAttribute("searchList");
+	String searchText = (String) request.getAttribute("searchText");
+	PageInfo pi = (PageInfo) request.getAttribute("pi");
+	
+	int listCount = pi.getListCount();
+	int currentPage = pi.getCurrentPage();
+	int maxPage = pi.getMaxPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
 %>
 <!DOCTYPE html>
 <html>
@@ -137,6 +138,10 @@ ul li {
 #area table tr button{width: 50%; height: 30px; background-color: gray; border: 1px solid; border-color: white; font-weight: 600; color: rgb(255, 255, 255);}
 </style>
 
+
+	<script>
+		
+	</script>
 </head>
 <body>
 	<%@ include file="../common/adminHeader.jsp"%>
@@ -145,7 +150,7 @@ ul li {
 	<h2 align="center">주문관리</h2>
 	<div id="searchArea">
 		<form id="searchForm"
-			action="<%=request.getContextPath()%>/admin/orderInfo" method="post">
+			action="<%=request.getContextPath()%>/admin/orderInfo" method="post" >
 			<ul>
 				<li>
 				<span>
@@ -164,6 +169,7 @@ ul li {
 			</ul>
 		</form>
 	</div>
+	
 
 	<br>
 	<hr clear="both">
@@ -185,6 +191,12 @@ ul li {
 						<th>취소여부</th>
 					</tr>
 					<%if (searchList != null) {	%>
+						<%if(searchText == null){ %>
+		                     <script>
+		                         alert("잘못입력하셨습니다. 다시 입력해주세요");
+		                     </script>
+               		   <%}%>
+					
 						<%for (OrderInfo om : searchList) {%>
 							<tr>
 								<input type="hidden" value="<%=om.getmId()%>">
@@ -197,7 +209,8 @@ ul li {
 								<td><%=om.getPmntPrice()%></td>
 								<td><%=om.getCancelYn()%></td>
 							</tr>
-						<%}%>
+							<%}%>
+							
 					<%}%>
 				</table>
 			</div>

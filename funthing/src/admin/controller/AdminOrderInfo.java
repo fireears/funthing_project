@@ -84,7 +84,7 @@ public class AdminOrderInfo extends HttpServlet {
 			if(!searchList.isEmpty()) {		// 검색의 조건이 알맞을 때
 				view = request.getRequestDispatcher("/views/admin/adminOrderInfo.jsp");
 				request.setAttribute("searchList", searchList);
-//					System.out.println("servlet searchList : " + searchList );
+				request.setAttribute("searchText", searchText);
 				request.setAttribute("pi", pi);
 			
 			}else {							// 검색의 조건이 틀렸을 때 

@@ -73,15 +73,17 @@ public class AdminSerachOrderInfo extends HttpServlet {
 				ArrayList<OrderInfo> searchList = aService.selectOrderSearch(currentPage, limit, searchKind, searchText);
 
 				RequestDispatcher view = null;
+				System.out.println("servlet search : " + searchList);
 				if(!searchList.isEmpty()) {
 					view = request.getRequestDispatcher("/views/admin/adminSearchOrder.jsp");
 					request.setAttribute("searchList", searchList);
 					request.setAttribute("pi", pi);
+					request.setAttribute("searchText", searchText);
 				}
 				if(searchList.isEmpty()) {
 					searchText = "";
 					response.sendRedirect(request.getContextPath()+"/admin/searchOrder");
-					view = request.getRequestDispatcher("/admin/searchOrder");
+					view = request.getRequestDispatcher("/views/admin/adminSearchOrder.jsp");
 					request.setAttribute("searchText", "" );
 					System.out.println("servlet searchList : " + searchList );
 					request.setAttribute("pi", pi); 

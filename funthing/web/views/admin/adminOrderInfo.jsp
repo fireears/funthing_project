@@ -3,9 +3,9 @@
 	pageEncoding="UTF-8"
 	import="payment.model.vo.*, java.util.ArrayList, board.model.vo.*"%>
 <%
-	/* ArrayList<OrderInfo> list = (ArrayList<OrderInfo>)request.getAttribute("list");   */
-ArrayList<OrderInfo> searchList = (ArrayList<OrderInfo>) request.getAttribute("searchList");
-PageInfo pi = (PageInfo) request.getAttribute("pi");
+	
+	ArrayList<OrderInfo> searchList = (ArrayList<OrderInfo>) request.getAttribute("searchList");
+	PageInfo pi = (PageInfo) request.getAttribute("pi");
 
 int listCount = pi.getListCount();
 int currentPage = pi.getCurrentPage();
@@ -19,8 +19,7 @@ int endPage = pi.getEndPage();
 <meta charset="UTF-8">
 <title>order Info</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-
-
+ 
 <style>
 
 #order_table {
@@ -144,8 +143,7 @@ ul li {
 	<!-- 검색창 -->
 	<h2 align="center">주문관리</h2>
 	<div id="searchArea">
-		<form id="searchForm"
-			action="<%=request.getContextPath()%>/admin/orderInfo" method="post">
+		<form id="searchForm"action="<%=request.getContextPath()%>/admin/orderInfo" method="post">
 			<ul>
 				<li>
 				<span>
@@ -164,6 +162,7 @@ ul li {
 			</ul>
 		</form>
 	</div>
+	
 
 	<br>
 	<hr clear="both">
