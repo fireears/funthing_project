@@ -9,12 +9,13 @@
 </head>
 <body>
 	<%
-		 /* response.sendRedirect(request.getContextPath()+"/main/mainView");  */
-		response.sendRedirect(request.getContextPath()+"/admin/brandServlet");
+		/* response.sendRedirect(request.getContextPath()+"/main/mainView"); */
+	
+		/* response.sendRedirect(request.getContextPath()+"/admin/brandServlet"); */
 		
 		/* response.sendRedirect(request.getContextPath()+"/views/payment/orderDetail.jsp"); */
-	
 		
+		response.sendRedirect(request.getContextPath()+"/admin/mainView"); 
 	 
 	
 	

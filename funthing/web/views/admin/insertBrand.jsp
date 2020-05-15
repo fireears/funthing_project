@@ -55,7 +55,6 @@
             box-sizing: border-box;
         }
 
-
         .sub2{
             width: 100%;
             padding-top: 20px;
