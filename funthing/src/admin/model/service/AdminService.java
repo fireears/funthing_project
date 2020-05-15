@@ -37,10 +37,11 @@ public class AdminService {
 		return list;
 	}
 
+	// 주문관리 페이지_혜린	
 	public ArrayList<OrderInfo> selectSearch(int currentPage, int limit, String searchKind, String searchText) {
 		Connection conn = getConnection();
 		
-		ArrayList<OrderInfo> searchList = new AdminDao().selectSearch(conn, currentPage, limit,searchKind, searchText);
+		ArrayList<OrderInfo> searchList = new AdminDao().selectOrderSearch(conn, currentPage, limit,searchKind, searchText);
 		
 		close(conn);
 		
@@ -48,6 +49,7 @@ public class AdminService {
 		
 	}
 
+	// 주문관리 페이지_혜린	
 	public int getOrderListCount() {
 
 		Connection conn = getConnection();

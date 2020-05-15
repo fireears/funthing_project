@@ -1,3 +1,4 @@
+<!-- 주문관리페이지_혜린 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"
 	import="payment.model.vo.*, java.util.ArrayList, board.model.vo.*"%>
@@ -21,10 +22,6 @@ int endPage = pi.getEndPage();
 
 
 <style>
-#order_manage {
-	/* margin-left: 200px; */
-	/* width: 1200px; */
-}
 
 #order_table {
 	border-top: 2px solid grey;
@@ -134,30 +131,37 @@ ul li {
 	float: right;
 }
 
-/* #area{margin: auto; width: 100%;} */
+
 #area table{width: 100%; border: 1px solid;}
 #area table th{background-color: rgb(199, 196, 196); color: rgb(53, 52, 52);}
 #area table tr button{width: 50%; height: 30px; background-color: gray; border: 1px solid; border-color: white; font-weight: 600; color: rgb(255, 255, 255);}
 </style>
+
 </head>
 <body>
 	<%@ include file="../common/adminHeader.jsp"%>
+	
+	<!-- 검색창 -->
 	<h2 align="center">주문관리</h2>
 	<div id="searchArea">
 		<form id="searchForm"
 			action="<%=request.getContextPath()%>/admin/orderInfo" method="post">
 			<ul>
-				<li><span> <select id="search_kind" name="searchKind">
+				<li>
+				<span>
+					 <select id="search_kind" name="searchKind">
 							<option value="m_Id">아이디</option>
 							<option value="o_No">주문번호</option>
-					</select>
-				</span> <span> <input type="text" id="seachText" name="searchText">
-				</span> <span>
-						<button type="submit" value="검색버튼" id="seachBtn">검색</button>
-				</span></li>
-
+				     </select>
+				</span>
+				<span> 
+					<input type="text" id="seachText" name="searchText">
+				</span>
+				<span>
+					<button type="submit" value="검색버튼" id="seachBtn">검색</button>
+				</span>
+				</li>
 			</ul>
-
 		</form>
 	</div>
 
@@ -165,6 +169,7 @@ ul li {
 	<hr clear="both">
 	<br>
 
+	<!-- 게시판 -->
 	<section id=area>
 		<article>
 			<div id="order_manage">
@@ -178,121 +183,65 @@ ul li {
 						<th>배송단계</th>
 						<th>총 합계</th>
 						<th>취소여부</th>
-
 					</tr>
-					<%
-						if (searchList != null) {
-					%>
-					<%
-						for (OrderInfo om : searchList) {
-					%>
-					<tr>
-
-						<input type="hidden" value="<%=om.getmId()%>">
-						<td><%=om.getRnum()%></td>
-						<td><%=om.getoNo()%></td>
-						<td><%=om.getmId()%></td>
-						<td><%=om.getPmntMthd()%></td>
-						<td><%=om.getPainYn()%></td>
-						<td><%=om.getPrcsStatus()%></td>
-						<td><%=om.getPmntPrice()%></td>
-						<td><%=om.getCancelYn()%></td>
-
-
-					</tr>
-					<%
-						}
-					%>
-
-					<%
-						}
-					%>
+					<%if (searchList != null) {	%>
+						<%for (OrderInfo om : searchList) {%>
+							<tr>
+								<input type="hidden" value="<%=om.getmId()%>">
+								<td><%=om.getRnum()%></td>
+								<td><%=om.getoNo()%></td>
+								<td><%=om.getmId()%></td>
+								<td><%=om.getPmntMthd()%></td>
+								<td><%=om.getPainYn()%></td>
+								<td><%=om.getPrcsStatus()%></td>
+								<td><%=om.getPmntPrice()%></td>
+								<td><%=om.getCancelYn()%></td>
+							</tr>
+						<%}%>
+					<%}%>
 				</table>
 			</div>
+			
+			
 			<!--페이징 처리 시작  -->
 			<div class="pagingArea" align="center">
 				<!-- 맨 처음으로 -->
-				<button class="pageBtn"
-					onclick="location.href='<%=request.getContextPath()%>/admin/orderInfo?currentPage=1'">
-					<<</button>
+				<button class="pageBtn"	onclick="location.href='<%=request.getContextPath()%>/admin/orderInfo?currentPage=1'"> << </button>
 
 				<!-- 이전 페이지로 -->
-				<%
-					if (currentPage == 1) {
-				%>
-				<button class="pageBtn" disabled><</button>
-				<%
-					} else {
-				%>
-				<button class="pageBtn"
-					onclick="location.href='<%=request.getContextPath()%>/admin/orderInfo?currentPage-1'">
-					<</button>
-				<%
-					}
-				%>
+				<%if (currentPage == 1) {%>
+					<button class="pageBtn" disabled> < </button>
+				<%} else {%>
+					<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/admin/orderInfo?currentPage-1'"> < </button>
+				<%}%>
 
 				<!-- 10개의 페이지 목록 -->
-				<%
-					for (int p = startPage; p <= endPage; p++) {
-				%>
-				<%
-					if (currentPage == p) {
-				%>
-				<button class="pageBtn" disabled><%=p%></button>
-				<%
-					} else {
-				%>
-				<button class="pageBtn"
-					onclick="location.href='<%=request.getContextPath()%>/admin/orderInfo?currentPage=<%=p%>'">
-					<%=p%>
-				</button>
-				<%
-					}
-				%>
-				<%
-					}
-				%>
+				<%for (int p = startPage; p <= endPage; p++) {%>
+					<%if (currentPage == p) {%>
+						<button class="pageBtn" disabled><%=p%></button>
+					<%} else {%>
+						<button class="pageBtn"	onclick="location.href='<%=request.getContextPath()%>/admin/orderInfo?currentPage=<%=p%>'"><%=p%></button>
+					<%}%>
+				<%}%>	
 
 				<!-- 다음페이지로  -->
-				<%
-					if (maxPage == 1) {
-				%>
-				<button disabled class="pageBtn">></button>
-				<%
-					} else {
-				%>
-				<button class="pageBtn"
-					onclick="location.href='<%=request.getContextPath()%>/admin/orderInfo?currentPage+1'">
-					></button>
-				<%
-					}
-				%>
+				<%if (maxPage == 1) {%>
+					<button disabled class="pageBtn"> > </button>
+				<%} else {%>
+					<button class="pageBtn"	onclick="location.href='<%=request.getContextPath()%>/admin/orderInfo?currentPage+1'"> > </button>
+				<%}%>	
 
 				<!-- 맨 끝으로 -->
-				<button class="pageBtn"
-					onclick="location.href='<%=request.getContextPath()%>/admin/orderInfo?currentPage=<%=maxPage%>'">
-					>></button>
+				<button class="pageBtn"	onclick="location.href='<%=request.getContextPath()%>/admin/orderInfo?currentPage=<%=maxPage%>'"> >> </button>
 			</div>
-
-
-
-
 
 			<script>
 				$(function() {
-					$("#order_table td")
-							.mouseenter(function() {
-								$(this).parent().css({
-									"background" : "darkgrey",
-									"cursor" : "pointer"
-								});
-							})
-							.mouseout(function() {
-								$(this).parent().css({
-									"background" : "white"
-								});
-							})
-							.click(
+					$("#order_table td").mouseenter(function() {
+								$(this).parent().css({"background" : "darkgrey","cursor" : "pointer"});
+							}).mouseout(function() {
+								$(this).parent().css({"background" : "white"});
+							}).click(
 									function() {
 										var mid = $(this).parent().children(
 												"input").val();
@@ -300,9 +249,9 @@ ul li {
 										/* 아이디별 상세내역 출력 */
 										location.href = "<%=request.getContextPath()%>/detail.or?mid="+ mid
 
-							})
-		})
-	</script>
+									})
+								})
+			</script>
 		</article>
 	</section>
 </body>

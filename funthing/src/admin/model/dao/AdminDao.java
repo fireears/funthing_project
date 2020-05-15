@@ -85,7 +85,8 @@ public class AdminDao {
 		return list;
 	}
 
-	public ArrayList<OrderInfo> selectSearch(Connection conn, int currentPage, int limit, String searchKind,
+	// 주문관리 페이지_혜린	
+	public ArrayList<OrderInfo> selectOrderSearch(Connection conn, int currentPage, int limit, String searchKind,
 			String searchText) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -142,6 +143,7 @@ public class AdminDao {
 		
 	}
 
+	// 주문관리 페이지_혜린	
 	public int getOrderListCount(Connection conn) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
