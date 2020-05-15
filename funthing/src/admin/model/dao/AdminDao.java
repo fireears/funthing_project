@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import brand.model.vo.Brand;
+import brand.model.vo.Brand2;
 import product.model.vo.Product;
 
 import static common.JDBCTemplate.*;
@@ -159,6 +160,35 @@ public class AdminDao {
 		}
 		
 		return brandList;
+	}
+
+	
+	// 브랜드 등록 페이지(정보 insert 메소드)_희지
+	public int insertBrand(Connection conn, Brand2 b) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query="INSERT INTO BRAND VALUES(SEQ_BR, ?, ?, ?, ?, ?, ?, ?)";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, b.getbName());
+			pstmt.setString(2, b.getbCeo());
+			pstmt.setString(3, b.getbPhone());
+			pstmt.setString(4, b.getbAddress());
+			pstmt.setString(5, b.getbEmail());
+			pstmt.setString(6, b.getbLchDate());
+			pstmt.setString(7, b.getbLchYn());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
 
 	

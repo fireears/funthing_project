@@ -80,7 +80,7 @@
                     <li><label>브랜드 코드 : </label><input type="text" name="b_no" class="box" id="b_no"></li>
                     <li><label>브랜드 명 : </label><input type="text" name="b_name" class="box" id="b_name"></li>
                     <li><button type="submit" value="조회하기" id="search">조회하기</button></li>
-                    <li><button id="insert">브랜드 등록</button></li>
+                    <li><button id="insert" type="button" onclick="insertBrand();">브랜드 등록</button></li>
                 </ul>
             </div>
         </form>
@@ -176,15 +176,20 @@
     	});
     	
     	
-    	// 수정 삭제 버튼 이동 함수
+    	// 새로운 브랜드 등록 함수
+    	function insertBrand(){
+    		location.href="<%=request.getContextPath()%>/views/admin/insertBrand.jsp";
+    	}
+    	
+    	// 기존 브랜드 정보 수정 함수
     	function modifyBrand(){
     		
-    	};
+    	}
     	
-    	
+    	// 브랜드 정보 삭제 함수
     	function deleteBrand(){
     		
-    	};
+    	}
     	
     	
     	

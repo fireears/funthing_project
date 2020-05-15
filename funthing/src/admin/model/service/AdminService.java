@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import admin.model.dao.AdminDao;
 import brand.model.vo.Brand;
+import brand.model.vo.Brand2;
 import product.model.vo.Product;
 public class AdminService {
 	
@@ -60,6 +61,22 @@ public class AdminService {
 		close(conn);
 		
 		return brandList;
+	}
+
+	
+	// 브랜드 등록 페이지(정보 insert 메소드)_희지
+	public int insertBrand(Brand2 b) {
+		Connection conn = getConnection();
+		
+		int result = new AdminDao().insertBrand(conn, b);
+		
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		return result;
 	}
 
 	
