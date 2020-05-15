@@ -1,3 +1,4 @@
+// 주문관리 페이지 검색창_혜린
 package admin.model.dao;
 
 import java.sql.Connection;
@@ -7,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import payment.model.vo.OrderInfo;
+import payment.model.vo.OrderInfoDetail;
 import product.model.vo.Product;
 
 import static common.JDBCTemplate.*;
@@ -93,6 +95,7 @@ public class AdminDao {
 		ArrayList<OrderInfo> searchList = new ArrayList<>();
 		String query = null;
 		
+		
 		int startRow = (currentPage -1) * limit + 1;	// 현재 페이지에서 보여주는 게시글 목록의 행번호 값
 		int endRow = startRow + (limit - 1);			// 현재 페이지에서 보여주는 게시글 행번호 마지막 값
 		
@@ -112,8 +115,7 @@ public class AdminDao {
 		}else if(searchKind != null && searchText != null) {
 			query = "SELECT * FROM ORDER_INFO WHERE "+searchKind+"= ?";
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, searchText);
-//			System.out.println("Dao query : " + query);
+			pstmt.setString(1, searchText);			
 		}
 			
 			rset = pstmt.executeQuery();
@@ -130,8 +132,7 @@ public class AdminDao {
 						rset.getInt("RNUM"));
 				searchList.add(om);
 			}
-			
-			System.out.println("dao searchList : " + searchList);
+	
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -166,9 +167,51 @@ public class AdminDao {
 		}
 		close(pstmt);
 		close(rset);
-		
+	
 		
 		return listCount;
+	}
+
+	// 주문관리 페이지 상세보기_혜린
+	public OrderInfoDetail selectOrderDetail(Connection conn, String mid) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		OrderInfoDetail od = new OrderInfoDetail();
+		
+		String query = "SELECT * FROM ORDER_DETAIL WHERE M_ID = ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, mid);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				od = new OrderInfoDetail( 
+						rset.getString("O_DATE"),
+						rset.getString("RCV_NAME"),
+						rset.getString("RCV_ADRS"),
+						rset.getInt("RCV_PHONE"),
+						rset.getString("COMMENTT"),
+						rset.getInt("EXPT_POINT"),
+						rset.getString("P_NO"),
+						rset.getInt("O_NUM"),
+						rset.getInt("TOTAL_PRICE"),
+						rset.getInt("POINT_USE"),
+						rset.getInt("PMNT_PRICE"),
+						rset.getString("O_NO"),
+						rset.getString("M_ID"));
+
+			}
+//			System.out.println("Dao od : " + od);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return od;
 	}
 
 	

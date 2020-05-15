@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import admin.model.dao.AdminDao;
 import payment.model.vo.OrderInfo;
+import payment.model.vo.OrderInfoDetail;
 import product.model.vo.Product;
 public class AdminService {
 	
@@ -38,7 +39,7 @@ public class AdminService {
 	}
 
 	// 주문관리 페이지_혜린	
-	public ArrayList<OrderInfo> selectSearch(int currentPage, int limit, String searchKind, String searchText) {
+	public ArrayList<OrderInfo> selectOrderSearch(int currentPage, int limit, String searchKind, String searchText) {
 		Connection conn = getConnection();
 		
 		ArrayList<OrderInfo> searchList = new AdminDao().selectOrderSearch(conn, currentPage, limit,searchKind, searchText);
@@ -61,6 +62,18 @@ public class AdminService {
 		close(conn);
 		
 		return listCount;
+		
+	}
+	
+	// 주문관리 페이지 상세보기_혜린
+	public OrderInfoDetail selectOrderDetail(String mid) {
+		Connection conn = getConnection();
+		OrderInfoDetail od = new AdminDao().selectOrderDetail(conn,mid);
+		
+		close(conn);
+		
+		
+		return od;
 		
 	}
 

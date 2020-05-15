@@ -34,66 +34,68 @@ public class AdminOrderInfo extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		AdminService aService = new AdminService();
-		
-		int listCount = aService.getOrderListCount();
-		
-				// 페이지 수 처리용 변수 선언
-				int currentPage;	// 현재 페이지
-				int limit;			// 한 페이지에 보여질 게시글 수 
-				int maxPage;		// 전체 페이지 수
-				int startPage;		// 한 번에 표시될 페이지가 시작할 페이지
-				int endPage;		// 한 번에 표시될 페이지가 끝나는 페이지
-				System.out.println("servlet listCount: " + listCount);
-				
-				
-				currentPage = 0;
-				
-				if(request.getParameter("currentPage") != null) {
-					currentPage = Integer.valueOf(request.getParameter("currentPage"));
-				}else {
-					currentPage = 1;
-				}
-				
-				limit = 20;
-				
-				//페이지 확인용
-//				System.out.println("orderservlet currenaPage : " +currentPage);
-				
-				maxPage = (int)((double)listCount/limit + 0.95);
-				
-				startPage = ((int)(((double)currentPage/limit + 0.95)-1) * limit) +1;
-				
-				endPage = startPage + limit -1;
-				
-				if(maxPage < endPage) {
-					endPage = maxPage;
-				}
-				
-				PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
-				// 검색창 구현 시작
-				String searchKind = request.getParameter("searchKind");	// 검색 종류 값
-				String searchText = request.getParameter("searchText"); // 검색 입력창 값
-				
-				System.out.println("servlet searchKind : " + searchKind);
-				System.out.println("servlet searchText : " + searchText);
-				ArrayList<OrderInfo> searchList = aService.selectSearch(currentPage, limit, searchKind, searchText);
-				
-				RequestDispatcher view = null;
-				if(!searchList.isEmpty()) {
-					view = request.getRequestDispatcher("/views/admin/adminOrderInfo.jsp");
-					request.setAttribute("searchList", searchList);
-					System.out.println("servlet searchList : " + searchList );
-					request.setAttribute("pi", pi);
-				}else {
-					System.out.println("servlet search에러");
-				}
-				view.forward(request, response);
-				
-				
+			AdminService aService = new AdminService();
 			
-				
+			int listCount = aService.getOrderListCount();
+			
+			// 페이지 수 처리용 변수 선언
+			int currentPage;	// 현재 페이지
+			int limit;			// 한 페이지에 보여질 게시글 수 
+			int maxPage;		// 전체 페이지 수
+			int startPage;		// 한 번에 표시될 페이지가 시작할 페이지
+			int endPage;		// 한 번에 표시될 페이지가 끝나는 페이지
+			System.out.println("servlet listCount: " + listCount);
+			
+			currentPage = 0;
+			
+			if(request.getParameter("currentPage") != null) {
+				currentPage = Integer.valueOf(request.getParameter("currentPage"));
+			}else {
+				currentPage = 1;
 			}
+
+			limit = 20;
+			maxPage = (int)((double)listCount/limit + 0.95);
+			startPage = ((int)(((double)currentPage/limit + 0.95)-1) * limit) +1;
+			endPage = startPage + limit -1;
+			
+			if(maxPage < endPage) {
+				endPage = maxPage;
+			}
+			
+			PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
+			
+			// 검색창 구현 시작
+			
+			String searchKind = request.getParameter("searchKind");	// 검색 종류 값
+			String searchText = request.getParameter("searchText"); // 검색 입력창 값
+			if(searchText != null) {
+				searchText = request.getParameter("searchText");
+			}else {
+				searchText = (String) request.getAttribute("searchText");
+			}
+			
+//				System.out.println("servlet searchKind : " + searchKind);
+//				System.out.println("servlet searchText : " + searchText);
+			
+			ArrayList<OrderInfo> searchList = aService.selectOrderSearch(currentPage, limit, searchKind, searchText);
+			
+			RequestDispatcher view = null;
+			if(!searchList.isEmpty()) {		// 검색의 조건이 알맞을 때
+				view = request.getRequestDispatcher("/views/admin/adminOrderInfo.jsp");
+				request.setAttribute("searchList", searchList);
+//					System.out.println("servlet searchList : " + searchList );
+				request.setAttribute("pi", pi);
+			
+			}else {							// 검색의 조건이 틀렸을 때 
+				response.sendRedirect(request.getContextPath()+"/admin/searchOrder");
+				request.setAttribute("searchText", "" );
+//					System.out.println("servlet searchList : " + searchList );
+				request.setAttribute("pi", pi); 
+				return;		// 하지않으면 완료된 commit error
+			}
+			view.forward(request, response);	
+		}
 
 
 	/**
