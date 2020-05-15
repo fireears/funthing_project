@@ -1,0 +1,27 @@
+@charset "UTF-8";
+/* #area{margin-left: 30px; width: 70%; border-top: 3px solid #0f4a7e;}
+			
+.table1{border-top: 2px solid black; border-bottom: 1px solid gray;}
+.table1 > table{width: 100%;}
+.ta-1{width: 20%; height: 40px; font-size: 14px; font-weight: 800; color: rgb(104, 103, 103); background-color: rgb(207, 205, 205);}
+.txt-field{padding-left: 30px; width: 100%; height: 100%;}
+.txt-field>input{ height: 20px; width: 200px;}
+
+
+.txt-field1{padding-left: 30px;}
+.txt-field2{padding-left: 30px; height: 100%;}
+.txt-field2>input{width: 600px; height: 20px;}
+
+#title{font-size:20px; font-weight: 600;}
+
+
+
+
+#resultPayArea{position: fixed; top: 30%; left: 75%; width: 350px; height: 500px; border: 2px solid #ddd; text-align: center;}
+#resultPayArea>div{margin: auto; width: 90%;}
+#resultPayArea>div>table{width: 100%;}
+#resultPayArea>div>table th{text-align: left;}
+#resultPayArea>div>table td{text-align: right;}
+#resultprice{font-size: 30px; font-weight: 600;}
+
+#product>tbody>tr>td{text-align: center;} */
