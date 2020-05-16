@@ -10,8 +10,8 @@
             /* #nav{margin: auto; width: 50%;} */
             #nav{background-color: rgb(199, 196, 196);}
             #nav_header{margin:auto; width:100%; height: 90px;}
-            #nav_header ul li{float: left; width:7%; list-style-type: none; padding-right: 15px; padding-left: 15px; padding-top: 20px; line-height: auto;}
-            #nav_header ul li button{width: 100%; height: 50px; background-color: gray; border-radius: 10px; border: 0px; font-size: 16px; font-weight: 600; color: white;}
+            #nav_header ul li{float: left; width:6%; list-style-type: none; padding-right: 15px; padding-left: 15px; padding-top: 20px; line-height: auto;}
+            #nav_header ul li button{width: 100%; height: 50px; background-color: gray; border-radius: 10px; border: 0px; font-size: 13px; font-weight: 400; color: white;}
 
             
 
@@ -36,6 +36,8 @@
                         <li><button type="button" onclick="qnaManage();">1:1문의 관리</button></li>
                         <li><button type="button" onclick="pointManage();">포인트</button></li>
                         <li><button type="button" onclick="notice();">공지사항 게시판</button></li>
+                        <li><button type="button" onclick="client();">클라이언트</button></li>
+                        
 
                         <!-- <li><button>캘린더 관리</button></li> -->
                     </ul>
@@ -82,6 +84,11 @@
 		{
 			
 		}
+		function client()
+		{
+			location.href = "<%=request.getContextPath()%>/main/mainView";
+		}
+		
 		
 		
 	</script>
