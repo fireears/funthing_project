@@ -84,14 +84,13 @@
                 </ul>
             </div>
         </form>
-       
+
        	<br>
-        <hr clear="both">
 		<br>
 		
         <div class="area">
-            <table>
-                <tr>
+            <table class="list-tb">
+                <tr style="background-color: lightgray;">
                     <th>브랜드 코드</th>
                     <th>브랜드 명</th>
                     <th>대표 명</th>
@@ -123,7 +122,8 @@
 				<%} %>
 				
             </table>
-        </div>
+       </div>
+       
         <br><br>
 
 
@@ -164,8 +164,9 @@
 		
 			<!-- 맨 뒷 페이지로  -->
 			<button onclick="location.href='<%=request.getContextPath() %>/admin/brandServlet?currentPage=<%=maxPage %>'"> >> </button>
-		</div>
-
+		
+	</div>
+	
     
     <script>
     	// 리스트 한줄 한줄 효과 주는 것

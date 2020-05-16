@@ -34,25 +34,27 @@
 		#area table tr button{width: 50%; height: 30px; background-color: gray; border: 1px solid; border-color: white; font-weight: 600; color: rgb(255, 255, 255);}
 		
 		/* 상품계시판 밑에 버튼 */
-		#pageBtn{margin:auto; width:48%;}
-		#pageBtn>button{margin:auto; width:4.2%; height:30px; text-align: center;}
+		#pageBtn{margin:auto; width:50%;}
+		#pageBtn>button{margin:auto; width:3%; height:30px; text-align: center;}
 	</style>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>FUN-THING ADMIN</title>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
 
 	<%@ include file="../common/adminHeader.jsp" %>
 	<h2>상품관리</h2>
-	<form action="" method="GET">
+	<form action="<%=request.getContextPath() %>/admin/productSearch" method="GET">
 		<div id="nav_section">
 		    <ul>
 		        <li><label>상품번호 : </label><input type="text" class="box" id="p_no" name="p_no"></li>
+		        <li><label>브랜드 : </label><input type="text" class="box" id="b_name" name="b_name"></li>
 		        <li><label>스타일 번호 : </label><input type="text" class="box" id="s_no" name="s_no"></li>
 		        <li><label>상품명 : </label><input type="text" class="box" id="p_name" name="p_name"></li>
 		        <li><label>상품종류 : </label><input type="text" class="box" id="p_category" name="p_category" placeholder="category"></li>
-		        <li><label>상품가격 : </label><input type="number" class="box" id="p_price" name="p_price" min="0"></li>
-		        <li><label>펀딩 시작 날짜 : </label><input type="date" class="box" id="f_start_date" name="f_start_date"></li>
+		        <li><label>상품가격 : </label><input type="number" class="box" id="p_price" name="p_price" min="0" ></li>
+		        <li><label>펀딩 시작 날짜 : </label><input type="date" class="box" id="f_start_date" name="f_start_date" value="sysdate"></li>
 		        <li><label>펀딩 종료 날짜 : </label><input type="date" class="box" id="f_end_date" name="f_end_date"></li>
 		        <li><label>펀딩 진행 유무 : </label>
 	            <select name="f_yn" id="f_yn" style="height: 28px;">
@@ -61,7 +63,7 @@
 	    		</select>
 				</li>
 				<li><input type="submit" value="조회하기" style="background-color: gray; color: white; border-radius: 5px; border: 0px; width: 80px; height: 30px; font-size: 14px;"></li>
-				<li><button style="background-color: gray; color: white; border-radius: 5px; border: 0px; width: 80px; height: 30px; font-size: 14px;">상품등록</button></li>
+				<li><button type="button" id="productInsert" style="background-color: gray; color: white; border-radius: 5px; border: 0px; width: 80px; height: 30px; font-size: 14px;">상품등록</button></li>
 	        </ul>
 	    </div>
 	</form>
@@ -73,7 +75,7 @@
 
 	<section id=area>
         <article>
-            <table>
+            <table id="product_table">
 
                 <tr>
 	                <th>번호</th> <th>상품번호</th> <th>상품명</th> <th>상품종류</th> <th>정가</th> <th>할인율</th> <th>판매가</th> 
@@ -85,12 +87,36 @@
 	            %>
 	            <tr align="center">
 	            	<input type="hidden" value="<%=p.getpNo() %>">
-	            	<td><%=num %></td> <td><%=p.getpNo() %></td> <td><%=p.getpName() %></td> <td><%=p.getpCategory() %></td> <td><%=p.getRetailPrice() %></td> <td><%=p.getDcRate() %></td> <td><%=p.getpPrice() %></td> <td><%=p.getfYn() %></td> <td><%=p.getfStartDate() %></td> <td><%=p.getfEndDate() %></td> <td><button>수정</button><button>삭제</button></td>
+	            	<td><%=num %></td> <td><%=p.getpNo() %></td> <td><%=p.getpName() %></td> <td><%=p.getpCategory() %></td> <td><%=p.getRetailPrice() %></td> <td><%=p.getDcRate() %></td> <td><%=p.getpPrice() %></td> <td><%=p.getfYn() %></td> <td><%=p.getfStartDate() %></td> <td><%=p.getfEndDate() %></td>
+	            	<td><button>수정</button><button>삭제</button></td>
 	            </tr>
                 <%} %>
 	        </table>
+	        
+	        
+			<script>
+			$(function() {
+				$("#product_table td").mouseenter(function() {
+					$(this).parent().css({"background" : "darkgrey","cursor" : "pointer"});
+				}).mouseout(function() {
+					$(this).parent().css({"background" : "white"});
+				}).click(function() {
+					var pNo = $(this).parent().children("input").val();
+
+					location.href = "<%=request.getContextPath()%>/admin/productDetail?pNo="+ pNo
+
+				})
+				
+				$("#productInsert").click(function(){
+					location.href="<%=request.getContextPath()%>/views/admin/adminProductInsert.jsp";
+				})
+				
+			})
+			</script>
+			
+			
 	        <br><br>
-	        <div id="pageBtn">
+	        <div id="pageBtn" align="center">
 	        	<button onclick="location.href='<%=request.getContextPath() %>/admin/mainView?currentPage=<%=1 %>'"> << </button>
 	        	
 	        	<%if(currentPage <= 1) { %>
@@ -120,4 +146,6 @@
 	</section>
 	<br><br>
 </body>
+
+
 </html>

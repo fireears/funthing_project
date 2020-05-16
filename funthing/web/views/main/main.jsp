@@ -25,7 +25,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Insert title here</title>
+		<title>FUN-THING</title>
 		
 		<script src="<%=request.getContextPath()%>/js/action.js"></script>
 		<script src="<%=request.getContextPath()%>/js/swiper.min.js"></script>
@@ -43,7 +43,7 @@
 	                <img src="<%=request.getContextPath()%>/images/main_img.jpg" />
 	            </div>
 	            <div class="con-box discover">
-	                <h2>DISCOVER THE LATEST ARRIVALS</h2>
+	                <h2 id="title">DISCOVER THE LATEST ARRIVALS</h2>
 	                <ul class="product">
 	                
 	                	<%if(arriProduct != null) { %>
@@ -90,7 +90,7 @@
 	            <!-- discover end -->
 	
             <div class="best-sell">
-                <h2>BEST SELLING</h2>
+                <h2 id="title">BEST SELLING</h2>
                 <section id="features" class="blue">
                     <div class="slider center">
                     	<%if(bestProduct != null) { %>
@@ -111,7 +111,7 @@
             </div>
             
 	            <div class="con-box completion">
-	                <h2>CLOSE TO COMPLETION</h2>
+	                <h2 id="title">CLOSE TO COMPLETION</h2>
 	                <ul class="product">
 	                	<%if(closeProduct != null) { %>
 	                	<%	for(int i = 0; i<8; i++) { %>

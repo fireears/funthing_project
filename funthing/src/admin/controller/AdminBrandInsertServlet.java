@@ -17,7 +17,7 @@ import brand.model.vo.Brand2;
 /**
  * Servlet implementation class AdminBrandInsertServlet
  */
-@WebServlet("/admin/brandInsert")
+@WebServlet("/admin/insertBrand")
 public class AdminBrandInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -42,7 +42,7 @@ public class AdminBrandInsertServlet extends HttpServlet {
 		String bPhone = request.getParameter("bPhone");
 		String bAddress = request.getParameter("bAddress");
 		String bEmail = request.getParameter("bEamil");
-		String bLchDate = request.getParameter("bLchDate"); // date형인데 String으로 형변환!! 나중에 다시 보자
+		String bLchDate = request.getParameter("bLchDate"); 
 		String bLchYn = request.getParameter("bLchYn");
 		
 		// Brand2객체 생성
@@ -50,6 +50,7 @@ public class AdminBrandInsertServlet extends HttpServlet {
 		
 		int result = new AdminService().insertBrand(b);
 		
+		System.out.println(result);
 		
 		
 		// 여기 부분 에러 남!! 여기 확인해야 함

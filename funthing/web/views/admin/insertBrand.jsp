@@ -1,3 +1,4 @@
+<!-- 브랜드 등록 페이지_희지 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -51,7 +52,7 @@
 
     <section id="area" style="width: 1460px; margin: 0 auto;">
         <br>
-        <h1 style="text-align: center;">브랜드 등록/수정</h1>
+        <h1 style="text-align: center;">신규 브랜드 등록</h1>
         
         <form id="insert" action="<%=request.getContextPath()%>/admin/insertBrand" method="post">
 	        <div class="main">
@@ -77,10 +78,16 @@
 	               </li>
 	            </ul>
 	        </div>
+
+
+	        <div class="btn">
+	            <button type="submit" value="insert">등록하기</button>
+	        </div>
+
 		</form>
 		
 
-        <form id="search">
+        <!-- <form id="search">
         	<div class="sub2">
                 <ul class="clear">
                     <li>
@@ -91,28 +98,20 @@
              </div>
 
              <div class="search-list">
-                 <!-- textarea부분 -->
+                 textarea부분
              </div>
-        </form>
+        </form> -->
 
-        <br clear="both">
 
-        <div class="btn">
-            <button type="submit" value="insert">등록하기</button>&nbsp;
-            <button type="button" value="modify">삭제하기</button>
-        </div>
     </section>
     
     
     <script>
-    	$(function(){
-    		<%if(result != null){%>
-    			alert("브랜드 정보 등록에 성공하셨습니다.");
-    		<%}else{%>
-    			alert("브랜드 정보 등록에 실패하셨습니다.");
-    		<%}%>
-    		
-    		});
+    	
+    
+    
+    
+    
     
     
     

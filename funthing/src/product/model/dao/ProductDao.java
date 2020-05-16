@@ -160,7 +160,9 @@ public class ProductDao {
 		Product p = null;
 		ArrayList<Product> plist = new ArrayList<>();
 		
-		String query = "SELECT * FROM PRODUCT WHERE P_NAME = ?";
+		String query = "SELECT distinct substr(p_no,0,8),b_no, p_name, thumbnail ,p_price, f_start_date, f_end_date\n" + 
+						"FROM PRODUCT \n" + 
+						"WHERE P_NAME =?";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -170,26 +172,13 @@ public class ProductDao {
 			
 			while(rset.next())
 			{
-				p = new Product(rset.getString("p_no"),
+				p = new Product(rset.getString("substr(p_no,0,8)"),
 								rset.getString("b_no"),
 								rset.getString("thumbnail"),
 								rset.getString("p_name"),
-								rset.getInt("retail_price"),
-								rset.getInt("dc_rate"),
 								rset.getInt("p_price"),
-								rset.getInt("p_category"),
-								rset.getInt("s_no"),
-								rset.getString("p_detail"),
-								rset.getString("img_router"),
-								rset.getInt("p_point"),
-								rset.getDate("ship_date"),
 								rset.getDate("f_start_date"),
-								rset.getDate("f_end_date"),
-								rset.getInt("f_goal"),
-								rset.getInt("f_sel_price"),
-								rset.getString("f_yn"),
-								rset.getString("cal_no"),
-								rset.getInt("f_prg_rate"));
+								rset.getDate("f_end_date"));
 				plist.add(p);
 				
 			}
@@ -212,9 +201,9 @@ public class ProductDao {
 		Product p = null;
 		ArrayList<Product> blist = new ArrayList<>();
 		
-		String query = "SELECT * FROM \r\n" + 
-				"PRODUCT P\r\n" + 
-				"JOIN BRAND B ON P.B_NO = B.B_NO\r\n" + 
+		String query = "SELECT distinct substr(p_no,0,8),B_NAME, p_name, thumbnail ,p_price, f_start_date, f_end_date\n" + 
+				"FROM PRODUCT P\n" + 
+				"JOIN BRAND B ON P.B_NO = B.B_NO\n" + 
 				"WHERE B_NAME = ?";
 		
 		try {
@@ -225,26 +214,13 @@ public class ProductDao {
 			
 			while(rset.next())
 			{
-				p = new Product(rset.getString("p_no"),
-						rset.getString("b_no"),
+				p = new Product(rset.getString("substr(p_no,0,8)"),
+						rset.getString("b_name"),
 						rset.getString("thumbnail"),
 						rset.getString("p_name"),
-						rset.getInt("retail_price"),
-						rset.getInt("dc_rate"),
 						rset.getInt("p_price"),
-						rset.getInt("p_category"),
-						rset.getInt("s_no"),
-						rset.getString("p_detail"),
-						rset.getString("img_router"),
-						rset.getInt("p_point"),
-						rset.getDate("ship_date"),
 						rset.getDate("f_start_date"),
-						rset.getDate("f_end_date"),
-						rset.getInt("f_goal"),
-						rset.getInt("f_sel_price"),
-						rset.getString("f_yn"),
-						rset.getString("cal_no"),
-						rset.getInt("f_prg_rate"));	
+						rset.getDate("f_end_date"));
 				
 				blist.add(p);
 			}
