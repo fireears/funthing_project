@@ -1,12 +1,34 @@
+<!-- 브랜드 관리자 페이지_희지 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, brand.model.vo.*, board.model.vo.*" %>
+
+<%
+	ArrayList<Brand> list = (ArrayList<Brand>)request.getAttribute("list");
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+
+	// PageIngo값 뽑아내기
+	int currentPage = pi.getCurrentPage();
+	/* int listCount = pi.getBrandListCount(); */
+	int limit = pi.getLimit();
+	int maxPage = pi.getMaxPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	
+	String updateMsg = (String)request.getAttribute("updateMsg");
+	String deleteMsg = (String)request.getAttribute("deleteMsg");
+
+	
+%>
+
+
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <title>admin_brand</title>
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
     <style>
-        a { text-decoration:none; color:#666; } 
+        a {text-decoration:none; color:#666;} 
 
         ul {
             list-style-type: none;
@@ -21,84 +43,56 @@
             padding:0;
             margin:0;
         }
-
        
         /* 브랜드 관리 */
-        .brand-select{
-            margin-top: 30px;
-            background-color: #bbb;
-            width: 100%;
-            height: 100px;
-            text-align:center;
-        }
-        .brand-select ul{
-            display:inline-block;
-        }
-        .brand-select ul:after {
-            clear:both;
-            content:"";
-            display:block;
-        }
-
-        .brand-select ul li{
-            float: left;
-            margin: 40px;
-        }
+        form{height:100px; background-color:rgb(199,196,196);}
+        
+        #nav_section{margin: 0 auto; width:90%;}
+        #nav_section ul{heigth:100px; margin:0 auto; width:100%; padding:0px;}
+        #nav_section ul li{float:left; padding-left:20px; padding-right:10px; line-height:50px;}
+      /*   .nav_section ul:after {clear:both; content:""; display:block;} */
+		#nav_section ul li .box{width:150px;}
+		
 
         /* 브랜드 조회 내역 list 영역 */
-        .brand-list{
-            padding-left: 20px;
-            width: 100%;
-        }
-        .list-tb{
-            margin-top: 30px;
-            border-top: 2px solid #bbb;
-            width: 100%;
-            border-bottom: 1px solid #bbb;
-            list-style: 50px;
-            border-collapse: collapse;
-            line-height: 40px;
-        }
-        .list-tb th{
-            border-bottom: 1px solid #bbb;
-        }
-        .list-tb tr{
-            border: 0; padding:0; border-bottom: 1px solid #bbb;
-        }
-        .list-tb td{
-            text-align: center;
-        }
-        .list-tb .tb-last{
-            border-left: 1px solid #bbb;
-            border-bottom: 0px;
-        }
+        .area{margin:0 auto; width:100%;}
+        .area table{margin:0 auto; width:98%; border:1px solid;}
+        .area table th{background-color: rgb(199,196,196); color:rgb(53,52,52);}
+        /* 수정 삭제 버튼 */
+        .area table tr button{width:48%; height:30px; background-color:gray; border:1px solid; border-color:white; font-weight:600; color:rgb(255,255,255);}
+       
+        /* 조회 & 등록 하기 버튼 */
+        #search{background-color:gray; color:white; border-radius:5px; border:0px; width:150px; heigth: 30px; font-size:15px; padding:10px;}
+        #insert{background-color:gray; color:white; border-radius:5px; border:0px; width:150px; heigth: 30px; font-size:15px; padding:10px;}
+        
+        
+		/* 페이징 처리 부분 */     
+        .pagingArea{margin: 0 auto; margin-top:20px; margin-bottom:20px;}
+        .pagingArea button{border:0; font-size:middle; background:white; cursor:pointer;}
         
     </style>
 </head>
 <body>
-
-    <!-- 상원이 admin header include 하기 -->
 	
 	<%@ include file="../common/adminHeader.jsp" %>
 
-    <section id="area">
-        <h1 style="text-align: center;">브랜드 관리</h1>
+    
+        <h2 style="text-align: center;">브랜드 관리</h2>
         <form method="post" action="#">
-            <div class="brand-select">
+            <div id="nav_section">
                 <ul>
-                    <li><label>브랜드 코드 : </label><input type="text" name="b_no" id="b_no"></li>
-                    <li><label>브랜드 명 : </label><input type="text" name="b_name" id="b_name"></li>
-                    <li>
-                        <input type="submit" value="조회하기">
-                        <button type="botton">상품 등록</button>
-                    </li>
+                    <li><label>브랜드 코드 : </label><input type="text" name="b_no" class="box" id="b_no"></li>
+                    <li><label>브랜드 명 : </label><input type="text" name="b_name" class="box" id="b_name"></li>
+                    <li><input type="submit" value="조회하기" id="search">조회하기</li>
+                    <li><button id="insert" type="button" onclick="insertBrand();">브랜드 등록</button></li>
                 </ul>
             </div>
         </form>
-       
-        <br clear="both"> 
 
-        <div class="brand-List">
+       	<br>
+		<br>
+		
+        <div class="area">
             <table class="list-tb">
                 <tr style="background-color: lightgray;">
                     <th>브랜드 코드</th>
@@ -109,43 +103,128 @@
                     <th>이메일</th>
                     <th>입점 날짜</th>
                     <th>입점 유무</th>
-                    <th class="tb-last">변경</th>
+                    <th>변경</th>
                 </tr>
 
-                <tr>
-                    <td>브랜드 코드</td>
-                    <td>브랜드 명</td>
-                    <td>대표 명</td>
-                    <td>연락처</td>
-                    <td>회사 주소</td>
-                    <td>이메일</td>
-                    <td>입점 날짜</td>
-                    <td>입점 유무</td>
-                    <td class="tb-last">
-                        <button type="button">수정</button>
-                        <button type="button">삭제</button>
-                    </td>
-                </tr>
 
-                <tr>
-                    <td>브랜드 코드</td>
-                    <td>브랜드 명</td>
-                    <td>대표 명</td>
-                    <td>연락처</td>
-                    <td>회사 주소</td>
-                    <td>이메일</td>
-                    <td>입점 날짜</td>
-                    <td>입점 유무</td>
-                    <td class="tb-last">
-                        <button type="button">수정</button>
-                        <button type="button">삭제</button>
-                    </td>
-                </tr>
-
+                <%for(Brand b : list){ %>
+                <tr align="center">
+                	<input type="hidden" value="<%=b.getbNo() %>">
+                	<td><%=b.getbNo() %></td>
+                	<td><%=b.getbName() %></td>
+					<td><%=b.getbCeo() %></td>
+					<td><%=b.getbPhone() %></td>
+					<td><%=b.getbAddress() %></td>
+					<td><%=b.getbEmail() %></td>
+					<td><%=b.getbLchDate() %></td>
+					<td><%=b.getbLchYn() %></td>
+					<td>
+						<button type="button" id="modifyBrand">수정</button>
+						<button type="button" id="deleteBrand">삭제</button>
+					</td>
+				</tr>
+				<%} %>
+				
             </table>
-        </div>
+       </div>
+       
+        <br><br>
 
-    </section>
+
+		<!-- 페이징 처리 시작 -->
+		<div class="pagingArea" align="center">
+		
+			<!-- 맨 처음으로 -->
+			<button onclick="location.href='<%=request.getContextPath() %>/admin/brandServlet?currntPage=1'"> << </button>
+		
+		
+			<!-- 이전 페이지로 -->
+			<%if(currentPage == 1){ %>
+				<button disabled> < </button>
+		
+			<%}else{ %>
+				<button onclick="location.href='<%=request.getContextPath() %>/admin/brandServlet?currentPage=<%=currentPage -1 %>'"> < </button>
+			<%} %>
+		
+		
+			<!-- 10개의 페이지 목록 -->
+			<%for(int p = startPage; p <= endPage; p++){ %>
+				<%if(currentPage == p){ %>
+					<button disabled><%=p %></button>
+					
+				<%}else{ %>
+					<button onclick="location.href='<%=request.getContextPath() %>/admin/brandServlet?currentPage=<%=p %>'"><%=p %></button>
+				<%} %>
+			<%} %>
+			
+			
+			<!-- 다음 페이지로 -->
+			<%if(currentPage == maxPage){ %>
+				<button disabled> > </button>
+			<%}else{ %>
+				<button onclick="location.href='<%=request.getContextPath() %>/admin/brandServlet?currentPage=<%=currentPage + 1 %>'"> > </button>
+			<%} %>
+		
+		
+			<!-- 맨 뒷 페이지로  -->
+			<button onclick="location.href='<%=request.getContextPath() %>/admin/brandServlet?currentPage=<%=maxPage %>'"> >> </button>
+		
+	</div>
+	
+    
+    <script>
+    	// 리스트 한줄 한줄 효과 주는 것
+    	$(".area td").mouseenter(function(){
+    		$(this).parent().css({"background" : "darkgray","cursor" : "pointer"});
+    	}).mouseout(function(){
+    		$(this).parent().css({"background" : "white"});
+    	}).click(function(){		// 브랜드 상세 정보로 이동해서 수정 삭제 진행
+    		var bNo = $(this).parent().children("input").val();
+    		
+    		location.href="<%=request.getContextPath()%>/admin/brandDetail?bNo=" + bNo;
+    	
+    	});
+    	
+    	
+    	// 새로운 브랜드 등록 함수
+    	function insertBrand(){
+    		location.href="<%=request.getContextPath()%>/views/admin/insertBrand.jsp";
+    	}
+    	
+    	$(function(){
+    		// 업데이트 성공시 alert
+    		<%if(updateMsg != null){%>
+    			alert("<%=updateMsg%>");
+    		<%}else if(deleteMsg != null){%>
+    			alert("<%=deleteMsg%>");
+    			
+    		<%}%>
+    		
+    		
+    		
+    		
+    	})
+    	
+    	
+    	
+    	
+    	
+    	
+    </script>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 </body>
 </html>
