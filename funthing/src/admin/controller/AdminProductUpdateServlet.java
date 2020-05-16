@@ -1,6 +1,7 @@
 package admin.controller;
 
 import java.io.IOException;
+import java.sql.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,7 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sun.glass.ui.View;
+
 import admin.model.service.AdminService;
+import product.model.vo.Product;
 
 /**
  * Servlet implementation class AdminProductUpdateServlet
@@ -30,28 +34,47 @@ public class AdminProductUpdateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String pNo = request.getParameter("pNo");
-		System.out.println(pNo);
-		
-		int result = 0;
-		
-		result = new AdminService().productDelete(pNo);
-		
-		RequestDispatcher view = null;
-		String page = "";
-		if(result > 0)
-		{
-			page = "/admin/mainView";
-			request.setAttribute("pNo", pNo);
+		System.out.println("adminProductUpdateServlet");
+		try {
+			String pNo = request.getParameter("pNo");
+			String p_color = request.getParameter("color");
+			String p_size = request.getParameter("size");
+			int retail_price = Integer.valueOf(request.getParameter("retail_price"));
+			int dcRate = Integer.valueOf(request.getParameter("dcRate"));
+			int pPrice = (int)(double)(retail_price - ((double)retail_price * ((double)dcRate * 0.01)));
+			String pDetail = request.getParameter("pDetail");
+			int pPoint = Integer.valueOf(request.getParameter("pPoint"));
+			Date shipDate = Date.valueOf(request.getParameter("shipDate"));
+			Date fStartDate = Date.valueOf(request.getParameter("fStartDate"));
+			Date fEndDate = Date.valueOf(request.getParameter("fEndDate"));
+			int fGoal = Integer.valueOf(request.getParameter("fGoal"));
+			int fSelPrice = Integer.valueOf(request.getParameter("fSelPrice"));
+			String fYn = request.getParameter("fYn");
+			String calNo = request.getParameter("calNo");
+			
+			Product p = new Product(p_color, p_size, retail_price, dcRate, pPrice, pDetail, pPoint, shipDate, fStartDate, fEndDate, fGoal, fSelPrice, fYn, calNo);
+			
+			int result = new AdminService().productUpdate(p, pNo);
+			
+			if(result > 0)
+			{
+				RequestDispatcher view = request.getRequestDispatcher("/admin/mainView");
+				request.setAttribute("msg", pNo + "상품의 수정이 완료되었습니다.");
+				view.forward(request, response);
+				
+			}
+			else
+			{
+//				RequestDispatcher view = request.getRequestDispatcher(request.getContextPath() + "/admin/mainView");
+//				request.setAttribute("msg", pNo + "상품의 수정이 실패했습니다.");
+//				view.forward(request, response);
+			}
+			
 		}
-		else
+		catch(NumberFormatException e)
 		{
-			page = "/views/admin/adminProductDetail.jsp";
-			String msg =pNo + " 삭제가 되지 않았습니다.";
-			request.setAttribute("msg", msg);
+			e.printStackTrace();
 		}
-		view = request.getRequestDispatcher(page);
-		view.forward(request, response);
 		
 	}
 

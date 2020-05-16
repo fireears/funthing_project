@@ -101,6 +101,23 @@ public class AdminService {
 		return result;
 	}
 
+	public int productUpdate(Product p, String pNo) {
+		Connection conn = getConnection();
+		
+		int result = new AdminDao().productUpdate(conn, p, pNo);
+		
+		if(result > 0)
+		{
+			commit(conn);
+		}
+		else
+		{
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+
 	
 
 }
