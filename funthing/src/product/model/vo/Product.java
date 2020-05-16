@@ -123,6 +123,21 @@ public class Product implements Serializable{
 		this.fPrgRate = fPrgRate;
 	}
 
+	
+
+	public Product(String pNo, String thumbnail, String pName, int retailPrice, int pPrice, Date fStartDate,
+			Date fEndDate, int fPrgRate) {
+		super();
+		this.pNo = pNo;
+		this.thumbnail = thumbnail;
+		this.pName = pName;
+		this.retailPrice = retailPrice;
+		this.pPrice = pPrice;
+		this.fStartDate = fStartDate;
+		this.fEndDate = fEndDate;
+		this.fPrgRate = fPrgRate;
+	}
+
 	public String getpNo() {
 		return pNo;
 	}

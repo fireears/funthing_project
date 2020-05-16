@@ -20,4 +20,13 @@ public class CalendarService {
 		return list;
 	}
 
+	public ArrayList<Product> clickDate(String thisDate) {
+		Connection conn = getConnection();
+		ArrayList<Product> cList = new CalendarDao().clickDate(conn,thisDate);
+		
+		close(conn);
+		
+		return cList;
+	}
+
 }
