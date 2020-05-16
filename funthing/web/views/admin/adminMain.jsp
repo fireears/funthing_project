@@ -107,7 +107,7 @@
 	        	<%} %>	
 	        	<%} %>
 	        	
-	        	<%if(currentPage == maxPage) {%>
+	        	<%if(currentPage == maxPage) {%> 
 	        		<button disabled> > </button>
 	        	<%} else { %>
 	        		<button onclick="location.href='<%=request.getContextPath() %>/admin/mainView?currentPage=<%=currentPage+1 %>'"> > </button>

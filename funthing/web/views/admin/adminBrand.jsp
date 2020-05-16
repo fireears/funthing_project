@@ -158,7 +158,7 @@
 			<%if(currentPage == maxPage){ %>
 				<button disabled> > </button>
 			<%}else{ %>
-				<button onclick="location.href='<%=request.getContextPath() %>/admin/brandServlet?currntPage=<%=currentPage + 1 %>'"> > </button>
+				<button onclick="location.href='<%=request.getContextPath() %>/admin/brandServlet?currentPage=<%=currentPage + 1 %>'"> > </button>
 			<%} %>
 		
 		

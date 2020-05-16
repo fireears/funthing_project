@@ -51,6 +51,8 @@ public class AdminBrandInsertServlet extends HttpServlet {
 		int result = new AdminService().insertBrand(b);
 		
 		
+		
+		// 여기 부분 에러 남!! 여기 확인해야 함
 		RequestDispatcher view = null;
 		if(result>0) {
 			view = request.getRequestDispatcher("/views/admin/insertBrand.jsp");
