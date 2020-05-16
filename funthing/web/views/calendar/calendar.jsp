@@ -80,7 +80,7 @@
     	  console.log(thisDate);
     	  // ajax 작성
     	  $.ajax({
-    		  url : "<%=request.getContextPath()%>/clickCalendar",
+    		  url : "<%=request.getContextPath()%>/dateClick",
     		  type : "post",
     		  data : {"thisDate" : thisDate},
     		  success : function(data){
