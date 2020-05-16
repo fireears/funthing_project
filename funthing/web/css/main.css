@@ -25,6 +25,7 @@ body { position:relative; overflow-x:hidden; }
 
 #header .log-menu .log-sec li { float:left; margin:0 8px; }
 
+#header .log-menu .log-sec .master a { font-weight:700; }
 
 
 #nav-wrap { width:100%; margin:0 auto; }
