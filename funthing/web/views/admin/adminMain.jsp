@@ -15,6 +15,8 @@
     	int maxPage = pi.getMaxPage();
     	int startPage = pi.getStartPage();
     	int endPage = pi.getEndPage();
+    	
+    	
     %>
       
 <!DOCTYPE html>
@@ -32,11 +34,11 @@
 		#area{margin: auto; width: 100%;}
 		#area table{width: 100%; border: 1px solid;}
 		#area table th{background-color: rgb(199, 196, 196); color: rgb(53, 52, 52);}
-		#area table tr button{width: 50%; height: 30px; background-color: gray; border: 1px solid; border-color: white; font-weight: 600; color: rgb(255, 255, 255);}
+		/* #area table tr button{width: 100%; height: 30px; background-color: gray; border: 1px solid; border-color: white; font-weight: 600; color: rgb(255, 255, 255);} */
 		
 		/* 상품계시판 밑에 버튼 */
 		#pageBtn{margin:auto; width:50%;}
-		#pageBtn>button{margin:auto; width:3%; height:30px; text-align: center;}
+		#pageBtn>button{margin:auto; width:3%; height:30px; text-align: center; border: 0px; background-color:white;}
 	</style>
 	<meta charset="UTF-8">
 	<title>FUN-THING ADMIN</title>
@@ -80,7 +82,7 @@
 
                 <tr>
 	                <th>번호</th> <th>상품번호</th> <th>상품명</th> <th>상품종류</th> <th>정가</th> <th>할인율</th> <th>판매가</th> 
-	                <th>펀딩 진행 유무</th> <th>펀딩 시작 날짜</th> <th>펀딩 종료 날짜</th> <th>변경</th>
+	                <th>펀딩 진행 유무</th> <th>펀딩 시작 날짜</th> <th>펀딩 종료 날짜</th>
                 </tr>
                 
 	            <%for(Product p : list) {
@@ -89,7 +91,7 @@
 	            <tr align="center">
 	            	<input type="hidden" value="<%=p.getpNo() %>">
 	            	<td><%=num %></td> <td><%=p.getpNo() %></td> <td><%=p.getpName() %></td> <td><%=p.getpCategory() %></td> <td><%=p.getRetailPrice() %></td> <td><%=p.getDcRate() %></td> <td><%=p.getpPrice() %></td> <td><%=p.getfYn() %></td> <td><%=p.getfStartDate() %></td> <td><%=p.getfEndDate() %></td>
-	            	<td><button>수정</button><button>삭제</button></td>
+	            	
 	            </tr>
                 <%} %>
 	        </table>
@@ -148,10 +150,7 @@
 	<br><br>
 </body>
 <script>
-	$(function(){
-		alert(<%=msg%>);
-		
-	})
+	
 </script>
 
 </html>
