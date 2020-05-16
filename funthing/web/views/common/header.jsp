@@ -74,7 +74,7 @@
 	                            <li><a href="#none">JEAN</a></li>
 	                        </ul>
 	                    </li>
-	                    <li><a href="#none">CALENDAR</a></li>
+	                    <li><a href="<%=request.getContextPath()%>/CalendarSelect">CALENDAR</a></li>
 	                </ul>
 	            </nav>
 	        </div>
