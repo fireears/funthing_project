@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="member.model.vo.*"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +44,7 @@
             <h2>1:1 문의</h2>
 
             <div class="q1_wrap">
-                <form>
+                <form action="<%=request.getContextPath()%>/PersonalQnA" method="post" encType="multipart/form-data">
                     <table>
                         <tr>
                             <td>제목</td>
@@ -54,7 +54,7 @@
                             <td>주문내역</td>
                             <td><span>insert prd list</span><button>주문내역</button></td>
                         </tr>
-                        <tr>
+                        <!-- tr>
                             <td>말머리</td>
                             <td>
                                 <select name="q1_type" id="q1_type">
@@ -64,10 +64,10 @@
                                     <option value="">tltle</option>
                                 </select>
                             </td>
-                        </tr>
+                        </tr--> <!-- 테이블에 말머리 없음 -->
                         <tr>
                             <td>작성자</td>
-                            <td>insert name</td>
+                            <td><%=loginUser.getmName() %></td>
                         </tr>
                         <tr>
                             <td>첨부파일</td>
@@ -83,18 +83,15 @@
                         <tr>
                             <td>자동등록방지</td>
                             <td>
-                                
-                                <form action="?" method="POST">
-                                    <div class="g-recaptcha" data-sitekey="6Lc-LfUUAAAAALl4aAS6eP84F_e8L8T1Xjj17L_X"></div>
-                                    <br/>
-                                    <input type="submit" value="Submit">
-                                </form>
-                                <script type="text/javascript">
-                                    var onloadCallback = function() {
-                                      alert("grecaptcha is ready!");
-                                    };
-                                  </script>
-                                  
+                               <div class="g-recaptcha" data-sitekey="6Lc-LfUUAAAAALl4aAS6eP84F_e8L8T1Xjj17L_X"></div>
+                           		<!-- 체크 확인 될 경우 #recaptcha-accessible-status, .rc-anchor-aria-status의 텍스트가 인증 필요  > 확인됨으로 바뀐다 -->
+                           <!-- input type="submit" value="Submit"> -->
+                           <!-- 자동 등록 방지 들어오는지 확인하는 스크립트라 주석처리함 -->
+                           <!-- script type="text/javascript">
+                               var onloadCallback = function() {
+                                 alert("grecaptcha is ready!");
+                               };
+                             </script-->  
                             </td>
                         </tr>
                     </table>

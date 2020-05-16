@@ -125,6 +125,20 @@ public class Product implements Serializable{
 		this.fPrgRate = fPrgRate;
 	}
 
+
+	public Product(String pNo, String thumbnail, String pName, int retailPrice, int pPrice, Date fStartDate,
+			Date fEndDate, int fPrgRate) {
+		super();
+		this.pNo = pNo;
+		this.thumbnail = thumbnail;
+		this.pName = pName;
+		this.retailPrice = retailPrice;
+		this.pPrice = pPrice;
+		this.fStartDate = fStartDate;
+		this.fEndDate = fEndDate;
+		this.fPrgRate = fPrgRate;
+	}
+	
 	//admin페이지 product수정 생성자
 	public Product(String p_color, String p_size, int retailPrice, int dcRate, int pPrice, String pDetail, int pPoint,
 			Date shipDate, Date fStartDate, Date fEndDate, int fGoal, int fSelPrice, String fYn, String calNo) {

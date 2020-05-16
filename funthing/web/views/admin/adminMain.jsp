@@ -15,6 +15,8 @@
     	int maxPage = pi.getMaxPage();
     	int startPage = pi.getStartPage();
     	int endPage = pi.getEndPage();
+    	
+    	
     %>
       
 <!DOCTYPE html>
@@ -148,10 +150,7 @@
 	<br><br>
 </body>
 <script>
-	$(function(){
-		alert(<%=msg%>);
-		
-	})
+	
 </script>
 
 </html>

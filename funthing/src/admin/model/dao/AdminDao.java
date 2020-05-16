@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import brand.model.vo.Brand;
 import payment.model.vo.OrderInfo;
 import payment.model.vo.OrderInfoDetail;
 import product.model.vo.Product;
@@ -329,6 +330,211 @@ public class AdminDao {
 	}
 
 	
+	
+	
+	// 브랜드 관리자 페이지(리스트 카운트 메소드)_희지
+	public int getBrandListCount(Connection conn) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int brandListCount = 0;
+		
+		String query = "SELECT COUNT(*) FROM BRAND";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) 
+			{
+				brandListCount = rset.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return brandListCount;
+	}
+	
 
+	// 브랜드 관리자 페이지(브랜드 조회하는 메소드)_희지
+	public ArrayList<Brand> selectBrandList(Connection conn, int currentPage, int limit) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		ArrayList<Brand> brandList = new ArrayList<>();
+	
+		
+		String query = "SELECT B_NO, B_NAME, B_CEO, B_PHONE, B_ADDRESS, B_EMAIL, B_LCH_DATE, B_LCH_YN FROM BRANDLIST WHERE RNUM BETWEEN ? AND ?";
+		
+		
+		int startRow = (currentPage -1) * limit +1;
+		
+		int endRow = startRow + (limit -1);
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Brand b = new Brand(rset.getString("B_NO"),
+						rset.getString("B_NAME"),
+						rset.getString("B_CEO"),
+						rset.getString("B_PHONE"),
+						rset.getString("B_ADDRESS"),
+						rset.getString("B_EMAIL"),
+						rset.getDate("B_LCH_DATE"),
+						rset.getString("B_LCH_YN"));
+				
+				brandList.add(b);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return brandList;
+	}
+
+		
+	// 브랜드 등록 페이지(정보 insert 메소드)_희지
+	public int insertBrand(Connection conn, Brand b) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query="INSERT INTO BRAND VALUES(SEQ_BR.NEXTVAL, ?, ?, ?, ?, ?, ?, ?)";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, b.getbName());
+			pstmt.setString(2, b.getbCeo());
+			pstmt.setString(3, b.getbPhone());
+			pstmt.setString(4, b.getbAddress());
+			pstmt.setString(5, b.getbEmail());
+			pstmt.setDate(6, b.getbLchDate());
+			pstmt.setString(7, b.getbLchYn());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+
+	// 브랜드 update위해 한 브랜드 정보 select_희지
+	public Brand selectOneBrand(Connection conn, String bNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Brand brand = null;
+		
+		String query = "SELECT * FROM BRAND WHERE B_NO=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, bNo);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+					brand = new Brand(rset.getString("B_NO"),
+						rset.getString("B_NAME"),
+						rset.getString("B_CEO"),
+						rset.getString("B_PHONE"),
+						rset.getString("B_ADDRESS"),
+						rset.getString("B_EMAIL"),
+						rset.getDate("B_LCH_DATE"),
+						rset.getString("B_LCH_YN"));
+			
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return brand;
+	}
+
+	
+	// 브랜드 update_희지
+	public int updateBrand(Connection conn, Brand b, String bNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query="UPDATE BRAND SET B_NO=?, B_NAME=?, B_CEO=?, B_PHONE=?,\r\n" + 
+				"B_ADDRESS=?, B_EMAIL=?, B_LCH_DATE=?, B_LCH_YN=? WHERE B_NO =?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1,b.getbNo());
+			pstmt.setString(2, b.getbName());
+			pstmt.setString(3, b.getbCeo());
+			pstmt.setString(4, b.getbPhone());
+			pstmt.setString(5, b.getbAddress());
+			pstmt.setString(6, b.getbEmail());
+			pstmt.setDate(7, b.getbLchDate());
+			pstmt.setString(8, b.getbLchYn());
+			pstmt.setString(9, bNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			
+		}
+		
+		return result;
+	}
+
+	
+	// 브랜드 delete_희지
+	public int deleteBrand(Connection conn, String bNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "UPDATE BRAND SET B_LCH_YN='N' WHERE B_NO=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, bNo);
+			
+			result = pstmt.executeUpdate();
+				
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	
+	
+	
+	
+	
+	
 	
 }
