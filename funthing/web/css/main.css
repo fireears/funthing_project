@@ -2,7 +2,7 @@
 @font-face { font-family: 'ghanachoco'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ghanachoco.woff') format('woff'); font-weight: normal; font-style: normal; }
 @font-face { font-family: 'Binggrae-Bold'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff') format('woff'); font-weight: normal; font-style: normal; }
 
-/* 메인 컬러 : #0f4a7e */
+/* 메인 컬러 : #0f4a7e */ 
 
 body { position:relative; overflow-x:hidden; }
 
