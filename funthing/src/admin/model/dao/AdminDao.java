@@ -1,6 +1,8 @@
 // 주문관리 페이지 검색창_혜린
 package admin.model.dao;
 
+import static common.JDBCTemplate.close;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,8 +13,6 @@ import productQnA.model.vo.AdminProductQnA;
 import payment.model.vo.OrderInfo;
 import payment.model.vo.OrderInfoDetail;
 import product.model.vo.Product;
-
-import static common.JDBCTemplate.*;
 
 public class AdminDao {
 
@@ -284,6 +284,122 @@ public class AdminDao {
 		
 		return list;
 	}
+
+	public Product selectOneProductDetail(Connection conn, String pNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Product p = null;
+		
+		String query = "SELECT * FROM PRODUCT WHERE P_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, pNo);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next())
+			{
+				p = new Product(rset.getString("p_no"),
+								rset.getString("b_no"),
+								rset.getString("thumbnail"),
+								rset.getString("p_name"),
+								rset.getString("p_color"),
+								rset.getString("p_size"),
+								rset.getInt("retail_Price"),
+								rset.getInt("dc_rate"),
+								rset.getInt("p_price"),
+								rset.getInt("p_category"),
+								rset.getInt("s_no"),
+								rset.getString("p_detail"),
+								rset.getString("img_router"),
+								rset.getInt("p_point"),
+								rset.getDate("ship_date"),
+								rset.getDate("f_start_date"),
+								rset.getDate("f_end_date"),
+								rset.getInt("f_goal"),
+								rset.getInt("f_sel_price"),
+								rset.getString("f_yn"),
+								rset.getString("cal_no"),
+								rset.getInt("f_prg_rate"));
+								
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally
+		{
+			close(pstmt);
+			close(rset);
+		}
+		return p;
+	}
+
+	public int productDelete(Connection conn, String pNo) {
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		String query = "UPDATE PRODUCT SET F_YN = 'N' WHERE P_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, pNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally
+		{
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public int productUpdate(Connection conn, Product p, String pNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "UPDATE PRODUCT SET \r\n" + 
+				"P_COLOR = ?, P_SIZE = ?, RETAIL_PRICE = ?, DC_RATE = ?, P_PRICE = ?, P_DETAIL = ?, P_POINT = ?, SHIP_DATE = ?, F_START_DATE = ?, F_END_DATE = ?, F_GOAL = ?, F_YN = ? \r\n" + 
+				"WHERE P_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setString(1, p.getP_color());
+			pstmt.setString(2, p.getP_size());
+			pstmt.setInt(3, p.getRetailPrice());
+			pstmt.setInt(4, p.getDcRate());
+			pstmt.setInt(5, p.getpPrice());
+			pstmt.setString(6, p.getpDetail());
+			pstmt.setInt(7, p.getpPoint());
+			pstmt.setDate(8, p.getShipDate());
+			pstmt.setDate(9, p.getfStartDate());
+			pstmt.setDate(10, p.getfEndDate());
+			pstmt.setInt(11, p.getfGoal());
+			pstmt.setString(12, p.getfYn());
+			pstmt.setString(13, pNo);
+			
+			result = pstmt.executeUpdate();
+			System.out.println("dao result : " + result);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally
+		{
+			close(pstmt);
+		}
+		return result;
+	}
+
+	
 
 	
 }

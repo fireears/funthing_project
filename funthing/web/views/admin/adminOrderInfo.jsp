@@ -249,7 +249,7 @@ ul li {
 										location.href = "<%=request.getContextPath()%>/admin/orderInfoDetail?mid="+ mid
 
 									})
-								})
+				})
 			</script>
 		</article>
 	</section>

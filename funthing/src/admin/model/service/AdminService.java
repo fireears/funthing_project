@@ -1,7 +1,6 @@
 package admin.model.service;
 
-import static common.JDBCTemplate.close;
-import static common.JDBCTemplate.getConnection;
+import static common.JDBCTemplate.*;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -93,6 +92,48 @@ public class AdminService {
 		
 		close(conn);
 		return list;
+	}
+
+	public Product selectOneProductDetail(String pNo) {
+		Connection conn = getConnection();
+		Product product = new AdminDao().selectOneProductDetail(conn, pNo);
+		
+		close(conn);
+		return product;
+	}
+
+	public int productDelete(String pNo) {
+		Connection conn = getConnection();
+		
+		int result = new AdminDao().productDelete(conn, pNo);
+		
+		if(result > 0)
+		{
+			commit(conn);
+		}
+		else
+		{
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+
+	public int productUpdate(Product p, String pNo) {
+		Connection conn = getConnection();
+		
+		int result = new AdminDao().productUpdate(conn, p, pNo);
+		
+		if(result > 0)
+		{
+			commit(conn);
+		}
+		else
+		{
+			rollback(conn);
+		}
+		close(conn);
+		return result;
 	}
 
 	
