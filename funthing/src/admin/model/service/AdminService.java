@@ -1,15 +1,19 @@
 package admin.model.service;
 
-import static common.JDBCTemplate.*;
+import static common.JDBCTemplate.close;
+import static common.JDBCTemplate.commit;
+import static common.JDBCTemplate.getConnection;
+import static common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.ArrayList;
 
-import productQnA.model.vo.AdminProductQnA;
 import admin.model.dao.AdminDao;
 import payment.model.vo.OrderInfo;
 import payment.model.vo.OrderInfoDetail;
 import product.model.vo.Product;
+import productQnA.model.vo.AdminProductQnA;
+import productQnA.model.vo.ProductQnAReply;
 public class AdminService {
 	
 	
@@ -134,6 +138,29 @@ public class AdminService {
 		}
 		close(conn);
 		return result;
+	}
+
+	// 상품문의 댓글 페이지_혜린
+	public ArrayList<ProductQnAReply> insertReply(ProductQnAReply r) {
+		Connection conn = getConnection();
+		
+		// BoardDao 메소드 두개를 호출하기 때문에 그냥 참조변수로 선언하자
+		AdminDao bDao = new AdminDao();
+		
+		int result = bDao.insertReply(conn, r);
+		// BoardDao로 가서 insertReply 메소드 완성시키고오자
+		
+		
+		ArrayList<ProductQnAReply> rlist = null;
+		
+		if(result > 0) {
+			commit(conn);
+			rlist = bDao.selectReplyList(conn, r.getQnaNo());
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return rlist;
 	}
 
 	

@@ -8,8 +8,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import productQnA.model.vo.AdminProductQnA;
+import productQnA.model.vo.ProductQnAReply;
 import payment.model.vo.OrderInfo;
 import payment.model.vo.OrderInfoDetail;
 import product.model.vo.Product;
@@ -242,7 +244,8 @@ public class AdminDao {
 		
 		return result;
 	}
-
+	
+	// 상품문의 페이지_혜린
 	public ArrayList<AdminProductQnA> selectTenList(Connection conn,int currentPage, int limit) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -253,8 +256,9 @@ public class AdminDao {
 		int endRow = startRow + limit - 1;
 		
 		try {
-			String query = "SELECT QNA_NO, M_ID, P_NO2, P_NAME, QNA_TITLE, QNA_DATE,RE_YN "
-					+ "FROM QNA Q JOIN MEMBER M ON Q.M_NO = M.M_NO  JOIN PRODUCT P ON Q.P_NO2 = P.P_NO ORDER BY QNA_NO DESC";
+
+			String query = " SELECT QNA_NO, M_ID, M_NAME,P_NO2,p_name ,QNA_TITLE, QNA_CONTENTS, QNA_DATE ,RE_YN	"
+					+ "FROM QNA Q JOIN member M ON Q.M_NO = M.M_NO join product p on q.p_no2 = p.p_no ORDER BY QNA_NO DESC";
 			pstmt = conn.prepareStatement(query);
 			rset = pstmt.executeQuery();
 			
@@ -262,14 +266,18 @@ public class AdminDao {
 				apq = new AdminProductQnA(
 						rset.getInt("QNA_NO"),
 						rset.getString("M_ID"),
+						rset.getString("M_NAME"),
 						rset.getString("P_NO2"), 
-						rset.getString("P_NAME"), 
+						rset.getString("p_name"), 
 						rset.getString("QNA_TITLE"),
+						rset.getString("QNA_CONTENTS"),
 						rset.getString("QNA_DATE"),
-						rset.getString("RE_YN"));
-					
+						rset.getString("RE_YN")
+						
+						);
 		
 				list.add(apq);
+				System.out.println("DAO list : " + list);
 				}
 				
 			
@@ -397,6 +405,68 @@ public class AdminDao {
 			close(pstmt);
 		}
 		return result;
+	}
+	
+	// 상품문의 댓글페이지_혜린
+	public int insertReply(Connection conn, ProductQnAReply r) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "INSERT INTO REPLY VALUES(SEQ_QNARE.NEXTVAL, ?, ?, ?, ?,SYSDATE)";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, r.getQnaNo());
+			pstmt.setString(2, r.getmNo());
+			pstmt.setString(3, r.getQnareId());
+			pstmt.setString(4, r.getQnareContent());
+			
+			result = pstmt.executeUpdate();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	// 상품문의 페이지 댓글_혜린
+	public ArrayList<ProductQnAReply> selectReplyList(Connection conn, int qnaNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		ArrayList<ProductQnAReply> rlist = null;
+		
+//		String query = prop.getProperty("selectReplyList");
+		String query = "SELECT * FROM QNARE WHERE QNA_NO=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, qnaNo);
+			
+			rs = pstmt.executeQuery();
+			
+			rlist = new ArrayList<ProductQnAReply>();
+			
+			while(rs.next()) {
+				
+				rlist.add(new ProductQnAReply(rs.getInt("QNARE_NO"),
+												rs.getInt("QNA_NO"),
+												rs.getString("M_NO"),
+												rs.getString("QNARE_ID"),
+												rs.getString("QNARE_CONTENT"),
+												rs.getDate("QNARE_DATE")));
+												
+			}
+		
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return rlist;
 	}
 
 	

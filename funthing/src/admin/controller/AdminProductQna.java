@@ -65,7 +65,7 @@ AdminService aService = new AdminService();
 		PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
 		
 		ArrayList<AdminProductQnA> list = aService.selectTenList(currentPage, limit);
-		
+		System.out.println(list);
 		RequestDispatcher view = null;
 		if(!list.isEmpty()) {
 			view = request.getRequestDispatcher("/views/admin/adminProductListQnA.jsp");
