@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import productQnA.model.vo.AdminProductQnA;
 import payment.model.vo.OrderInfo;
 import payment.model.vo.OrderInfoDetail;
 import product.model.vo.Product;
@@ -212,6 +213,76 @@ public class AdminDao {
 		}
 		
 		return od;
+	}
+	
+	// 상품문의 페이지_혜린 
+	public int getListQnaCount(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
+		
+		String query = "SELECT COUNT(*) FROM QNA";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			rset =  pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = rset.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		
+		return result;
+	}
+
+	public ArrayList<AdminProductQnA> selectTenList(Connection conn,int currentPage, int limit) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		AdminProductQnA apq = null;
+		ArrayList<AdminProductQnA> list = new ArrayList<>();
+		
+		int startRow = (currentPage - 1) * limit + 1;
+		int endRow = startRow + limit - 1;
+		
+		try {
+			String query = "SELECT QNA_NO, M_ID, P_NO2, P_NAME, QNA_TITLE, QNA_DATE,RE_YN "
+					+ "FROM QNA Q JOIN MEMBER M ON Q.M_NO = M.M_NO  JOIN PRODUCT P ON Q.P_NO2 = P.P_NO ORDER BY QNA_NO DESC";
+			pstmt = conn.prepareStatement(query);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				apq = new AdminProductQnA(
+						rset.getInt("QNA_NO"),
+						rset.getString("M_ID"),
+						rset.getString("P_NO2"), 
+						rset.getString("P_NAME"), 
+						rset.getString("QNA_TITLE"),
+						rset.getString("QNA_DATE"),
+						rset.getString("RE_YN"));
+					
+		
+				list.add(apq);
+				}
+				
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+
+		
+		return list;
 	}
 
 	

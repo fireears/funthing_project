@@ -6,6 +6,7 @@ import static common.JDBCTemplate.getConnection;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import productQnA.model.vo.AdminProductQnA;
 import admin.model.dao.AdminDao;
 import payment.model.vo.OrderInfo;
 import payment.model.vo.OrderInfoDetail;
@@ -75,6 +76,23 @@ public class AdminService {
 		
 		return od;
 		
+	}
+	//  상품문의 페이지_혜린
+	public int getListQnaCount() {
+		Connection  conn = getConnection();
+		int result = new AdminDao().getListQnaCount(conn);
+		
+		close(conn);
+		return result;
+	}
+
+	// 상품문의 페이지_혜린
+	public ArrayList<AdminProductQnA> selectTenList(int currentPage, int limit) {
+		Connection conn = getConnection(); 
+		ArrayList<AdminProductQnA> list = new AdminDao().selectTenList(conn,currentPage, limit);
+		
+		close(conn);
+		return list;
 	}
 
 	
