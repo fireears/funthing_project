@@ -31,15 +31,21 @@ public class ProductSearchServlet extends HttpServlet {
 		
 		System.out.println("adminProductSearch");
 		
-		String pNo = request.getParameter("p_no");
-		String sNo = request.getParameter("s_no");
-		String pName = request.getParameter("p_name");
-		int pCategory = Integer.valueOf(request.getParameter("p_category"));
-		int pPrice = Integer.valueOf(request.getParameter("p_price"));
-		Date fStartDate = Date.valueOf(request.getParameter("f_start_date"));
-		Date fEndDate = Date.valueOf(request.getParameter("f_end_date"));
-		String fYn = request.getParameter("f_yn");
-		
+		try
+		{
+			String pNo = request.getParameter("p_no");
+			String sNo = request.getParameter("s_no");
+			String pName = request.getParameter("p_name");
+			int pCategory = Integer.valueOf(request.getParameter("p_category"));
+			int pPrice = Integer.valueOf(request.getParameter("p_price"));
+			Date fStartDate = Date.valueOf(request.getParameter("f_start_date"));
+			Date fEndDate = Date.valueOf(request.getParameter("f_end_date"));
+			String fYn = request.getParameter("f_yn");
+		}
+		catch(NumberFormatException e)
+		{
+			e.printStackTrace();
+		}
 		
 		
 		

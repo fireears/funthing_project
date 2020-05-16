@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Insert title here</title>
+		<title>FUN-THING</title>
 		<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
         <style>
             body{margin: auto; width: 100%;}

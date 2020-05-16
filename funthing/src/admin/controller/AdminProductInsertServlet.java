@@ -1,27 +1,23 @@
 package admin.controller;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import admin.model.service.AdminService;
-
 /**
- * Servlet implementation class AdminProductUpdateServlet
+ * Servlet implementation class AdminProductInsertServlet
  */
-@WebServlet("/admin/productUpdate")
-public class AdminProductUpdateServlet extends HttpServlet {
+@WebServlet("/admin/productInsert")
+public class AdminProductInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminProductUpdateServlet() {
+    public AdminProductInsertServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,29 +26,11 @@ public class AdminProductUpdateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		System.out.println("productInsertServlet");
 		String pNo = request.getParameter("pNo");
-		System.out.println(pNo);
-		
-		int result = 0;
-		
-		result = new AdminService().productDelete(pNo);
-		
-		RequestDispatcher view = null;
-		String page = "";
-		if(result > 0)
-		{
-			page = "/admin/mainView";
-			request.setAttribute("pNo", pNo);
-		}
-		else
-		{
-			page = "/views/admin/adminProductDetail.jsp";
-			String msg =pNo + " 삭제가 되지 않았습니다.";
-			request.setAttribute("msg", msg);
-		}
-		view = request.getRequestDispatcher(page);
-		view.forward(request, response);
-		
+		String bNo = request.getParameter("bNo");
+//		String thumbnail = request.getParameter(")
 	}
 
 	/**

@@ -1,6 +1,8 @@
 // 주문관리 페이지 검색창_혜린
 package admin.model.dao;
 
+import static common.JDBCTemplate.close;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,8 +12,6 @@ import java.util.ArrayList;
 import payment.model.vo.OrderInfo;
 import payment.model.vo.OrderInfoDetail;
 import product.model.vo.Product;
-
-import static common.JDBCTemplate.*;
 
 public class AdminDao {
 
@@ -264,6 +264,30 @@ public class AdminDao {
 			close(rset);
 		}
 		return p;
+	}
+
+	public int productDelete(Connection conn, String pNo) {
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		String query = "UPDATE PRODUCT SET F_YN = 'N' WHERE P_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, pNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally
+		{
+			close(pstmt);
+		}
+		return result;
 	}
 
 	

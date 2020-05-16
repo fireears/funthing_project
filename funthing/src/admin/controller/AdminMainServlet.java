@@ -35,6 +35,7 @@ public class AdminMainServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		System.out.println("adminMainServlet");
+		String pNo = (String)request.getAttribute("pNo");
 		
 		AdminService aService = new AdminService();
 		
@@ -91,6 +92,14 @@ public class AdminMainServlet extends HttpServlet {
 			RequestDispatcher view = request.getRequestDispatcher("/views/admin/adminMain.jsp");
 			request.setAttribute("pi", pi);
 			request.setAttribute("list", list);
+			view.forward(request, response);
+		}
+		else if(!list.isEmpty() && pNo != null)
+		{
+			RequestDispatcher view = request.getRequestDispatcher("/views/admin/adminMain.jsp");
+			request.setAttribute("pi", pi);
+			request.setAttribute("list", list);
+			request.setAttribute("pNo", pNo);
 			view.forward(request, response);
 		}
 		else

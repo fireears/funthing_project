@@ -10,7 +10,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Insert title here</title>
+		<title>FUN-THING ADMIN</title>
 		<style>
 			#productDetail_area{margin: auto; width: 90%; padding-bottom:100px;}
 			#productDetail_area>article>table{width: 100%;}
@@ -85,13 +85,14 @@
         </section>
 	</body>
 	<script>
-		function pChange()
+		<%-- function pChange()
 		{
 			location.href="<%=request.getContextPath()%>/admin/productUpdate?method=" + <%=p.getpNo()%>;
-		}
+		} --%>
+		
 		function pDelete()
 		{
-			location.href="<%=request.getContextPath()%>/admin/productUpdate?pNo="+<%=p.getpNo()%>;
+			location.href="<%=request.getContextPath()%>/admin/productUpdate?pNo="+'<%=p.getpNo()%>';
 		}
 	</script>
 </html>

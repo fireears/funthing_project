@@ -63,7 +63,7 @@
 	    		</select>
 				</li>
 				<li><input type="submit" value="조회하기" style="background-color: gray; color: white; border-radius: 5px; border: 0px; width: 80px; height: 30px; font-size: 14px;"></li>
-				<li><button style="background-color: gray; color: white; border-radius: 5px; border: 0px; width: 80px; height: 30px; font-size: 14px;">상품등록</button></li>
+				<li><button type="button" id="productInsert" style="background-color: gray; color: white; border-radius: 5px; border: 0px; width: 80px; height: 30px; font-size: 14px;">상품등록</button></li>
 	        </ul>
 	    </div>
 	</form>
@@ -87,7 +87,8 @@
 	            %>
 	            <tr align="center">
 	            	<input type="hidden" value="<%=p.getpNo() %>">
-	            	<td><%=num %></td> <td><%=p.getpNo() %></td> <td><%=p.getpName() %></td> <td><%=p.getpCategory() %></td> <td><%=p.getRetailPrice() %></td> <td><%=p.getDcRate() %></td> <td><%=p.getpPrice() %></td> <td><%=p.getfYn() %></td> <td><%=p.getfStartDate() %></td> <td><%=p.getfEndDate() %></td> <td><button>수정</button><button>삭제</button></td>
+	            	<td><%=num %></td> <td><%=p.getpNo() %></td> <td><%=p.getpName() %></td> <td><%=p.getpCategory() %></td> <td><%=p.getRetailPrice() %></td> <td><%=p.getDcRate() %></td> <td><%=p.getpPrice() %></td> <td><%=p.getfYn() %></td> <td><%=p.getfStartDate() %></td> <td><%=p.getfEndDate() %></td>
+	            	<td><button>수정</button><button>삭제</button></td>
 	            </tr>
                 <%} %>
 	        </table>
@@ -105,6 +106,11 @@
 					location.href = "<%=request.getContextPath()%>/admin/productDetail?pNo="+ pNo
 
 				})
+				
+				$("#productInsert").click(function(){
+					location.href="<%=request.getContextPath()%>/views/admin/adminProductInsert.jsp";
+				})
+				
 			})
 			</script>
 			
