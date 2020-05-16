@@ -34,7 +34,7 @@ public class AdminMainServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		System.out.println("adminMainServlet");
+//		System.out.println("adminMainServlet");
 		
 		AdminService aService = new AdminService();
 		
@@ -60,7 +60,7 @@ public class AdminMainServlet extends HttpServlet {
 			currentPage = 1;
 		}
 		//페이지 확인용
-		System.out.println(currentPage);
+//		System.out.println(currentPage);
 		
 		maxPage = (int)((double)listCount/limit + 0.95);
 		

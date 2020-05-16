@@ -54,7 +54,7 @@ public class AdminDao {
 		int endRow = startRow + limit -1;
 		String query = "SELECT P_NO, P_NAME, P_CATEGORY, RETAIL_PRICE, DC_RATE, P_PRICE, F_YN, F_START_DATE, F_END_DATE FROM PRODUCTLIST WHERE RNUM BETWEEN ? AND ?";
 		
-		System.out.println("새로 list담자");
+//		System.out.println("새로 list담자");
 		try {
 			
 			pstmt = conn.prepareStatement(query);
