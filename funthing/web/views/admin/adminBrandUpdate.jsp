@@ -1,17 +1,15 @@
-<!-- 브랜드 등록 페이지_희지 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-
-<%
-	String message = (String)request.getAttribute("msg");
-	String result = (String)request.getAttribute("result");
-%>
+    pageEncoding="UTF-8" import="brand.model.vo.*"%>
     
+<%
+	Brand b = (Brand)request.getAttribute("brand");
+
+%>
     
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <title>admin_brand_insert</title>
+    <title>admin_brand_update/detail</title>
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
     <style>
        	#brandInsert{margin: auto; width: 80%;}
@@ -23,6 +21,7 @@
 		#brandInsert table select{width: 30%; height: 20px; margin-left: 10px;}
 		
 		#brandInsertBtn{margin:auto; width:30%; height:50px; background-color:gray; color:white; font-size:25px; font-weight:600;}
+		#brandDeleteBtn{margin:auto; width:30%; height:50px; background-color:gray; color:white; font-size:25px; font-weight:600;}
 	       
     </style>
 
@@ -30,37 +29,37 @@
 <body>
     
     <%@ include file="../common/adminHeader.jsp" %>
-	<h1 style="text-align: center;">신규 브랜드 등록</h1>
+	<h1 style="text-align: center;">브랜드 정보 수정</h1>
     <section id="brandInsert">
 		<article id="center">
-			<form action="<%=request.getContextPath() %>/admin/brandInsert" method="post">
+			<form action="<%=request.getContextPath() %>/admin/brandUpdate" method="post">
 				<table>
 					<tr>
-						<th>브랜드 코드</th><td><input type="text" id="bNo" name="bNo"></td>
+						<th>브랜드 코드</th><td><input type="text" id="bNo" name="bNo" value=<%=b.getbNo() %>></td>
 					</tr>
 					
 					<tr>
-						<th>브랜드 명</th><td><input type="text" id="bName" name="bName"></td>
+						<th>브랜드 명</th><td><input type="text" id="bName" name="bName" value=<%=b.getbName() %>></td>
 					</tr>
 					
 					<tr>
-						<th>대표 명</th><td><input type="text" id="bCeo" name="bCeo"></td> 
+						<th>대표 명</th><td><input type="text" id="bCeo" name="bCeo" value=<%=b.getbCeo() %>></td> 
 					</tr>
 					
 					<tr>
-						<th>연락처</th><td><input type="tel" id="bPhone" name="bPhone"></td>
+						<th>연락처</th><td><input type="tel" id="bPhone" name="bPhone" value=<%=b.getbPhone() %>></td>
 					</tr>
 					
 					<tr>
-						<th>이메일</th><td><input type="email" id="bEmail" name="bEmail"></td>
+						<th>이메일</th><td><input type="email" id="bEmail" name="bEmail" value=<%=b.getbEmail() %>></td>
 					</tr>
 					
 					<tr>
-						<th>회사주소</th><td><input type="text" id="bAddress" name="bAddress"></td>
+						<th>회사주소</th><td><input type="text" id="bAddress" name="bAddress" value=<%=b.getbAddress() %>></td>
 					</tr>
 					
 					<tr>
-						<th>입점날짜</th><td><input type="date" id="bLchDate" name="bLchDate"></td>
+						<th>입점날짜</th><td><input type="date" id="bLchDate" name="bLchDate" value=<%=b.getbLchDate() %>></td>
 					</tr>
 					
 					<tr>
@@ -75,7 +74,8 @@
 				</table>
 			
 			 <br><br>
-             <input type="submit" id="brandInsertBtn" value="브랜드 등록">
+             <input type="submit" id="brandInsertBtn" value="정보수정">
+             <button type="button" id="brandDeleteBtn" onclick="brandDeleteBtn();">삭제하기</button>
              <br><br>
 			
 			</form>
@@ -83,14 +83,12 @@
 		</article>
 	</section>
 
-
-
-
-
-    
-    
     <script>
-    	
+    	function brandDeleteBtn(){
+    		location.href="<%=request.getContextPath()%>/admin/brandDelete?bNo=" + '<%=b.getbNo() %>';
+    		
+    		
+    	}
     
     
     
@@ -101,22 +99,11 @@
     </script>
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+	
+	
+
+
+
 
 </body>
-
-
 </html>
