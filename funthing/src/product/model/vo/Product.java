@@ -97,6 +97,8 @@ public class Product implements Serializable{
 		this.fPrgRate = fPrgRate;
 	}
 
+	
+	
 	public Product(String pNo, String bNo, String thumbnail, String pName, int retailPrice, int dcRate, int pPrice,
 			int pCategory, int sNo, String pDetail, String imgRouter, int pPoint, Date shipDate, Date fStartDate,
 			Date fEndDate, int fGoal, int fSelPrice, String fYn, String calNo, int fPrgRate) {
@@ -123,7 +125,6 @@ public class Product implements Serializable{
 		this.fPrgRate = fPrgRate;
 	}
 
-	
 
 	public Product(String pNo, String thumbnail, String pName, int retailPrice, int pPrice, Date fStartDate,
 			Date fEndDate, int fPrgRate) {
@@ -136,6 +137,26 @@ public class Product implements Serializable{
 		this.fStartDate = fStartDate;
 		this.fEndDate = fEndDate;
 		this.fPrgRate = fPrgRate;
+	}
+	
+	//admin페이지 product수정 생성자
+	public Product(String p_color, String p_size, int retailPrice, int dcRate, int pPrice, String pDetail, int pPoint,
+			Date shipDate, Date fStartDate, Date fEndDate, int fGoal, int fSelPrice, String fYn, String calNo) {
+		super();
+		this.p_color = p_color;
+		this.p_size = p_size;
+		this.retailPrice = retailPrice;
+		this.dcRate = dcRate;
+		this.pPrice = pPrice;
+		this.pDetail = pDetail;
+		this.pPoint = pPoint;
+		this.shipDate = shipDate;
+		this.fStartDate = fStartDate;
+		this.fEndDate = fEndDate;
+		this.fGoal = fGoal;
+		this.fSelPrice = fSelPrice;
+		this.fYn = fYn;
+		this.calNo = calNo;
 	}
 
 	public String getpNo() {

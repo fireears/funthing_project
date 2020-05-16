@@ -1,26 +1,27 @@
 package admin.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import admin.model.service.AdminService;
 
 /**
- * Servlet implementation class AdminProductInsertServlet
+ * Servlet implementation class AdminProductUpdateServlet
  */
-@WebServlet("/admin/productInsert")
-public class AdminProductInsertServlet extends HttpServlet {
+@WebServlet("/admin/productDelete")
+public class AdminProductDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminProductInsertServlet() {
+    public AdminProductDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,22 +30,29 @@ public class AdminProductInsertServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		request.setCharacterEncoding("utf-8");
-		
-		int maxSize = 1024*1024*10;
-		
-		String root = request.getSession().getServletContext().getRealPath("/");
-		
-		String thumbnailSavePath = root + "/images/thumbnail";
-		
-		MultipartRequest tumbnailMultipart = new MultipartRequest(request, thumbnailSavePath, maxSize, "utf-8", new DefaultFileRenamePolicy());
-		
-		
-		System.out.println("productInsertServlet");
 		String pNo = request.getParameter("pNo");
-		String bNo = request.getParameter("bNo");
-//		String thumbnail = request.getParameter(")
+		System.out.println(pNo);
+		
+		int result = 0;
+		
+		result = new AdminService().productDelete(pNo);
+		
+		RequestDispatcher view = null;
+		String page = "";
+		if(result > 0)
+		{
+			page = "/admin/mainView";
+			request.setAttribute("pNo", pNo);
+		}
+		else
+		{
+			page = "/views/admin/adminProductDetail.jsp";
+			String msg =pNo + " 삭제가 되지 않았습니다.";
+			request.setAttribute("msg", msg);
+		}
+		view = request.getRequestDispatcher(page);
+		view.forward(request, response);
+		
 	}
 
 	/**
