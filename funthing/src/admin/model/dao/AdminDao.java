@@ -19,6 +19,7 @@ import brand.model.vo.Brand;
 import payment.model.vo.OrderInfo;
 import payment.model.vo.OrderInfoDetail;
 import personalQnA.model.vo.PersonalQnA;
+import personalQnA.model.vo.PersonalQnaReply;
 import product.model.vo.Product;
 
 public class AdminDao {
@@ -95,7 +96,7 @@ public class AdminDao {
 		return list;
 	}
 
-	// 주문관리 페이지_혜린	
+	// 주문관리 페이지 검색_혜린	
 	public ArrayList<OrderInfo> selectOrderSearch(Connection conn, int currentPage, int limit, String searchKind,
 			String searchText) {
 		PreparedStatement pstmt = null;
@@ -674,8 +675,8 @@ public class AdminDao {
 		
 		return result;
 	}
-	// 1:1문의 페이지_혜린
-	public ArrayList<PersonalQnA> selectTenPersonQnaList(Connection conn, int currentPage, int limit) {
+	// 1:1문의 페이지 검색_혜린
+	public ArrayList<PersonalQnA> selectTenPersonQnaList(Connection conn, int currentPage, int limit, String searchKind,String searchText) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		PersonalQnA pq = null;
@@ -686,15 +687,34 @@ public class AdminDao {
 		
 		try {
 
-//			String query = "select  PER_QNA_NO,m_id,m_name,PER_TITLE,PER_CONTENTS,pq.O_NO, pq.P_NO, p_name,PER_RE_YN,ADDFILE,PER_CATE "
-//					+ "from personal_qna pq join member m on pq.M_NO = m.m_no join product p on p.p_no = pq.p_no join payment_info pi on pq.o_no = pi.o_no";
-			String query = "select PER_QNA_NO,m_id,PER_TITLE,PER_CONTENTS, pq.P_NO,p_name,PER_RE_YN,ADDFILE,O_NO,PER_CATE "
-					+ "from personal_qna pq join member m on pq.m_no = m.m_no join product p on pq.p_no = p.p_no order by per_qna_no desc";
-			pstmt = conn.prepareStatement(query);
+
+			String query = null;
+			
+			if(searchKind == null && searchText == null ) {	
+				query = "select rownum, PER_QNA_NO,m_id,PER_TITLE,PER_CONTENTS, pq.P_NO,p_name,PER_RE_YN,ADDFILE,O_NO,PER_CATE "
+						+ "from personal_qna pq join member m on pq.m_no = m.m_no join product p on pq.p_no = p.p_no  where rownum  BETWEEN ? AND ?   order by per_qna_no desc";
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, startRow);
+				pstmt.setInt(2, endRow);
+			}else if(searchKind != null && searchText.equals("")) {
+				query = "select rownum, PER_QNA_NO,m_id,PER_TITLE,PER_CONTENTS, pq.P_NO,p_name,PER_RE_YN,ADDFILE,O_NO,PER_CATE "
+						+ "from personal_qna pq join member m on pq.m_no = m.m_no join product p on pq.p_no = p.p_no  where rownum  BETWEEN ? AND ?  order by per_qna_no desc ";
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, startRow);
+				pstmt.setInt(2, endRow);
+			}else if(searchKind != null && searchText != null) {
+				query ="select rownum, PER_QNA_NO,m_id,PER_TITLE,PER_CONTENTS, pq.P_NO,p_name,PER_RE_YN,ADDFILE,O_NO,PER_CATE "
+						+ "from personal_qna pq join member m on pq.m_no = m.m_no join product p on pq.p_no = p.p_no  where " + searchKind + "=?  order by per_qna_no desc";
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, searchText);			
+			}
+			
+			
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
 				pq = new PersonalQnA(
+						rset.getInt("rownum"),
 						rset.getInt("PER_QNA_NO"),
 						rset.getString("m_id"),
 						rset.getString("PER_TITLE"),
@@ -727,6 +747,30 @@ public class AdminDao {
 
 		
 		return list;
+	}
+
+	public int insertMember(Connection conn, PersonalQnaReply re) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "INSERT INTO PQ_RE VALUES(SEQ_PQRE.NEXTVAL,'MASTER', ?, SYSDATE, ?)";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, re.getPqreContent());
+			pstmt.setInt(2, re.getPerQnaNo());
+		
+			result = pstmt.executeUpdate();
+			System.out.println("dao에서 회원가입 결과 : " + result);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+		
 	}
 
 	}

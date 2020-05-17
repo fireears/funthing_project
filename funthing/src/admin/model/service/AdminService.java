@@ -13,6 +13,7 @@ import brand.model.vo.Brand;
 import payment.model.vo.OrderInfo;
 import payment.model.vo.OrderInfoDetail;
 import personalQnA.model.vo.PersonalQnA;
+import personalQnA.model.vo.PersonalQnaReply;
 import product.model.vo.Product;
 import productQnA.model.vo.AdminProductQnA;
 import productQnA.model.vo.ProductQnAReply;
@@ -44,7 +45,7 @@ public class AdminService {
 		return list;
 	}
 
-	// 주문관리 페이지_혜린	
+	// 주문관리 페이지 검색_혜린	
 	public ArrayList<OrderInfo> selectOrderSearch(int currentPage, int limit, String searchKind, String searchText) {
 		Connection conn = getConnection();
 		
@@ -253,15 +254,30 @@ public class AdminService {
 		return result;
 	}
 
-	public ArrayList<PersonalQnA> selectTenPersonQnaList(int currentPage, int limit) {
+	// 1:1문의 페이지 검색_햬린
+	public ArrayList<PersonalQnA> selectTenPersonQnaList(int currentPage, int limit, String searchKind,String searchText) {
 		Connection conn = getConnection(); 
-		ArrayList<PersonalQnA> list = new AdminDao().selectTenPersonQnaList(conn,currentPage, limit);
+		ArrayList<PersonalQnA> list = new AdminDao().selectTenPersonQnaList(conn,currentPage, limit , searchKind,searchText);
 		
 		close(conn);
 		
 		
 		return list;
 	}
+
+	public int insertPersonalReply(PersonalQnaReply re) {
+		Connection conn = getConnection();
+		
+		int result = new AdminDao().insertMember(conn,re);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;	}
 
 
 

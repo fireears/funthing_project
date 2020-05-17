@@ -68,16 +68,17 @@
 </head>
 <body>
 <%@ include file="../common/adminHeader.jsp" %>
-	<h2>상품문의</h2>
-	<form action="<%=request.getContextPath() %>/admin/productSearch" method="GET">
+	<h2>1:1문의 관리</h2>
+	<form action="<%=request.getContextPath() %>/admin/personalQna" method="post">
 		<div id="nav_section">
 			<div id="searchArea">
 			  
 			        <span>
 						 <select id="search_kind" name="searchKind">
+						 		<option value="PER_CATE">문의유형</option>
 								<option value="m_Id">아이디</option>
 								<option value="o_No">주문번호</option>
-								<option value="re_yn">답변여부</option>
+								<option value="PER_RE_YN">답변여부</option>
 					     </select>
 					</span>
 					<span> 
@@ -98,11 +99,11 @@
 
 			 <section id=area> 
             <table id="areaTable">
-
+ 				<% if(!list.isEmpty()){ %>
                 <tr>
 	                <th>번호</th> <th>문의유형</th><th>아이디</th> <th>문의제목</th><th>주문번호</th><th>답변유무</th> 
                 </tr>
-                
+               
 	            <%for(PersonalQnA pq : list) {%>  
 	            <tr align="center" class="line">
 	            	<input type="hidden" value="<%=pq.getPerQnaNo() %>">
@@ -127,17 +128,32 @@
 	            		<h3>관리자 답변</h3>
 	            		<br>
 	            		<div id="reply">
+	            		<form id="replyForm" action="<%=request.getContextPath() %>/admin/personalRe" method="post">
 	            			<table align="center" id="replyTable">
 	            				<tr>
-	            					<td width=220px; ><textArea rows="4" cols="220" id="replyContent"></textArea></td>
-	            					<td><button id="seachBtn">답변등록</button></td>
+	            					<input type="hidden" name="rownum" value="<%=pq.getRownum() %>">
+	            					<input type="hidden" name="perQnaNo" value="<%=pq.getPerQnaNo() %>">
+	            					<input type="hidden" name="tossmId" value="<%=pq.getmId() %>">
+	            					<td width=220px;  ><textArea rows="4" cols="220" id="replyContent" name="replyContent"></textArea></td>
+	            					<td><button type="submit" id="seachBtn" >답변등록</button></td>
 	            				</tr>
 	            			</table>
+	            			</form>
 	            			</section>
 	            		</div><!-- 댓글등록창 끝 -->
 	            	</div><!-- 정보창 및 댓글등록창 끝 -->
 	            	</td>
 	            </tr>
+	            <%} %>
+                <%}else{ %>
+                
+                <tr>
+	                <th>번호</th> <th>문의유형</th><th>아이디</th> <th>문의제목</th><th>주문번호</th><th>답변유무</th> 
+                </tr>
+                <tr style="margin-top:30px;">
+                	<td colspan="6"><div style="text-align:center">검색 결과가 없습니다. 다시 검색해주세요.</div></td>
+                </tr>	
+                
                 <%} %>
 	        </table>
 	        <br><br>
@@ -150,28 +166,28 @@
 	        
 	        <!-- 페이징처리 -->
 	        <div id="pageBtn" align="center">
-	        	<button class="pageBtn" onclick="location.href='<%=request.getContextPath() %>/admin/productQnA?currentPage=<%=1 %>'"> << </button>
+	        	<button class="pageBtn" onclick="location.href='<%=request.getContextPath() %>/admin/personalQna?currentPage=<%=1 %>'"> << </button>
 	        	
 	        	<%if(currentPage <= 1) { %>
 	        		<button class="pageBtn" disabled> < </button>
 	        	<%} else {%>
-	        		<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/admin/productQnA?currentPage=<%=currentPage-1%>'"> < </button>
+	        		<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/admin/personalQna?currentPage=<%=currentPage-1%>'"> < </button>
 	        	<%} %>
 	        	<%for(int p = startPage; p<=endPage; p++) { %>
 	        	<%	if(p == currentPage) { %>
 	        			<button class="pageBtn" disabled><%=p %></button>
 	        	
 	        	<%	} else{ %>
-	        			<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/admin/productQnA?currentPage=<%=p%>'"><%=p %></button>
+	        			<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/admin/personalQna?currentPage=<%=p%>'"><%=p %></button>
 	        	<%} %>	
 	        	<%} %>
 	        	
 	        	<%if(currentPage == maxPage) {%>
 	        		<button class="pageBtn" disabled> > </button>
 	        	<%} else { %>
-	        		<button class="pageBtn" onclick="location.href='<%=request.getContextPath() %>/admin/productQnA?currentPage=<%=currentPage+1 %>'"> > </button>
+	        		<button class="pageBtn" onclick="location.href='<%=request.getContextPath() %>/admin/personalQna?currentPage=<%=currentPage+1 %>'"> > </button>
 	        	<%} %>
-	        	<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/admin/productQnA?currentPage=<%=maxPage%>'"> >> </button>
+	        	<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/admin/personalQna?currentPage=<%=maxPage%>'"> >> </button>
 	        	
 	        	
 	        </div>
