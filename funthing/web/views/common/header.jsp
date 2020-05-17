@@ -48,7 +48,7 @@
 	                <% } %>
 	                
 	            </div>
-	        </div>
+	        </div> 
 	        <div id="nav-wrap">
 	            <div class="logo-wrap">
 	                <h1 class="logo"><a href="index.jsp">FUN-THING</a></h1>
