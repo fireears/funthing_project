@@ -12,6 +12,7 @@ import java.util.Date;
 
 
 import productQnA.model.vo.AdminProductQnA;
+import productQnA.model.vo.ProductQnA;
 import productQnA.model.vo.ProductQnAReply;
 
 import brand.model.vo.Brand;
@@ -798,6 +799,7 @@ public class AdminDao {
 		
 	}
 
+	
 	}
 
 	
