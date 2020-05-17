@@ -252,7 +252,7 @@ public class AdminDao {
 	}
 	
 	// 상품문의 페이지_혜린
-	public ArrayList<AdminProductQnA> selectTenList(Connection conn,int currentPage, int limit) {
+	public ArrayList<AdminProductQnA> selectTenProductQnaList(Connection conn,int currentPage, int limit, String searchKind,String searchText) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		AdminProductQnA apq = null;
@@ -263,13 +263,37 @@ public class AdminDao {
 		
 		try {
 
-			String query = " SELECT QNA_NO, M_ID, M_NAME,P_NO2,p_name ,QNA_TITLE, QNA_CONTENTS, QNA_DATE ,RE_YN	"
-					+ "FROM QNA Q JOIN member M ON Q.M_NO = M.M_NO join product p on q.p_no2 = p.p_no ORDER BY QNA_NO DESC";
+			String query = " SELECT rownum, QNA_NO, M_ID, M_NAME,P_NO2,p_name ,QNA_TITLE, QNA_CONTENTS, QNA_DATE ,RE_YN	"
+					+ "FROM QNA Q JOIN member M ON Q.M_NO = M.M_NO join product p on q.p_no2 = p.p_no where rownum  BETWEEN ? AND ?  ORDER BY QNA_NO DESC ";
 			pstmt = conn.prepareStatement(query);
+			
+			
+			
+			if(searchKind == null && searchText == null ) {	
+				query = " SELECT rownum, QNA_NO, M_ID, M_NAME,P_NO2,p_name ,QNA_TITLE, QNA_CONTENTS, QNA_DATE ,RE_YN	"
+						+ "FROM QNA Q JOIN member M ON Q.M_NO = M.M_NO join product p on q.p_no2 = p.p_no where rownum  BETWEEN ? AND ?  ORDER BY QNA_NO DESC ";
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, startRow);
+				pstmt.setInt(2, endRow);
+			}else if(searchKind != null && searchText.equals("")) {
+				query = " SELECT rownum, QNA_NO, M_ID, M_NAME,P_NO2,p_name ,QNA_TITLE, QNA_CONTENTS, QNA_DATE ,RE_YN	"
+						+ "FROM QNA Q JOIN member M ON Q.M_NO = M.M_NO join product p on q.p_no2 = p.p_no where rownum  BETWEEN ? AND ?  ORDER BY QNA_NO DESC ";
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, startRow);
+				pstmt.setInt(2, endRow);
+			}else if(searchKind != null && searchText != null) {
+				query =" SELECT rownum, QNA_NO, M_ID, M_NAME,P_NO2,p_name ,QNA_TITLE, QNA_CONTENTS, QNA_DATE ,RE_YN	"
+						+ "FROM QNA Q JOIN member M ON Q.M_NO = M.M_NO join product p on q.p_no2 = p.p_no where " + searchKind + "=?  ORDER BY QNA_NO DESC";
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, searchText);			
+			}
+			
+			
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
 				apq = new AdminProductQnA(
+						rset.getInt("rownum"),
 						rset.getInt("QNA_NO"),
 						rset.getString("M_ID"),
 						rset.getString("M_NAME"),

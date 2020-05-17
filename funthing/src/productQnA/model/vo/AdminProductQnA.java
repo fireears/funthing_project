@@ -4,7 +4,8 @@ package productQnA.model.vo;
 import java.util.Date;
 
 public class AdminProductQnA {
-
+	
+	private int rownum;				// 답글 qna 게시글 번호
 	private int qnaNo;				// qna 번호
 	private String mId;				// 회원아이디
 	private String mName;			// 회원 이름
@@ -15,20 +16,17 @@ public class AdminProductQnA {
 	private String qnaDate;			// qna 작성날짜
 	private String bNo;				// 브랜드번호
 	private String reYn;			// 답글 여부
+
+
 	public AdminProductQnA() {
 		super();
 	}
 	
 	
-	public AdminProductQnA(int qnaNo) {
+	public AdminProductQnA(int rownum, int qnaNo, String mId, String mName, String pNo, String pName, String qnaTitle,
+			String qnaContents, String qnaDate, String reYn) {
 		super();
-		this.qnaNo = qnaNo;
-	}
-
-	
-
-	public AdminProductQnA(int qnaNo, String mId, String mName,String pNo, String pName,String qnaTitle, String qnaContents, String qnaDate, String reYn) {
-		super();
+		this.rownum = rownum;
 		this.qnaNo = qnaNo;
 		this.mId = mId;
 		this.mName = mName;
@@ -41,6 +39,27 @@ public class AdminProductQnA {
 	}
 
 
+	public AdminProductQnA(int rownum, int qnaNo, String mId, String mName, String pNo, String pName, String qnaTitle,
+			String qnaContents, String qnaDate, String bNo, String reYn) {
+		super();
+		this.rownum = rownum;
+		this.qnaNo = qnaNo;
+		this.mId = mId;
+		this.mName = mName;
+		this.pNo = pNo;
+		this.pName = pName;
+		this.qnaTitle = qnaTitle;
+		this.qnaContents = qnaContents;
+		this.qnaDate = qnaDate;
+		this.bNo = bNo;
+		this.reYn = reYn;
+	}
+	public int getRownum() {
+		return rownum;
+	}
+	public void setRownum(int rownum) {
+		this.rownum = rownum;
+	}
 	public int getQnaNo() {
 		return qnaNo;
 	}
@@ -103,10 +122,12 @@ public class AdminProductQnA {
 	}
 	@Override
 	public String toString() {
-		return "AdminProductQnA [qnaNo=" + qnaNo + ", mId=" + mId + ", mName=" + mName + ", pNo=" + pNo + ", pName="
-				+ pName + ", qnaTitle=" + qnaTitle + ", qnaContents=" + qnaContents + ", qnaDate=" + qnaDate + ", bNo="
-				+ bNo + ", reYn=" + reYn + "]";
+		return "AdminProductQnA [rownum=" + rownum + ", qnaNo=" + qnaNo + ", mId=" + mId + ", mName=" + mName + ", pNo="
+				+ pNo + ", pName=" + pName + ", qnaTitle=" + qnaTitle + ", qnaContents=" + qnaContents + ", qnaDate="
+				+ qnaDate + ", bNo=" + bNo + ", reYn=" + reYn + "]";
 	}
+	
+	
 	
 	
 	}

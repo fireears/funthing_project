@@ -69,11 +69,11 @@ public class AdminOrderInfo extends HttpServlet {
 			
 			String searchKind = request.getParameter("searchKind");	// 검색 종류 값
 			String searchText = request.getParameter("searchText"); // 검색 입력창 값
-			if(searchText != null) {
-				searchText = request.getParameter("searchText");
-			}else {
-				searchText = (String) request.getAttribute("searchText");
-			}
+//			if(searchText != null) {
+//				searchText = request.getParameter("searchText");
+//			}else {
+//				searchText = (String) request.getAttribute("searchText");
+//			}
 			
 //				System.out.println("servlet searchKind : " + searchKind);
 //				System.out.println("servlet searchText : " + searchText);
@@ -84,15 +84,19 @@ public class AdminOrderInfo extends HttpServlet {
 			if(!searchList.isEmpty()) {		// 검색의 조건이 알맞을 때
 				view = request.getRequestDispatcher("/views/admin/adminOrderInfo.jsp");
 				request.setAttribute("searchList", searchList);
-				request.setAttribute("searchText", searchText);
+//				request.setAttribute("searchList", searchList);
+//				request.setAttribute("searchText", searchText);
 				request.setAttribute("pi", pi);
 			
 			}else {							// 검색의 조건이 틀렸을 때 
-				response.sendRedirect(request.getContextPath()+"/admin/searchOrder");
-				request.setAttribute("searchText", "" );
+				view = request.getRequestDispatcher("/views/admin/adminOrderInfo.jsp");
+				request.setAttribute("searchList", searchList);
+				request.setAttribute("pi", pi);
+//				response.sendRedirect(request.getContextPath()+"/admin/searchOrder");
+//				request.setAttribute("searchText", "" );
 //					System.out.println("servlet searchList : " + searchList );
-				request.setAttribute("pi", pi); 
-				return;		// 하지않으면 완료된 commit error
+//				request.setAttribute("pi", pi); 
+//				return;		// 하지않으면 완료된 commit error
 			}
 			view.forward(request, response);	
 		}

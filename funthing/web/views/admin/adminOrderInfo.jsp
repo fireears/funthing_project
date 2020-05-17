@@ -173,6 +173,7 @@ ul li {
 		<article>
 			<div id="order_manage">
 				<table id="order_table">
+				<% if(!searchList.isEmpty()){ %>
 					<tr>
 						<th>번호</th>
 						<th>주문번호</th>
@@ -183,7 +184,7 @@ ul li {
 						<th>총 합계</th>
 						<th>취소여부</th>
 					</tr>
-					<%if (searchList != null) {	%>
+					
 						<%for (OrderInfo om : searchList) {%>
 							<tr>
 								<input type="hidden" value="<%=om.getmId()%>">
@@ -196,8 +197,24 @@ ul li {
 								<td><%=om.getPmntPrice()%></td>
 								<td><%=om.getCancelYn()%></td>
 							</tr>
-						<%}%>
+						
 					<%}%>
+					<%}else{ %>
+					<tr>
+						<th>번호</th>
+						<th>주문번호</th>
+						<th>회원아이디</th>
+						<th>결제방법</th>
+						<th>결제유무</th>
+						<th>배송단계</th>
+						<th>총 합계</th>
+						<th>취소여부</th>
+					</tr>			
+					<tr style="margin-top:30px;">
+                	<td colspan="8"><div style="text-align:center">검색 결과가 없습니다. 다시 검색해주세요.</div></td>
+               		 </tr>	
+					
+				   <%} %>
 				</table>
 			</div>
 			

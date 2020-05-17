@@ -34,6 +34,7 @@ public class AdminProductQna extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		AdminService aService = new AdminService();
 		
 		int listCount = aService.getListQnaCount();
@@ -65,7 +66,18 @@ public class AdminProductQna extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
 		
-		ArrayList<AdminProductQnA> list = aService.selectTenList(currentPage, limit);
+		// 검색창 구현 시작
+		String searchKind = request.getParameter("searchKind");	// 검색 종류 값
+		String searchText = request.getParameter("searchText"); // 검색 입력창 값
+		if(searchText != null) {
+			searchText = request.getParameter("searchText");
+		}else {
+			searchText = (String) request.getAttribute("searchText");
+		}
+		System.out.println("servlet searchKind : " + searchKind);
+		System.out.println("servlet searchText : " + searchText);
+		
+		ArrayList<AdminProductQnA> list = aService.selectTenProductQnaList(currentPage, limit,searchKind, searchText);
 		System.out.println(list);
 		RequestDispatcher view = null;
 		if(!list.isEmpty()) {
@@ -73,7 +85,9 @@ public class AdminProductQna extends HttpServlet {
 			request.setAttribute("list", list);
 			request.setAttribute("pi", pi);
 		}else {
-			System.out.println("servlet 리스트 조회 실패");
+			view = request.getRequestDispatcher("/views/admin/adminProductListQnA.jsp");
+			request.setAttribute("list", list);
+			request.setAttribute("pi", pi);
 		}
 		
 		view.forward(request, response);

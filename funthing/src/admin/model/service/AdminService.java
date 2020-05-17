@@ -92,10 +92,10 @@ public class AdminService {
 		return result;
 	}
 
-	// 상품문의 페이지_혜린
-	public ArrayList<AdminProductQnA> selectTenList(int currentPage, int limit) {
+	// 상품문의 페이지 검색_혜린
+	public ArrayList<AdminProductQnA> selectTenProductQnaList(int currentPage, int limit, String searchKind ,String searchText ) {
 		Connection conn = getConnection(); 
-		ArrayList<AdminProductQnA> list = new AdminDao().selectTenList(conn,currentPage, limit);
+		ArrayList<AdminProductQnA> list = new AdminDao().selectTenProductQnaList(conn,currentPage, limit, searchKind,searchText);
 		
 		close(conn);
 		return list;

@@ -72,7 +72,7 @@
 <body>
 	<%@ include file="../common/adminHeader.jsp" %>
 	<h2>상품문의</h2>
-	<form action="<%=request.getContextPath() %>/admin/productSearch" method="GET">
+	<form action="<%=request.getContextPath() %>/admin/productQnA" method="GET">
 		<div id="nav_section">
 			<div id="searchArea">
 			  
@@ -80,6 +80,7 @@
 						 <select id="search_kind" name="searchKind">
 								<option value="m_Id">아이디</option>
 								<option value="o_No">상품번호</option>
+								<option value="RE_YN">답변여부</option>
 					     </select>
 					</span>
 					<span> 
@@ -100,7 +101,7 @@
 
 			 <section id=area> 
             <table id="areaTable">
-
+				<% if(!list.isEmpty()){ %>
                 <tr>
 	                <th>번호</th> <th>아이디</th> <th>상품번호</th> <th>상품명</th> <th>내용</th> <th>작성날짜</th>  <th>답변여부</th>  
                 </tr>
@@ -153,8 +154,17 @@
 	            	</div><!-- 정보창 및 댓글등록창 끝 -->
 	            	</td>
 	            </tr>
-                <%} %>
+	             <%} %>
+	           <%}else{ %>
+	            <tr>
+	                <th>번호</th> <th>아이디</th> <th>상품번호</th> <th>상품명</th> <th>내용</th> <th>작성날짜</th>  <th>답변여부</th>  
+                </tr>
+                 <tr style="margin-top:30px;">
+                	<td colspan="7"><div style="text-align:center">검색 결과가 없습니다. 다시 검색해주세요.</div></td>
+                </tr>	
+                  <%} %>
 	        </table>
+	        
 	        <br><br>
 	        <script>
            		 $("table .line").click(function(){
