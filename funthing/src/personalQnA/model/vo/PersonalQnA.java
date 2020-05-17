@@ -1,8 +1,6 @@
-// 1:1문의 페이지_혜린
 package personalQnA.model.vo;
 
 public class PersonalQnA {
-
 	private int perQnaNo;			// 1:1문의 게시판 번호
 	private String perTitle;		// 게시판  제목
 	private String perContents;		// 게시판 내용
@@ -132,6 +130,4 @@ public class PersonalQnA {
 				+ ", pNo=" + pNo + ", pName=" + pName + ", bNo=" + bNo + ", mId=" + mId + ", mName=" + mName
 				+ ", PerReYn=" + PerReYn + ", AddFile=" + AddFile + ", oNo=" + oNo + ", perCate=" + perCate + "]";
 	}
-
-	
 }
