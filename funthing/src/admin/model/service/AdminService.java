@@ -299,6 +299,16 @@ public class AdminService {
 		close(conn);
 		return result;
 	}
+	
+	// 1:1문의 페이지_혜린
+	public int getListPerQnaCount() {
+		Connection  conn = getConnection();
+		int result = new AdminDao().getListPerQnaCount(conn);
+		
+		close(conn);
+		return result;
+
+	}
 
 
 

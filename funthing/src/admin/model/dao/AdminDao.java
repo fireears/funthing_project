@@ -847,6 +847,34 @@ public class AdminDao {
 		return result;
 	}
 
+	// 1:1문의게시판_혜린
+	public int getListPerQnaCount(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
+		
+		String query = "SELECT COUNT(*) FROM PERSONAL_QNA";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			rset =  pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = rset.getInt("COUNT(*)");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		
+		return result;
+	}
+
 	
 	
 }

@@ -37,8 +37,8 @@ public class AdminPersonalQna extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		AdminService aService = new AdminService();
 		
-		int listCount = aService.getListQnaCount();
-//		System.out.println("servlet listCount : " + listCount);
+		int listCount = aService.getListPerQnaCount();
+		System.out.println("1:1문의servlet listCount : " + listCount);
 		
 		// 페이징 처리
 		int currentPage;		// 현재 페이지를 저장할 변수
@@ -55,7 +55,7 @@ public class AdminPersonalQna extends HttpServlet {
 			currentPage = 1;
 		}
 		
-		limit = 10;
+		limit = 3;
 		maxPage = (int)((double)listCount/limit + 0.9);
 		startPage = ((int)((double)currentPage/limit + 0.9)-1)*limit + 1;
 		endPage = startPage + limit -1;

@@ -79,7 +79,7 @@
 			        <span>
 						 <select id="search_kind" name="searchKind">
 								<option value="m_Id">아이디</option>
-								<option value="o_No">상품번호</option>
+								<option value="p_No2">상품번호</option>
 								<option value="RE_YN">답변여부</option>
 					     </select>
 					</span>
