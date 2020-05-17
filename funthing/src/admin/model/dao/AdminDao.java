@@ -410,6 +410,7 @@ public class AdminDao {
 		try {
 			pstmt = conn.prepareStatement(query);
 			
+			
 			pstmt.setString(1, p.getP_color());
 			pstmt.setString(2, p.getP_size());
 			pstmt.setInt(3, p.getRetailPrice());
