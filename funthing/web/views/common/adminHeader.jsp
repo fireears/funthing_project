@@ -5,6 +5,8 @@
 		<meta charset="UTF-8">
 		<title>FUN-THING</title>
 		<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+        <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
         <style>
             body{margin: auto; width: 100%;}
             /* #nav{margin: auto; width: 50%;} */
