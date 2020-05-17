@@ -185,6 +185,22 @@ public class Product implements Serializable{
 		this.calNo = calNo;
 	}
 
+	//admin페이지 상품search
+	public Product(String pNo, String bNo, String pName, int pPrice, int pCategory, int sNo, Date fStartDate,
+			Date fEndDate, String fYn) {
+		super();
+		this.pNo = pNo;
+		this.bNo = bNo;
+		this.pName = pName;
+		this.pPrice = pPrice;
+		this.pCategory = pCategory;
+		this.sNo = sNo;
+		this.fStartDate = fStartDate;
+		this.fEndDate = fEndDate;
+		this.fYn = fYn;
+	}
+	
+	
 	public String getpNo() {
 		return pNo;
 	}
