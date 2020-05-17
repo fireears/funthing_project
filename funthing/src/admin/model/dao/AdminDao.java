@@ -8,6 +8,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
+
+
+import productQnA.model.vo.AdminProductQnA;
+import productQnA.model.vo.ProductQnAReply;
+
+import brand.model.vo.Brand;
 
 import payment.model.vo.OrderInfo;
 import payment.model.vo.OrderInfoDetail;
@@ -54,7 +61,7 @@ public class AdminDao {
 		int endRow = startRow + limit -1;
 		String query = "SELECT P_NO, P_NAME, P_CATEGORY, RETAIL_PRICE, DC_RATE, P_PRICE, F_YN, F_START_DATE, F_END_DATE FROM PRODUCTLIST WHERE RNUM BETWEEN ? AND ?";
 		
-		System.out.println("새로 list담자");
+//		System.out.println("새로 list담자");
 		try {
 			
 			pstmt = conn.prepareStatement(query);
@@ -213,6 +220,82 @@ public class AdminDao {
 		
 		return od;
 	}
+	
+	// 상품문의 페이지_혜린 
+	public int getListQnaCount(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
+		
+		String query = "SELECT COUNT(*) FROM QNA";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			rset =  pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = rset.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		
+		return result;
+	}
+	
+	// 상품문의 페이지_혜린
+	public ArrayList<AdminProductQnA> selectTenList(Connection conn,int currentPage, int limit) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		AdminProductQnA apq = null;
+		ArrayList<AdminProductQnA> list = new ArrayList<>();
+		
+		int startRow = (currentPage - 1) * limit + 1;
+		int endRow = startRow + limit - 1;
+		
+		try {
+
+			String query = " SELECT QNA_NO, M_ID, M_NAME,P_NO2,p_name ,QNA_TITLE, QNA_CONTENTS, QNA_DATE ,RE_YN	"
+					+ "FROM QNA Q JOIN member M ON Q.M_NO = M.M_NO join product p on q.p_no2 = p.p_no ORDER BY QNA_NO DESC";
+			pstmt = conn.prepareStatement(query);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				apq = new AdminProductQnA(
+						rset.getInt("QNA_NO"),
+						rset.getString("M_ID"),
+						rset.getString("M_NAME"),
+						rset.getString("P_NO2"), 
+						rset.getString("p_name"), 
+						rset.getString("QNA_TITLE"),
+						rset.getString("QNA_CONTENTS"),
+						rset.getString("QNA_DATE"),
+						rset.getString("RE_YN")
+						
+						);
+		
+				list.add(apq);
+				System.out.println("DAO list : " + list);
+				}
+				
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+
+		
+		return list;
+	}
 
 	public Product selectOneProductDetail(Connection conn, String pNo) {
 		PreparedStatement pstmt = null;
@@ -327,8 +410,275 @@ public class AdminDao {
 		}
 		return result;
 	}
+	
+	// 상품문의 댓글페이지_혜린
+	public int insertReply(Connection conn, ProductQnAReply r) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "INSERT INTO REPLY VALUES(SEQ_QNARE.NEXTVAL, ?, ?, ?, ?,SYSDATE)";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, r.getQnaNo());
+			pstmt.setString(2, r.getmNo());
+			pstmt.setString(3, r.getQnareId());
+			pstmt.setString(4, r.getQnareContent());
+			
+			result = pstmt.executeUpdate();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	// 상품문의 페이지 댓글_혜린
+	public ArrayList<ProductQnAReply> selectReplyList(Connection conn, int qnaNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		ArrayList<ProductQnAReply> rlist = null;
+		
+//		String query = prop.getProperty("selectReplyList");
+		String query = "SELECT * FROM QNARE WHERE QNA_NO=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, qnaNo);
+			
+			rs = pstmt.executeQuery();
+			
+			rlist = new ArrayList<ProductQnAReply>();
+			
+			while(rs.next()) {
+				
+				rlist.add(new ProductQnAReply(rs.getInt("QNARE_NO"),
+												rs.getInt("QNA_NO"),
+												rs.getString("M_NO"),
+												rs.getString("QNARE_ID"),
+												rs.getString("QNARE_CONTENT"),
+												rs.getDate("QNARE_DATE")));
+												
+			}
+		
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return rlist;
+	}
 
 	
+	
+	
+	// 브랜드 관리자 페이지(리스트 카운트 메소드)_희지
+	public int getBrandListCount(Connection conn) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int brandListCount = 0;
+		
+		String query = "SELECT COUNT(*) FROM BRAND";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) 
+			{
+				brandListCount = rset.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return brandListCount;
+	}
+	
 
+	// 브랜드 관리자 페이지(브랜드 조회하는 메소드)_희지
+	public ArrayList<Brand> selectBrandList(Connection conn, int currentPage, int limit) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		ArrayList<Brand> brandList = new ArrayList<>();
+	
+		
+		String query = "SELECT B_NO, B_NAME, B_CEO, B_PHONE, B_ADDRESS, B_EMAIL, B_LCH_DATE, B_LCH_YN FROM BRANDLIST WHERE RNUM BETWEEN ? AND ?";
+		
+		
+		int startRow = (currentPage -1) * limit +1;
+		
+		int endRow = startRow + (limit -1);
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Brand b = new Brand(rset.getString("B_NO"),
+						rset.getString("B_NAME"),
+						rset.getString("B_CEO"),
+						rset.getString("B_PHONE"),
+						rset.getString("B_ADDRESS"),
+						rset.getString("B_EMAIL"),
+						rset.getDate("B_LCH_DATE"),
+						rset.getString("B_LCH_YN"));
+				
+				brandList.add(b);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return brandList;
+	}
+
+		
+	// 브랜드 등록 페이지(정보 insert 메소드)_희지
+	public int insertBrand(Connection conn, Brand b) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query="INSERT INTO BRAND VALUES(SEQ_BR.NEXTVAL, ?, ?, ?, ?, ?, ?, ?)";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, b.getbName());
+			pstmt.setString(2, b.getbCeo());
+			pstmt.setString(3, b.getbPhone());
+			pstmt.setString(4, b.getbAddress());
+			pstmt.setString(5, b.getbEmail());
+			pstmt.setDate(6, b.getbLchDate());
+			pstmt.setString(7, b.getbLchYn());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+
+	// 브랜드 update위해 한 브랜드 정보 select_희지
+	public Brand selectOneBrand(Connection conn, String bNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Brand brand = null;
+		
+		String query = "SELECT * FROM BRAND WHERE B_NO=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, bNo);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+					brand = new Brand(rset.getString("B_NO"),
+						rset.getString("B_NAME"),
+						rset.getString("B_CEO"),
+						rset.getString("B_PHONE"),
+						rset.getString("B_ADDRESS"),
+						rset.getString("B_EMAIL"),
+						rset.getDate("B_LCH_DATE"),
+						rset.getString("B_LCH_YN"));
+			
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return brand;
+	}
+
+	
+	// 브랜드 update_희지
+	public int updateBrand(Connection conn, Brand b, String bNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query="UPDATE BRAND SET B_NO=?, B_NAME=?, B_CEO=?, B_PHONE=?,\r\n" + 
+				"B_ADDRESS=?, B_EMAIL=?, B_LCH_DATE=?, B_LCH_YN=? WHERE B_NO =?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1,b.getbNo());
+			pstmt.setString(2, b.getbName());
+			pstmt.setString(3, b.getbCeo());
+			pstmt.setString(4, b.getbPhone());
+			pstmt.setString(5, b.getbAddress());
+			pstmt.setString(6, b.getbEmail());
+			pstmt.setDate(7, b.getbLchDate());
+			pstmt.setString(8, b.getbLchYn());
+			pstmt.setString(9, bNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			
+		}
+		
+		return result;
+	}
+
+	
+	// 브랜드 delete_희지
+	public int deleteBrand(Connection conn, String bNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "UPDATE BRAND SET B_LCH_YN='N' WHERE B_NO=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, bNo);
+			
+			result = pstmt.executeUpdate();
+				
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	
+	
+	
+	
+	
+	
 	
 }

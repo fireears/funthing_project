@@ -1,14 +1,20 @@
 package admin.model.service;
 
-import static common.JDBCTemplate.*;
+import static common.JDBCTemplate.close;
+import static common.JDBCTemplate.commit;
+import static common.JDBCTemplate.getConnection;
+import static common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.ArrayList;
 
 import admin.model.dao.AdminDao;
+import brand.model.vo.Brand;
 import payment.model.vo.OrderInfo;
 import payment.model.vo.OrderInfoDetail;
 import product.model.vo.Product;
+import productQnA.model.vo.AdminProductQnA;
+import productQnA.model.vo.ProductQnAReply;
 public class AdminService {
 	
 	
@@ -75,6 +81,23 @@ public class AdminService {
 		return od;
 		
 	}
+	//  상품문의 페이지_혜린
+	public int getListQnaCount() {
+		Connection  conn = getConnection();
+		int result = new AdminDao().getListQnaCount(conn);
+		
+		close(conn);
+		return result;
+	}
+
+	// 상품문의 페이지_혜린
+	public ArrayList<AdminProductQnA> selectTenList(int currentPage, int limit) {
+		Connection conn = getConnection(); 
+		ArrayList<AdminProductQnA> list = new AdminDao().selectTenList(conn,currentPage, limit);
+		
+		close(conn);
+		return list;
+	}
 
 	public Product selectOneProductDetail(String pNo) {
 		Connection conn = getConnection();
@@ -118,6 +141,118 @@ public class AdminService {
 		return result;
 	}
 
-	
+	// 상품문의 댓글 페이지_혜린
+	public ArrayList<ProductQnAReply> insertReply(ProductQnAReply r) {
+		Connection conn = getConnection();
+		
+		// BoardDao 메소드 두개를 호출하기 때문에 그냥 참조변수로 선언하자
+		AdminDao bDao = new AdminDao();
+		
+		int result = bDao.insertReply(conn, r);
+		// BoardDao로 가서 insertReply 메소드 완성시키고오자
+		
+		
+		ArrayList<ProductQnAReply> rlist = null;
+		
+		if(result > 0) {
+			commit(conn);
+			rlist = bDao.selectReplyList(conn, r.getQnaNo());
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return rlist;
+	}
 
+	
+	// 브랜드 관리자 페이지(리스트 카운트 메소드)_희지
+	public int getBrandListCount() {
+		
+		Connection conn = getConnection();
+		
+		int brandListCount = new AdminDao().getBrandListCount(conn);
+		
+		close(conn);
+		
+		return brandListCount;
+	}
+
+	
+	// 브랜드 관리자 페이지(브랜드 조회하는 메소드)_희지
+	public ArrayList<Brand> selectBrandList(int currentPage, int limit) {
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Brand> brandList = new AdminDao().selectBrandList(conn, currentPage, limit);
+		
+		close(conn);
+		
+		return brandList;
+	}
+
+	
+	// 브랜드 등록 페이지(정보 insert 메소드)_희지
+	public int insertBrand(Brand b) {
+		Connection conn = getConnection();
+		
+		int result = new AdminDao().insertBrand(conn, b);
+		
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		return result;
+	}
+
+	
+	// 브랜드 update위해 한 브랜드 정보 select_희지
+	public Brand selectOneBrand(String bNo) {
+		Connection conn = getConnection();
+		
+		Brand brand = new AdminDao().selectOneBrand(conn, bNo);
+		
+		close(conn);
+		
+		
+		return brand;
+	}
+
+	
+	// 브랜드 update_희지
+	public int updateBrand(Brand b, String bNo) {
+		Connection conn = getConnection();
+		
+		int result = new AdminDao().updateBrand(conn, b, bNo);
+		
+		
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		return result;
+	}
+
+	
+	// 브랜드 delete_희지
+	public int brandDelete(String bNo) {
+		Connection conn = getConnection();
+		
+		int result = new AdminDao().deleteBrand(conn, bNo);
+		
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		return result;
+	}
+
+
+	
+	
 }

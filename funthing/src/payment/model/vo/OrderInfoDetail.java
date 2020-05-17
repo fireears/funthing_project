@@ -5,7 +5,7 @@ public class OrderInfoDetail {
 	private String oDate;		// 주문일자
 	private String rcvName;		// 받을사람 성함
 	private String rcvAdrs;		// 주소
-	private int rcvPhone;	// 전화번호
+	private int rcvPhone;		// 전화번호
 	private String commentt;	// 남기실 말
 	private int exptPoint;		// 예정적립금
 	private String pNo;			// 상품번호

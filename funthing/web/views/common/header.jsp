@@ -31,7 +31,7 @@
 	            <% if(loginUser != null){ %>
 	                <ul class="log-sec login">
 	                <%if(loginUser.getmId().equals("master")){ %>
-	                	<li class="master"><a href="#none">MASTER</a></li>
+	                	<li class="master"><a href="<%=request.getContextPath()%>/admin/mainView">MASTER</a></li>
 	                	<%} %>
 	                    <li><a href="#none">HELP</a></li>
 	                    <li><a href="<%=request.getContextPath() %>/logout.me">LOGOUT</a></li>
