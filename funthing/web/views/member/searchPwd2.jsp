@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import = "member.model.vo.Member"%>
+    
+<%
+	Member searchPwd = (Member)request.getAttribute("searchPwd");
+
+	String userName = searchPwd.getmName();
+	String phone = searchPwd.getmTell();
+	String email = searchPwd.getmEmail();
+%>
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -47,7 +55,7 @@
         
         
         <div class="cont">
-        <form>
+        <form get="get" action=>
             <h2>비밀번호 찾기</h2>
             <hr style="height: 5px; background: black;">
             
@@ -58,14 +66,14 @@
             <input type="radio" id="email" name="radio" style="zoom: 1.5;">
             <label>이메일 인증</label>
             <br>
-            <label id="emailcheck"></label>
+            <label id="emailcheck"><%=userName%>님의 이메일:<%=email %>로 전송하시겠습니까?</label>
             <br>
             <div style="font-size: 12px; color: darkgray;">가입시 등록한 이메일로 인증번홀가 발송됩니다.</div>
             <br>
             <input type="radio" id="email" name="radio" style="zoom: 1.5;">
             <label>SMS 인증</label>
             <br>
-            <label id="phonecheck"></label>
+            <label id="phonecheck"><%=userName%>님의 전화번호:<%=phone %>로 전송하시겠습니까?</label>
             <br>
             <br>
             <hr>

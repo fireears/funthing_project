@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="member.model.vo.Member" %>
+
+<%
+	Member loginUser = (Member)session.getAttribute("loginUser");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,7 +43,7 @@
                 <h3>회원정보</h3>
                 <ul>
                     <li><a href="#">회원정보 변경</a></li>
-                    <li><a href="#">배송지 관리</a></li>
+                    <li><a href="<%=request.getContextPath()%>/myPage.me?userId=<%=loginUser.getmId()%>">배송지 관리</a></li>
                 </ul>
             </div>
         </div>

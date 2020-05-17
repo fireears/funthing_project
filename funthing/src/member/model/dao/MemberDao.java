@@ -31,6 +31,7 @@ public class MemberDao {
 		}
 	}
 	
+	// 로그인
 	public Member loginMember(Connection conn, Member member) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -75,5 +76,188 @@ public class MemberDao {
 		
 		return loginMember;
 	}
+	
+	// 아이디 찾기
+	public Member searchIdMember(Connection conn, Member member) {
+		System.out.println("Dao단 까지 옴");
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Member searchIdMember = null;
+		
+		String query = "SELECT * FROM MEMBER WHERE M_NAME=? AND (M_EMAIL=? OR M_TELL=?)";
+						
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, member.getmName());
+			pstmt.setString(2, member.getmEmail());
+			pstmt.setString(3, member.getmTell());
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				searchIdMember = new Member(rset.getString("M_NO"),
+											 rset.getString("M_ID"),
+											 rset.getString("M_PWD"),
+											 rset.getString("M_NAME"),
+											 rset.getString("B_DAY"),
+											 rset.getString("M_EMAIL"),
+											 rset.getDate("JOIN_DATE"),
+											 rset.getString("REFERENCE"),
+											 rset.getString("GRADE_CODE"),
+											 rset.getString("ALARM_YN"),
+											 rset.getString("STATUS_YN"),
+											 rset.getInt("M_POINT"),
+											 rset.getString("M_TELL"),
+											 rset.getInt("H_POINT"));
+			}
+			
+			System.out.println(searchIdMember);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return searchIdMember;
+	}
+	// 비밀번호 찾기
+	public Member searchPwd(Connection conn, String userId) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Member searchPwd = null;
+		
+		String query = "SELECT * FROM MEMBER WHERE M_ID=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				searchPwd = new Member(rset.getString("M_NO"),
+						 rset.getString("M_ID"),
+						 rset.getString("M_PWD"),
+						 rset.getString("M_NAME"),
+						 rset.getString("B_DAY"),
+						 rset.getString("M_EMAIL"),
+						 rset.getDate("JOIN_DATE"),
+						 rset.getString("REFERENCE"),
+						 rset.getString("GRADE_CODE"),
+						 rset.getString("ALARM_YN"),
+						 rset.getString("STATUS_YN"),
+						 rset.getInt("M_POINT"),
+						 rset.getString("M_TELL"),
+						 rset.getInt("H_POINT"));
+			}
+			System.out.println(searchPwd);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return searchPwd;
+	}
+	// myPage 회원 정보 수정
+	public Member selectMember(Connection conn, String userId) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Member loginMember = null;
+		
+		String query = "SELECT * FROM MEMBER WHERE M_ID=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				loginMember = new Member(rset.getString("M_NO"),
+										 rset.getString("M_ID"),
+										 rset.getString("M_PWD"),
+										 rset.getString("M_NAME"),
+										 rset.getString("B_DAY"),
+										 rset.getString("M_EMAIL"),
+										 rset.getDate("JOIN_DATE"),
+										 rset.getString("REFERENCE"),
+										 rset.getString("GRADE_CODE"),
+										 rset.getString("ALARM_YN"),
+										 rset.getString("STATUS_YN"),
+										 rset.getInt("M_POINT"),
+										 rset.getString("M_TELL"),
+										 rset.getInt("H_POINT"));
+			}
+			System.out.println(loginMember);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		
+		return loginMember;
+	}
+	// 회원 가입
+	public int insertMember(Connection conn, Member member) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "INSERT INTO MEMBER VALUES(SEQ_MEM.MNO,?,?,?,TO_CHAR(TO_DATE(?,'YYYY/MM/DD'),'YY/MM/DD'),?,SYSDATE,?,'G3',?,'Y',135000,?,3450000)";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, member.getmId());
+			pstmt.setString(2, member.getmPwd());
+			pstmt.setString(3, member.getmName());
+			pstmt.setString(4, member.getbDay());
+			pstmt.setString(5, member.getmEmail());
+			pstmt.setString(6, member.getReference());
+			pstmt.setString(7, member.getAlarm_YN());
+			pstmt.setString(8, member.getmTell());
+			
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	// 아이디 중복 체크
+	public int idCheck(Connection conn, String userId) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		int result = 0;
+		
+		String query = "SELECT COUNT(*) FROM MEMBER WHERE M_ID=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = rset.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+	return result;
+}
 
 }

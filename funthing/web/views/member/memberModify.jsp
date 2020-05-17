@@ -1,10 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import = "member.model.vo.Member"%>
+    
+<%
+	Member member = (Member)request.getAttribute("member");
+
+	String userId = member.getmId();
+	String userPwd = member.getmPwd();
+	String userName = member.getmName();
+	String email = member.getmEmail() != null ? member.getmEmail() : "";
+	String phone = member.getmTell() != null ? member.getmTell() : ""; 
+	String birth = member.getbDay() != null ? member.getbDay() : "";
+	String reference = member.getReference() != null ? member.getReference() : "";
+%>    
 <!DOCTYPE html>
-<html lang="ko">
-    <title></title>
-    <script src = "../../js/jquery-3.4.1.min.js"></script>
-    <style>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<style>
+        form{
+                width: 700px;
+                margin: 0 auto;
+            }
             table{
                 margin: 0;
                 padding:0;
@@ -58,25 +76,10 @@
            input::-webkit-input-placeholder { 
                 color: lightgray; 
             }
-            .cont{
-            	width:1460px;
-            	margin:0 auto;
-            }
-            
-            .cont form{
-	          	width:600px;
-	          	margin:0 auto;
-	          	text-align:"center";
-        
-            }
-            
     </style>
-    <body>
-    	
-    	<%@ include file="../common/header.jsp" %>
-        
-        <div class="cont">
-        <form method="post" action="#" >
+</head>
+<body>
+	<form method="post" action="<%=request.getContextPath() %>/update.me">
             <h2>정보수정</h2>
             <hr>
             <h3>기본정보</h3>
@@ -88,7 +91,7 @@
                         <label>*아이디</label>
                     </td>
                     <td id="inp">
-                        <input type="text" id="userid" name="userid" required placeholder="4글자 이상 12글자 이하 영문자(소문자)와 숫자">
+                        <input type="text" id="userId" name="userId" required placeholder="4글자 이상 12글자 이하 영문자(소문자)와 숫자" value="<%=userId%>">
                         <input type="button" id="ch" value="중복확인" style="width: 70px; background: darkgrey; color: white;" onclick="openIdChk()">
                     </td>
                 </tr>
@@ -97,23 +100,23 @@
                         <label>*비밀번호</label>
                     </td>
                     <td id="inp"> 
-                        <input type="password" id="userpwd" name="userpwd" required placeholder="6글자 이상 18글자 이하 영문자(소문자)와 숫자">
+                        <input type="password" id="userPwd" name="userPwd" required placeholder="6글자 이상 18글자 이하 영문자(소문자)와 숫자" value="<%=userPwd %>">
                     </td>
                 </tr>
-                <tr>
+               	<!-- <tr>
                     <td id="lab"> 
                         <label>*비밀번호 확인</label>
                     </td>
                     <td id="inp"> 
                         <input type="password" id="pwd_check" name="pwd_check" required>
                     </td>
-                </tr>
+                </tr> -->
                 <tr>
                     <td id="lab">
                         <label>*이름</label>
                     </td>
                     <td id="inp">
-                        <input type="text" id="username" name="username" required placeholder="한글로 2글자 이상">
+                        <input type="text" id="userName" name="userName" required placeholder="한글로 2글자 이상" value="<%= userName %>">
                     </td>
                 </tr>
                 <tr>
@@ -121,7 +124,7 @@
                         <label>*이메일</label>
                     </td>
                     <td id="inp">
-                        <input type="email" id="email" name="eamil" required>
+                        <input type="email" id="email" name="eamil" required value="<%=email %>">
                     </td>
                 </tr>
                 <tr>
@@ -129,7 +132,7 @@
                         <label>*휴대폰</label>
                     </td>
                     <td id="inp">
-                        <input type="tel" id="phone" name="phone" required placeholder="-제외 하고 입력">
+                        <input type="tel" id="phone" name="phone" required placeholder="-제외 하고 입력" value="<%=phone%>">
                     </td>
                 </tr>
                 <tr>
@@ -137,7 +140,7 @@
                     <label>*생년월일</label>
                     </td>
                     <td id="inp">
-                        <div id="birth">
+                        <div id="birth" value = "<%=birth%>">
                             <select id="year" required>
                                 <option value="년">년</option>
                                 <option value="2020">2020</option>
@@ -264,14 +267,14 @@
                         </div>
                     </td>
                 </tr>
-                <tr>
+               <!--  <tr>
                     <td id="lab">
                         <label>추천인</label>
                     </td>
                     <td id="inp">
                         <input type="text" id="reference" name="reference">
                     </td>
-                </tr>
+                </tr> -->
             </table>
             <br>
             <br>
@@ -282,7 +285,6 @@
                 <input type="button" value="취소" id="cancel" onclick=cancle(); style="width: 90px; height: 40px; color: black; background-color: lightgray; border-radius: 7px;">
             </div>
         </form>
-        </div>
         <script>
             $("#userid").change(function(){
                     var value = $("#userid").val();
@@ -330,17 +332,5 @@
                     }
                 });
         </script>
-        
-        
-        
-        <%@ include file="../common/footer.jsp" %>
-        
-        
-        
-        
-        
-        
-    </body>
-
+</body>
 </html>
-    

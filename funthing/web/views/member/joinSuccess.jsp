@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="member.model.vo.Member" %>
+
+<%
+	Member member = (Member)request.getAttribute("member");
+
+	String userName = member.getmName();
+%>
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -69,7 +76,7 @@
             <br>
             <h3>회원가입이 완료 되었습니다.<h3>
             <br>
-            <div id="div2">회원가입을 축하합니다.<br>
+            <div id="div2"><%=member.getmName()%>님 회원가입을 축하합니다.<br>
             지금 로그인 하시면 FUN-THING만의 다양한 서비스를 이용 할 수 있습니다.
             </div>
             <br>
@@ -78,7 +85,7 @@
             <br>
             
             <div>
-                <input type="button" value="홈으로" id="prebtn">
+                <input type="button" value="홈으로" id="prebtn" onclick="goHome();">
                 &nbsp;
                 <input type="button" value="로그인" id="clear" onclick="goLogin();">
             </div>
@@ -90,6 +97,12 @@
         
     </body>
     <script>
+        function goHome(){
+        	location.href="<%=request.getContextPath()%>/main/mainView";
+        }
         
+        function goLogin(){
+        	location.href="<%=request.getContextPath()%>/views/member/memberLogin.jsp";
+        }
     </script>
 </html>

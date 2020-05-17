@@ -35,13 +35,13 @@
 	                	<%} %>
 	                    <li><a href="#none">HELP</a></li>
 	                    <li><a href="<%=request.getContextPath() %>/logout.me">LOGOUT</a></li>
-	                    <li><a href="<%=request.getContextPath()%>/views/member/myPageMain.jsp">MY PAGE</a></li>
+	                    <li><a href="<%=request.getContextPath()%>/views/member/myPageMain.jsp?">MY PAGE</a></li>
 	                    <li><a href="#none"><i class="fas fa-shopping-cart"></i></a></li>
 	                </ul>
 	                <% }else{ %>
 	                <ul class="log-sec logout">
 	                    <li><a href="#none">HELP</a></li>
-	                    <li><a href="#none">JOIN</a></li>
+	                    <li><a href="<%=request.getContextPath()%>/views/member/memberJoin.jsp">JOIN</a></li>
 	                    <li><a href="<%=request.getContextPath()%>/views/member/memberLogin.jsp">LOGIN</a></li>
 	                    <li><a href="#none"><i class="fas fa-shopping-cart"></i></a></li>
 	                </ul>

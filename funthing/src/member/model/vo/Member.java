@@ -33,9 +33,29 @@ public class Member implements Serializable{
 		this.mPwd = mPwd;
 	}
 
+	public Member(String mName, String mEmail, String mTell) {
+		super();
+		this.mName = mName;
+		this.mEmail = mEmail;
+		this.mTell = mTell;
+	}
+
+	public Member(String mId, String mPwd, String mName, String mEmail, String mTell, String bDay, String reference, String alarm_YN) {
+		this.mId = mId;
+		this.mPwd = mPwd;
+		this.mName = mName;
+		this.mEmail = mEmail;
+		this.mTell = mTell;
+		this.bDay = bDay;
+		this.reference = reference;
+		this.alarm_YN = alarm_YN;
+		
+	}
+
 	public Member(String mNo, String mId, String mPwd, String mName, String bDay, String mEmail, Date joinDate,
 			String reference, String gradCode, String alarm_YN, String status_YN, int mPoint, String mTell,
 			int hPoint) {
+		super();
 		this.mNo = mNo;
 		this.mId = mId;
 		this.mPwd = mPwd;

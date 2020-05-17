@@ -48,7 +48,7 @@
         <br>
         
         <div class="cont">
-        <form>
+        <form method="get" action="<%=request.getContextPath()%>/searchId.me">
             <h2>아이디 찾기</h2>
             <hr style="height: 5px; background: black;">
             <br>
@@ -58,22 +58,22 @@
             <label>휴대폰 번호</label>
             <hr>
             <br>
-            <div id="email">
+            <div>
                 <table>
                     <tr>
                         <td>
-                            <input type="text" id="userid" style=" height: 30px; width: 400px; border-radius: 8px;" placeholder="아이디를 입력해주세요">
+                            <input type="text" id="userName" name="userName" style=" height: 30px; width: 400px; border-radius: 8px;" placeholder="이름를 입력하세요.">
                         </td>
                         <td rowspan="2">
-                            <input type="button" id="btn" value="아이디 찾기" style="height: 100px; width: 180px; color: white; border-radius: 8px; background: darkgrey;">
+                            <input type="submit" id="btn1" value="아이디 찾기" style="height: 100px; width: 180px; color: white; border-radius: 8px; background: darkgrey;">
                         </td>
                         
                     </tr>
-                    <tr>
+                    <tr id="email">
                         <td>
-                            <input type="email" id="email1" style=" height: 30px; width: 210px; border-radius: 8px;"  placeholder="이메일을 입력해주세요">
-                            <select id="selectEmail" style=" height: 35px; width: 180px; border-radius: 8px;">
-                                <option value="1" >직접입력</option>
+                            <input type="email" id="email1" name="email" style=" height: 30px; width: 210px; border-radius: 8px;"  placeholder="이메일을 입력해주세요">
+                            <select name="email" id="selectEmail" onchange="emailSelect" style=" height: 35px; width: 180px; border-radius: 8px;">
+                                <option value = 0>직접입력</option>
                                 <option value="@naver.com">@naver.com</option>
                                 <option value="@gmail.com">@gmail.com</option>
                                 <option value="@hanmail.net">@hanmail.net</option>
@@ -82,26 +82,14 @@
                             </select>
                         </td>       
                     </tr>
-                </table>
-            </div>
-            <div id="phone" style="display: none;">
-                <table>
-                    <tr>
+                    <tr id="phone" style="display: none;">
                         <td>
-                            <input type="text" id="userid1" style=" height: 30px; width: 400px; border-radius: 8px;" placeholder="아이디를 입력하세요.">
-                        </td>
-                        <td rowspan="2">
-                            <input type="button" id="btn" value="아이디 찾기" style="height: 100px; width: 180px; color: white; border-radius: 8px; background: darkgrey;">
-                        </td>
-                        
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="tel" id="phone1" style="width: 400px; height: 30px; border-radius: 8px;" placeholder="-빼고 입력해주세요">
+                            <input type="tel" id="phone1" name="phone" style="width: 400px; height: 30px; border-radius: 8px;" placeholder="-빼고 입력해주세요">
                         </td>       
                     </tr>
                 </table>
             </div>
+            
             <br>
             <hr>
             <br>
@@ -155,12 +143,20 @@
                         $("#phone1").focus().val('');
                     }
                 });
-                $("#selectEmail").change(function(){
-                	var sum = ($("#email1").val()) + ($("#selectEmail").val());
-                	$("#email1").val(sum);
                 
+            
+                $("#login").click(function(){
+                	location.href="<%= request.getContextPath()%>/views/member/memberLogin.jsp";
+                });
+                
+                $("#pwd").click(function(){
+                	location.href="<%= request.getContextPath()%>/views/member/searchPwd1.jsp";
                 });
         })
+       
+
+        
+        
        
         </script>
         
