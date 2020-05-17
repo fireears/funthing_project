@@ -41,26 +41,31 @@
 		#nav_section ul li .box{width: 150px;}
 		#nav_section ul li:last-child { float:right; width:1050px;margin-top:25px;}
 		
-		#area{margin: auto; width: 100%;}
-		#area table{border-collapse: collapse; width: 100%; border: 1px solid;}
-		#area table th{background-color: rgb(199, 196, 196); color: rgb(53, 52, 52);}
-		#area table tr{cursor:pointer;border-bottom: 1px solid grey;}
-		#area table tr button{width: 50%; height: 30px; background-color: gray; border: 1px solid; border-color: white; font-weight: 600; color: rgb(255, 255, 255); }
+		#searchArea{text-align:center;padding-top: 30px; }
+		
+		#areaTable{margin: auto; width: 100%;}
+		#areaTable {border-collapse: collapse; width: 100%; border: 1px solid;}
+		#areaTable th{background-color: rgb(199, 196, 196); color: rgb(53, 52, 52);}
+		#areaTable tr{cursor:pointer;border-bottom: 1px solid grey;}
+		/*#areaTable tr button{width: 50%; height: 30px; background-color: gray; border: 1px solid; border-color: white; font-weight: 600; color: rgb(255, 255, 255); }*/
 		
 		/* 상품계시판 밑에 버튼 */
 		#pageBtn{margin:auto; width:50%;}
 		#pageBtn>button{margin:auto; width:3%; height:30px; text-align: center;}
 		
-		table .cont { display:none; }
-        table .cont.show { display:contents; transition:50;}
-        table .cont td { padding:20px 0; background:lightgrey;}
+		 .cont { display:none; }
+         .cont.show { display:contents; transition:50;}
+         .cont td { padding:20px 0; background:lightgrey;}
 
         .pageBtn {border: 0; font-size: middle; background: white; cursor: pointer;}
         
-        #contDiv .info, h3 {margin-left:20px; font-weight:600;}
+        #contDiv .info, h3 {margin:0; margin-left:20px; font-weight:600;}
 		
-		#replyBtn {background:grey; border:0; hieght: 40px;font-weight: 600;	border-radius: 5px;}
+		#replyBtn {background:grey; border:0; width:100px; hieght: 40px; font-weight: 600;	border-radius: 5px; color:white;}
 		
+		#replyTable {margin:0;margin-left:20px;}
+		
+		#replyTable td {margin-right:20px; padding:0;}
 		
 	</style>
 </head>
@@ -69,22 +74,22 @@
 	<h2>상품문의</h2>
 	<form action="<%=request.getContextPath() %>/admin/productSearch" method="GET">
 		<div id="nav_section">
-		    <ul>
-		        <li>
-		        <span>
-					 <select id="search_kind" name="searchKind">
-							<option value="m_Id">아이디</option>
-							<option value="o_No">상품번호</option>
-				     </select>
-				</span>
-				<span> 
-					<input type="text" id="seachText" name="searchText">
-				</span>
-				<span>
-					<button type="submit" value="검색버튼" id="seachBtn">검색</button>
-				</span>
-				</li>
-	        </ul>
+			<div id="searchArea">
+			  
+			        <span>
+						 <select id="search_kind" name="searchKind">
+								<option value="m_Id">아이디</option>
+								<option value="o_No">상품번호</option>
+					     </select>
+					</span>
+					<span> 
+						<input type="text" id="seachText" name="searchText">
+					</span>
+					<span>
+						<button type="submit" value="검색버튼" id="seachBtn">검색</button>
+					</span>
+					
+	        </div>
 	    </div>
 	</form>
 
@@ -94,7 +99,7 @@
 	<br>
 
 			 <section id=area> 
-            <table>
+            <table id="areaTable">
 
                 <tr>
 	                <th>번호</th> <th>아이디</th> <th>상품번호</th> <th>상품명</th> <th>내용</th> <th>작성날짜</th>  <th>답변여부</th>  
@@ -122,7 +127,7 @@
 	            			<table align="center" id="replyTable">
 	            				<tr>
 	            					<td width=220px; ><textArea rows="4" cols="220" id="replyContent"></textArea></td>
-	            					<td><button id="replyBtn">답변등록</button></td>
+	            					<td><button id="seachBtn">답변등록</button></td>
 	            				</tr>
 	            			</table>
 	            	
