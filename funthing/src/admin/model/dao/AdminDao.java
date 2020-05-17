@@ -18,6 +18,7 @@ import brand.model.vo.Brand;
 
 import payment.model.vo.OrderInfo;
 import payment.model.vo.OrderInfoDetail;
+import personalQnA.model.vo.PersonalQnA;
 import product.model.vo.Product;
 
 public class AdminDao {
@@ -673,6 +674,62 @@ public class AdminDao {
 		
 		return result;
 	}
+	// 1:1문의 페이지_혜린
+	public ArrayList<PersonalQnA> selectTenPersonQnaList(Connection conn, int currentPage, int limit) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		PersonalQnA pq = null;
+		ArrayList<PersonalQnA> list = new ArrayList<>();
+		
+		int startRow = (currentPage - 1) * limit + 1;
+		int endRow = startRow + limit - 1;
+		
+		try {
+
+//			String query = "select  PER_QNA_NO,m_id,m_name,PER_TITLE,PER_CONTENTS,pq.O_NO, pq.P_NO, p_name,PER_RE_YN,ADDFILE,PER_CATE "
+//					+ "from personal_qna pq join member m on pq.M_NO = m.m_no join product p on p.p_no = pq.p_no join payment_info pi on pq.o_no = pi.o_no";
+			String query = "select PER_QNA_NO,m_id,PER_TITLE,PER_CONTENTS, pq.P_NO,p_name,PER_RE_YN,ADDFILE,O_NO,PER_CATE "
+					+ "from personal_qna pq join member m on pq.m_no = m.m_no join product p on pq.p_no = p.p_no order by per_qna_no desc";
+			pstmt = conn.prepareStatement(query);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				pq = new PersonalQnA(
+						rset.getInt("PER_QNA_NO"),
+						rset.getString("m_id"),
+						rset.getString("PER_TITLE"),
+						rset.getString("PER_CONTENTS"),
+						rset.getString("P_NO"),
+						rset.getString("P_NAME"),
+						rset.getString("PER_RE_YN"),
+						rset.getString("ADDFILE"),
+						rset.getString("O_NO"),
+						rset.getString("PER_CATE"));
+						
+
+				list.add(pq);
+			
+			
+				System.out.println("DAO list : " + list);
+				}
+			
+			
+			
+				
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+
+		
+		return list;
+	}
+
+	}
 
 	
 	
@@ -681,4 +738,4 @@ public class AdminDao {
 	
 	
 	
-}
+

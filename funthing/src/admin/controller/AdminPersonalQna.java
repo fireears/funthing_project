@@ -1,4 +1,4 @@
-// 상품문의 페이지_혜린
+// 1:1문의 페이지_혜린
 package admin.controller;
 
 import java.io.IOException;
@@ -13,19 +13,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import admin.model.service.AdminService;
 import board.model.vo.PageInfo;
-import productQnA.model.vo.AdminProductQnA;
+import personalQnA.model.vo.PersonalQnA;
 
 /**
- * Servlet implementation class AdminProductQna
+ * Servlet implementation class AdminPersonalQna
  */
-@WebServlet("/admin/productQnA")
-public class AdminProductQna extends HttpServlet {
+@WebServlet("/admin/personalQna")
+public class AdminPersonalQna extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminProductQna() {
+    public AdminPersonalQna() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -65,11 +65,11 @@ public class AdminProductQna extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
 		
-		ArrayList<AdminProductQnA> list = aService.selectTenList(currentPage, limit);
+		ArrayList<PersonalQnA> list = aService.selectTenPersonQnaList(currentPage, limit);
 		System.out.println(list);
 		RequestDispatcher view = null;
 		if(!list.isEmpty()) {
-			view = request.getRequestDispatcher("/views/admin/adminProductListQnA.jsp");
+			view = request.getRequestDispatcher("/views/admin/adminPersonalQna.jsp");
 			request.setAttribute("list", list);
 			request.setAttribute("pi", pi);
 		}else {
@@ -78,7 +78,6 @@ public class AdminProductQna extends HttpServlet {
 		
 		view.forward(request, response);
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

@@ -77,7 +77,7 @@
 		}
 		function qnaManage()
 		{
-			
+			location.href="<%=request.getContextPath()%>/admin/personalQna";
 		}
 		function pointManage()
 		{

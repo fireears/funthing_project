@@ -12,6 +12,7 @@ import admin.model.dao.AdminDao;
 import brand.model.vo.Brand;
 import payment.model.vo.OrderInfo;
 import payment.model.vo.OrderInfoDetail;
+import personalQnA.model.vo.PersonalQnA;
 import product.model.vo.Product;
 import productQnA.model.vo.AdminProductQnA;
 import productQnA.model.vo.ProductQnAReply;
@@ -251,6 +252,19 @@ public class AdminService {
 		
 		return result;
 	}
+
+	public ArrayList<PersonalQnA> selectTenPersonQnaList(int currentPage, int limit) {
+		Connection conn = getConnection(); 
+		ArrayList<PersonalQnA> list = new AdminDao().selectTenPersonQnaList(conn,currentPage, limit);
+		
+		close(conn);
+		
+		
+		return list;
+	}
+
+
+
 
 
 	
