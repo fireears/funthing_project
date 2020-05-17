@@ -4,11 +4,12 @@ package admin.model.dao;
 import static common.JDBCTemplate.close;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
+
 
 
 import productQnA.model.vo.AdminProductQnA;
@@ -847,6 +848,7 @@ public class AdminDao {
 		return result;
 	}
 
+
 	// 1:1문의게시판_혜린
 	public int getListPerQnaCount(Connection conn) {
 		PreparedStatement pstmt = null;
@@ -874,6 +876,86 @@ public class AdminDao {
 		
 		return result;
 	}
+
+
+	public ArrayList<Product> Productsearch(Connection conn, Product p) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		Product product = null;
+		ArrayList<Product> plist = new ArrayList<>();
+		
+		String pNo = p.getpNo();
+		String bNo = p.getbNo();
+		int sNo = p.getsNo();
+		String pName = p.getpName();
+		int pCategory = p.getpCategory();
+		int pPrice = p.getpPrice();
+		Date fStartDate = p.getfStartDate();
+		Date fEndDate = p.getfEndDate();
+		String fYn = p.getfYn();
+		
+
+		String query = "SELECT * FROM PRODUCTLIST\r\n" + 
+						"WHERE P_NO = ?\r\n" + 
+						"UNION\r\n" + 
+						"SELECT * FROM PRODUCTLIST\r\n" + 
+						"WHERE B_NO = ?\r\n" + 
+						"INTERSECT\r\n" + 
+						"SELECT * FROM PRODUCTLIST\r\n" + 
+						"WHERE S_NO = ?\r\n" + 
+						"INTERSECT\r\n" + 
+						"SELECT * FROM PRODUCTLIST\r\n" + 
+						"WHERE P_CATEGORY = ?\r\n" + 
+						"INTERSECT\r\n" + 
+						"SELECT * FROM PRODUCTLIST\r\n" + 
+						"WHERE P_PRICE >= ?\r\n" + 
+						"INTERSECT\r\n" + 
+						"SELECT * FROM PRODUCTLIST\r\n" + 
+						"WHERE F_START_DATE >= ? AND F_END_DATE <= ?\r\n" + 
+						"UNION\r\n" + 
+						"SELECT * FROM PRODUCTLIST\r\n" + 
+						"WHERE P_NAME = ? INTERSECT SELECT * FROM PRODUCTLIST WHERE F_YN = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, pNo);
+			pstmt.setString(2, bNo);
+			pstmt.setInt(3, sNo);
+			pstmt.setInt(4, pCategory);
+			pstmt.setInt(5, pPrice);
+			pstmt.setDate(6, fStartDate);
+			pstmt.setDate(7, fEndDate);
+			pstmt.setString(8, pName);
+			pstmt.setString(9, fYn);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next())
+			{
+				product = new Product(rset.getString("p_no"), rset.getString("b_no"), rset.getString("p_name"),
+										rset.getInt("p_category"), rset.getInt("s_no"), 
+										rset.getInt("p_price"), rset.getDate("f_start_date"),
+										rset.getDate("f_end_date"), rset.getString("f_yn"));
+				
+				plist.add(product);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally
+		{
+			close(pstmt);
+			close(rset);
+		}
+		return plist;
+	}
+
+	
+	
+	
+	
+	
 
 	
 	

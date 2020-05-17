@@ -311,6 +311,17 @@ public class AdminService {
 	}
 
 
+	public ArrayList<Product> productSearch(Product p) {
+		Connection conn = getConnection();
+		
+		ArrayList<Product> plist = new ArrayList<>();
+		
+		plist = new AdminDao().Productsearch(conn, p);
+		
+		close(conn);
+		return plist;
+	}
+
 
 	
 	
