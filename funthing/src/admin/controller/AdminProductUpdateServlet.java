@@ -53,13 +53,13 @@ public class AdminProductUpdateServlet extends HttpServlet {
 			String calNo = request.getParameter("calNo");
 			
 //			색상이랑 사이즈 변경시 상품번호 자동수정알고리즘
-//			String beforePno = pNo.substring(0,8);
-//			System.out.println(beforePno);
-//			String afterPno = beforePno + p_color + p_size;
-//			System.out.println("after : " + afterPno);
+			String beforePno = pNo.substring(0,8);
+			System.out.println(beforePno);
+			String afterPno = beforePno + p_color + p_size;
+			System.out.println("after : " + afterPno);
 			Product p = new Product(p_color, p_size, retail_price, dcRate, pPrice, pDetail, pPoint, shipDate, fStartDate, fEndDate, fGoal, fSelPrice, fYn, calNo);
 			
-			int result = new AdminService().productUpdate(p, pNo);
+			int result = new AdminService().productUpdate(p, pNo, afterPno);
 			
 			if(result > 0)
 			{

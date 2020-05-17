@@ -102,10 +102,10 @@ public class AdminService {
 		return result;
 	}
 
-	public int productUpdate(Product p, String pNo) {
+	public int productUpdate(Product p, String pNo, String afterPno) {
 		Connection conn = getConnection();
 		
-		int result = new AdminDao().productUpdate(conn, p, pNo);
+		int result = new AdminDao().productUpdate(conn, p, pNo, afterPno);
 		
 		if(result > 0)
 		{

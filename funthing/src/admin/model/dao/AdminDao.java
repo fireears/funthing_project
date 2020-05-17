@@ -291,30 +291,31 @@ public class AdminDao {
 		return result;
 	}
 
-	public int productUpdate(Connection conn, Product p, String pNo) {
+	public int productUpdate(Connection conn, Product p, String pNo, String afterPno) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
 		String query = "UPDATE PRODUCT SET \r\n" + 
-				"P_COLOR = ?, P_SIZE = ?, RETAIL_PRICE = ?, DC_RATE = ?, P_PRICE = ?, P_DETAIL = ?, P_POINT = ?, SHIP_DATE = ?, F_START_DATE = ?, F_END_DATE = ?, F_GOAL = ?, F_YN = ? \r\n" + 
+				"P_NO = ?, P_COLOR = ?, P_SIZE = ?, RETAIL_PRICE = ?, DC_RATE = ?, P_PRICE = ?, P_DETAIL = ?, P_POINT = ?, SHIP_DATE = ?, F_START_DATE = ?, F_END_DATE = ?, F_GOAL = ?, F_YN = ? \r\n" + 
 				"WHERE P_NO = ?";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
 			
-			pstmt.setString(1, p.getP_color());
-			pstmt.setString(2, p.getP_size());
-			pstmt.setInt(3, p.getRetailPrice());
-			pstmt.setInt(4, p.getDcRate());
-			pstmt.setInt(5, p.getpPrice());
-			pstmt.setString(6, p.getpDetail());
-			pstmt.setInt(7, p.getpPoint());
-			pstmt.setDate(8, p.getShipDate());
-			pstmt.setDate(9, p.getfStartDate());
-			pstmt.setDate(10, p.getfEndDate());
-			pstmt.setInt(11, p.getfGoal());
-			pstmt.setString(12, p.getfYn());
-			pstmt.setString(13, pNo);
+			pstmt.setString(1, afterPno);
+			pstmt.setString(2, p.getP_color());
+			pstmt.setString(3, p.getP_size());
+			pstmt.setInt(4, p.getRetailPrice());
+			pstmt.setInt(5, p.getDcRate());
+			pstmt.setInt(6, p.getpPrice());
+			pstmt.setString(7, p.getpDetail());
+			pstmt.setInt(8, p.getpPoint());
+			pstmt.setDate(9, p.getShipDate());
+			pstmt.setDate(10, p.getfStartDate());
+			pstmt.setDate(11, p.getfEndDate());
+			pstmt.setInt(12, p.getfGoal());
+			pstmt.setString(13, p.getfYn());
+			pstmt.setString(14, pNo);
 			
 			result = pstmt.executeUpdate();
 			System.out.println("dao result : " + result);
