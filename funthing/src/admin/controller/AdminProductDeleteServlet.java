@@ -1,26 +1,27 @@
-package personalQnA.controller;
+package admin.controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.oreilly.servlet.MultipartRequest;
+import admin.model.service.AdminService;
 
 /**
- * Servlet implementation class PersonalQnAServlet
+ * Servlet implementation class AdminProductUpdateServlet
  */
-@WebServlet("/PersonalQnA")
-public class PersonalQnAServlet extends HttpServlet {
+@WebServlet("/admin/productDelete")
+public class AdminProductDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PersonalQnAServlet() {
+    public AdminProductDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,16 +30,28 @@ public class PersonalQnAServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		int maxSize = 1024*1024*10;	// 이미지 사이즈 제한함 10Mbytes
+		String pNo = request.getParameter("pNo");
+		System.out.println(pNo);
 		
-		MultipartRequest multiRequest = new MultipartRequest(request, "utf-8");
+		int result = 0;
 		
-
-		String q1_tit = multiRequest.getParameter("q1_tit");
-		String q1_cont = multiRequest.getParameter("q1_cont");
+		result = new AdminService().productDelete(pNo);
 		
-		System.out.println(q1_tit);
+		RequestDispatcher view = null;
+		String page = "";
+		if(result > 0)
+		{
+			page = "/admin/mainView";
+			request.setAttribute("pNo", pNo);
+		}
+		else
+		{
+			page = "/views/admin/adminProductDetail.jsp";
+			String msg =pNo + " 삭제가 되지 않았습니다.";
+			request.setAttribute("msg", msg);
+		}
+		view = request.getRequestDispatcher(page);
+		view.forward(request, response);
 		
 	}
 

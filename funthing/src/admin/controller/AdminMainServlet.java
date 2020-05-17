@@ -36,6 +36,7 @@ public class AdminMainServlet extends HttpServlet {
 
 		System.out.println("adminMainServlet");
 		String pNo = (String)request.getAttribute("pNo");
+		String msg = (String)request.getAttribute("msg");
 		
 		AdminService aService = new AdminService();
 		
@@ -100,6 +101,7 @@ public class AdminMainServlet extends HttpServlet {
 			request.setAttribute("pi", pi);
 			request.setAttribute("list", list);
 			request.setAttribute("pNo", pNo);
+			request.setAttribute("msg", msg);
 			view.forward(request, response);
 		}
 		else

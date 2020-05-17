@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
 /**
  * Servlet implementation class AdminProductInsertServlet
  */
@@ -26,6 +29,17 @@ public class AdminProductInsertServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		request.setCharacterEncoding("utf-8");
+		
+		int maxSize = 1024*1024*10;
+		
+		String root = request.getSession().getServletContext().getRealPath("/");
+		
+		String thumbnailSavePath = root + "/images/thumbnail";
+		
+		MultipartRequest tumbnailMultipart = new MultipartRequest(request, thumbnailSavePath, maxSize, "utf-8", new DefaultFileRenamePolicy());
+		
 		
 		System.out.println("productInsertServlet");
 		String pNo = request.getParameter("pNo");

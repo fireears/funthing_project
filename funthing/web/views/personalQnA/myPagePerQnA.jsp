@@ -54,7 +54,7 @@
                             <td>주문내역</td>
                             <td><span>insert prd list</span><button>주문내역</button></td>
                         </tr>
-                        <!-- tr>
+                        <tr>
                             <td>말머리</td>
                             <td>
                                 <select name="q1_type" id="q1_type">
@@ -64,7 +64,7 @@
                                     <option value="">tltle</option>
                                 </select>
                             </td>
-                        </tr--> <!-- 테이블에 말머리 없음 -->
+                        </tr>
                         <tr>
                             <td>작성자</td>
                             <td><%=loginUser.getmName() %></td>
