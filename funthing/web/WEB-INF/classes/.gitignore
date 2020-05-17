@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /member/
 /notice/
 /payment/
@@ -5,3 +6,6 @@
 /product/
 /productQnA/
 /review/
+=======
+/admin/
+>>>>>>> refs/remotes/origin/master
