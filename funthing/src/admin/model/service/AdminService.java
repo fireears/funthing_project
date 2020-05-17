@@ -158,6 +158,8 @@ public class AdminService {
 			rollback(conn);
 		}
 		
+		close(conn);
+		
 		return result;
 	}
 
@@ -188,6 +190,8 @@ public class AdminService {
 			rollback(conn);
 		}
 		
+		close(conn);
+		
 		return result;
 	}
 
@@ -203,6 +207,8 @@ public class AdminService {
 		}else {
 			rollback(conn);
 		}
+		
+		close(conn);
 		
 		return result;
 	}

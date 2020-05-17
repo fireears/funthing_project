@@ -47,8 +47,8 @@ public class AdminBrandDelete extends HttpServlet {
 		
 		}else {
 			view = request.getRequestDispatcher("/views/admin/adminBrandUpdate.jsp");
-			String msg = bNo + "삭제가 되지 않습니다.";
-			request.setAttribute("msg", msg);
+			String dErrorMsg = bNo + "삭제가 되지 않습니다.";
+			request.setAttribute("dErrorMsg", dErrorMsg);
 			
 		}
 		view.forward(request, response);

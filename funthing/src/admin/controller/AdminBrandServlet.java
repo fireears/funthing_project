@@ -39,6 +39,7 @@ public class AdminBrandServlet extends HttpServlet {
 		String bNo = (String)request.getAttribute("bNo");
 		String updateMsg = (String)request.getAttribute("updateMsg");
 		String deleteMsg = (String)request.getAttribute("deleteMsg");
+		String insertMsg = (String)request.getAttribute("insertMsg");
 		
 		
 		AdminService aService = new AdminService();
@@ -98,6 +99,7 @@ public class AdminBrandServlet extends HttpServlet {
 			request.setAttribute("list", list);
 			request.setAttribute("pi", pi);
 		
+			// update 성공시
 		}else if(!list.isEmpty() && bNo != null){
 			view = request.getRequestDispatcher("/views/admin/adminBrand.jsp");
 			request.setAttribute("list", list);
@@ -105,13 +107,27 @@ public class AdminBrandServlet extends HttpServlet {
 			request.setAttribute("bNo", bNo);
 			request.setAttribute("updateMsg", updateMsg);
 			
-		}else if(!list.isEmpty() && bNo != null && deleteMsg != null ){
+			
+			// delete 성공시
+		}else if(!list.isEmpty() && deleteMsg != null ){
 			view = request.getRequestDispatcher("/views/admin/adminBrand.jsp");
 			request.setAttribute("list", list);
 			request.setAttribute("pi", pi);
 			request.setAttribute("bNo", bNo);
 			request.setAttribute("deleteMsg", deleteMsg);
 		
+			
+			// insert 성공시
+		}else if(!list.isEmpty() && insertMsg != null) {
+			view = request.getRequestDispatcher("/views/admin/adminBrand.jsp");
+			request.setAttribute("list", list);
+			request.setAttribute("pi", pi);
+			request.setAttribute("bNo", bNo);
+			request.setAttribute("deleteMsg", deleteMsg);
+			request.setAttribute("insertMsg", insertMsg);
+			
+			
+			
 		}else {
 			System.out.println("brandServlet단에 리스트가 비었음!");
 			

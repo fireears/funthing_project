@@ -16,6 +16,7 @@
 	
 	String updateMsg = (String)request.getAttribute("updateMsg");
 	String deleteMsg = (String)request.getAttribute("deleteMsg");
+	String insertMsg = (String)request.getAttribute("insertMsg");
 
 	
 %>
@@ -192,14 +193,18 @@
     	}
     	
     	$(function(){
-    		// 업데이트 성공시 alert
+    		// 기능 성공시 alert
     		<%if(updateMsg != null){%>
     			alert("<%=updateMsg%>");
+    			
     		<%}else if(deleteMsg != null){%>
     			alert("<%=deleteMsg%>");
     			
-    		<%}%>
+    		<%}else if(insertMsg != null){%>
+    			alert("<%=insertMsg%>");
     		
+    		
+    		<%} %>
     		
     		
     		

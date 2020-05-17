@@ -3,6 +3,7 @@
     
 <%
 	Brand b = (Brand)request.getAttribute("brand");
+	String uErrorMsg = (String)request.getAttribute("uErrorMsg");
 
 %>
     
@@ -35,7 +36,7 @@
 			<form action="<%=request.getContextPath() %>/admin/brandUpdate" method="post">
 				<table>
 					<tr>
-						<th>브랜드 코드</th><td><input type="text" id="bNo" name="bNo" value=<%=b.getbNo() %>></td>
+						<th>브랜드 코드</th><td><input type="text" id="bNo" name="bNo" value=<%=b.getbNo() %> readonly></td>
 					</tr>
 					
 					<tr>
@@ -75,10 +76,11 @@
 			
 			 <br><br>
              <input type="submit" id="brandInsertBtn" value="정보수정">
+            
              <button type="button" id="brandDeleteBtn" onclick="brandDeleteBtn();">삭제하기</button>
              <br><br>
-			
 			</form>
+			
 	
 		</article>
 	</section>
@@ -89,6 +91,15 @@
     		
     		
     	}
+    	
+    	// update 실패 시 
+    	$(function(){
+    		<%if(uErrorMsg != null){%>
+    			alert("<%=uErrorMsg%>")
+    		
+    		<%}%>
+    		
+    	})
     
     
     

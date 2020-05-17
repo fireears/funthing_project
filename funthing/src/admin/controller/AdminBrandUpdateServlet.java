@@ -61,6 +61,10 @@ public class AdminBrandUpdateServlet extends HttpServlet {
 			request.setAttribute("updateMsg", updateMsg);
 			
 		}else {
+			view = request.getRequestDispatcher("/views/admin/adminBrandUpdate.jsp");
+			String uErrorMsg = bName + "브랜드 수정에 실패했습니다.";
+			request.setAttribute("uErrorMsg", uErrorMsg);
+			
 			
 		}
 		view.forward(request, response);
