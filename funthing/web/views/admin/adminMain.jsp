@@ -6,6 +6,7 @@
     <%
     	ArrayList<Product> list = (ArrayList<Product>)request.getAttribute("list");
     	PageInfo pi = (PageInfo)request.getAttribute("pi");
+    	String msg = (String)request.getAttribute("msg");
     	
     	int num = 0;
     	int currentPage = pi.getCurrentPage();
@@ -146,6 +147,11 @@
 	</section>
 	<br><br>
 </body>
-
+<script>
+	$(function(){
+		alert(<%=msg%>);
+		
+	})
+</script>
 
 </html>

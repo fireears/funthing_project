@@ -4,7 +4,7 @@
     
     <%
     	Member loginUser = (Member)session.getAttribute("loginUser");
-    %>
+    %> 
 <!DOCTYPE html>
 	<html>
 	<head>
@@ -30,14 +30,17 @@
 	            
 	            <% if(loginUser != null){ %>
 	                <ul class="log-sec login">
-	                    <li><a href="#none">HELF</a></li>
+	                <%if(loginUser.getmId().equals("master")){ %>
+	                	<li class="master"><a href="#none">MASTER</a></li>
+	                	<%} %>
+	                    <li><a href="#none">HELP</a></li>
 	                    <li><a href="<%=request.getContextPath() %>/logout.me">LOGOUT</a></li>
 	                    <li><a href="#none">MY PAGE</a></li>
 	                    <li><a href="#none"><i class="fas fa-shopping-cart"></i></a></li>
 	                </ul>
 	                <% }else{ %>
 	                <ul class="log-sec logout">
-	                    <li><a href="#none">HELF</a></li>
+	                    <li><a href="#none">HELP</a></li>
 	                    <li><a href="#none">JOIN</a></li>
 	                    <li><a href="<%=request.getContextPath()%>/views/member/memberLogin.jsp">LOGIN</a></li>
 	                    <li><a href="#none"><i class="fas fa-shopping-cart"></i></a></li>
