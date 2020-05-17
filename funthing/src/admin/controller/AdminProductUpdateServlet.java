@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sun.glass.ui.View;
+//import com.sun.glass.ui.View;
 
 import admin.model.service.AdminService;
 import product.model.vo.Product;
@@ -37,8 +37,8 @@ public class AdminProductUpdateServlet extends HttpServlet {
 		System.out.println("adminProductUpdateServlet");
 		try {
 			String pNo = request.getParameter("pNo");
-			String p_color = request.getParameter("color");
-			String p_size = request.getParameter("size");
+//			String p_color = request.getParameter("color");
+//			String p_size = request.getParameter("size");
 			int retail_price = Integer.valueOf(request.getParameter("retail_price"));
 			int dcRate = Integer.valueOf(request.getParameter("dcRate"));
 			int pPrice = (int)(double)(retail_price - ((double)retail_price * ((double)dcRate * 0.01)));
@@ -57,7 +57,7 @@ public class AdminProductUpdateServlet extends HttpServlet {
 //			System.out.println(beforePno);
 //			String afterPno = beforePno + p_color + p_size;
 //			System.out.println("after : " + afterPno);
-			Product p = new Product(p_color, p_size, retail_price, dcRate, pPrice, pDetail, pPoint, shipDate, fStartDate, fEndDate, fGoal, fSelPrice, fYn, calNo);
+			Product p = new Product(retail_price, dcRate, pPrice, pDetail, pPoint, shipDate, fStartDate, fEndDate, fGoal, fSelPrice, fYn, calNo);
 			
 			int result = new AdminService().productUpdate(p, pNo);
 			

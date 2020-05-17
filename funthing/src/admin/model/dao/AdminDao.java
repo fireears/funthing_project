@@ -800,11 +800,56 @@ public class AdminDao {
 	}
 
 	
+	
+
+	public int productInsert(Connection conn, Product p) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "INSERT INTO PRODUCT(P_NO, B_NO, THUMBNAIL, P_NAME, P_COLOR, P_SIZE, RETAIL_PRICE, DC_RATE, P_PRICE, P_CATEGORY, S_NO, P_DETAIL, IMG_ROUTER, P_POINT, SHIP_DATE, F_START_DATE, F_END_DATE, F_GOAL, F_YN, CAL_NO)\r\n" + 
+				"VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		
+		String thumbnail = p.getThumbnail().substring(0, p.getThumbnail().length()-4);
+		String imgRouter = p.getImgRouter().substring(0, p.getImgRouter().length()-4);
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setString(1, p.getpNo());
+			pstmt.setString(2, p.getbNo());
+			pstmt.setString(3, thumbnail);
+			pstmt.setString(4, p.getpName());
+			pstmt.setString(5, p.getP_color());
+			pstmt.setString(6, p.getP_size());
+			pstmt.setInt(7, p.getRetailPrice());
+			pstmt.setInt(8, p.getDcRate());
+			pstmt.setInt(9, p.getpPrice());
+			pstmt.setInt(10, p.getpCategory());
+			pstmt.setInt(11, p.getsNo());
+			pstmt.setString(12, p.getpDetail());
+			pstmt.setString(13, imgRouter);
+			pstmt.setInt(14, p.getpPoint());
+			pstmt.setDate(15, p.getShipDate());
+			pstmt.setDate(16, p.getfStartDate());
+			pstmt.setDate(17, p.getfEndDate());
+			pstmt.setInt(18, p.getfGoal());
+			pstmt.setString(19, p.getfYn());
+			pstmt.setString(20, "1");
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally
+		{
+			close(pstmt);
+		}
+		return result;
 	}
 
 	
 	
-	
+}
 	
 	
 	

@@ -254,6 +254,7 @@ public class AdminService {
 		return result;
 	}
 
+
 	// 1:1문의 페이지 검색_햬린
 	public ArrayList<PersonalQnA> selectTenPersonQnaList(int currentPage, int limit, String searchKind,String searchText) {
 		Connection conn = getConnection(); 
@@ -280,6 +281,24 @@ public class AdminService {
 		return result;	}
 
 
+
+
+	public int productInsert(Product p) {
+		Connection conn = getConnection();
+		
+		int result = new AdminDao().productInsert(conn, p);
+		
+		if(result > 0)
+		{
+			commit(conn);
+		}
+		else
+		{
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
 
 
 
