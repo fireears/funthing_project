@@ -158,6 +158,8 @@ public class AdminService {
 			rollback(conn);
 		}
 		
+		close(conn);
+		
 		return result;
 	}
 
@@ -188,6 +190,8 @@ public class AdminService {
 			rollback(conn);
 		}
 		
+		close(conn);
+		
 		return result;
 	}
 
@@ -204,9 +208,25 @@ public class AdminService {
 			rollback(conn);
 		}
 		
+		close(conn);
+		
 		return result;
 	}
 
+
+	// 브랜드 search_희지
+	public ArrayList<Brand> searchBrand(int currentPage, int limit, String searchKind, String searchVal) {
+		Connection conn = getConnection();
+		
+		ArrayList<Brand> list = new AdminDao().searchBrand(conn, currentPage, limit, searchKind, searchVal);
+	
+		close(conn);
+		
+		
+		return list;
+	}
+
+	
 	public int productInsert(Product p) {
 		Connection conn = getConnection();
 		
@@ -233,6 +253,7 @@ public class AdminService {
 		
 		close(conn);
 		return plist;
+
 	}
 
 

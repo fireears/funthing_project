@@ -38,7 +38,7 @@ public class AdminBrandInsertServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		// 입력받은 브랜드 정보 저장
-		String bNo = request.getParameter("bNo");
+		/* String bNo = request.getParameter("bNo"); */
 		String bName = request.getParameter("bName");
 		String bCeo = request.getParameter("bCeo");
 		String bPhone = request.getParameter("bPhone");
@@ -48,7 +48,7 @@ public class AdminBrandInsertServlet extends HttpServlet {
 		String bLchYn = request.getParameter("bLchYn");
 		
 		// Brand객체 생성
-		Brand b = new Brand(bNo, bName, bCeo, bPhone, bAddress, bEmail, bLchDate, bLchYn);
+		Brand b = new Brand(bName, bCeo, bPhone, bAddress, bEmail, bLchDate, bLchYn);
 		
 		int result = new AdminService().insertBrand(b);
 		
@@ -58,12 +58,16 @@ public class AdminBrandInsertServlet extends HttpServlet {
 		
 		// 정보 입력 성공 후 페이지 전환 하기 -> 수정전
 		RequestDispatcher view = null;
+		String insertMsg = bName + "브랜드 등록에 성공했습니다.";
+		String iErrorMsg = bName + "브랜드 등록에 실패했습니다.";
+		
 		if(result>0) {
-			view = request.getRequestDispatcher("views/admin/adminBrand.jsp");
-			request.setAttribute("msg", bName + " 브랜드 등록에 성공하셨습니다.");
+			view = request.getRequestDispatcher("/admin/brandServlet");
+			request.setAttribute("insertMsg", insertMsg);
 			
-
 		}else {
+			view = request.getRequestDispatcher("/views/admin/insertBrand.jsp");
+			request.setAttribute("iErrorMsg", iErrorMsg);
 			
 		}
 		view.forward(request, response);
