@@ -30,13 +30,13 @@
     
                 <h3>문의내역</h3>
                 <ul>
-                    <li><a href="#">1:1 문의</a></li>
+                    <li><a href="<%=request.getContextPath()%>/personalQnA">1:1 문의</a></li>
                     <li><a href="#">나의 상품문의</a></li>
                     <li><a href="#">나의 리뷰</a></li>
                 </ul>
     
                 <h3>회원정보</h3>
-                <ul>
+                <ul>                          
                     <li><a href="#">회원정보 변경</a></li>
                     <li><a href="#">배송지 관리</a></li>
                 </ul>

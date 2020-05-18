@@ -1,5 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, personalQnA.model.vo.*, board.model.vo.*"%>
+    
+<%
+	ArrayList<PersonalQnA> list = (ArrayList<PersonalQnA>)request.getAttribute("list");
+	PageInfo pi = (PageInfo)request.getAttribute("pi");	
+
+
+	// PageIngo값 뽑아내기
+		int currentPage = pi.getCurrentPage();
+		/* int listCount = pi.getBrandListCount(); */
+		int limit = pi.getLimit();
+		int maxPage = pi.getMaxPage();
+		int startPage = pi.getStartPage();
+		int endPage = pi.getEndPage();
+	
+		
+%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -107,6 +124,10 @@
         .list-tb td{
             text-align: center;
         }
+        .list-tb .tb-zero{
+        	margin-left: 20px;
+        }
+        
         .list-tb .tb-first{
             width: 200px;
         }
@@ -114,6 +135,9 @@
             width: 200px;
         }
 	
+		/* 페이징 처리 부분 */     
+        .pagingArea{margin: 0 auto; margin-top:20px; margin-bottom:20px;}
+        .pagingArea button{border:0; font-size:middle; background:white; cursor:pointer;}
 	
 	</style>
 	
@@ -198,30 +222,92 @@
             <!-- 1:1 문의 조회 결과 영역 -->
             <div class="search-list">
                 <table class="list-tb">
+                
+                <%if(!list.isEmpty()){ %>
                     <tr>
+                    	<th class="tb-zero">번호</th>
                         <th class="tb-first">문의날짜</th>
                         <th>카테고리</th>
                         <th>제목</th>
                         <th class="tb-last">문의상태</th>
                     </tr>
 
-                    <tr>
-                        <td class="tb-first">2020-05-09</td>
-                        <td>상품문의</td>
-                        <td>상품문의 입니다.</td>
-                        <td class="tb-last">접수완료</td>
+					<%for(PersonalQnA pq : list){ %>
+                    <tr align="center">
+                    	<input type="hidden" value="<%=pq.getPerNo()%>">
+                    	<td class="tb-zero"><%=pq.getPerNo() %></td>
+                        <td class="tb-first"><%=pq.getPerDate() %></td>
+                        <td><%=pq.getPerCate() %></td>
+                        <td><%=pq.getPerTitle() %></td>
+                        <td class="tb-last"><%=pq.getPerReYn() %></td>
                     </tr>
+					
+					<%}%> <!-- for문 end -->
 
-                    <tr>
-                        <td class="tb-first">2020-05-09</td>
-                        <td>상품문의</td>
-                        <td>상품문의 입니다.</td>
-                        <td class="tb-last">접수완료</td>
-                    </tr>
+                 <%}%><!-- if문 end --> 
+                  
                 </table>
 
 
             </div><!-- 1:1 문의 조회 결과 영역 end -->
+
+
+	<br><br>
+	<!-- 페이징 처리 시작 -->
+		<div class="pagingArea" align="center">
+		
+			<!-- 맨 처음으로 -->
+			<button onclick="location.href='<%=request.getContextPath() %>/personalQnA?currntPage=1'"> << </button>
+		
+		
+			<!-- 이전 페이지로 -->
+			<%if(currentPage == 1){ %>
+				<button disabled> < </button>
+		
+			<%}else{ %>
+				<button onclick="location.href='<%=request.getContextPath() %>/personalQnA?currentPage=<%=currentPage -1 %>'"> < </button>
+			<%} %>
+		
+		
+			<!-- 10개의 페이지 목록 -->
+			<%for(int p = startPage; p <= endPage; p++){ %>
+				<%if(currentPage == p){ %>
+					<button disabled><%=p %></button>
+					
+				<%}else{ %>
+					<button onclick="location.href='<%=request.getContextPath() %>/personalQnA?currentPage=<%=p %>'"><%=p %></button>
+				<%} %>
+			<%} %>
+			
+			
+			<!-- 다음 페이지로 -->
+			<%if(currentPage == maxPage){ %>
+				<button disabled> > </button>
+			<%}else{ %>
+				<button onclick="location.href='<%=request.getContextPath() %>/personalQnA?currentPage=<%=currentPage + 1 %>'"> > </button>
+			<%} %>
+		
+		
+			<!-- 맨 뒷 페이지로  -->
+			<button onclick="location.href='<%=request.getContextPath() %>/personalQnA?currentPage=<%=maxPage %>'"> >> </button>
+		
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!-- 이 위까지만 수정하세요 -->

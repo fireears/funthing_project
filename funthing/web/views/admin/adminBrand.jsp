@@ -129,7 +129,7 @@
                     <th>이메일</th>
                     <th>입점 날짜</th>
                     <th>입점 유무</th>
-                    <th>변경</th>
+                    <!-- <th>변경</th> -->
                 </tr>
 
 		
@@ -144,10 +144,10 @@
 					<td><%=b.getbEmail() %></td>
 					<td><%=b.getbLchDate() %></td>
 					<td><%=b.getbLchYn() %></td>
-					<td>
+					<!-- <td>
 						<button type="button" id="modifyBrand">수정</button>
 						<button type="button" id="deleteBrand">삭제</button>
-					</td>
+					</td> -->
 				</tr>
 				<%} %><!-- for문 end -->
 			
