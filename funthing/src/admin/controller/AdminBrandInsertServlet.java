@@ -43,7 +43,7 @@ public class AdminBrandInsertServlet extends HttpServlet {
 		String bCeo = request.getParameter("bCeo");
 		String bPhone = request.getParameter("bPhone");
 		String bAddress = request.getParameter("bAddress");
-		String bEmail = request.getParameter("bEamil");
+		String bEmail = request.getParameter("bEmail");
 		Date bLchDate = Date.valueOf(request.getParameter("bLchDate")); // date형인데 String으로 형변환!! 나중에 다시 보자
 		String bLchYn = request.getParameter("bLchYn");
 		

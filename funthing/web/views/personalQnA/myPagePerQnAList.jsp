@@ -6,6 +6,7 @@
 	PageInfo pi = (PageInfo)request.getAttribute("pi");	
 
 
+	
 	// PageIngo값 뽑아내기
 		int currentPage = pi.getCurrentPage();
 		/* int listCount = pi.getBrandListCount(); */
@@ -23,117 +24,42 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<style>
-	.r-cont-header{
-            width: 100%;
-            padding: 20px 20px;
-            border-top: 1px solid #bbb; 
-            border-bottom:1px solid #bbb;
-        }
+		.r-cont-header{width: 100%; padding: 20px 20px; border-top: 1px solid #bbb;  border-bottom:1px solid #bbb;}
 
-        .r-cont-header:after {
-            clear:both;
-            content:"";
-            display:block;
-        }
+        .r-cont-header:after {clear:both; content:""; display:block;}
 
-        .r-cont-text{
-            width: 30%;
-            margin: 0 0 0 0;
-            margin-right: 0;
-            padding: 0 0 0 0;
-            float:left;
-        }
-        .r-cont-button{
-            float: right;
-            border: 1px solid #bbb;
-            background-color: #bbb;
-        }
+        .r-cont-text{width: 30%; margin: 0 0 0 0; margin-right: 0; padding: 0 0 0 0; float:left;}
+        .r-cont-button{float: right;border: 1px solid #bbb; background-color: #bbb;}
 
-        .r-cont-button a{
-           margin:20px;
-           font-size: 15px;
-           color: white;
-        }
+        .r-cont-button a{margin:20px; font-size: 15px; color: white;}
 
 
          /* 날짜 조회 영역 */
-         .point{
-            padding-left: 20px;
-            width: 100%;
-            margin: 60px 0;
-        }
+         .point{padding-left: 20px; width: 100%; margin: 60px 0;}
 
         /* 날짜 영역 */
-        .point-search{
-            margin-top: 30px;
-            height: 130px;
-            border-top: 1px solid #0f4a7e;
-            border-bottom: 1px solid #bbb;
-            border-left: 1px solid #bbb;
-            border-right: 1px solid #bbb;
-        }
+        .point-search{margin-top: 30px; height: 130px; border-top: 1px solid #0f4a7e; border-bottom: 1px solid #bbb;border-left: 1px solid #bbb; border-right: 1px solid #bbb;}
 
-        .point-search ul{
-            display: inline-block;
-        }
+        .point-search ul{display: inline-block;}
 
-        .point-search ul:after{
-            display: block;
-            content: "";
-            clear: both;
-        }
+        .point-search ul:after{display: block; content: ""; clear: both;}
 
-        .point-search ul li{
-            float: left;
-            margin-top: 45px;
-            margin-left: 30px;
-        }
-        .point-search ul h3{
-            color: darkgray;
-        }
+        .point-search ul li{float: left; margin-top: 45px; margin-left: 30px;}
+        .point-search ul h3{ color: darkgray;}
 
-        
-        #submit{ /* 날짜 조회 버튼 */
-            width: 120px;
-            height: 30px;
-            background-color: #0f4a7e;
-            color: white;
-            border: none;
-            font-size: 15px;
-        }
+         /* 날짜 조회 버튼 */
+        #submit{width: 120px; height: 30px; background-color: #0f4a7e; color: white; border: none; font-size: 15px;}
 
         /* 1:1문의 조회 list 영역 */
-        .search-list{
-            padding-left: 20px;
-            width: 100%;
-        }
-        .list-tb{
-            margin-top: 30px;
-            border-top: 2px solid #0f4a7e;
-            width: 100%;
-            border-bottom: 1px solid #0f4a7e;
-            line-height: 50px;
-            border-collapse: collapse;
-        }
-        .list-tb th{
-            border-bottom: 1px solid #0f4a7e;
-        }
-        .list-tb tr{
-            border: 0; padding:0; border-bottom: 1px solid #bbb;
-        }
-        .list-tb td{
-            text-align: center;
-        }
-        .list-tb .tb-zero{
-        	margin-left: 20px;
-        }
+        .search-list{padding-left: 20px; width: 100%;}
+        .list-tb{margin-top: 30px; border-top: 2px solid #0f4a7e; width: 100%; border-bottom: 1px solid #0f4a7e; line-height: 50px;border-collapse: collapse;}
+        .list-tb th{border-bottom: 1px solid #0f4a7e;}
+        .list-tb tr{border: 0; padding:0; border-bottom: 1px solid #bbb;}
+        .list-tb td{text-align: center; }
+        .list-tb .tb-zero{margin-left: 20px;}
         
-        .list-tb .tb-first{
-            width: 200px;
-        }
-        .list-tb .tb-last{
-            width: 200px;
-        }
+        .list-tb .tb-first{width: 200px;}
+        .list-tb .tb-last{width: 200px;}
 	
 		/* 페이징 처리 부분 */     
         .pagingArea{margin: 0 auto; margin-top:20px; margin-bottom:20px;}
@@ -244,8 +170,22 @@
 					
 					<%}%> <!-- for문 end -->
 
-                 <%}%><!-- if문 end --> 
+                 <%}else{%><!-- if문 end --> 
+                  	<tr>
+                    	<th class="tb-zero">번호</th>
+                        <th class="tb-first">문의날짜</th>
+                        <th>카테고리</th>
+                        <th>제목</th>
+                        <th class="tb-last">문의상태</th>
+                    </tr>
+                    
+                    <tr style="margin-top:30px;">
+						<td colspan="9"><div style="text-aling:center">검색 결과가 없습니다. 다시 검색해주세요.</div></td>
+					</tr> 
                   
+                  
+                  
+                  <%} %>
                 </table>
 
 

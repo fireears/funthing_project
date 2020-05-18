@@ -15,16 +15,17 @@ public class PersonalQnADao {
 
 	
 	// 일대일 문의 리스트 카운트_희지
-	public int getPerListCount(Connection conn) {
+	public int getPerListCount(Connection conn, String userNo) {
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		int perListCount = 0;
 		
-		String query = "SELECT COUNT(*) FROM PERSONAL_QNA";
+		String query = "SELECT COUNT(*) FROM PERSONAL_QNA WHERE M_NO=?";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userNo);
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
@@ -43,7 +44,7 @@ public class PersonalQnADao {
 
 	
 	// 일대일 문의 리스트 조회_희지
-	public ArrayList<PersonalQnA> selectPersonalQnA(Connection conn, int currentPage, int limit) {
+	public ArrayList<PersonalQnA> selectPersonalQnA(Connection conn, int currentPage, int limit, String userNo) {
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -51,7 +52,7 @@ public class PersonalQnADao {
 		PersonalQnA pq = null;
 		ArrayList<PersonalQnA> perList = new ArrayList<>();
 		
-		String query = "SELECT PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE FROM PER_LIST WHERE RNUM BETWEEN ? AND ?";
+		String query = "SELECT PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE FROM PER_LIST WHERE RNUM BETWEEN ? AND ? AND M_NO=?";
 		
 		int startRow = (currentPage -1) * limit +1;
 		int endRow = startRow + (limit -1);
@@ -60,6 +61,7 @@ public class PersonalQnADao {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, startRow);
 			pstmt.setInt(2, endRow);
+			pstmt.setString(3, userNo);
 			
 			rset = pstmt.executeQuery();
 			

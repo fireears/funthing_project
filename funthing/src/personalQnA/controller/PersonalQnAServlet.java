@@ -34,16 +34,20 @@ public class PersonalQnAServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-
-		// 이거 뭔지 모르겠어여 -희지
-		int maxSize = 1024*1024*10;	// 이미지 사이즈 제한함 10Mbytes
+		
+		// 로그인 한 유저 정보 받기
+		String userNo = (String)request.getAttribute("userNo");
+		
+		
+		
+//		// 이거 뭔지 모르겠어여 -희지
+//		int maxSize = 1024*1024*10;	// 이미지 사이즈 제한함 10Mbytes
 		
 		
 		PersonalQnAService pqService = new PersonalQnAService();
 		
-		
-		// 일대일 문의 리스트 카운트하기
-		int perListCount = pqService.getPerListCount();
+		// 로그인 유저에 대한 일대일 문의 리스트 카운트하기
+		int perListCount = pqService.getPerListCount(userNo);
 		
 		System.out.println("Servlet에서 일대일 문의 리스트  갯수 :" + perListCount);
 		
@@ -54,6 +58,7 @@ public class PersonalQnAServlet extends HttpServlet {
 		int maxPage;
 		int startPage;
 		int endPage;
+		
 		
 		currentPage = 0;
 		if(request.getParameter("currentPage") != null) {
@@ -80,7 +85,7 @@ public class PersonalQnAServlet extends HttpServlet {
 		//
 		
 		
-		ArrayList<PersonalQnA> list = pqService.selectPersonalQnA(currentPage, limit);
+		ArrayList<PersonalQnA> list = pqService.selectPersonalQnA(currentPage, limit, userNo);
 		
 		System.out.println("Servlet에서 일대일 문의 리스트" + list);
 		
@@ -92,7 +97,9 @@ public class PersonalQnAServlet extends HttpServlet {
 			
 			
 		}else {
-			
+			view = request.getRequestDispatcher("/views/personalQnA/myPagePerQnAList.jsp");
+			request.setAttribute("list", list);
+			request.setAttribute("pi", pi);
 		}
 		
 		view.forward(request, response);
