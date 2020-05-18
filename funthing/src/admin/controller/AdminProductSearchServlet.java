@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import admin.model.service.AdminService;
+import board.model.vo.PageInfo;
 import product.model.vo.Product;
 
 /**
@@ -50,22 +51,60 @@ public class AdminProductSearchServlet extends HttpServlet {
 			
 			System.out.println("sNo : " + sNo);
 			Product p = new Product(pNo, bNo, pName, pPrice, pCategory, sNo, fStartDate, fEndDate, fYn);
-			
 			System.out.println(p);
-			ArrayList<Product> plist = new ArrayList<>();
-			plist = aService.productSearch(p);
+			
+			ArrayList<Product> list = new ArrayList<>();
 			
 			int listCount = aService.getListCount(p);
 			
 			System.out.println(listCount);
 			
-			RequestDispatcher view = null;
-			if(!plist.isEmpty())
+			int currentPage;
+			int maxPage;
+			int startPage;
+			int endPage;
+			
+			int limit = 20;
+			
+			currentPage = 0;
+			
+			if(request.getParameter("currentPage")!=null)
 			{
-//				view = request.getRequestDispatcher("/views/admin/adminMain.jsp");
-//				request.setAttribute("plist", plist);
-//				view.forward(request, response);
-				for(Product pro : plist)
+				currentPage = Integer.valueOf(request.getParameter("currentPage"));
+			}
+			else
+			{
+				currentPage = 1;
+			}
+			//페이지 확인용
+			System.out.println(currentPage);
+			
+			maxPage = (int)((double)listCount/limit + 0.95);
+			
+			startPage = ((int)(((double)currentPage/limit + 0.95)-1) * limit) +1;
+			
+			endPage = startPage + limit -1;
+			
+			if(endPage > maxPage)
+			{
+				endPage = maxPage;
+			}
+			
+			
+			PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
+			
+			list = aService.productSearch(currentPage, limit, p);
+			
+			
+			RequestDispatcher view = null;
+			if(!list.isEmpty())
+			{
+				view = request.getRequestDispatcher("/views/admin/adminMain.jsp");
+				request.setAttribute("list", list);
+				request.setAttribute("pi", pi);
+				request.setAttribute("p",p);
+				view.forward(request, response);
+				for(Product pro : list)
 				{
 					System.out.println(pro);
 				}
@@ -73,7 +112,7 @@ public class AdminProductSearchServlet extends HttpServlet {
 			else
 			{
 				System.out.println("검색 결과가 없습니다.");
-//				view = request.getRequestDispatcher("/views/admin/adminMain.jsp");
+				view = request.getRequestDispatcher("/views/admin/adminMain.jsp");
 //				request.setAttribute("msg", "검색결과가 없습니다.");
 //				view.forward(request, response);
 			}

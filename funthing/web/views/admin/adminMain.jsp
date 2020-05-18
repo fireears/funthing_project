@@ -6,6 +6,8 @@
     <%
     	ArrayList<Product> list = (ArrayList<Product>)request.getAttribute("list");
     	ArrayList<Product> plist = (ArrayList<Product>)request.getAttribute("plist");
+    	Product p1 = (Product)request.getAttribute("p");
+    	
     	PageInfo pi = (PageInfo)request.getAttribute("pi");
     	String msg = (String)request.getAttribute("msg");
     	

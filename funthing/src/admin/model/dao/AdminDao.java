@@ -649,13 +649,14 @@ public class AdminDao {
 		return result;
 	}
 
-	public ArrayList<Product> Productsearch(Connection conn, Product p) {
+	public ArrayList<Product> Productsearch(Connection conn, Product p, int currentPage, int limit) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
 		Product product = null;
 		ArrayList<Product> plist = new ArrayList<>();
-		
+		int startRow = (currentPage - 1)*limit +1;
+		int endRow = startRow + limit -1;
 		String pNo = p.getpNo();
 		String bNo = p.getbNo();
 		int sNo = p.getsNo();
@@ -673,11 +674,11 @@ public class AdminDao {
 						"    FROM(\r\n" + 
 						"            SELECT ROWNUM RNUM, P_NO, B_NO, S_NO, P_NAME, P_CATEGORY, RETAIL_PRICE, DC_RATE, P_PRICE, F_YN, F_START_DATE, F_END_DATE\r\n" + 
 						"            FROM PRODUCTLIST\r\n" + 
-						"            WHERE (((P_NO = ? OR B_NO = ?) OR S_NO = ?) OR P_NAME = ?) AND P_CATEGORY = ?  \r\n" + 
+						"            WHERE (((P_NO = ? OR B_NO = ?) OR S_NO >= ?) OR P_NAME = ?) AND P_CATEGORY = ?  \r\n" + 
 						"        )\r\n" + 
 						"    WHERE P_PRICE >= ? AND F_YN = ?\r\n" + 
 						"    )\r\n" + 
-						"WHERE F_START_DATE >= ? AND F_END_DATE <= ?";
+						"WHERE F_START_DATE >= ? AND F_END_DATE <= ? AND RNUM BETWEEN ? AND ?";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -690,14 +691,16 @@ public class AdminDao {
 			pstmt.setString(7, fYn);
 			pstmt.setDate(8, fStartDate);
 			pstmt.setDate(9, fEndDate);
+			pstmt.setInt(10, startRow);
+			pstmt.setInt(11, endRow);
 			
 			rset = pstmt.executeQuery();
 			
 			while(rset.next())
 			{
-				product = new Product(rset.getString("p_no"), rset.getString("b_no"), rset.getString("p_name"),
-										rset.getInt("p_category"), rset.getInt("s_no"), 
-										rset.getInt("p_price"), rset.getDate("f_start_date"),
+				product = new Product(rset.getInt("rnum"), rset.getString("p_no"), rset.getString("b_no"), rset.getString("p_name"),
+										rset.getInt("p_price"), rset.getInt("p_category"), rset.getInt("s_no"), 
+										rset.getDate("f_start_date"),
 										rset.getDate("f_end_date"), rset.getString("f_yn"));
 				
 				plist.add(product);
