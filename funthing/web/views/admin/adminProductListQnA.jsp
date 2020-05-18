@@ -175,9 +175,9 @@
 	        
 	        <!-- 페이징처리 -->
 	        <div id="pageBtn" align="center">
+	        	<%-- <button class="pageBtn" onclick="location.href='<%=request.getContextPath() %>/admin/productQnA?currentPage=<%=1 %>&searchKind=searchKind.val()&searchText=searchText.val()'"> << </button> --%>
 	        	<button class="pageBtn" onclick="location.href='<%=request.getContextPath() %>/admin/productQnA?currentPage=<%=1 %>'"> << </button>
-	        	
-	        	<%if(currentPage <= 1) { %>
+	        	<%if(currentPage == 1) { %>
 	        		<button class="pageBtn" disabled> < </button>
 	        	<%} else {%>
 	        		<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/admin/productQnA?currentPage=<%=currentPage-1%>'"> < </button>
@@ -188,6 +188,7 @@
 	        	
 	        	<%	} else{ %>
 	        			<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/admin/productQnA?currentPage=<%=p%>'"><%=p %></button>
+	        			<%-- <button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/admin/productQnA?currentPage=<%=p%>&searchKind=searchKind.val()&searchText=searchText.val()'"><%=p %></button> --%>
 	        	<%} %>	
 	        	<%} %>
 	        	

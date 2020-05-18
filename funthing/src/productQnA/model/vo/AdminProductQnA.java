@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class AdminProductQnA {
 	
-	private int rownum;				// 답글 qna 게시글 번호
+	
 	private int qnaNo;				// qna 번호
 	private String mId;				// 회원아이디
 	private String mName;			// 회원 이름
@@ -21,12 +21,11 @@ public class AdminProductQnA {
 	public AdminProductQnA() {
 		super();
 	}
+
 	
-	
-	public AdminProductQnA(int rownum, int qnaNo, String mId, String mName, String pNo, String pName, String qnaTitle,
+	public AdminProductQnA(int qnaNo, String mId, String mName, String pNo, String pName, String qnaTitle,
 			String qnaContents, String qnaDate, String reYn) {
 		super();
-		this.rownum = rownum;
 		this.qnaNo = qnaNo;
 		this.mId = mId;
 		this.mName = mName;
@@ -39,10 +38,9 @@ public class AdminProductQnA {
 	}
 
 
-	public AdminProductQnA(int rownum, int qnaNo, String mId, String mName, String pNo, String pName, String qnaTitle,
+	public AdminProductQnA(int qnaNo, String mId, String mName, String pNo, String pName, String qnaTitle,
 			String qnaContents, String qnaDate, String bNo, String reYn) {
 		super();
-		this.rownum = rownum;
 		this.qnaNo = qnaNo;
 		this.mId = mId;
 		this.mName = mName;
@@ -54,78 +52,118 @@ public class AdminProductQnA {
 		this.bNo = bNo;
 		this.reYn = reYn;
 	}
-	public int getRownum() {
-		return rownum;
-	}
-	public void setRownum(int rownum) {
-		this.rownum = rownum;
-	}
+
+
 	public int getQnaNo() {
 		return qnaNo;
 	}
+
+
 	public void setQnaNo(int qnaNo) {
 		this.qnaNo = qnaNo;
 	}
+
+
 	public String getmId() {
 		return mId;
 	}
+
+
 	public void setmId(String mId) {
 		this.mId = mId;
 	}
+
+
 	public String getmName() {
 		return mName;
 	}
+
+
 	public void setmName(String mName) {
 		this.mName = mName;
 	}
+
+
 	public String getpNo() {
 		return pNo;
 	}
+
+
 	public void setpNo(String pNo) {
 		this.pNo = pNo;
 	}
+
+
 	public String getpName() {
 		return pName;
 	}
+
+
 	public void setpName(String pName) {
 		this.pName = pName;
 	}
+
+
 	public String getQnaTitle() {
 		return qnaTitle;
 	}
+
+
 	public void setQnaTitle(String qnaTitle) {
 		this.qnaTitle = qnaTitle;
 	}
+
+
 	public String getQnaContents() {
 		return qnaContents;
 	}
+
+
 	public void setQnaContents(String qnaContents) {
 		this.qnaContents = qnaContents;
 	}
+
+
 	public String getQnaDate() {
 		return qnaDate;
 	}
+
+
 	public void setQnaDate(String qnaDate) {
 		this.qnaDate = qnaDate;
 	}
+
+
 	public String getbNo() {
 		return bNo;
 	}
+
+
 	public void setbNo(String bNo) {
 		this.bNo = bNo;
 	}
+
+
 	public String getReYn() {
 		return reYn;
 	}
+
+
 	public void setReYn(String reYn) {
 		this.reYn = reYn;
 	}
+
+
 	@Override
 	public String toString() {
-		return "AdminProductQnA [rownum=" + rownum + ", qnaNo=" + qnaNo + ", mId=" + mId + ", mName=" + mName + ", pNo="
-				+ pNo + ", pName=" + pName + ", qnaTitle=" + qnaTitle + ", qnaContents=" + qnaContents + ", qnaDate="
-				+ qnaDate + ", bNo=" + bNo + ", reYn=" + reYn + "]";
+		return "AdminProductQnA [qnaNo=" + qnaNo + ", mId=" + mId + ", mName=" + mName + ", pNo=" + pNo + ", pName="
+				+ pName + ", qnaTitle=" + qnaTitle + ", qnaContents=" + qnaContents + ", qnaDate=" + qnaDate + ", bNo="
+				+ bNo + ", reYn=" + reYn + "]";
 	}
+
+
+
+	
 	
 	
 	

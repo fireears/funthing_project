@@ -84,9 +84,9 @@ public class AdminService {
 		
 	}
 	//  상품문의 페이지_혜린
-	public int getListQnaCount() {
+	public int getListQnaCount(String searchKind, String searchText) {
 		Connection  conn = getConnection();
-		int result = new AdminDao().getListQnaCount(conn);
+		int result = new AdminDao().getListQnaCount(conn,searchText,searchKind);
 		
 		close(conn);
 		return result;

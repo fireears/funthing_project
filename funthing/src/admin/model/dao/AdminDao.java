@@ -9,7 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
+   
 
 
 import productQnA.model.vo.AdminProductQnA;
@@ -226,21 +226,28 @@ public class AdminDao {
 	}
 	
 	// 상품문의 페이지_혜린 
-	public int getListQnaCount(Connection conn) {
+	public int getListQnaCount(Connection conn, String searchText, String searchKind) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		int result = 0;
-		
-		String query = "SELECT COUNT(*) FROM QNA";
-		
+				
 		try {
-			pstmt = conn.prepareStatement(query);
-			rset =  pstmt.executeQuery();
+		
+			if(searchKind== null && searchText == null) {
+				String query = "SELECT COUNT(*) FROM QNA";
+				pstmt = conn.prepareStatement(query);
+				rset =  pstmt.executeQuery();
+			}else if(searchKind != null && searchText != null) {
+				String query = "SELECT COUNT(*) FROM QNA WHERE "+searchKind+"= ?";
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, searchText);
+				rset =  pstmt.executeQuery();
+			}
 			
 			if(rset.next()) {
 				result = rset.getInt(1);
 			}
-			
+			System.out.println("dao result : " + result);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -265,29 +272,35 @@ public class AdminDao {
 		
 		try {
 
-			String query = " SELECT rownum, QNA_NO, M_ID, M_NAME,P_NO2,p_name ,QNA_TITLE, QNA_CONTENTS, QNA_DATE ,RE_YN	"
-					+ "FROM QNA Q JOIN member M ON Q.M_NO = M.M_NO join product p on q.p_no2 = p.p_no where rownum  BETWEEN ? AND ?  ORDER BY QNA_NO DESC ";
-			pstmt = conn.prepareStatement(query);
+//			String query = " SELECT rownum, QNA_NO, M_ID, M_NAME,P_NO2,p_name ,QNA_TITLE, QNA_CONTENTS, QNA_DATE ,RE_YN	"
+//					+ "FROM QNA Q JOIN member M ON Q.M_NO = M.M_NO join product p on q.p_no2 = p.p_no where rownum  BETWEEN ? AND ?  ORDER BY QNA_NO DESC ";
+//			pstmt = conn.prepareStatement(query);
 			
-			
+			String query = null;
 			
 			if(searchKind == null && searchText == null ) {	
-				query = " SELECT rownum, QNA_NO, M_ID, M_NAME,P_NO2,p_name ,QNA_TITLE, QNA_CONTENTS, QNA_DATE ,RE_YN	"
-						+ "FROM QNA Q JOIN member M ON Q.M_NO = M.M_NO join product p on q.p_no2 = p.p_no where rownum  BETWEEN ? AND ?  ORDER BY QNA_NO DESC ";
+				query = "select QNA_NO, M_ID, M_NAME,P_NO2,p_name ,QNA_TITLE, QNA_CONTENTS, QNA_DATE ,RE_YN	"
+						+ "from (select QNA_NO, M_ID, M_NAME,P_NO2,p_name ,QNA_TITLE, QNA_CONTENTS, QNA_DATE ,RE_YN, rownum as rnum FROM QNA Q JOIN member M ON Q.M_NO = M.M_NO join product p on q.p_no2 = p.p_no) "
+						+ "where rnum  BETWEEN ? AND ? ";
+						
 				pstmt = conn.prepareStatement(query);
 				pstmt.setInt(1, startRow);
 				pstmt.setInt(2, endRow);
 			}else if(searchKind != null && searchText.equals("")) {
-				query = " SELECT rownum, QNA_NO, M_ID, M_NAME,P_NO2,p_name ,QNA_TITLE, QNA_CONTENTS, QNA_DATE ,RE_YN	"
-						+ "FROM QNA Q JOIN member M ON Q.M_NO = M.M_NO join product p on q.p_no2 = p.p_no where rownum  BETWEEN ? AND ?  ORDER BY QNA_NO DESC ";
+				query = "select QNA_NO, M_ID, M_NAME,P_NO2,p_name ,QNA_TITLE, QNA_CONTENTS, QNA_DATE ,RE_YN	"
+						+ "from (select QNA_NO, M_ID, M_NAME,P_NO2,p_name ,QNA_TITLE, QNA_CONTENTS, QNA_DATE ,RE_YN, rownum as rnum FROM QNA Q JOIN member M ON Q.M_NO = M.M_NO join product p on q.p_no2 = p.p_no) "
+						+ "where rnum  BETWEEN ? AND ? ";
 				pstmt = conn.prepareStatement(query);
 				pstmt.setInt(1, startRow);
 				pstmt.setInt(2, endRow);
 			}else if(searchKind != null && searchText != null) {
-				query =" SELECT rownum, QNA_NO, M_ID, M_NAME,P_NO2,p_name ,QNA_TITLE, QNA_CONTENTS, QNA_DATE ,RE_YN	"
-						+ "FROM QNA Q JOIN member M ON Q.M_NO = M.M_NO join product p on q.p_no2 = p.p_no where " + searchKind + "=?  ORDER BY QNA_NO DESC";
+				query ="select QNA_NO, M_ID, M_NAME,P_NO2,p_name ,QNA_TITLE, QNA_CONTENTS, QNA_DATE ,RE_YN	"
+						+ "from (select QNA_NO, M_ID, M_NAME,P_NO2,p_name ,QNA_TITLE, QNA_CONTENTS, QNA_DATE ,RE_YN, rownum as rnum FROM QNA Q JOIN member M ON Q.M_NO = M.M_NO join product p on q.p_no2 = p.p_no where " + searchKind + " = ?)"
+						+ "where rnum  BETWEEN ? AND ? ";
 				pstmt = conn.prepareStatement(query);
-				pstmt.setString(1, searchText);			
+				pstmt.setString(1, searchText);	
+				pstmt.setInt(2, startRow);
+				pstmt.setInt(3, endRow);
 			}
 			
 			
@@ -295,7 +308,7 @@ public class AdminDao {
 			
 			while(rset.next()) {
 				apq = new AdminProductQnA(
-						rset.getInt("rownum"),
+						
 						rset.getInt("QNA_NO"),
 						rset.getString("M_ID"),
 						rset.getString("M_NAME"),

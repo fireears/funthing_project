@@ -37,7 +37,19 @@ public class AdminProductQna extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		AdminService aService = new AdminService();
 		
-		int listCount = aService.getListQnaCount();
+		// 검색창 구현 시작
+		String searchKind = request.getParameter("searchKind");	// 검색 종류 값
+		String searchText = request.getParameter("searchText"); // 검색 입력창 값
+		if(searchText != null) {
+			searchText = request.getParameter("searchText");
+		}else {
+			searchText = (String) request.getAttribute("searchText");
+		}
+		System.out.println("servlet searchKind : " + searchKind);
+		System.out.println("servlet searchText : " + searchText);
+		
+		
+		int listCount = aService.getListQnaCount(searchKind,searchText);
 //		System.out.println("servlet listCount : " + listCount);
 		
 		// 페이징 처리
@@ -66,16 +78,7 @@ public class AdminProductQna extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
 		
-		// 검색창 구현 시작
-		String searchKind = request.getParameter("searchKind");	// 검색 종류 값
-		String searchText = request.getParameter("searchText"); // 검색 입력창 값
-		if(searchText != null) {
-			searchText = request.getParameter("searchText");
-		}else {
-			searchText = (String) request.getAttribute("searchText");
-		}
-		System.out.println("servlet searchKind : " + searchKind);
-		System.out.println("servlet searchText : " + searchText);
+		
 		
 		ArrayList<AdminProductQnA> list = aService.selectTenProductQnaList(currentPage, limit,searchKind, searchText);
 		System.out.println(list);

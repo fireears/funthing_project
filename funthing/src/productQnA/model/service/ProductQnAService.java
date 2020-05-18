@@ -61,8 +61,8 @@ public class ProductQnAService {
 		
 		ArrayList<ProductQnaIn> list = new ProductQnADao().selectOrderSearch(conn, currentPage, limit, mNo);
 		
+
 		close(conn);
-		
 		return list;
 	}
 

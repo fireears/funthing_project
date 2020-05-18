@@ -54,9 +54,9 @@ public class AdminOrderInfo extends HttpServlet {
 				currentPage = 1;
 			}
 
-			limit = 3;
-			maxPage = (int)((double)listCount/limit + 0.95);
-			startPage = ((int)(((double)currentPage/limit + 0.95)-1) * limit) +1;
+			limit = 10;
+			maxPage = (int)((double)listCount/limit + 0.9); // +1 안하면 페이지 한정 덜나옴 왜그러지?
+			startPage = ((int)(((double)currentPage/limit + 0.9)-1) * limit) +1;
 			endPage = startPage + limit -1;
 			
 			if(maxPage < endPage) {

@@ -7,6 +7,7 @@
 <%
 		ArrayList<ProductQnaIn> list = (ArrayList<ProductQnaIn>)request.getAttribute("list");
 		PageInfo pi = (PageInfo)request.getAttribute("pi");
+		String mNo = (String)request.getAttribute("mNo");
 		
 		int num = 0;
 		int currentPage = pi.getCurrentPage();
@@ -137,7 +138,7 @@
 	
 </head>
 <body>
-	
+		
 	<%@ include file="../common/header.jsp" %>
 	
 	<%@ include file="../common/myPageHeader.jsp" %>
@@ -145,6 +146,7 @@
     <div id="content">
         <!-- 오른쪽 컨텐츠 영역 -->
 	<%@ include file="../common/myPageSide.jsp" %>
+	
 	<div id="r-cont"> 
 	<!-- 오른쪽 컨텐츠 수정 영역  -->
             <!-- 오른쪽 컨텐츠 헤더 영역-->
@@ -152,7 +154,7 @@
                
                 <div class="r-cont-text">
                     <h2>
-                        <b style="color:#0f4a7e;">1:1 문의</b>
+                        <b style="color:#0f4a7e;">상품 문의</b>
                     </h2>
                 </div>
 
@@ -235,36 +237,35 @@
 				 <%} %>
                 </table>
 
-
             </div><!-- 1:1 문의 조회 결과 영역 end -->
 
 			 <!-- 페이징처리 -->
-	        <div id="pageBtn" align="center">
-	        	<button class="pageBtn" onclick="location.href='<%=request.getContextPath() %>/productQnaList?currentPage=<%=1 %>'"> << </button>
+	         <div id="pageBtn" align="center">
+	        	<button class="pageBtn" onclick="location.href='<%=request.getContextPath() %>/productQnaList?currentPage=1&mNo=<%=mNo%>'"> << </button>
 	        	
-	        	<%if(currentPage <= 1) { %>
+	        	<%if(currentPage == 1) { %>
 	        		<button class="pageBtn" disabled> < </button>
 	        	<%} else {%>
-	        		<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/productQnaList?currentPage=<%=currentPage-1%>'"> < </button>
+	        		<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/productQnaList?currentPage=<%=currentPage-1%>&mNo=<%=mNo%>'"> < </button>
 	        	<%} %>
 	        	<%for(int p = startPage; p<=endPage; p++) { %>
 	        	<%	if(p == currentPage) { %>
 	        			<button class="pageBtn" disabled><%=p %></button>
 	        	
 	        	<%	} else{ %>
-	        			<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/productQnaList?currentPage=<%=p%>'"><%=p %></button>
+	        			<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/productQnaList?currentPage=<%=p%>&mNo=<%=mNo%>'"><%=p %></button>
 	        	<%} %>	
 	        	<%} %>
 	        	
 	        	<%if(currentPage == maxPage) {%>
 	        		<button class="pageBtn" disabled> > </button>
 	        	<%} else { %>
-	        		<button class="pageBtn" onclick="location.href='<%=request.getContextPath() %>/productQnaList?currentPage=<%=currentPage+1 %>'"> > </button>
+	        		<button class="pageBtn" onclick="location.href='<%=request.getContextPath() %>/productQnaList?currentPage=<%=currentPage+1 %>&mNo=<%=mNo%>'"> > </button>
 	        	<%} %>
-	        	<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/productQnaList?currentPage=<%=maxPage%>'"> >> </button>
+	        	<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/productQnaList?currentPage=<%=maxPage%>&mNo=<%=mNo%>'"> >> </button>
 	        	
 	        	
-	        </div>
+	        </div> 
 
 
 

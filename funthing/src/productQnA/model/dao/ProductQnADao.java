@@ -113,9 +113,10 @@ public class ProductQnADao {
 			
 			while(rset.next())
 			{
-				listCount = rset.getInt(1);
+				listCount = rset.getInt("COUNT(*)");
 				
 			}
+//			System.out.println("list dao listcount:" + listCount);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -132,7 +133,9 @@ public class ProductQnADao {
 		ResultSet rset = null;
 		ProductQnaIn qna = null;
 		ArrayList<ProductQnaIn> list = new ArrayList<>();
-		String query = "SELECT * FROM QNA WHERE M_NO=?  and  qna_no between ? and ?";
+		String query = "SELECT QNA_NO,M_NO,QNA_TITLE,QNA_CONTENTS,QNA_DATE,P_NO2,B_NO,RE_YN "
+				+ "from (SELECT QNA_NO,M_NO,QNA_TITLE,QNA_CONTENTS,QNA_DATE,P_NO2,B_NO,RE_YN ,rownum as rnum FROM QNA WHERE M_NO= ?) "
+				+ "WHERE rnum between ? and ? ";
 		
 		try {
 			int startRow = (currentPage -1) * limit +1;
@@ -158,7 +161,7 @@ public class ProductQnADao {
 							);
 			list.add(qna);
 			}
-//			System.out.println("ListDao list : " + list);
+			System.out.println("ListDao list : " + list);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

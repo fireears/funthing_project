@@ -31,7 +31,7 @@
                 <h3>문의내역</h3>
                 <ul>
                     <li><a href="#">1:1 문의</a></li>
-                    <li><a href="<%=request.getContextPath()%>/views/productQnA/productQnA.jsp">나의 상품문의</a></li>
+                    <li><a href="<%=request.getContextPath()%>/productQnaList?loginUser=<%=loginUser2.getmNo%>">나의 상품문의</a></li>
                     <li><a href="#">나의 리뷰</a></li>
                 </ul>
     

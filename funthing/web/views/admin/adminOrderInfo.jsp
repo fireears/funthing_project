@@ -228,7 +228,7 @@ ul li {
 				<%if (currentPage == 1) {%>
 					<button class="pageBtn" disabled> < </button>
 				<%} else {%>
-					<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/admin/orderInfo?currentPage-1'"> < </button>
+					<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/admin/orderInfo?currentPage=<%=currentPage - 1 %>'"> < </button>
 				<%}%>
 
 				<!-- 10개의 페이지 목록 -->
@@ -244,7 +244,7 @@ ul li {
 				<%if (maxPage == 1) {%>
 					<button disabled class="pageBtn"> > </button>
 				<%} else {%>
-					<button class="pageBtn"	onclick="location.href='<%=request.getContextPath()%>/admin/orderInfo?currentPage+1'"> > </button>
+					<button class="pageBtn"	onclick="location.href='<%=request.getContextPath()%>/admin/orderInfo?currentPage=<%=currentPage + 1 %>'"> > </button>
 				<%}%>	
 
 				<!-- 맨 끝으로 -->

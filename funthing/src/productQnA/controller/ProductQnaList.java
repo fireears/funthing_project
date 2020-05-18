@@ -38,6 +38,7 @@ public class ProductQnaList extends HttpServlet {
 		ProductQnAService aService = new ProductQnAService();
 		
 		String mNo = request.getParameter("mNo");
+		System.out.println("mNo : " + mNo);
 		int listCount = aService.getListQnaCount(mNo);
 		System.out.println("Listservlet listCount : " + listCount);
 		
@@ -48,6 +49,7 @@ public class ProductQnaList extends HttpServlet {
 		int startPage;			// 한번에 표시될 페이지가 시작할 페이지
 		int endPage;			// 한번에 표시될 페이지가 끝나는 페이지
 		
+		
 		currentPage = 0;
 		
 		if(request.getParameter("currentPage") != null) {
@@ -55,7 +57,7 @@ public class ProductQnaList extends HttpServlet {
 		}else {
 			currentPage = 1;
 		}
-		
+		System.out.println("currentPage : " +  currentPage);
 		limit = 10;
 		maxPage = (int)((double)listCount/limit + 0.9);
 		startPage = ((int)((double)currentPage/limit + 0.9)-1)*limit + 1;
@@ -75,6 +77,8 @@ public class ProductQnaList extends HttpServlet {
 			view = request.getRequestDispatcher("/views/productQnA/productQnAList.jsp");
 			request.setAttribute("list", list);
 			request.setAttribute("pi", pi);
+			request.setAttribute("mNo", mNo);
+			
 		}else {
 			view = request.getRequestDispatcher("/views/productQnA/productQnAList.jsp");
 			request.setAttribute("list", list);

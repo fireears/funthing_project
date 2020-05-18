@@ -29,7 +29,7 @@
     </style>
 </head>
 <body>
-
+	 
 	<%@ include file="../common/header.jsp" %>
 	
 	<%@ include file="../common/myPageHeader.jsp" %>
@@ -46,7 +46,7 @@
 
             <div class="q1_wrap">
                 <form action="<%=request.getContextPath()%>/productQnaInsert" method="post">
-                    <input type="hidden" name="mNo" value="<%=loginUser.getmNo() %>">
+                    <input type="hidden" name="mNo" value="<%=loginUser.getmNo() %>"> <!-- loginUser2.getmNo()  -->
                     <table>
                         <tr>
                       		
