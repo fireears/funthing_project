@@ -10,7 +10,7 @@ public class OrderInfo {
 	private String prcsStatus;	// 배송단계
 	private int pmntPrice;		// 총 합계
 	private String cancelYn;	// 취소여부
-	private int rnum;			// view번호
+	private int rnum;			// view번호e
 	public OrderInfo() {
 		super();
 	}
