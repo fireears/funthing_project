@@ -15,6 +15,10 @@ public class OrderInfoDetail {
 	private int pmntPrice;		// 최종 결제 금액
 	private String oNo;			// 주문번호
 	private String mId;			// 회원 아이디
+	
+	private String perThumbnail;	// 상품 썸네일
+	private String perPnName;	// 상품명
+	
 	public OrderInfoDetail() {
 		super();
 	}
@@ -34,6 +38,32 @@ public class OrderInfoDetail {
 		this.pmntPrice = pmntPrice;
 		this.oNo = oNo;
 		this.mId = mId;
+	}
+	
+	// 서윤 추가
+	public OrderInfoDetail(int totalPrice, String oNo, String mId, String perThumbnail, String perPnName) {
+		super();
+		this.totalPrice = totalPrice;
+		this.oNo = oNo;
+		this.mId = mId;
+		this.perThumbnail = perThumbnail;
+		this.perPnName = perPnName;
+	}
+	
+	
+	
+	public String getPerThumbnail() {
+		return perThumbnail;
+	}
+	
+	public void setPerThumbnail(String perThumbnail) {
+		this.perThumbnail = perThumbnail;
+	}
+	public String getPerPnName() {
+		return perPnName;
+	}
+	public void setPerPnName(String perPnName) {
+		this.perPnName = perPnName;
 	}
 	public String getoDate() {
 		return oDate;
@@ -113,13 +143,21 @@ public class OrderInfoDetail {
 	public void setmId(String mId) {
 		this.mId = mId;
 	}
+//	@Override
+//	public String toString() {
+//		return "OrderInfoDetail [oDate=" + oDate + ", rcvName=" + rcvName + ", rcvAdrs=" + rcvAdrs + ", rcvPhone="
+//				+ rcvPhone + ", commentt=" + commentt + ", exptPoint=" + exptPoint + ", pNo=" + pNo + ", oNum=" + oNum
+//				+ ", totalPrice=" + totalPrice + ", pointUse=" + pointUse + ", pmntPrice=" + pmntPrice + ", oNo=" + oNo
+//				+ ", mId=" + mId + "]";
+//	}
 	@Override
 	public String toString() {
 		return "OrderInfoDetail [oDate=" + oDate + ", rcvName=" + rcvName + ", rcvAdrs=" + rcvAdrs + ", rcvPhone="
 				+ rcvPhone + ", commentt=" + commentt + ", exptPoint=" + exptPoint + ", pNo=" + pNo + ", oNum=" + oNum
 				+ ", totalPrice=" + totalPrice + ", pointUse=" + pointUse + ", pmntPrice=" + pmntPrice + ", oNo=" + oNo
-				+ ", mId=" + mId + "]";
+				+ ", mId=" + mId + ", perThumbnail=" + perThumbnail + ", perPnName=" + perPnName + "]";
 	}
+	
 	
 	
 	

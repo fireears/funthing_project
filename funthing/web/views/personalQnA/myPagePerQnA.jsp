@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="member.model.vo.*"%>
+    pageEncoding="UTF-8" import="member.model.vo.*, payment.model.vo.*, java.util.ArrayList"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +17,7 @@
         .q1_wrap table tr { border-bottom:1px solid #aaa; width:100%; }
         .q1_wrap table tr td:nth-child(1) { width:30%; box-sizing:border-box; padding-left:20px; line-height:3; font-weight:700; background:#eee; color:#0f4a7e; }   
         .q1_wrap table tr td:nth-child(2) { width:70%; box-sizing:border-box; padding:8px 14px 8px; }
-        .q1_wrap table button { width:80px; height:26px; line-height:26px; background:#0f4a7e; border:1px solid #aaa; color:#fff; margin-left:10px; }
+        .q1_wrap table span.button { display:inline-block; text-align:center; cursor:pointer; width:80px; height:26px; line-height:26px; background:#0f4a7e; border:1px solid #aaa; color:#fff; margin-left:10px; }
 
         .q1_wrap .q1_text { font-size:14px; color:#777; }
         .q1_wrap input { height:24px; width:100%; }
@@ -25,6 +26,33 @@
         .q1_wrap .q1_btnArea { width:100%; text-align:center; margin-top:20px; }
         .q1_wrap .q1_btnArea .btn { margin:0 3px; width:160px; height:60px; font-size:16px; border:1px solid #ddd; background:#eee; }
         .q1_wrap .q1_btnArea .btn.submit { background:#0f4a7e; border:1px solid #aaa; color:#fff; }
+    
+    	/* 팝업창 */
+    	.q1_wrap .q1_orderList { position:relative; }
+    	
+    	#orderSelectWrap { display:none; position:absolute; width:700px; height:300px; padding:0 20px; box-sizing:border-box; background:#fff; border:1px solid #ddd; top:5px; right:-35px; }
+        #orderSelectWrap:after { display:block; content:""; clear:both; }
+        
+        #orderSelectWrap h2 { text-align:center; margin:20px 0; font-size:24px; }
+        #orderSelectWrap form { border:1px solid #ddd; }
+        #orderSelectWrap .os_tb { border-collapse: collapse; }
+        #orderSelectWrap .os_tb tr { border-bottom:1px solid #ddd; }
+        #orderSelectWrap .os_tb tr:last-child { border-bottom:none; }
+        
+        #orderSelectWrap .os_tb td { height:0px; line-height:0px; box-sizing: border-box; padding:10px 0; text-align:center; }
+        #orderSelectWrap .os_tb td.prd_img { text-align:left; }
+        #orderSelectWrap .os_tb td [type="radio"] { height:16px; width:auto; vertical-align:-4px; display:inline; }
+        #orderSelectWrap .os_tb td:nth-child(1){ width:25%; }
+        #orderSelectWrap .os_tb td:nth-child(2){ width:15%; }
+        #orderSelectWrap .os_tb td:nth-child(3){ width:35%; }
+        #orderSelectWrap .os_tb td:nth-child(4){ width:25%; }
+        
+        #orderSelectWrap .os_tb img { width:50px; vertical-align: middle; border:1px solid #ddd; }
+
+		#orderSelectWrap .oi_btns { float:right; margin-top:10px; }
+		#orderSelectWrap .oi_btn { width:50px; height:30px; line-height:30px; text-align:center; border:1px solid #ddd; cursor:pointer; }
+        #orderSelectWrap .submit { float:left; margin-right:6px; background:#0f4a7e; color:#fff; }
+        #orderSelectWrap .close { float:left; background:#eee; }
     </style>
 </head>
 <body>
@@ -53,7 +81,26 @@
                         </tr>
                         <tr>
                             <td>주문내역</td>
-                            <td><span>insert prd list</span><button>주문내역</button></td>
+                            <td class="q1_orderList">
+	                            <span class="q1_selList">insert prd list</span>
+	                            <span class="button" onclick="orderSelect();">주문내역</span>
+	                            <div id="orderSelectWrap">
+							        <h2>주문 내역</h2>
+							        <form>
+							            <table class="os_tb">
+							                <tr>
+							                    <th>주문번호</th>
+							                    <th colspan="2">상품명</th>
+							                    <th>금액</th>
+							                </tr>
+							            </table>
+							        </form>
+							        <div class="oi_btns">
+								        <p class="oi_btn submit">ok</p>
+								        <p class="oi_btn close">close</p>
+							        </div>
+							    </div>
+                            </td>
                         </tr>
                         <tr>
                             <td>말머리</td>
@@ -105,6 +152,83 @@
         </div>
     </div>
     </div>
+    <script>
+    	function orderSelect(){
+    		var userId = "<%=loginUser.getmId()%>";
+    		
+    		//jQuery.ajaxSettings.traditional = true;
+    		
+    		$.ajax({
+    			url : "<%=request.getContextPath()%>/SelectOrder",
+    			type : "post",
+    			data : {"userId" : userId },
+    			success : function(data){
+    				//alert("성공");
+    				$("#orderSelectWrap").show();
+    				$(".close").click(function(){
+    					$("#orderSelectWrap").hide();
+      		    	 	$(".oiCont").detach();	// 데이터가 쌓이지 않게 입력값 삭제해줌
+    				});
+    				
+    				 $.each(data, function(index, value){
+    					 //alert("!");
+    					 var $img = $("<img>").attr("src", "/funthing/images/thumbnail/" + value.oiTnumbnail + ".jpg");
+    					 var $radio = $("<input>").attr({"type" : "radio", "name" : "ioChk", "id" : "ioChk", "value" : value.oipNo});
+    					 var $span = $("<span>").text(value.oipNo);
+    					 
+    					 var $tr = $("<tr>").attr("class", "oiCont");
+    					 var $tdpNo = $("<td>");
+    					 var $tdThumb = $("<td>");
+    					 var $tdmName = $("<td>").text(value.oiPerName);
+    					 var $tdTp = $("<td>").text(value.oiTotalPrice);
+    					 
+    					 $tdThumb.append($img);
+    					 $tdpNo.append($radio).append($span);
+    					 
+    					 $tr.append($tdpNo);
+    					 $tr.append($tdThumb);
+    					 $tr.append($tdmName);
+    					 $tr.append($tdTp);
+    					 
+    					 $(".os_tb").children().append($tr);
+    					 
+    				 }); 
+    			        $("input:radio").change(checkedChange);
+    			        function checkedChange(){
+    			            console.log($(this).prop("checked"));
+
+						// 체크한 라디오 버튼의 value값 뽑아오기
+	            		var selectVal = $("input:radio").val();
+	            		console.log(selectVal);
+	            		
+    			            var bool = $(this).prop("checked");
+			            	$(".q1_selList").text(selectVal);	// 주문 번호 페이지로 넘겨줌 // 얘는 라디오 누르자마자
+    			            if(bool){
+    			            	// 체크 값이 있을 때
+    			            	$(".oi_btns .submit").click(function(){
+    				            	//$(".q1_selList").text(selectVal);	// 주문 번호 페이지로 넘겨줌 // 얘는 ok 눌러야
+    			            		<%-- location.href="<%=request.getContextPath()%>/InsertPerQnA"; --%>
+    			            		$("#orderSelectWrap").hide();
+    			            	});
+    			            	
+    			            }else{
+    			            	// 체크 값이 없을 때
+    			            	$(".oi_btns .submit").click(function(){
+        			            	alert("주문 리스트를 선택해 주세요!");
+    			            	});
+    			            }
+    			        }
+
+    			},
+    			error : function(data){
+    				alert("실패");
+    			}
+    		});   		
+    	}
+    	// ajax end
+    	
+    	
+    </script>
     </div>
     
     <%@ include file="../common/footer.jsp" %>

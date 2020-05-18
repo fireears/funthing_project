@@ -49,6 +49,9 @@ public class InsertPerQnAServlet extends HttpServlet {
 		String q1_tit = multiRequest.getParameter("q1_tit");
 		
 		// 주문 내역 어케 받지??
+		String q1_oNo = multiRequest.getParameter("ioChk");
+		
+//		System.out.println(q1_oNo);
 		
 		String q1_type = multiRequest.getParameter("q1_type");
 		// 로그인 유저 아이디값 받아옴
@@ -69,8 +72,7 @@ public class InsertPerQnAServlet extends HttpServlet {
 		perQA.setPerTitle(q1_tit);		// 게시판 제목
 		perQA.setPerContents(q1_cont);	// 게시판 내용
 		perQA.setpName(q1_name);		// 작성자 이름 (수정 X 로그인 된 이름 뽑아옴)
-		
-//		PerQA.setpNo(q1_prodNo);		// 상품 번호
+		perQA.setoNo(q1_oNo);			// 주문 번호 (메인에서 선택한 값)
 		perQA.setPerCate(q1_type); 		// 문의 유형
 		perQA.setAddFile(q1_saveFile);	// 업로드 파일
 		
@@ -86,7 +88,7 @@ public class InsertPerQnAServlet extends HttpServlet {
 			File failedFile = new File(savePath + q1_saveFile);	// file은 io package 안에 있는 것 import
 			failedFile.delete();
 		}
-	
+	 
 	}
 
 	/**
