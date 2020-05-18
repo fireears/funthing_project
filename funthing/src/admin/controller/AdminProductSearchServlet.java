@@ -99,6 +99,7 @@ public class AdminProductSearchServlet extends HttpServlet {
 			RequestDispatcher view = null;
 			if(!list.isEmpty())
 			{
+				System.out.println(pi);
 				view = request.getRequestDispatcher("/views/admin/adminMain.jsp");
 				request.setAttribute("list", list);
 				request.setAttribute("pi", pi);
