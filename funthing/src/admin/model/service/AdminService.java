@@ -213,6 +213,19 @@ public class AdminService {
 		return result;
 	}
 
+	
+	// 브랜드 search_희지
+	public ArrayList<Brand> searchBrand(int currentPage, int limit, String searchKind, String searchVal) {
+		Connection conn = getConnection();
+		
+		ArrayList<Brand> list = new AdminDao().searchBrand(conn, currentPage, limit, searchKind, searchVal);
+	
+		close(conn);
+		
+		
+		return list;
+	}
+
 
 	
 	

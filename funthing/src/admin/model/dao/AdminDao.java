@@ -532,9 +532,74 @@ public class AdminDao {
 
 	
 	
-	
-	
-	
+	// 브랜드 search_희지
+	public ArrayList<Brand> searchBrand(Connection conn, int currentPage, int limit, String searchKind, String searchVal) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Brand b = null;
+		ArrayList<Brand> list = new ArrayList<>();
+		
+		
+		int startRow = (currentPage -1) *limit +1;
+		int endRow = startRow + limit - 1;
+		
+		String query = null;
+		
+		
+		
+		try {
+		
+			if(searchKind == null && searchVal == null){
+				query="SELECT B_NO, B_NAME, B_CEO, B_PHONE, B_ADDRESS, B_EMAIL, B_LCH_DATE, B_LCH_YN FROM BRANDLIST WHERE RNUM BETWEEN ? AND ?";
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, startRow);
+				pstmt.setInt(2, endRow);
+				
+			
+			}else if(searchKind != null && searchVal.equals("")) {
+				query="SELECT B_NO, B_NAME, B_CEO, B_PHONE, B_ADDRESS, B_EMAIL, B_LCH_DATE, B_LCH_YN FROM BRANDLIST WHERE RNUM BETWEEN ? AND ?";
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, startRow);
+				pstmt.setInt(2, endRow);
+				
+				
+				
+			}else if(searchKind != null && searchVal != null){
+				query = "SELECT B_NO, B_NAME, B_CEO, B_PHONE, B_ADDRESS, B_EMAIL, B_LCH_DATE, B_LCH_YN FROM BRANDLIST WHERE " + searchKind + "=?";
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, searchVal);
+				
+			}
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				b = new Brand(rset.getString("B_NO"),
+					rset.getString("B_NAME"),
+					rset.getString("B_CEO"),
+					rset.getString("B_PHONE"),
+					rset.getString("B_ADDRESS"),
+					rset.getString("B_EMAIL"),
+					rset.getDate("B_LCH_DATE"),
+					rset.getString("B_LCH_YN"));
+				list.add(b);
+		}
+			
+			System.out.println("Dao brand search list : " + list);
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+			
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		
+		return list;
+	}
+
 	
 	
 }
