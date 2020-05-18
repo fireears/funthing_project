@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 import admin.model.dao.AdminDao;
 import brand.model.vo.Brand;
+import notice.model.dao.NoticeDao;
+import notice.model.vo.Notice;
 import payment.model.vo.OrderInfo;
 import payment.model.vo.OrderInfoDetail;
 import product.model.vo.Product;
@@ -207,7 +209,7 @@ public class AdminService {
 		return result;
 	}
 
-
+	
 	
 	
 }

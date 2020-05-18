@@ -82,7 +82,7 @@
 		}
 		function notice()
 		{
-			
+			location.href = "<%=request.getContextPath()%>/admin/NoticeView";
 		}
 		function client()
 		{
