@@ -33,6 +33,7 @@ public class Product implements Serializable{
 	private String fYn;
 	private String calNo;
 	private int fPrgRate;
+	private int rNum;
 	
 	public Product() {
 		super();
@@ -378,6 +379,14 @@ public class Product implements Serializable{
 		this.fPrgRate = fPrgRate;
 	}
 
+	public int getrNum() {
+		return rNum;
+	}
+	
+	public void setrNum(int rNum) {
+		this.rNum = rNum;
+	}
+	
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

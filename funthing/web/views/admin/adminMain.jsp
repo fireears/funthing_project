@@ -97,11 +97,11 @@
                 </tr>
                 
 	            <%for(Product p : list) {
-	            	num++;
+	            	
 	            %>
 	            <tr align="center">
 	            	<input type="hidden" value="<%=p.getpNo() %>">
-	            	<td><%=num %></td> <td><%=p.getpNo() %></td> <td><%=p.getpName() %></td> <td><%=p.getpCategory() %></td> <td><%=p.getRetailPrice() %></td> <td><%=p.getDcRate() %></td> <td><%=p.getpPrice() %></td> <td><%=p.getfYn() %></td> <td><%=p.getfStartDate() %></td> <td><%=p.getfEndDate() %></td>
+	            	<td><%=p.getrNum() %></td> <td><%=p.getpNo() %></td> <td><%=p.getpName() %></td> <td><%=p.getpCategory() %></td> <td><%=p.getRetailPrice() %></td> <td><%=p.getDcRate() %></td> <td><%=p.getpPrice() %></td> <td><%=p.getfYn() %></td> <td><%=p.getfStartDate() %></td> <td><%=p.getfEndDate() %></td>
 	            	
 	            </tr>
                 <%} %>
