@@ -44,7 +44,7 @@
             <h2>1:1 문의</h2>
 
             <div class="q1_wrap">
-                <form action="<%=request.getContextPath()%>/PersonalQnA" method="post" encType="multipart/form-data">
+                <form action="<%=request.getContextPath()%>/InsertPerQnA" method="post" encType="multipart/form-data">
                     <table>
                         <tr>
                             <td>제목</td>
@@ -54,17 +54,17 @@
                             <td>주문내역</td>
                             <td><span>insert prd list</span><button>주문내역</button></td>
                         </tr>
-                        <!-- tr>
+                        <tr>
                             <td>말머리</td>
                             <td>
                                 <select name="q1_type" id="q1_type">
-                                    <option value="">tltle</option>
-                                    <option value="">tltle</option>
-                                    <option value="">tltle</option>
-                                    <option value="">tltle</option>
+                                    <option value="배송문의">배송문의</option>
+                                    <option value="기타문의">기타문의</option>
+                                    <option value="계정문의">계정문의</option>
+                                    <option value="건의">건의</option>
                                 </select>
                             </td>
-                        </tr--> <!-- 테이블에 말머리 없음 -->
+                        </tr>
                         <tr>
                             <td>작성자</td>
                             <td><%=loginUser.getmName() %></td>
