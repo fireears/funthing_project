@@ -1,5 +1,6 @@
 package personalQnA.controller;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -68,14 +69,23 @@ public class InsertPerQnAServlet extends HttpServlet {
 		perQA.setPerTitle(q1_tit);		// 게시판 제목
 		perQA.setPerContents(q1_cont);	// 게시판 내용
 		perQA.setpName(q1_name);		// 작성자 이름 (수정 X 로그인 된 이름 뽑아옴)
-		// 회원번호??
 		
 //		PerQA.setpNo(q1_prodNo);		// 상품 번호
 		perQA.setPerCate(q1_type); 		// 문의 유형
 		perQA.setAddFile(q1_saveFile);	// 업로드 파일
 		
-		int result = new PersonalQnAService().insertPerQnA(perQA);
+		int result = new PersonalQnAService().insertPerQnA(perQA, q1_num);
 		
+		if(result > 0) {
+//			response.sendRedirect("perQnAlist");	// list Servlet으로 연결해주기
+			System.out.println("insert 성공");
+			
+		}else {
+
+			// 글쓰기 실패시 업로드한 파일 삭제
+			File failedFile = new File(savePath + q1_saveFile);	// file은 io package 안에 있는 것 import
+			failedFile.delete();
+		}
 	
 	}
 

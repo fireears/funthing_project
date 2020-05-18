@@ -45,6 +45,7 @@
 
             <div class="q1_wrap">
                 <form action="<%=request.getContextPath()%>/InsertPerQnA" method="post" encType="multipart/form-data">
+                    
                     <table>
                         <tr>
                             <td>제목</td>
