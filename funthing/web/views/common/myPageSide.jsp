@@ -35,14 +35,8 @@
     
                 <h3>문의내역</h3>
                 <ul>
-
-                    <li><a href="#">1:1 문의</a></li>
-                    <%-- <li><a href="<%=request.getContextPath()%>/productQnaList?loginUser=<%=loginUser.getmNo()%>">나의 상품문의</a></li> --%>
-                    <li><a href="<%=request.getContextPath()%>/productQnaList">나의 상품문의</a></li>
-
                     <li><a href="<%=request.getContextPath()%>/personalQnA?userNo=<%=loginUser2.getmNo()%>">1:1 문의</a></li>
-                    <li><a href="#">나의 상품문의</a></li>
-
+                     <li><a href="<%=request.getContextPath()%>/productQnaList?mNo=<%=loginUser2.getmNo()%>">나의 상품문의</a></li>
                     <li><a href="#">나의 리뷰</a></li>
                 </ul>
     

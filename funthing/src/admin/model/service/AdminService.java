@@ -13,6 +13,7 @@ import brand.model.vo.Brand;
 import member.model.vo.Member;
 import payment.model.vo.OrderInfo;
 import payment.model.vo.OrderInfoDetail;
+import personalQnA.model.vo.AdmimPersonalQna;
 import personalQnA.model.vo.PersonalQnA;
 import personalQnA.model.vo.PersonalQnaReply;
 import product.model.vo.Product;
@@ -275,9 +276,9 @@ public class AdminService {
 
 
 	// 1:1문의 페이지 검색_햬린
-	public ArrayList<PersonalQnA> selectTenPersonQnaList(int currentPage, int limit, String searchKind,String searchText) {
+	public ArrayList<AdmimPersonalQna> selectTenPersonQnaList(int currentPage, int limit, String searchKind,String searchText) {
 		Connection conn = getConnection(); 
-		ArrayList<PersonalQnA> list = new AdminDao().selectTenPersonQnaList(conn,currentPage, limit , searchKind,searchText);
+		ArrayList<AdmimPersonalQna> list = new AdminDao().selectTenPersonQnaList(conn,currentPage, limit , searchKind,searchText);
 		
 		close(conn);
 		

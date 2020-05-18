@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import admin.model.service.AdminService;
 import board.model.vo.PageInfo;
-import personalQnA.model.vo.PersonalQnA;
+import personalQnA.model.vo.AdmimPersonalQna;
 
 /**
  * Servlet implementation class AdminPersonalQna
@@ -78,7 +78,7 @@ public class AdminPersonalQna extends HttpServlet {
 		System.out.println("servlet searchText : " + searchText);
 		
 		
-		ArrayList<PersonalQnA> list = aService.selectTenPersonQnaList(currentPage, limit,searchKind, searchText);
+		ArrayList<AdmimPersonalQna> list = aService.selectTenPersonQnaList(currentPage, limit,searchKind, searchText);
 		System.out.println("servlet list : " + list);
 		RequestDispatcher view = null;
 		if(!list.isEmpty()) {

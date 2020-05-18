@@ -34,11 +34,11 @@ public class ProductQnaList extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		request.setCharacterEncoding("UTF-8");
 		ProductQnAService aService = new ProductQnAService();
 		
 		String mNo = request.getParameter("mNo");
-		System.out.println("mNo : " + mNo);
 		int listCount = aService.getListQnaCount(mNo);
 		System.out.println("Listservlet listCount : " + listCount);
 		

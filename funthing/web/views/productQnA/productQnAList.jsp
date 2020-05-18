@@ -119,7 +119,7 @@
             border-bottom: 1px solid #0f4a7e;
         }
         .list-tb tr{
-            border: 0; padding:0; border-bottom: 1px solid #bbb;
+            border: 0; padding:0; border-bottom: 1px solid #bbb; cursor:pointer;
         }
         .list-tb td{
             text-align: center;
@@ -133,6 +133,8 @@
 	
 		#pageBtn {padding:30px;}
 		.pageBtn {color:grey; background:white; border:0;}
+		
+		
 	</style>
 	
 	
@@ -153,9 +155,9 @@
             <div class="r-cont-header">
                
                 <div class="r-cont-text">
-                    <h2>
+                    <h1>
                         <b style="color:#0f4a7e;">상품 문의</b>
-                    </h2>
+                    </h1>
                 </div>
 
           <!--       1:1 문의하기 버튼
@@ -203,7 +205,8 @@
                                 <input type="date" name="second_date">
                             </li>
                             <li>
-                                <input type="submit" id="submit" value="조회">
+                                <input type="button" id="submit" value="조회" >
+                               
                             </li>
                         
                         </ul>
@@ -213,7 +216,7 @@
             </div><!-- 1:1 문의 조회 영역 end -->
 
             <br clear="both">
-
+ 			<a href="<%=request.getContextPath()%>/views/productQnA/productQnAInsert.jsp" >Insert</a>
             <!-- 1:1 문의 조회 결과 영역 -->
             <div class="search-list">
                 <table class="list-tb">
@@ -223,6 +226,7 @@
                         <th>제목</th>
                         <th class="tb-last">문의상태</th>
                     </tr>
+                    <%if(!list.isEmpty()){ %>
 				<%for(ProductQnaIn pq : list) {%> 
                     <tr>
                         <td class="tb-first"><%=pq.getQnaDate() %></td>
@@ -235,10 +239,13 @@
                         <%} %>
                     </tr>
 				 <%} %>
+				  <%}else{ %>
+				  <tr><td colspan="4">검색 결과가 없습니다.</td></tr>
+				   <%} %>
                 </table>
 
             </div><!-- 1:1 문의 조회 결과 영역 end -->
-
+	
 			 <!-- 페이징처리 -->
 	         <div id="pageBtn" align="center">
 	        	<button class="pageBtn" onclick="location.href='<%=request.getContextPath() %>/productQnaList?currentPage=1&mNo=<%=mNo%>'"> << </button>
@@ -267,7 +274,16 @@
 	        	
 	        </div> 
 
-
+			<!-- 상품문의 디테일 -->
+			<script>
+				$(function()){
+					$("#list-tb td").click(
+					
+					var mNo = <%=loginUser2.getmNo()%>
+					location.href="<%=request.getContextPath()%>/productQnaDetail?mNo" + mNo
+					)}
+				)}
+			</script>
 
 
 <!-- 이 위까지만 수정하세요 -->

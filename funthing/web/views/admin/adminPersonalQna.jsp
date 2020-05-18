@@ -3,9 +3,9 @@
     pageEncoding="UTF-8"%>
 <%@ page import="board.model.vo.PageInfo" %>    
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="personalQnA.model.vo.PersonalQnA" %>
+<%@ page import="personalQnA.model.vo.AdmimPersonalQna" %>
 <%
-    	ArrayList<PersonalQnA> list = (ArrayList<PersonalQnA>)request.getAttribute("list");
+    	ArrayList<AdmimPersonalQna> list = (ArrayList<AdmimPersonalQna>)request.getAttribute("list");
     	PageInfo pi = (PageInfo)request.getAttribute("pi");
     	
     	int num = 0;
@@ -104,7 +104,7 @@
 	                <th>번호</th> <th>문의유형</th><th>아이디</th> <th>문의제목</th><th>주문번호</th><th>답변유무</th> 
                 </tr>
                
-	            <%for(PersonalQnA pq : list) {%>  
+	            <%for(AdmimPersonalQna pq : list) {%>  
 	            <tr align="center" class="line">
 	            	<input type="hidden" value="<%=pq.getPerQnaNo() %>">
 	            	<td><%=pq.getPerQnaNo() %></td> <td><%=pq.getPerCate() %></td><td><%=pq.getmId() %></td> <td><%=pq.getPerTitle() %></td>

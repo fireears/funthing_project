@@ -9,24 +9,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-   
-
-
-import productQnA.model.vo.AdminProductQnA;
-import productQnA.model.vo.ProductQnA;
-import productQnA.model.vo.ProductQnAReply;
 
 import brand.model.vo.Brand;
-
-
-
 import member.model.vo.Member;
-
 import payment.model.vo.OrderInfo;
 import payment.model.vo.OrderInfoDetail;
+import personalQnA.model.vo.AdmimPersonalQna;
 import personalQnA.model.vo.PersonalQnA;
 import personalQnA.model.vo.PersonalQnaReply;
 import product.model.vo.Product;
+import productQnA.model.vo.AdminProductQnA;
+import productQnA.model.vo.ProductQnAReply;
 
 public class AdminDao {
 
@@ -721,11 +714,11 @@ public class AdminDao {
 	}
 
 	// 1:1문의 페이지 검색_혜린
-	public ArrayList<PersonalQnA> selectTenPersonQnaList(Connection conn, int currentPage, int limit, String searchKind,String searchText) {
+	public ArrayList<AdmimPersonalQna> selectTenPersonQnaList(Connection conn, int currentPage, int limit, String searchKind,String searchText) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		PersonalQnA pq = null;
-		ArrayList<PersonalQnA> list = new ArrayList<>();
+		AdmimPersonalQna pq = null;
+		ArrayList<AdmimPersonalQna> list = new ArrayList<>();
 		
 		int startRow = (currentPage - 1) * limit + 1;
 		int endRow = startRow + limit - 1;
@@ -758,7 +751,7 @@ public class AdminDao {
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				pq = new PersonalQnA(
+				pq = new AdmimPersonalQna(
 						rset.getInt("rownum"),
 						rset.getInt("PER_QNA_NO"),
 						rset.getString("m_id"),
