@@ -3,12 +3,24 @@
  * Version: Apache Tomcat/8.5.54
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Generated at: 2020-05-16 23:34:41 UTC
 =======
  * Generated at: 2020-05-16 18:36:53 UTC
 >>>>>>> refs/remotes/origin/master
 =======
+=======
+ * Generated at: 2020-05-18 02:51:50 UTC
+=======
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/master
  * Generated at: 2020-05-17 13:40:06 UTC
+<<<<<<< HEAD
+=======
+=======
+ * Generated at: 2020-05-18 04:14:36 UTC
+>>>>>>> refs/remotes/origin/dev900
+>>>>>>> refs/remotes/origin/master
 >>>>>>> refs/remotes/origin/master
  * Note: The last modified time of this file was set to
  *       the last modified time of the source file after
@@ -34,9 +46,21 @@ public final class adminProductDetail_jsp extends org.apache.jasper.runtime.Http
   static {
     _jspx_dependants = new java.util.HashMap<java.lang.String,java.lang.Long>(1);
 <<<<<<< HEAD
+<<<<<<< HEAD
     _jspx_dependants.put("/views/admin/../common/adminHeader.jsp", Long.valueOf(1589671960431L));
 =======
+=======
+    _jspx_dependants.put("/views/admin/../common/adminHeader.jsp", Long.valueOf(1589630546289L));
+=======
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/master
     _jspx_dependants.put("/views/admin/../common/adminHeader.jsp", Long.valueOf(1589698373753L));
+<<<<<<< HEAD
+=======
+=======
+    _jspx_dependants.put("/views/admin/../common/adminHeader.jsp", Long.valueOf(1589773302815L));
+>>>>>>> refs/remotes/origin/dev900
+>>>>>>> refs/remotes/origin/master
 >>>>>>> refs/remotes/origin/master
   }
 
@@ -223,7 +247,9 @@ public final class adminProductDetail_jsp extends org.apache.jasper.runtime.Http
       out.write("\t\t}\n");
       out.write("\t\tfunction memberManage()\n");
       out.write("\t\t{\n");
-      out.write("\t\t\t\n");
+      out.write("\t\t\tlocation.href=\"");
+      out.print(request.getContextPath());
+      out.write("/memberList.me\";\n");
       out.write("\t\t}\n");
       out.write("\t\tfunction brandManage()\n");
       out.write("\t\t{\n");

@@ -40,7 +40,7 @@ public class AdminBrandUpdateServlet extends HttpServlet {
 		String bCeo = request.getParameter("bCeo");
 		String bPhone = request.getParameter("bPhone");
 		String bAddress = request.getParameter("bAddress");
-		String bEmail = request.getParameter("bEamil");
+		String bEmail = request.getParameter("bEmail");
 		Date bLchDate = Date.valueOf(request.getParameter("bLchDate")); // date형인데 String으로 형변환!! 나중에 다시 보자
 		String bLchYn = request.getParameter("bLchYn");
 		
@@ -61,6 +61,10 @@ public class AdminBrandUpdateServlet extends HttpServlet {
 			request.setAttribute("updateMsg", updateMsg);
 			
 		}else {
+			view = request.getRequestDispatcher("/views/admin/adminBrandUpdate.jsp");
+			String uErrorMsg = bName + "브랜드 수정에 실패했습니다.";
+			request.setAttribute("uErrorMsg", uErrorMsg);
+			
 			
 		}
 		view.forward(request, response);

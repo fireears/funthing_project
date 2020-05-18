@@ -1,8 +1,7 @@
-/productQnA/
+/payment/
 /personalQnA/
-/admin/
 /product/
-<<<<<<< HEAD
-/sql/
-=======
->>>>>>> refs/remotes/origin/dev4
+/productQnA/
+/review/
+/wrapper/
+/admin/

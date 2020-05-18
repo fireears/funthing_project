@@ -4,8 +4,11 @@
 
 <%
 	ArrayList<Brand> list = (ArrayList<Brand>)request.getAttribute("list");
-	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	ArrayList<Brand> searchList = (ArrayList<Brand>)request.getAttribute("searchList");
 
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	
+	
 	// PageIngo값 뽑아내기
 	int currentPage = pi.getCurrentPage();
 	/* int listCount = pi.getBrandListCount(); */
@@ -16,6 +19,7 @@
 	
 	String updateMsg = (String)request.getAttribute("updateMsg");
 	String deleteMsg = (String)request.getAttribute("deleteMsg");
+	String insertMsg = (String)request.getAttribute("insertMsg");
 
 	
 %>
@@ -48,11 +52,17 @@
         form{height:100px; background-color:rgb(199,196,196);}
         
         #nav_section{margin: 0 auto; width:90%;}
-        #nav_section ul{heigth:100px; margin:0 auto; width:100%; padding:0px;}
+   
+   		#search_area{margin:0 auto; text-align:center; padding-top:30px;}
+        #searchKind{width:100px; height:40px}
+        #searchVal{width:230px; height:35px}
+		#searchBtn{background: grey; color:white; border:0; width:100px; height:40px; font-weight:600; border-radius:5px}
+
+        
+        /* #nav_section ul{heigth:100px; margin:0 auto; width:100%; padding:0px;}
         #nav_section ul li{float:left; padding-left:20px; padding-right:10px; line-height:50px;}
-      /*   .nav_section ul:after {clear:both; content:""; display:block;} */
 		#nav_section ul li .box{width:150px;}
-		
+ */		
 
         /* 브랜드 조회 내역 list 영역 */
         .area{margin:0 auto; width:100%;}
@@ -76,16 +86,28 @@
 	
 	<%@ include file="../common/adminHeader.jsp" %>
 
-    
+    	<br>
         <h2 style="text-align: center;">브랜드 관리</h2>
-        <form method="post" action="#">
+        <br>
+        <form method="post" action="<%=request.getContextPath()%>/admin/brandServlet">
             <div id="nav_section">
-                <ul>
-                    <li><label>브랜드 코드 : </label><input type="text" name="b_no" class="box" id="b_no"></li>
-                    <li><label>브랜드 명 : </label><input type="text" name="b_name" class="box" id="b_name"></li>
-                    <li><input type="submit" value="조회하기" id="search">조회하기</li>
-                    <li><button id="insert" type="button" onclick="insertBrand();">브랜드 등록</button></li>
-                </ul>
+                <div id="search_area">
+	                <span>
+	                	<select id="searchKind" name="searchKind">
+	                		<option value="B_NO">브랜드 코드</option>	
+	                		<option value="B_NAME">브랜드 명</option>
+	                	</select>
+	                </span>
+	                
+	                <span>
+	                	<input type="text" id="searchVal" name="searchVal">
+	                </span>
+	                
+	                <span>
+	                	<button type="submit" value="검색" id="searchBtn">검색</button>
+	                </span>
+	                
+               </div> 
             </div>
         </form>
 
@@ -93,8 +115,46 @@
 		<br>
 		
         <div class="area">
+        
             <table class="list-tb">
+            
+            <!-- 브랜드 관리자 첫 페이지 브랜드 리스트 -->
+          <%if(!list.isEmpty()){ %>
                 <tr style="background-color: lightgray;">
+                    <th>브랜드 코드</th>
+                    <th>브랜드 명</th>
+                    <th>대표 명</th>
+                    <th>연락처</th>
+                    <th>회사 주소</th>
+                    <th>이메일</th>
+                    <th>입점 날짜</th>
+                    <th>입점 유무</th>
+                    <!-- <th>변경</th> -->
+                </tr>
+
+		
+                <%for(Brand b : list){ %>
+                <tr align="center">
+                	<input type="hidden" value="<%=b.getbNo() %>">
+                	<td><%=b.getbNo() %></td>
+                	<td><%=b.getbName() %></td>
+					<td><%=b.getbCeo() %></td>
+					<td><%=b.getbPhone() %></td>
+					<td><%=b.getbAddress() %></td>
+					<td><%=b.getbEmail() %></td>
+					<td><%=b.getbLchDate() %></td>
+					<td><%=b.getbLchYn() %></td>
+					<!-- <td>
+						<button type="button" id="modifyBrand">수정</button>
+						<button type="button" id="deleteBrand">삭제</button>
+					</td> -->
+				</tr>
+				<%} %><!-- for문 end -->
+			
+			
+			<!-- 검색기능 후 검색 결과가 있을 시  -->
+			<%-- <%}else if(!searchList.isEmpty()){ %>
+				 <tr style="background-color: lightgray;">
                     <th>브랜드 코드</th>
                     <th>브랜드 명</th>
                     <th>대표 명</th>
@@ -106,8 +166,7 @@
                     <th>변경</th>
                 </tr>
 
-
-                <%for(Brand b : list){ %>
+                <%for(Brand b : searchList){ %>
                 <tr align="center">
                 	<input type="hidden" value="<%=b.getbNo() %>">
                 	<td><%=b.getbNo() %></td>
@@ -123,8 +182,31 @@
 						<button type="button" id="deleteBrand">삭제</button>
 					</td>
 				</tr>
-				<%} %>
+				<%} %><!-- for문 end --> --%>
+				 
+				 
 				
+				<%}else{ %>
+				 <tr style="background-color: lightgray;">
+                    <th>브랜드 코드</th>
+                    <th>브랜드 명</th>
+                    <th>대표 명</th>
+                    <th>연락처</th>
+                    <th>회사 주소</th>
+                    <th>이메일</th>
+                    <th>입점 날짜</th>
+                    <th>입점 유무</th>
+                    <th>변경</th>
+                </tr>
+				
+				<tr style="margin-top:30px;">
+					<td colspan="9"><div style="text-aling:center">검색 결과가 없습니다. 다시 검색해주세요.</div></td>
+				
+				</tr> 
+				
+		<%} %>
+				
+			
             </table>
        </div>
        
@@ -192,14 +274,17 @@
     	}
     	
     	$(function(){
-    		// 업데이트 성공시 alert
+    		// 기능 성공시 alert
     		<%if(updateMsg != null){%>
     			alert("<%=updateMsg%>");
+    			
     		<%}else if(deleteMsg != null){%>
     			alert("<%=deleteMsg%>");
     			
-    		<%}%>
+    		<%}else if(insertMsg != null){%>
+    			alert("<%=insertMsg%>");
     		
+    		<%} %>
     		
     		
     		

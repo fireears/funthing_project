@@ -18,6 +18,10 @@ import productQnA.model.vo.ProductQnAReply;
 
 import brand.model.vo.Brand;
 
+
+
+import member.model.vo.Member;
+
 import payment.model.vo.OrderInfo;
 import payment.model.vo.OrderInfoDetail;
 import personalQnA.model.vo.PersonalQnA;
@@ -715,6 +719,7 @@ public class AdminDao {
 		
 		return result;
 	}
+
 	// 1:1문의 페이지 검색_혜린
 	public ArrayList<PersonalQnA> selectTenPersonQnaList(Connection conn, int currentPage, int limit, String searchKind,String searchText) {
 		PreparedStatement pstmt = null;
@@ -815,6 +820,78 @@ public class AdminDao {
 
 	
 	
+
+	// 멤버 select_진교
+	public ArrayList<Member> selectList(Connection conn, int currentPage, int limit, String userName, String userId) {
+		System.out.println("여기는 왔나?");
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = null;
+		
+		ArrayList<Member> list = new ArrayList<>();
+		
+		
+		// 쿼리문 실행시 조건절에 넣을 변수 연산처리
+		int startRow = (currentPage - 1) * limit + 1;
+		int endRow = startRow + limit - 1;
+		
+		try {
+		if(userName == null && userId == null) {
+			query = "SELECT * FROM MEMBERLIST WHERE RNUM BETWEEN ? AND ?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+		}else if(userName != null && userId == null) {
+			query = "SELECT * FROM MEMBERLIST WHERE RNUM BETWEEN ? AND ? AND M_NAME=?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			pstmt.setString(3, userName);
+		}else if(userName == null && userId != null) {
+			query = "SELECT * FROM MEMBERLIST WHERE RNUM BETWEEN ? AND ? AND M_ID=?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			pstmt.setString(3, userId);
+		}else if(userName != null && userId != null) {
+			query = "SELECT * FROM MEMBERLIST WHERE RNUM BETWEEN ? AND ? AND M_NAME=? AND M_ID=?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			pstmt.setString(3, userName);
+			pstmt.setString(4, userId);
+		}
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Member m = new Member(rset.getInt("RNUM"),
+									rset.getString("M_NO"),
+									 rset.getString("M_ID"),
+									 rset.getString("M_NAME"),
+									 rset.getString("B_DAY"),
+									 rset.getString("M_EMAIL"),
+									 rset.getString("M_TELL"),
+									 rset.getDate("JOIN_DATE"),
+									 rset.getString("REFERENCE"),
+									 rset.getString("ALARM_YN"),
+									 rset.getString("GRADE_CODE"),
+									 rset.getInt("M_POINT"),
+									 rset.getInt("H_POINT"),
+									 rset.getString("STATUS_YN")
+									 );
+				list.add(m);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			
+		}
+		return list;
+	}
+
 
 	public int productInsert(Connection conn, Product p) {
 		PreparedStatement pstmt = null;
@@ -966,9 +1043,74 @@ public class AdminDao {
 
 	
 	
-	
-	
-	
+	// 브랜드 search_희지
+	public ArrayList<Brand> searchBrand(Connection conn, int currentPage, int limit, String searchKind, String searchVal) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Brand b = null;
+		ArrayList<Brand> list = new ArrayList<>();
+		
+		
+		int startRow = (currentPage -1) *limit +1;
+		int endRow = startRow + limit - 1;
+		
+		String query = null;
+		
+		
+		
+		try {
+		
+			if(searchKind == null && searchVal == null){
+				query="SELECT B_NO, B_NAME, B_CEO, B_PHONE, B_ADDRESS, B_EMAIL, B_LCH_DATE, B_LCH_YN FROM BRANDLIST WHERE RNUM BETWEEN ? AND ?";
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, startRow);
+				pstmt.setInt(2, endRow);
+				
+			
+			}else if(searchKind != null && searchVal.equals("")) {
+				query="SELECT B_NO, B_NAME, B_CEO, B_PHONE, B_ADDRESS, B_EMAIL, B_LCH_DATE, B_LCH_YN FROM BRANDLIST WHERE RNUM BETWEEN ? AND ?";
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, startRow);
+				pstmt.setInt(2, endRow);
+				
+				
+				
+			}else if(searchKind != null && searchVal != null){
+				query = "SELECT B_NO, B_NAME, B_CEO, B_PHONE, B_ADDRESS, B_EMAIL, B_LCH_DATE, B_LCH_YN FROM BRANDLIST WHERE " + searchKind + "=?";
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, searchVal);
+				
+			}
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				b = new Brand(rset.getString("B_NO"),
+					rset.getString("B_NAME"),
+					rset.getString("B_CEO"),
+					rset.getString("B_PHONE"),
+					rset.getString("B_ADDRESS"),
+					rset.getString("B_EMAIL"),
+					rset.getDate("B_LCH_DATE"),
+					rset.getString("B_LCH_YN"));
+				list.add(b);
+		}
+			
+			System.out.println("Dao brand search list : " + list);
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+			
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		
+		return list;
+	}
+
 
 	
 	
