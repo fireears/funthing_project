@@ -213,7 +213,7 @@ public class AdminService {
 		return result;
 	}
 
-	
+
 	// 브랜드 search_희지
 	public ArrayList<Brand> searchBrand(int currentPage, int limit, String searchKind, String searchVal) {
 		Connection conn = getConnection();
@@ -224,6 +224,36 @@ public class AdminService {
 		
 		
 		return list;
+	}
+
+	
+	public int productInsert(Product p) {
+		Connection conn = getConnection();
+		
+		int result = new AdminDao().productInsert(conn, p);
+		
+		if(result > 0)
+		{
+			commit(conn);
+		}
+		else
+		{
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+
+	public ArrayList<Product> productSearch(Product p) {
+		Connection conn = getConnection();
+		
+		ArrayList<Product> plist = new ArrayList<>();
+		
+		plist = new AdminDao().Productsearch(conn, p);
+		
+		close(conn);
+		return plist;
+
 	}
 
 

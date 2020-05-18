@@ -2,24 +2,29 @@ package admin.controller;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import admin.model.service.AdminService;
+import product.model.vo.Product;
+
 /**
  * Servlet implementation class ProductSearchServlet
  */
 @WebServlet("/admin/productSearch")
-public class ProductSearchServlet extends HttpServlet {
+public class AdminProductSearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ProductSearchServlet() {
+    public AdminProductSearchServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,13 +39,39 @@ public class ProductSearchServlet extends HttpServlet {
 		try
 		{
 			String pNo = request.getParameter("p_no");
+			String bNo = request.getParameter("bNo");
 			String sNo = request.getParameter("s_no");
 			String pName = request.getParameter("p_name");
-			int pCategory = Integer.valueOf(request.getParameter("p_category"));
+			int pCategory = Integer.valueOf(request.getParameter("pCategory"));
 			int pPrice = Integer.valueOf(request.getParameter("p_price"));
 			Date fStartDate = Date.valueOf(request.getParameter("f_start_date"));
 			Date fEndDate = Date.valueOf(request.getParameter("f_end_date"));
 			String fYn = request.getParameter("f_yn");
+			
+			Product p = new Product(pNo, bNo, pName, pPrice, pCategory, Integer.valueOf(sNo), fStartDate, fEndDate, fYn);
+			
+			System.out.println(p);
+			ArrayList<Product> plist = new ArrayList<>();
+			plist = new AdminService().productSearch(p);
+			
+			RequestDispatcher view = null;
+			if(!plist.isEmpty())
+			{
+//				view = request.getRequestDispatcher("/views/admin/adminMain.jsp");
+//				request.setAttribute("plist", plist);
+//				view.forward(request, response);
+				for(Product pro : plist)
+				{
+					System.out.println(pro);
+				}
+			}
+			else
+			{
+				System.out.println("검색 결과가 없습니다.");
+//				view = request.getRequestDispatcher("/views/admin/adminMain.jsp");
+//				request.setAttribute("msg", "검색결과가 없습니다.");
+//				view.forward(request, response);
+			}
 		}
 		catch(NumberFormatException e)
 		{

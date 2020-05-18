@@ -43,8 +43,8 @@
 	                        <th>style_no</th><td><input type="text" name="sNo" value="<%=p.getsNo() %>" style="background-color: rgb(207, 205, 205);" readonly></td>
 	                    </tr>
 	                    <tr>
-	                        <%-- <th>product_color</th><td><input type="text" name="color" value="<%=p.getP_color() %>"></td> --%>
-	                        <th>product_color</th>
+	                        <th>product_color</th><td><input type="text" name="color" value="<%=p.getP_color() %>" style="background-color: rgb(207, 205, 205);" readonly></td>
+	                        <!-- <th>product_color</th>
 	                        <td>
 	                        	<select name="color" >
 	                        		<option value="BK">BLACK</option>
@@ -55,8 +55,8 @@
 	                        		<option value="KH">KHAKI</option>
 	                        		<option value="GN">GREEN</option>
 	                        	</select>
-	                        </td>
-	                        <th>product_size</th><td><input type="text" name="size" value="<%=p.getP_size() %>"></td>
+	                        </td> -->
+	                        <th>product_size</th><td><input type="text" name="size" value="<%=p.getP_size() %>" style="background-color: rgb(207, 205, 205);" readonly></td>
 	                    </tr>
 	                    <tr>
 	                        <th>retail_price</th><td><input type="text" name="retail_price" value="<%=p.getRetailPrice() %>"></td>

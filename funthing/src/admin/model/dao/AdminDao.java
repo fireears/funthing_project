@@ -4,6 +4,7 @@ package admin.model.dao;
 import static common.JDBCTemplate.close;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -302,6 +303,7 @@ public class AdminDao {
 		try {
 			pstmt = conn.prepareStatement(query);
 			
+			
 			pstmt.setString(1, p.getP_color());
 			pstmt.setString(2, p.getP_size());
 			pstmt.setInt(3, p.getRetailPrice());
@@ -528,6 +530,124 @@ public class AdminDao {
 		}
 		
 		return result;
+	}
+
+	public int productInsert(Connection conn, Product p) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "INSERT INTO PRODUCT(P_NO, B_NO, THUMBNAIL, P_NAME, P_COLOR, P_SIZE, RETAIL_PRICE, DC_RATE, P_PRICE, P_CATEGORY, S_NO, P_DETAIL, IMG_ROUTER, P_POINT, SHIP_DATE, F_START_DATE, F_END_DATE, F_GOAL, F_YN, CAL_NO)\r\n" + 
+				"VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		
+		String thumbnail = p.getThumbnail().substring(0, p.getThumbnail().length()-4);
+		String imgRouter = p.getImgRouter().substring(0, p.getImgRouter().length()-4);
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setString(1, p.getpNo());
+			pstmt.setString(2, p.getbNo());
+			pstmt.setString(3, thumbnail);
+			pstmt.setString(4, p.getpName());
+			pstmt.setString(5, p.getP_color());
+			pstmt.setString(6, p.getP_size());
+			pstmt.setInt(7, p.getRetailPrice());
+			pstmt.setInt(8, p.getDcRate());
+			pstmt.setInt(9, p.getpPrice());
+			pstmt.setInt(10, p.getpCategory());
+			pstmt.setInt(11, p.getsNo());
+			pstmt.setString(12, p.getpDetail());
+			pstmt.setString(13, imgRouter);
+			pstmt.setInt(14, p.getpPoint());
+			pstmt.setDate(15, p.getShipDate());
+			pstmt.setDate(16, p.getfStartDate());
+			pstmt.setDate(17, p.getfEndDate());
+			pstmt.setInt(18, p.getfGoal());
+			pstmt.setString(19, p.getfYn());
+			pstmt.setString(20, "1");
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally
+		{
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public ArrayList<Product> Productsearch(Connection conn, Product p) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		Product product = null;
+		ArrayList<Product> plist = new ArrayList<>();
+		
+		String pNo = p.getpNo();
+		String bNo = p.getbNo();
+		int sNo = p.getsNo();
+		String pName = p.getpName();
+		int pCategory = p.getpCategory();
+		int pPrice = p.getpPrice();
+		Date fStartDate = p.getfStartDate();
+		Date fEndDate = p.getfEndDate();
+		String fYn = p.getfYn();
+		
+
+		String query = "SELECT * FROM PRODUCTLIST\r\n" + 
+						"WHERE P_NO = ?\r\n" + 
+						"UNION\r\n" + 
+						"SELECT * FROM PRODUCTLIST\r\n" + 
+						"WHERE B_NO = ?\r\n" + 
+						"INTERSECT\r\n" + 
+						"SELECT * FROM PRODUCTLIST\r\n" + 
+						"WHERE S_NO = ?\r\n" + 
+						"INTERSECT\r\n" + 
+						"SELECT * FROM PRODUCTLIST\r\n" + 
+						"WHERE P_CATEGORY = ?\r\n" + 
+						"INTERSECT\r\n" + 
+						"SELECT * FROM PRODUCTLIST\r\n" + 
+						"WHERE P_PRICE >= ?\r\n" + 
+						"INTERSECT\r\n" + 
+						"SELECT * FROM PRODUCTLIST\r\n" + 
+						"WHERE F_START_DATE >= ? AND F_END_DATE <= ?\r\n" + 
+						"UNION\r\n" + 
+						"SELECT * FROM PRODUCTLIST\r\n" + 
+						"WHERE P_NAME = ? INTERSECT SELECT * FROM PRODUCTLIST WHERE F_YN = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, pNo);
+			pstmt.setString(2, bNo);
+			pstmt.setInt(3, sNo);
+			pstmt.setInt(4, pCategory);
+			pstmt.setInt(5, pPrice);
+			pstmt.setDate(6, fStartDate);
+			pstmt.setDate(7, fEndDate);
+			pstmt.setString(8, pName);
+			pstmt.setString(9, fYn);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next())
+			{
+				product = new Product(rset.getString("p_no"), rset.getString("b_no"), rset.getString("p_name"),
+										rset.getInt("p_category"), rset.getInt("s_no"), 
+										rset.getInt("p_price"), rset.getDate("f_start_date"),
+										rset.getDate("f_end_date"), rset.getString("f_yn"));
+				
+				plist.add(product);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally
+		{
+			close(pstmt);
+			close(rset);
+		}
+		return plist;
 	}
 
 	
