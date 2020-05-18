@@ -16,7 +16,7 @@ import member.model.vo.Member;
  * Servlet implementation class MemberJoinServlet
  */
 //@WebServlet("/join.me")	// 암호화 처리 전
-@WebServlet(name="JoinServlet",urlPatterns="/join.me") // 암호화 처리 후 
+@WebServlet(name="MemberJoinServlet",urlPatterns="/join.me") // 암호화 처리 후 
 public class MemberJoinServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

@@ -1,4 +1,4 @@
-// 아이디 찾기
+// myPage 정보 수정 update
 package member.controller;
 
 import java.io.IOException;
@@ -15,16 +15,16 @@ import member.model.service.MemberService;
 import member.model.vo.Member;
 
 /**
- * Servlet implementation class MemberSearchId
+ * Servlet implementation class MemberUpdateServlet
  */
-@WebServlet("/searchId.me")
-public class MemberSearchIdServlet extends HttpServlet {
+@WebServlet("/update.me")
+public class MemberUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberSearchIdServlet() {
+    public MemberUpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,37 +33,37 @@ public class MemberSearchIdServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		String mNo = request.getParameter("mNo");
+		String userId = request.getParameter("userId");
+		// 비번 X
 		String userName = request.getParameter("userName");
 		String email = request.getParameter("email");
 		String phone = request.getParameter("phone");
+		String birth = request.getParameter("year") + request.getParameter("mon") + request.getParameter("day");
+		System.out.println("mNo : " + mNo);
+		// 추천인 X
+		System.out.println(birth);
 		
-//		System.out.println(userName);
+		Member m = new Member(userId, userName, email, phone, birth, mNo);
 		
-			
+		int result = new MemberService().updateMember(m);
+		System.out.println("회원 정보 수정 Servlet에서 update 결과 : " + result);
 		
-		Member member = new Member(userName, email, phone);
+		RequestDispatcher view = null;
 		
-		System.out.println(member);
-//		System.out.println("멤버" + member);
-		
-		Member searchIdMember = new MemberService().searchIdMember(member);
-		
-//		System.out.println("Servlet에서 화면에 뿌려주기 전 : " + searchIdMember);
-		
-		if(searchIdMember != null) {
-			
+		if(result > 0) {
+			// 현재 로그인한 사람의 session도 수정
 			HttpSession session = request.getSession();
+			session.setAttribute("loginUser", m);
 			
-			session.setAttribute("searchId", searchIdMember);
-			
-			
-			response.sendRedirect("views/member/searchIdSuccess.jsp");
-		}else{
-			request.setAttribute("msg", "아이디 찾기 실패");
-			
-			RequestDispatcher view = request.getRequestDispatcher("views/member/searchIdFail.jsp");
-			view.forward(request, response);
+			view = request.getRequestDispatcher("views/member/myPageMain.jsp");
+			request.setAttribute("msg", "회원정보 수정 완료");
+		}else {
+			view = request.getRequestDispatcher("views/login/fail.jsp");
+			request.setAttribute("msg", "회원 정보 수정 실패");
 		}
+		view.forward(request, response);
 	}
 
 	/**

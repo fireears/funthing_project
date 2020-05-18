@@ -35,11 +35,24 @@ public class MyPageServlet extends HttpServlet {
 		
 		Member member = new MemberService().selectMember(userId);
 		
+	
+		
+		
 		RequestDispatcher view = null;
 		
 		if(member != null) {
-			view = request.getRequestDispatcher("views/login/memberModify.jsp");
+			String birth = member.getbDay();
+			String year = birth.substring(0,4);
+			String mon = birth.substring(5,7);
+			String day = birth.substring(8,10);
+			System.out.println(year);
+			System.out.println(mon);
+			System.out.println(day);
+			view = request.getRequestDispatcher("views/member/memberModify.jsp");
 			request.setAttribute("member", member);
+			request.setAttribute("year", year);
+			request.setAttribute("mon", mon);
+			request.setAttribute("day", day);
 		}else {
 			view = request.getRequestDispatcher("views/login/fail.jsp");
 			request.setAttribute("msg", "회원조회에 실패");

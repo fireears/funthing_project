@@ -13,7 +13,7 @@
 <body>
 	<script>
 		alert("아이디는 <%= searchId.getmId()%> 입니다.");
-		location.href="<%=request.getContextPath()%>/views/member/MemberLogin.jsp";
+		location.href="<%=request.getContextPath()%>/views/member/memberLogin.jsp";
 	</script>
 </body>
 </html>

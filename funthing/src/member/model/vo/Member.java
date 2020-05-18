@@ -10,6 +10,7 @@ public class Member implements Serializable{
 	 */
 	private static final long serialVersionUID = -4952932019676617041L;
 
+	private int rnum;
 	private String mNo;
 	private String mId;
 	private String mPwd;
@@ -18,7 +19,7 @@ public class Member implements Serializable{
 	private String mEmail;
 	private Date joinDate;
 	private String reference;
-	private String gradCode;
+	private String gradeCode;
 	private String alarm_YN;
 	private String status_YN;
 	private int mPoint;
@@ -39,7 +40,16 @@ public class Member implements Serializable{
 		this.mEmail = mEmail;
 		this.mTell = mTell;
 	}
-
+	
+	public Member(String mId, String mName, String mEmail, String mTell, String bDay, String mNo) {
+		this.mId = mId;
+		this.mName = mName;
+		this.mEmail = mEmail;
+		this.mTell = mTell;
+		this.bDay = bDay;
+		this.mNo = mNo;
+	}
+	
 	public Member(String mId, String mPwd, String mName, String mEmail, String mTell, String bDay, String reference, String alarm_YN) {
 		this.mId = mId;
 		this.mPwd = mPwd;
@@ -53,7 +63,7 @@ public class Member implements Serializable{
 	}
 
 	public Member(String mNo, String mId, String mPwd, String mName, String bDay, String mEmail, Date joinDate,
-			String reference, String gradCode, String alarm_YN, String status_YN, int mPoint, String mTell,
+			String reference, String gradeCode, String alarm_YN, String status_YN, int mPoint, String mTell,
 			int hPoint) {
 		super();
 		this.mNo = mNo;
@@ -64,12 +74,30 @@ public class Member implements Serializable{
 		this.mEmail = mEmail;
 		this.joinDate = joinDate;
 		this.reference = reference;
-		this.gradCode = gradCode;
+		this.gradeCode = gradeCode;
 		this.alarm_YN = alarm_YN;
 		this.status_YN = status_YN;
 		this.mPoint = mPoint;
 		this.mTell = mTell;
 		this.hPoint = hPoint;
+	}
+	public Member(int rnum, String mNo, String mId, String mName, String bDay, String mEmail, String mTell,
+			Date joinDate, String reference, String alarm_YN, String gradeCode , int mPoint, int hPoint,
+			String status_YN) {
+		this.rnum = rnum;
+		this.mNo = mNo;
+		this.mId = mId;
+		this.mName = mName;
+		this.bDay = bDay;
+		this.mEmail = mEmail;
+		this.mTell = mTell;
+		this.joinDate = joinDate;
+		this.reference = reference;
+		this.alarm_YN = alarm_YN;
+		this.gradeCode = gradeCode;
+		this.mPoint = mPoint;
+		this.hPoint = hPoint;
+		this.status_YN = status_YN;
 	}
 
 	public String getmNo() {
@@ -136,12 +164,12 @@ public class Member implements Serializable{
 		this.reference = reference;
 	}
 
-	public String getGradCode() {
-		return gradCode;
+	public String getGradeCode() {
+		return gradeCode;
 	}
 
-	public void setGradCode(String gradCode) {
-		this.gradCode = gradCode;
+	public void setGradeCode(String gradCode) {
+		this.gradeCode = gradCode;
 	}
 
 	public String getAlarm_YN() {
@@ -192,7 +220,7 @@ public class Member implements Serializable{
 	public String toString() {
 		return "Member [mNo=" + mNo + ", mId=" + mId + ", mPwd=" + mPwd + ", mName=" + mName + ", bDay=" + bDay
 				+ ", mEmail=" + mEmail + ", joinDate=" + joinDate + ", reference=" + reference + ", gradCode="
-				+ gradCode + ", alarm_YN=" + alarm_YN + ", status_YN=" + status_YN + ", mPoint=" + mPoint + ", mTell="
+				+ gradeCode + ", alarm_YN=" + alarm_YN + ", status_YN=" + status_YN + ", mPoint=" + mPoint + ", mTell="
 				+ mTell + ", hPoint=" + hPoint + "]";
 	}
 	

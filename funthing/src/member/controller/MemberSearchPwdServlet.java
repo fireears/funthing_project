@@ -46,7 +46,7 @@ public class MemberSearchPwdServlet extends HttpServlet {
 		}else {
 			request.setAttribute("msg", "비밀번호 찾기 실패");
 			
-			view = request.getRequestDispatcher("views/login/fail.jsp");
+			view = request.getRequestDispatcher("views/member/searchIdFail.jsp");
 		}
 		view.forward(request, response);
 		

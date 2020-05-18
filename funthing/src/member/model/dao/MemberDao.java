@@ -169,7 +169,7 @@ public class MemberDao {
 		ResultSet rset = null;
 		Member loginMember = null;
 		
-		String query = "SELECT * FROM MEMBER WHERE M_ID=?";
+		String query = "SELECT M_NO, M_ID, M_PWD, M_NAME, M_EMAIL, M_TELL, TO_CHAR(B_DAY,'YYYY/MM/DD'), JOIN_DATE, REFERENCE, GRADE_CODE, ALARM_YN, STATUS_YN, M_POINT, H_POINT FROM MEMBER WHERE M_ID=?";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -182,7 +182,7 @@ public class MemberDao {
 										 rset.getString("M_ID"),
 										 rset.getString("M_PWD"),
 										 rset.getString("M_NAME"),
-										 rset.getString("B_DAY"),
+										 rset.getString("TO_CHAR(B_DAY,'YYYY/MM/DD')"),
 										 rset.getString("M_EMAIL"),
 										 rset.getDate("JOIN_DATE"),
 										 rset.getString("REFERENCE"),
@@ -210,7 +210,7 @@ public class MemberDao {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
-		String query = "INSERT INTO MEMBER VALUES(SEQ_MEM.MNO,?,?,?,TO_CHAR(TO_DATE(?,'YYYY/MM/DD'),'YY/MM/DD'),?,SYSDATE,?,'G3',?,'Y',135000,?,3450000)";
+		String query = "INSERT INTO MEMBER VALUES('M'||SEQ_MEM.NEXTVAL,?,?,?,TO_CHAR(TO_DATE(?,'YYYY/MM/DD'),'YY/MM/DD'),?,SYSDATE,?,'G3',?,'Y',135000,?,3450000)";
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, member.getmId());
@@ -259,5 +259,31 @@ public class MemberDao {
 		}
 	return result;
 }
+
+	public int updateMember(Connection conn, Member member) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "UPDATE MEMBER SET M_ID=?,M_NAME=?,B_DAY=TO_CHAR(TO_DATE(?,'YYYY/MM/DD'),'YY/MM/DD'),M_EMAIL=?,M_TELL=? WHERE M_NO=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, member.getmId());
+			pstmt.setString(2, member.getmName());
+			pstmt.setString(3, member.getbDay());
+			pstmt.setString(4, member.getmEmail());
+			pstmt.setString(5, member.getmTell());
+			pstmt.setString(6, member.getmNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 
 }

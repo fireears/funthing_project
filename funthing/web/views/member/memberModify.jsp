@@ -9,7 +9,10 @@
 	String userName = member.getmName();
 	String email = member.getmEmail() != null ? member.getmEmail() : "";
 	String phone = member.getmTell() != null ? member.getmTell() : ""; 
-	String birth = member.getbDay() != null ? member.getbDay() : "";
+	String year = (String)request.getAttribute("year");
+	String mon = (String)request.getAttribute("mon");
+	String day = (String)request.getAttribute("day");
+	/* String birth = member.getbDay() != null ? member.getbDay() : ""; */
 	String reference = member.getReference() != null ? member.getReference() : "";
 %>    
 <!DOCTYPE html>
@@ -79,7 +82,7 @@
     </style>
 </head>
 <body>
-	<form method="post" action="<%=request.getContextPath() %>/update.me">
+	<form id="joinForm" method="post" action="<%=request.getContextPath() %>/update.me?mNo=<%=member.getmNo()%>">
             <h2>정보수정</h2>
             <hr>
             <h3>기본정보</h3>
@@ -92,7 +95,7 @@
                     </td>
                     <td id="inp">
                         <input type="text" id="userId" name="userId" required placeholder="4글자 이상 12글자 이하 영문자(소문자)와 숫자" value="<%=userId%>">
-                        <input type="button" id="ch" value="중복확인" style="width: 70px; background: darkgrey; color: white;" onclick="openIdChk()">
+                        <input type="button" id="idCheck" value="중복확인" style="width: 70px; background: darkgrey; color: white;" onclick="openIdChk()">
                     </td>
                 </tr>
                 <tr>
@@ -100,7 +103,7 @@
                         <label>*비밀번호</label>
                     </td>
                     <td id="inp"> 
-                        <input type="password" id="userPwd" name="userPwd" required placeholder="6글자 이상 18글자 이하 영문자(소문자)와 숫자" value="<%=userPwd %>">
+                        <input type="password" id="userPwd" name="userPwd" required placeholder="6글자 이상 18글자 이하 영문자(소문자)와 숫자" value="<%=userPwd %>" disabled>
                     </td>
                 </tr>
                	<!-- <tr>
@@ -124,7 +127,7 @@
                         <label>*이메일</label>
                     </td>
                     <td id="inp">
-                        <input type="email" id="email" name="eamil" required value="<%=email %>">
+                        <input type="email" id="email" name="email" required value="<%=email %>">
                     </td>
                 </tr>
                 <tr>
@@ -140,8 +143,8 @@
                     <label>*생년월일</label>
                     </td>
                     <td id="inp">
-                        <div id="birth" value = "<%=birth%>">
-                            <select id="year" required>
+                        <div id="birth">
+                            <select id="year" name="year" required >
                                 <option value="년">년</option>
                                 <option value="2020">2020</option>
                                 <option value="2019">2019</option>
@@ -215,32 +218,32 @@
                                 <option value="1951">1951</option>
                                 <option value="1950">1950</option>
                             </select>
-                            <select id="mon" required>
+                            <select id="mon" name="mon" required >
                                 <option value="월">월</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
                                 <option value="10">10</option>
                                 <option value="11">11</option>
                                 <option value="12">12</option>
                             </select>
-                            <select id="day" required>
+                            <select id="day" name="day" required>
                                 <option value="일">일</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
                                 <option value="10">10</option>
                                 <option value="11">11</option>
                                 <option value="12">12</option>
@@ -286,50 +289,90 @@
             </div>
         </form>
         <script>
-            $("#userid").change(function(){
-                    var value = $("#userid").val();
-                    var reg = /^[a-z0-9]{4,12}$/;
-                    if(!reg.test(value)){
-                        alert("영문자와 숫자로 4글자 이상 12글자 이하여야 합니다.");
-                        $("#userid").focus().val('');
-                    }
-                });
-                $("#userpwd").change(function(){
-                    var value = $("#userpwd").val();
-                    var reg = /^[a-z0-9]{6,18}$/;
-                    if(!reg.test(value)){
-                        alert("영문자와 숫자로 6글자 이상 12글자 이하여야 합니다.");
-                        $("#userpwd").focus().val('');
-                    }
-                });
-                $("#pwd_check").change(function(){
-                    var pw1 = $("#userpwd").val();
-                    var pw2 = $("#pwd_check").val();
-                    
-                    if(pw1 == pw2){
-                        $("#pwd_check").val();
-                    }else{
-                        alert("비밀번호가 일치하지 않습니다.");
-                        $("#pwd_check").focus().val('');
-                    }
-                });
-                $("#username").change(function(){
-                    var value = $("#username").val();
-                    var reg = /^[가-힣]{2,4}$/;
-                    
-                    if(!reg.test(value)){
-                        alert("한글로 2글자 이상 입력해주세요.");
-                        $("#username").focus().val('');
-                    }
-                });
-                $("#phone").change(function(){
-                    var value = $("#phone").val();
-                    var reg = /^[0-9]{11}$/;
-                    
-                    if(!reg.test(value)){
-                        alert("-를 제외한 숫자만을 입력해 주세요.");
-                        $("#phone").focus().val('');
-                    }
+        	$(function(){
+        		
+        			$("#year").val("<%=year%>").prop("selected",true);
+        			$("#mon").val("<%=mon%>").prop("selected",true);
+        			$("#day").val("<%=day%>").prop("selected",true);
+        			
+	            $("#userid").change(function(){
+	                    var value = $("#userid").val();
+	                    var reg = /^[a-z0-9]{4,12}$/;
+	                    if(!reg.test(value)){
+	                        alert("영문자와 숫자로 4글자 이상 12글자 이하여야 합니다.");
+	                        $("#userid").focus().val('');
+	                    }
+	                });
+	                $("#userpwd").change(function(){
+	                    var value = $("#userpwd").val();
+	                    var reg = /^[a-z0-9]{6,18}$/;
+	                    if(!reg.test(value)){
+	                        alert("영문자와 숫자로 6글자 이상 12글자 이하여야 합니다.");
+	                        $("#userpwd").focus().val('');
+	                    }
+	                });
+	                $("#pwd_check").change(function(){
+	                    var pw1 = $("#userpwd").val();
+	                    var pw2 = $("#pwd_check").val();
+	                    
+	                    if(pw1 == pw2){
+	                        $("#pwd_check").val();
+	                    }else{
+	                        alert("비밀번호가 일치하지 않습니다.");
+	                        $("#pwd_check").focus().val('');
+	                    }
+	                });
+	                $("#username").change(function(){
+	                    var value = $("#username").val();
+	                    var reg = /^[가-힣]{2,4}$/;
+	                    
+	                    if(!reg.test(value)){
+	                        alert("한글로 2글자 이상 입력해주세요.");
+	                        $("#username").focus().val('');
+	                    }
+	                });
+	                $("#phone").change(function(){
+	                    var value = $("#phone").val();
+	                    var reg = /^[0-9]{11}$/;
+	                    
+	                    if(!reg.test(value)){
+	                        alert("-를 제외한 숫자만을 입력해 주세요.");
+	                        $("#phone").focus().val('');
+	                    }
+	                });
+	                
+        	});
+        	 // ajax!
+                $(function(){
+                	// 중복체크 버튼에 대해 ajax처리
+                	
+                	$("#idCheck").click(function(){
+                		var userId = $("#joinForm input[name='userId']");
+                		console.log(userId);
+                		if(!userId || userId.val().length < 4){
+                			userId.focuse();
+                		}else{
+                			$.ajax({
+                				url:"<%= request.getContextPath()%>/idCheck.me",
+                				type:"post",
+                				data:{userId:userId.val()},
+                				success:function(data){
+                					if(data == 'fail'){
+                						alert("아이디가 중복됩니다.");
+                						userId.focus();
+                					}else{
+                						alert("아이디가 사용가능합니다.");
+                						
+                						
+                					}
+                				},
+                				error:function(data){
+                					console.log("서버 통신 안됨");
+                				}
+                			});
+                		}
+                	});
+                	
                 });
         </script>
 </body>

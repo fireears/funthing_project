@@ -73,7 +73,7 @@
                         <td>
                             <input type="email" id="email1" name="email" style=" height: 30px; width: 210px; border-radius: 8px;"  placeholder="이메일을 입력해주세요">
                             <select name="email" id="selectEmail" onchange="emailSelect" style=" height: 35px; width: 180px; border-radius: 8px;">
-                                <option value = 0>직접입력</option>
+                                <option value ="">직접입력</option>
                                 <option value="@naver.com">@naver.com</option>
                                 <option value="@gmail.com">@gmail.com</option>
                                 <option value="@hanmail.net">@hanmail.net</option>
@@ -96,7 +96,7 @@
             <div style="text-align: center;"> 
                 <input type="button" id="pwd" value="비밀번호 찾기" style=" width: 200px; height: 40px; border-radius: 8px; font-size: 16px; background: lightgray;">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" id="login" value="로그인하기" style=" width: 200px; height: 40px; border-radius: 8px; background: darkgrey; font-size: 16px; color: white;">
+                <input type="button" id="login" value="로그인하기" style=" width: 200px; height: 40px; border-radius: 8px; background: darkgrey; font-size: 16px; color: white;">
             </div>
         </form>
         </div>
@@ -152,6 +152,12 @@
                 $("#pwd").click(function(){
                 	location.href="<%= request.getContextPath()%>/views/member/searchPwd1.jsp";
                 });
+                
+                $("#selectEmail").change(function(){
+                var sum = $("#email1").val()+$("#selectEmail").val();
+                $("#email1").val(sum);
+                
+                })
         })
        
 

@@ -35,7 +35,7 @@
 	                	<%} %>
 	                    <li><a href="#none">HELP</a></li>
 	                    <li><a href="<%=request.getContextPath() %>/logout.me">LOGOUT</a></li>
-	                    <li><a href="<%=request.getContextPath()%>/views/member/myPageMain.jsp?">MY PAGE</a></li>
+	                    <li><a href="<%=request.getContextPath()%>/views/member/myPageMain.jsp">MY PAGE</a></li>
 	                    <li><a href="#none"><i class="fas fa-shopping-cart"></i></a></li>
 	                </ul>
 	                <% }else{ %>
