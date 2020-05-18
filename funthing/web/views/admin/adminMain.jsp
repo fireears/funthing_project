@@ -60,11 +60,11 @@
 		        	<label>상품종류 : </label>
 		        	<!-- <input type="text" class="box" id="p_category" name="p_category" placeholder="01"> -->
 		        	<select name="pCategory">
-		        		<option value="01">OUTER</option>
-		        		<option value="02">TOP</option>
-		        		<option value="03">BOTTOM</option>
-		        		<option value="04">JEAN</option>
-		        		<option value="05">ONEPICE</option>
+		        		<option value="1">OUTER</option>
+		        		<option value="2">TOP</option>
+		        		<option value="3">BOTTOM</option>
+		        		<option value="4">JEAN</option>
+		        		<option value="5">ONEPICE</option>
 		        	</select>
 		        </li>
 		        <li><label>상품가격 : </label><input type="text" class="box" id="p_price" name="p_price" value="0" ></li>

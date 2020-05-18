@@ -39,8 +39,8 @@ public class AdminProductSearchServlet extends HttpServlet {
 		try
 		{
 			String pNo = request.getParameter("p_no");
-			String bNo = request.getParameter("bNo");
-			String sNo = request.getParameter("s_no");
+			String bNo = request.getParameter("b_No");
+			int sNo = Integer.valueOf(request.getParameter("s_no"));
 			String pName = request.getParameter("p_name");
 			int pCategory = Integer.valueOf(request.getParameter("pCategory"));
 			int pPrice = Integer.valueOf(request.getParameter("p_price"));
@@ -48,7 +48,8 @@ public class AdminProductSearchServlet extends HttpServlet {
 			Date fEndDate = Date.valueOf(request.getParameter("f_end_date"));
 			String fYn = request.getParameter("f_yn");
 			
-			Product p = new Product(pNo, bNo, pName, pPrice, pCategory, Integer.valueOf(sNo), fStartDate, fEndDate, fYn);
+			System.out.println("sNo : " + sNo);
+			Product p = new Product(pNo, bNo, pName, pPrice, pCategory, sNo, fStartDate, fEndDate, fYn);
 			
 			System.out.println(p);
 			ArrayList<Product> plist = new ArrayList<>();

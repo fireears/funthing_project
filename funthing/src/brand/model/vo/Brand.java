@@ -21,6 +21,23 @@ public class Brand implements Serializable{
 	public Brand() {
 		super();
 	}
+	
+	
+	
+	
+	public Brand(String bName, String bCeo, String bPhone, String bAddress, String bEmail, Date bLchDate,
+			String bLchYn) {
+		this.bName = bName;
+		this.bCeo = bCeo;
+		this.bPhone = bPhone;
+		this.bAddress = bAddress;
+		this.bEmail = bEmail;
+		this.bLchDate = bLchDate;
+		this.bLchYn = bLchYn;
+	}
+
+
+
 	public Brand(String bNo, String bName, String bCeo, String bPhone, String bAddress, String bEmail, Date bLchDate,
 			String bLchYn) {
 		super();

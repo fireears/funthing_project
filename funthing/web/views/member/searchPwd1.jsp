@@ -48,23 +48,25 @@
      <br>
 
 	<div class="cont">
-		<form>
-			<h2>비밀번호 찾기</h2>
-			<hr style="height: 5px; background: black;">
-			<br>
-			<div>
-				아이디 입력
-				</div>
-					<div style="font-size: 12px; color: darkgray;">비밀번호를 찾고자 하는
-						아이디를 입력해 주세요.</div>
-					<br> <input type="text" id="userid" style="width: 600px; height: 30px; border-radius: 8px;" placeholder="아이디를 입력해주세요"> <br> <br>
-					<div style="font-size: 12px; color: darkgrey">
-						아이디를 모르시나요? <a href="#">아이디 찾기</a>
-					</div>
-					<br>
-					<hr>
-					<br> <input type="button" value="다음" id="nextbtn" style="font-size: 16px;">
-		</form>
+		<form method="get" action="<%=request.getContextPath()%>/searchPwd.me">
+            <h2>비밀번호 찾기</h2>
+            <hr style="height: 5px; background: black;">
+            <br>
+            <div>아이디 입력</div>
+            <div style="font-size: 12px; color: darkgray;">비밀번호를 찾고자 하는 아이디를 입력해 주세요.</div>
+            <br>
+            <input type="text" id="userId" name="userId" style="width: 600px; height: 30px; border-radius: 8px; " placeholder="아이디를 입력해주세요">
+            <br>
+            <br>
+            <div style="font-size: 12px; color: darkgrey">
+            	아이디를 모르시나요?
+            <a href="<%=request.getContextPath()%>/views/member/searchId.jsp">아이디 찾기</a>
+            </div>
+            <br>
+            <hr>
+            <br>
+                <input type="submit" value="다음" id="nextbtn" style="font-size: 16px;">
+        </form>
 	</div>
 
 

@@ -136,7 +136,7 @@
                         <label>*이메일</label>
                     </td>
                     <td id="inp">
-                        <input type="email" id="email" name="eamil" required>
+                        <input type="email" id="email" name="email" required>
                     </td>
                 </tr>
                 <tr>

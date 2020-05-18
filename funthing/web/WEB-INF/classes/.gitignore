@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /admin/
 /sql/
 /product/
@@ -5,3 +6,8 @@
 /personalQnA/
 /member/
 /payment/
+=======
+/member/
+>>>>>>> refs/remotes/origin/master
+/filter/
+/wrapper/

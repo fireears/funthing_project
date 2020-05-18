@@ -100,14 +100,6 @@ public class AdminProductInsertServlet extends HttpServlet {
 		{
 			e.printStackTrace();
 		}
-		
-		
-//		
-//		
-//		System.out.println("productInsertServlet");
-//		String pNo = request.getParameter("pNo");
-//		String bNo = request.getParameter("bNo");
-////		String thumbnail = request.getParameter(")
 	}
 
 	/**
