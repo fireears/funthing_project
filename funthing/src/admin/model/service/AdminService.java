@@ -1,12 +1,16 @@
 package admin.model.service;
 
-import static common.JDBCTemplate.*;
+import static common.JDBCTemplate.close;
+import static common.JDBCTemplate.commit;
+import static common.JDBCTemplate.getConnection;
+import static common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.ArrayList;
 
 import admin.model.dao.AdminDao;
 import brand.model.vo.Brand;
+import member.model.vo.Member;
 import payment.model.vo.OrderInfo;
 import payment.model.vo.OrderInfoDetail;
 import product.model.vo.Product;
@@ -211,6 +215,17 @@ public class AdminService {
 		close(conn);
 		
 		return result;
+	}
+	
+	// 멤버 select_진교 
+	public ArrayList<Member> selectList(int currentPage, int limit, String userName, String userId) {
+		Connection conn = getConnection();
+		
+		ArrayList<Member> list = new AdminDao().selectList(conn, currentPage, limit, userName, userId);
+		
+		close(conn);
+		
+		return list;
 	}
 
 

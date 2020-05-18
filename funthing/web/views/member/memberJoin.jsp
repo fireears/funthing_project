@@ -1,20 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="ko">
-    <head>
-        <title>login</title>
-        <script src = "../../js/jquery-3.4.1.min.js"></script>
-        <style>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<style>
             
-            table{
+            #joinForm{
+                width: 700px;
+                margin: 0 auto;
+            }
+            #logintable{
                 margin: 0;
                 padding:0;
                 width: 700px;
                 border-top: 1px solid #444444;
                 border-collapse: collapse;
             }
-            th, td {
+            .ltd {
                 border-bottom: 1px solid #444444;
                 padding: 10px;
             }
@@ -44,10 +49,10 @@
               float: left;
               margin-left: 3px ;
            }
-           h2{
+           #h2{
                margin-left: 20px;
            }
-           h3{
+           #h3{
                float: left;
                margin-left: 20px;
            }
@@ -85,87 +90,73 @@
                 color: lightgray; 
             }
   
-		  	.cont {
-					width: 1460px;
-					margin: 0 auto;
-				}
-		
-			.cont form {
-				width: 600px;
-				margin: 0 auto;
-				/* border: 1px solid black; */
-				text-align: center;
-			}
         </style>
-    </head>
-    <body>
-    
-    	<%@ include file="../common/header.jsp" %>
-    	
-    	<div class="cont">
-        <form method="post" action="#" >
-            <h2>회원가입</h2>
+</head>
+<body>
+<%@include file = "../common/header.jsp" %>
+	<form id="joinForm" method="post" action="<%=request.getContextPath()%>/join.me">
+            <h2 id="h2">회원가입</h2>
             <hr>
-            <h3>기본정보</h3>
+            <h3 id="h3">기본정보</h3>
             <br>
             <h5 id="hh5">*은 반드시 적어야 하는 항목</h5>
-            <table>
+            <table id="logintable">
                 <tr>
-                    <td id="lab">
+                    <td id="lab" class="ltd">
                         <label>*아이디</label>
                     </td>
-                    <td id="inp">
-                        <input type="text" id="userid" name="userid" required placeholder="4글자 이상 12글자 이하 영문자(소문자)와 숫자">
-                        <input type="button" id="ch" value="중복확인" style="width: 70px; background: darkgrey; color: white;" onclick="openIdChk()">
+                    <td id="inp" class="ltd">
+                        <input type="text" id="userId" name="userId" required placeholder="4글자 이상 12글자 이하 영문자(소문자)와 숫자">
+                        <input type="button" id="idCheck" value="중복확인" style="width: 70px; background: darkgrey; color: white;" onclick="openIdChk()">
                     </td>
                 </tr>
                 <tr>
-                    <td id="lab">
+                    <td id="lab" class="ltd">
                         <label>*비밀번호</label>
                     </td>
-                    <td id="inp"> 
-                        <input type="password" id="userpwd" name="userpwd" required placeholder="6글자 이상 18글자 이하 영문자(소문자)와 숫자">
+                    <td id="inp" class="ltd"> 
+                        <input type="password" id="userPwd" name="userPwd" required placeholder="6글자 이상 18글자 이하 영문자(소문자)와 숫자">
                     </td>
                 </tr>
                 <tr>
-                    <td id="lab"> 
+                    <td id="lab" class="ltd"> 
                         <label>*비밀번호 확인</label>
                     </td>
-                    <td id="inp"> 
+                    <td id="inp" class="ltd"> 
                         <input type="password" id="pwd_check" name="pwd_check" required>
                     </td>
                 </tr>
                 <tr>
-                    <td id="lab">
+                    <td id="lab" class="ltd">
                         <label>*이름</label>
                     </td>
-                    <td id="inp">
-                        <input type="text" id="username" name="username" required placeholder="한글로 2글자 이상">
+                    <td id="inp" class="ltd">
+                        <input type="text" id="userName" name="userName" required placeholder="한글로 2글자 이상">
                     </td>
                 </tr>
                 <tr>
-                    <td id="lab">
+                    <td id="lab" class="ltd">
                         <label>*이메일</label>
                     </td>
-                    <td id="inp">
-                        <input type="email" id="email" name="eamil" required>
+                    <td id="inp" class="ltd">
+                        <input type="email" id="email" name="email" required>
                     </td>
                 </tr>
                 <tr>
-                    <td id="lab">
+                    <td id="lab" class="ltd">
                         <label>*휴대폰</label>
                     </td>
-                    <td id="inp">
+                    <td id="inp" class="ltd">
                         <input type="tel" id="phone" name="phone" required placeholder="-제외 하고 입력">
                     </td>
                 </tr>
                 <tr>
-                    <td id="lab">
+                    <td id="lab" class="ltd">
                     <label>*생년월일</label>
                     </td>
-                    <td id="inp">
+                    <td id="inp" class="ltd">
                         <div id="birth">
-                            <select id="year" name="birth" required>
+                            <select id="year" name="year" required>
                                 <option value="년">년</option>
                                 <option value="2020">2020</option>
                                 <option value="2019">2019</option>
@@ -239,32 +230,32 @@
                                 <option value="1951">1951</option>
                                 <option value="1950">1950</option>
                             </select>
-                            <select id="mon" name="birth" required>
+                            <select id="mon" name="mon" required>
                                 <option value="월">월</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
                                 <option value="10">10</option>
                                 <option value="11">11</option>
                                 <option value="12">12</option>
                             </select>
-                            <select id="day" name="birth" required>
+                            <select id="day" name="day" required>
                                 <option value="일">일</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
                                 <option value="10">10</option>
                                 <option value="11">11</option>
                                 <option value="12">12</option>
@@ -292,10 +283,10 @@
                     </td>
                 </tr>
                 <tr>
-                    <td id="lab">
+                    <td id="lab" class="ltd">
                         <label>추천인</label>
                     </td>
-                    <td id="inp">
+                    <td id="inp" class="ltd">
                         <input type="text" id="reference" name="reference">
                     </td>
                 </tr>
@@ -309,9 +300,9 @@
             <ul>
                 <ul>
                     <li style="list-style: none;">
-                        <input type="checkbox" id="check1" class="infoBox">
+                        <input type="checkbox" id="check1" name = "agree_chk" class="infoBox">
                         <label>(필수)이용약관</label>
-                        <lable><a href="../agree/agree1.html">전체보기</a></lable>
+                        <lable><a href="memberJoinAgreement.jsp">전체보기</a></lable>
                     </li>
                     <br>
                     <ul>
@@ -570,9 +561,9 @@
                     </ul>
                     <br>
                     <li style="list-style: none;">
-                        <input type="checkbox" id="check2" class="infoBox">
+                        <input type="checkbox" id="check2" name="agree_chk" class="infoBox">
                         <label>(필수)개인정보 수집 및 이용</label>
-                        <lable><a href="../agree/agree2.html">전체보기</a></lable>
+                        <lable><a href="memberJoinAgreement.jsp">전체보기</a></lable>
                     </li>
                     <br>
                     <ul>
@@ -596,17 +587,17 @@
                     </ul>
                     <br>
                     <li style="list-style: none;">
-                        <input type="checkbox" id="check3" class="infoBox">
+                        <input type="checkbox" id="check3" name="agree_chk" class="infoBox" >
                         <label>(필수)14세 이상입니다. *회원가입은 만 14세 이상부터 가능합니다.</label>
                     </li>
                     <br>
                     <li style="list-style: none;">
-                        <input type="checkbox" id="check1" class="infoBox">
+                        <input type="checkbox" id="check4" value="1" name="alarm_YN" class="infoBox">
                         <label>(선택)정보/이벤트 메일 수신에 동의합니다.</label>
                     </li>
                     <br>
                     <li style="list-style: none;">
-                        <input type="checkbox" id="check1" class="infoBox">
+                        <input type="checkbox" id="check5" name="agree_chk" class="infoBox">
                         <label>(선택)정보/이벤트 SMS 수신에 동의합니다.</label>
                     </li>
                     <br>
@@ -615,12 +606,11 @@
             </ul>
             <br><br><br><br><br>
             <div style="text-align: center;">
-                <input type="submit" value="회원가입" id="submit_btn" style="width: 90px; height: 40px; color: white; background: darkgrey; border-radius: 7px;" onclick="insertCheck()">
+                <input type="submit" value="회원가입" id="submit_btn" style="width: 90px; height: 40px; color: white; background: darkgrey; border-radius: 7px;" onclick="check()">
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 <input type="button" value="취소" id="cancel" onclick=cancle(); style="width: 90px; height: 40px; color: black; background-color: lightgray; border-radius: 7px;">
             </div>
         </form>
-        </div>
         <script>
             $(function(){
                 $('ipnut[type=checkbox]').click(function(){
@@ -630,24 +620,24 @@
                     var bool = $("#checkAll").prop("checked");
                     $(".infoBox").prop("checked",bool);
                 });
-                $("#userid").change(function(){
-                    var value = $("#userid").val();
+                $("#userId").change(function(){
+                    var value = $("#userId").val();
                     var reg = /^[a-z0-9]{4,12}$/;
                     if(!reg.test(value)){
                         alert("영문자와 숫자로 4글자 이상 12글자 이하여야 합니다.");
-                        $("#userid").focus().val('');
+                        $("#userId").focus().val('');
                     }
                 });
-                $("#userpwd").change(function(){
-                    var value = $("#userpwd").val();
+                $("#userPwd").change(function(){
+                    var value = $("#userPwd").val();
                     var reg = /^[a-z0-9]{6,18}$/;
                     if(!reg.test(value)){
                         alert("영문자와 숫자로 6글자 이상 12글자 이하여야 합니다.");
-                        $("#userpwd").focus().val('');
+                        $("#userPwd").focus().val('');
                     }
                 });
                 $("#pwd_check").change(function(){
-                    var pw1 = $("#userpwd").val();
+                    var pw1 = $("#userPwd").val();
                     var pw2 = $("#pwd_check").val();
                     
                     if(pw1 == pw2){
@@ -657,13 +647,13 @@
                         $("#pwd_check").focus().val('');
                     }
                 });
-                $("#username").change(function(){
-                    var value = $("#username").val();
+                $("#userName").change(function(){
+                    var value = $("#userName").val();
                     var reg = /^[가-힣]{2,4}$/;
                     
                     if(!reg.test(value)){
                         alert("한글로 2글자 이상 입력해주세요.");
-                        $("#username").focus().val('');
+                        $("#userName").focus().val('');
                     }
                 });
                 $("#phone").change(function(){
@@ -682,29 +672,55 @@
                             }else{
                                     // $(location).attr('href','join.html');
                             }
+                        
                 }); 
-                
-                function cancle()
-                {
-                    //location.href='홈으로';
-                }
-
-                // $("#ch").click(function(){
-                //     $("#ch").css("visibility","hidden");
-                // })
-
-                
+     
             });
+                $(function(){	// 메일 수신 동의 시 
+	                 if($("input:checkbox[id='check4']:checked")==true && $("input:checkbox[id='check5']:checked") == true){
+	                    $("#check4").val("N");
+	                 }else{
+	                 	$("#check4").val("Y");
+	                 }
+                 });  
+
+                
+                // ajax!
+                $(function(){
+                	// 중복체크 버튼에 대해 ajax처리
+                	
+                	$("#idCheck").click(function(){
+                		var userId = $("#joinForm input[name='userId']");
+                		console.log(userId);
+                		if(!userId || userId.val().length < 4){
+                			userId.focuse();
+                		}else{
+                			$.ajax({
+                				url:"<%= request.getContextPath()%>/idCheck.me",
+                				type:"post",
+                				data:{userId:userId.val()},
+                				success:function(data){
+                					if(data == 'fail'){
+                						alert("아이디가 중복됩니다.");
+                						userId.focus();
+                					}else{
+                						alert("아이디가 사용가능합니다.");
+                						
+                						
+                					}
+                				},
+                				error:function(data){
+                					console.log("서버 통신 안됨");
+                				}
+                			});
+                		}
+                	});
+                	
+                });
+                
             
-            </script>
             
-            
-            
-       
-       <%@ include file="../common/footer.jsp" %>
-       
-       
-       
-    </body>
-    
-    </html>
+       </script>
+             <%@include file = "../common/footer.jsp" %>
+</body>
+</html>

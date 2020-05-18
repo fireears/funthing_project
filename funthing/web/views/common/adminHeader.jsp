@@ -62,7 +62,7 @@
 		}
 		function memberManage()
 		{
-			
+			location.href="<%=request.getContextPath()%>/memberList.me";
 		}
 		function brandManage()
 		{
