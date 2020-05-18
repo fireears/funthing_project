@@ -235,6 +235,15 @@ public class AdminService {
 		return plist;
 	}
 
+	public int getListCount(Product p) {
+		Connection conn = getConnection();
+		
+		int listCount = new AdminDao().getListCount(conn, p);
+		
+		close(conn);
+		return listCount;
+	}
+
 
 	
 	

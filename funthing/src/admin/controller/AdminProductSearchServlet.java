@@ -35,7 +35,7 @@ public class AdminProductSearchServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		System.out.println("adminProductSearch");
-		
+		AdminService aService = new AdminService();
 		try
 		{
 			String pNo = request.getParameter("p_no");
@@ -52,7 +52,11 @@ public class AdminProductSearchServlet extends HttpServlet {
 			
 			System.out.println(p);
 			ArrayList<Product> plist = new ArrayList<>();
-			plist = new AdminService().productSearch(p);
+			plist = aService.productSearch(p);
+			
+			int listCount = aService.getListCount(p);
+			
+			System.out.println(listCount);
 			
 			RequestDispatcher view = null;
 			if(!plist.isEmpty())

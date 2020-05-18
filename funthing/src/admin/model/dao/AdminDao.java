@@ -596,38 +596,29 @@ public class AdminDao {
 		String fYn = p.getfYn();
 		
 
-		String query = "SELECT * FROM PRODUCTLIST\r\n" + 
-						"WHERE P_NO = ?\r\n" + 
-						"UNION\r\n" + 
-						"SELECT * FROM PRODUCTLIST\r\n" + 
-						"WHERE B_NO = ?\r\n" + 
-						"INTERSECT\r\n" + 
-						"SELECT * FROM PRODUCTLIST\r\n" + 
-						"WHERE S_NO = ?\r\n" + 
-						"INTERSECT\r\n" + 
-						"SELECT * FROM PRODUCTLIST\r\n" + 
-						"WHERE P_CATEGORY = ?\r\n" + 
-						"INTERSECT\r\n" + 
-						"SELECT * FROM PRODUCTLIST\r\n" + 
-						"WHERE P_PRICE >= ?\r\n" + 
-						"INTERSECT\r\n" + 
-						"SELECT * FROM PRODUCTLIST\r\n" + 
-						"WHERE F_START_DATE >= ? AND F_END_DATE <= ?\r\n" + 
-						"UNION\r\n" + 
-						"SELECT * FROM PRODUCTLIST\r\n" + 
-						"WHERE P_NAME = ? INTERSECT SELECT * FROM PRODUCTLIST WHERE F_YN = ?";
+		String query = "SELECT ROWNUM RNUM, P_NO, B_NO, S_NO, P_NAME, P_CATEGORY, RETAIL_PRICE, DC_RATE, P_PRICE, F_YN, F_START_DATE, F_END_DATE\r\n" + 
+						"FROM(\r\n" + 
+						"    SELECT ROWNUM RNUM, P_NO, B_NO, S_NO, P_NAME, P_CATEGORY, RETAIL_PRICE, DC_RATE, P_PRICE, F_YN, F_START_DATE, F_END_DATE\r\n" + 
+						"    FROM(\r\n" + 
+						"            SELECT ROWNUM RNUM, P_NO, B_NO, S_NO, P_NAME, P_CATEGORY, RETAIL_PRICE, DC_RATE, P_PRICE, F_YN, F_START_DATE, F_END_DATE\r\n" + 
+						"            FROM PRODUCTLIST\r\n" + 
+						"            WHERE (((P_NO = ? OR B_NO = ?) AND S_NO = ?) OR P_NAME = ?) AND P_CATEGORY = ?  \r\n" + 
+						"        )\r\n" + 
+						"    WHERE P_PRICE >= ? AND F_YN = ?\r\n" + 
+						"    )\r\n" + 
+						"WHERE F_START_DATE >= ? AND F_END_DATE <= ?";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, pNo);
 			pstmt.setString(2, bNo);
 			pstmt.setInt(3, sNo);
-			pstmt.setInt(4, pCategory);
-			pstmt.setInt(5, pPrice);
-			pstmt.setDate(6, fStartDate);
-			pstmt.setDate(7, fEndDate);
-			pstmt.setString(8, pName);
-			pstmt.setString(9, fYn);
+			pstmt.setString(4, pName);
+			pstmt.setInt(5, pCategory);
+			pstmt.setInt(6, pPrice);
+			pstmt.setString(7, fYn);
+			pstmt.setDate(8, fStartDate);
+			pstmt.setDate(9, fEndDate);
 			rset = pstmt.executeQuery();
 			
 			while(rset.next())
@@ -649,6 +640,55 @@ public class AdminDao {
 			close(rset);
 		}
 		return plist;
+	}
+
+	public int getListCount(Connection conn, Product p) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		int result = 0;
+		
+		String query = "SELECT count(*)\r\n" + 
+				"FROM(\r\n" + 
+				"    SELECT ROWNUM RNUM, P_NO, B_NO, S_NO, P_NAME, P_CATEGORY, RETAIL_PRICE, DC_RATE, P_PRICE, F_YN, F_START_DATE, F_END_DATE\r\n" + 
+				"    FROM(\r\n" + 
+				"            SELECT ROWNUM RNUM, P_NO, B_NO, S_NO, P_NAME, P_CATEGORY, RETAIL_PRICE, DC_RATE, P_PRICE, F_YN, F_START_DATE, F_END_DATE\r\n" + 
+				"            FROM PRODUCTLIST\r\n" + 
+				"            WHERE (((P_NO = ? OR B_NO = ?) AND S_NO = ?) OR P_NAME = ?) AND P_CATEGORY = ?  \r\n" + 
+				"        )\r\n" + 
+				"    WHERE P_PRICE >= ? AND F_YN = ?\r\n" + 
+				"    )\r\n" + 
+				"WHERE F_START_DATE >= ? AND F_END_DATE <= ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setString(1, p.getpNo());
+			pstmt.setString(2, p.getbNo());
+			pstmt.setInt(3, p.getsNo());
+			pstmt.setString(4, p.getpName());
+			pstmt.setInt(6, p.getpCategory());
+			pstmt.setInt(7, p.getpPrice());
+			pstmt.setString(8, p.getfYn());
+			pstmt.setDate(9, p.getfStartDate());
+			pstmt.setDate(10, p.getfEndDate());
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next())
+			{
+				result = rset.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally
+		{
+			close(pstmt);
+			close(rset);
+		}
+		return result;
 	}
 
 	
