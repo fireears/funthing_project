@@ -3,6 +3,11 @@
  * Version: Apache Tomcat/8.5.54
 <<<<<<< HEAD
 <<<<<<< HEAD
+ * Generated at: 2020-05-18 07:43:54 UTC
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
  * Generated at: 2020-05-16 23:34:41 UTC
 =======
@@ -10,6 +15,7 @@
 >>>>>>> refs/remotes/origin/master
 =======
 =======
+>>>>>>> refs/remotes/origin/master
  * Generated at: 2020-05-18 02:51:50 UTC
 =======
 <<<<<<< HEAD
@@ -47,9 +53,15 @@ public final class adminProductDetail_jsp extends org.apache.jasper.runtime.Http
     _jspx_dependants = new java.util.HashMap<java.lang.String,java.lang.Long>(1);
 <<<<<<< HEAD
 <<<<<<< HEAD
+    _jspx_dependants.put("/views/admin/../common/adminHeader.jsp", Long.valueOf(1589785796111L));
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
     _jspx_dependants.put("/views/admin/../common/adminHeader.jsp", Long.valueOf(1589671960431L));
 =======
 =======
+>>>>>>> refs/remotes/origin/master
     _jspx_dependants.put("/views/admin/../common/adminHeader.jsp", Long.valueOf(1589630546289L));
 =======
 <<<<<<< HEAD

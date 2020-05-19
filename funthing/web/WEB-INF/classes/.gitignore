@@ -1,4 +1,6 @@
-
+/main/
+/member/
+/notice/
 /payment/
 /personalQnA/
 /product/
@@ -6,9 +8,3 @@
 /review/
 /wrapper/
 /admin/
-
-
-/member/
-
-/product/
-

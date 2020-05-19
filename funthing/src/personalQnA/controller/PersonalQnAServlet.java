@@ -17,7 +17,7 @@ import personalQnA.model.vo.PersonalQnA;
 /**
  * Servlet implementation class PersonalQnAServlet
  */
-@WebServlet("/personalQnA")
+@WebServlet(name = "PersonalQnA", urlPatterns = "/PersonalQnA")
 public class PersonalQnAServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -103,7 +103,6 @@ public class PersonalQnAServlet extends HttpServlet {
 		}
 		
 		view.forward(request, response);
-		
 		
 	}
 
