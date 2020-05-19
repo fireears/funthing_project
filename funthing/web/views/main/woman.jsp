@@ -2,7 +2,19 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang='ko'>
-
+ <%@ page import="java.util.ArrayList" %>
+ <%@ page import="women.model.vo.WomenVo"%>
+ <%@ page import="board.model.vo.PageInfo" %>
+    <%
+    	ArrayList<WomenVo> list = (ArrayList<WomenVo>)request.getAttribute("list");
+    	PageInfo pi = (PageInfo)request.getAttribute("pi");
+    	
+    	int listCount = pi.getListCount();
+    	int currentPage = pi.getCurrentPage();
+    	int maxPage = pi.getMaxPage();
+    	int startPage = pi.getStartPage();
+    	int endPage = pi.getEndPage();
+    %>
 <head>
    <title></title>
    <script src="../js/jquery-3.4.1.min.js"></script>
@@ -127,19 +139,7 @@
    <div class="prod_top">
       <img src="C://Users/violi/Desktop/image01.jpg">
    </div>
-<!-- 
-   <div id="select_main" class="hansol">
-      <div id="select_main_left">100style</div>
-      <div id="select_main_right">
-         <select>
-            <option value="40">40</option>
-            <option value="20">20</option>
-            <option value="12">12</option>
-            <option value="8">8</option>
-         </select>
 
-      </div>
-   </div> -->
    <div class="prod_cont">
       <p class="prod_count">100style</p>
       <ul class="prod_sort">
@@ -151,51 +151,105 @@
    </div>
       <div class="prod_area">
          <ul class="product">
+           <% 
+         if(list!=null){
+                for(int i =0;i<list.size();i++){
+                	if(i%4==0||i==0){
+                	%>
             <li>
                <div class="prod-img">
-                     <a href="#none"><img src="C://Users/violi/Desktop/image02.jpg"></a>
+                     <a href="#none"><img src="<%=request.getContextPath()+"/images/thumbnail/" + list.get(i).getTumbnail() + ".jpg" %>"></a>
                </div>
                <ul class="prod-cont">
-                     <li class="prod-brand">brand</li>
-                     <li class="prod-tit"><a href="#none">product title</a></li>
-                     <li class="prod_price"><span class="origin_p">298,000</span><span class="new_p">179,200</span><span class="discount">20%</span></li>
+                     <li class="prod-brand"><a href="#none"><%=list.get(i).getP_name()%></a></li>
+                     <li class="prod-tit"><a href="#none"><%=list.get(i).getP_type()%></a></li>
+                     <li class="prod_price"><span class="origin_p"><%=list.get(i).getO_price()%></span><span class="new_p"><%=list.get(i).getP_price()%></span><span class="discount"><%=list.get(i).getDc_rate()%></span></li>
                </ul>
             </li>
+            <%}else if(i%4==1){ %>
+            
+            
+            
+            <li>
+                <div class="prod-img">
+                     <a href="#none"><img src="<%=request.getContextPath()+"/images/thumbnail/" + list.get(i).getTumbnail() + ".jpg" %>"></a>
+               </div>
+               <ul class="prod-cont">
+                     <li class="prod-brand"><a href="#none"><%=list.get(i).getP_name()%></a></li>
+                     <li class="prod-tit"><a href="#none"><%=list.get(i).getP_type()%></a></li>
+                     <li class="prod_price"><span class="origin_p"><%=list.get(i).getO_price()%></span><span class="new_p"><%=list.get(i).getP_price()%></span><span class="discount"><%=list.get(i).getDc_rate()%></span></li>
+               </ul>
+            </li>
+            
+             <%}else if(i%4==2){ %>
+            
+            
+            <li>
+                <div class="prod-img">
+                     <a href="#none"><img src="<%=request.getContextPath()+"/images/thumbnail/" + list.get(i).getTumbnail() + ".jpg" %>"></a>
+               </div>
+               <ul class="prod-cont">
+                     <li class="prod-brand"><a href="#none"><%=list.get(i).getP_name()%></a></li>
+                     <li class="prod-tit"><a href="#none"><%=list.get(i).getP_type()%></a></li>
+                     <li class="prod_price"><span class="origin_p"><%=list.get(i).getO_price()%></span><span class="new_p"><%=list.get(i).getP_price()%></span><span class="discount"><%=list.get(i).getDc_rate()%></span></li>
+               </ul>
+            </li>
+            
+             <%}else if(i%4==3){ %>
+            
             <li>
                <div class="prod-img">
-                     <a href="#none"><img src="C://Users/violi/Desktop/image02.jpg"></a>
+                     <a href="#none"><img src="<%=request.getContextPath()+"/images/thumbnail/" + list.get(i).getTumbnail() + ".jpg" %>"></a>
                </div>
                <ul class="prod-cont">
-                     <li class="prod-brand">brand</li>
-                     <li class="prod-tit"><a href="#none">product title</a></li>
-                     <li class="prod_price"><span class="origin_p">298,000</span><span class="new_p">179,200</span><span class="discount">20%</span></li>
+                     <li class="prod-brand"><a href="#none"><%=list.get(i).getP_name()%></a></li>
+                     <li class="prod-tit"><%=list.get(i).getP_type()%></li>
+                     <li class="prod_price"><span class="origin_p"><%=list.get(i).getO_price()%></span><span class="new_p"><%=list.get(i).getP_price()%></span><span class="discount"><%=list.get(i).getDc_rate()%></span></li>
                </ul>
             </li>
-            <li>
-               <div class="prod-img">
-                     <a href="#none"><img src="C://Users/violi/Desktop/image02.jpg"></a>
-               </div>
-               <ul class="prod-cont">
-                     <li class="prod-brand">brand</li>
-                     <li class="prod-tit"><a href="#none">product title</a></li>
-                     <li class="prod_price"><span class="origin_p">298,000</span><span class="new_p">179,200</span><span class="discount">20%</span></li>
-               </ul>
-            </li>
-            <li>
-               <div class="prod-img">
-                     <a href="#none"><img src="C://Users/violi/Desktop/image02.jpg"></a>
-               </div>
-               <ul class="prod-cont">
-                     <li class="prod-brand">brand</li>
-                     <li class="prod-tit"><a href="#none">product title</a></li>
-                     <li class="prod_price"><span class="origin_p">298,000</span><span class="new_p">179,200</span><span class="discount">20%</span></li>
-               </ul>
-            </li>
+          <%} 
+         }
+      }%>
+         
          </ul>
+         
+         
+         
+         
+         <div class="pageinArea" align="center">
+				<!-- 맨 처음으로 -->
+				<button onclick="location.href='<%=request.getContextPath()%>/WomenServlet?currentPage=<%=1%>'"> << </button>
+				
+				<!-- 이전 페이지 -->
+				<%if(currentPage < 1) {%>
+					<button disabled> < </button>
+				<%}else {%>
+					<button onclick="location.href='<%=request.getContextPath()%>/WomenServlet?currentPage=<%=currentPage -1%>'"> < </button>
+				<%} %>
+				<!-- 10개의 페이지 목록 -->
+				<%for(int p = startPage; p<endPage; p++){
+				%><%if(currentPage == p) {%>
+						<button disabled><%=p %></button>
+					<%} else{%>
+						<button onclick="location.href='<%=request.getContextPath()%>/WomenServlet?currentPage=<%=p%>'"><%=p%></button>
+						<!-- url에 값을 넣어서 보내는 방식 쿼리 스트링방식 -->
+					<%} %>
+				<%}%>
+				
+				<!-- 다음 페이지로 -->
+				<%if(currentPage >= maxPage) {%>
+					<button disabled> > </button>
+				<%}else { %>
+					<button onclick="location.href='<%=request.getContextPath()%>/WomenServlet?currentPage=<%=currentPage + 1%>'"> > </button>
+				<%} %>
+				<!-- 맨 끝으로  -->
+				<button onclick="location.href='<%=request.getContextPath()%>/WomenServlet?currentPage=<%=maxPage%>'"> >> </button>
+			</div>
+         
       </div>
    </div>
    
-   <%@ include file="../common/footer.jsp" %>
+   <br><br><br>
 
 </body>
 

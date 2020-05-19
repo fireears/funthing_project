@@ -3,6 +3,7 @@
  * Version: Apache Tomcat/8.5.54
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Generated at: 2020-05-18 07:43:54 UTC
 =======
 <<<<<<< HEAD
@@ -28,6 +29,9 @@
 >>>>>>> refs/remotes/origin/dev900
 >>>>>>> refs/remotes/origin/master
 >>>>>>> refs/remotes/origin/master
+=======
+ * Generated at: 2020-05-17 08:49:46 UTC
+>>>>>>> refs/remotes/origin/dev60
  * Note: The last modified time of this file was set to
  *       the last modified time of the source file after
  *       generation to assist with modification tracking.
@@ -53,6 +57,7 @@ public final class adminProductDetail_jsp extends org.apache.jasper.runtime.Http
     _jspx_dependants = new java.util.HashMap<java.lang.String,java.lang.Long>(1);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     _jspx_dependants.put("/views/admin/../common/adminHeader.jsp", Long.valueOf(1589785796111L));
 =======
 <<<<<<< HEAD
@@ -74,6 +79,9 @@ public final class adminProductDetail_jsp extends org.apache.jasper.runtime.Http
 >>>>>>> refs/remotes/origin/dev900
 >>>>>>> refs/remotes/origin/master
 >>>>>>> refs/remotes/origin/master
+=======
+    _jspx_dependants.put("/views/admin/../common/adminHeader.jsp", Long.valueOf(1589704534844L));
+>>>>>>> refs/remotes/origin/dev60
   }
 
   private static final java.util.Set<java.lang.String> _jspx_imports_packages;
@@ -283,7 +291,9 @@ public final class adminProductDetail_jsp extends org.apache.jasper.runtime.Http
       out.write("\t\t}\n");
       out.write("\t\tfunction notice()\n");
       out.write("\t\t{\n");
-      out.write("\t\t\t\n");
+      out.write("\t\t\tlocation.href = \"");
+      out.print(request.getContextPath());
+      out.write("/admin/NoticeView\";\n");
       out.write("\t\t}\n");
       out.write("\t\tfunction client()\n");
       out.write("\t\t{\n");

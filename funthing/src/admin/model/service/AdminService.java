@@ -10,7 +10,12 @@ import java.util.ArrayList;
 
 import admin.model.dao.AdminDao;
 import brand.model.vo.Brand;
+<<<<<<< HEAD
 import member.model.vo.Member;
+=======
+import notice.model.dao.NoticeDao;
+import notice.model.vo.Notice;
+>>>>>>> refs/remotes/origin/dev60
 import payment.model.vo.OrderInfo;
 import payment.model.vo.OrderInfoDetail;
 import personalQnA.model.vo.AdmimPersonalQna;
@@ -407,7 +412,7 @@ public class AdminService {
 		return listCount;
 	}
 
-
+	
 	
 	
 }
