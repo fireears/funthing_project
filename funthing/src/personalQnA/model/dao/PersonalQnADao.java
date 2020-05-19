@@ -166,6 +166,7 @@ public class PersonalQnADao {
 									"WHERE M_NO=? AND TO_DATE(PER_DATE,'RRRR/MM/DD') >= TO_DATE(SYSDATE,'RRRR/MM/DD')-180)\r\n" + 
 								"WHERE RNUM BETWEEN ? AND ?";
 				
+				
 				pstmt = conn.prepareStatement(query);
 				pstmt.setInt(2, startRow);
 				pstmt.setInt(3, endRow);
