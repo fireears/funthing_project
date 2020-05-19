@@ -5,17 +5,17 @@ import java.sql.Date;
 
 public class PersonalQnA {
 
-	private int perNo;
-	private String perTitle;
-	private String perContents;
-	private String pNo;
-	private String bNo;
-	private String mNo;
-	private String perReYn;
-	private String addfile;
-	private String oNo;
-	private String perCate;
-	private Date perDate;
+	private int perNo;				// 1:1 문의 게시판 번호
+	private String perTitle;		// 게시판 제목
+	private String perContents;		// 게시판 내용
+	private String pNo;				// 상품번호 
+	private String bNo;				// 브랜드번호
+	private String mNo;				// 회원번호
+	private String perReYn;			// 관리자 답변 유무
+	private String addfile;			// 첨부파일
+	private String oNo;				// 주문번호
+	private String perCate;			// 문의유형
+	private Date perDate;			// 문의날짜
 	
 	
 	public PersonalQnA() {

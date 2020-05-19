@@ -1,6 +1,7 @@
 package personalQnA.model.service;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.util.ArrayList;
 
 import personalQnA.model.dao.PersonalQnADao;
@@ -25,11 +26,11 @@ public class PersonalQnAService {
 
 	
 	// 일대일 문의 리스트 조회_희지
-	public ArrayList<PersonalQnA> selectPersonalQnA(int currentPage, int limit, String userNo) {
+	public ArrayList<PersonalQnA> selectPersonalQnA(String searchDate, String firstDate, String secondDate, int currentPage, int limit, String userNo) {
 		
 		Connection conn = getConnection();
 		
-		ArrayList<PersonalQnA> perList = new PersonalQnADao().selectPersonalQnA(conn,currentPage, limit, userNo);
+		ArrayList<PersonalQnA> perList = new PersonalQnADao().selectPersonalQnA(conn, searchDate, firstDate, secondDate, currentPage, limit, userNo);
 		
 		close(conn);
 		
