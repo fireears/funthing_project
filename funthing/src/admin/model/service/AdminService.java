@@ -14,7 +14,6 @@ import member.model.vo.Member;
 import payment.model.vo.OrderInfo;
 import payment.model.vo.OrderInfoDetail;
 import personalQnA.model.vo.AdmimPersonalQna;
-import personalQnA.model.vo.PersonalQnA;
 import personalQnA.model.vo.PersonalQnaReply;
 import product.model.vo.Product;
 import productQnA.model.vo.AdminProductQnA;
@@ -262,11 +261,11 @@ public class AdminService {
 		return result;
 	}
 	
-	// 멤버 select_진교 
-	public ArrayList<Member> selectList(int currentPage, int limit, String userName, String userId) {
+	// 회원list select_진교 
+	public ArrayList<Member> selectList(int currentPage, int limit) {
 		Connection conn = getConnection();
 		
-		ArrayList<Member> list = new AdminDao().selectList(conn, currentPage, limit, userName, userId);
+		ArrayList<Member> list = new AdminDao().selectList(conn, currentPage, limit);
 		
 		close(conn);
 		
@@ -357,6 +356,46 @@ public class AdminService {
 		close(conn);
 		return plist;
 
+	}
+	
+	// 회원 리스트-회원 정보_진교
+	public Member selectMember(String userId) {
+		Connection conn = getConnection();
+		
+		Member selectMember = new AdminDao().selectMember(conn,userId);
+		
+		close(conn);
+		
+		return selectMember;
+	}
+	
+	// 회원 리스트- 회원 정보 update_진교
+	public int updateMember(Member member) {
+		Connection conn = getConnection();
+		
+		int result = new AdminDao().updateMember(conn, member);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		} 
+		close(conn);
+		
+		return result;
+	}
+	
+	// 회원 페이지_진교
+	public int getMemberListCount() {
+		Connection conn = getConnection();
+		
+		AdminDao aDao = new AdminDao();
+		
+		int listCount = aDao.getMemberListCount(conn);
+		
+		close(conn);
+		
+		return listCount;
 	}
 
 	public int getListCount(Product p) {

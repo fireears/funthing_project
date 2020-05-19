@@ -73,6 +73,8 @@ public class MemberService {
 		
 		return result;
 	}
+	
+	// 회원 정보 update
 	public int updateMember(Member member) {
 		Connection conn = getConnection();
 		
