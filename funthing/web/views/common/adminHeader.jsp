@@ -26,7 +26,7 @@
                 <div id="nav_header" align="center">
                     <ul>
                         <li><button type="button" onclick="productManage();">상품관리</button></li>
-                        <li><button type="button" onclick="">상품문의</button></li>
+                        <li><button type="button" onclick="productQnA();">상품문의</button></li>
                         <li><button type="button" onclick="orderManage();">주문관리</button></li>
                         <li><button type="button" onclick="">매출관리</button></li>
                         <li><button type="button" onclick="">상품통계</button></li>
@@ -55,7 +55,10 @@
 			location.href="<%=request.getContextPath()%>/admin/mainView?table=" + "PRODUCT";
 		}
 		//상품 문의
-		
+		function productQnA()
+		{
+			location.href="<%=request.getContextPath()%>/admin/productQnA";
+		}
 		function orderManage()
 		{
 			location.href="<%=request.getContextPath()%>/admin/orderInfo";
@@ -74,7 +77,7 @@
 		}
 		function qnaManage()
 		{
-			
+			location.href="<%=request.getContextPath()%>/admin/personalQna";
 		}
 		function pointManage()
 		{
@@ -82,7 +85,7 @@
 		}
 		function notice()
 		{
-			
+			location.href = "<%=request.getContextPath()%>/admin/NoticeView";
 		}
 		function client()
 		{

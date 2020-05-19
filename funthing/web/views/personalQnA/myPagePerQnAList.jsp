@@ -100,7 +100,7 @@
 
             <!-- 1:1 문의 날짜 조회 영역 -->
             <div class="point">
-                <form method="get" action="<%=request.getContextPath()%>/personalQnA">
+                <form method="get" action="<%=request.getContextPath()%>/PersonalQnA">
                     <div class="point-search">
                         <ul>
                            	<input type="hidden" name="userNo" value="<%=loginUser3.getmNo() %>">
@@ -163,7 +163,7 @@
 					<%for(PersonalQnA pq : list){ %>
                     <tr align="center">
                     	<input type="hidden" value="<%=pq.getPerNo()%>">
-                    	<td class="tb-zero"><%=pq.getPerNo() %></td>
+                    	<td class="tb-zero"><%=pq.getRnum() %></td>
                         <td class="tb-first"><%=pq.getPerDate() %></td>
                         <td><%=pq.getPerCate() %></td>
                         <td><%=pq.getPerTitle() %></td>

@@ -14,7 +14,12 @@ import brand.model.vo.Brand;
 import member.model.vo.Member;
 import payment.model.vo.OrderInfo;
 import payment.model.vo.OrderInfoDetail;
+import personalQnA.model.vo.AdmimPersonalQna;
+import personalQnA.model.vo.PersonalQnA;
+import personalQnA.model.vo.PersonalQnaReply;
 import product.model.vo.Product;
+import productQnA.model.vo.AdminProductQnA;
+import productQnA.model.vo.ProductQnAReply;
 
 public class AdminDao {
 
@@ -55,9 +60,9 @@ public class AdminDao {
 		
 		int startRow = (currentPage - 1)*limit +1;
 		int endRow = startRow + limit -1;
-		String query = "SELECT P_NO, P_NAME, P_CATEGORY, RETAIL_PRICE, DC_RATE, P_PRICE, F_YN, F_START_DATE, F_END_DATE FROM PRODUCTLIST WHERE RNUM BETWEEN ? AND ?";
+		String query = "SELECT RNUM, P_NO, P_NAME, P_CATEGORY, RETAIL_PRICE, DC_RATE, P_PRICE, F_YN, F_START_DATE, F_END_DATE FROM PRODUCTLIST WHERE RNUM BETWEEN ? AND ?";
 		
-		System.out.println("새로 list담자");
+//		System.out.println("새로 list담자");
 		try {
 			
 			pstmt = conn.prepareStatement(query);
@@ -68,6 +73,7 @@ public class AdminDao {
 			while(rset.next())
 			{
 				p = new Product();
+				p.setrNum(rset.getInt("rnum"));
 				p.setpNo(rset.getString("p_no"));
 				p.setpName(rset.getString("p_name"));
 				p.setpCategory(rset.getInt("p_category"));
@@ -90,7 +96,7 @@ public class AdminDao {
 		return list;
 	}
 
-	// 주문관리 페이지_혜린	
+	// 주문관리 페이지 검색_혜린	
 	public ArrayList<OrderInfo> selectOrderSearch(Connection conn, int currentPage, int limit, String searchKind,
 			String searchText) {
 		PreparedStatement pstmt = null;
@@ -216,6 +222,124 @@ public class AdminDao {
 		
 		return od;
 	}
+	
+	// 상품문의 페이지_혜린 
+	public int getListQnaCount(Connection conn, String searchText, String searchKind) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
+				
+		try {
+		
+			if(searchKind== null && searchText == null) {
+				String query = "SELECT COUNT(*) FROM QNA";
+				pstmt = conn.prepareStatement(query);
+				rset =  pstmt.executeQuery();
+				
+			}else if(searchKind != null && searchText == "") {
+				String query = "SELECT COUNT(*) FROM QNA";
+				pstmt = conn.prepareStatement(query);
+				rset =  pstmt.executeQuery();
+			}else if(searchKind != null && searchText != null) {
+				String query = "SELECT COUNT(*) FROM QNA WHERE "+searchKind+"= ?";
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, searchText);
+				rset =  pstmt.executeQuery();
+			}
+			
+			if(rset.next()) {
+				result = rset.getInt(1);
+			}
+			System.out.println("dao result : " + result);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		
+		return result;
+	}
+	
+	// 상품문의 페이지_혜린
+	public ArrayList<AdminProductQnA> selectTenProductQnaList(Connection conn,int currentPage, int limit, String searchKind,String searchText) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		AdminProductQnA apq = null;
+		ArrayList<AdminProductQnA> list = new ArrayList<>();
+		
+		int startRow = (currentPage - 1) * limit + 1;
+		int endRow = startRow + limit - 1;
+		
+		try {
+
+//			String query = " SELECT rownum, QNA_NO, M_ID, M_NAME,P_NO2,p_name ,QNA_TITLE, QNA_CONTENTS, QNA_DATE ,RE_YN	"
+//					+ "FROM QNA Q JOIN member M ON Q.M_NO = M.M_NO join product p on q.p_no2 = p.p_no where rownum  BETWEEN ? AND ?  ORDER BY QNA_NO DESC ";
+//			pstmt = conn.prepareStatement(query);
+			
+			String query = null;
+			
+			if(searchKind == null && searchText == null ) {	
+				query = "select QNA_NO, M_ID, M_NAME,P_NO2,p_name ,QNA_TITLE, QNA_CONTENTS, QNA_DATE ,RE_YN	"
+						+ "from (select QNA_NO, M_ID, M_NAME,P_NO2,p_name ,QNA_TITLE, QNA_CONTENTS, QNA_DATE ,RE_YN, rownum as rnum FROM QNA Q JOIN member M ON Q.M_NO = M.M_NO join product p on q.p_no2 = p.p_no) "
+						+ "where rnum  BETWEEN ? AND ? ";
+						
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, startRow);
+				pstmt.setInt(2, endRow);
+			}else if(searchKind != null && searchText.equals("")) {
+				query = "select QNA_NO, M_ID, M_NAME,P_NO2,p_name ,QNA_TITLE, QNA_CONTENTS, QNA_DATE ,RE_YN	"
+						+ "from (select QNA_NO, M_ID, M_NAME,P_NO2,p_name ,QNA_TITLE, QNA_CONTENTS, QNA_DATE ,RE_YN, rownum as rnum FROM QNA Q JOIN member M ON Q.M_NO = M.M_NO join product p on q.p_no2 = p.p_no) "
+						+ "where rnum  BETWEEN ? AND ? ";
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, startRow);
+				pstmt.setInt(2, endRow);
+			}else if(searchKind != null && searchText != null) {
+				query ="select QNA_NO, M_ID, M_NAME,P_NO2,p_name ,QNA_TITLE, QNA_CONTENTS, QNA_DATE ,RE_YN	"
+						+ "from (select QNA_NO, M_ID, M_NAME,P_NO2,p_name ,QNA_TITLE, QNA_CONTENTS, QNA_DATE ,RE_YN, rownum as rnum FROM QNA Q JOIN member M ON Q.M_NO = M.M_NO join product p on q.p_no2 = p.p_no where " + searchKind + " = ?)"
+						+ "where rnum  BETWEEN ? AND ? ";
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, searchText);	
+				pstmt.setInt(2, startRow);
+				pstmt.setInt(3, endRow);
+			}
+			
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				apq = new AdminProductQnA(
+						
+						rset.getInt("QNA_NO"),
+						rset.getString("M_ID"),
+						rset.getString("M_NAME"),
+						rset.getString("P_NO2"), 
+						rset.getString("p_name"), 
+						rset.getString("QNA_TITLE"),
+						rset.getString("QNA_CONTENTS"),
+						rset.getString("QNA_DATE"),
+						rset.getString("RE_YN")
+						
+						);
+		
+				list.add(apq);
+//				System.out.println("DAO list : " + list);
+				}
+				
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+
+		
+		return list;
+	}
 
 	public Product selectOneProductDetail(Connection conn, String pNo) {
 		PreparedStatement pstmt = null;
@@ -330,6 +454,68 @@ public class AdminDao {
 			close(pstmt);
 		}
 		return result;
+	}
+	
+	// 상품문의 댓글페이지_혜린
+	public int insertReply(Connection conn, ProductQnAReply r) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "INSERT INTO REPLY VALUES(SEQ_QNARE.NEXTVAL, ?, ?, ?, ?,SYSDATE)";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, r.getQnaNo());
+			pstmt.setString(2, r.getmNo());
+			pstmt.setString(3, r.getQnareId());
+			pstmt.setString(4, r.getQnareContent());
+			
+			result = pstmt.executeUpdate();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	// 상품문의 페이지 댓글_혜린
+	public ArrayList<ProductQnAReply> selectReplyList(Connection conn, int qnaNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		ArrayList<ProductQnAReply> rlist = null;
+		
+//		String query = prop.getProperty("selectReplyList");
+		String query = "SELECT * FROM QNARE WHERE QNA_NO=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, qnaNo);
+			
+			rs = pstmt.executeQuery();
+			
+			rlist = new ArrayList<ProductQnAReply>();
+			
+			while(rs.next()) {
+				
+				rlist.add(new ProductQnAReply(rs.getInt("QNARE_NO"),
+												rs.getInt("QNA_NO"),
+												rs.getString("M_NO"),
+												rs.getString("QNARE_ID"),
+												rs.getString("QNARE_CONTENT"),
+												rs.getDate("QNARE_DATE")));
+												
+			}
+		
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return rlist;
 	}
 
 	
@@ -532,8 +718,122 @@ public class AdminDao {
 		
 		return result;
 	}
+
+	// 1:1문의 페이지 검색_혜린
+	public ArrayList<AdmimPersonalQna> selectTenPersonQnaList(Connection conn, int currentPage, int limit, String searchKind,String searchText) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		AdmimPersonalQna pq = null;
+		ArrayList<AdmimPersonalQna> list = new ArrayList<>();
+		
+		int startRow = (currentPage - 1) * limit + 1;
+		int endRow = startRow + limit - 1;
+		
+		try {
+
+
+			String query = null;
+			
+			if(searchKind == null && searchText == null ) {	
+				query= "select rnum,PER_QNA_NO,m_id,PER_TITLE,PER_CONTENTS, P_NO,p_name,PER_RE_YN,ADDFILE,O_NO,PER_CATE "
+						+ "from (select PER_QNA_NO,m_id,PER_TITLE,PER_CONTENTS, pq.P_NO,p_name,PER_RE_YN,ADDFILE,O_NO,PER_CATE, rownum as rnum from personal_qna pq join member m on pq.m_no = m.m_no join product p on pq.p_no = p.p_no ) "
+						+ "where rnum  BETWEEN ? AND ?  order by rnum";
+						
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, startRow);
+				pstmt.setInt(2, endRow);
+			}else if(searchKind != null && searchText.equals("")) {
+				query= "select rnum,PER_QNA_NO,m_id,PER_TITLE,PER_CONTENTS, P_NO,p_name,PER_RE_YN,ADDFILE,O_NO,PER_CATE "
+						+ "from (select PER_QNA_NO,m_id,PER_TITLE,PER_CONTENTS, pq.P_NO,p_name,PER_RE_YN,ADDFILE,O_NO,PER_CATE, rownum as rnum from personal_qna pq join member m on pq.m_no = m.m_no join product p on pq.p_no = p.p_no ) "
+						+ "where rnum  BETWEEN ? AND ?  order by rnum";
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, startRow);
+				pstmt.setInt(2, endRow);
+			}else if(searchKind != null && searchText != null) {
+				query = "select PER_QNA_NO,m_id,PER_TITLE,PER_CONTENTS, P_NO,p_name,PER_RE_YN,ADDFILE,O_NO,PER_CATE "
+						+ "from (select PER_QNA_NO,m_id,PER_TITLE,PER_CONTENTS, pq.P_NO,p_name,PER_RE_YN,ADDFILE,O_NO,PER_CATE, rownum as rnum from personal_qna pq join member m on pq.m_no = m.m_no join product p on pq.p_no = p.p_no where " + searchKind +  "= ?) "
+						+ "where rnum  BETWEEN ? AND ?  order by rnum";
+//				query= "select PER_QNA_NO,m_id,PER_TITLE,PER_CONTENTS, P_NO,p_name,PER_RE_YN,ADDFILE,O_NO,PER_CATE \r\n" + 
+//						"from (select PER_QNA_NO,m_id,PER_TITLE,PER_CONTENTS, pq.P_NO,p_name,PER_RE_YN,ADDFILE,O_NO,PER_CATE, rownum as rnum\r\n" + 
+//						"from personal_qna pq join member m on pq.m_no = m.m_no join product p on pq.p_no = p.p_no where " + searchKind + " = ?)\r\n" + 
+//						"where rnum  BETWEEN startRow AND endRow  order by rnum";
+				
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, searchText);			
+				pstmt.setInt(2, startRow);
+				pstmt.setInt(3, endRow);
+				
+			}
+			
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				pq = new AdmimPersonalQna(
+						
+						rset.getInt("PER_QNA_NO"),
+						rset.getString("m_id"),
+						rset.getString("PER_TITLE"),
+						rset.getString("PER_CONTENTS"),
+						rset.getString("P_NO"),
+						rset.getString("P_NAME"),
+						rset.getString("PER_RE_YN"),
+						rset.getString("ADDFILE"),
+						rset.getString("O_NO"),
+						rset.getString("PER_CATE"));
+						
+
+				list.add(pq);
+			
+			
+				System.out.println("DAO list : " + list);
+				}
+			
+			
+			
+				
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+
+		
+		return list;
+	}
+
+	public int insertMember(Connection conn, PersonalQnaReply re) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "INSERT INTO PQ_RE VALUES(SEQ_PQRE.NEXTVAL,'MASTER', ?, SYSDATE, ?)";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, re.getPqreContent());
+			pstmt.setInt(2, re.getPerQnaNo());
+		
+			result = pstmt.executeUpdate();
+			System.out.println("dao에서 회원가입 결과 : " + result);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+		
+	}
+
+	
+	
+
 	// 멤버 select_진교
-	public ArrayList<Member> selectList(Connection conn, int currentPage, int limit, String userName, String userId) {
+	public ArrayList<Member> selectList(Connection conn, int currentPage, int limit) {
 		System.out.println("여기는 왔나?");
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -541,38 +841,16 @@ public class AdminDao {
 		
 		ArrayList<Member> list = new ArrayList<>();
 		
-		
+		query = "SELECT * FROM MEMBERLIST WHERE RNUM BETWEEN ? AND ?";
 		// 쿼리문 실행시 조건절에 넣을 변수 연산처리
 		int startRow = (currentPage - 1) * limit + 1;
 		int endRow = startRow + limit - 1;
 		
 		try {
-		if(userName == null && userId == null) {
-			query = "SELECT * FROM MEMBERLIST WHERE RNUM BETWEEN ? AND ?";
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, startRow);
 			pstmt.setInt(2, endRow);
-		}else if(userName != null && userId == null) {
-			query = "SELECT * FROM MEMBERLIST WHERE RNUM BETWEEN ? AND ? AND M_NAME=?";
-			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
-			pstmt.setString(3, userName);
-		}else if(userName == null && userId != null) {
-			query = "SELECT * FROM MEMBERLIST WHERE RNUM BETWEEN ? AND ? AND M_ID=?";
-			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
-			pstmt.setString(3, userId);
-		}else if(userName != null && userId != null) {
-			query = "SELECT * FROM MEMBERLIST WHERE RNUM BETWEEN ? AND ? AND M_NAME=? AND M_ID=?";
-			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
-			pstmt.setString(3, userName);
-			pstmt.setString(4, userId);
-		}
-			
+
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
@@ -602,6 +880,7 @@ public class AdminDao {
 		}
 		return list;
 	}
+
 
 	public int productInsert(Connection conn, Product p) {
 		PreparedStatement pstmt = null;
@@ -648,12 +927,49 @@ public class AdminDao {
 		return result;
 	}
 
-	public ArrayList<Product> Productsearch(Connection conn, Product p) {
+
+	
+
+
+	// 1:1문의게시판_혜린
+	public int getListPerQnaCount(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
+		
+		String query = "SELECT COUNT(*) FROM PERSONAL_QNA";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			rset =  pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = rset.getInt("COUNT(*)");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		
+		return result;
+	}
+
+
+//	public ArrayList<Product> Productsearch(Connection conn, Product p) {
+	public ArrayList<Product> Productsearch(Connection conn, Product p, int currentPage, int limit) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
 		Product product = null;
 		ArrayList<Product> plist = new ArrayList<>();
+		
+		int startRow = (currentPage - 1)*limit +1;
+		int endRow = startRow + limit -1;
 		
 		String pNo = p.getpNo();
 		String bNo = p.getbNo();
@@ -666,46 +982,46 @@ public class AdminDao {
 		String fYn = p.getfYn();
 		
 
-		String query = "SELECT * FROM PRODUCTLIST\r\n" + 
-						"WHERE P_NO = ?\r\n" + 
-						"UNION\r\n" + 
-						"SELECT * FROM PRODUCTLIST\r\n" + 
-						"WHERE B_NO = ?\r\n" + 
-						"INTERSECT\r\n" + 
-						"SELECT * FROM PRODUCTLIST\r\n" + 
-						"WHERE S_NO = ?\r\n" + 
-						"INTERSECT\r\n" + 
-						"SELECT * FROM PRODUCTLIST\r\n" + 
-						"WHERE P_CATEGORY = ?\r\n" + 
-						"INTERSECT\r\n" + 
-						"SELECT * FROM PRODUCTLIST\r\n" + 
-						"WHERE P_PRICE >= ?\r\n" + 
-						"INTERSECT\r\n" + 
-						"SELECT * FROM PRODUCTLIST\r\n" + 
-						"WHERE F_START_DATE >= ? AND F_END_DATE <= ?\r\n" + 
-						"UNION\r\n" + 
-						"SELECT * FROM PRODUCTLIST\r\n" + 
-						"WHERE P_NAME = ? INTERSECT SELECT * FROM PRODUCTLIST WHERE F_YN = ?";
+		String query = "SELECT ROWNUM RNUM, P_NO, B_NO, S_NO, P_NAME, P_CATEGORY, RETAIL_PRICE, DC_RATE, P_PRICE, F_YN, F_START_DATE, F_END_DATE\r\n" + 
+						"FROM(\r\n" + 
+						"    SELECT ROWNUM RNUM, P_NO, B_NO, S_NO, P_NAME, P_CATEGORY, RETAIL_PRICE, DC_RATE, P_PRICE, F_YN, F_START_DATE, F_END_DATE\r\n" + 
+						"    FROM(\r\n" + 
+						"            SELECT ROWNUM RNUM, P_NO, B_NO, S_NO, P_NAME, P_CATEGORY, RETAIL_PRICE, DC_RATE, P_PRICE, F_YN, F_START_DATE, F_END_DATE\r\n" + 
+						"            FROM PRODUCTLIST\r\n" + 
+						"            WHERE (((P_NO = ? OR B_NO = ?) ) OR P_NAME = ?) AND S_NO >= ? AND P_CATEGORY = ?  \r\n" + 
+						"        )\r\n" + 
+						"    WHERE P_PRICE >= ? AND F_YN = ?\r\n" + 
+						"    )\r\n" + 
+						"WHERE F_START_DATE >= ? AND F_END_DATE <= ? AND RNUM BETWEEN ? AND ?";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, pNo);
 			pstmt.setString(2, bNo);
-			pstmt.setInt(3, sNo);
-			pstmt.setInt(4, pCategory);
-			pstmt.setInt(5, pPrice);
-			pstmt.setDate(6, fStartDate);
-			pstmt.setDate(7, fEndDate);
-			pstmt.setString(8, pName);
-			pstmt.setString(9, fYn);
+			pstmt.setString(3, pName);
+			pstmt.setInt(4, sNo);
+			pstmt.setInt(5, pCategory);
+			pstmt.setInt(6, pPrice);
+			pstmt.setString(7, fYn);
+			pstmt.setDate(8, fStartDate);
+			pstmt.setDate(9, fEndDate);
+			pstmt.setInt(10, startRow);
+			pstmt.setInt(11, endRow);
+			
 			rset = pstmt.executeQuery();
 			
 			while(rset.next())
 			{
-				product = new Product(rset.getString("p_no"), rset.getString("b_no"), rset.getString("p_name"),
-										rset.getInt("p_category"), rset.getInt("s_no"), 
-										rset.getInt("p_price"), rset.getDate("f_start_date"),
-										rset.getDate("f_end_date"), rset.getString("f_yn"));
+				product = new Product( rset.getString("p_no"), 
+										rset.getString("p_name"),  
+										rset.getInt("retail_price"), 
+										rset.getInt("dc_rate"), 
+										rset.getInt("p_price"), 
+										rset.getInt("p_category"),
+										rset.getDate("f_start_date"),
+										rset.getDate("f_end_date"),
+										rset.getString("f_yn"), 
+										rset.getInt("rnum"));
 				
 				plist.add(product);
 			}
@@ -719,6 +1035,55 @@ public class AdminDao {
 			close(rset);
 		}
 		return plist;
+	}
+
+	public int getListCount(Connection conn, Product p) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		int result = 0;
+		
+		String query = "SELECT count(*)\r\n" + 
+				"FROM(\r\n" + 
+				"    SELECT ROWNUM RNUM, P_NO, B_NO, S_NO, P_NAME, P_CATEGORY, RETAIL_PRICE, DC_RATE, P_PRICE, F_YN, F_START_DATE, F_END_DATE\r\n" + 
+				"    FROM(\r\n" + 
+				"            SELECT ROWNUM RNUM, P_NO, B_NO, S_NO, P_NAME, P_CATEGORY, RETAIL_PRICE, DC_RATE, P_PRICE, F_YN, F_START_DATE, F_END_DATE\r\n" + 
+				"            FROM PRODUCTLIST\r\n" + 
+				"            WHERE ((P_NO = ? OR B_NO = ?)  OR P_NAME = ?) AND S_NO >= ? AND P_CATEGORY = ?  \r\n" + 
+				"        )\r\n" + 
+				"    WHERE P_PRICE >= ? AND F_YN = ?\r\n" + 
+				"    )\r\n" + 
+				"WHERE F_START_DATE >= ? AND F_END_DATE <= ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setString(1, p.getpNo());
+			pstmt.setString(2, p.getbNo());
+			pstmt.setString(3, p.getpName());
+			pstmt.setInt(4, p.getsNo());
+			pstmt.setInt(5, p.getpCategory());
+			pstmt.setInt(6, p.getpPrice());
+			pstmt.setString(7, p.getfYn());
+			pstmt.setDate(8, p.getfStartDate());
+			pstmt.setDate(9, p.getfEndDate());
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next())
+			{
+				result = rset.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally
+		{
+			close(pstmt);
+			close(rset);
+		}
+		return result;
 	}
 
 	
@@ -790,7 +1155,151 @@ public class AdminDao {
 		
 		return list;
 	}
+	
+	// 회원 리스트 - 회원 정보
+	public Member selectMember(Connection conn, String userId) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Member selectMember = null;
+		
+		String query = "SELECT M_NO, M_ID, M_PWD, M_NAME, M_EMAIL, M_TELL, TO_CHAR(B_DAY,'YYYY/MM/DD'), JOIN_DATE, REFERENCE, GRADE_CODE, ALARM_YN, STATUS_YN, M_POINT, H_POINT FROM MEMBER WHERE M_ID=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				selectMember = new Member(rset.getString("M_NO"),
+										 rset.getString("M_ID"),
+										 rset.getString("M_PWD"),
+										 rset.getString("M_NAME"),
+										 rset.getString("TO_CHAR(B_DAY,'YYYY/MM/DD')"),
+										 rset.getString("M_EMAIL"),
+										 rset.getDate("JOIN_DATE"),
+										 rset.getString("REFERENCE"),
+										 rset.getString("GRADE_CODE"),
+										 rset.getString("ALARM_YN"),
+										 rset.getString("STATUS_YN"),
+										 rset.getInt("M_POINT"),
+										 rset.getString("M_TELL"),
+										 rset.getInt("H_POINT"));
+			}
+			System.out.println(selectMember);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		
+		return selectMember;
+	}
+	
+	// 회원 리스트-회원 정보 update
+	public int updateMember(Connection conn, Member member) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "UPDATE MEMBER SET M_ID=?,M_NAME=?,B_DAY=TO_CHAR(TO_DATE(?,'YYYY/MM/DD'),'YY/MM/DD'),M_EMAIL=?,M_TELL=? WHERE M_NO=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, member.getmId());
+			pstmt.setString(2, member.getmName());
+			pstmt.setString(3, member.getbDay());
+			pstmt.setString(4, member.getmEmail());
+			pstmt.setString(5, member.getmTell());
+			pstmt.setString(6, member.getmNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+//	회원 페이지_진교
+	public int getMemberListCount(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		int listCount = 0;
+		
+		String query = "SELECT COUNT(*) FROM MEMBER";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next())
+			{
+				listCount = rset.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		close(pstmt);
+		close(rset);
+		
+		
+		return listCount;
+	}
+	
+
+	public int getListPerQnaCount(Connection conn, String searchText, String searchKind) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
+				
+		try {
+		
+			if(searchKind== null && searchText == null) {
+				String query = "SELECT COUNT(*) FROM PERSONAL_QNA";
+				pstmt = conn.prepareStatement(query);
+				rset =  pstmt.executeQuery();
+				
+			}else if(searchKind != null && searchText == "") {
+				String query = "SELECT COUNT(*) FROM PERSONAL_QNA";
+				pstmt = conn.prepareStatement(query);
+				rset =  pstmt.executeQuery();
+			}else if(searchKind != null && searchText != null) {
+				String query = "SELECT COUNT(*) FROM PERSONAL_QNA WHERE "+searchKind+"= ?";
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, searchText);
+				rset =  pstmt.executeQuery();
+			}
+			
+			if(rset.next()) {
+				result = rset.getInt(1);
+			}
+			System.out.println("dao result : " + result);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		
+		return result;
+	}
+
 
 	
 	
 }
+	
+	
+	
+	
+

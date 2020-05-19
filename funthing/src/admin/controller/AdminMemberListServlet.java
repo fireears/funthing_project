@@ -35,7 +35,7 @@ public class AdminMemberListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AdminService mListService = new AdminService();
 		
-		int listCount = mListService.getListCount(); 
+		int listCount = mListService.getMemberListCount(); 
 		
 		System.out.println(listCount);
 		// ---------- 페이징 처리 추가 ---------------
@@ -68,20 +68,7 @@ public class AdminMemberListServlet extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
 		
-		String userId = request.getParameter("userId");
-		String userName = request.getParameter("userName");
-		
-		if(userId != null && userName != null) {
-			userId = request.getParameter("userId");
-			userName = request.getParameter("userName");
-		}else {
-			userId = (String)request.getAttribute("userId");
-			userName = (String)request.getAttribute("userName");
-		}
-		System.out.println("servlet : " + userName);
-		System.out.println("servlet : " + userId);
-		
-		ArrayList<Member> list = mListService.selectList(currentPage, limit, userName, userId);
+		ArrayList<Member> list = mListService.selectList(currentPage, limit);
 		for(int i = 0; i < list.size(); i++) {
 			System.out.println(list.get(i));
 		} 
@@ -90,13 +77,9 @@ public class AdminMemberListServlet extends HttpServlet {
 		if(!list.isEmpty()) {
 			view = request.getRequestDispatcher("views/admin/adminMember.jsp");
 			request.setAttribute("list", list);
-			request.setAttribute("userId", userId);
-			request.setAttribute("userName", userName);
 			request.setAttribute("pi", pi);
 		}else {
 			view = request.getRequestDispatcher(request.getContextPath() +  "views/common/errorPage.jsp");
-			request.setAttribute("userId", "");
-			request.setAttribute("userName", "");
 			request.setAttribute("msg", "게시판 리스트 조회 실패!");
 			return;
 		}
