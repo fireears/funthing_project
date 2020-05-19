@@ -1,8 +1,14 @@
 	// admin 주문관리 페이지_혜린	
 package payment.model.vo;
 
-public class OrderInfo {
+import java.io.Serializable;
 
+public class OrderInfo  implements Serializable	{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8785408833513747454L;
 	private String oNo;			// 주문번호
 	private String mId;			// 회원아이디
 	private String pmntMthd;	// 결제방법

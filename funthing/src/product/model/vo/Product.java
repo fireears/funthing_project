@@ -201,6 +201,23 @@ public class Product implements Serializable{
 		this.fEndDate = fEndDate;
 		this.fYn = fYn;
 	}
+	
+	
+	public Product(String pNo, String pName, int retailPrice, int dcRate, int pPrice, int pCategory, Date fStartDate,
+			Date fEndDate, String fYn, int rNum) {
+		super();
+		this.pNo = pNo;
+		this.pName = pName;
+		this.retailPrice = retailPrice;
+		this.dcRate = dcRate;
+		this.pPrice = pPrice;
+		this.pCategory = pCategory;
+		this.fStartDate = fStartDate;
+		this.fEndDate = fEndDate;
+		this.fYn = fYn;
+		this.rNum = rNum;
+	}
+
 	public Product(int rnum, String pNo, String bNo, String pName, int pPrice, int pCategory, int sNo, Date fStartDate,
 			Date fEndDate, String fYn) {
 		super();

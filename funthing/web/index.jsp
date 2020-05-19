@@ -3,6 +3,9 @@
 <!DOCTYPE html>
 
 
+
+
+
 <html>
 <head>
 <meta charset="UTF-8">
@@ -12,15 +15,7 @@
 </head>
 <body>
 	<%
-
-		response.sendRedirect(request.getContextPath()+"/main/mainView");
-		/* response.sendRedirect(request.getContextPath()+"/admin/mainView");  */
-
-		
-		/* response.sendRedirect(request.getContextPath()+"/views/payment/paymentInfo.jsp"); */
-		/* response.sendRedirect(request.getContextPath()+"/views/payment/orderDetail.jsp"); */
-		
-
+ 			response.sendRedirect(request.getContextPath()+"/main/mainView");    
 	%>
 </body>
 </html>

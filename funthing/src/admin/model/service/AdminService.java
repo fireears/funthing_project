@@ -13,7 +13,12 @@ import brand.model.vo.Brand;
 import member.model.vo.Member;
 import payment.model.vo.OrderInfo;
 import payment.model.vo.OrderInfoDetail;
+import personalQnA.model.vo.AdmimPersonalQna;
+import personalQnA.model.vo.PersonalQnA;
+import personalQnA.model.vo.PersonalQnaReply;
 import product.model.vo.Product;
+import productQnA.model.vo.AdminProductQnA;
+import productQnA.model.vo.ProductQnAReply;
 public class AdminService {
 	
 	
@@ -42,7 +47,7 @@ public class AdminService {
 		return list;
 	}
 
-	// 주문관리 페이지_혜린	
+	// 주문관리 페이지 검색_혜린	
 	public ArrayList<OrderInfo> selectOrderSearch(int currentPage, int limit, String searchKind, String searchText) {
 		Connection conn = getConnection();
 		
@@ -79,6 +84,23 @@ public class AdminService {
 		
 		return od;
 		
+	}
+	//  상품문의 페이지_혜린
+	public int getListQnaCount(String searchKind, String searchText) {
+		Connection  conn = getConnection();
+		int result = new AdminDao().getListQnaCount(conn,searchText,searchKind);
+		
+		close(conn);
+		return result;
+	}
+
+	// 상품문의 페이지 검색_혜린
+	public ArrayList<AdminProductQnA> selectTenProductQnaList(int currentPage, int limit, String searchKind ,String searchText ) {
+		Connection conn = getConnection(); 
+		ArrayList<AdminProductQnA> list = new AdminDao().selectTenProductQnaList(conn,currentPage, limit, searchKind,searchText);
+		
+		close(conn);
+		return list;
 	}
 
 	public Product selectOneProductDetail(String pNo) {
@@ -121,6 +143,29 @@ public class AdminService {
 		}
 		close(conn);
 		return result;
+	}
+
+	// 상품문의 댓글 페이지_혜린
+	public ArrayList<ProductQnAReply> insertReply(ProductQnAReply r) {
+		Connection conn = getConnection();
+		
+		// BoardDao 메소드 두개를 호출하기 때문에 그냥 참조변수로 선언하자
+		AdminDao bDao = new AdminDao();
+		
+		int result = bDao.insertReply(conn, r);
+		// BoardDao로 가서 insertReply 메소드 완성시키고오자
+		
+		
+		ArrayList<ProductQnAReply> rlist = null;
+		
+		if(result > 0) {
+			commit(conn);
+			rlist = bDao.selectReplyList(conn, r.getQnaNo());
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return rlist;
 	}
 
 	
@@ -229,6 +274,37 @@ public class AdminService {
 	}
 
 
+
+	// 1:1문의 페이지 검색_햬린
+	public ArrayList<AdmimPersonalQna> selectTenPersonQnaList(int currentPage, int limit, String searchKind,String searchText) {
+		Connection conn = getConnection(); 
+		ArrayList<AdmimPersonalQna> list = new AdminDao().selectTenPersonQnaList(conn,currentPage, limit , searchKind,searchText);
+		
+		close(conn);
+		
+		
+		return list;
+	}
+
+	public int insertPersonalReply(PersonalQnaReply re) {
+		Connection conn = getConnection();
+		
+		int result = new AdminDao().insertMember(conn,re);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;	}
+
+
+
+
+
+
 	// 브랜드 search_희지
 	public ArrayList<Brand> searchBrand(int currentPage, int limit, String searchKind, String searchVal) {
 		Connection conn = getConnection();
@@ -242,6 +318,7 @@ public class AdminService {
 	}
 
 	
+
 	public int productInsert(Product p) {
 		Connection conn = getConnection();
 		
@@ -258,6 +335,17 @@ public class AdminService {
 		close(conn);
 		return result;
 	}
+	
+	// 1:1문의 페이지_혜린
+	public int getListPerQnaCount() {
+		Connection  conn = getConnection();
+		int result = new AdminDao().getListPerQnaCount(conn);
+		
+		close(conn);
+		return result;
+
+	}
+
 
 	public ArrayList<Product> productSearch(int currentPage, int limit, Product p) {
 		Connection conn = getConnection();

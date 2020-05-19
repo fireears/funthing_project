@@ -35,11 +35,14 @@ public class AdminMainServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+
 		AdminService aService = new AdminService();
 		
-		if(request.getParameter("product") == null && request.getParameter("search") == null)
+		if(request.getParameter("s_no") == null)
 		{
-			System.out.println(request.getParameter("search"));
+			
+			System.out.println("-------------------------------");
+//			System.out.println(request.getParameter("adminMainPage"));
 			System.out.println("adminMainServlet");
 			String pNo = (String)request.getAttribute("pNo");
 			String msg = (String)request.getAttribute("msg");
@@ -86,43 +89,44 @@ public class AdminMainServlet extends HttpServlet {
 			ArrayList<Product> list = new ArrayList<>();
 			
 			list = aService.selectProductList(currentPage, limit);
-			
+			System.out.println("listSize : " + list.size());
 			
 			if(!list.isEmpty())
 			{
-				//DB출력 확인용
-//			for(Product p : list)
+				RequestDispatcher view = request.getRequestDispatcher("/views/admin/adminMain.jsp");
+				request.setAttribute("pi", pi);
+				request.setAttribute("list", list);
+				view.forward(request, response);
+			}
+//			else if(!list.isEmpty() && pNo != null)
 //			{
-//				System.out.println(p);
+//				RequestDispatcher view = request.getRequestDispatcher("/views/admin/adminMain.jsp");
+//				request.setAttribute("pi", pi);
+//				request.setAttribute("list", list);
+//				request.setAttribute("pNo", pNo);
+//				request.setAttribute("msg", msg);
+//				view.forward(request, response);
 //			}
-				RequestDispatcher view = request.getRequestDispatcher("/views/admin/adminMain.jsp");
-				request.setAttribute("pi", pi);
-				request.setAttribute("list", list);
-				view.forward(request, response);
-			}
-			else if(!list.isEmpty() && pNo != null)
-			{
-				RequestDispatcher view = request.getRequestDispatcher("/views/admin/adminMain.jsp");
-				request.setAttribute("pi", pi);
-				request.setAttribute("list", list);
-				request.setAttribute("pNo", pNo);
-				request.setAttribute("msg", msg);
-				view.forward(request, response);
-			}
 			else
 			{
-//			RequestDispatcher view = request.getRequestDispatcher(path);
-				System.out.println("list가 비어있음");
+				RequestDispatcher view = request.getRequestDispatcher("/views/admin/adminMain.jsp");
+				request.setAttribute("msg", "list가 비어있습니다");
+				view.forward(request, response);
 			}
 			
 		}
-		else if(request.getParameter("search") != null)
+		
+		
+		//상품검색
+		else if(request.getParameter("s_no") != null)
 		{
+			System.out.println("-----------------------------------");
 			System.out.println("product search");
+			ArrayList<Product> list = new ArrayList<>();
 			try
 			{
 				String pNo = request.getParameter("p_no");
-				String bNo = request.getParameter("b_No");
+				String bNo = request.getParameter("b_no");
 				int sNo = Integer.valueOf(request.getParameter("s_no"));
 				String pName = request.getParameter("p_name");
 				int pCategory = Integer.valueOf(request.getParameter("pCategory"));
@@ -131,13 +135,13 @@ public class AdminMainServlet extends HttpServlet {
 				Date fEndDate = Date.valueOf(request.getParameter("f_end_date"));
 				String fYn = request.getParameter("f_yn");
 				
-				System.out.println("sNo : " + sNo);
 				Product product = new Product(pNo, bNo, pName, pPrice, pCategory, sNo, fStartDate, fEndDate, fYn);
-				System.out.println(product);
-				
-				ArrayList<Product> list = new ArrayList<>();
-				
 				int listCount = aService.getListCount(product);
+
+				System.out.println("sNo : " + sNo);
+				System.out.println(product);
+				System.out.println("listCount : " + listCount);
+				
 				
 				int currentPage;
 				int maxPage;
@@ -157,7 +161,7 @@ public class AdminMainServlet extends HttpServlet {
 					currentPage = 1;
 				}
 				//페이지 확인용
-				System.out.println(currentPage);
+				System.out.println("currentPage" + currentPage);
 				
 				maxPage = (int)((double)listCount/limit + 0.95);
 				
@@ -174,7 +178,10 @@ public class AdminMainServlet extends HttpServlet {
 				PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
 				
 				list = aService.productSearch(currentPage, limit, product);
+				System.out.println("listSize : " + list.size());
 				
+				
+				RequestDispatcher view = null;
 				if(!list.isEmpty())
 				{
 					//DB출력 확인용
@@ -182,26 +189,23 @@ public class AdminMainServlet extends HttpServlet {
 //				{
 //					System.out.println(p);
 //				}
-					RequestDispatcher view = request.getRequestDispatcher("/views/admin/adminMain.jsp");
+					view = request.getRequestDispatcher("/views/admin/adminMain.jsp");
 					request.setAttribute("pi", pi);
 					request.setAttribute("list", list);
 					request.setAttribute("product", product);
 					view.forward(request, response);
 				}
-				else if(!list.isEmpty() && pNo != null)
+				
+				else if(list.isEmpty())
 				{
-					RequestDispatcher view = request.getRequestDispatcher("/views/admin/adminMain.jsp");
-					request.setAttribute("pi", pi);
-					request.setAttribute("list", list);
-					request.setAttribute("product", product);
-					request.setAttribute("pNo", pNo);
-					
-					view.forward(request, response);
-				}
-				else
-				{
-//				RequestDispatcher view = request.getRequestDispatcher(path);
+					System.out.println("adminMain.jsp 이덩");
+					view = request.getRequestDispatcher("/views/admin/adminMain.jsp");
 					System.out.println("list가 비어있음");
+					request.setAttribute("pi", pi);
+					request.setAttribute("list", list);
+					request.setAttribute("product", product);
+					request.setAttribute("msg", "검색결과가 없습니다.");
+					view.forward(request, response);
 				}
 			}
 			catch(NumberFormatException e)

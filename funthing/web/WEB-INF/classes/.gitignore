@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 /admin/
+<<<<<<< HEAD
 /sql/
 /product/
 /brand/
@@ -17,7 +18,12 @@
 /filter/
 /wrapper/
 =======
+=======
+>>>>>>> refs/remotes/origin/master
 /personalQnA/
+<<<<<<< HEAD
 /product/
 >>>>>>> refs/remotes/origin/master
 /productQnA/
+=======
+>>>>>>> refs/remotes/origin/master

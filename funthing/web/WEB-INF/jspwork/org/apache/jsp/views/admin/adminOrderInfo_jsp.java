@@ -3,6 +3,7 @@
  * Version: Apache Tomcat/8.5.54
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Generated at: 2020-05-18 02:37:15 UTC
 =======
 <<<<<<< HEAD
@@ -17,6 +18,9 @@
 >>>>>>> refs/remotes/origin/master
 =======
  * Generated at: 2020-05-18 09:03:16 UTC
+>>>>>>> refs/remotes/origin/master
+=======
+ * Generated at: 2020-05-18 12:03:37 UTC
 >>>>>>> refs/remotes/origin/master
  * Note: The last modified time of this file was set to
  *       the last modified time of the source file after
@@ -42,7 +46,7 @@ public final class adminOrderInfo_jsp extends org.apache.jasper.runtime.HttpJspB
 
   static {
     _jspx_dependants = new java.util.HashMap<java.lang.String,java.lang.Long>(1);
-    _jspx_dependants.put("/views/admin/../common/adminHeader.jsp", Long.valueOf(1589785796111L));
+    _jspx_dependants.put("/views/admin/../common/adminHeader.jsp", Long.valueOf(1589803029080L));
   }
 
   private static final java.util.Set<java.lang.String> _jspx_imports_packages;
@@ -300,7 +304,7 @@ int endPage = pi.getEndPage();
       out.write("                <div id=\"nav_header\" align=\"center\">\n");
       out.write("                    <ul>\n");
       out.write("                        <li><button type=\"button\" onclick=\"productManage();\">상품관리</button></li>\n");
-      out.write("                        <li><button type=\"button\" onclick=\"\">상품문의</button></li>\n");
+      out.write("                        <li><button type=\"button\" onclick=\"productQnA();\">상품문의</button></li>\n");
       out.write("                        <li><button type=\"button\" onclick=\"orderManage();\">주문관리</button></li>\n");
       out.write("                        <li><button type=\"button\" onclick=\"\">매출관리</button></li>\n");
       out.write("                        <li><button type=\"button\" onclick=\"\">상품통계</button></li>\n");
@@ -331,7 +335,12 @@ int endPage = pi.getEndPage();
       out.write("/admin/mainView?table=\" + \"PRODUCT\";\n");
       out.write("\t\t}\n");
       out.write("\t\t//상품 문의\n");
-      out.write("\t\t\n");
+      out.write("\t\tfunction productQnA()\n");
+      out.write("\t\t{\n");
+      out.write("\t\t\tlocation.href=\"");
+      out.print(request.getContextPath());
+      out.write("/admin/productQnA\";\n");
+      out.write("\t\t}\n");
       out.write("\t\tfunction orderManage()\n");
       out.write("\t\t{\n");
       out.write("\t\t\tlocation.href=\"");
@@ -356,7 +365,9 @@ int endPage = pi.getEndPage();
       out.write("\t\t}\n");
       out.write("\t\tfunction qnaManage()\n");
       out.write("\t\t{\n");
-      out.write("\t\t\t\n");
+      out.write("\t\t\tlocation.href=\"");
+      out.print(request.getContextPath());
+      out.write("/admin/personalQna\";\n");
       out.write("\t\t}\n");
       out.write("\t\tfunction pointManage()\n");
       out.write("\t\t{\n");
@@ -414,6 +425,9 @@ int endPage = pi.getEndPage();
       out.write("\t\t<article>\r\n");
       out.write("\t\t\t<div id=\"order_manage\">\r\n");
       out.write("\t\t\t\t<table id=\"order_table\">\r\n");
+      out.write("\t\t\t\t");
+ if(!searchList.isEmpty()){ 
+      out.write("\r\n");
       out.write("\t\t\t\t\t<tr>\r\n");
       out.write("\t\t\t\t\t\t<th>번호</th>\r\n");
       out.write("\t\t\t\t\t\t<th>주문번호</th>\r\n");
@@ -424,9 +438,7 @@ int endPage = pi.getEndPage();
       out.write("\t\t\t\t\t\t<th>총 합계</th>\r\n");
       out.write("\t\t\t\t\t\t<th>취소여부</th>\r\n");
       out.write("\t\t\t\t\t</tr>\r\n");
-      out.write("\t\t\t\t\t");
-if (searchList != null) {	
-      out.write("\r\n");
+      out.write("\t\t\t\t\t\r\n");
       out.write("\t\t\t\t\t\t");
 for (OrderInfo om : searchList) {
       out.write("\r\n");
@@ -459,11 +471,29 @@ for (OrderInfo om : searchList) {
       out.print(om.getCancelYn());
       out.write("</td>\r\n");
       out.write("\t\t\t\t\t\t\t</tr>\r\n");
-      out.write("\t\t\t\t\t\t");
+      out.write("\t\t\t\t\t\t\r\n");
+      out.write("\t\t\t\t\t");
 }
       out.write("\r\n");
       out.write("\t\t\t\t\t");
-}
+}else{ 
+      out.write("\r\n");
+      out.write("\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t<th>번호</th>\r\n");
+      out.write("\t\t\t\t\t\t<th>주문번호</th>\r\n");
+      out.write("\t\t\t\t\t\t<th>회원아이디</th>\r\n");
+      out.write("\t\t\t\t\t\t<th>결제방법</th>\r\n");
+      out.write("\t\t\t\t\t\t<th>결제유무</th>\r\n");
+      out.write("\t\t\t\t\t\t<th>배송단계</th>\r\n");
+      out.write("\t\t\t\t\t\t<th>총 합계</th>\r\n");
+      out.write("\t\t\t\t\t\t<th>취소여부</th>\r\n");
+      out.write("\t\t\t\t\t</tr>\t\t\t\r\n");
+      out.write("\t\t\t\t\t<tr style=\"margin-top:30px;\">\r\n");
+      out.write("                \t<td colspan=\"8\"><div style=\"text-align:center\">검색 결과가 없습니다. 다시 검색해주세요.</div></td>\r\n");
+      out.write("               \t\t </tr>\t\r\n");
+      out.write("\t\t\t\t\t\r\n");
+      out.write("\t\t\t\t   ");
+} 
       out.write("\r\n");
       out.write("\t\t\t\t</table>\r\n");
       out.write("\t\t\t</div>\r\n");
@@ -486,7 +516,9 @@ if (currentPage == 1) {
       out.write("\r\n");
       out.write("\t\t\t\t\t<button class=\"pageBtn\" onclick=\"location.href='");
       out.print(request.getContextPath());
-      out.write("/admin/orderInfo?currentPage-1'\"> < </button>\r\n");
+      out.write("/admin/orderInfo?currentPage=");
+      out.print(currentPage - 1 );
+      out.write("'\"> < </button>\r\n");
       out.write("\t\t\t\t");
 }
       out.write("\r\n");
@@ -530,7 +562,9 @@ if (maxPage == 1) {
       out.write("\r\n");
       out.write("\t\t\t\t\t<button class=\"pageBtn\"\tonclick=\"location.href='");
       out.print(request.getContextPath());
-      out.write("/admin/orderInfo?currentPage+1'\"> > </button>\r\n");
+      out.write("/admin/orderInfo?currentPage=");
+      out.print(currentPage + 1 );
+      out.write("'\"> > </button>\r\n");
       out.write("\t\t\t\t");
 }
       out.write("\t\r\n");
