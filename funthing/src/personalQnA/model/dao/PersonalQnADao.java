@@ -172,6 +172,7 @@ public class PersonalQnADao {
 				pstmt.setInt(3, endRow);
 				pstmt.setString(1, userNo);
 				
+				
 				rset = pstmt.executeQuery();
 				
 				
