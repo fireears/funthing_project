@@ -60,7 +60,7 @@ public class AdminDao {
 		
 		int startRow = (currentPage - 1)*limit +1;
 		int endRow = startRow + limit -1;
-		String query = "SELECT P_NO, P_NAME, P_CATEGORY, RETAIL_PRICE, DC_RATE, P_PRICE, F_YN, F_START_DATE, F_END_DATE FROM PRODUCTLIST WHERE RNUM BETWEEN ? AND ?";
+		String query = "SELECT RNUM, P_NO, P_NAME, P_CATEGORY, RETAIL_PRICE, DC_RATE, P_PRICE, F_YN, F_START_DATE, F_END_DATE FROM PRODUCTLIST WHERE RNUM BETWEEN ? AND ?";
 		
 //		System.out.println("새로 list담자");
 		try {
@@ -73,6 +73,7 @@ public class AdminDao {
 			while(rset.next())
 			{
 				p = new Product();
+				p.setrNum(rset.getInt("rnum"));
 				p.setpNo(rset.getString("p_no"));
 				p.setpName(rset.getString("p_name"));
 				p.setpCategory(rset.getInt("p_category"));
@@ -827,7 +828,7 @@ public class AdminDao {
 	
 
 	// 멤버 select_진교
-	public ArrayList<Member> selectList(Connection conn, int currentPage, int limit, String userName, String userId) {
+	public ArrayList<Member> selectList(Connection conn, int currentPage, int limit) {
 		System.out.println("여기는 왔나?");
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -835,38 +836,16 @@ public class AdminDao {
 		
 		ArrayList<Member> list = new ArrayList<>();
 		
-		
+		query = "SELECT * FROM MEMBERLIST WHERE RNUM BETWEEN ? AND ?";
 		// 쿼리문 실행시 조건절에 넣을 변수 연산처리
 		int startRow = (currentPage - 1) * limit + 1;
 		int endRow = startRow + limit - 1;
 		
 		try {
-		if(userName == null && userId == null) {
-			query = "SELECT * FROM MEMBERLIST WHERE RNUM BETWEEN ? AND ?";
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, startRow);
 			pstmt.setInt(2, endRow);
-		}else if(userName != null && userId == null) {
-			query = "SELECT * FROM MEMBERLIST WHERE RNUM BETWEEN ? AND ? AND M_NAME=?";
-			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
-			pstmt.setString(3, userName);
-		}else if(userName == null && userId != null) {
-			query = "SELECT * FROM MEMBERLIST WHERE RNUM BETWEEN ? AND ? AND M_ID=?";
-			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
-			pstmt.setString(3, userId);
-		}else if(userName != null && userId != null) {
-			query = "SELECT * FROM MEMBERLIST WHERE RNUM BETWEEN ? AND ? AND M_NAME=? AND M_ID=?";
-			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
-			pstmt.setString(3, userName);
-			pstmt.setString(4, userId);
-		}
-			
+
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
@@ -944,6 +923,9 @@ public class AdminDao {
 	}
 
 
+	
+
+
 	// 1:1문의게시판_혜린
 	public int getListPerQnaCount(Connection conn) {
 		PreparedStatement pstmt = null;
@@ -973,12 +955,16 @@ public class AdminDao {
 	}
 
 
-	public ArrayList<Product> Productsearch(Connection conn, Product p) {
+//	public ArrayList<Product> Productsearch(Connection conn, Product p) {
+	public ArrayList<Product> Productsearch(Connection conn, Product p, int currentPage, int limit) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
 		Product product = null;
 		ArrayList<Product> plist = new ArrayList<>();
+		
+		int startRow = (currentPage - 1)*limit +1;
+		int endRow = startRow + limit -1;
 		
 		String pNo = p.getpNo();
 		String bNo = p.getbNo();
@@ -991,46 +977,46 @@ public class AdminDao {
 		String fYn = p.getfYn();
 		
 
-		String query = "SELECT * FROM PRODUCTLIST\r\n" + 
-						"WHERE P_NO = ?\r\n" + 
-						"UNION\r\n" + 
-						"SELECT * FROM PRODUCTLIST\r\n" + 
-						"WHERE B_NO = ?\r\n" + 
-						"INTERSECT\r\n" + 
-						"SELECT * FROM PRODUCTLIST\r\n" + 
-						"WHERE S_NO = ?\r\n" + 
-						"INTERSECT\r\n" + 
-						"SELECT * FROM PRODUCTLIST\r\n" + 
-						"WHERE P_CATEGORY = ?\r\n" + 
-						"INTERSECT\r\n" + 
-						"SELECT * FROM PRODUCTLIST\r\n" + 
-						"WHERE P_PRICE >= ?\r\n" + 
-						"INTERSECT\r\n" + 
-						"SELECT * FROM PRODUCTLIST\r\n" + 
-						"WHERE F_START_DATE >= ? AND F_END_DATE <= ?\r\n" + 
-						"UNION\r\n" + 
-						"SELECT * FROM PRODUCTLIST\r\n" + 
-						"WHERE P_NAME = ? INTERSECT SELECT * FROM PRODUCTLIST WHERE F_YN = ?";
+		String query = "SELECT ROWNUM RNUM, P_NO, B_NO, S_NO, P_NAME, P_CATEGORY, RETAIL_PRICE, DC_RATE, P_PRICE, F_YN, F_START_DATE, F_END_DATE\r\n" + 
+						"FROM(\r\n" + 
+						"    SELECT ROWNUM RNUM, P_NO, B_NO, S_NO, P_NAME, P_CATEGORY, RETAIL_PRICE, DC_RATE, P_PRICE, F_YN, F_START_DATE, F_END_DATE\r\n" + 
+						"    FROM(\r\n" + 
+						"            SELECT ROWNUM RNUM, P_NO, B_NO, S_NO, P_NAME, P_CATEGORY, RETAIL_PRICE, DC_RATE, P_PRICE, F_YN, F_START_DATE, F_END_DATE\r\n" + 
+						"            FROM PRODUCTLIST\r\n" + 
+						"            WHERE (((P_NO = ? OR B_NO = ?) ) OR P_NAME = ?) AND S_NO >= ? AND P_CATEGORY = ?  \r\n" + 
+						"        )\r\n" + 
+						"    WHERE P_PRICE >= ? AND F_YN = ?\r\n" + 
+						"    )\r\n" + 
+						"WHERE F_START_DATE >= ? AND F_END_DATE <= ? AND RNUM BETWEEN ? AND ?";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, pNo);
 			pstmt.setString(2, bNo);
-			pstmt.setInt(3, sNo);
-			pstmt.setInt(4, pCategory);
-			pstmt.setInt(5, pPrice);
-			pstmt.setDate(6, fStartDate);
-			pstmt.setDate(7, fEndDate);
-			pstmt.setString(8, pName);
-			pstmt.setString(9, fYn);
+			pstmt.setString(3, pName);
+			pstmt.setInt(4, sNo);
+			pstmt.setInt(5, pCategory);
+			pstmt.setInt(6, pPrice);
+			pstmt.setString(7, fYn);
+			pstmt.setDate(8, fStartDate);
+			pstmt.setDate(9, fEndDate);
+			pstmt.setInt(10, startRow);
+			pstmt.setInt(11, endRow);
+			
 			rset = pstmt.executeQuery();
 			
 			while(rset.next())
 			{
-				product = new Product(rset.getString("p_no"), rset.getString("b_no"), rset.getString("p_name"),
-										rset.getInt("p_category"), rset.getInt("s_no"), 
-										rset.getInt("p_price"), rset.getDate("f_start_date"),
-										rset.getDate("f_end_date"), rset.getString("f_yn"));
+				product = new Product( rset.getString("p_no"), 
+										rset.getString("p_name"),  
+										rset.getInt("retail_price"), 
+										rset.getInt("dc_rate"), 
+										rset.getInt("p_price"), 
+										rset.getInt("p_category"),
+										rset.getDate("f_start_date"),
+										rset.getDate("f_end_date"),
+										rset.getString("f_yn"), 
+										rset.getInt("rnum"));
 				
 				plist.add(product);
 			}
@@ -1044,6 +1030,55 @@ public class AdminDao {
 			close(rset);
 		}
 		return plist;
+	}
+
+	public int getListCount(Connection conn, Product p) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		int result = 0;
+		
+		String query = "SELECT count(*)\r\n" + 
+				"FROM(\r\n" + 
+				"    SELECT ROWNUM RNUM, P_NO, B_NO, S_NO, P_NAME, P_CATEGORY, RETAIL_PRICE, DC_RATE, P_PRICE, F_YN, F_START_DATE, F_END_DATE\r\n" + 
+				"    FROM(\r\n" + 
+				"            SELECT ROWNUM RNUM, P_NO, B_NO, S_NO, P_NAME, P_CATEGORY, RETAIL_PRICE, DC_RATE, P_PRICE, F_YN, F_START_DATE, F_END_DATE\r\n" + 
+				"            FROM PRODUCTLIST\r\n" + 
+				"            WHERE ((P_NO = ? OR B_NO = ?)  OR P_NAME = ?) AND S_NO >= ? AND P_CATEGORY = ?  \r\n" + 
+				"        )\r\n" + 
+				"    WHERE P_PRICE >= ? AND F_YN = ?\r\n" + 
+				"    )\r\n" + 
+				"WHERE F_START_DATE >= ? AND F_END_DATE <= ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setString(1, p.getpNo());
+			pstmt.setString(2, p.getbNo());
+			pstmt.setString(3, p.getpName());
+			pstmt.setInt(4, p.getsNo());
+			pstmt.setInt(5, p.getpCategory());
+			pstmt.setInt(6, p.getpPrice());
+			pstmt.setString(7, p.getfYn());
+			pstmt.setDate(8, p.getfStartDate());
+			pstmt.setDate(9, p.getfEndDate());
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next())
+			{
+				result = rset.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally
+		{
+			close(pstmt);
+			close(rset);
+		}
+		return result;
 	}
 
 	
@@ -1115,6 +1150,105 @@ public class AdminDao {
 		
 		return list;
 	}
+	
+	// 회원 리스트 - 회원 정보
+	public Member selectMember(Connection conn, String userId) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Member selectMember = null;
+		
+		String query = "SELECT M_NO, M_ID, M_PWD, M_NAME, M_EMAIL, M_TELL, TO_CHAR(B_DAY,'YYYY/MM/DD'), JOIN_DATE, REFERENCE, GRADE_CODE, ALARM_YN, STATUS_YN, M_POINT, H_POINT FROM MEMBER WHERE M_ID=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				selectMember = new Member(rset.getString("M_NO"),
+										 rset.getString("M_ID"),
+										 rset.getString("M_PWD"),
+										 rset.getString("M_NAME"),
+										 rset.getString("TO_CHAR(B_DAY,'YYYY/MM/DD')"),
+										 rset.getString("M_EMAIL"),
+										 rset.getDate("JOIN_DATE"),
+										 rset.getString("REFERENCE"),
+										 rset.getString("GRADE_CODE"),
+										 rset.getString("ALARM_YN"),
+										 rset.getString("STATUS_YN"),
+										 rset.getInt("M_POINT"),
+										 rset.getString("M_TELL"),
+										 rset.getInt("H_POINT"));
+			}
+			System.out.println(selectMember);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		
+		return selectMember;
+	}
+	
+	// 회원 리스트-회원 정보 update
+	public int updateMember(Connection conn, Member member) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "UPDATE MEMBER SET M_ID=?,M_NAME=?,B_DAY=TO_CHAR(TO_DATE(?,'YYYY/MM/DD'),'YY/MM/DD'),M_EMAIL=?,M_TELL=? WHERE M_NO=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, member.getmId());
+			pstmt.setString(2, member.getmName());
+			pstmt.setString(3, member.getbDay());
+			pstmt.setString(4, member.getmEmail());
+			pstmt.setString(5, member.getmTell());
+			pstmt.setString(6, member.getmNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+//	회원 페이지_진교
+	public int getMemberListCount(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		int listCount = 0;
+		
+		String query = "SELECT COUNT(*) FROM MEMBER";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next())
+			{
+				listCount = rset.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		close(pstmt);
+		close(rset);
+		
+		
+		return listCount;
+	}
+	
 
 
 	
