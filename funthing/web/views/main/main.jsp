@@ -98,9 +98,10 @@
                     	<%		 Product p = bestProduct.get(i);
 	                			
 								 String thumbnail = p.getThumbnail();
+								 String pName = p.getpName();
 						%>
 		                        <div>
-		                            <img src="<%=request.getContextPath()+"/images/thumbnail/" + thumbnail + ".jpg" %>">
+		                            <a href="#none"><img src="<%=request.getContextPath()+"/images/thumbnail/" + thumbnail + ".jpg" %>"></a>
 		                        </div>
 	                   <%	} %>
                        <%}else { %>

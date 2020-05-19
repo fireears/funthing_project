@@ -346,12 +346,12 @@ public class AdminService {
 	}
 
 
-	public ArrayList<Product> productSearch(Product p) {
+	public ArrayList<Product> productSearch(int currentPage, int limit, Product p) {
 		Connection conn = getConnection();
 		
 		ArrayList<Product> plist = new ArrayList<>();
 		
-		plist = new AdminDao().Productsearch(conn, p);
+		plist = new AdminDao().Productsearch(conn, p , currentPage, limit);
 		
 		close(conn);
 		return plist;
@@ -395,6 +395,15 @@ public class AdminService {
 		
 		close(conn);
 		
+		return listCount;
+	}
+
+	public int getListCount(Product p) {
+		Connection conn = getConnection();
+		
+		int listCount = new AdminDao().getListCount(conn, p);
+		
+		close(conn);
 		return listCount;
 	}
 

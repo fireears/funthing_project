@@ -94,7 +94,7 @@
        		</table>
        		<br><br>
 	
-        	<div id="pageBtn">
+        	<div id="pageBtn" align="center">
         	<!--  페이징 처리 -->
 	        	<button onclick="location.href='<%=request.getContextPath() %>/memberList.me?currentPage=1'"> << </button>
 	        	
