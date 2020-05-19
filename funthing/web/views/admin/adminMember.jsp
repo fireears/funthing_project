@@ -88,7 +88,7 @@
                     <td><%=b.getmPoint() %></td>
                     <td><%=b.gethPoint() %></td>
                     <td><%=b.getStatus_YN() %></td>
-                    <td><button onclick="location.href='<%=request.getContextPath() %>/views/admin/adminMemberModify.jsp?userId=<%= b.getmId()%>';">수정</button></td>
+                    <td><button onclick="location.href='<%=request.getContextPath() %>/admin/modify?userId=<%= b.getmId()%>';">수정</button></td>
                 </tr>
                 <%} %>
        		</table>
