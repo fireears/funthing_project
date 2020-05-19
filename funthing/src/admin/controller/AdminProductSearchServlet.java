@@ -100,11 +100,11 @@ public class AdminProductSearchServlet extends HttpServlet {
 			if(!list.isEmpty())
 			{
 				System.out.println(pi);
-				view = request.getRequestDispatcher("/views/admin/adminMain.jsp");
-				request.setAttribute("list", list);
-				request.setAttribute("pi", pi);
-				request.setAttribute("p",p);
-				view.forward(request, response);
+//				view = request.getRequestDispatcher("/views/admin/adminMain.jsp");
+//				request.setAttribute("list", list);
+//				request.setAttribute("pi", pi);
+//				request.setAttribute("p",p);
+//				view.forward(request, response);
 				for(Product pro : list)
 				{
 					System.out.println(pro);
@@ -113,7 +113,7 @@ public class AdminProductSearchServlet extends HttpServlet {
 			else
 			{
 				System.out.println("검색 결과가 없습니다.");
-				view = request.getRequestDispatcher("/views/admin/adminMain.jsp");
+//				view = request.getRequestDispatcher("/views/admin/adminMain.jsp");
 //				request.setAttribute("msg", "검색결과가 없습니다.");
 //				view.forward(request, response);
 			}

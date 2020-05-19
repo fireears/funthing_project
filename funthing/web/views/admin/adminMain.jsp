@@ -51,7 +51,7 @@
 
 	<%@ include file="../common/adminHeader.jsp" %>
 	<h2>상품관리</h2>
-	<form action="<%=request.getContextPath() %>/admin/productSearch" method="GET">
+	<form action="<%=request.getContextPath() %>/admin/mainView?search=search" method="GET">
 		<div id="nav_section">
 		    <ul>
 		        <li><label>상품번호 : </label><input type="text" class="box" id="p_no" name="p_no"></li>
