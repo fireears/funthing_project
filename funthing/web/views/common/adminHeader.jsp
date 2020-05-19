@@ -65,7 +65,7 @@
 		}
 		function memberManage()
 		{
-			location.href="<%=request.getContextPath()%>/memberList.me";
+			location.href="<%=request.getContextPath()%>/admin/memberList";
 		}
 		function brandManage()
 		{

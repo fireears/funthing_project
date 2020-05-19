@@ -39,12 +39,13 @@
    </style>
 </head>
 <body>
+<%@ include file="../common/adminHeader.jsp" %>
 	<h2>회원관리</h2>
-	<form action="" method="GET">
+	<form action="<%=request.getContextPath() %>/admin/memberList" method="GET">
 		<div id="nav_section">
 			<ul>
 				<li><lable>회원 이름 : </lable><input type="text" class="box" id="userName" name="userName"></li>
-				<li><lable>회원 아이디 : </lable><input type="text" class="box" id="user_Id" name="user_Id"></li>
+				<li><lable>회원 아이디 : </lable><input type="text" class="box" id="userId" name="userId"></li>
 				<li><input type="submit" value="조회하기" style="background-color: gray; color: white; border-radius: 5px; border: 0px; width: 80px; height: 30px; font-size: 14px;"></li>
 			</ul>
 		</div>
@@ -96,28 +97,28 @@
 	
         	<div id="pageBtn" align="center">
         	<!--  페이징 처리 -->
-	        	<button onclick="location.href='<%=request.getContextPath() %>/memberList.me?currentPage=1'"> << </button>
+	        	<button onclick="location.href='<%=request.getContextPath() %>//admin/memberList?currentPage=<%=1%>&userName=<%=userName%>&userId=<%=userId%>'"> << </button>
 	        	
 	        	<%if(currentPage == 1){ %>
 	        	<button disabled> < </button>
 	        	<%}else{ %>
-	        	<button onclick="location.href=;<%=request.getContextPath() %>/memberList.me?currentPage=<%=currentPage - 1 %>'"> < </button>
+	        	<button onclick="location.href=;<%=request.getContextPath() %>/admin/memberList?currentPage=<%=currentPage - 1 %>&userName=<%=userName%>&userId=<%=userId%>'"> < </button>
 	        	<%} %>
 	        	
 	        	<%for(int p = startPage; p <= endPage; p++){ %>
 	        		<%if(currentPage == p){ %>
 	        			<button disabled><%=p %></button>
 	        		<%}else{ %>
-	        			<button onclick="location.href='<%=request.getContextPath() %>/memberList.me?currentPage=<%=p %>'"><%=p %></button>
+	        			<button onclick="location.href='<%=request.getContextPath() %>/admin/memberList?currentPage=<%=p %>&userName=<%=userName%>&userId=<%=userId%>'"><%=p %></button>
 	        		<%} %>
 	        	<%} %>	
 	        	
 	        	<%if(currentPage == maxPage) { %>
 	        		<button disabled> > </button>
 	        	<%}else{ %>
-	        		<button onclick="location.href='<%=request.getContextPath() %>/memberList.me?currentPage=<%=currentPage + 1 %>'"> > </button>
+	        		<button onclick="location.href='<%=request.getContextPath() %>/admin/memberList?currentPage=<%=currentPage + 1 %>&userName=<%=userName%>&userId=<%=userId%>'"> > </button>
 	        	<%} %>
-	        	<button onclick="location.href='<%=request.getContextPath() %>/memberList.me?currentPage=<%=maxPage %>'"> >> </button>
+	        	<button onclick="location.href='<%=request.getContextPath() %>/admin/memberList?currentPage=<%=maxPage %>&userName=<%=userName%>&userId=<%=userId%>'"> >> </button>
        		</div>
     	</article>
 	</section>
