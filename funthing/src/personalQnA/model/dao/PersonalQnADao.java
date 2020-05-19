@@ -15,13 +15,13 @@ import personalQnA.model.vo.PersonalQnA;
 
 
 public class PersonalQnADao {
-
+	// 일대일문의 삽입 서윤
 	public int insertPerQnA(Connection conn, PersonalInsert perQA, String q1_num) {
 		PreparedStatement pstmt = null;
 //		ResultSet rs = null;
 		int result = 0;
 		
-		String query = "INSERT INTO PERSONAL_QNA VALUES (SEQ_PQ.NEXTVAL, ?, ?, NULL, NULL, ?, 'N', ?, ?, ?)";
+		String query = "INSERT INTO PERSONAL_QNA VALUES (SEQ_PQ.NEXTVAL, ?, ?, NULL, NULL, ?, 'N', ?, ?, ?, SYSDATE)";
 		
 		try {
 			pstmt = conn.prepareStatement(query);

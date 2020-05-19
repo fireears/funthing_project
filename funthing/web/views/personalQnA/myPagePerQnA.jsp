@@ -10,7 +10,7 @@
     <style>
         .qna11 .q1_title h2 { color:#0f4a7e; line-height:3; border-top:1px solid #aaa; border-bottom:1px solid #aaa; }
         .q1_wrap { margin-top:40px;  }
-        .q1_wrap table { border-collapse: collapse; width:100%; border-top:2px solid #aaa; border-bottom:2px solid #aaa; }
+        .q1_wrap table { border-collapse: collapse; width:100%; border-top:2px solid #aaa; border-bottom:2px solid #aaa; position:relative; }
         .q1_wrap table tr { border-bottom:1px solid #aaa; width:100%; }
         .q1_wrap table tr td:nth-child(1) { width:30%; box-sizing:border-box; padding-left:20px; line-height:3; font-weight:700; background:#eee; color:#0f4a7e; }   
         .q1_wrap table tr td:nth-child(2) { width:70%; box-sizing:border-box; padding:8px 14px 8px; }
@@ -25,9 +25,9 @@
         .q1_wrap .q1_btnArea .btn.submit { background:#0f4a7e; border:1px solid #aaa; color:#fff; }
     
     	/* 팝업창 */
-    	.q1_wrap .q1_orderList { position:relative; }
+    	.q1_wrap .q1_orderList {  }
     	
-    	#orderSelectWrap { display:none; position:absolute; width:700px; height:300px; padding:0 20px; box-sizing:border-box; background:#fff; border:1px solid #ddd; top:5px; right:-35px; }
+    	#orderSelectWrap { display:none; position:absolute; width:700px; height:300px; padding:0 20px; box-sizing:border-box; background:#fff; border:1px solid #ddd; top:50px; left:50%; margin-left:-350px; }
         #orderSelectWrap:after { display:block; content:""; clear:both; }
         
         #orderSelectWrap h2 { text-align:center; margin:20px 0; font-size:24px; }
@@ -50,6 +50,7 @@
 		#orderSelectWrap .oi_btn { width:50px; height:30px; line-height:30px; text-align:center; border:1px solid #ddd; cursor:pointer; }
         #orderSelectWrap .submit { float:left; margin-right:6px; background:#0f4a7e; color:#fff; }
         #orderSelectWrap .close { float:left; background:#eee; }
+        
     </style>
 </head>
 <body>
@@ -81,6 +82,7 @@
                             <td class="q1_orderList">
 	                            <span class="q1_selList">주문 번호</span>
 	                            <span class="button" onclick="orderSelect();">주문내역</span>
+	                            <!-- 주문내역 버튼 누르면 열리는 모달 -->
 	                            <div id="orderSelectWrap">
 							        <h2>주문 내역</h2>
 							        <form>
@@ -97,6 +99,7 @@
 								        <p class="oi_btn close">close</p>
 							        </div>
 							    </div>
+							    <!-- // 주문 내역 모달 end -->
                             </td>
                         </tr>
                         <tr>
@@ -198,6 +201,7 @@
     				            	//$(".q1_selList").text(selectVal);	// 주문 번호 페이지로 넘겨줌 // 얘는 ok 눌러야
     			            		<%-- location.href="<%=request.getContextPath()%>/InsertPerQnA"; --%>
     			            		$("#orderSelectWrap").hide();
+    		      		    	 	$(".oiCont").detach();	// 데이터가 쌓이지 않게 입력값 삭제해줌
     			            	});
     			            	
     			            }else{

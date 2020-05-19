@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import payment.model.vo.OrderInfo;
 import payment.model.vo.OrderInfoDetail;
 import personalQnA.model.dao.PersonalQnADao;
+import personalQnA.model.vo.PersonalInsert;
 import personalQnA.model.vo.PersonalQnA;
 
 import java.sql.Connection;
@@ -22,7 +23,7 @@ import static common.JDBCTemplate.*;
 
 public class PersonalQnAService {
 
-	public int insertPerQnA(PersonalQnA perQA, String q1_num) {
+	public int insertPerQnA(PersonalInsert perQA, String q1_num) {
 		Connection conn = getConnection();
 		PersonalQnADao perDao = new PersonalQnADao();
 		
