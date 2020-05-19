@@ -36,8 +36,15 @@ public class AdminPersonalQna extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		AdminService aService = new AdminService();
+		// 검색창 구현 
+		String searchKind = request.getParameter("searchKind");	// 검색 종류 값
+		String searchText = request.getParameter("searchText"); // 검색 입력창 값
+		if(searchKind==null || searchKind.equals("null"))
+			searchKind = null;
+		if(searchText==null || searchText.equals("null"))
+			searchText = null;
 		
-		int listCount = aService.getListPerQnaCount();
+		int listCount = aService.getListPerQnaCount(searchKind,searchText);
 		System.out.println("1:1문의servlet listCount : " + listCount);
 		
 		// 페이징 처리
@@ -46,6 +53,8 @@ public class AdminPersonalQna extends HttpServlet {
 		int maxPage;			// 전체 페이지의 맨 마지막 페이지
 		int startPage;			// 한번에 표시될 페이지가 시작할 페이지
 		int endPage;			// 한번에 표시될 페이지가 끝나는 페이지
+		
+		
 		
 		currentPage = 0;
 		
@@ -66,14 +75,7 @@ public class AdminPersonalQna extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
 
-		// 검색창 구현 시작
-		String searchKind = request.getParameter("searchKind");	// 검색 종류 값
-		String searchText = request.getParameter("searchText"); // 검색 입력창 값
-		if(searchText != null) {
-			searchText = request.getParameter("searchText");
-		}else {
-			searchText = (String) request.getAttribute("searchText");
-		}
+		
 		System.out.println("servlet searchKind : " + searchKind);
 		System.out.println("servlet searchText : " + searchText);
 		
@@ -83,10 +85,14 @@ public class AdminPersonalQna extends HttpServlet {
 		RequestDispatcher view = null;
 		if(!list.isEmpty()) {
 			view = request.getRequestDispatcher("/views/admin/adminPersonalQna.jsp");
+			request.setAttribute("searchKind", searchKind);
+			request.setAttribute("searchText", searchText);
 			request.setAttribute("list", list);
 			request.setAttribute("pi", pi);
 		}else {
 			view = request.getRequestDispatcher("/views/admin/adminPersonalQna.jsp");
+			request.setAttribute("searchKind", searchKind);
+			request.setAttribute("searchText", searchText);
 			request.setAttribute("list", list);
 			request.setAttribute("pi", pi);
 		}
