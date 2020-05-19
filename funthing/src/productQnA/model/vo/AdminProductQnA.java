@@ -1,10 +1,16 @@
 // 상품문의 페이지_혜린
 package productQnA.model.vo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class AdminProductQnA {
+public class AdminProductQnA  implements Serializable	{
 	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6988009231277015510L;
 	
 	private int qnaNo;				// qna 번호
 	private String mId;				// 회원아이디
@@ -26,6 +32,7 @@ public class AdminProductQnA {
 	public AdminProductQnA(int qnaNo, String mId, String mName, String pNo, String pName, String qnaTitle,
 			String qnaContents, String qnaDate, String reYn) {
 		super();
+		
 		this.qnaNo = qnaNo;
 		this.mId = mId;
 		this.mName = mName;
@@ -41,6 +48,7 @@ public class AdminProductQnA {
 	public AdminProductQnA(int qnaNo, String mId, String mName, String pNo, String pName, String qnaTitle,
 			String qnaContents, String qnaDate, String bNo, String reYn) {
 		super();
+		
 		this.qnaNo = qnaNo;
 		this.mId = mId;
 		this.mName = mName;
@@ -52,7 +60,7 @@ public class AdminProductQnA {
 		this.bNo = bNo;
 		this.reYn = reYn;
 	}
-
+	
 
 	public int getQnaNo() {
 		return qnaNo;

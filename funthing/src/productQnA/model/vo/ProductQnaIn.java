@@ -1,10 +1,15 @@
 	// 상품 문의 클라이언트 페이지_혜린
 package productQnA.model.vo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ProductQnaIn {
+public class ProductQnaIn  implements Serializable	{
 
+		/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1008573522184295870L;
 		private int qnaNo;			// qna번호
 		private String mNo;				// 회원정보
 		private String qnaTitle;		// qna제목

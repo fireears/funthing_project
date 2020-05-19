@@ -40,6 +40,8 @@ public class AdminProductQna extends HttpServlet {
 		// 검색창 구현 시작
 		String searchKind = request.getParameter("searchKind");	// 검색 종류 값
 		String searchText = request.getParameter("searchText"); // 검색 입력창 값
+		String search2 = request.getParameter("searchKind");	// 검색 종류 값
+		String search = request.getParameter("searchText");	// 검색 종류 값
 		if(searchText != null) {
 			searchText = request.getParameter("searchText");
 		}else {
@@ -47,7 +49,8 @@ public class AdminProductQna extends HttpServlet {
 		}
 		System.out.println("servlet searchKind : " + searchKind);
 		System.out.println("servlet searchText : " + searchText);
-		
+		System.out.println("searchText버튼 눌렀을때 : "+ search);
+		System.out.println("searchFind버튼 눌렀을때 : "+ search2);
 		
 		int listCount = aService.getListQnaCount(searchKind,searchText);
 //		System.out.println("servlet listCount : " + listCount);
@@ -87,10 +90,14 @@ public class AdminProductQna extends HttpServlet {
 			view = request.getRequestDispatcher("/views/admin/adminProductListQnA.jsp");
 			request.setAttribute("list", list);
 			request.setAttribute("pi", pi);
+			request.setAttribute("searchKind", searchKind);
+			request.setAttribute("searchText", searchText);
 		}else {
 			view = request.getRequestDispatcher("/views/admin/adminProductListQnA.jsp");
 			request.setAttribute("list", list);
 			request.setAttribute("pi", pi);
+			request.setAttribute("searchKind", searchKind);
+			request.setAttribute("searchText", searchText);
 		}
 		
 		view.forward(request, response);

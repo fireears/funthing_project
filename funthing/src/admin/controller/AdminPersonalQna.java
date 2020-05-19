@@ -55,7 +55,7 @@ public class AdminPersonalQna extends HttpServlet {
 			currentPage = 1;
 		}
 		
-		limit = 3;
+		limit = 10;
 		maxPage = (int)((double)listCount/limit + 0.9);
 		startPage = ((int)((double)currentPage/limit + 0.9)-1)*limit + 1;
 		endPage = startPage + limit -1;

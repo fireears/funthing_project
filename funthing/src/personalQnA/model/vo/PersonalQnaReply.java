@@ -1,7 +1,14 @@
+// 1:1문의 답변 페이지_혜린
 package personalQnA.model.vo;
 
-public class PersonalQnaReply {
+import java.io.Serializable;
 
+public class PersonalQnaReply implements Serializable	 {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -15818897414227831L;
 	private int pqreNo;				// 1:1답변 번호(관리자)
 	private String pqreId;			// 관리자 아이디
 	private String pqreContent;		// 관리자 답변내용

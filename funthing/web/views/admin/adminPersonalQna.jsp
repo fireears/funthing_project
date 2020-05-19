@@ -111,9 +111,9 @@
 	            	 <td><%=pq.getoNo() %></td><td><%=pq.getPerReYn()%></td> 
 	            </tr>
 	            <tr class="cont">
-	            	<td colspan="7">
+	            	<td colspan="6">
 	            	<div id="contDiv">
-
+						
 	            		<span class="info">문의유형 : </span><span><%=pq.getPerCate() %></span><br><br>
 	            		<span class="info">회원아이디 : </span><span><%=pq.getmId() %></span><br><br>
 	            		<span class="info">회원이름 : </span><span><%=pq.getmName() %></span><br><br>
@@ -131,7 +131,7 @@
 	            		<form id="replyForm" action="<%=request.getContextPath() %>/admin/personalRe" method="post">
 	            			<table align="center" id="replyTable">
 	            				<tr>
-	            					<input type="hidden" name="rownum" value="<%=pq.getRownum() %>">
+	            					
 	            					<input type="hidden" name="perQnaNo" value="<%=pq.getPerQnaNo() %>">
 	            					<input type="hidden" name="tossmId" value="<%=pq.getmId() %>">
 	            					<td width=220px;  ><textArea rows="4" cols="220" id="replyContent" name="replyContent"></textArea></td>
