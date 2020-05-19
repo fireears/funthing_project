@@ -147,7 +147,9 @@ public class AdminBrandServlet extends HttpServlet {
 			request.setAttribute("insertMsg", insertMsg);
 
 		} else {
-			System.out.println("brandServlet단에 리스트가 비었음!");
+			view = request.getRequestDispatcher("/views/admin/adminBrand.jsp");
+			request.setAttribute("list", list);
+			request.setAttribute("pi", pi);
 
 		}
 

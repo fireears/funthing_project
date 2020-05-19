@@ -257,9 +257,10 @@ public class MemberDao {
 			close(pstmt);
 			close(rset);
 		}
-	return result;
-}
-
+		return result;
+	}
+	
+	// 회원 정보 update
 	public int updateMember(Connection conn, Member member) {
 		PreparedStatement pstmt = null;
 		int result = 0;

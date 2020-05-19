@@ -1,5 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import = "member.model.vo.Member"%>
+    
+<%
+	Member member = (Member)request.getAttribute("member");
+
+	String userId = member.getmId();
+	String userPwd = member.getmPwd();
+	String userName = member.getmName();
+	String email = member.getmEmail() != null ? member.getmEmail() : "";
+	String phone = member.getmTell() != null ? member.getmTell() : ""; 
+	String year = (String)request.getAttribute("year");
+	String mon = (String)request.getAttribute("mon");
+	String day = (String)request.getAttribute("day");
+	/* String birth = member.getbDay() != null ? member.getbDay() : ""; */
+	String reference = member.getReference() != null ? member.getReference() : "";
+%>    
 <!DOCTYPE html>
 	<head>
 		<meta charset="UTF-8">
@@ -91,7 +106,7 @@
         
        <%@ include file="../common/adminHeader.jsp" %>
 
-        <form method="post" action="#">
+        <form method="post" action="<%=request.getContextPath()%>/admin/modifyUpdate?mNo=<%=member.getmNo()%>">
             <h2>회원정보수정</h2>
             <hr>
             <h3>기본정보</h3>
@@ -103,7 +118,7 @@
                         <label>*아이디</label>
                     </td>
                     <td id="inp">
-                        <input type="text" id="userid" name="userid" required placeholder="4글자 이상 12글자 이하 영문자(소문자)와 숫자">
+                        <input type="text" id="userId" name="userId" required placeholder="4글자 이상 12글자 이하 영문자(소문자)와 숫자" value="<%=member.getmId()%>">
                         <input type="button" id="ch" value="중복확인" style="width: 70px; background: darkgrey; color: white;" onclick="openIdChk()">
                     </td>
                 </tr>
@@ -112,23 +127,23 @@
                         <label>*비밀번호</label>
                     </td>
                     <td id="inp"> 
-                        <input type="password" id="userpwd" name="userpwd" required placeholder="6글자 이상 18글자 이하 영문자(소문자)와 숫자">
+                        <input type="password" id="userPwd" name="userPwd" required placeholder="6글자 이상 18글자 이하 영문자(소문자)와 숫자"  value="<%=member.getmPwd()%>" disabled>
                     </td>
                 </tr>
-                <tr>
+                <!-- <tr>
                     <td id="lab"> 
                         <label>*비밀번호 확인</label>
                     </td>
                     <td id="inp"> 
                         <input type="password" id="pwd_check" name="pwd_check" required>
                     </td>
-                </tr>
+                </tr> -->
                 <tr>
                     <td id="lab">
                         <label>*이름</label>
                     </td>
                     <td id="inp">
-                        <input type="text" id="username" name="username" required placeholder="한글로 2글자 이상">
+                        <input type="text" id="userName" name="userName" required placeholder="한글로 2글자 이상" value="<%=member.getmName()%>">
                     </td>
                 </tr>
                 <tr>
@@ -136,7 +151,7 @@
                         <label>*이메일</label>
                     </td>
                     <td id="inp">
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" id="email" name="email" required value="<%=member.getmEmail()%>">
                     </td>
                 </tr>
                 <tr>
@@ -144,7 +159,7 @@
                         <label>*휴대폰</label>
                     </td>
                     <td id="inp">
-                        <input type="tel" id="phone" name="phone" required placeholder="-제외 하고 입력">
+                        <input type="tel" id="phone" name="phone" required placeholder="-제외 하고 입력" value="<%=member.getmTell()%>">
                     </td>
                 </tr>
                 <tr>
@@ -153,7 +168,7 @@
                     </td>
                     <td id="inp">
                         <div id="birth">
-                            <select id="year" required>
+                            <select id="year" name="year" required>
                                 <option value="년">년</option>
                                 <option value="2020">2020</option>
                                 <option value="2019">2019</option>
@@ -227,32 +242,32 @@
                                 <option value="1951">1951</option>
                                 <option value="1950">1950</option>
                             </select>
-                            <select id="mon" required>
+                            <select id="mon" name="mon" required>
                                 <option value="월">월</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
                                 <option value="10">10</option>
                                 <option value="11">11</option>
                                 <option value="12">12</option>
                             </select>
-                            <select id="day" required>
+                            <select id="day" name="day" required>
                                 <option value="일">일</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
                                 <option value="10">10</option>
                                 <option value="11">11</option>
                                 <option value="12">12</option>
@@ -284,7 +299,7 @@
                         <label>추천인</label>
                     </td>
                     <td id="inp">
-                        <input type="text" id="reference" name="reference">
+                        <input type="text" id="reference" name="reference" value="<%=member.getReference() %>">
                     </td>
                 </tr>
             </table>
@@ -363,7 +378,43 @@
                         $("#phone").focus().val('');
                     }
                 });
+                $("#year").val("<%=year%>").prop("selected",true);
+    			$("#mon").val("<%=mon%>").prop("selected",true);
+    			$("#day").val("<%=day%>").prop("selected",true);
             });
+		
+		// ajax!
+        $(function(){
+        	// 중복체크 버튼에 대해 ajax처리
+        	
+        	$("#idCheck").click(function(){
+        		var userId = $("#joinForm input[name='userId']");
+        		console.log(userId);
+        		if(!userId || userId.val().length < 4){
+        			userId.focuse();
+        		}else{
+        			$.ajax({
+        				url:"<%= request.getContextPath()%>/idCheck.me",
+        				type:"post",
+        				data:{userId:userId.val()},
+        				success:function(data){
+        					if(data == 'fail'){
+        						alert("아이디가 중복됩니다.");
+        						userId.focus();
+        					}else{
+        						alert("아이디가 사용가능합니다.");
+        						
+        						
+        					}
+        				},
+        				error:function(data){
+        					console.log("서버 통신 안됨");
+        				}
+        			});
+        		}
+        	});
+        	
+        });
 		
 	</script>
 </html>

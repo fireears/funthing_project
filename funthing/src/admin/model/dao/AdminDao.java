@@ -235,6 +235,11 @@ public class AdminDao {
 				String query = "SELECT COUNT(*) FROM QNA";
 				pstmt = conn.prepareStatement(query);
 				rset =  pstmt.executeQuery();
+				
+			}else if(searchKind != null && searchText == "") {
+				String query = "SELECT COUNT(*) FROM QNA";
+				pstmt = conn.prepareStatement(query);
+				rset =  pstmt.executeQuery();
 			}else if(searchKind != null && searchText != null) {
 				String query = "SELECT COUNT(*) FROM QNA WHERE "+searchKind+"= ?";
 				pstmt = conn.prepareStatement(query);
@@ -828,7 +833,7 @@ public class AdminDao {
 	
 
 	// 멤버 select_진교
-	public ArrayList<Member> selectList(Connection conn, int currentPage, int limit, String userName, String userId) {
+	public ArrayList<Member> selectList(Connection conn, int currentPage, int limit) {
 		System.out.println("여기는 왔나?");
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -836,38 +841,16 @@ public class AdminDao {
 		
 		ArrayList<Member> list = new ArrayList<>();
 		
-		
+		query = "SELECT * FROM MEMBERLIST WHERE RNUM BETWEEN ? AND ?";
 		// 쿼리문 실행시 조건절에 넣을 변수 연산처리
 		int startRow = (currentPage - 1) * limit + 1;
 		int endRow = startRow + limit - 1;
 		
 		try {
-		if(userName == null && userId == null) {
-			query = "SELECT * FROM MEMBERLIST WHERE RNUM BETWEEN ? AND ?";
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, startRow);
 			pstmt.setInt(2, endRow);
-		}else if(userName != null && userId == null) {
-			query = "SELECT * FROM MEMBERLIST WHERE RNUM BETWEEN ? AND ? AND M_NAME=?";
-			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
-			pstmt.setString(3, userName);
-		}else if(userName == null && userId != null) {
-			query = "SELECT * FROM MEMBERLIST WHERE RNUM BETWEEN ? AND ? AND M_ID=?";
-			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
-			pstmt.setString(3, userId);
-		}else if(userName != null && userId != null) {
-			query = "SELECT * FROM MEMBERLIST WHERE RNUM BETWEEN ? AND ? AND M_NAME=? AND M_ID=?";
-			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
-			pstmt.setString(3, userName);
-			pstmt.setString(4, userId);
-		}
-			
+
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
@@ -1171,6 +1154,144 @@ public class AdminDao {
 		
 		
 		return list;
+	}
+	
+	// 회원 리스트 - 회원 정보
+	public Member selectMember(Connection conn, String userId) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Member selectMember = null;
+		
+		String query = "SELECT M_NO, M_ID, M_PWD, M_NAME, M_EMAIL, M_TELL, TO_CHAR(B_DAY,'YYYY/MM/DD'), JOIN_DATE, REFERENCE, GRADE_CODE, ALARM_YN, STATUS_YN, M_POINT, H_POINT FROM MEMBER WHERE M_ID=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				selectMember = new Member(rset.getString("M_NO"),
+										 rset.getString("M_ID"),
+										 rset.getString("M_PWD"),
+										 rset.getString("M_NAME"),
+										 rset.getString("TO_CHAR(B_DAY,'YYYY/MM/DD')"),
+										 rset.getString("M_EMAIL"),
+										 rset.getDate("JOIN_DATE"),
+										 rset.getString("REFERENCE"),
+										 rset.getString("GRADE_CODE"),
+										 rset.getString("ALARM_YN"),
+										 rset.getString("STATUS_YN"),
+										 rset.getInt("M_POINT"),
+										 rset.getString("M_TELL"),
+										 rset.getInt("H_POINT"));
+			}
+			System.out.println(selectMember);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		
+		return selectMember;
+	}
+	
+	// 회원 리스트-회원 정보 update
+	public int updateMember(Connection conn, Member member) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "UPDATE MEMBER SET M_ID=?,M_NAME=?,B_DAY=TO_CHAR(TO_DATE(?,'YYYY/MM/DD'),'YY/MM/DD'),M_EMAIL=?,M_TELL=? WHERE M_NO=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, member.getmId());
+			pstmt.setString(2, member.getmName());
+			pstmt.setString(3, member.getbDay());
+			pstmt.setString(4, member.getmEmail());
+			pstmt.setString(5, member.getmTell());
+			pstmt.setString(6, member.getmNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+//	회원 페이지_진교
+	public int getMemberListCount(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		int listCount = 0;
+		
+		String query = "SELECT COUNT(*) FROM MEMBER";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next())
+			{
+				listCount = rset.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		close(pstmt);
+		close(rset);
+		
+		
+		return listCount;
+	}
+	
+
+	public int getListPerQnaCount(Connection conn, String searchText, String searchKind) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
+				
+		try {
+		
+			if(searchKind== null && searchText == null) {
+				String query = "SELECT COUNT(*) FROM PERSONAL_QNA";
+				pstmt = conn.prepareStatement(query);
+				rset =  pstmt.executeQuery();
+				
+			}else if(searchKind != null && searchText == "") {
+				String query = "SELECT COUNT(*) FROM PERSONAL_QNA";
+				pstmt = conn.prepareStatement(query);
+				rset =  pstmt.executeQuery();
+			}else if(searchKind != null && searchText != null) {
+				String query = "SELECT COUNT(*) FROM PERSONAL_QNA WHERE "+searchKind+"= ?";
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, searchText);
+				rset =  pstmt.executeQuery();
+			}
+			
+			if(rset.next()) {
+				result = rset.getInt(1);
+			}
+			System.out.println("dao result : " + result);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		
+		return result;
 	}
 
 

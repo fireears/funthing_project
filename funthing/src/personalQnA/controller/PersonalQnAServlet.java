@@ -1,6 +1,7 @@
 package personalQnA.controller;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -17,7 +18,7 @@ import personalQnA.model.vo.PersonalQnA;
 /**
  * Servlet implementation class PersonalQnAServlet
  */
-@WebServlet("/personalQnA")
+@WebServlet(name = "PersonalQnA", urlPatterns = "/PersonalQnA")
 public class PersonalQnAServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -35,9 +36,16 @@ public class PersonalQnAServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		// 로그인 한 유저 정보 받기
-		String userNo = (String)request.getAttribute("userNo");
 		
+		// 로그인 한 유저 정보 받기
+		String userNo = request.getParameter("userNo");
+		
+		System.out.println("서블릿에 로그인 값이 잘 넘어왔는가" + userNo);
+		
+		// 날짜 선택값 받기
+		String searchDate = request.getParameter("searchDate");
+		String firstDate = request.getParameter("firstDate");
+		String secondDate = request.getParameter("secondDate");
 		
 		
 //		// 이거 뭔지 모르겠어여 -희지
@@ -46,10 +54,11 @@ public class PersonalQnAServlet extends HttpServlet {
 		
 		PersonalQnAService pqService = new PersonalQnAService();
 		
+		
 		// 로그인 유저에 대한 일대일 문의 리스트 카운트하기
 		int perListCount = pqService.getPerListCount(userNo);
 		
-		System.out.println("Servlet에서 일대일 문의 리스트  갯수 :" + perListCount);
+		System.out.println("Servlet에서 로그인 유저에 대한 일대일 문의 리스트  갯수 :" + perListCount);
 		
 		
 		// 페이징 관련 변수 선언
@@ -78,23 +87,24 @@ public class PersonalQnAServlet extends HttpServlet {
 			endPage = maxPage;
 		}
 		
-		
+		// 페이징 처리 관련 객체 만들기
 		PageInfo pi = new PageInfo(currentPage, perListCount, limit, maxPage, startPage, endPage);
 		
-		// 선택된 날짜별 검색창 구현 부분
-		//
-		
-		
-		ArrayList<PersonalQnA> list = pqService.selectPersonalQnA(currentPage, limit, userNo);
+		System.out.println("pi" + pi);
+		// 페이징 처리 + 날짜 검색 처리
+		ArrayList<PersonalQnA> list = pqService.selectPersonalQnA(searchDate, firstDate, secondDate, currentPage, limit, userNo);
 		
 		System.out.println("Servlet에서 일대일 문의 리스트" + list);
 		
+		
+		
+		// 서비스 다녀와서 리스트 화면 처리
 		RequestDispatcher view = null;
 		if(!list.isEmpty()) {
 			view = request.getRequestDispatcher("/views/personalQnA/myPagePerQnAList.jsp");
 			request.setAttribute("list", list);
 			request.setAttribute("pi", pi);
-			
+			request.setAttribute("userNo", userNo);
 			
 		}else {
 			view = request.getRequestDispatcher("/views/personalQnA/myPagePerQnAList.jsp");
@@ -103,7 +113,6 @@ public class PersonalQnAServlet extends HttpServlet {
 		}
 		
 		view.forward(request, response);
-		
 		
 	}
 
