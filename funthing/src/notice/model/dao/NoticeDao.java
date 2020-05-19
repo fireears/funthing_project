@@ -43,21 +43,18 @@ public class NoticeDao {
 		ResultSet rset = null;
 		
 		ArrayList<Notice> list = new ArrayList<>();
-		Notice n = null;
+		
 		
 //		String query = prop.getProperty("mainSelectNotice");
-		String query = "SELECT N_TITLE, N_DATE\r\n" + 
-						"FROM NOTICE\r\n" + 
-						"WHERE N_DEL_YN = 'N'";
-		
+		String query = "SELECT N_TITLE,N_DATE FROM NOTICE WHERE N_DEL_YN='N'" ;
 		try {
 			pstmt = conn.prepareStatement(query);
 			rset = pstmt.executeQuery();
 			
 			while(rset.next())
 			{
-				n = new Notice(rset.getString("n_title"),
-								rset.getDate("n_date"));
+				Notice n  = new Notice(rset.getString("N_TITLE"),
+								rset.getDate("N_DATE"));
 				
 				list.add(n);
 			}
@@ -76,9 +73,9 @@ public class NoticeDao {
 	public ArrayList<Notice> selectList(Connection conn, String search, int currentPage, int limit) {
 		ArrayList<Notice> al = new ArrayList<Notice>();
 		try {
-		if(search!=null) {
+		if(search != null) {
 			PreparedStatement pstmt = null;
-			String quary = "SELECT * FROM NOTICE WHERE N_TITLE LIKE '%"+search+"%' AND(N_NO BETWEEN ? AND ?)";
+			String quary = "SELECT * FROM ( SELECT ROWNUM RN,  N_NO , N_TITLE,N_CONTENTS,N_DATE,N_DEL_YN FROM NOTICE   WHERE N_TITLE LIKE '%"+search+"%' ORDER BY N_NO ASC) where RN >= ? AND RN<=?";
 			int startRow =(currentPage -1)*limit +1;
 			int endRow = startRow + limit -1;
 			pstmt = conn.prepareStatement(quary);
@@ -89,12 +86,12 @@ public class NoticeDao {
 				Notice nt = new Notice(rs.getInt("N_NO"), rs.getString("N_TITLE"), rs.getString("N_CONTENTS"),rs.getString("N_DATE"),rs.getString("N_DEL_YN"));	
 				al.add(nt);
 			}
-
-		}else {
+		}else{
 			PreparedStatement pstmt = null;
 			String quary = "SELECT * FROM NOTICE  WHERE N_NO BETWEEN ? AND ? ";
 			int startRow =(currentPage -1)*limit +1;
 			int endRow = startRow + limit -1;
+			System.out.println("여기까진 가냐?");
 			pstmt = conn.prepareStatement(quary);
 			pstmt.setInt(1, startRow);
 			pstmt.setInt(2, endRow);
@@ -148,21 +145,23 @@ public class NoticeDao {
 		
 		
 		try { 			
-			if(search!=null) {
-			String query = "SELECT COUNT(*) FROM NOTICE  WHERE N_TITLE LIKE '%"+search+"%'";
-			stmt =conn.createStatement();
-			rset=stmt.executeQuery(query);
-			if(rset.next()) {
-				noticeCount = rset.getInt(1);
+			if(search != null) {
+					
+				String query = "SELECT COUNT(*) FROM NOTICE  WHERE N_TITLE LIKE '%"+search+"%'";
+				stmt =conn.createStatement();
+				rset=stmt.executeQuery(query);
+				if(rset.next()) {
+					noticeCount = rset.getInt(1);
+				}
+				
+			}else {
+				String query = "SELECT COUNT(*) FROM NOTICE";
+				stmt =conn.createStatement();
+				rset=stmt.executeQuery(query);
+				if(rset.next()) {
+					noticeCount = rset.getInt(1);
+				}
 			}
-		}else {
-			String query = "SELECT COUNT(*) FROM NOTICE";
-			stmt =conn.createStatement();
-			rset=stmt.executeQuery(query);
-			if(rset.next()) {
-				noticeCount = rset.getInt(1);
-			}
-		}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -37,7 +37,8 @@ public class AdminNoticeWriterServlet extends HttpServlet {
 		      Notice nt = new Notice(11,request.getParameter("name"),request.getParameter("content"),"SYSDATE","N");
 		      NoticeService ns = new NoticeService();
 		      int result=ns.insertList(nt);
-		      System.out.println("title"+request.getParameter("title"));
+		      System.out.println("RESULT"+request.getParameter("title"));
+		      System.out.println("RESULT"+result);
 		      RequestDispatcher rd=null;     
 		      if(result<=0) {
 		     request.setAttribute("msg","등록에 실패하셨습니다.");

@@ -24,12 +24,14 @@ public class NoticeService {
 	public ArrayList<Notice> selectList(String search, int currentPage, int limit) {
 	      
 	      Connection conn = getConnection();
-	      
+	      System.out.println("노티스 서블릿");
+	      System.out.println("search"+search);
+	      System.out.println("currentPage"+currentPage);
+	      System.out.println("limit" + limit);
 	      ArrayList<Notice> list = new NoticeDao().selectList(conn,search,currentPage,limit);
 	      //BoardDao를 가서 selectList메소드 구현하기
 	      close(conn);
-	      System.out.println(search);
-	      System.out.println(list.isEmpty());
+	      System.out.println("list : "+list.isEmpty());
 	      return list;
 	   }
 	

@@ -6,12 +6,16 @@
 <%
 ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list");
 PageInfo pi =(PageInfo)request.getAttribute("pi");
-
 int listCount =pi.getListCount();
 int currentPage = pi.getCurrentPage();
 int maxPage = pi.getMaxPage();
 int startPage = pi.getStartPage();
 int endPage = pi.getEndPage();
+
+
+
+String search =(String)request.getAttribute("search");
+
 
 %>
 <!DOCTYPE html>
@@ -43,8 +47,8 @@ int endPage = pi.getEndPage();
     	
          <section id="noticeArea">
             <h3>LIST Search</h3>
-            <form  method="post" action="<%=request.getContextPath()%>/admin/NoticeView">
-            <input type="text" id="search" name="noticeSearch" placeholder="검색어를 입력해주세요"> <input type="submit" id="searchBtn" value="SEARCH">
+            <form  method="GET" action="<%=request.getContextPath()%>/admin/NoticeView">
+            <input type="text" id="search" name="noticeSearch"  placeholder="검색어를 입력해주세요"> <input type="submit" id="searchBtn" value="SEARCH">
             <input type="Button"  onclick="location.href='<%=request.getContextPath() %>/views/admin/insertNotice.jsp'"  id="WriteBtn" value="글쓰기">
             
             <table id="noticelistArea">
@@ -65,28 +69,39 @@ int endPage = pi.getEndPage();
 	                        <td><%=list.get(i).getnDelYn()%></td>
 	                    </tr>	
                   <%}
+                   }else{
+                	   %>
+                	   <tr>
+                	   		<td>값이 존재하지않습니다.</td>
+                	   </tr>
+                	   <%
                    }%>
                 </tbody>
             </table>
-
-          
             </form>
-             <div class="pageinArea" align="center">
-            <!-- 맨 처음으로 -->
+				<%
+				if(search ==null){
+				%>	
+				
+				 <!-- search가 널일때  -->
+				 <!-- 맨 처음으로 -->
+				 alert("전체조회");
             <button onclick="location.href='<%=request.getContextPath() %>/admin/NoticeView?currentPage=<%=1 %>'"> << </button>
-            
+       
             <!-- 이전 페이지 -->
             <%if(currentPage <= 1) {%>
                <button disabled> < </button>
             <%}else {%>
-               <button onclick="location.href='<%=request.getContextPath() %>/admin/NoticeView?currentPage=<%=currentPage -1 %>'"> < </button>
+               <button class="search" onclick="location.href='<%=request.getContextPath() %>/admin/NoticeView?currentPage=<%=currentPage-1%>'"> < </button>
             <%} %>                                
             <!-- 10개의 페이지 목록 -->
             <%for(int p = startPage; p<=endPage; p++){
-            %><%if(currentPage == p) {%>
+            %>
+            	<%if(currentPage == p) {%>
                   <button disabled><%=p %></button>
-               <%} else{%>
-                  <button onclick="location.href='<%=request.getContextPath() %>/admin/NoticeView?currentPage=<%=p %>'"><%=p %></button>
+               	<%} else{%>
+                  
+                  <button class="search" onclick="location.href='<%=request.getContextPath() %>/admin/NoticeView?currentPage=<%=p%>'"><%=p %></button>
                   <!-- url에 값을 넣어서 보내는 방식 쿼리 스트링방식 -->
                <%} %>
             <%}%>
@@ -94,11 +109,54 @@ int endPage = pi.getEndPage();
             <%if(currentPage >= maxPage) {%>
                <button disabled> > </button>
             <%}else { %>
-               <button onclick="location.href='<%=request.getContextPath() %>/admin/NoticeView?currentPage=<%=currentPage + 1%>'"> > </button>
+               <button class="search" onclick="location.href='<%=request.getContextPath() %>/admin/NoticeView?currentPage=<%=currentPage + 1%>'"> > </button>
             <%} %>
             <!-- 맨 끝으로  -->
-            <button onclick="location.href='<%=request.getContextPath() %>/admin/NoticeView?currentPage=<%=maxPage %>'"> >> </button>
+            <button class="search" onclick="location.href='<%=request.getContextPath() %>/admin/NoticeView?currentPage=<%=maxPage %>'"> >> </button>	
+					
+					
+					
+					
+					
+				<% }else{%>
+					
+					 <!-- 맨 처음으로 -->
+            <button onclick="location.href='<%=request.getContextPath() %>/admin/NoticeView?currentPage=<%=1 %>&search=<%=search%>'"> << </button>
+       
+            <!-- 이전 페이지 -->
+            <%if(currentPage <= 1) {%>
+               <button disabled> < </button>
+            <%}else {%>
+               <button class="search" onclick="location.href='<%=request.getContextPath() %>/admin/NoticeView?currentPage=<%=1 %>&search=<%=search%>'"> < </button>
+            <%} %>                                
+            <!-- 10개의 페이지 목록 -->
+            <%for(int p = startPage; p<=endPage; p++){
+            %><%if(currentPage == p) {%>
+                  <button disabled><%=p %></button>
+               <%} else{%>
+                  <%-- <button class="search" onclick="location.href='<%=request.getContextPath() %>/admin/NoticeView?currentPage='+<%=p %>&noticeSearch=<%=csearch%>'"><%=p %></button> --%>
+                  <button class="search" onclick="location.href='<%=request.getContextPath() %>/admin/NoticeView?currentPage=<%=p %>&search=<%=search%>'"><%=p %></button>
+                  <!-- url에 값을 넣어서 보내는 방식 쿼리 스트링방식 -->
+               <%} %>
+            <%}%>
+			   <!-- 다음 페이지로 -->
+            <%if(currentPage >= maxPage) {%>
+               <button disabled> > </button>
+            <%}else { %>
+               <button class="search" onclick="location.href='<%=request.getContextPath() %>/admin/NoticeView?currentPage=<%=currentPage + 1%>&search=<%=search%>'"> > </button>
+            <%} %>
+            <!-- 맨 끝으로  -->
+            <button class="search" onclick="location.href='<%=request.getContextPath() %>/admin/NoticeView?currentPage=<%=maxPage %>&search=<%=search%>'"> >> </button>	
+					
+					
+				<%}						
+				%>
+          
+            
+             <div class="pageinArea" align="center">
+           
          </div>
         </section>
+        
     </body>
 </html>
