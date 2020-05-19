@@ -4,7 +4,8 @@
 <%
 	ArrayList<PersonalQnA> list = (ArrayList<PersonalQnA>)request.getAttribute("list");
 	PageInfo pi = (PageInfo)request.getAttribute("pi");	
-
+	
+	Member loginUser3 = (Member)session.getAttribute("loginUser");
 
 	
 	// PageIngo값 뽑아내기
@@ -99,39 +100,40 @@
 
             <!-- 1:1 문의 날짜 조회 영역 -->
             <div class="point">
-                <form method="post" action="#">
+                <form method="get" action="<%=request.getContextPath()%>/PersonalQnA">
                     <div class="point-search">
                         <ul>
+                           	<input type="hidden" name="userNo" value="<%=loginUser3.getmNo() %>">
                             <li><h3>조회기간</h3></li>
                             <li>
-                                <input type="radio" name="0" id="today" value="today">
+                                <input type="radio" name="searchDate" id="today" value="today">
                                 <label for="today">오늘</label>
                             </li>
                             <li>
-                                <input type="radio" name="0" id="week" value="week">
+                                <input type="radio" name="searchDate" id="week" value="week">
                                 <label for="week">7일</label>
                             </li>
                             <li>
-                                <input type="radio" name="0" id="month" value="month">
+                                <input type="radio" name="searchDate" id="month" value="month">
                                 <label for="month">1개월</label>
                             </li>
                             <li>
-                                <input type="radio" name="0" id="3months" value="3month">
+                                <input type="radio" name="searchDate" id="3months" value="3months">
                                 <label for="3month">3개월</label>
                             </li>
                             <li>
-                                <input type="radio" name="0" id="6months" value="6months`">
+                                <input type="radio" name="searchDate" id="6months" value="6months">
                                 <label for="6months">6개월</label>
                             </li>
                             <li>
-                                <input type="radio" name="0" id="year" value="year">
+                                <input type="radio" name="searchDate" id="year" value="year">
                                 <label for="year">1년</label>
                             </li>
                             <li>
-                                <input type="date" name="first_date">
+                                <input type="date" name="firstDate" value="09/01/01">
                             </li>
                             <li>
-                                <input type="date" name="second_date">
+                                <input type="date" name="secondDate" value="09/01/01">
                             </li>
                             <li>
                                 <input type="submit" id="submit" value="조회">
@@ -161,7 +163,7 @@
 					<%for(PersonalQnA pq : list){ %>
                     <tr align="center">
                     	<input type="hidden" value="<%=pq.getPerNo()%>">
-                    	<td class="tb-zero"><%=pq.getPerNo() %></td>
+                    	<td class="tb-zero"><%=pq.getRnum() %></td>
                         <td class="tb-first"><%=pq.getPerDate() %></td>
                         <td><%=pq.getPerCate() %></td>
                         <td><%=pq.getPerTitle() %></td>
@@ -180,7 +182,7 @@
                     </tr>
                     
                     <tr style="margin-top:30px;">
-						<td colspan="9"><div style="text-aling:center">검색 결과가 없습니다. 다시 검색해주세요.</div></td>
+						<td colspan="9"><div style="text-aling:center">검색 결과가 없습니다.</div></td>
 					</tr> 
                   
                   
@@ -232,21 +234,6 @@
 			<button onclick="location.href='<%=request.getContextPath() %>/personalQnA?currentPage=<%=maxPage %>'"> >> </button>
 		
 	</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
