@@ -40,8 +40,8 @@ public class AdminProductQna extends HttpServlet {
 		// 검색창 구현 시작
 		String searchKind = request.getParameter("searchKind");	// 검색 종류 값
 		String searchText = request.getParameter("searchText"); // 검색 입력창 값
-		String search2 = request.getParameter("searchKind");	// 검색 종류 값
-		String search = request.getParameter("searchText");	// 검색 종류 값
+		String search2 = request.getParameter("search");	// 검색 종류 값
+		String search = request.getParameter("search2");	// 검색 종류 값
 		if(searchText != null) {
 			searchText = request.getParameter("searchText");
 		}else {
