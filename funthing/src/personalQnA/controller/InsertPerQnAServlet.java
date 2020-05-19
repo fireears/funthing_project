@@ -14,7 +14,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import member.model.vo.Member;
 import personalQnA.model.service.PersonalQnAService;
-import personalQnA.model.vo.PersonalQnA;
+import personalQnA.model.vo.PersonalInsert;
 
 /**
  * Servlet implementation class InsertPerQnAServlet
@@ -69,7 +69,7 @@ public class InsertPerQnAServlet extends HttpServlet {
 		
 		// 자동등록방지 인증값 어떻게 받을 건지?
 		
-		PersonalQnA perQA = new PersonalQnA();
+		PersonalInsert perQA = new PersonalInsert();
 		
 		perQA.setPerTitle(q1_tit);		// 게시판 제목
 		perQA.setPerContents(q1_cont);	// 게시판 내용

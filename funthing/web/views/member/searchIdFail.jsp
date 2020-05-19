@@ -6,7 +6,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
-
+<body>	
+	<script>
+		alert("아이디를 잘못 입력하셨습니다.");
+		location.href="<%=request.getContextPath()%>/views/member/searchPwd1.jsp";
+	</script>
 </body>
 </html>

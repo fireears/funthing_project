@@ -1,5 +1,22 @@
+<!-- 상품문의 리스트 페이지_혜린 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="board.model.vo.PageInfo" %>    
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="productQnA.model.vo.ProductQnaIn" %>
+<%
+		ArrayList<ProductQnaIn> list = (ArrayList<ProductQnaIn>)request.getAttribute("list");
+		PageInfo pi = (PageInfo)request.getAttribute("pi");
+		String mNo = (String)request.getAttribute("mNo");
+		
+		int num = 0;
+		int currentPage = pi.getCurrentPage();
+		int listCount = pi.getListCount();
+		int limit = pi.getLimit();
+		int maxPage = pi.getMaxPage();
+		int startPage = pi.getStartPage();
+		int endPage = pi.getEndPage();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -102,7 +119,7 @@
             border-bottom: 1px solid #0f4a7e;
         }
         .list-tb tr{
-            border: 0; padding:0; border-bottom: 1px solid #bbb;
+            border: 0; padding:0; border-bottom: 1px solid #bbb; cursor:pointer;
         }
         .list-tb td{
             text-align: center;
@@ -114,13 +131,16 @@
             width: 200px;
         }
 	
-	
+		#pageBtn {padding:30px;}
+		.pageBtn {color:grey; background:white; border:0;}
+		
+		
 	</style>
 	
 	
 </head>
 <body>
-	
+		
 	<%@ include file="../common/header.jsp" %>
 	
 	<%@ include file="../common/myPageHeader.jsp" %>
@@ -128,21 +148,22 @@
     <div id="content">
         <!-- 오른쪽 컨텐츠 영역 -->
 	<%@ include file="../common/myPageSide.jsp" %>
+	
 	<div id="r-cont"> 
 	<!-- 오른쪽 컨텐츠 수정 영역  -->
             <!-- 오른쪽 컨텐츠 헤더 영역-->
             <div class="r-cont-header">
                
                 <div class="r-cont-text">
-                    <h2>
-                        <b style="color:#0f4a7e;">1:1 문의</b>
-                    </h2>
+                    <h1>
+                        <b style="color:#0f4a7e;">상품 문의</b>
+                    </h1>
                 </div>
 
-                <!-- 1:1 문의하기 버튼 -->
+          <!--       1:1 문의하기 버튼
                 <div class="r-cont-button">
-                    <a href="#">1:1 문의하기</a>
-                </div>
+                    <a href="#">삼품문의하기</a>
+                </div> -->
             
             </div> <!-- 오른쪽 컨텐츠 헤더 end -->
 
@@ -184,7 +205,8 @@
                                 <input type="date" name="second_date">
                             </li>
                             <li>
-                                <input type="submit" id="submit" value="조회">
+                                <input type="button" id="submit" value="조회" >
+                               
                             </li>
                         
                         </ul>
@@ -194,34 +216,74 @@
             </div><!-- 1:1 문의 조회 영역 end -->
 
             <br clear="both">
-
+ 			<a href="<%=request.getContextPath()%>/views/productQnA/productQnAInsert.jsp" >Insert</a>
             <!-- 1:1 문의 조회 결과 영역 -->
             <div class="search-list">
                 <table class="list-tb">
                     <tr>
                         <th class="tb-first">문의날짜</th>
-                        <th>카테고리</th>
+                        <th>상품번호</th>
                         <th>제목</th>
                         <th class="tb-last">문의상태</th>
                     </tr>
-
+                    <%if(!list.isEmpty()){ %>
+				<%for(ProductQnaIn pq : list) {%> 
                     <tr>
-                        <td class="tb-first">2020-05-09</td>
-                        <td>상품문의</td>
-                        <td>상품문의 입니다.</td>
-                        <td class="tb-last">접수완료</td>
+                        <td class="tb-first"><%=pq.getQnaDate() %></td>
+                        <td><%=pq.getpNo() %></td>
+                        <td><%=pq.getQnaTitle() %></td>
+                        <%if(pq.getQnaDate().equals("Y")) {%>
+                        <td class="tb-last">답변완료</td>
+                        <%}else{ %>
+                        <td class="tb-last">답변대기</td>
+                        <%} %>
                     </tr>
-
-                    <tr>
-                        <td class="tb-first">2020-05-09</td>
-                        <td>상품문의</td>
-                        <td>상품문의 입니다.</td>
-                        <td class="tb-last">접수완료</td>
-                    </tr>
+				 <%} %>
+				  <%}else{ %>
+				  <tr><td colspan="4">검색 결과가 없습니다.</td></tr>
+				   <%} %>
                 </table>
 
-
             </div><!-- 1:1 문의 조회 결과 영역 end -->
+	
+			 <!-- 페이징처리 -->
+	         <div id="pageBtn" align="center">
+	        	<button class="pageBtn" onclick="location.href='<%=request.getContextPath() %>/productQnaList?currentPage=1&mNo=<%=mNo%>'"> << </button>
+	        	
+	        	<%if(currentPage == 1) { %>
+	        		<button class="pageBtn" disabled> < </button>
+	        	<%} else {%>
+	        		<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/productQnaList?currentPage=<%=currentPage-1%>&mNo=<%=mNo%>'"> < </button>
+	        	<%} %>
+	        	<%for(int p = startPage; p<=endPage; p++) { %>
+	        	<%	if(p == currentPage) { %>
+	        			<button class="pageBtn" disabled><%=p %></button>
+	        	
+	        	<%	} else{ %>
+	        			<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/productQnaList?currentPage=<%=p%>&mNo=<%=mNo%>'"><%=p %></button>
+	        	<%} %>	
+	        	<%} %>
+	        	
+	        	<%if(currentPage == maxPage) {%>
+	        		<button class="pageBtn" disabled> > </button>
+	        	<%} else { %>
+	        		<button class="pageBtn" onclick="location.href='<%=request.getContextPath() %>/productQnaList?currentPage=<%=currentPage+1 %>&mNo=<%=mNo%>'"> > </button>
+	        	<%} %>
+	        	<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/productQnaList?currentPage=<%=maxPage%>&mNo=<%=mNo%>'"> >> </button>
+	        	
+	        	
+	        </div> 
+
+			<!-- 상품문의 디테일 -->
+			<script>
+				$(function()){
+					$("#list-tb td").click(
+					
+					var mNo = <%=loginUser2.getmNo()%>
+					location.href="<%=request.getContextPath()%>/productQnaDetail?mNo" + mNo
+					)}
+				)}
+			</script>
 
 
 <!-- 이 위까지만 수정하세요 -->

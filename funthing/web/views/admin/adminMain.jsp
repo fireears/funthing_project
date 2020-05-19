@@ -5,6 +5,7 @@
     <%@ page import="java.util.ArrayList" %>
     <%
     	ArrayList<Product> list = (ArrayList<Product>)request.getAttribute("list");
+    	ArrayList<Product> plist = (ArrayList<Product>)request.getAttribute("plist");
     	PageInfo pi = (PageInfo)request.getAttribute("pi");
     	String msg = (String)request.getAttribute("msg");
     	
@@ -52,17 +53,27 @@
 		<div id="nav_section">
 		    <ul>
 		        <li><label>상품번호 : </label><input type="text" class="box" id="p_no" name="p_no"></li>
-		        <li><label>브랜드 : </label><input type="text" class="box" id="b_name" name="b_name"></li>
-		        <li><label>스타일 번호 : </label><input type="text" class="box" id="s_no" name="s_no"></li>
+		        <li><label>브랜드 : </label><input type="text" class="box" id="b_no" name="b_no"></li>
+		        <li><label>스타일 번호 : </label><input type="text" class="box" id="s_no" name="s_no" value="001"></li>
 		        <li><label>상품명 : </label><input type="text" class="box" id="p_name" name="p_name"></li>
-		        <li><label>상품종류 : </label><input type="text" class="box" id="p_category" name="p_category" placeholder="category"></li>
-		        <li><label>상품가격 : </label><input type="number" class="box" id="p_price" name="p_price" min="0" ></li>
-		        <li><label>펀딩 시작 날짜 : </label><input type="date" class="box" id="f_start_date" name="f_start_date" value="sysdate"></li>
-		        <li><label>펀딩 종료 날짜 : </label><input type="date" class="box" id="f_end_date" name="f_end_date"></li>
+		        <li>
+		        	<label>상품종류 : </label>
+		        	<!-- <input type="text" class="box" id="p_category" name="p_category" placeholder="01"> -->
+		        	<select name="pCategory">
+		        		<option value="01">OUTER</option>
+		        		<option value="02">TOP</option>
+		        		<option value="03">BOTTOM</option>
+		        		<option value="04">JEAN</option>
+		        		<option value="05">ONEPICE</option>
+		        	</select>
+		        </li>
+		        <li><label>상품가격 : </label><input type="text" class="box" id="p_price" name="p_price" value="0" ></li>
+		        <li><label>펀딩 시작 날짜 : </label><input type="date" class="box" id="f_start_date" name="f_start_date" value="2000-01-01"></li>
+		        <li><label>펀딩 종료 날짜 : </label><input type="date" class="box" id="f_end_date" name="f_end_date" value="2900-12-31"></li>
 		        <li><label>펀딩 진행 유무 : </label>
 	            <select name="f_yn" id="f_yn" style="height: 28px;">
-	        		<option value="y">진행중</option>
-	        		<option value="n">종료</option>
+	        		<option value="Y">진행중</option>
+	        		<option value="N">종료</option>
 	    		</select>
 				</li>
 				<li><input type="submit" value="조회하기" style="background-color: gray; color: white; border-radius: 5px; border: 0px; width: 80px; height: 30px; font-size: 14px;"></li>
@@ -113,6 +124,9 @@
 				$("#productInsert").click(function(){
 					location.href="<%=request.getContextPath()%>/views/admin/adminProductInsert.jsp";
 				})
+				
+				$("#f_start_date").val(new Date().toDateInputValue());
+				$("#f_end_date").val(new Date().toDateInputValue());
 				
 			})
 			</script>

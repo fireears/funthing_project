@@ -1,15 +1,24 @@
 package admin.model.service;
 
-import static common.JDBCTemplate.*;
+import static common.JDBCTemplate.close;
+import static common.JDBCTemplate.commit;
+import static common.JDBCTemplate.getConnection;
+import static common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.ArrayList;
 
 import admin.model.dao.AdminDao;
 import brand.model.vo.Brand;
+import member.model.vo.Member;
 import payment.model.vo.OrderInfo;
 import payment.model.vo.OrderInfoDetail;
+import personalQnA.model.vo.AdmimPersonalQna;
+import personalQnA.model.vo.PersonalQnA;
+import personalQnA.model.vo.PersonalQnaReply;
 import product.model.vo.Product;
+import productQnA.model.vo.AdminProductQnA;
+import productQnA.model.vo.ProductQnAReply;
 public class AdminService {
 	
 	
@@ -38,7 +47,7 @@ public class AdminService {
 		return list;
 	}
 
-	// 주문관리 페이지_혜린	
+	// 주문관리 페이지 검색_혜린	
 	public ArrayList<OrderInfo> selectOrderSearch(int currentPage, int limit, String searchKind, String searchText) {
 		Connection conn = getConnection();
 		
@@ -75,6 +84,23 @@ public class AdminService {
 		
 		return od;
 		
+	}
+	//  상품문의 페이지_혜린
+	public int getListQnaCount(String searchKind, String searchText) {
+		Connection  conn = getConnection();
+		int result = new AdminDao().getListQnaCount(conn,searchText,searchKind);
+		
+		close(conn);
+		return result;
+	}
+
+	// 상품문의 페이지 검색_혜린
+	public ArrayList<AdminProductQnA> selectTenProductQnaList(int currentPage, int limit, String searchKind ,String searchText ) {
+		Connection conn = getConnection(); 
+		ArrayList<AdminProductQnA> list = new AdminDao().selectTenProductQnaList(conn,currentPage, limit, searchKind,searchText);
+		
+		close(conn);
+		return list;
 	}
 
 	public Product selectOneProductDetail(String pNo) {
@@ -119,6 +145,29 @@ public class AdminService {
 		return result;
 	}
 
+	// 상품문의 댓글 페이지_혜린
+	public ArrayList<ProductQnAReply> insertReply(ProductQnAReply r) {
+		Connection conn = getConnection();
+		
+		// BoardDao 메소드 두개를 호출하기 때문에 그냥 참조변수로 선언하자
+		AdminDao bDao = new AdminDao();
+		
+		int result = bDao.insertReply(conn, r);
+		// BoardDao로 가서 insertReply 메소드 완성시키고오자
+		
+		
+		ArrayList<ProductQnAReply> rlist = null;
+		
+		if(result > 0) {
+			commit(conn);
+			rlist = bDao.selectReplyList(conn, r.getQnaNo());
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return rlist;
+	}
+
 	
 	// 브랜드 관리자 페이지(리스트 카운트 메소드)_희지
 	public int getBrandListCount() {
@@ -158,6 +207,8 @@ public class AdminService {
 			rollback(conn);
 		}
 		
+		close(conn);
+		
 		return result;
 	}
 
@@ -188,6 +239,8 @@ public class AdminService {
 			rollback(conn);
 		}
 		
+		close(conn);
+		
 		return result;
 	}
 
@@ -204,7 +257,106 @@ public class AdminService {
 			rollback(conn);
 		}
 		
+		close(conn);
+		
 		return result;
+	}
+	
+	// 멤버 select_진교 
+	public ArrayList<Member> selectList(int currentPage, int limit, String userName, String userId) {
+		Connection conn = getConnection();
+		
+		ArrayList<Member> list = new AdminDao().selectList(conn, currentPage, limit, userName, userId);
+		
+		close(conn);
+		
+		return list;
+	}
+
+
+
+	// 1:1문의 페이지 검색_햬린
+	public ArrayList<AdmimPersonalQna> selectTenPersonQnaList(int currentPage, int limit, String searchKind,String searchText) {
+		Connection conn = getConnection(); 
+		ArrayList<AdmimPersonalQna> list = new AdminDao().selectTenPersonQnaList(conn,currentPage, limit , searchKind,searchText);
+		
+		close(conn);
+		
+		
+		return list;
+	}
+
+	public int insertPersonalReply(PersonalQnaReply re) {
+		Connection conn = getConnection();
+		
+		int result = new AdminDao().insertMember(conn,re);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;	}
+
+
+
+
+
+
+	// 브랜드 search_희지
+	public ArrayList<Brand> searchBrand(int currentPage, int limit, String searchKind, String searchVal) {
+		Connection conn = getConnection();
+		
+		ArrayList<Brand> list = new AdminDao().searchBrand(conn, currentPage, limit, searchKind, searchVal);
+	
+		close(conn);
+		
+		
+		return list;
+	}
+
+	
+
+	public int productInsert(Product p) {
+		Connection conn = getConnection();
+		
+		int result = new AdminDao().productInsert(conn, p);
+		
+		if(result > 0)
+		{
+			commit(conn);
+		}
+		else
+		{
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+	
+	// 1:1문의 페이지_혜린
+	public int getListPerQnaCount() {
+		Connection  conn = getConnection();
+		int result = new AdminDao().getListPerQnaCount(conn);
+		
+		close(conn);
+		return result;
+
+	}
+
+
+	public ArrayList<Product> productSearch(Product p) {
+		Connection conn = getConnection();
+		
+		ArrayList<Product> plist = new ArrayList<>();
+		
+		plist = new AdminDao().Productsearch(conn, p);
+		
+		close(conn);
+		return plist;
+
 	}
 
 

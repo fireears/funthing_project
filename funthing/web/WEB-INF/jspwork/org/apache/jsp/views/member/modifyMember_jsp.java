@@ -390,7 +390,7 @@ public final class modifyMember_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("                        <label>*이메일</label>\r\n");
       out.write("                    </td>\r\n");
       out.write("                    <td id=\"inp\">\r\n");
-      out.write("                        <input type=\"email\" id=\"email\" name=\"eamil\" required>\r\n");
+      out.write("                        <input type=\"email\" id=\"email\" name=\"email\" required>\r\n");
       out.write("                    </td>\r\n");
       out.write("                </tr>\r\n");
       out.write("                <tr>\r\n");

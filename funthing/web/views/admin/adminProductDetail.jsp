@@ -56,7 +56,7 @@
 	                        		<option value="GN">GREEN</option>
 	                        	</select>
 	                        </td> -->
-	                        <th>product_size</th><td><input type="text" name="size" value="<%=p.getP_size() %>"></td>
+	                        <th>product_size</th><td><input type="text" name="size" value="<%=p.getP_size() %>" style="background-color: rgb(207, 205, 205);" readonly></td>
 	                    </tr>
 	                    <tr>
 	                        <th>retail_price</th><td><input type="text" name="retail_price" value="<%=p.getRetailPrice() %>"></td>

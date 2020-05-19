@@ -1,11 +1,17 @@
-	// admin 주문관리 페이지_혜린	
+// admin 주문관리 페이지_혜린	
 package payment.model.vo;
 
-public class OrderInfoDetail {
+import java.io.Serializable;
+
+public class OrderInfoDetail  implements Serializable	{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5320922386891009315L;
 	private String oDate;		// 주문일자
 	private String rcvName;		// 받을사람 성함
 	private String rcvAdrs;		// 주소
-	private int rcvPhone;	// 전화번호
+	private int rcvPhone;		// 전화번호
 	private String commentt;	// 남기실 말
 	private int exptPoint;		// 예정적립금
 	private String pNo;			// 상품번호
