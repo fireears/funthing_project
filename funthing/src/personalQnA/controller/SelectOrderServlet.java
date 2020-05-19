@@ -45,7 +45,6 @@ public class SelectOrderServlet extends HttpServlet {
 
 		ArrayList<OrderInfoDetail> oiList = perQAservice.orderListView(userId);
 		
-
 		RequestDispatcher view = null;
 		if(!oiList.isEmpty()) {
 			view = request.getRequestDispatcher("views/personalQnA/orderSelectPage.jsp");

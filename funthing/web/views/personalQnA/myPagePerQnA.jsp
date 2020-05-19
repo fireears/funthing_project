@@ -139,6 +139,7 @@
                         <button type="submit" class="btn submit">등록</button>
                         <button type="reset" class="btn cancel">취소</button>
                     </div>
+				    <input type="hidden" id = "hd_oNo" name ="hd_oNo">
                 </form>
             </div>
         </div>
@@ -159,7 +160,7 @@
     				$("#orderSelectWrap").show();
     				$(".close").click(function(){
     					$("#orderSelectWrap").hide();
-      		    	 	$(".oiCont").detach();	// 데이터가 쌓이지 않게 입력값 삭제해줌
+      		    	 	$(".oiCont").empty();	// 데이터가 쌓이지 않게 입력값 삭제해줌
     				});
     				
     				 $.each(data, function(index, value){
@@ -182,6 +183,8 @@
     					 $tr.append($tdmName);
     					 $tr.append($tdTp);
     					 
+    					 console.log(value.oipNo);
+    					 
     					 $(".os_tb").children().append($tr);
     					 
     				 }); 
@@ -194,14 +197,18 @@
 	            		console.log(selectVal);
 	            		
     			            var bool = $(this).prop("checked");
-			            	$(".q1_selList").text(selectVal);	// 주문 번호 페이지로 넘겨줌 // 얘는 라디오 누르자마자
+			            	 $(".q1_selList").text(selectVal);	// 주문 번호 페이지로 넘겨줌 // 얘는 라디오 누르자마자
+			            	 var sel = $(".q1_selList").text();
+			            	 
+			            	$("#hd_oNo").val(sel);
+			            	
     			            if(bool){
     			            	// 체크 값이 있을 때
     			            	$(".oi_btns .submit").click(function(){
     				            	//$(".q1_selList").text(selectVal);	// 주문 번호 페이지로 넘겨줌 // 얘는 ok 눌러야
     			            		<%-- location.href="<%=request.getContextPath()%>/InsertPerQnA"; --%>
     			            		$("#orderSelectWrap").hide();
-    		      		    	 	$(".oiCont").detach();	// 데이터가 쌓이지 않게 입력값 삭제해줌
+    		      		    	 	$(".oiCont").empty();	// 데이터가 쌓이지 않게 입력값 삭제해줌
     			            	});
     			            	
     			            }else{

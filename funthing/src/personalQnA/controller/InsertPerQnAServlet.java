@@ -3,6 +3,7 @@ package personalQnA.controller;
 import java.io.File;
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -50,10 +51,9 @@ public class InsertPerQnAServlet extends HttpServlet {
 		
 		String q1_tit = multiRequest.getParameter("q1_tit");
 		
-		// 주문 내역 어케 받지??
-		String q1_oNo = multiRequest.getParameter("ioChk");
+		// 주문 내역 
+		String q1_oNo = multiRequest.getParameter("hd_oNo");
 		
-//		System.out.println(q1_oNo);
 		
 		String q1_type = multiRequest.getParameter("q1_type");
 		// 로그인 유저 아이디값 받아옴
@@ -65,6 +65,16 @@ public class InsertPerQnAServlet extends HttpServlet {
 		String q1_saveFile = multiRequest.getFilesystemName("q1_file");
 		String q1_originFile = multiRequest.getOriginalFileName("q1_file");
 		
+		// 확장자 잘라주기
+		
+		if(q1_saveFile != null) {
+			int q1_imgDot = q1_saveFile.indexOf(".");
+			q1_saveFile = q1_saveFile.substring(0, q1_imgDot);
+			
+			System.out.println(q1_saveFile);
+		}
+		
+		// 내용
 		String q1_cont = multiRequest.getParameter("q1_cont");
 		
 		// 자동등록방지 인증값 어떻게 받을 건지?
@@ -82,7 +92,8 @@ public class InsertPerQnAServlet extends HttpServlet {
 		
 		if(result > 0) {
 //			response.sendRedirect("perQnAlist");	// list Servlet으로 연결해주기
-			System.out.println("insert 성공");
+			//System.out.println("insert 성공");
+			response.sendRedirect("PersonalQnA");
 			
 		}else {
 
@@ -91,6 +102,7 @@ public class InsertPerQnAServlet extends HttpServlet {
 			failedFile.delete();
 		}
 	 
+		
 	}
 
 	/**
