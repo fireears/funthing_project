@@ -1,4 +1,4 @@
-// 일대일 문의_희지
+
 package personalQnA.model.vo;
 
 import java.sql.Date;
@@ -162,5 +162,4 @@ public class PersonalQnA {
 		
 
 	}
-
 
