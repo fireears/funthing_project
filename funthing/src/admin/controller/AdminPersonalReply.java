@@ -33,12 +33,12 @@ public class AdminPersonalReply extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		int num = Integer.valueOf(request.getParameter("rownum"));
+//		int num = Integer.valueOf(request.getParameter("rownum"));
 		int perQnaNo = Integer.valueOf(request.getParameter("perQnaNo"));
 		String mId = request.getParameter("tossmId");
 		String reply = request.getParameter("replyContent");
 		
-		PersonalQnaReply re = new PersonalQnaReply(num, perQnaNo,mId,reply);
+		PersonalQnaReply re = new PersonalQnaReply(perQnaNo,mId,reply);
 		int result = new AdminService().insertPersonalReply(re);
 		
 		if(result>0) {

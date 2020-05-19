@@ -9,7 +9,7 @@ public class PersonalQnaReply implements Serializable	 {
 	 * 
 	 */
 	private static final long serialVersionUID = -15818897414227831L;
-	private int pqreNo;				// 1:1답변 번호(관리자)
+//	private int pqreNo;				// 1:1답변 번호(관리자)
 	private String pqreId;			// 관리자 아이디
 	private String pqreContent;		// 관리자 답변내용
 	private String pqreDate;		// 관리자 답변날짜
@@ -18,29 +18,29 @@ public class PersonalQnaReply implements Serializable	 {
 		super();
 	}
 	
-	public PersonalQnaReply(int pqreNo, int perQnaNo,String pqreId, String pqreContent) {
+	public PersonalQnaReply( int perQnaNo,String pqreId, String pqreContent) {
 		super();
-		this.pqreNo = pqreNo;
+	
 		this.perQnaNo = perQnaNo;
 		this.pqreId = pqreId;
 		this.pqreContent = pqreContent;
 		
 	}
 
-	public PersonalQnaReply(int pqreNo, String pqreId, String pqreContent, String pqreDate, int perQnaNo) {
+	public PersonalQnaReply(String pqreId, String pqreContent, String pqreDate, int perQnaNo) {
 		super();
-		this.pqreNo = pqreNo;
+		
 		this.pqreId = pqreId;
 		this.pqreContent = pqreContent;
 		this.pqreDate = pqreDate;
 		this.perQnaNo = perQnaNo;
 	}
-	public int getPqreNo() {
-		return pqreNo;
-	}
-	public void setPqreNo(int pqreNo) {
-		this.pqreNo = pqreNo;
-	}
+//	public int getPqreNo() {
+//		return pqreNo;
+//	}
+//	public void setPqreNo(int pqreNo) {
+//		this.pqreNo = pqreNo;
+//	}
 	public String getPqreId() {
 		return pqreId;
 	}
