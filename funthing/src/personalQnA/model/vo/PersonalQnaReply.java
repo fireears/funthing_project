@@ -67,7 +67,7 @@ public class PersonalQnaReply implements Serializable	 {
 	}
 	@Override
 	public String toString() {
-		return "PersonalQnaReply [pqreNo=" + pqreNo + ", pqreId=" + pqreId + ", pqreContent=" + pqreContent
+		return "PersonalQnaReply [pqreNo=" +  ", pqreId=" + pqreId + ", pqreContent=" + pqreContent
 				+ ", pqreDate=" + pqreDate + ", perQnaNo=" + perQnaNo + "]";
 	}
 	

@@ -337,9 +337,9 @@ public class AdminService {
 	}
 	
 	// 1:1문의 페이지_혜린
-	public int getListPerQnaCount() {
+	public int getListPerQnaCount(String searchKind, String searchText) {
 		Connection  conn = getConnection();
-		int result = new AdminDao().getListPerQnaCount(conn);
+		int result = new AdminDao().getListPerQnaCount(conn,searchText,searchKind);
 		
 		close(conn);
 		return result;

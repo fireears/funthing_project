@@ -234,6 +234,11 @@ public class AdminDao {
 				String query = "SELECT COUNT(*) FROM QNA";
 				pstmt = conn.prepareStatement(query);
 				rset =  pstmt.executeQuery();
+				
+			}else if(searchKind != null && searchText == "") {
+				String query = "SELECT COUNT(*) FROM QNA";
+				pstmt = conn.prepareStatement(query);
+				rset =  pstmt.executeQuery();
 			}else if(searchKind != null && searchText != null) {
 				String query = "SELECT COUNT(*) FROM QNA WHERE "+searchKind+"= ?";
 				pstmt = conn.prepareStatement(query);
@@ -1114,6 +1119,45 @@ public class AdminDao {
 		
 		
 		return list;
+	}
+
+	public int getListPerQnaCount(Connection conn, String searchText, String searchKind) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
+				
+		try {
+		
+			if(searchKind== null && searchText == null) {
+				String query = "SELECT COUNT(*) FROM PERSONAL_QNA";
+				pstmt = conn.prepareStatement(query);
+				rset =  pstmt.executeQuery();
+				
+			}else if(searchKind != null && searchText == "") {
+				String query = "SELECT COUNT(*) FROM PERSONAL_QNA";
+				pstmt = conn.prepareStatement(query);
+				rset =  pstmt.executeQuery();
+			}else if(searchKind != null && searchText != null) {
+				String query = "SELECT COUNT(*) FROM PERSONAL_QNA WHERE "+searchKind+"= ?";
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, searchText);
+				rset =  pstmt.executeQuery();
+			}
+			
+			if(rset.next()) {
+				result = rset.getInt(1);
+			}
+			System.out.println("dao result : " + result);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		
+		return result;
 	}
 
 
