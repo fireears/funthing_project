@@ -20,7 +20,7 @@
 		
   		  <script src="https://kit.fontawesome.com/39b470622c.js" crossorigin="anonymous"></script>
 		<script src="<%=request.getContextPath()%>/js/action.js"></script>
-		<!--script src="<%=request.getContextPath()%>/js/swiper.min.js"></script-->
+		<!--script src="<!--%=request.getContextPath()%>/js/swiper.min.js"></script-->
 		<script type="text/javascript" src="<%=request.getContextPath()%>/slick/slick.min.js"></script>
 	</head>
 	<body>

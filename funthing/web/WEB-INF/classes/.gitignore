@@ -1,2 +1,14 @@
+<<<<<<< HEAD
 /admin/
 /product/
+=======
+/main/
+/member/
+/notice/
+/payment/
+/personalQnA/
+/product/
+/productQnA/
+/review/
+/wrapper/
+>>>>>>> refs/remotes/origin/master
