@@ -19,7 +19,7 @@
     	//돈 , 표시에 필요한 객체
     	DecimalFormat formatter = new DecimalFormat("###,###");
     %>
-     
+      
 <!DOCTYPE html>
 <html>
 	<head>
