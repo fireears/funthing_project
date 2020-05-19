@@ -60,7 +60,7 @@ public class AdminDao {
 		
 		int startRow = (currentPage - 1)*limit +1;
 		int endRow = startRow + limit -1;
-		String query = "SELECT P_NO, P_NAME, P_CATEGORY, RETAIL_PRICE, DC_RATE, P_PRICE, F_YN, F_START_DATE, F_END_DATE FROM PRODUCTLIST WHERE RNUM BETWEEN ? AND ?";
+		String query = "SELECT RNUM, P_NO, P_NAME, P_CATEGORY, RETAIL_PRICE, DC_RATE, P_PRICE, F_YN, F_START_DATE, F_END_DATE FROM PRODUCTLIST WHERE RNUM BETWEEN ? AND ?";
 		
 //		System.out.println("새로 list담자");
 		try {
@@ -73,6 +73,7 @@ public class AdminDao {
 			while(rset.next())
 			{
 				p = new Product();
+				p.setrNum(rset.getInt("rnum"));
 				p.setpNo(rset.getString("p_no"));
 				p.setpName(rset.getString("p_name"));
 				p.setpCategory(rset.getInt("p_category"));
@@ -944,6 +945,9 @@ public class AdminDao {
 	}
 
 
+	
+
+
 	// 1:1문의게시판_혜린
 	public int getListPerQnaCount(Connection conn) {
 		PreparedStatement pstmt = null;
@@ -973,12 +977,16 @@ public class AdminDao {
 	}
 
 
-	public ArrayList<Product> Productsearch(Connection conn, Product p) {
+//	public ArrayList<Product> Productsearch(Connection conn, Product p) {
+	public ArrayList<Product> Productsearch(Connection conn, Product p, int currentPage, int limit) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
 		Product product = null;
 		ArrayList<Product> plist = new ArrayList<>();
+		
+		int startRow = (currentPage - 1)*limit +1;
+		int endRow = startRow + limit -1;
 		
 		String pNo = p.getpNo();
 		String bNo = p.getbNo();
@@ -991,46 +999,46 @@ public class AdminDao {
 		String fYn = p.getfYn();
 		
 
-		String query = "SELECT * FROM PRODUCTLIST\r\n" + 
-						"WHERE P_NO = ?\r\n" + 
-						"UNION\r\n" + 
-						"SELECT * FROM PRODUCTLIST\r\n" + 
-						"WHERE B_NO = ?\r\n" + 
-						"INTERSECT\r\n" + 
-						"SELECT * FROM PRODUCTLIST\r\n" + 
-						"WHERE S_NO = ?\r\n" + 
-						"INTERSECT\r\n" + 
-						"SELECT * FROM PRODUCTLIST\r\n" + 
-						"WHERE P_CATEGORY = ?\r\n" + 
-						"INTERSECT\r\n" + 
-						"SELECT * FROM PRODUCTLIST\r\n" + 
-						"WHERE P_PRICE >= ?\r\n" + 
-						"INTERSECT\r\n" + 
-						"SELECT * FROM PRODUCTLIST\r\n" + 
-						"WHERE F_START_DATE >= ? AND F_END_DATE <= ?\r\n" + 
-						"UNION\r\n" + 
-						"SELECT * FROM PRODUCTLIST\r\n" + 
-						"WHERE P_NAME = ? INTERSECT SELECT * FROM PRODUCTLIST WHERE F_YN = ?";
+		String query = "SELECT ROWNUM RNUM, P_NO, B_NO, S_NO, P_NAME, P_CATEGORY, RETAIL_PRICE, DC_RATE, P_PRICE, F_YN, F_START_DATE, F_END_DATE\r\n" + 
+						"FROM(\r\n" + 
+						"    SELECT ROWNUM RNUM, P_NO, B_NO, S_NO, P_NAME, P_CATEGORY, RETAIL_PRICE, DC_RATE, P_PRICE, F_YN, F_START_DATE, F_END_DATE\r\n" + 
+						"    FROM(\r\n" + 
+						"            SELECT ROWNUM RNUM, P_NO, B_NO, S_NO, P_NAME, P_CATEGORY, RETAIL_PRICE, DC_RATE, P_PRICE, F_YN, F_START_DATE, F_END_DATE\r\n" + 
+						"            FROM PRODUCTLIST\r\n" + 
+						"            WHERE (((P_NO = ? OR B_NO = ?) ) OR P_NAME = ?) AND S_NO >= ? AND P_CATEGORY = ?  \r\n" + 
+						"        )\r\n" + 
+						"    WHERE P_PRICE >= ? AND F_YN = ?\r\n" + 
+						"    )\r\n" + 
+						"WHERE F_START_DATE >= ? AND F_END_DATE <= ? AND RNUM BETWEEN ? AND ?";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, pNo);
 			pstmt.setString(2, bNo);
-			pstmt.setInt(3, sNo);
-			pstmt.setInt(4, pCategory);
-			pstmt.setInt(5, pPrice);
-			pstmt.setDate(6, fStartDate);
-			pstmt.setDate(7, fEndDate);
-			pstmt.setString(8, pName);
-			pstmt.setString(9, fYn);
+			pstmt.setString(3, pName);
+			pstmt.setInt(4, sNo);
+			pstmt.setInt(5, pCategory);
+			pstmt.setInt(6, pPrice);
+			pstmt.setString(7, fYn);
+			pstmt.setDate(8, fStartDate);
+			pstmt.setDate(9, fEndDate);
+			pstmt.setInt(10, startRow);
+			pstmt.setInt(11, endRow);
+			
 			rset = pstmt.executeQuery();
 			
 			while(rset.next())
 			{
-				product = new Product(rset.getString("p_no"), rset.getString("b_no"), rset.getString("p_name"),
-										rset.getInt("p_category"), rset.getInt("s_no"), 
-										rset.getInt("p_price"), rset.getDate("f_start_date"),
-										rset.getDate("f_end_date"), rset.getString("f_yn"));
+				product = new Product( rset.getString("p_no"), 
+										rset.getString("p_name"),  
+										rset.getInt("retail_price"), 
+										rset.getInt("dc_rate"), 
+										rset.getInt("p_price"), 
+										rset.getInt("p_category"),
+										rset.getDate("f_start_date"),
+										rset.getDate("f_end_date"),
+										rset.getString("f_yn"), 
+										rset.getInt("rnum"));
 				
 				plist.add(product);
 			}
@@ -1044,6 +1052,55 @@ public class AdminDao {
 			close(rset);
 		}
 		return plist;
+	}
+
+	public int getListCount(Connection conn, Product p) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		int result = 0;
+		
+		String query = "SELECT count(*)\r\n" + 
+				"FROM(\r\n" + 
+				"    SELECT ROWNUM RNUM, P_NO, B_NO, S_NO, P_NAME, P_CATEGORY, RETAIL_PRICE, DC_RATE, P_PRICE, F_YN, F_START_DATE, F_END_DATE\r\n" + 
+				"    FROM(\r\n" + 
+				"            SELECT ROWNUM RNUM, P_NO, B_NO, S_NO, P_NAME, P_CATEGORY, RETAIL_PRICE, DC_RATE, P_PRICE, F_YN, F_START_DATE, F_END_DATE\r\n" + 
+				"            FROM PRODUCTLIST\r\n" + 
+				"            WHERE ((P_NO = ? OR B_NO = ?)  OR P_NAME = ?) AND S_NO >= ? AND P_CATEGORY = ?  \r\n" + 
+				"        )\r\n" + 
+				"    WHERE P_PRICE >= ? AND F_YN = ?\r\n" + 
+				"    )\r\n" + 
+				"WHERE F_START_DATE >= ? AND F_END_DATE <= ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setString(1, p.getpNo());
+			pstmt.setString(2, p.getbNo());
+			pstmt.setString(3, p.getpName());
+			pstmt.setInt(4, p.getsNo());
+			pstmt.setInt(5, p.getpCategory());
+			pstmt.setInt(6, p.getpPrice());
+			pstmt.setString(7, p.getfYn());
+			pstmt.setDate(8, p.getfStartDate());
+			pstmt.setDate(9, p.getfEndDate());
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next())
+			{
+				result = rset.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally
+		{
+			close(pstmt);
+			close(rset);
+		}
+		return result;
 	}
 
 	
