@@ -117,11 +117,13 @@
 	            	<td colspan="7">
 	            	<div id="contDiv">
 	            		<span class="info">번호 : </span><span><%=pq.getQnaNo() %></span><br><br>
-	            		<span class="info">회원번호 : </span><span><%=pq.getmId() %></span><br><br>
-	            		<span class="info">회원아이디 : </span><span><%=pq.getpNo() %></span><br><br>
-	            		<span class="info">회원이름 : </span><span><%=pq.getpName() %></span><br><br>
+	            		<%-- <span class="info">회원번호 : </span><span><%=pq.getmNo() %></span><br><br> --%>
+	            		<span class="info">회원아이디 : </span><span><%=pq.getmId() %></span><br><br>
+	            		<span class="info">회원이름 : </span><span><%=pq.getmName() %></span><br><br>
+	            		<span class="info">상품이름 : </span><span><%=pq.getpName() %></span><br><br>
 	            		<span class="info">제목 : </span><span><%=pq.getQnaTitle() %></span><br><br>
-	            		<span class="info">내용 : </span><span><%=pq.getQnaDate() %></span><br><br>
+	            		<span class="info">내용 : </span><span><%=pq.getQnaContents() %></span><br><br>
+	            		<span class="info">작성날짜 : </span><span><%=pq.getQnaDate() %></span><br><br>
 	           	
 	            		 <!-- 댓글 -->
 	            		<h3>관리자 답변</h3>
@@ -132,7 +134,7 @@
 	            				<tr>
 	            					
 	            					<input type="hidden" name="proQnaNo" value="<%=pq.getQnaNo() %>">
-	            					<input type="hidden" name="tossmId" value="<%=pq.getmNo() %>">
+	            					<input type="hidden" name="tossmId" value="<%=pq.getmId() %>">
 	            					<td width=220px;  ><textArea rows="4" cols="220" id="replyContent" name="replyContent"></textArea></td>
 	            					<td><button type="submit" id="seachBtn" >답변등록</button></td>
 	            				</tr>

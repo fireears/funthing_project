@@ -409,6 +409,21 @@ public class AdminService {
 		close(conn);
 		return listCount;
 	}
+	// 상품문의 관리자페이지 답변_혜린
+	public int insertProductReply(AdminProductQnA re) {
+		Connection conn = getConnection();
+		
+		int result = new AdminDao().insertProductRe(conn,re);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;	
+	}
 
 	
 	

@@ -752,11 +752,12 @@ public class AdminDao {
 				pstmt.setInt(2, endRow);
 			}else if(searchKind != null && searchText != null) {
 				query = "select rnum,PER_QNA_NO,m_id,m_name,PER_TITLE,PER_CONTENTS, P_NO,p_name,PER_RE_YN,ADDFILE,O_NO,PER_CATE "+
-						"from (select PER_QNA_NO,m_id,m_name,PER_TITLE,PER_CONTENTS, pq.P_NO,p_name,PER_RE_YN,ADDFILE,O_NO,PER_CATE, rownum as rnum from personal_qna pq join member m on pq.m_no = m.m_no join product p on pq.p_no = p.p_no ) "+
+						"from (select PER_QNA_NO,m_id,m_name,PER_TITLE,PER_CONTENTS, pq.P_NO,p_name,PER_RE_YN,ADDFILE,O_NO,PER_CATE, rownum as rnum from personal_qna pq join member m on pq.m_no = m.m_no join product p on pq.p_no = p.p_no where " +searchKind +"= ?) "+
 						"where rnum  BETWEEN ? AND ?  order by rnum";
 
 				pstmt = conn.prepareStatement(query);
-				pstmt.setString(1, searchText);			
+				/* pstmt.setString(1, searchKind); */
+				 pstmt.setString(1, searchText);  
 				pstmt.setInt(2, startRow);
 				pstmt.setInt(3, endRow);
 				
@@ -1288,6 +1289,31 @@ public class AdminDao {
 			close(rset);
 		}
 		
+		
+		return result;
+	}
+
+	// 상품문의 관리자페이지 답변_혜린
+	public int insertProductRe(Connection conn, AdminProductQnA re) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "INSERT INTO QNARE VALUES(SEQ_QNARE.NEXTVAL,?,?,'MASTER',?, SYSDATE)";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, re.getQnaNo());
+			pstmt.setString(2, re.getmId());
+			pstmt.setString(3, re.getQnareContent());
+			
+			result = pstmt.executeUpdate();
+			System.out.println("dao에서 회원가입 결과 : " + result);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
 		
 		return result;
 	}
