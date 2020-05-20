@@ -10,7 +10,9 @@ import java.util.ArrayList;
 
 import admin.model.dao.AdminDao;
 import payment.model.vo.OrderInfo;
+import payment.model.vo.OrderInfoDetail;
 import productQnA.model.dao.ProductQnADao;
+import productQnA.model.vo.AdminProductQnA;
 import productQnA.model.vo.ProductQnA;
 import productQnA.model.vo.ProductQnaIn;
 public class ProductQnAService {
@@ -65,5 +67,18 @@ public class ProductQnAService {
 		close(conn);
 		return list;
 	}
+
+	
+	// 상품문의 페이지 (클라이언트) 상세 페이지_혜린
+	public AdminProductQnA ProductQnaDetail(String mNo, String qnaNo) {
+		Connection conn = getConnection();
+		AdminProductQnA apq = new ProductQnADao().ProductQnaDetail(conn,mNo, qnaNo);
+		
+		close(conn);
+		
+		
+		return apq;
+	}
+
 
 }

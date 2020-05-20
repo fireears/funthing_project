@@ -12,7 +12,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
-
+import payment.model.vo.OrderInfoDetail;
+import productQnA.model.vo.AdminProductQnA;
 import productQnA.model.vo.ProductQnA;
 import productQnA.model.vo.ProductQnaIn;
 
@@ -171,6 +172,35 @@ public class ProductQnADao {
 		}
 		
 		return list;
+	}
+	// 상품문의 (클라이언트) 상세페이지_혜린
+	public AdminProductQnA ProductQnaDetail(Connection conn, String mNo, String qnaNo) {
+		
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			AdminProductQnA od = null;
+			
+			String query = "SELECT * FROM ORDER_DETAIL WHERE m_no = ? and ";
+			try {
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1,mNo);
+				
+				rset = pstmt.executeQuery();
+				
+				if(rset.next()) {
+					
+
+				}
+//				System.out.println("Dao od : " + od);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				close(pstmt);
+				close(rset);
+			}
+			
+			return od;
 	}
 
 }
