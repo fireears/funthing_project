@@ -3,6 +3,7 @@
     <%@ page import="board.model.vo.PageInfo" %>
     <%@ page import="product.model.vo.Product" %>
     <%@ page import="java.util.ArrayList" %>
+    <%@ page import="java.text.DecimalFormat" %>
     <%
     	ArrayList<Product> list = (ArrayList<Product>)request.getAttribute("list");
     	ArrayList<Product> plist = (ArrayList<Product>)request.getAttribute("plist");
@@ -10,6 +11,8 @@
     	
     	PageInfo pi = (PageInfo)request.getAttribute("pi");
     	String msg = (String)request.getAttribute("msg");
+    	
+    	DecimalFormat formatter = new DecimalFormat("###,###");
     	
     	int num = 0;
     	int currentPage = pi.getCurrentPage();
@@ -114,7 +117,7 @@
 	        <%} %>
 	    </div>
 	</form>
-
+	
 
 	<br>
 	<hr clear="both">
@@ -130,11 +133,12 @@
                 </tr>
                 <%if(!list.isEmpty()) { %>
 	            <%for(Product p : list) {
-	            	
+	            	int retailPrice = p.getRetailPrice();
+	            	int pPrice = p.getpPrice();
 	            %>
 	            <tr align="center">
 	            	<input type="hidden" value="<%=p.getpNo() %>">
-	            	<td><%=p.getrNum() %></td> <td><%=p.getpNo() %></td> <td><%=p.getpName() %></td> <td><%=p.getpCategory() %></td> <td><%=p.getRetailPrice() %></td> <td><%=p.getDcRate() %></td> <td><%=p.getpPrice() %></td> <td><%=p.getfYn() %></td> <td><%=p.getfStartDate() %></td> <td><%=p.getfEndDate() %></td>
+	            	<td><%=p.getrNum() %></td> <td><%=p.getpNo() %></td> <td><%=p.getpName() %></td> <td><%=p.getpCategory() %></td> <td><%=formatter.format(retailPrice) %></td> <td><%=p.getDcRate() %>%</td> <td><%=formatter.format(pPrice) %></td> <td><%=p.getfYn() %></td> <td><%=p.getfStartDate() %></td> <td><%=p.getfEndDate() %></td>
 	            	
 	            </tr>
                 <%} %>
