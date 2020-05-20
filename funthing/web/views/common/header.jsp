@@ -59,23 +59,23 @@
 	            <nav id="nav">
 	                <ul>
 	                    <li>
-	                        <a href="<%=request.getContextPath()%>/WomenServlet?type=<%=0%>">WOMAN</a>
+	                        <a href="<%=request.getContextPath()%>/WomenServlet">WOMAN</a>
 	                        <ul class="sub-menu">
-	                            <li><a href="<%=request.getContextPath() %>/WomenServlet?type=<%=1%>'">OUTER</a></li>
-	                            <li><a href="#none">TOP</a></li>
-	                            <li><a href="#none">BOTTOM</a></li>
-	                            <li><a href="#none">JEAN</a></li>
-	                            <li><a href="#none">ONEPIECE</a></li>
+	                            <li><a href="<%=request.getContextPath() %>/WomenOuterServlet">OUTER</a></li>
+	                            <li><a href="<%=request.getContextPath() %>/WomenTopServlet">TOP</a></li>
+	                            <li><a href="<%=request.getContextPath() %>/WomenBottomServlet">BOTTOM</a></li>
+	                            <li><a href="<%=request.getContextPath() %>/WomenJeanServlet">JEAN</a></li>
+	                            <li><a href="<%=request.getContextPath() %>/WomenOnepieceServlet">ONEPIECE</a></li>
 	                        </ul>
 	                    </li>
 	                    <li>
 	                    
-	                        <a href="#none">MAN</a>
+	                        <a href="<%=request.getContextPath()%>/ManServlet">MAN</a>
 	                        <ul class="sub-menu">
-	                            <li><a href="#none">OUTER</a></li>
-	                            <li><a href="#none">TOP</a></li>
-	                            <li><a href="#none">BOTTOM</a></li>
-	                            <li><a href="#none">JEAN</a></li>
+	                            <li><a href="<%=request.getContextPath() %>/ManOuterServlet">OUTER</a></li>
+	                            <li><a href="<%=request.getContextPath() %>/ManTopServlet">TOP</a></li>
+	                            <li><a href="<%=request.getContextPath() %>/ManBottomServlet">BOTTOM</a></li>
+	                            <li><a href="<%=request.getContextPath() %>/ManJeanServlet">JEAN</a></li>
 	                        </ul>
 	                    </li>
 	                    <li><a href="<%=request.getContextPath()%>/CalendarSelect">CALENDAR</a></li>

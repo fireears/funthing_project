@@ -151,10 +151,10 @@
    </div>
       <div class="prod_area">
          <ul class="product">
-           <% 
+            <% 
          if(list!=null){
                 for(int i =0;i<list.size();i++){
-                	if(i%4==0||i==0){
+  
                 	%>
             <li>
                <div class="prod-img">
@@ -163,54 +163,11 @@
                <ul class="prod-cont">
                      <li class="prod-brand"><a href="#none"><%=list.get(i).getP_name()%></a></li>
                      <li class="prod-tit"><a href="#none"><%=list.get(i).getP_type()%></a></li>
-                     <li class="prod_price"><span class="origin_p"><%=list.get(i).getO_price()%></span><span class="new_p"><%=list.get(i).getP_price()%></span><span class="discount"><%=list.get(i).getDc_rate()%></span></li>
+                     <li class="prod_price"><span class="origin_p"><%=list.get(i).getO_price()%>원</span><span class="new_p"><%=list.get(i).getP_price()%>원</span><span class="discount"><%=list.get(i).getDc_rate()%>%</span></li>
+                     <li class="fun-sdate"><%=list.get(i).getStart_date().substring(0,10) %>~<%=list.get(i).getEnd_date().substring(0,10) %></li>
                </ul>
             </li>
-            <%}else if(i%4==1){ %>
-            
-            
-            
-            <li>
-                <div class="prod-img">
-                     <a href="#none"><img src="<%=request.getContextPath()+"/images/thumbnail/" + list.get(i).getTumbnail() + ".jpg" %>"></a>
-               </div>
-               <ul class="prod-cont">
-                     <li class="prod-brand"><a href="#none"><%=list.get(i).getP_name()%></a></li>
-                     <li class="prod-tit"><a href="#none"><%=list.get(i).getP_type()%></a></li>
-                     <li class="prod_price"><span class="origin_p"><%=list.get(i).getO_price()%></span><span class="new_p"><%=list.get(i).getP_price()%></span><span class="discount"><%=list.get(i).getDc_rate()%></span></li>
-               </ul>
-            </li>
-            
-             <%}else if(i%4==2){ %>
-            
-            
-            <li>
-                <div class="prod-img">
-                     <a href="#none"><img src="<%=request.getContextPath()+"/images/thumbnail/" + list.get(i).getTumbnail() + ".jpg" %>"></a>
-               </div>
-               <ul class="prod-cont">
-                     <li class="prod-brand"><a href="#none"><%=list.get(i).getP_name()%></a></li>
-                     <li class="prod-tit"><a href="#none"><%=list.get(i).getP_type()%></a></li>
-                     <li class="prod_price"><span class="origin_p"><%=list.get(i).getO_price()%></span><span class="new_p"><%=list.get(i).getP_price()%></span><span class="discount"><%=list.get(i).getDc_rate()%></span></li>
-               </ul>
-            </li>
-            
-             <%}else if(i%4==3){ %>
-            
-            <li>
-               <div class="prod-img">
-                     <a href="#none"><img src="<%=request.getContextPath()+"/images/thumbnail/" + list.get(i).getTumbnail() + ".jpg" %>"></a>
-               </div>
-               <ul class="prod-cont">
-                     <li class="prod-brand"><a href="#none"><%=list.get(i).getP_name()%></a></li>
-                     <li class="prod-tit"><%=list.get(i).getP_type()%></li>
-                     <li class="prod_price"><span class="origin_p"><%=list.get(i).getO_price()%></span><span class="new_p"><%=list.get(i).getP_price()%></span><span class="discount"><%=list.get(i).getDc_rate()%></span></li>
-               </ul>
-            </li>
-          <%} 
-         }
-      }%>
-         
+            <%}}%>
          </ul>
          
          

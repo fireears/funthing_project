@@ -122,7 +122,7 @@
             border: 0; padding:0; border-bottom: 1px solid #bbb; cursor:pointer;
         }
         .list-tb td{
-            text-align: center;
+            text-align: center;	 
         }
         .list-tb .tb-first{
             width: 200px;
@@ -170,42 +170,43 @@
 
             <!-- 1:1 문의 날짜 조회 영역 -->
             <div class="point">
-                <form method="post" action="#">
+                <form method="post" action="<%=request.getContextPath()%>/productQnaList">
                     <div class="point-search">
                         <ul>
+                         	<input type="hidden" name="mNo" value="<%=loginUser2.getmNo() %>">
                             <li><h3>조회기간</h3></li>
                             <li>
-                                <input type="radio" name="0" id="today" value="today">
+                                <input type="radio" name="searchDate" id="today" value="today">
                                 <label for="today">오늘</label>
                             </li>
                             <li>
-                                <input type="radio" name="0" id="week" value="week">
+                                <input type="radio" name="searchDate" id="week" value="week">
                                 <label for="week">7일</label>
                             </li>
                             <li>
-                                <input type="radio" name="0" id="month" value="month">
+                                <input type="radio" name="searchDate" id="month" value="month">
                                 <label for="month">1개월</label>
                             </li>
                             <li>
-                                <input type="radio" name="0" id="3months" value="3month">
+                                <input type="radio" name="searchDate" id="3months" value="3months">
                                 <label for="3month">3개월</label>
                             </li>
                             <li>
-                                <input type="radio" name="0" id="6months" value="6months`">
+                                <input type="radio" name="searchDate" id="6months" value="6months">
                                 <label for="6months">6개월</label>
                             </li>
                             <li>
-                                <input type="radio" name="0" id="year" value="year">
+                                <input type="radio" name="searchDate" id="year" value="year">
                                 <label for="year">1년</label>
                             </li>
                             <li>
-                                <input type="date" name="first_date">
+                                <input type="date" name="firstDate" value="09/01/01">
                             </li>
                             <li>
-                                <input type="date" name="second_date">
+                                <input type="date" name="secondDate" value="09/01/01">
                             </li>
                             <li>
-                                <input type="button" id="submit" value="조회" >
+                               <input type="submit" id="submit" value="조회">
                                
                             </li>
                         
@@ -219,7 +220,7 @@
  			<a href="<%=request.getContextPath()%>/views/productQnA/productQnAInsert.jsp" >Insert</a>
             <!-- 1:1 문의 조회 결과 영역 -->
             <div class="search-list">
-                <table class="list-tb">
+                <table class="list-tb" id="list-tb">
                     <tr>
                         <th class="tb-first">문의날짜</th>
                         <th>상품번호</th>
@@ -229,6 +230,8 @@
                     <%if(!list.isEmpty()){ %>
 				<%for(ProductQnaIn pq : list) {%> 
                     <tr>
+                    	<input type="hidden" id="QnaNo" value=<%= pq.getQnaNo()%>>
+                    	<input type="hidden" id="mNo" value=<%= loginUser2.getmNo()%>>
                         <td class="tb-first"><%=pq.getQnaDate() %></td>
                         <td><%=pq.getpNo() %></td>
                         <td><%=pq.getQnaTitle() %></td>
@@ -236,14 +239,19 @@
                         <td class="tb-last">답변완료</td>
                         <%}else{ %>
                         <td class="tb-last">답변대기</td>
-                        <%} %>
-                    </tr>
+                         <%} %>
+                          </tr>
+			<!-- 상품문의 디테일 -->
+                     
+                   
 				 <%} %>
+			
+			
 				  <%}else{ %>
 				  <tr><td colspan="4">검색 결과가 없습니다.</td></tr>
 				   <%} %>
                 </table>
-
+			
             </div><!-- 1:1 문의 조회 결과 영역 end -->
 	
 			 <!-- 페이징처리 -->
@@ -274,17 +282,7 @@
 	        	
 	        </div> 
 
-			<!-- 상품문의 디테일 -->
-			<script>
-				$(function()){
-					$("#list-tb td").click(
-					
-					var mNo = <%=loginUser2.getmNo()%>
-					location.href="<%=request.getContextPath()%>/productQnaDetail?mNo" + mNo
-					)}
-				)}
-			</script>
-
+			
 
 <!-- 이 위까지만 수정하세요 -->
         </div><!--오른쪽 컨텐츠 수정 영역 end-->
@@ -294,7 +292,24 @@
     
     <%@ include file="../common/footer.jsp" %>
 	
+	<script>
 	
+	$(function(){
+		$("#list-tb td").click(function(){
+			/* var mNo = $("#mNo").val(); */
+			var qnaNo = $(this).parent().children("input").val();
+			 <%-- var mNo = <%=loginUser2.getmNo()%>; --%> 
+			<%-- location.href="<%=request.getContextPath()%>/productQnaDetail?mNo=" + mNo + "&QnaNo=" + QnaNo; --%>
+			  location.href="<%=request.getContextPath()%>/productQnaDetail?mNo=<%=loginUser2.getmNo()%>&qnaNo=" + qnaNo;  
+			  location.href="<%=request.getContextPath()%>/productQnaList?mNo=<%=loginUser2.getmNo()%>
+			
+		
+		
+		})
+		console.log(qnaNo);
+	})
+	
+	</script>
 
 
 </body>

@@ -259,11 +259,10 @@ ul li {
 								$(this).parent().css({"background" : "white"});
 							}).click(
 									function() {
-										var mid = $(this).parent().children(
-												"input").val();
+										var mid = $(this).parent().children("input").val();
 
 										/* 아이디별 상세내역 출력 */
-										location.href = "<%=request.getContextPath()%>/admin/orderInfoDetail?mid="+ mid
+										location.href = "<%=request.getContextPath()%>/admin/orderInfoDetail?mid="+ mid 
 
 									})
 				})

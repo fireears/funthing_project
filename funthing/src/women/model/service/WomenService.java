@@ -24,4 +24,74 @@ public class WomenService {
 		
 		return listCount;
 	}
+	public int WomenBottomListCount() {
+		Connection conn = getConnection();
+		
+		int listCount = new WomenDao().getBottomCount(conn);
+		
+		close(conn);
+		
+		return listCount;
+	}
+	public ArrayList<WomenVo> selectListBottom(int currentPage, int limit) {
+		Connection conn = getConnection();
+		ArrayList<WomenVo> list = new WomenDao().selectListBottom(conn,currentPage, limit);
+		return list;
+	}
+	public int WomenJeanListCount() {
+		Connection conn = getConnection();
+		
+		int listCount = new WomenDao().getJeanCount(conn);
+		
+		close(conn);
+		
+		return listCount;
+	}
+	public ArrayList<WomenVo> selectListJean(int currentPage, int limit) {
+		Connection conn = getConnection();
+		ArrayList<WomenVo> list = new WomenDao().selectListJean(conn,currentPage, limit);
+		return list;
+	}
+	public int WomenOnepieceListCount() {
+		Connection conn = getConnection();
+		
+		int listCount = new WomenDao().getOnepieceCount(conn);
+		
+		close(conn);
+		
+		return listCount;
+	}
+	public ArrayList<WomenVo> selectListOnepiece(int currentPage, int limit) {
+		Connection conn = getConnection();
+		ArrayList<WomenVo> list = new WomenDao().selectListOnepiece(conn,currentPage, limit);
+		return list;
+	}
+	public int WomenOuterListCount() {
+		Connection conn = getConnection();
+		
+		int listCount = new WomenDao().getOuterListCount(conn);
+		
+		close(conn);
+		
+		return listCount;
+	}
+	public ArrayList<WomenVo> selectListOuter(int currentPage, int limit) {
+		Connection conn = getConnection();
+		ArrayList<WomenVo> list = new WomenDao().selectListOuter(conn,currentPage, limit);
+		return list;
+	}
+	public int WomenTopListCount() {
+		Connection conn = getConnection();
+		
+		int listCount = new WomenDao().getTopListCount(conn);
+		
+		close(conn);
+		
+		return listCount;
+	}
+	public ArrayList<WomenVo> selectListTop(int currentPage, int limit) {
+		Connection conn = getConnection();
+		ArrayList<WomenVo> list = new WomenDao().selectListTop(conn,currentPage, limit);
+		return list;
+	}
 }
