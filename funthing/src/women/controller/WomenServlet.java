@@ -51,7 +51,7 @@ public class WomenServlet extends HttpServlet {
 		{
 			currentPage = 1;
 		}
-		limit = 28;
+		limit = 100;
 		maxPage = (int)((double)listCount/12 + 0.9);
 		startPage = (((int)((double)currentPage/10 + 0.9)) - 1)*10 + 1;
 		endPage = startPage + limit - 1;

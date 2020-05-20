@@ -1,6 +1,6 @@
-package women.model.vo;
+package man.model.vo;
 
-public class WomenVo {
+public class ManVo {
 	private String p_name;
 	private String p_type;
 	private String thumbnail;
@@ -27,7 +27,7 @@ public class WomenVo {
 	public void setEnd_date(String end_date) {
 		this.end_date = end_date;
 	}
-	public WomenVo(String p_name, String p_type, String thumbnail, int o_price, int dc_rate, int p_price) {
+	public ManVo(String p_name, String p_type, String thumbnail, int o_price, int dc_rate, int p_price) {
 		super();
 		this.p_name = p_name;
 		this.p_type = p_type;
@@ -39,7 +39,7 @@ public class WomenVo {
 	
 	@Override
 	public String toString() {
-		return "WomenVo [p_name=" + p_name + ", p_type=" + p_type + ", thumbnail=" + thumbnail + ", o_price=" + o_price
+		return "ManVo [p_name=" + p_name + ", p_type=" + p_type + ", thumbnail=" + thumbnail + ", o_price=" + o_price
 				+ ", dc_rate=" + dc_rate + ", p_price=" + p_price + ", start_date=" + start_date + ", end_date="
 				+ end_date + "]";
 	}
@@ -79,8 +79,4 @@ public class WomenVo {
 	public void setP_price(int p_price) {
 		this.p_price = p_price;
 	}
-	
-	
-	
-
 }

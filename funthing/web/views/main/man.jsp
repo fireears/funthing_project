@@ -3,10 +3,10 @@
 <!DOCTYPE html>
 <html lang='ko'>
  <%@ page import="java.util.ArrayList" %>
- <%@ page import="women.model.vo.WomenVo"%>
+ <%@ page import="man.model.vo.ManVo"%>
  <%@ page import="board.model.vo.PageInfo" %>
     <%
-    	ArrayList<WomenVo> list = (ArrayList<WomenVo>)request.getAttribute("list");
+    	ArrayList<ManVo> list = (ArrayList<ManVo>)request.getAttribute("list");
     	PageInfo pi = (PageInfo)request.getAttribute("pi");
     	
     	int listCount = pi.getListCount();
@@ -151,10 +151,9 @@
    </div>
       <div class="prod_area">
          <ul class="product">
-            <% 
+           <% 
          if(list!=null){
                 for(int i =0;i<list.size();i++){
-  
                 	%>
             <li>
                <div class="prod-img">
@@ -167,7 +166,13 @@
                      <li class="fun-sdate"><%=list.get(i).getStart_date().substring(0,10) %>~<%=list.get(i).getEnd_date().substring(0,10) %></li>
                </ul>
             </li>
-            <%}}%>
+            <%} 
+          }%>
+            
+            
+          
+ 
+         
          </ul>
          
          
@@ -175,20 +180,20 @@
          
          <div class="pageinArea" align="center">
 				<!-- 맨 처음으로 -->
-				<button onclick="location.href='<%=request.getContextPath()%>/WomenServlet?currentPage=<%=1%>'"> << </button>
+				<button onclick="location.href='<%=request.getContextPath()%>/ManServlet?currentPage=<%=1%>'"> << </button>
 				
 				<!-- 이전 페이지 -->
 				<%if(currentPage < 1) {%>
 					<button disabled> < </button>
 				<%}else {%>
-					<button onclick="location.href='<%=request.getContextPath()%>/WomenServlet?currentPage=<%=currentPage -1%>'"> < </button>
+					<button onclick="location.href='<%=request.getContextPath()%>/ManServlet?currentPage=<%=currentPage -1%>'"> < </button>
 				<%} %>
 				<!-- 10개의 페이지 목록 -->
 				<%for(int p = startPage; p<endPage; p++){
 				%><%if(currentPage == p) {%>
 						<button disabled><%=p %></button>
 					<%} else{%>
-						<button onclick="location.href='<%=request.getContextPath()%>/WomenServlet?currentPage=<%=p%>'"><%=p%></button>
+						<button onclick="location.href='<%=request.getContextPath()%>/ManServlet?currentPage=<%=p%>'"><%=p%></button>
 						<!-- url에 값을 넣어서 보내는 방식 쿼리 스트링방식 -->
 					<%} %>
 				<%}%>
@@ -197,10 +202,10 @@
 				<%if(currentPage >= maxPage) {%>
 					<button disabled> > </button>
 				<%}else { %>
-					<button onclick="location.href='<%=request.getContextPath()%>/WomenServlet?currentPage=<%=currentPage + 1%>'"> > </button>
+					<button onclick="location.href='<%=request.getContextPath()%>/ManServlet?currentPage=<%=currentPage + 1%>'"> > </button>
 				<%} %>
 				<!-- 맨 끝으로  -->
-				<button onclick="location.href='<%=request.getContextPath()%>/WomenServlet?currentPage=<%=maxPage%>'"> >> </button>
+				<button onclick="location.href='<%=request.getContextPath()%>/ManServlet?currentPage=<%=maxPage%>'"> >> </button>
 			</div>
          
       </div>
@@ -214,4 +219,3 @@
 
 
 
-    
