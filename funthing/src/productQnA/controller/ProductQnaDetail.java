@@ -36,9 +36,9 @@ public class ProductQnaDetail extends HttpServlet {
 		AdminProductQnA apq = new ProductQnAService().ProductQnaDetail(mNo, qnaNo);
 		RequestDispatcher view = null;
 		if(apq != null) {
-			view = request.getRequestDispatcher("/views/admin/adminOrderInfoDetail.jsp");
-			request.setAttribute("od", apq);
-			System.out.println("servlet od :" + apq);
+			view = request.getRequestDispatcher("/views/productQnA/productQnADetail.jsp");
+			request.setAttribute("apq", apq);
+			System.out.println("servlet apq :" + apq);
 			
 		}else {
 			

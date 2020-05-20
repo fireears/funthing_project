@@ -58,12 +58,12 @@ public class ProductQnAService {
 	}
 
 	// 상품문의 페이지(클라이언트) 셀렉_혜린
-	public ArrayList<ProductQnaIn> selectProductQnaCList(int currentPage, int limit, String mNo) {
+	public ArrayList<ProductQnaIn> selectProductQnaCList(String searchDate, String firstDate, String secondDate, int currentPage, int limit, String mNo) {
 		Connection conn = getConnection();
 		
-		ArrayList<ProductQnaIn> list = new ProductQnADao().selectOrderSearch(conn, currentPage, limit, mNo);
+		ArrayList<ProductQnaIn> list = new ProductQnADao().selectOrderSearch(conn, searchDate, firstDate, secondDate, currentPage, limit, mNo);
 		
-
+		
 		close(conn);
 		return list;
 	}
