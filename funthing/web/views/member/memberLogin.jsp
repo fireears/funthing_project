@@ -3,6 +3,7 @@
 <%@ page import="member.model.vo.Member" %>
 <%
 	Member searchId = (Member)session.getAttribute("searchId");	
+	String msg = (String)request.getAttribute("msg");
 %>
 <!DOCTYPE html>
 <html>
@@ -142,12 +143,18 @@
 
         </form>
         <script>
+      
             $(function(){
-        			
+            	// 로그인 실패
+            	 <%if(msg != null){%>
+        			alert("<%=msg%>");
+        		 <%}%>
+        		 
             	// 아이디 찾은 결과
            		 <%if(searchId != null){%>
            			alert("아이디는 <%= searchId.getmId()%> 입니다.");
            		 <%}%>
+           		 
            		
             	// 아이디
                 $("#userId").change(function(){

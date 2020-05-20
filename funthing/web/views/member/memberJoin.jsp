@@ -107,7 +107,8 @@
                     </td>
                     <td id="inp" class="ltd">
                         <input type="text" id="userId" name="userId" required placeholder="4글자 이상 12글자 이하 영문자(소문자)와 숫자">
-                        <input type="button" id="idCheck" value="중복확인" style="width: 70px; background: darkgrey; color: white;" onclick="openIdChk()">
+                        <input type="button" id="idCheck" value="중복확인" style="width: 70px; background: darkgrey; color: white;" onclick="idCheck();">
+                        <input type="hidden" value="N" id="checkCheck">
                     </td>
                 </tr>
                 <tr>
@@ -685,19 +686,17 @@
                             }else{
                                     // $(location).attr('href','join.html');
                             }
-                        
                 }); 
-     
             });
                 $(function(){	// 메일 수신 동의 시 
-	                 if($("input:checkbox[id='check4']:checked")==true && $("input:checkbox[id='check5']:checked") == true){
-	                    $("#check4").val("N");
+	                 if($("input:checkbox[id='check4']:checked")==true){
+	                    $("#check4").val("N"); 
 	                 }else{
 	                 	$("#check4").val("Y");
 	                 }
                  });  
 
-                
+               
                 // ajax!
                 $(function(){
                 	// 중복체크 버튼에 대해 ajax처리
@@ -705,6 +704,7 @@
                 	$("#idCheck").click(function(){
                 		var userId = $("#joinForm input[name='userId']");
                 		console.log(userId);
+                		
                 		if(!userId || userId.val().length < 4){
                 			userId.focuse();
                 		}else{
@@ -728,6 +728,7 @@
                 			});
                 		}
                 	});
+           
                 	
                 });
                 

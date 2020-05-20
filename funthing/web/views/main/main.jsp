@@ -5,6 +5,7 @@
     <%@ page import="notice.model.vo.Notice" %>
     <%@ page import="java.util.ArrayList" %>
     <%@ page import="java.sql.Date" %>
+  
     
     
     <!--  돈 , 표시 import -->
@@ -19,7 +20,7 @@
     	//돈 , 표시에 필요한 객체
     	DecimalFormat formatter = new DecimalFormat("###,###");
     %>
-    
+  
 <!DOCTYPE html>
 <html>
 	<head>
@@ -235,5 +236,6 @@
 	        }
 	    ]
 	    });
+	    
 	</script>
 </html>
