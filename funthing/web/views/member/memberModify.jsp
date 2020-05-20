@@ -22,18 +22,22 @@
 <title>Insert title here</title>
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <style>
-        form{
+		#modify{
+			margin: auto;
+			width:33%;
+		}
+        #joinform{
                 width: 700px;
                 margin: 0 auto;
             }
-            table{
+        #joinform #modi{
                 margin: 0;
                 padding:0;
                 width: 700px;
                 border-top: 1px solid #444444;
                 border-collapse: collapse;
             }
-            th, td {
+          #modi th, td {
                 border-bottom: 1px solid #444444;
                 padding: 10px;
             }
@@ -82,13 +86,18 @@
     </style>
 </head>
 <body>
+<%@ include file="../common/myPageHeader.jsp"%>
+<%@ include file="../common/myPageSide.jsp"%>
+	<br>
+	<br>
+	<div id=modify>
 	<form id="joinForm" method="post" action="<%=request.getContextPath() %>/update.me?mNo=<%=member.getmNo()%>">
             <h2>정보수정</h2>
             <hr>
             <h3>기본정보</h3>
             <br>
             <h5 id="hh5">*은 반드시 적어야 하는 항목</h5>
-            <table>
+            <table id="modi">
                 <tr>
                     <td id="lab">
                         <label>*아이디</label>
@@ -288,7 +297,11 @@
                 <input type="button" value="취소" id="cancel" onclick=cancle(); style="width: 90px; height: 40px; color: black; background-color: lightgray; border-radius: 7px;">
             </div>
         </form>
+            </div>
         <script>
+        	function cancle(){
+        		location.href="<%=request.getContextPath()%>/views/member/myPageMain.jsp";
+        	}
         	$(function(){
         		
         			$("#year").val("<%=year%>").prop("selected",true);

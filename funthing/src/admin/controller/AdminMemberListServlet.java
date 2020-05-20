@@ -17,7 +17,7 @@ import member.model.vo.Member;
 /**
  * Servlet implementation class AdminMemberListServlet
  */
-@WebServlet("/memberList.me")
+@WebServlet("/admin/memberList")
 public class AdminMemberListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -33,11 +33,19 @@ public class AdminMemberListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		AdminService mListService = new AdminService();
 		
-		int listCount = mListService.getMemberListCount(); 
+		String userName = request.getParameter("userName");	// 아이디 검색 값
+		String userId = request.getParameter("userId");		// 이름 검색 값
 		
-		System.out.println(listCount);
+		if(userName == null || userName.equals("null"))
+			userName = null;
+		if(userId == null || userId.equals("null"))
+			userId = null;
+		
+		int listCount = mListService.getMemberListCount(userName, userId); 
+		System.out.println("memberListServlet listCount : " + listCount);
 		// ---------- 페이징 처리 추가 ---------------
 		// 페이지 수 처리용 변수 선언
 		int currentPage;		// 현재 페이지를 저장할 변수
@@ -68,14 +76,20 @@ public class AdminMemberListServlet extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
 		
-		ArrayList<Member> list = mListService.selectList(currentPage, limit);
-		for(int i = 0; i < list.size(); i++) {
-			System.out.println(list.get(i));
-		} 
+		System.out.println("servlet userName : " + userName);
+		System.out.println("servlet userId : " + userId);
+		
+		ArrayList<Member> list = mListService.selectList(currentPage, limit, userName, userId);
+		/*
+		 * for(int i = 0; i < list.size(); i++) { System.out.println(list.get(i)); }
+		 */
+		System.out.println("servlet list : " + list);
 		
 		RequestDispatcher view = null;
 		if(!list.isEmpty()) {
-			view = request.getRequestDispatcher("views/admin/adminMember.jsp");
+			view = request.getRequestDispatcher("/views/admin/adminMember.jsp");
+			request.setAttribute("userName", userName);
+			request.setAttribute("userId", userId);
 			request.setAttribute("list", list);
 			request.setAttribute("pi", pi);
 		}else {

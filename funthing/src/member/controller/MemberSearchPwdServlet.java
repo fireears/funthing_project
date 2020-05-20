@@ -44,9 +44,9 @@ public class MemberSearchPwdServlet extends HttpServlet {
 			view = request.getRequestDispatcher("views/member/searchPwd2.jsp");
 			request.setAttribute("searchPwd",searchPwd);
 		}else {
-			request.setAttribute("msg", "비밀번호 찾기 실패");
+			request.setAttribute("msg", "아이디를 잘못 입력하셨습니다.");
 			
-			view = request.getRequestDispatcher("views/member/searchIdFail.jsp");
+			view = request.getRequestDispatcher("views/member/searchPwd1.jsp");
 		}
 		view.forward(request, response);
 		

@@ -832,7 +832,7 @@ public class AdminDao {
 	
 
 	// 멤버 select_진교
-	public ArrayList<Member> selectList(Connection conn, int currentPage, int limit) {
+	public ArrayList<Member> selectList(Connection conn, int currentPage, int limit, String userName, String userId) {
 		System.out.println("여기는 왔나?");
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -840,16 +840,51 @@ public class AdminDao {
 		
 		ArrayList<Member> list = new ArrayList<>();
 		
-		query = "SELECT * FROM MEMBERLIST WHERE RNUM BETWEEN ? AND ?";
 		// 쿼리문 실행시 조건절에 넣을 변수 연산처리
 		int startRow = (currentPage - 1) * limit + 1;
 		int endRow = startRow + limit - 1;
 		
 		try {
-			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
-
+			if(userName == null && userId == null ) {	
+				query= "SELECT RNUM, M_NO, M_ID, M_NAME, B_DAY, M_EMAIL, M_TELL, JOIN_DATE, REFERENCE, ALARM_YN, GRADE_CODE, M_POINT, H_POINT, STATUS_YN FROM MEMBERLIST WHERE RNUM BETWEEN ? AND ?";
+						
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, startRow);
+				pstmt.setInt(2, endRow);
+			}
+			else if(userName == "" && userId== "") {
+				query= "SELECT RNUM, M_NO, M_ID, M_NAME, B_DAY, M_EMAIL, M_TELL, JOIN_DATE, REFERENCE, ALARM_YN, GRADE_CODE, M_POINT, H_POINT, STATUS_YN FROM MEMBERLIST WHERE RNUM BETWEEN ? AND ?";
+				
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, startRow);
+				pstmt.setInt(2, endRow);
+			}
+			else if(userName != null && userId == "") {
+				query= "SELECT RNUM, M_NO, M_ID, M_NAME, B_DAY, M_EMAIL, M_TELL, JOIN_DATE, REFERENCE, ALARM_YN, GRADE_CODE, M_POINT, H_POINT, STATUS_YN FROM MEMBERLIST WHERE M_NAME=? AND RNUM BETWEEN ? AND ?";
+				
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, userName);
+				pstmt.setInt(2, startRow);
+				pstmt.setInt(3, endRow);
+			}
+			else if(userName == "" && userId != null) {
+				query= "SELECT RNUM, M_NO, M_ID, M_NAME, B_DAY, M_EMAIL, M_TELL, JOIN_DATE, REFERENCE, ALARM_YN, GRADE_CODE, M_POINT, H_POINT, STATUS_YN FROM MEMBERLIST WHERE M_ID=? AND RNUM BETWEEN ? AND ?";
+				
+				pstmt = conn.prepareStatement(query);
+				
+				pstmt.setString(1, userId);
+				pstmt.setInt(2, startRow);
+				pstmt.setInt(3, endRow);
+			}else if(userName != null && userId != null) {
+				query= "SELECT RNUM, M_NO, M_ID, M_NAME, B_DAY, M_EMAIL, M_TELL, JOIN_DATE, REFERENCE, ALARM_YN, GRADE_CODE, M_POINT, H_POINT, STATUS_YN FROM MEMBERLIST WHERE M_NAME=? AND M_ID=? AND RNUM BETWEEN ? AND ?";
+				
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, userName);
+				pstmt.setString(2, userId);
+				pstmt.setInt(3, startRow);
+				pstmt.setInt(4, endRow);
+			}
+			
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
@@ -1226,31 +1261,54 @@ public class AdminDao {
 	}
 	
 //	회원 페이지_진교
-	public int getMemberListCount(Connection conn) {
+	public int getMemberListCount(Connection conn, String userName, String userId) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		
-		int listCount = 0;
-		
-		String query = "SELECT COUNT(*) FROM MEMBER";
-		
+		int result = 0;
+				
 		try {
-			pstmt = conn.prepareStatement(query);
-			rset = pstmt.executeQuery();
-			
-			while(rset.next())
-			{
-				listCount = rset.getInt(1);
+		
+			if(userName == null && userId == null) {
+				String query = "SELECT COUNT(*) FROM MEMBERLIST";
+				pstmt = conn.prepareStatement(query);
+				rset =  pstmt.executeQuery();
+				
+			}else if(userName == "" && userId == "") {
+				String query = "SELECT COUNT(*) FROM MEMBERLIST";
+				pstmt = conn.prepareStatement(query);
+				rset =  pstmt.executeQuery();
+			}else if(userName != null && userId == "") {
+				String query = "SELECT COUNT(*) FROM MEMBERLIST WHERE M_NAME=?";
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, userName);
+				rset =  pstmt.executeQuery();
+			}else if(userName == "" && userId != null) {
+				String query = "SELECT COUNT(*) FROM MEMBERLIST WHERE M_ID=?";
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, userId);
+				rset =  pstmt.executeQuery();
+			}else if(userName != null && userId != null) {
+				String query = "SELECT COUNT(*) FROM MEMBERLIST WHERE M_NAME=? AND M_ID=?";
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, userName);
+				pstmt.setString(2, userId);
+				rset =  pstmt.executeQuery();
 			}
+			
+			if(rset.next()) {
+				result = rset.getInt(1);
+			}
+			System.out.println("dao result : " + result);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
 		}
-		close(pstmt);
-		close(rset);
 		
 		
-		return listCount;
+		return result;
 	}
 	
 

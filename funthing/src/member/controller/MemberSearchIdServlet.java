@@ -57,11 +57,12 @@ public class MemberSearchIdServlet extends HttpServlet {
 			session.setAttribute("searchId", searchIdMember);
 			
 			
-			response.sendRedirect("views/member/searchIdSuccess.jsp");
+			response.sendRedirect("views/member/memberLogin.jsp");
 		}else{
-			request.setAttribute("msg", "아이디 찾기 실패");
+			request.setAttribute("msg", "입력하신 정보가 없습니다.");
 			
-			RequestDispatcher view = request.getRequestDispatcher("views/member/searchIdFail.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("views/member/searchId.jsp");
+
 			view.forward(request, response);
 		}
 	}
