@@ -59,9 +59,9 @@
 	            <nav id="nav">
 	                <ul>
 	                    <li>
-	                        <a href="#none">WOMAN</a>
+	                        <a href="<%=request.getContextPath()%>/WomenServlet?type=<%=0%>">WOMAN</a>
 	                        <ul class="sub-menu">
-	                            <li><a href="#none">OUTER</a></li>
+	                            <li><a href="<%=request.getContextPath() %>/WomenServlet?type=<%=1%>'">OUTER</a></li>
 	                            <li><a href="#none">TOP</a></li>
 	                            <li><a href="#none">BOTTOM</a></li>
 	                            <li><a href="#none">JEAN</a></li>
@@ -69,6 +69,7 @@
 	                        </ul>
 	                    </li>
 	                    <li>
+	                    
 	                        <a href="#none">MAN</a>
 	                        <ul class="sub-menu">
 	                            <li><a href="#none">OUTER</a></li>

@@ -4,7 +4,7 @@
 
 <%
 	ArrayList<Brand> list = (ArrayList<Brand>)request.getAttribute("list");
-	ArrayList<Brand> searchList = (ArrayList<Brand>)request.getAttribute("searchList");
+	/* ArrayList<Brand> searchList = (ArrayList<Brand>)request.getAttribute("searchList"); */
 
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	
@@ -200,7 +200,7 @@
                 </tr>
 				
 				<tr style="margin-top:30px;">
-					<td colspan="9"><div style="text-aling:center">검색 결과가 없습니다. 다시 검색해주세요.</div></td>
+					<td colspan="9"><div style="text-align:center;" >검색 결과가 없습니다. 다시 검색해주세요.</div></td>
 				
 				</tr> 
 				
