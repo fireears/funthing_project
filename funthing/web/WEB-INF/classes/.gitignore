@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /admin/
 /board/
 /brand/
@@ -9,8 +10,6 @@
 /notice/
 /payment/
 /personalQnA/
+=======
+>>>>>>> refs/remotes/origin/master
 /product/
-/productQnA/
-/review/
-/women/
-/wrapper/
