@@ -129,26 +129,165 @@ public class ProductQnADao {
 		return listCount;
 	}
 	// 상품 문의페이지(클라이언트)리스트_혜린
-	public ArrayList<ProductQnaIn> selectOrderSearch(Connection conn, int currentPage, int limit, String mNo) {
+	public ArrayList<ProductQnaIn> selectOrderSearch(Connection conn, String searchDate, String firstDate, String secondDate, int currentPage, int limit, String mNo) {
+		System.out.println("여기까진오지?");
+		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ProductQnaIn qna = null;
 		ArrayList<ProductQnaIn> list = new ArrayList<>();
-		String query = "SELECT QNA_NO,M_NO,QNA_TITLE,QNA_CONTENTS,QNA_DATE,P_NO2,B_NO,RE_YN "
-				+ "from (SELECT QNA_NO,M_NO,QNA_TITLE,QNA_CONTENTS,QNA_DATE,P_NO2,B_NO,RE_YN ,rownum as rnum FROM QNA WHERE M_NO= ?) "
-				+ "WHERE rnum between ? and ? ";
+//		String query = "SELECT QNA_NO,M_NO,QNA_TITLE,QNA_CONTENTS,QNA_DATE,P_NO2,B_NO,RE_YN "
+//				+ "from (SELECT QNA_NO,M_NO,QNA_TITLE,QNA_CONTENTS,QNA_DATE,P_NO2,B_NO,RE_YN ,rownum as rnum FROM QNA WHERE M_NO= ?) "
+//				+ "WHERE rnum between ? and ? ";
 		
 		try {
 			int startRow = (currentPage -1) * limit +1;
 			int endRow = startRow + (limit -1);
 			
+//			pstmt = conn.prepareStatement(query);
+//			pstmt.setString(1, mNo);
+//			pstmt.setInt(2, startRow);
+//			pstmt.setInt(3, endRow);
+//			
+//			rset = pstmt.executeQuery();
+			
+			// 맨 처음 리스트 출력 값
+		if(searchDate == null && firstDate == null) {
+
+			System.out.println("searchDate가 null일때" + searchDate);
+	
+			String query = "SELECT QNA_NO,M_NO,QNA_TITLE,QNA_CONTENTS,QNA_DATE,P_NO2,B_NO,RE_YN "
+					+ "from (SELECT QNA_NO,M_NO,QNA_TITLE,QNA_CONTENTS,QNA_DATE,P_NO2,B_NO,RE_YN ,rownum as rnum FROM QNA WHERE M_NO= ?) "
+					+ "WHERE rnum between ? and ? ";
+			
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, mNo);
 			pstmt.setInt(2, startRow);
 			pstmt.setInt(3, endRow);
+			pstmt.setString(1, mNo);
 			
 			rset = pstmt.executeQuery();
 			
+			
+		// 클라이언트가 '오늘'선택 했을 때
+		}else if(searchDate != null && searchDate.equals("today")) {
+			System.out.println("-------------------------"+searchDate+"-----------------------");
+			String query = "SELECT QNA_NO,M_NO,QNA_TITLE,QNA_CONTENTS,QNA_DATE,P_NO2,B_NO,RE_YN " 
+					+ "from (SELECT QNA_NO,M_NO,QNA_TITLE,QNA_CONTENTS,QNA_DATE,P_NO2,B_NO,RE_YN ,rownum as rnum FROM QNA WHERE M_NO= ? AND TO_DATE(QNA_DATE,'RRRR/MM/DD') = TO_DATE(SYSDATE,'RRRR/MM/DD')) "
+					+ "WHERE rnum between ? and ?";
+					
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			pstmt.setString(1, mNo);
+			
+			rset = pstmt.executeQuery();
+			
+
+
+		// 클라이언트가 '7일' 선택 했을 때
+		}else if(searchDate != null &&  searchDate.equals("week")) {
+//			System.out.println("-------------------------week-----------------------");
+			System.out.println("-------------------------"+searchDate+"-----------------------");
+			String query = "SELECT QNA_NO,M_NO,QNA_TITLE,QNA_CONTENTS,QNA_DATE,P_NO2,B_NO,RE_YN	"
+					+ "from (SELECT QNA_NO,M_NO,QNA_TITLE,QNA_CONTENTS,QNA_DATE,P_NO2,B_NO,RE_YN ,rownum as rnum FROM QNA "
+					+ "WHERE M_NO= ? AND TO_DATE(QNA_DATE,'RRRR/MM/DD') >= TO_DATE(SYSDATE,'RRRR/MM/DD')-7) WHERE rnum between ? and ?";
+			
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			pstmt.setString(1, mNo);
+			
+			rset = pstmt.executeQuery();
+			
+			
+		// 클라이언트가 '한달' 선택 했을 때
+		}else if(searchDate != null &&  searchDate.equals("month")) {
+//			System.out.println("-------------------------month-----------------------ok");
+			System.out.println("-------------------------"+searchDate+"-----------------------");
+			String query = "SELECT QNA_NO,M_NO,QNA_TITLE,QNA_CONTENTS,QNA_DATE,P_NO2,B_NO,RE_YN	"
+					+ "from (SELECT QNA_NO,M_NO,QNA_TITLE,QNA_CONTENTS,QNA_DATE,P_NO2,B_NO,RE_YN ,rownum as rnum FROM QNA "
+					+ "WHERE M_NO= ? AND TO_DATE(QNA_DATE,'RRRR/MM/DD') >= TO_DATE(SYSDATE,'RRRR/MM/DD')- 30) WHERE rnum between ? and ?";
+			
+			
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			pstmt.setString(1, mNo);
+			
+			rset = pstmt.executeQuery();
+			
+			
+		// 클라이언트가 '3개월' 선택 했을 때
+		}else if(searchDate != null &&  searchDate.equals("3months")) {
+//			System.out.println("-------------------------3months-----------------------ok");
+			System.out.println("-------------------------"+searchDate+"-----------------------");
+			String query = "SELECT QNA_NO,M_NO,QNA_TITLE,QNA_CONTENTS,QNA_DATE,P_NO2,B_NO,RE_YN	"
+					+ "from (SELECT QNA_NO,M_NO,QNA_TITLE,QNA_CONTENTS,QNA_DATE,P_NO2,B_NO,RE_YN ,rownum as rnum FROM QNA "
+					+ "WHERE M_NO= ? AND TO_DATE(QNA_DATE,'RRRR/MM/DD') >= TO_DATE(SYSDATE,'RRRR/MM/DD')- 90) WHERE rnum between ? and ?";
+							
+			
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			pstmt.setString(1, mNo);
+			
+			rset = pstmt.executeQuery();
+			
+			
+		// 클라이언트가 '6개월' 선택 했을 때
+		}else if(searchDate != null &&  searchDate.equals("6months")) {
+			System.out.println("-------------------------6months-----------------------");
+			String query = "SELECT QNA_NO,M_NO,QNA_TITLE,QNA_CONTENTS,QNA_DATE,P_NO2,B_NO,RE_YN	"
+					+ "from (SELECT QNA_NO,M_NO,QNA_TITLE,QNA_CONTENTS,QNA_DATE,P_NO2,B_NO,RE_YN ,rownum as rnum FROM QNA "
+					+ "WHERE M_NO= ? AND TO_DATE(QNA_DATE,'RRRR/MM/DD') >= TO_DATE(SYSDATE,'RRRR/MM/DD')-180) WHERE rnum between ? and ?";
+			
+			
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			pstmt.setString(1, mNo);
+			
+			
+			rset = pstmt.executeQuery();
+			
+			
+		// 클라이언트가 '1년' 선택 했을 때	
+		}else if(searchDate != null &&  searchDate.equals("year")) {
+			System.out.println("-------------------------year-----------------------");
+			String query = "SELECT QNA_NO,M_NO,QNA_TITLE,QNA_CONTENTS,QNA_DATE,P_NO2,B_NO,RE_YN	"
+					+ "from (SELECT QNA_NO,M_NO,QNA_TITLE,QNA_CONTENTS,QNA_DATE,P_NO2,B_NO,RE_YN ,rownum as rnum FROM QNA "
+					+ "WHERE M_NO= ? AND TO_DATE(QNA_DATE,'RRRR/MM/DD') >= TO_DATE(SYSDATE,'RRRR/MM/DD')-365) WHERE rnum between ? and ?";
+			
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			pstmt.setString(1, mNo);
+			
+			rset = pstmt.executeQuery();
+			
+			
+		// 클라이언트가 날짜 선택했을 때
+		}else {
+			System.out.println("캘린더 선택 날자선택");
+			
+			String query = "SELECT ROWNUM RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
+							"FROM(SELECT ROWNUM RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
+								"FROM PER_LIST\r\n" + 
+								"WHERE M_NO=? AND TO_DATE(PER_DATE,'RRRR/MM/DD') BETWEEN TO_DATE(?,'RRRR/MM/DD') AND TO_DATE(?,'RRRR/MM/DD'))\r\n" + 
+							"WHERE RNUM BETWEEN ? AND ?";
+
+				
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(4, startRow);
+			pstmt.setInt(5, endRow);
+			pstmt.setString(1 , mNo);
+			pstmt.setString(2, firstDate);
+			pstmt.setString(3, secondDate);
+			
+			rset = pstmt.executeQuery();
+			
+			
+						}
 			while(rset.next()) {
 				qna = new ProductQnaIn(
 						rset.getInt("QNA_NO"),
