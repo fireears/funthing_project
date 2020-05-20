@@ -612,7 +612,13 @@
             </div>
         </form>
         <script>
+      		function cancle(){
+      			location.href="<%=request.getContextPath()%>/main/mainView";
+      		}
             $(function(){
+            	
+            	
+            	// 체크 박스
                 $('ipnut[type=checkbox]').click(function(){
                     console.log($(this).prop("checked"));
                 });
@@ -620,6 +626,9 @@
                     var bool = $("#checkAll").prop("checked");
                     $(".infoBox").prop("checked",bool);
                 });
+                // 체크박스 end
+                
+             	// 아이디 정규화
                 $("#userId").change(function(){
                     var value = $("#userId").val();
                     var reg = /^[a-z0-9]{4,12}$/;
@@ -628,6 +637,7 @@
                         $("#userId").focus().val('');
                     }
                 });
+             	// 비밀번호 정규화
                 $("#userPwd").change(function(){
                     var value = $("#userPwd").val();
                     var reg = /^[a-z0-9]{6,18}$/;
@@ -636,6 +646,7 @@
                         $("#userPwd").focus().val('');
                     }
                 });
+             	// 비밀번호 체크 정규화
                 $("#pwd_check").change(function(){
                     var pw1 = $("#userPwd").val();
                     var pw2 = $("#pwd_check").val();
@@ -647,6 +658,7 @@
                         $("#pwd_check").focus().val('');
                     }
                 });
+             	// 이름 정규화
                 $("#userName").change(function(){
                     var value = $("#userName").val();
                     var reg = /^[가-힣]{2,4}$/;
@@ -656,6 +668,7 @@
                         $("#userName").focus().val('');
                     }
                 });
+                // 휴대폰 정규화
                 $("#phone").change(function(){
                     var value = $("#phone").val();
                     var reg = /^[0-9]{11}$/;

@@ -853,14 +853,14 @@ public class AdminDao {
 				pstmt.setInt(1, startRow);
 				pstmt.setInt(2, endRow);
 			}
-			else if(userName.equals("") && userId.equals("")) {
+			else if(userName == "" && userId== "") {
 				query= "SELECT RNUM, M_NO, M_ID, M_NAME, B_DAY, M_EMAIL, M_TELL, JOIN_DATE, REFERENCE, ALARM_YN, GRADE_CODE, M_POINT, H_POINT, STATUS_YN FROM MEMBERLIST WHERE RNUM BETWEEN ? AND ?";
 				
 				pstmt = conn.prepareStatement(query);
 				pstmt.setInt(1, startRow);
 				pstmt.setInt(2, endRow);
 			}
-			else if(userName != null && userId.equals("")) {
+			else if(userName != null && userId == "") {
 				query= "SELECT RNUM, M_NO, M_ID, M_NAME, B_DAY, M_EMAIL, M_TELL, JOIN_DATE, REFERENCE, ALARM_YN, GRADE_CODE, M_POINT, H_POINT, STATUS_YN FROM MEMBERLIST WHERE M_NAME=? AND RNUM BETWEEN ? AND ?";
 				
 				pstmt = conn.prepareStatement(query);
@@ -868,7 +868,7 @@ public class AdminDao {
 				pstmt.setInt(2, startRow);
 				pstmt.setInt(3, endRow);
 			}
-			else if(userName.equals("") && userId != null) {
+			else if(userName == "" && userId != null) {
 				query= "SELECT RNUM, M_NO, M_ID, M_NAME, B_DAY, M_EMAIL, M_TELL, JOIN_DATE, REFERENCE, ALARM_YN, GRADE_CODE, M_POINT, H_POINT, STATUS_YN FROM MEMBERLIST WHERE M_ID=? AND RNUM BETWEEN ? AND ?";
 				
 				pstmt = conn.prepareStatement(query);
@@ -1278,12 +1278,12 @@ public class AdminDao {
 				String query = "SELECT COUNT(*) FROM MEMBERLIST";
 				pstmt = conn.prepareStatement(query);
 				rset =  pstmt.executeQuery();
-			}else if(userName != null && userId.equals("")) {
+			}else if(userName != null && userId == "") {
 				String query = "SELECT COUNT(*) FROM MEMBERLIST WHERE M_NAME=?";
 				pstmt = conn.prepareStatement(query);
 				pstmt.setString(1, userName);
 				rset =  pstmt.executeQuery();
-			}else if(userName.equals("") && userId != null) {
+			}else if(userName == "" && userId != null) {
 				String query = "SELECT COUNT(*) FROM MEMBERLIST WHERE M_ID=?";
 				pstmt = conn.prepareStatement(query);
 				pstmt.setString(1, userId);

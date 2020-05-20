@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String msg = (String)request.getAttribute("msg");
+%>
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -32,6 +35,9 @@
 				/* border: 1px solid black; */
 				text-align: center;
 			}
+			.p{
+				    vertical-align: middle;
+            }
             
         </style>
     </head>
@@ -60,8 +66,8 @@
             <br>
             <div>
                 <table>
-                    <tr>
-                        <td>
+                    <tr class="p">
+                        <td class="p">
                             <input type="text" id="userName" name="userName" style=" height: 30px; width: 400px; border-radius: 8px;" placeholder="이름를 입력하세요.">
                         </td>
                         <td rowspan="2">
@@ -100,7 +106,14 @@
             </div>
         </form>
         </div>
-
+		<script>
+		$(function(){
+			
+		 <%if(msg != null){%>
+			alert("<%=msg%>");
+		 <%}%>
+		});
+		</script>
         
 
         <script>

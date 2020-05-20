@@ -29,12 +29,12 @@
                 color: white;
                 border: 0;
             }
-            div{
+            /* div{
                 background-color: lightgray;
                 padding: 10px;
                 width: 100%;
-            }
-            form{
+            } */
+            #modify{
                 width: 700px;
                 margin: 0 auto;
             }
@@ -106,7 +106,7 @@
         
        <%@ include file="../common/adminHeader.jsp" %>
 
-        <form method="post" action="<%=request.getContextPath()%>/admin/modifyUpdate?mNo=<%=member.getmNo()%>">
+        <form id="modify" method="post" action="<%=request.getContextPath()%>/admin/modifyUpdate?mNo=<%=member.getmNo()%>">
             <h2>회원정보수정</h2>
             <hr>
             <h3>기본정보</h3>
@@ -321,6 +321,9 @@
         
 	</body>
 	<script>
+		function cancle(){
+			location.href="views/admin/adminMember.jsp"
+		}
 		function productManage()
 		{
 			location.href="views/admin/productManage.jsp";

@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="member.model.vo.Member" %>
+<%
+	Member searchId = (Member)session.getAttribute("searchId");	
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +18,9 @@
             #logintable{
                 width: 600px;
                 /* text-align: center; */
+            }
+           .p{
+				    vertical-align: middle;
             }
             a{
                 text-decoration:none;
@@ -44,11 +51,13 @@
             }
             #check1{
                 float: left;
+                
             }
             #idsave{
                 color: lightgray;
+                float:left
             }
-            #signUp{
+            #memberJoin{
                 background: darkgrey; 
                 color: white; 
                 width: 600px; 
@@ -72,7 +81,6 @@
             
             
             
-            
     </style>
 </head>
 <body>
@@ -92,8 +100,8 @@
             <hr>
             <br>
             <table id="logintable">
-                <tr>
-                    <td>
+                <tr class="p">
+                    <td class = "p">
                         <input type="text" class="log1" name="userId" id="userId" placeholder="이름을 입력해주세요">
                     </td>
                     <td rowspan="2">
@@ -118,7 +126,7 @@
             <br>
             <hr>
             <br>
-            <input type="button" id="signUp" value="회원가입">
+            <input type="button" id="memberJoin" value="회원가입">
             <br>
             <br>
             <hr>
@@ -135,6 +143,12 @@
         </form>
         <script>
             $(function(){
+        			
+            	// 아이디 찾은 결과
+           		 <%if(searchId != null){%>
+           			alert("아이디는 <%= searchId.getmId()%> 입니다.");
+           		 <%}%>
+           		
             	// 아이디
                 $("#userId").change(function(){
                     var value = $("#userId").val();
@@ -156,8 +170,8 @@
                 });
                 
             	// 회원가입 버튼
-                $("#signUp").click(function(){
-                	location.href="#";
+                $("#memberJoin").click(function(){
+                	location.href="<%=request.getContextPath()%>/views/member/memberJoin.jsp";
                 });
                 
                 // 아이디 저장 코드

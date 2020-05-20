@@ -41,7 +41,7 @@ public class AdminMemberListServlet extends HttpServlet {
 		
 		if(userName == null || userName.equals("null"))
 			userName = null;
-		if(userId == null || userId.equals("userId"))
+		if(userId == null || userId.equals("null"))
 			userId = null;
 		
 		int listCount = mListService.getMemberListCount(userName, userId); 

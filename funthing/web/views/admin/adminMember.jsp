@@ -22,9 +22,9 @@
 	<style>
       h2{text-align:center;}
       form{height: 100px; background-color: rgb(199, 196, 196);}
-      #nav_section{margin:auto; width: 90%;}
+      #nav_section{margin:auto; width: 60%;}
       #nav_section ul{height: 100px; margin: auto; width: 100%; padding: 0px;}
-      #nav_section ul li{float: left; list-style-type: none; padding-left: 100px; padding-right: 100px; font-size:18px; line-height: 100px; }
+      #nav_section ul li{float: left; list-style-type: none; padding-left: 50px; padding-right: 50px; font-size:18px; line-height: 100px; }
       #nav_section ul li .box{width: 300px; height:30px;}
       #nav_section ul li:last-child { float:right;}
       
@@ -36,6 +36,8 @@
       /* 상품계시판 밑에 버튼 */
       #pageBtn{margin:auto; width:48%;}
       #pageBtn>button{margin:auto; width:4.2%; height:30px; text-align: center;}
+      .pageBtn {border: 0; font-size: middle; background: white; cursor: pointer;}
+      
    </style>
 </head>
 <body>
@@ -46,7 +48,7 @@
 			<ul>
 				<li><lable>회원 이름 : </lable><input type="text" class="box" id="userName" name="userName"></li>
 				<li><lable>회원 아이디 : </lable><input type="text" class="box" id="userId" name="userId"></li>
-				<li><input type="submit" value="조회하기" style="background-color: gray; color: white; border-radius: 5px; border: 0px; width: 80px; height: 30px; font-size: 14px;"></li>
+				<li><input id="btn" type="submit" value="조회하기" style="background-color: gray; color: white; border-radius: 5px; border: 0px; width: 80px; height: 30px; font-size: 14px;"></li>
 			</ul>
 		</div>
 	</form>
@@ -57,6 +59,7 @@
 	<section id=area>
 		<article>
 			<table>
+		<% if(!list.isEmpty()){ %>
 				<tr>
 					<th>회원번호</th>
                     <th>아이디</th>
@@ -92,33 +95,55 @@
                     <td><button onclick="location.href='<%=request.getContextPath() %>/admin/modify?userId=<%= b.getmId()%>';">수정</button></td>
                 </tr>
                 <%} %>
+                <%}else{ %>
+                <tr>
+	                <th>회원번호</th>
+                    <th>아이디</th>
+                    <th>성명</th>
+                    <th>생년월일</th>
+                    <th>이메일</th>
+                    <th>휴대폰번호</th>
+                    <th>회원가입날짜</th>
+                    <th>추천인</th>
+                    <th>알람수신동의여부</th>
+                    <th>등급코드</th>
+                    <th>적립금</th>
+                    <th>누적결제금액</th>
+                    <th>회원탈퇴유무</th>
+                    <th>변경</th>
+                </tr>
+                <tr style="margin-top:30px;">
+                	<td colspan="6"><div style="text-align:center">검색 결과가 없습니다. 다시 검색해주세요.</div></td>
+                </tr>	
+               	
+                <%} %>
        		</table>
        		<br><br>
 	
         	<div id="pageBtn" align="center">
         	<!--  페이징 처리 -->
-	        	<button onclick="location.href='<%=request.getContextPath() %>//admin/memberList?currentPage=<%=1%>&userName=<%=userName%>&userId=<%=userId%>'"> << </button>
+	        	<button class="pageBtn" onclick="location.href='<%=request.getContextPath() %>//admin/memberList?currentPage=<%=1%>&userName=<%=userName%>&userId=<%=userId%>'"> << </button>
 	        	
-	        	<%if(currentPage == 1){ %>
-	        	<button disabled> < </button>
+	        	<%if(currentPage <= 1){ %>
+	        	<button class="pageBtn" disabled> < </button>
 	        	<%}else{ %>
-	        	<button onclick="location.href=;<%=request.getContextPath() %>/admin/memberList?currentPage=<%=currentPage - 1 %>&userName=<%=userName%>&userId=<%=userId%>'"> < </button>
+	        	<button class="pageBtn" onclick="location.href=;<%=request.getContextPath() %>/admin/memberList?currentPage=<%=currentPage-1 %>&userName=<%=userName%>&userId=<%=userId%>'"> < </button>
 	        	<%} %>
 	        	
 	        	<%for(int p = startPage; p <= endPage; p++){ %>
-	        		<%if(currentPage == p){ %>
-	        			<button disabled><%=p %></button>
+	        		<%if(p == currentPage){ %>
+	        			<button class="pageBtn" disabled><%=p %></button>
 	        		<%}else{ %>
-	        			<button onclick="location.href='<%=request.getContextPath() %>/admin/memberList?currentPage=<%=p %>&userName=<%=userName%>&userId=<%=userId%>'"><%=p %></button>
+	        			<button class="pageBtn" onclick="location.href='<%=request.getContextPath() %>/admin/memberList?currentPage=<%=p %>&userName=<%=userName%>&userId=<%=userId%>'"><%=p %></button>
 	        		<%} %>
 	        	<%} %>	
 	        	
 	        	<%if(currentPage == maxPage) { %>
-	        		<button disabled> > </button>
+	        		<button class="pageBtn" disabled> > </button>
 	        	<%}else{ %>
-	        		<button onclick="location.href='<%=request.getContextPath() %>/admin/memberList?currentPage=<%=currentPage + 1 %>&userName=<%=userName%>&userId=<%=userId%>'"> > </button>
+	        		<button class="pageBtn" onclick="location.href='<%=request.getContextPath() %>/admin/memberList?currentPage=<%=currentPage+1 %>&userName=<%=userName%>&userId=<%=userId%>'"> > </button>
 	        	<%} %>
-	        	<button onclick="location.href='<%=request.getContextPath() %>/admin/memberList?currentPage=<%=maxPage %>&userName=<%=userName%>&userId=<%=userId%>'"> >> </button>
+	        	<button class="pageBtn" onclick="location.href='<%=request.getContextPath() %>/admin/memberList?currentPage=<%=maxPage %>&userName=<%=userName%>&userId=<%=userId%>'"> >> </button>
        		</div>
     	</article>
 	</section>
