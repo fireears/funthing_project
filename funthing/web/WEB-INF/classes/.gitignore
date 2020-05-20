@@ -1,15 +1,17 @@
+/admin/
+/board/
+/brand/
+/calendar/
+/common/
+/filter/
+/main/
+/man/
+/member/
 /notice/
 /payment/
 /personalQnA/
 /product/
-<<<<<<< HEAD
 /productQnA/
 /review/
 /women/
 /wrapper/
-/admin/
-=======
-/admin/
-/personalQnA/
-/productQnA/
->>>>>>> refs/remotes/origin/dev4
