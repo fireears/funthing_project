@@ -39,9 +39,8 @@ public class ProductQnaList extends HttpServlet {
 		ProductQnAService aService = new ProductQnAService();
 		
 		String mNo = request.getParameter("mNo");
+		System.out.println("mNo :" + mNo);
 		int listCount = aService.getListQnaCount(mNo);
-		String userNo = request.getParameter("userNo");
-		System.out.println("servlet userNo : " + userNo);
 		System.out.println("Listservlet listCount : " + listCount);
 		
 		

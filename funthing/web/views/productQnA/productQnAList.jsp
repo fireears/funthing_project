@@ -173,7 +173,7 @@
                 <form method="post" action="<%=request.getContextPath()%>/productQnaList">
                     <div class="point-search">
                         <ul>
-                         	<input type="hidden" name="userNo" value="<%=loginUser2.getmNo() %>">
+                         	<input type="hidden" name="mNo" value="<%=loginUser2.getmNo() %>">
                             <li><h3>조회기간</h3></li>
                             <li>
                                 <input type="radio" name="searchDate" id="today" value="today">
@@ -294,22 +294,22 @@
 	
 	<script>
 	
-			$(function(){
-				$("#list-tb td").click(function(){
-					/* var mNo = $("#mNo").val(); */
-					var qnaNo = $(this).parent().children("input").val();
-					 <%-- var mNo = <%=loginUser2.getmNo()%>; --%> 
-					<%-- location.href="<%=request.getContextPath()%>/productQnaDetail?mNo=" + mNo + "&QnaNo=" + QnaNo; --%>
-					  location.href="<%=request.getContextPath()%>/productQnaDetail?mNo=<%=loginUser2.getmNo()%>&qnaNo=" + qnaNo;  
-					 
-					
-				
-				
-				})
-				console.log(qnaNo);
-			})
+	$(function(){
+		$("#list-tb td").click(function(){
+			/* var mNo = $("#mNo").val(); */
+			var qnaNo = $(this).parent().children("input").val();
+			 <%-- var mNo = <%=loginUser2.getmNo()%>; --%> 
+			<%-- location.href="<%=request.getContextPath()%>/productQnaDetail?mNo=" + mNo + "&QnaNo=" + QnaNo; --%>
+			  location.href="<%=request.getContextPath()%>/productQnaDetail?mNo=<%=loginUser2.getmNo()%>&qnaNo=" + qnaNo;  
+			  location.href="<%=request.getContextPath()%>/productQnaList?mNo=<%=loginUser2.getmNo()%>
 			
-			</script>
+		
+		
+		})
+		console.log(qnaNo);
+	})
+	
+	</script>
 
 
 </body>
