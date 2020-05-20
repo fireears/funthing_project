@@ -178,20 +178,39 @@ public class ProductQnADao {
 		
 			PreparedStatement pstmt = null;
 			ResultSet rset = null;
-			AdminProductQnA od = null;
+			AdminProductQnA apq = null;
 			
-			String query = "SELECT * FROM ORDER_DETAIL WHERE m_no = ? and ";
+//			String query = "select q.qna_no, m_id, m_name,p_no2, p_name, qna_title, qna_contents, qna_date, re_yn , qnare_id, qnare_content, qnare_date "
+//					+ "from qna q join qnare qre on q.qna_no = qre.qna_no join member m on m.m_no = q.m_no join product p on q.p_no2 = p.p_no";
+			
+			String query = "select q.qna_no, m_id, m_name,p_no2, p_name, qna_title, qna_contents, to_char(qna_date,'yy/mm/dd'), re_yn , qnare_id, qnare_content, qnare_date "
+					+ "from qna q join qnare qre on q.qna_no = qre.qna_no join member m on m.m_no = q.m_no join product p on q.p_no2 = p.p_no";
 			try {
 				pstmt = conn.prepareStatement(query);
-				pstmt.setString(1,mNo);
+				
 				
 				rset = pstmt.executeQuery();
 				
 				if(rset.next()) {
-					
+					apq = new AdminProductQnA(
+							rset.getInt("QNA_No"),
+							rset.getString("M_ID"),
+							rset.getString("M_NAME"),
+							rset.getString("P_NO2"),
+							rset.getString("P_NAME"),
+							rset.getString("QNA_TITLE"),
+							rset.getString("QNA_CONTENTS"),
+							rset.getString("to_char(qna_date,'yy/mm/dd')"),
+							rset.getString("RE_YN"),
+							rset.getString("QNARE_ID"),
+							rset.getString("QNARE_CONTENT"),
+							rset.getString("QNARE_DATE")
+							
+							
+							);
 
 				}
-//				System.out.println("Dao od : " + od);
+//				System.out.println("Dao apq : " + apq);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -200,7 +219,7 @@ public class ProductQnADao {
 				close(rset);
 			}
 			
-			return od;
+			return apq;
 	}
 
 }
