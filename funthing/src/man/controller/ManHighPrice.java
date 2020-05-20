@@ -15,16 +15,16 @@ import man.model.service.ManService;
 import man.model.vo.ManVo;
 
 /**
- * Servlet implementation class ManServlet
+ * Servlet implementation class ManHighPrice
  */
-@WebServlet("/ManServlet")
-public class ManServlet extends HttpServlet {
+@WebServlet("/ManHighPrice")
+public class ManHighPrice extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ManServlet() {
+    public ManHighPrice() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -51,19 +51,19 @@ public class ManServlet extends HttpServlet {
 			{
 				currentPage = 1;
 			}
-			limit = 36;
-			maxPage = (int)((double)listCount/36 + 0.9);
+			limit = 100;
+			maxPage = (int)((double)listCount/80 + 0.9999);
 			startPage = (((int)((double)currentPage/10 + 0.9)) - 1)*10 + 1;
 			endPage = startPage + 10 - 1;
 			
-			if(endPage > maxPage){
+			if(endPage >= maxPage){
 				endPage = maxPage;
 			}
 			ArrayList<ManVo> list =null;
 			PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
 			RequestDispatcher view = null;
-			
-			list = ms.selectList(currentPage, limit);	
+			System.out.println(pi);
+			list = ms.selectListLowPrice(currentPage, limit);	
 					
 			if(list.isEmpty()){
 				request.setAttribute("msg","게시판 리스트 조회 실패!");
