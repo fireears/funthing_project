@@ -735,29 +735,26 @@ public class AdminDao {
 			String query = null;
 			
 			if(searchKind == null && searchText == null ) {	
-				query= "select rnum,PER_QNA_NO,m_id,PER_TITLE,PER_CONTENTS, P_NO,p_name,PER_RE_YN,ADDFILE,O_NO,PER_CATE "
-						+ "from (select PER_QNA_NO,m_id,PER_TITLE,PER_CONTENTS, pq.P_NO,p_name,PER_RE_YN,ADDFILE,O_NO,PER_CATE, rownum as rnum from personal_qna pq join member m on pq.m_no = m.m_no join product p on pq.p_no = p.p_no ) "
-						+ "where rnum  BETWEEN ? AND ?  order by rnum";
+				query= "select rnum,PER_QNA_NO,m_id,m_name,PER_TITLE,PER_CONTENTS, P_NO,p_name,PER_RE_YN,ADDFILE,O_NO,PER_CATE "+
+						"from (select PER_QNA_NO,m_id,m_name,PER_TITLE,PER_CONTENTS, pq.P_NO,p_name,PER_RE_YN,ADDFILE,O_NO,PER_CATE, rownum as rnum from personal_qna pq join member m on pq.m_no = m.m_no join product p on pq.p_no = p.p_no ) "+
+						"where rnum  BETWEEN ? AND ?  order by rnum";
+
 						
 				pstmt = conn.prepareStatement(query);
 				pstmt.setInt(1, startRow);
 				pstmt.setInt(2, endRow);
 			}else if(searchKind != null && searchText.equals("")) {
-				query= "select rnum,PER_QNA_NO,m_id,PER_TITLE,PER_CONTENTS, P_NO,p_name,PER_RE_YN,ADDFILE,O_NO,PER_CATE "
-						+ "from (select PER_QNA_NO,m_id,PER_TITLE,PER_CONTENTS, pq.P_NO,p_name,PER_RE_YN,ADDFILE,O_NO,PER_CATE, rownum as rnum from personal_qna pq join member m on pq.m_no = m.m_no join product p on pq.p_no = p.p_no ) "
-						+ "where rnum  BETWEEN ? AND ?  order by rnum";
+				query= "select rnum,PER_QNA_NO,m_id,m_name,PER_TITLE,PER_CONTENTS, P_NO,p_name,PER_RE_YN,ADDFILE,O_NO,PER_CATE "+
+						"from (select PER_QNA_NO,m_id,m_name,PER_TITLE,PER_CONTENTS, pq.P_NO,p_name,PER_RE_YN,ADDFILE,O_NO,PER_CATE, rownum as rnum from personal_qna pq join member m on pq.m_no = m.m_no join product p on pq.p_no = p.p_no ) "+
+						"where rnum  BETWEEN ? AND ?  order by rnum";
 				pstmt = conn.prepareStatement(query);
 				pstmt.setInt(1, startRow);
 				pstmt.setInt(2, endRow);
 			}else if(searchKind != null && searchText != null) {
-				query = "select PER_QNA_NO,m_id,PER_TITLE,PER_CONTENTS, P_NO,p_name,PER_RE_YN,ADDFILE,O_NO,PER_CATE "
-						+ "from (select PER_QNA_NO,m_id,PER_TITLE,PER_CONTENTS, pq.P_NO,p_name,PER_RE_YN,ADDFILE,O_NO,PER_CATE, rownum as rnum from personal_qna pq join member m on pq.m_no = m.m_no join product p on pq.p_no = p.p_no where " + searchKind +  "= ?) "
-						+ "where rnum  BETWEEN ? AND ?  order by rnum";
-//				query= "select PER_QNA_NO,m_id,PER_TITLE,PER_CONTENTS, P_NO,p_name,PER_RE_YN,ADDFILE,O_NO,PER_CATE \r\n" + 
-//						"from (select PER_QNA_NO,m_id,PER_TITLE,PER_CONTENTS, pq.P_NO,p_name,PER_RE_YN,ADDFILE,O_NO,PER_CATE, rownum as rnum\r\n" + 
-//						"from personal_qna pq join member m on pq.m_no = m.m_no join product p on pq.p_no = p.p_no where " + searchKind + " = ?)\r\n" + 
-//						"where rnum  BETWEEN startRow AND endRow  order by rnum";
-				
+				query = "select rnum,PER_QNA_NO,m_id,m_name,PER_TITLE,PER_CONTENTS, P_NO,p_name,PER_RE_YN,ADDFILE,O_NO,PER_CATE "+
+						"from (select PER_QNA_NO,m_id,m_name,PER_TITLE,PER_CONTENTS, pq.P_NO,p_name,PER_RE_YN,ADDFILE,O_NO,PER_CATE, rownum as rnum from personal_qna pq join member m on pq.m_no = m.m_no join product p on pq.p_no = p.p_no ) "+
+						"where rnum  BETWEEN ? AND ?  order by rnum";
+
 				pstmt = conn.prepareStatement(query);
 				pstmt.setString(1, searchText);			
 				pstmt.setInt(2, startRow);
@@ -773,6 +770,7 @@ public class AdminDao {
 						
 						rset.getInt("PER_QNA_NO"),
 						rset.getString("m_id"),
+						rset.getString("m_name"),
 						rset.getString("PER_TITLE"),
 						rset.getString("PER_CONTENTS"),
 						rset.getString("P_NO"),
@@ -1294,6 +1292,11 @@ public class AdminDao {
 		return result;
 	}
 
+	
+
+	
+
+	
 
 	
 	

@@ -127,30 +127,19 @@
 	            		<h3>관리자 답변</h3>
 	            		<br>
 	            		<div id="reply">
+	            		<form id="replyForm" action="<%=request.getContextPath() %>/admin/productQnaRe" method="post">
 	            			<table align="center" id="replyTable">
 	            				<tr>
-	            					<td width=220px; ><textArea rows="4" cols="220" id="replyContent"></textArea></td>
-	            					<td><button id="seachBtn">답변등록</button></td>
+	            					
+	            					<input type="hidden" name="proQnaNo" value="<%=pq.getQnaNo() %>">
+	            					<input type="hidden" name="tossmId" value="<%=pq.getmNo() %>">
+	            					<td width=220px;  ><textArea rows="4" cols="220" id="replyContent" name="replyContent"></textArea></td>
+	            					<td><button type="submit" id="seachBtn" >답변등록</button></td>
 	            				</tr>
 	            			</table>
+	            			</form>
 	            	
-	            		<%--<!-- 작성한 답변 보기  -->
-	            		<div id="replySelect">
-	            			<table id="replySelectTable">
-	            				<%if(rlist.isEmpty()) {%>
-	            					<tr><td>답변이 없습니다.</td></tr>
-	            			
-	            				<% }else { %>
-								<% for(int i=0; i<rlist.size(); i++){ %>
-								<tr>
-									<td width="100px"><%= rlist.get(i).getQnareId() %></td>
-									<td width="400px"><%= rlist.get(i).getQnareContent() %></td>
-									<td width="200px"><%= rlist.get(i).getQnareDate() %></td>
-								</tr>
-								
-									<% } %>
-								<% } %>
-							</table> --%>	
+	            		
 							</section>
 	            		</div><!-- 댓글등록창 끝 -->
 	            	</div><!-- 정보창 및 댓글등록창 끝 -->
@@ -222,47 +211,5 @@
 						})
 					})
 		</script>
-		<%-- <script>
-		$(function(){
-			// 2_2. addReply 버튼 클릭 시 댓글 달기 기능을 실행했을 때 비동기적으로 새로 갱신된 리스트들을 테이블에 적용시키는 ajax
-			$("#addReply").click(function(){
-				   <%for(AdminProductQnA pq : list) {%>  
-				var writer = <%=pq.getmId() %>
-				var bid =  <%=pq.getQnaNo() %>;
-				var content = $("#replyContent").val();
-				<%}%>
-				$.ajax({
-					url:"admin/insertQnaRe",
-					type:"post",
-					data:{writer:writer, content:content, bid:bid},
-					// InsertReplyServlet 만들러 가자!!!
-					success:function(data){	// replySelectTable에 data writer, content, bid가 들어오면
-						$replyTable = $("#replySelectTable");
-						$replyTable.html(""); // 기존 테이블 정보 초기화
-						
-						// 새로 받아온 갱신된 댓글리스트들을 for문을 통해 다시 table에 추가
-						for(var key in data){
-							/* var $는 jquery뿐만 아니라 javascript에서 쓸 수 있는 변수이다. */
-							var $tr = $("<tr>");
-							var $writerTd = $("<td>").text(data[key].rWriter).css("width", "100px");
-							var $contentTd = $("<td>").text(data[key].rContent).css("width", "400px");
-							var $dateTd = $("<td>").text(data[key].createDate).css("width", "200px");
-					
-							$tr.append($writerTd);
-							$tr.append($contentTd);
-							$tr.append($dateTd);
-							$replyTable.append($tr);
-						}
-						
-						// 댓글 작성 부분 리셋
-						$("#replyContent").val("");
-					},
-					error:function(request,status,error){
-					    alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-					   }
-				});
-			});
-		});
-	</script> --%>
 </body>
 </html>

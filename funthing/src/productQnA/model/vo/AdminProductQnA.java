@@ -22,8 +22,15 @@ public class AdminProductQnA  implements Serializable	{
 	private String qnaDate;			// qna 작성날짜
 	private String bNo;				// 브랜드번호
 	private String reYn;			// 답글 여부
-
-
+	
+	// 상품문의 답변 관련 테이블
+	private int qnareNo;			// 답변번호
+	private String mNo;				// 회원번호
+	private String qnareId;			// 관리자 아이디
+	private String qnareContent;	// 관리자 답변내용
+	private String qnareDate;		// 관리자 답변날짜
+	
+	
 	public AdminProductQnA() {
 		super();
 	}
@@ -45,6 +52,30 @@ public class AdminProductQnA  implements Serializable	{
 	}
 
 
+	
+	
+	public AdminProductQnA(int qnaNo, String mId, String mName, String pNo, String pName, String qnaTitle,
+			String qnaContents, String qnaDate, String bNo, String reYn, int qnareNo, String mNo, String qnareId,
+			String qnareContent, String qnareDate) {
+		super();
+		this.qnaNo = qnaNo;
+		this.mId = mId;
+		this.mName = mName;
+		this.pNo = pNo;
+		this.pName = pName;
+		this.qnaTitle = qnaTitle;
+		this.qnaContents = qnaContents;
+		this.qnaDate = qnaDate;
+		this.bNo = bNo;
+		this.reYn = reYn;
+		this.qnareNo = qnareNo;
+		this.mNo = mNo;
+		this.qnareId = qnareId;
+		this.qnareContent = qnareContent;
+		this.qnareDate = qnareDate;
+	}
+
+
 	public AdminProductQnA(int qnaNo, String mId, String mName, String pNo, String pName, String qnaTitle,
 			String qnaContents, String qnaDate, String bNo, String reYn) {
 		super();
@@ -61,6 +92,57 @@ public class AdminProductQnA  implements Serializable	{
 		this.reYn = reYn;
 	}
 	
+	
+
+	public int getQnareNo() {
+		return qnareNo;
+	}
+
+
+	public void setQnareNo(int qnareNo) {
+		this.qnareNo = qnareNo;
+	}
+
+
+	public String getmNo() {
+		return mNo;
+	}
+
+
+	public void setmNo(String mNo) {
+		this.mNo = mNo;
+	}
+
+
+	public String getQnareId() {
+		return qnareId;
+	}
+
+
+	public void setQnareId(String qnareId) {
+		this.qnareId = qnareId;
+	}
+
+
+	public String getQnareContent() {
+		return qnareContent;
+	}
+
+
+	public void setQnareContent(String qnareContent) {
+		this.qnareContent = qnareContent;
+	}
+
+
+	public String getQnareDate() {
+		return qnareDate;
+	}
+
+
+	public void setQnareDate(String qnareDate) {
+		this.qnareDate = qnareDate;
+	}
+
 
 	public int getQnaNo() {
 		return qnaNo;
@@ -166,7 +248,8 @@ public class AdminProductQnA  implements Serializable	{
 	public String toString() {
 		return "AdminProductQnA [qnaNo=" + qnaNo + ", mId=" + mId + ", mName=" + mName + ", pNo=" + pNo + ", pName="
 				+ pName + ", qnaTitle=" + qnaTitle + ", qnaContents=" + qnaContents + ", qnaDate=" + qnaDate + ", bNo="
-				+ bNo + ", reYn=" + reYn + "]";
+				+ bNo + ", reYn=" + reYn + ", qnareNo=" + qnareNo + ", mNo=" + mNo + ", qnareId=" + qnareId
+				+ ", qnareContent=" + qnareContent + ", qnareDate=" + qnareDate + "]";
 	}
 
 
