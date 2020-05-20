@@ -25,8 +25,9 @@ public class ProductQnA implements Serializable{
 	}
 	
 	
-	public ProductQnA(String qnaTitle, Date qnaDate) {
+	public ProductQnA(int qnaNo, String qnaTitle, Date qnaDate) {
 		super();
+		this.qnaNo = qnaNo;
 		this.qnaTitle = qnaTitle;
 		this.qnaDate = qnaDate;
 	}

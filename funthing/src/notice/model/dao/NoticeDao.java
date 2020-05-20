@@ -46,14 +46,14 @@ public class NoticeDao {
 		
 		
 //		String query = prop.getProperty("mainSelectNotice");
-		String query = "SELECT N_TITLE,N_DATE FROM NOTICE WHERE N_DEL_YN='N'" ;
+		String query = "SELECT * FROM NOTICE WHERE N_DEL_YN='N' ORDER BY 4 DESC" ;
 		try {
 			pstmt = conn.prepareStatement(query);
 			rset = pstmt.executeQuery();
 			
 			while(rset.next())
 			{
-				Notice n  = new Notice(rset.getString("N_TITLE"),
+				Notice n  = new Notice(rset.getInt("N_NO"), rset.getString("N_TITLE"),
 								rset.getDate("N_DATE"));
 				
 				list.add(n);

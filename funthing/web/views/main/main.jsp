@@ -154,6 +154,7 @@
 	                	<%	for(int i =0; i<4; i++) { %>
 	                	<%		ProductQnA q = qnalist.get(i);
 	                			
+	                			int qnaNo = q.getQnaNo();
 	                			String title = q.getQnaTitle();
 	                			Date qnaDate = q.getQnaDate();
 	                	%>
@@ -170,6 +171,7 @@
 	                	<%	for(int i=0;i<4;i++) { %>
 	                	<%		Notice n = noticelist.get(i);
 	                			
+	                			int nNo = n.getnNo();
 	                			String title = n.getnTitle();
 	                			Date date = n.getnDate();
 	                	%>
