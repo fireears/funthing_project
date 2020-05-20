@@ -10,7 +10,14 @@
 /payment/
 /personalQnA/
 /product/
+<<<<<<< HEAD
 /productQnA/
 /review/
 /women/
 /wrapper/
+/admin/
+=======
+/admin/
+/personalQnA/
+/productQnA/
+>>>>>>> refs/remotes/origin/dev4
