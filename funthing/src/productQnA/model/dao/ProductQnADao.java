@@ -46,11 +46,9 @@ public class ProductQnADao {
 		ResultSet rset = null;
 		
 //		String query = prop.getProperty("mainSelectQnA");
-<<<<<<< HEAD
-		String query = "SELECT QNA_TITLE, QNA_DATE FROM QNA ORDER BY 2 DESC";
-=======
-		String query = "SELECT QNA_NO, QNA_TITLE, QNA_DATE FROM QNA ORDER BY 2 DESC";
->>>>>>> refs/remotes/origin/dev4
+
+		String query = "SELECT QNA_NO, QNA_TITLE, QNA_DATE FROM QNA ORDER BY 3 DESC";
+
 		
 		try {
 			pstmt = conn.prepareStatement(query);
