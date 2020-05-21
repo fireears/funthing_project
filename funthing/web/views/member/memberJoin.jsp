@@ -682,9 +682,10 @@
                 
                 $("#submit_btn").click(function(){
                         if($("#check1").prop('checked') == false || $("#check2").prop("checked") == false || $("#check3").prop("checked") == false){
-                                alert("필수 약관에 동의 하셔야 합니다.")
+                                alert("필수 약관에 동의 하셔야 합니다.");
+                                
                             }else{
-                                    // $(location).attr('href','join.html');
+                                   
                             }
                 }); 
             });

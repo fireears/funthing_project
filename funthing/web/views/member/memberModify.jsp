@@ -23,14 +23,15 @@
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <style>
 		#modify{
-			margin: auto;
-			width:33%;
+			float:right;
+			margin-right:700px;
+			
 		}
         #joinform{
                 width: 700px;
                 margin: 0 auto;
             }
-        #joinform #modi{
+        #modi{
                 margin: 0;
                 padding:0;
                 width: 700px;
@@ -64,10 +65,10 @@
               float: left;
               margin-left: 3px ;
            }
-           h2{
+           #h2{
                margin-left: 20px;
            }
-           h3{
+           #h3{
                float: left;
                margin-left: 20px;
            }
@@ -92,9 +93,9 @@
 	<br>
 	<div id=modify>
 	<form id="joinForm" method="post" action="<%=request.getContextPath() %>/update.me?mNo=<%=member.getmNo()%>">
-            <h2>정보수정</h2>
+            <h2 id="h2">정보수정</h2>
             <hr>
-            <h3>기본정보</h3>
+            <h3 id="h3">기본정보</h3>
             <br>
             <h5 id="hh5">*은 반드시 적어야 하는 항목</h5>
             <table id="modi">
