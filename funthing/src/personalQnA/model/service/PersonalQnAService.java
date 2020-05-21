@@ -1,14 +1,22 @@
 package personalQnA.model.service;
 
+import static common.JDBCTemplate.commit;
+import static common.JDBCTemplate.getConnection;
+import static common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.util.ArrayList;
 
 import payment.model.vo.OrderInfo;
 import payment.model.vo.OrderInfoDetail;
 import personalQnA.model.dao.PersonalQnADao;
 import personalQnA.model.vo.PersonalInsert;
+import personalQnA.model.vo.PersonalQnA;
+
+import java.sql.Connection;
+import java.util.ArrayList;
+
+import personalQnA.model.dao.PersonalQnADao;
 import personalQnA.model.vo.PersonalQnA;
 
 import static common.JDBCTemplate.*;
@@ -58,7 +66,7 @@ public class PersonalQnAService {
 		
 		Connection conn = getConnection();
 		
-		ArrayList<PersonalQnA> perList = new PersonalQnADao().selectPersonalQnA(conn, searchDate, firstDate, secondDate, currentPage, limit, userNo);
+		ArrayList<PersonalQnA> perList = new PersonalQnADao().selectPersonalQnA(conn,searchDate, firstDate, secondDate, currentPage, limit, userNo);
 		
 		close(conn);
 		

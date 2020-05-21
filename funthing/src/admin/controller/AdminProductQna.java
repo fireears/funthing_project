@@ -82,15 +82,11 @@ public class AdminProductQna extends HttpServlet {
 		System.out.println(list);
 		RequestDispatcher view = null;
 		if(!list.isEmpty()) {
-			System.out.println("servlet searchKind : " + searchKind);
-			System.out.println("servlet searchText : " + searchText);
 			view = request.getRequestDispatcher("/views/admin/adminProductListQnA.jsp");
 			request.setAttribute("list", list);
 			request.setAttribute("pi", pi);
 			request.setAttribute("searchKind", searchKind);
 			request.setAttribute("searchText", searchText);
-			
-			
 		}else {
 			view = request.getRequestDispatcher("/views/admin/adminProductListQnA.jsp");
 			request.setAttribute("list", list);

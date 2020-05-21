@@ -7,8 +7,7 @@
 <%
     	ArrayList<AdmimPersonalQna> list = (ArrayList<AdmimPersonalQna>)request.getAttribute("list");
     	PageInfo pi = (PageInfo)request.getAttribute("pi");
-    	String searchKind = (String)request.getAttribute("searchKind");
-    	String searchText = (String)request.getAttribute("searchText");
+    	
     	int num = 0;
     	int currentPage = pi.getCurrentPage();
     	int listCount = pi.getListCount();
@@ -167,28 +166,28 @@
 	        
 	        <!-- 페이징처리 -->
 	        <div id="pageBtn" align="center">
-	        	<button class="pageBtn" onclick="location.href='<%=request.getContextPath() %>/admin/personalQna?currentPage=<%=1 %>&searchText=<%=searchText %>&searchKind=<%=searchKind%>'"> << </button>
+	        	<button class="pageBtn" onclick="location.href='<%=request.getContextPath() %>/admin/personalQna?currentPage=<%=1 %>'"> << </button>
 	        	
 	        	<%if(currentPage <= 1) { %>
 	        		<button class="pageBtn" disabled> < </button>
 	        	<%} else {%>
-	        		<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/admin/personalQna?currentPage=<%=currentPage-1%>&searchText=<%=searchText %>&searchKind=<%=searchKind%>'"> < </button>
+	        		<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/admin/personalQna?currentPage=<%=currentPage-1%>'"> < </button>
 	        	<%} %>
 	        	<%for(int p = startPage; p<=endPage; p++) { %>
 	        	<%	if(p == currentPage) { %>
 	        			<button class="pageBtn" disabled><%=p %></button>
 	        	
 	        	<%	} else{ %>
-	        			<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/admin/personalQna?currentPage=<%=p%>&searchText=<%=searchText %>&searchKind=<%=searchKind%>'"><%=p %></button>
+	        			<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/admin/personalQna?currentPage=<%=p%>'"><%=p %></button>
 	        	<%} %>	
 	        	<%} %>
 	        	
 	        	<%if(currentPage == maxPage) {%>
 	        		<button class="pageBtn" disabled> > </button>
 	        	<%} else { %>
-	        		<button class="pageBtn" onclick="location.href='<%=request.getContextPath() %>/admin/personalQna?currentPage=<%=currentPage+1 %>&searchText=<%=searchText %>&searchKind=<%=searchKind%>'"> > </button>
+	        		<button class="pageBtn" onclick="location.href='<%=request.getContextPath() %>/admin/personalQna?currentPage=<%=currentPage+1 %>'"> > </button>
 	        	<%} %>
-	        	<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/admin/personalQna?currentPage=<%=maxPage%>&searchText=<%=searchText %>&searchKind=<%=searchKind%>'"> >> </button>
+	        	<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/admin/personalQna?currentPage=<%=maxPage%>'"> >> </button>
 	        	
 	        	
 	        </div>

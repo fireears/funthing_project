@@ -49,7 +49,7 @@
         <h3>공지사항 쓰기</h3>
     </span>
         <table>
-            <form method="get" action="<%=request.getContextPath()%>/admin/noticeWriter">
+            
             <br><br>
             <tr>
                 <td class="han">제목</td>
@@ -68,7 +68,6 @@
 
                 </td>
             </tr>
-            </form>
         </table>
 
     </body>

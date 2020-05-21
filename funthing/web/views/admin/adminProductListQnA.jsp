@@ -9,7 +9,7 @@
     	ArrayList<AdminProductQnA> list = (ArrayList<AdminProductQnA>)request.getAttribute("list");
     	PageInfo pi = (PageInfo)request.getAttribute("pi");
     	String searchKind = (String)request.getAttribute("searchKind");
-    	String searchText = (String)request.getAttribute("searchText");
+    	String searchText = (String)request.getAttribute("searchKind");
     	int num = 0;
     	int currentPage = pi.getCurrentPage();
     	int listCount = pi.getListCount();
@@ -101,7 +101,7 @@
 	<br>
 
 	 <section id=area> 
-	 
+	 <%if(searchKind != null && searchText != null){ %>
 		<% if(!list.isEmpty()){ %>
             <table id="areaTable">
                 <tr>
@@ -168,19 +168,19 @@
 	        
 	        <!-- 페이징처리 -->
 	        <div id="pageBtn" align="center">
-	        	<%-- <button onclick="location.href='<%=request.getContextPath()%>/admin/mainView?currentPage=<%=p%>&p_no=<%=product.getpNo()%>&b_no=<%=product.getbNo()%>&s_no=<%=product.getsNo()%>&p_name=<%=product.getpName()%>&pCategory=<%=product.getpCategory()%>&p_price=<%=product.getpPrice()%>&f_start_date=<%=product.getfStartDate()%>&f_end_date=<%=product.getfEndDate()%>&f_yn=<%=product.getfYn()%>'"><%=p %></button> --%>
-	        	<button class="pageBtn" onclick="location.href='<%=request.getContextPath() %>/admin/productQnA?currentPage=<%=1 %>&searchText=<%=searchText %>&searchKind=<%=searchKind%>'"> << </button>
+	        	
+	        	<button class="pageBtn" onclick="location.href='<%=request.getContextPath() %>/admin/productQnA?currentPage=<%=1 %>&searchText='+$("#searchText").val()"&searchKind="$("#searchKind).val()"> << </button>
 	        	<%if(currentPage == 1) { %>
 	        		<button class="pageBtn" disabled> < </button>
 	        	<%} else {%>
-	        		<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/admin/productQnA?currentPage=<%=currentPage-1%>&searchText=<%=searchText %>&searchKind=<%=searchKind%>'"> < </button>
+	        		<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/admin/productQnA?currentPage=<%=currentPage-1%>&searchText='+$("#searchText").val()"&searchKind="$("#searchKind).val()"> < </button>
 	        	<%} %>
 	        	<%for(int p = startPage; p<=endPage; p++) { %>
 	        	<%	if(p == currentPage) { %>
 	        			<button class="pageBtn" disabled><%=p %></button>
 	        	
 	        	<%	} else{ %>
-	        			<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/admin/productQnA?currentPage=<%=p%>&searchText=<%=searchText %>&searchKind=<%=searchKind%>'"><%=p %></button>
+	        			<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/admin/productQnA?currentPage=<%=p%>&search='+$("#searchText").val()"&searchKind="+$("#searchKind).val()"><%=p %></button>
 	        	
 	        	<%} %>	
 	        	<%} %>
@@ -188,14 +188,117 @@
 	        	<%if(currentPage == maxPage) {%>
 	        		<button class="pageBtn" disabled> > </button>
 	        	<%} else { %>
-	        		<button class="pageBtn" onclick="location.href='<%=request.getContextPath() %>/admin/productQnA?currentPage=<%=currentPage+1 %>&searchText=<%=searchText %>&searchKind=<%=searchKind%>'"> > </button>
+	        		<button class="pageBtn" onclick="location.href='<%=request.getContextPath() %>/admin/productQnA?currentPage=<%=currentPage+1 %>&searchText='+$("#searchText").val()"&searchKind="$("#searchKind).val()"> > </button>
 	        	<%} %>
-	        	<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/admin/productQnA?currentPage=<%=maxPage%>&searchText=<%=searchText %>&searchKind=<%=searchKind%>"> >> </button>
+	        	<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/admin/productQnA?currentPage=<%=maxPage%>&searchText='+$("#searchText").val()"&searchKind="$("#searchKind).val()"> >> </button>
 	        	
 	        	
 	        </div>
 
+				<%}else{ %><!-- searchKind == null && searchText == null -->
 				
+				<% if(!list.isEmpty()){ %>
+            <table id="areaTable">
+                <tr>
+	                <th>번호</th> <th>아이디</th> <th>상품번호</th> <th>상품명</th> <th>내용</th> <th>작성날짜</th>  <th>답변여부</th>  
+                </tr>
+                
+	            <%for(AdminProductQnA pq : list) {%>  
+	            <tr align="center" class="line">
+	            	<input type="hidden" value="<%=pq.getQnaNo() %>">
+	            	<td><%=pq.getQnaNo() %></td> <td><%=pq.getmId() %></td> <td><%=pq.getpNo() %></td><td><%=pq.getpName()%></td> <td><%=pq.getQnaTitle() %></td> <td><%=pq.getQnaDate() %></td> <td><%=pq.getReYn()%></td> 
+	            </tr>
+	            <tr class="cont">
+	            	<td colspan="7">
+	            	<div id="contDiv">
+	            		<span class="info">번호 : </span><span><%=pq.getQnaNo() %></span><br><br>
+	            		<span class="info">회원번호 : </span><span><%=pq.getmId() %></span><br><br>
+	            		<span class="info">회원아이디 : </span><span><%=pq.getpNo() %></span><br><br>
+	            		<span class="info">회원이름 : </span><span><%=pq.getpName() %></span><br><br>
+	            		<span class="info">제목 : </span><span><%=pq.getQnaTitle() %></span><br><br>
+	            		<span class="info">내용 : </span><span><%=pq.getQnaDate() %></span><br><br>
+	           	
+	            		 <!-- 댓글 -->
+	            		<h3>관리자 답변</h3>
+	            		<br>
+	            		<div id="reply">
+	            			<table align="center" id="replyTable">
+	            				<tr>
+	            					<td width=220px; ><textArea rows="4" cols="220" id="replyContent"></textArea></td>
+	            					<td><button id="seachBtn">답변등록</button></td>
+	            				</tr>
+	            			</table>
+	            	
+	            		<%--<!-- 작성한 답변 보기  -->
+	            		<div id="replySelect">
+	            			<table id="replySelectTable">
+	            				<%if(rlist.isEmpty()) {%>
+	            					<tr><td>답변이 없습니다.</td></tr>
+	            			
+	            				<% }else { %>
+								<% for(int i=0; i<rlist.size(); i++){ %>
+								<tr>
+									<td width="100px"><%= rlist.get(i).getQnareId() %></td>
+									<td width="400px"><%= rlist.get(i).getQnareContent() %></td>
+									<td width="200px"><%= rlist.get(i).getQnareDate() %></td>
+								</tr>
+								
+									<% } %>
+								<% } %>
+							</table> --%>	
+							</section>
+	            		</div><!-- 댓글등록창 끝 -->
+	            	</div><!-- 정보창 및 댓글등록창 끝 -->
+	            	</td>
+	            </tr>
+	             <%} %>
+	           <%}else{ %>
+	            <tr>
+	                <th>번호</th> <th>아이디</th> <th>상품번호</th> <th>상품명</th> <th>내용</th> <th>작성날짜</th>  <th>답변여부</th>  
+                </tr>
+                 <tr style="margin-top:30px;">
+                	<td colspan="7"><div style="text-align:center">검색 결과가 없습니다. 다시 검색해주세요.</div></td>
+                </tr>	
+                  <%} %>
+	        </table>
+	        
+	        <br><br>
+	        <script>
+           		 $("table .line").click(function(){
+                $(this).next().toggleClass("show");
+           		 });
+	        </script>
+	        
+	        
+	        <!-- 페이징처리 -->
+	        <div id="pageBtn" align="center">
+	        	
+	        	<button class="pageBtn" onclick="location.href='<%=request.getContextPath() %>/admin/productQnA?currentPage=<%=1 %>&searchText='+$("#searchText").val()"&searchKind="$("#searchKind).val()"> << </button>
+	        	<%if(currentPage == 1) { %>
+	        		<button class="pageBtn" disabled> < </button>
+	        	<%} else {%>
+	        		<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/admin/productQnA?currentPage=<%=currentPage-1%>&searchText='+$("#searchText").val()"&searchKind="$("#searchKind).val()"> < </button>
+	        	<%} %>
+	        	<%for(int p = startPage; p<=endPage; p++) { %>
+	        	<%	if(p == currentPage) { %>
+	        			<button class="pageBtn" disabled><%=p %></button>
+	        	
+	        	<%	} else{ %>
+	        			<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/admin/productQnA?currentPage=<%=p%>&searchText='+$("#searchText").val()"&searchKind="+$("#searchKind).val()"><%=p %></button>
+	        	
+	        	<%} %>	
+	        	<%} %>
+	        	
+	        	<%if(currentPage == maxPage) {%>
+	        		<button class="pageBtn" disabled> > </button>
+	        	<%} else { %>
+	        		<button class="pageBtn" onclick="location.href='<%=request.getContextPath() %>/admin/productQnA?currentPage=<%=currentPage+1 %>&searchText='+$("#searchText").val()"&searchKind="$("#searchKind).val()"> > </button>
+	        	<%} %>
+	        	<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/admin/productQnA?currentPage=<%=maxPage%>&searchText='+$("#searchText").val()"&searchKind="$("#searchKind).val()"> >> </button>
+	        	
+	        	
+	        </div>
+				<%} %>
 	<br><br>
 	<script>
 		$(function() {

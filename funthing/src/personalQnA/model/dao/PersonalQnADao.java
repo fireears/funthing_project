@@ -1,14 +1,11 @@
 package personalQnA.model.dao;
 
-import static common.JDBCTemplate.*;
+import static common.JDBCTemplate.close;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import payment.model.vo.OrderInfoDetail;
@@ -101,14 +98,14 @@ public class PersonalQnADao {
 		ResultSet rset = null;
 		int perListCount = 0;
 		
-		String query = "SELECT COUNT(*) FROM PER_LIST WHERE M_NO=?";
+		String query = "SELECT COUNT(*) FROM PERSONAL_QNA WHERE M_NO=?";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, userNo);
 			rset = pstmt.executeQuery();
 			
-			while(rset.next()) {
+			if(rset.next()) {
 				perListCount = rset.getInt(1);
 			}
 			
@@ -129,22 +126,15 @@ public class PersonalQnADao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		// personalQnA객체
 		PersonalQnA pq = null;
-		
-		// personalQnA 리스트
 		ArrayList<PersonalQnA> perList = new ArrayList<>();
-		System.out.println("Dao에서 searchDate: " + searchDate);
 		
 		
-		// rnum 
 		int startRow = (currentPage -1) * limit +1;
-		int endRow = 20;
-		System.out.println("firstDate" + firstDate);
-		System.out.println("secondDate" + secondDate);
+		int endRow = startRow + (limit -1);
 		
 		try {
-			
+
 			// 맨 처음 리스트 출력 값
 			if(searchDate == null && firstDate == null) {
 
@@ -290,10 +280,9 @@ public class PersonalQnADao {
 				
 				
 			}
-			
+
 			while(rset.next()) {
-				System.out.println("while(rset.next())");
-				pq = new PersonalQnA(rset.getInt("RNUM"),
+				pq = new PersonalQnA(rset.getInt("PER_QNA_NO"),
 						rset.getString("PER_TITLE"),
 						rset.getString("PER_CONTENTS"),
 						rset.getString("P_NO"),
@@ -305,7 +294,6 @@ public class PersonalQnADao {
 						rset.getString("PER_CATE"),
 						rset.getDate("PER_DATE"));
 				
-				System.out.println("pq는?" + pq);
 				perList.add(pq);
 			}
 			
@@ -318,7 +306,6 @@ public class PersonalQnADao {
 		}
 		return perList;
 	}
-
 
 }
 

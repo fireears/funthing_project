@@ -69,8 +69,10 @@
 	                        </ul>
 	                    </li>
 	                    <li>
+
 	                    
 	                        <a href="<%=request.getContextPath()%>/ManServlet">MAN</a>
+
 	                        <ul class="sub-menu">
 	                            <li><a href="<%=request.getContextPath() %>/ManOuterServlet">OUTER</a></li>
 	                            <li><a href="<%=request.getContextPath() %>/ManTopServlet">TOP</a></li>

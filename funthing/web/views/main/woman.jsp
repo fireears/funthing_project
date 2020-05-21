@@ -2,19 +2,19 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang='ko'>
- <%@ page import="java.util.ArrayList" %>
- <%@ page import="women.model.vo.WomenVo"%>
- <%@ page import="board.model.vo.PageInfo" %>
-    <%
-    	ArrayList<WomenVo> list = (ArrayList<WomenVo>)request.getAttribute("list");
-    	PageInfo pi = (PageInfo)request.getAttribute("pi");
-    	
-    	int listCount = pi.getListCount();
-    	int currentPage = pi.getCurrentPage();
-    	int maxPage = pi.getMaxPage();
-    	int startPage = pi.getStartPage();
-    	int endPage = pi.getEndPage();
-    %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="women.model.vo.WomenVo" %>
+<%@ page import="board.model.vo.PageInfo" %>
+<%
+	ArrayList<WomenVo> list = (ArrayList<WomenVo>)request.getAttribute("list");
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	
+	int listCount = pi.getListCount();
+	int currentPage = pi.getCurrentPage();
+	int maxPage = pi.getMaxPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+%>
 <head>
    <title></title>
    <script src="../js/jquery-3.4.1.min.js"></script>
@@ -139,7 +139,19 @@
    <div class="prod_top">
       <img src="C://Users/violi/Desktop/image01.jpg">
    </div>
+<!-- 
+   <div id="select_main" class="hansol">
+      <div id="select_main_left">100style</div>
+      <div id="select_main_right">
+         <select>
+            <option value="40">40</option>
+            <option value="20">20</option>
+            <option value="12">12</option>
+            <option value="8">8</option>
+         </select>
 
+      </div>
+   </div> -->
    <div class="prod_cont">
       <p class="prod_count"><%=listCount %>style</p>
       <ul class="prod_sort">
@@ -151,6 +163,7 @@
    </div>
       <div class="prod_area">
          <ul class="product">
+
             <% 
          if(list!=null){
                 for(int i =0;i<list.size();i++){
@@ -158,7 +171,7 @@
                 	%>
             <li>
                <div class="prod-img">
-                     <a href="#none"><img src="<%=request.getContextPath()+"/images/thumbnail/" + list.get(i).getTumbnail() + ".jpg" %>"></a>
+                     <a href="#none"><img src="C://Users/violi/Desktop/image02.jpg"></a>
                </div>
                <ul class="prod-cont">
                      <li class="prod-brand"><a href="#none"><%=list.get(i).getP_name()%></a></li>
@@ -206,7 +219,7 @@
       </div>
    </div>
    
-   <br><br><br>
+   <%@ include file="../common/footer.jsp" %>
 
 </body>
 
