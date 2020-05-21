@@ -67,12 +67,16 @@ public class AdminReviewSelectServlet extends HttpServlet {
 		
 		//
 		ArrayList<Review> rvList = new ArrayList<>();
+		String searchpName = request.getParameter("ad_rvPrdName");
 		
-		rvList = adSev.selectReviewLIst(currentPage, limit);
+		System.out.println(searchpName);
+		
+		rvList = adSev.selectReviewLIst(currentPage, limit, searchpName);
 
 		for(int i = 0; i < rvList.size(); i ++) {
 			System.out.println(rvList.get(i));
 		}
+		
 		
 		RequestDispatcher view = null;
 		if(!rvList.isEmpty()) {

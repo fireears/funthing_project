@@ -56,14 +56,10 @@
     <div id="ad_reviewListWrap">
         <h2>리뷰 관리</h2>
         <div class="ad_rvSearchWrap">
-            <form action="<%=request.getContextPath() %>/admin/AdminReviewSelect" method="GET">
-                <span>
-                    <label for="ad_rvId">아이디 : </label>
-                    <input type="text" id="ad_rvId" name="ad_rvId" />
-                </span>
+            <form action="<%=request.getContextPath() %>/admin/AdReviewSelect" method="GET">
                 <span>
                     <label for="ad_rvPrdName">상품명 : </label>
-                    <input type="text" id="ad_rvPrdName" name="ad_rvPrdName" />
+                    <input type="text" id="ad_rvPrdName" name="ad_rvPrdName" required/>
                 </span>
                 <span class="ad_RvS_btnWrap">
                     <button type="submit">검색</button>

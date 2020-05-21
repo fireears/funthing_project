@@ -421,19 +421,18 @@ public class AdminService {
 		return rvListCont;
 	}
 
-	public ArrayList<Review> selectReviewLIst(int currentPage, int limit) {
+	public ArrayList<Review> selectReviewLIst(int currentPage, int limit, String searchpName) {
 		ArrayList<Review> rvList = new ArrayList<>();
 		AdminDao aDao = new AdminDao();
 		
 		Connection conn = getConnection();
 		
-		rvList = aDao.selectReviewList(conn, currentPage, limit);
+		rvList = aDao.selectReviewList(conn, currentPage, limit, searchpName);
 		
 		close(conn);
 		
 		return rvList;
 	}
-
 
 	
 	

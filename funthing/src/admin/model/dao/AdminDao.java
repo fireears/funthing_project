@@ -1278,13 +1278,24 @@ public class AdminDao {
 		return rvListCont;
 	}
 
-	public ArrayList<Review> selectReviewList(Connection conn, int currentPage, int limit) {
+	public ArrayList<Review> selectReviewList(Connection conn, int currentPage, int limit, String searchpName) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+		String query = "";
 		ArrayList<Review> rvList = new ArrayList<>();
 		
-		String query = "SELECT * FROM REVIEW R JOIN MEMBER M ON(R.M_NO = M.M_NO) JOIN PRODUCT P ON(R.P_NO = P.P_NO) WHERE REV_NO BETWEEN ? AND ?  ORDER BY ROWNUM";
+		System.out.println(searchpName);
+		
+		
+		if(searchpName == null) {
+			query = "SELECT * FROM REVIEW R JOIN MEMBER M ON(R.M_NO = M.M_NO) JOIN PRODUCT P ON(R.P_NO = P.P_NO) WHERE REV_NO BETWEEN ? AND ? ORDER BY 1";
+			
+		}else {
+			query = "SELECT * FROM REVIEW R JOIN MEMBER M ON(R.M_NO = M.M_NO) JOIN PRODUCT P ON(R.P_NO = P.P_NO) WHERE REV_NO BETWEEN ? AND ? AND P.P_NO LIKE(?) ORDER BY 1";
+		}
+		
+		
+//		System.out.println("dao hi");
 		
 		int startRow = (currentPage - 1) * limit + 1;
 		int endRow = startRow + limit - 1;
@@ -1294,6 +1305,12 @@ public class AdminDao {
 			
 			pstmt.setInt(1, startRow);
 			pstmt.setInt(2, endRow);
+			if(searchpName != null) {
+				pstmt.setString(3, "%" + searchpName + "%");
+//				System.out.println("if문 확인 : " + searchpName);
+			}else {
+				
+			}
 			
 			rs = pstmt.executeQuery();
 			
