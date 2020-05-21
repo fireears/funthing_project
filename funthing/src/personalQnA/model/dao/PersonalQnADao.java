@@ -136,9 +136,6 @@ public class PersonalQnADao {
 		ArrayList<PersonalQnA> perList = new ArrayList<>();
 		System.out.println("Dao에서 searchDate: " + searchDate);
 		
-		// firstDate, secondDate의 형변환 -> 맨 처음 마이페이지에서 들어갔을 때의 셀렉 값을 보여주기 위해 jsp에서 설정한 초기값으로 비교
-		// string -> date로 (내가 설정한 초기값을 date형으로)
-	
 		
 		// rnum 
 		int startRow = (currentPage -1) * limit +1;
@@ -284,7 +281,7 @@ public class PersonalQnADao {
 					
 				pstmt = conn.prepareStatement(query);
 				pstmt.setInt(4, startRow);
-				pstmt.setInt(5, endRow);
+				pstmt.setInt(5, endRow);	
 				pstmt.setString(1 , userNo);
 				pstmt.setString(2, firstDate);
 				pstmt.setString(3, secondDate);
