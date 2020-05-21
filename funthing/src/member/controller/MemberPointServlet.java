@@ -98,6 +98,7 @@ public class MemberPointServlet extends HttpServlet {
 			view = request.getRequestDispatcher("/views/member/myPagePoint.jsp");
 			request.setAttribute("list", list);
 			request.setAttribute("pi",pi);
+			request.setAttribute("userNo", userNo);
 			
 		}else {
 			view = request.getRequestDispatcher("/views/member/myPagePoint.jsp");
