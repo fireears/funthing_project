@@ -6,6 +6,8 @@
 	
 	ArrayList<MemberPoint> list = (ArrayList<MemberPoint>)request.getAttribute("list");
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	String userNo = (String)request.getAttribute("userNo");
+	
 	
 	int currentPage= pi.getCurrentPage();
 	/* int listCount = pi.getPListCount(); */
@@ -223,7 +225,7 @@
 		<div class="pagingArea" align="center">
 		
 			<!-- 맨 처음으로 -->
-			<button onclick="location.href='<%=request.getContextPath() %>/memberPointServlet?currntPage=1'"> << </button>
+			<button onclick="location.href='<%=request.getContextPath() %>/memberPointServlet?currntPage=1&userNo=<%=userNo%>'"> << </button>
 		
 		
 			<!-- 이전 페이지로 -->
@@ -231,7 +233,7 @@
 				<button disabled> < </button>
 		
 			<%}else{ %>
-				<button onclick="location.href='<%=request.getContextPath() %>/memberPointServlet?currentPage=<%=currentPage -1 %>'"> < </button>
+				<button onclick="location.href='<%=request.getContextPath() %>/memberPointServlet?currentPage=<%=currentPage -1 %>&userNo=<%=userNo%>'"> < </button>
 			<%} %>
 		
 		
@@ -241,7 +243,7 @@
 					<button disabled><%=p %></button>
 					
 				<%}else{ %>
-					<button onclick="location.href='<%=request.getContextPath() %>/memberPointServlet?currentPage=<%=p %>'"><%=p %></button>
+					<button onclick="location.href='<%=request.getContextPath() %>/memberPointServlet?currentPage=<%=p %>&userNo=<%=userNo%>'"><%=p %></button>
 				<%} %>
 			<%} %>
 			
@@ -250,12 +252,12 @@
 			<%if(currentPage == maxPage){ %>
 				<button disabled> > </button>
 			<%}else{ %>
-				<button onclick="location.href='<%=request.getContextPath() %>/memberPointServlet?currentPage=<%=currentPage + 1 %>'"> > </button>
+				<button onclick="location.href='<%=request.getContextPath() %>/memberPointServlet?currentPage=<%=currentPage + 1 %>&userNo=<%=userNo%>'"> > </button>
 			<%} %>
 		
 		
 			<!-- 맨 뒷 페이지로  -->
-			<button onclick="location.href='<%=request.getContextPath() %>/memberPointServlet?currentPage=<%=maxPage %>'"> >> </button>
+			<button onclick="location.href='<%=request.getContextPath() %>/memberPointServlet?currentPage=<%=maxPage %>&userNo=<%=userNo%>'"> >> </button>
 		
 		</div><!-- 페이징 처리 end -->
 

@@ -1,3 +1,4 @@
+<!-- 일대일 문의 페이지_희지 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.ArrayList, personalQnA.model.vo.*, board.model.vo.*"%>
     
@@ -6,6 +7,7 @@
 	PageInfo pi = (PageInfo)request.getAttribute("pi");	
 	
 	Member loginUser3 = (Member)session.getAttribute("loginUser");
+	String userNo = (String)request.getAttribute("userNo");
 
 	
 	// PageIngo값 뽑아내기
@@ -149,7 +151,7 @@
 
             <!-- 1:1 문의 조회 결과 영역 -->
             <div class="search-list">
-                <table class="list-tb">
+                <table class="list-tb" id="list-table">
                 
                 <%if(!list.isEmpty()){ %>
                     <tr>
@@ -162,12 +164,20 @@
 
 					<%for(PersonalQnA pq : list){ %>
                     <tr align="center">
-                    	<input type="hidden" value="<%=pq.getPerNo()%>">
+                    	<input type="hidden" id="perNo" value=<%=pq.getPerNo()%>>
+                    	<input type="hidden"  id="mNo" value=<%=loginUser2.getmNo()%>>
                     	<td class="tb-zero"><%=pq.getRnum() %></td>
                         <td class="tb-first"><%=pq.getPerDate() %></td>
                         <td><%=pq.getPerCate() %></td>
                         <td><%=pq.getPerTitle() %></td>
-                        <td class="tb-last"><%=pq.getPerReYn() %></td>
+                    
+                        <%if(pq.getPerReYn().equals("Y")) {%>
+                        	<td class="tb-last">답변완료</td>
+                    	
+                    	<%}else{ %>
+                    		<td class="tb-last">답변대기</td>
+                    	<%}%>
+                    
                     </tr>
 					
 					<%}%> <!-- for문 end -->
@@ -185,12 +195,11 @@
 						<td colspan="9"><div style="text-align:center">검색 결과가 없습니다.</div></td>
 					</tr> 
                   
-                  
-                  
+               
                   <%} %>
                 </table>
 
-
+			
             </div><!-- 1:1 문의 조회 결과 영역 end -->
 
 
@@ -199,7 +208,7 @@
 		<div class="pagingArea" align="center">
 		
 			<!-- 맨 처음으로 -->
-			<button onclick="location.href='<%=request.getContextPath() %>/personalQnA?currntPage=1'"> << </button>
+			<button onclick="location.href='<%=request.getContextPath() %>/PersonalQnA?currntPage=1&userNo=<%=userNo%>'"> << </button>
 		
 		
 			<!-- 이전 페이지로 -->
@@ -207,7 +216,7 @@
 				<button disabled> < </button>
 		
 			<%}else{ %>
-				<button onclick="location.href='<%=request.getContextPath() %>/personalQnA?currentPage=<%=currentPage -1 %>'"> < </button>
+				<button onclick="location.href='<%=request.getContextPath() %>/PersonalQnA?currentPage=<%=currentPage -1 %>&userNo=<%=userNo%>'"> < </button>
 			<%} %>
 		
 		
@@ -217,7 +226,7 @@
 					<button disabled><%=p %></button>
 					
 				<%}else{ %>
-					<button onclick="location.href='<%=request.getContextPath() %>/personalQnA?currentPage=<%=p %>'"><%=p %></button>
+					<button onclick="location.href='<%=request.getContextPath() %>/PersonalQnA?currentPage=<%=p %>&userNo=<%=userNo%>'"><%=p %></button>
 				<%} %>
 			<%} %>
 			
@@ -226,12 +235,12 @@
 			<%if(currentPage == maxPage){ %>
 				<button disabled> > </button>
 			<%}else{ %>
-				<button onclick="location.href='<%=request.getContextPath() %>/personalQnA?currentPage=<%=currentPage + 1 %>'"> > </button>
+				<button onclick="location.href='<%=request.getContextPath() %>/PersonalQnA?currentPage=<%=currentPage + 1 %>&userNo=<%=userNo%>'"> > </button>
 			<%} %>
 		
 		
 			<!-- 맨 뒷 페이지로  -->
-			<button onclick="location.href='<%=request.getContextPath() %>/personalQnA?currentPage=<%=maxPage %>'"> >> </button>
+			<button onclick="location.href='<%=request.getContextPath() %>/PersonalQnA?currentPage=<%=maxPage %>&userNo=<%=userNo%>'"> >> </button>
 		
 	</div>
 
@@ -244,6 +253,26 @@
     </div><!--content 영역 end-->
     
     <%@ include file="../common/footer.jsp" %>
+    
+    
+    <script>
+    
+    	$(function(){
+    		$("#list-table td").mouseenter(function(){
+    			$(this).parent().css({"cursor" : "pointer"});
+    			
+    		}).click(function(){
+        		var perNo = $(this).parent().children("input").val();
+        		location.href="<%=request.getContextPath()%>/personalQnADetail?mNo=<%=loginUser2.getmNo()%>&perNo=" + perNo;
+        		
+    		})
+    		
+    		
+    	})
+    	
+    </script>
+    
+    
 	
 	
 
