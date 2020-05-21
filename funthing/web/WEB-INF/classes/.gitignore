@@ -1,4 +1,5 @@
-<<<<<<< HEAD
+/admin/
+/board/
 /brand/
 /calendar/
 /common/
@@ -14,9 +15,3 @@
 /review/
 /women/
 /wrapper/
-=======
-/notice/
-/productQnA/
-/sql/
-/women/
->>>>>>> refs/remotes/origin/master
