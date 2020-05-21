@@ -15,7 +15,7 @@ import payment.model.vo.OrderInfoDetail;
 import personalQnA.model.vo.PersonalInsert;
 import personalQnA.model.vo.PersonalQnA;
 
-
+ 
 
 public class PersonalQnADao {
 	// 일대일문의 삽입 서윤
@@ -139,7 +139,7 @@ public class PersonalQnADao {
 		
 		// rnum 
 		int startRow = (currentPage -1) * limit +1;
-		int endRow = 20;
+		int endRow = startRow + (limit -1);
 		System.out.println("firstDate" + firstDate);
 		System.out.println("secondDate" + secondDate);
 		
@@ -294,6 +294,7 @@ public class PersonalQnADao {
 			while(rset.next()) {
 				System.out.println("while(rset.next())");
 				pq = new PersonalQnA(rset.getInt("RNUM"),
+						rset.getInt("PER_QNA_NO"),
 						rset.getString("PER_TITLE"),
 						rset.getString("PER_CONTENTS"),
 						rset.getString("P_NO"),
@@ -317,6 +318,62 @@ public class PersonalQnADao {
 			close(rset);
 		}
 		return perList;
+	}
+
+	
+	// 일대일 문의 디테일 페이지(클라이언트)_희지
+	public PersonalQnA perDetail(Connection conn, String mNo, String perNo) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		PersonalQnA pq = null;
+		
+		String query ="SELECT P.PER_QNA_NO, P.PER_TITLE, P.PER_CONTENTS, P.P_NO, PD.P_NAME, P.B_NO, P.M_NO, P.PER_RE_YN, P.ADDFILE, P.O_NO, P.PER_CATE, \r\n" + 
+				"        P.PER_DATE, M.M_ID, M.M_NAME, PR.PQRE_NO, PR.PQRE_ID, PR.PQRE_CONTENT, PR.PQRE_DATE \r\n" + 
+				"FROM PERSONAL_QNA P \r\n" + 
+				"    JOIN MEMBER M ON (P.M_NO = M.M_NO)\r\n" + 
+				"    JOIN PRODUCT PD ON (P.P_NO = PD.P_NO)\r\n" + 
+				"    FULL JOIN PQ_RE PR ON (P.PER_QNA_NO = PR.PER_QNA_NO)\r\n" + 
+				"WHERE P.M_NO = ? AND P.PER_QNA_NO=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, mNo);
+			pstmt.setString(2, perNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				pq = new PersonalQnA(rset.getInt("PER_QNA_NO"),
+						rset.getString("PER_TITLE"),
+						rset.getString("PER_CONTENTS"),
+						rset.getString("P_NO"),
+						rset.getString("P_NAME"),
+						rset.getString("B_NO"),
+						rset.getString("M_NO"),
+						rset.getString("M_NAME"),
+						rset.getString("M_ID"),
+						rset.getString("PER_RE_YN"),
+						rset.getString("ADDFILE"),
+						rset.getString("O_NO"),
+						rset.getString("PER_CATE"),
+						rset.getDate("PER_DATE"),
+						rset.getString("PQRE_ID"),
+						rset.getInt("PQRE_NO"),
+						rset.getString("PQRE_CONTENT"),
+						rset.getDate("PQRE_DATE"));
+			
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return pq;
 	}
 
 

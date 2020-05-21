@@ -23,7 +23,7 @@ public class AdminService {
 	
 	
 	public int getListCount() {
-		
+	 	
 		Connection conn = getConnection();
 		
 		AdminDao aDao = new AdminDao();

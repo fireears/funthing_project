@@ -3,7 +3,7 @@ package review.model.vo;
 import java.io.Serializable;
 
 public class Review implements Serializable {
-
+ 
 	/**
 	 * 
 	 */

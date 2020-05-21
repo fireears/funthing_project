@@ -21,7 +21,7 @@ import product.model.vo.Product;
 import productQnA.model.vo.AdminProductQnA;
 import productQnA.model.vo.ProductQnAReply;
 import review.model.vo.Review;
-
+ 
 public class AdminDao {
 
 	public int getListCount(Connection conn) {

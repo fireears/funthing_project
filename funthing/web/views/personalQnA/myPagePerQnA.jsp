@@ -35,7 +35,7 @@
         #orderSelectWrap .os_tb { border-collapse: collapse; }
         #orderSelectWrap .os_tb tr { border-bottom:1px solid #ddd; }
         #orderSelectWrap .os_tb tr:last-child { border-bottom:none; }
-        
+         
         #orderSelectWrap .os_tb td { height:0px; line-height:0px; box-sizing: border-box; padding:10px 0; text-align:center; }
         #orderSelectWrap .os_tb td.prd_img { text-align:left; }
         #orderSelectWrap .os_tb td [type="radio"] { height:16px; width:auto; vertical-align:-4px; display:inline; }

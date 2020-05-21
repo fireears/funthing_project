@@ -292,6 +292,7 @@
     
     <%@ include file="../common/footer.jsp" %>
 	
+	
 	<script>
 	
 	$(function(){

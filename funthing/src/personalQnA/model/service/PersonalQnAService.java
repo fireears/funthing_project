@@ -1,5 +1,5 @@
 package personalQnA.model.service;
-
+ 
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -63,6 +63,18 @@ public class PersonalQnAService {
 		close(conn);
 		
 		return perList;
+	}
+
+	// 일대일 문의 디테일 페이지(클라이언트)_희지
+	public PersonalQnA perDetail(String mNo, String perNo) {
+		
+		Connection conn = getConnection();
+		
+		PersonalQnA pq = new PersonalQnADao().perDetail(conn, mNo, perNo);
+		
+		close(conn);
+			
+		return pq;
 	}
 
 

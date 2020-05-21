@@ -92,7 +92,7 @@
 			location.href = "<%=request.getContextPath()%>/main/mainView";
 		}
 		
-		
+		 
 		
 	</script>
 </html>
