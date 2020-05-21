@@ -1,5 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="review.model.vo.*, java.util.ArrayList, board.model.vo.*"%>
+ <%
+ 	ArrayList<Review> rvList = (ArrayList<Review>)request.getAttribute("rvList");
+
+	 PageInfo pi = (PageInfo)request.getAttribute("pi");
+
+ 	int num = 0;
+ 	int currentPage = pi.getCurrentPage();
+ 	int listCount = pi.getListCount();
+ 	int limit = pi.getLimit();
+ 	int maxPage = pi.getMaxPage();
+ 	int startPage = pi.getStartPage();
+ 	int endPage = pi.getEndPage();
+ %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +48,7 @@
         #ad_reviewListWrap .ad_rvTableWrap table td { vertical-align: middle;  font-size:16px;  padding:6px 0; }
         #ad_reviewListWrap .ad_rvTableWrap table td:nth-child(3) { text-align:left; }
         #ad_reviewListWrap .ad_rvTableWrap table td.rv_tbImg {  }
-        #ad_reviewListWrap .ad_rvTableWrap table td.rv_tbImg img { width:50px; }
+        #ad_reviewListWrap .ad_rvTableWrap table td.rv_tbImg img { width:50px; border:1px solid #ddd; box-sizing:border-box; }
     </style>
 </head>
 <body>
@@ -70,37 +83,46 @@
                     <th>조회수</th>
                     <th>리뷰 날짜</th>
                 </tr>
+                <% for(Review rv : rvList){ %>
                 <tr>
-                    <td>1</td>
-                    <td class="rv_tbImg"><img src="images/thumbnail/thumb001.jpg"></td>
-                    <td>O01001</td>
-                    <td>review test</td>
-                    <td>★★★★★</td>
-                    <td>김땡땡</td>
-                    <td>0</td>
-                    <td>2020/05/19</td>
+                    <td><%=rv.getRevNo() %></td>
+                    <td class="rv_tbImg"><img src="<%=request.getContextPath()%>/images/thumbnail/<%=rv.getRvThumb() %>.jpg"></td>
+                    <td><%=rv.getpNo() %></td>
+                    <td><%=rv.getRevTitle() %></td>
+                    <td><%=rv.getRateStar() %></td>
+                    <td><%=rv.getRvName() %></td>
+                    <td><%=rv.getViewsNum() %></td>
+                    <td><%=rv.getRevDate() %></td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td class="rv_tbImg"><img src="images/thumbnail/thumb002.jpg"></td>
-                    <td>O01001</td>
-                    <td>review test</td>
-                    <td>★★★★★</td>
-                    <td>김땡땡</td>
-                    <td>0</td>
-                    <td>2020/05/19</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td class="rv_tbImg"><img src="images/thumbnail/thumb003.jpg"></td>
-                    <td>O01001</td>
-                    <td>review test</td>
-                    <td>★★★★★</td>
-                    <td>김땡땡</td>
-                    <td>0</td>
-                    <td>2020/05/19</td>
-                </tr>
-            </table>
+                <%} %>
+            </table> 
+        </div>
+        <!-- 페이지네이션 -->	
+        <div id="pageBtn" align="center">
+        	<button class="pageBtn" onclick="location.href='<%=request.getContextPath() %>/admin/AdReviewSelect?currentPage=<%=1 %>'"> << </button>
+        	
+        	<%if(currentPage <= 1) { %>
+        		<button class="pageBtn" disabled> < </button>
+        	<%} else {%>
+        		<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/admin/AdReviewSelect?currentPage=<%=currentPage-1%>'"> < </button>
+        	<%} %>
+        	<%for(int p = startPage; p<=endPage; p++) { %>
+        	<%	if(p == currentPage) { %>
+        			<button class="pageBtn" disabled><%=p %></button>
+        	
+        	<%	} else{ %>
+        			<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/admin/AdReviewSelect?currentPage=<%=p%>'"><%=p %></button>
+        	<%} %>	
+        	<%} %>
+        	
+        	<%if(currentPage == maxPage) {%>
+        		<button class="pageBtn" disabled> > </button>
+        	<%} else { %>
+        		<button class="pageBtn" onclick="location.href='<%=request.getContextPath() %>/admin/AdReviewSelect?currentPage=<%=currentPage+1 %>'"> > </button>
+        	<%} %>
+        	<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/admin/AdReviewSelect?currentPage=<%=maxPage%>'"> >> </button>
+        	
+       
         </div>
 
     </div>

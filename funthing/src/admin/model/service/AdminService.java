@@ -18,6 +18,7 @@ import personalQnA.model.vo.PersonalQnaReply;
 import product.model.vo.Product;
 import productQnA.model.vo.AdminProductQnA;
 import productQnA.model.vo.ProductQnAReply;
+import review.model.vo.Review;
 public class AdminService {
 	
 	
@@ -405,6 +406,32 @@ public class AdminService {
 		
 		close(conn);
 		return listCount;
+	}
+
+	// 리뷰 조회 카운트 * 서윤
+	public int getRvListCount() {
+		Connection conn = getConnection();
+		
+		AdminDao aDao = new AdminDao();
+
+		int rvListCont = aDao.getRvListCount(conn);
+		
+		close(conn);
+
+		return rvListCont;
+	}
+
+	public ArrayList<Review> selectReviewLIst(int currentPage, int limit) {
+		ArrayList<Review> rvList = new ArrayList<>();
+		AdminDao aDao = new AdminDao();
+		
+		Connection conn = getConnection();
+		
+		rvList = aDao.selectReviewList(conn, currentPage, limit);
+		
+		close(conn);
+		
+		return rvList;
 	}
 
 
