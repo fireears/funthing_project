@@ -45,12 +45,13 @@ public class AdmimPersonalQna implements Serializable{
 			this.perCate = perCate;
 		}
 
-		
-		public AdmimPersonalQna(int perQnaNo, String perTitle, String perContents, String pNo, String pName, String mId,
+		// 상품문의 관리자 페이지_혜린
+		public AdmimPersonalQna(int perQnaNo, String mId, String mName,String perTitle, String perContents, String pNo, String pName, 
 				String perReYn, String addFile, String oNo, String perCate) {
 			super();
 			
 			this.perQnaNo = perQnaNo;
+			this.mName = mName;
 			this.perTitle = perTitle;
 			this.perContents = perContents;
 			this.pNo = pNo;

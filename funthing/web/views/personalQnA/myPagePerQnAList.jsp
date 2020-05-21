@@ -103,7 +103,7 @@
                 <form method="get" action="<%=request.getContextPath()%>/PersonalQnA">
                     <div class="point-search">
                         <ul>
-                           	<input type="hidden" name="userNo" value="<%=loginUser3.getmNo() %>">
+                           	<input type="hidden" name="userNo" value="<%=loginUser2.getmNo() %>">
                             <li><h3>조회기간</h3></li>
                             <li>
                                 <input type="radio" name="searchDate" id="today" value="today">

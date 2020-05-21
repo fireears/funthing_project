@@ -141,20 +141,20 @@
    </div>
 
    <div class="prod_cont">
-      <p class="prod_count">100style</p>
+      <p class="prod_count"><%=listCount %>style</p>
       <ul class="prod_sort">
-         <li><a href="#">high price</a></li>
-         <li><a href="#">low price</a></li>
-         <li><a href="#">close to completion</a></li>
-         <li><a href="#">new product</a></li>
+         <li><a href='<%=request.getContextPath()%>/WomenHighPrice'>high price</a></li>
+         <li><a href='<%=request.getContextPath()%>/WomenLowPrice'>low price</a></li>
+         <li><a href='<%=request.getContextPath()%>/WomenCloseToCompletion'>close to completion</a></li>
+         <li><a href='<%=request.getContextPath()%>/WomenNewProduct'>new product</a></li>
       </ul>
    </div>
       <div class="prod_area">
          <ul class="product">
-           <% 
+            <% 
          if(list!=null){
                 for(int i =0;i<list.size();i++){
-                	if(i%4==0||i==0){
+  
                 	%>
             <li>
                <div class="prod-img">
@@ -163,54 +163,11 @@
                <ul class="prod-cont">
                      <li class="prod-brand"><a href="#none"><%=list.get(i).getP_name()%></a></li>
                      <li class="prod-tit"><a href="#none"><%=list.get(i).getP_type()%></a></li>
-                     <li class="prod_price"><span class="origin_p"><%=list.get(i).getO_price()%></span><span class="new_p"><%=list.get(i).getP_price()%></span><span class="discount"><%=list.get(i).getDc_rate()%></span></li>
+                     <li class="prod_price"><span class="origin_p"><%=list.get(i).getO_price()%>원</span><span class="new_p"><%=list.get(i).getP_price()%>원</span><span class="discount"><%=list.get(i).getDc_rate()%>%</span></li>
+                     <li class="fun-sdate"><%=list.get(i).getStart_date().substring(0,10) %>~<%=list.get(i).getEnd_date().substring(0,10) %></li>
                </ul>
             </li>
-            <%}else if(i%4==1){ %>
-            
-            
-            
-            <li>
-                <div class="prod-img">
-                     <a href="#none"><img src="<%=request.getContextPath()+"/images/thumbnail/" + list.get(i).getTumbnail() + ".jpg" %>"></a>
-               </div>
-               <ul class="prod-cont">
-                     <li class="prod-brand"><a href="#none"><%=list.get(i).getP_name()%></a></li>
-                     <li class="prod-tit"><a href="#none"><%=list.get(i).getP_type()%></a></li>
-                     <li class="prod_price"><span class="origin_p"><%=list.get(i).getO_price()%></span><span class="new_p"><%=list.get(i).getP_price()%></span><span class="discount"><%=list.get(i).getDc_rate()%></span></li>
-               </ul>
-            </li>
-            
-             <%}else if(i%4==2){ %>
-            
-            
-            <li>
-                <div class="prod-img">
-                     <a href="#none"><img src="<%=request.getContextPath()+"/images/thumbnail/" + list.get(i).getTumbnail() + ".jpg" %>"></a>
-               </div>
-               <ul class="prod-cont">
-                     <li class="prod-brand"><a href="#none"><%=list.get(i).getP_name()%></a></li>
-                     <li class="prod-tit"><a href="#none"><%=list.get(i).getP_type()%></a></li>
-                     <li class="prod_price"><span class="origin_p"><%=list.get(i).getO_price()%></span><span class="new_p"><%=list.get(i).getP_price()%></span><span class="discount"><%=list.get(i).getDc_rate()%></span></li>
-               </ul>
-            </li>
-            
-             <%}else if(i%4==3){ %>
-            
-            <li>
-               <div class="prod-img">
-                     <a href="#none"><img src="<%=request.getContextPath()+"/images/thumbnail/" + list.get(i).getTumbnail() + ".jpg" %>"></a>
-               </div>
-               <ul class="prod-cont">
-                     <li class="prod-brand"><a href="#none"><%=list.get(i).getP_name()%></a></li>
-                     <li class="prod-tit"><%=list.get(i).getP_type()%></li>
-                     <li class="prod_price"><span class="origin_p"><%=list.get(i).getO_price()%></span><span class="new_p"><%=list.get(i).getP_price()%></span><span class="discount"><%=list.get(i).getDc_rate()%></span></li>
-               </ul>
-            </li>
-          <%} 
-         }
-      }%>
-         
+            <%}}%>
          </ul>
          
          
@@ -221,13 +178,13 @@
 				<button onclick="location.href='<%=request.getContextPath()%>/WomenServlet?currentPage=<%=1%>'"> << </button>
 				
 				<!-- 이전 페이지 -->
-				<%if(currentPage < 1) {%>
+				<%if(currentPage <= 1) {%>
 					<button disabled> < </button>
 				<%}else {%>
 					<button onclick="location.href='<%=request.getContextPath()%>/WomenServlet?currentPage=<%=currentPage -1%>'"> < </button>
 				<%} %>
 				<!-- 10개의 페이지 목록 -->
-				<%for(int p = startPage; p<endPage; p++){
+				<%for(int p = startPage; p<=endPage; p++){
 				%><%if(currentPage == p) {%>
 						<button disabled><%=p %></button>
 					<%} else{%>

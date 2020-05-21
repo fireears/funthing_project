@@ -41,9 +41,12 @@ public class AdminProductQna extends HttpServlet {
 		String searchKind = request.getParameter("searchKind");	// 검색 종류 값
 		String searchText = request.getParameter("searchText"); // 검색 입력창 값
 	
-		System.out.println("servlet searchKind : " + searchKind);
-		System.out.println("servlet searchText : " + searchText);
-
+//		System.out.println("servlet searchKind : " + searchKind);
+//		System.out.println("servlet searchText : " + searchText);
+		if(searchKind==null || searchKind.equals("null"))
+			searchKind = null;
+		if(searchText==null || searchText.equals("null"))
+			searchText = null;
 		int listCount = aService.getListQnaCount(searchKind,searchText);
 //		System.out.println("servlet listCount : " + listCount);
 		

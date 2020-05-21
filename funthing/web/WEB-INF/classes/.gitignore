@@ -5,6 +5,7 @@
 /common/
 /filter/
 /main/
+/man/
 /member/
 /notice/
 /payment/
@@ -12,6 +13,5 @@
 /product/
 /productQnA/
 /review/
-/sql/
 /women/
 /wrapper/

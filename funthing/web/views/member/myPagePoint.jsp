@@ -11,7 +11,7 @@
 	/* int listCount = pi.getPListCount(); */
 	int limit = pi.getLimit();
 	int maxPage= pi.getMaxPage();
-	int StartPage = pi.getStartPage();
+	int startPage = pi.getStartPage();
 	int endPage= pi.getEndPage();
 	
 %>
@@ -69,6 +69,10 @@
         .list-tb .tb-first{width: 200px;}
         .list-tb .tb-last{width: 200px;}
 
+		/* 페이징 처리 부분 */     
+        .pagingArea{margin: 0 auto; margin-top:20px; margin-bottom:20px;}
+        .pagingArea button{border:0; font-size:middle; background:white; cursor:pointer;}
+	
     </style>
 
 
@@ -214,8 +218,49 @@
 
             </div><!-- 적립금 조회 결과 영역 end -->
 
-        </div><!--오른쪽 컨텐츠 영역 end-->
+		<br><br>
+	<!-- 페이징 처리 시작 -->
+		<div class="pagingArea" align="center">
+		
+			<!-- 맨 처음으로 -->
+			<button onclick="location.href='<%=request.getContextPath() %>/memberPointServlet?currntPage=1'"> << </button>
+		
+		
+			<!-- 이전 페이지로 -->
+			<%if(currentPage == 1){ %>
+				<button disabled> < </button>
+		
+			<%}else{ %>
+				<button onclick="location.href='<%=request.getContextPath() %>/memberPointServlet?currentPage=<%=currentPage -1 %>'"> < </button>
+			<%} %>
+		
+		
+			<!-- 10개의 페이지 목록 -->
+			<%for(int p = startPage; p <= endPage; p++){ %>
+				<%if(currentPage == p){ %>
+					<button disabled><%=p %></button>
+					
+				<%}else{ %>
+					<button onclick="location.href='<%=request.getContextPath() %>/memberPointServlet?currentPage=<%=p %>'"><%=p %></button>
+				<%} %>
+			<%} %>
+			
+			
+			<!-- 다음 페이지로 -->
+			<%if(currentPage == maxPage){ %>
+				<button disabled> > </button>
+			<%}else{ %>
+				<button onclick="location.href='<%=request.getContextPath() %>/memberPointServlet?currentPage=<%=currentPage + 1 %>'"> > </button>
+			<%} %>
+		
+		
+			<!-- 맨 뒷 페이지로  -->
+			<button onclick="location.href='<%=request.getContextPath() %>/memberPointServlet?currentPage=<%=maxPage %>'"> >> </button>
+		
+		</div><!-- 페이징 처리 end -->
 
+
+        </div><!--오른쪽 컨텐츠 영역 end-->
     </div>
 
 </body>

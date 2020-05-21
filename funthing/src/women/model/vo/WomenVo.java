@@ -7,7 +7,26 @@ public class WomenVo {
 	private int o_price;
 	private int dc_rate;
 	private int p_price;
-	
+	private String start_date;
+	private String end_date;
+	public String getThumbnail() {
+		return thumbnail;
+	}
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
+	}
+	public String getStart_date() {
+		return start_date;
+	}
+	public void setStart_date(String start_date) {
+		this.start_date = start_date;
+	}
+	public String getEnd_date() {
+		return end_date;
+	}
+	public void setEnd_date(String end_date) {
+		this.end_date = end_date;
+	}
 	public WomenVo(String p_name, String p_type, String thumbnail, int o_price, int dc_rate, int p_price) {
 		super();
 		this.p_name = p_name;
@@ -17,10 +36,12 @@ public class WomenVo {
 		this.dc_rate = dc_rate;
 		this.p_price = p_price;
 	}
+	
 	@Override
 	public String toString() {
-		return "WomenVo [p_no=" + p_name + ", p_type=" + p_type + ", tumbnail=" + thumbnail + ", o_price=" + o_price
-				+ ", dc_rate=" + dc_rate + ", p_price=" + p_price + "]";
+		return "WomenVo [p_name=" + p_name + ", p_type=" + p_type + ", thumbnail=" + thumbnail + ", o_price=" + o_price
+				+ ", dc_rate=" + dc_rate + ", p_price=" + p_price + ", start_date=" + start_date + ", end_date="
+				+ end_date + "]";
 	}
 	public String getTumbnail() {
 		return thumbnail;

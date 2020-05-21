@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="member.model.vo.*" %>
+<%
+	String msg = (String)request.getAttribute("msg");
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -156,6 +160,15 @@
 	
 
 	<%@ include file="../common/footer.jsp"%>
+	
+	<script>
+	$(function(){
+		
+		 <%if(msg != null){%>
+			alert("<%=msg%>");
+		 <%}%>
+		});
+	</script>
 
 
 </body>
