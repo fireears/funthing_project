@@ -1307,6 +1307,7 @@ public class AdminDao {
 		return result;
 	}
 
+
 	// 리뷰 조회 카운트 * 서윤
 	public int getRvListCount(Connection conn) {
 		Statement stmt = null;

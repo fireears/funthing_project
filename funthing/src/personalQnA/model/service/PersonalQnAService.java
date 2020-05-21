@@ -39,7 +39,6 @@ public class PersonalQnAService {
 	}
 
 
-
 	// 일대일 문의 리스트 카운트_희지
 	public int getPerListCount(String userNo) {
 		
