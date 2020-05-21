@@ -91,6 +91,7 @@ public class PersonalQnAServlet extends HttpServlet {
 		PageInfo pi = new PageInfo(currentPage, perListCount, limit, maxPage, startPage, endPage);
 		
 		System.out.println("pi" + pi);
+		
 		// 페이징 처리 + 날짜 검색 처리
 		ArrayList<PersonalQnA> list = pqService.selectPersonalQnA(searchDate, firstDate, secondDate, currentPage, limit, userNo);
 		

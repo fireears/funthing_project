@@ -2,6 +2,11 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
+ <%@ page import="java.util.ArrayList" %>
+ <%@ page import="member.model.vo.MemberShoppingBag"%>
+ <%
+ ArrayList<MemberShoppingBag> list = (ArrayList<MemberShoppingBag>)request.getAttribute("list");
+ %>
     <head>
 
 
@@ -64,15 +69,24 @@
                         <th>합계</th>
                     </tr> 
                     <!-- for문 -->
-                    <tr>
+                      <%
+          int sum =0;
+         if(list!=null){
+                for(int i =0;i<list.size();i++){%>
+                 	<tr>
                         <td><input type="checkbox"></td>
-                        <td class="imgArea"><img src="C://Users/violi/Desktop/sdfes.PNG" /></td>
-                        <td>상품명</td>
-                        <td>1</td>
-                        <td>298,000</td>
-                        <td>29</td>
-                        <td>298,000</td>
+                        <td class="imgArea"><img src="<%=request.getContextPath()+"/images/thumbnail/" + list.get(i).getP_thumbnail() + ".jpg" %>" /></td>
+                        <td><%=list.get(i).getP_name()%></td>
+                        <td><%=list.get(i).getShbag_num()%></td>
+                        <td><%=list.get(i).getShbag_price()%></td>
+                        <td><%=list.get(i).getP_point()%></td>
+                        <td><%=sum%></td>
                     </tr> 
+                <% 
+                sum =+list.get(i).getShbag_price();
+                }
+               }%>
+                   
                     <!-- for문 end -->
                 </table> 
                 <div class="s_btns">

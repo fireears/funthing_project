@@ -46,7 +46,9 @@ public class ProductQnADao {
 		ResultSet rset = null;
 		
 //		String query = prop.getProperty("mainSelectQnA");
-		String query = "SELECT QNA_TITLE, QNA_DATE FROM QNA ";
+
+		String query = "SELECT QNA_NO, QNA_TITLE, QNA_DATE FROM QNA ORDER BY 3 DESC";
+
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -55,7 +57,7 @@ public class ProductQnADao {
 			
 			while(rset.next())
 			{
-				qna = new ProductQnA(rset.getString("qna_title"),
+				qna = new ProductQnA(rset.getInt("qna_no"), rset.getString("qna_title"),
 								rset.getDate("qna_date"));
 				
 				list.add(qna);

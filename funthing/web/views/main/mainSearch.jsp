@@ -97,5 +97,6 @@
 	            </div>
             </div>
        	</div>
+       	<%@include file="/views/common/footer.jsp" %>
 </body>
 </html>

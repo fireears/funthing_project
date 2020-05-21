@@ -165,7 +165,7 @@ public class ProductDao {
 		
 		String query = "SELECT distinct substr(p_no,0,8),b_no, p_name, thumbnail ,p_price, f_start_date, f_end_date\n" + 
 				"FROM PRODUCT \n" + 
-				"WHERE P_NAME like '"+search+"%'";
+				"WHERE P_NAME like '%"+search+"%'";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -207,7 +207,7 @@ public class ProductDao {
 		String query = "SELECT distinct substr(p_no,0,8),B_NAME, p_name, thumbnail ,p_price, f_start_date, f_end_date\n" + 
 				"FROM PRODUCT P\n" + 
 				"JOIN BRAND B ON P.B_NO = B.B_NO\n" + 
-				"WHERE B_NAME LIKE '"+ search +"%'";
+				"WHERE B_NAME LIKE '%"+ search +"%'";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
