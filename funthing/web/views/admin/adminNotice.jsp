@@ -85,7 +85,7 @@ String search =(String)request.getAttribute("search");
 				
 				 <!-- search가 널일때  -->
 				 <!-- 맨 처음으로 -->
-				 alert("전체조회");
+				
             <button onclick="location.href='<%=request.getContextPath() %>/admin/NoticeView?currentPage=<%=1 %>'"> << </button>
        
             <!-- 이전 페이지 -->
