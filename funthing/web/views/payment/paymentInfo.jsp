@@ -5,7 +5,9 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>주문결제</title>
-		<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<!-- <script  src="http://code.jquery.com/jquery-latest.min.js"></script> -->
+		<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+		<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 		<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 		<link rel="stylesheet" href="<%=request.getContextPath() %>/css/paymentInfo.css">
 		<style>
@@ -40,8 +42,7 @@
 			#product>tbody>tr>td>div{font-size:18px; line-height:100%;}
 			#product>tbody>tr>th{font-size:20px;}
 		</style>
-		<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-		<script type="text/javascript" src="https://cdn.iamport.kr/js/iamprot.payment-1.1.5.js"></script>
+		
 	</head>
 	<body>
 		<%@ include file = "../common/header.jsp" %>
@@ -55,15 +56,21 @@
                             <tbody>
                                 <tr>
                                     <th class="ta-1" aria-required="true">주문하시는 분</th>
-                                    <td><div class="txt-field"><input type="text" name="m_name" maxlength="20"></div></td>
+                                    <td><div class="txt-field"><input type="text" name="m_name" maxlength="20" value="m_name"></div></td>
                                 </tr>
                                 <tr>
                                     <th class="ta-1" aria-required="true">휴대폰 번호</th>
-                                    <td><div class="txt-field"><input type="text" name="m_tell" maxlength="20" placeholder="'-'없이 입력해주세요."></div></td>
+                                    <td><div class="txt-field"><input type="text" name="m_tell" maxlength="20" placeholder="'-'없이 입력해주세요." value="m_tell"></div></td>
                                 </tr>
                                 <tr>
                                     <th class="ta-1" aria-required="true">이메일</th>
-                                    <td><div class="txt-field"><input type="text" name="m_email">&nbsp;<select name=""><option value="naver.com">naver.com</option></select></div></td>
+                                    <td>
+	                                    <div class="txt-field"><input type="text" name="m_email">&nbsp;
+		                                    <select name="">
+		                                    	<option value="naver.com">naver.com</option>
+		                                    </select>
+	                                    </div>
+                                    </td>
                                 </tr>
                                 
                             </tbody>
@@ -200,7 +207,7 @@
                                 </tr>
                                 <tr>
                                     <th class="ta-1" aria-required="true">최종 결제 금액</th>
-                                    <td><div class="txt-field"><div id="result_price"></div></div></td>
+                                    <td><div class="txt-field"><div id="result_price">10000원</div></div></td>
                                 </tr>
                                 
                             </tbody>
@@ -261,43 +268,68 @@
                         </div>
                     </div>
                     <!---->
-
                 </form>
+					<button type="button" id="pay">결제</button>
                 
             </article>
         </section>
 	</body>
 	
+	
+	<!-- 카카오페이 -->
 	<script>
 		$(function(){
+			alert("결제");
 			var IMP=window.IMP;
 			IMP.init('imp33962000');			
+			
+		})
+			
+		$("#pay").click(function(){
+			/* val payMethod = $("input[name=pmnt_mthd]").val(); */
+			if($("input[name=pmnt_mthd]").is(":checked") == true)
+			{
+				var payMethod = $("input[name=pmnt_mthd]:checked").val();
+				
+				if(payMethod == "무통장 입금")
+				{
+					alert("무통장 입금");
+				}
+				
+				else if(payMethod == "카카오페이")
+				{
+					IMP.request_pay({ 
+					    pg : 'kakaopay', // version 1.1.0부터 지원.
+					    pay_method : 'card',
+					    merchant_uid : 'funthing_' + new Date().getTime(),
+					    name : '상품명or주문번호',	// order 테이블에 들어갈  주문명 혹은 주문 번호
+					    amount : 14000,
+					    buyer_email : 'rngus3698@naver.com',
+					    buyer_name : $("#m_name").val(),
+					    buyer_tel : $("#m_tell").val(),
+					    buyer_addr : $("#detailAddress").val(),
+					    buyer_postcode : $("#postcode").val(),
+					    m_redirect_url : 'https://www.yourdomain.com/payments/complete' //결제 완료 후 보낼 컨트롤러의 메소드명
+					}, function(rsp) {
+					    if ( rsp.success ) {
+					        var msg = '결제가 완료되었습니다.';
+					        msg += '고유ID : ' + rsp.imp_uid;
+					        msg += '상점 거래ID : ' + rsp.merchant_uid;
+					        msg += '결제 금액 : ' + rsp.paid_amount + '원';
+					        msg += '카드 승인번호 : ' + rsp.apply_num;
+					    } else {
+					        var msg = '결제에 실패하였습니다.';
+					        msg += '에러내용 : ' + rsp.error_msg;
+					    }
+					    alert(msg);
+					});	
+					
+				}
+			}
+				
+			
 		})
 		
-		IMP.request_pay({
-		    pg : 'inicis', // version 1.1.0부터 지원.
-		    pay_method : 'card',
-		    merchant_uid : 'merchant_' + new Date().getTime(),
-		    name : '주문명:결제테스트',
-		    amount : 14000,
-		    buyer_email : 'iamport@siot.do',
-		    buyer_name : '구매자이름',
-		    buyer_tel : '010-1234-5678',
-		    buyer_addr : '서울특별시 강남구 삼성동',
-		    buyer_postcode : '123-456',
-		    m_redirect_url : 'https://www.yourdomain.com/payments/complete'
-		}, function(rsp) {
-		    if ( rsp.success ) {
-		        var msg = '결제가 완료되었습니다.';
-		        msg += '고유ID : ' + rsp.imp_uid;
-		        msg += '상점 거래ID : ' + rsp.merchant_uid;
-		        msg += '결제 금액 : ' + rsp.paid_amount;
-		        msg += '카드 승인번호 : ' + rsp.apply_num;
-		    } else {
-		        var msg = '결제에 실패하였습니다.';
-		        msg += '에러내용 : ' + rsp.error_msg;
-		    }
-		    alert(msg);
-		});
+		
 	</script>
 </html>
