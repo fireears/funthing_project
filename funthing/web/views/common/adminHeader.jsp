@@ -32,7 +32,7 @@
                         <li><button type="button" onclick="">상품통계</button></li>
                         <li><button type="button" onclick="memberManage();">회원 관리</button></li>
                         <li><button type="button" onclick="brandManage();">브랜드 관리</button></li>
-                        <li><button type="button" onclick="reviewManage">리뷰관리</button></li>
+                        <li><button type="button" onclick="reviewManage();">리뷰관리</button></li>
                         <li><button type="button" onclick="qnaManage();">1:1문의 관리</button></li>
                         <li><button type="button" onclick="pointManage();">포인트</button></li>
                         <li><button type="button" onclick="notice();">공지사항 게시판</button></li>
@@ -73,7 +73,7 @@
 		}
 		function reviewManage()
 		{
-			
+			location.href="<%=request.getContextPath()%>/admin/AdminReviewSelect";			
 		}
 		function qnaManage()
 		{

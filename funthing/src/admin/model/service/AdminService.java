@@ -11,9 +11,6 @@ import java.util.ArrayList;
 import admin.model.dao.AdminDao;
 import brand.model.vo.Brand;
 import member.model.vo.Member;
-import notice.model.dao.NoticeDao;
-import notice.model.vo.Notice;
-
 import payment.model.vo.OrderInfo;
 import payment.model.vo.OrderInfoDetail;
 import personalQnA.model.vo.AdmimPersonalQna;
@@ -21,6 +18,7 @@ import personalQnA.model.vo.PersonalQnaReply;
 import product.model.vo.Product;
 import productQnA.model.vo.AdminProductQnA;
 import productQnA.model.vo.ProductQnAReply;
+import review.model.vo.Review;
 public class AdminService {
 	
 	
@@ -427,7 +425,31 @@ public class AdminService {
 		return result;	
 	}
 
-	
+	// 리뷰 조회 카운트 * 서윤
+		public int getRvListCount() {
+			Connection conn = getConnection();
+			
+			AdminDao aDao = new AdminDao();
+
+			int rvListCont = aDao.getRvListCount(conn);
+			
+			close(conn);
+
+			return rvListCont;
+		}
+
+		public ArrayList<Review> selectReviewLIst(int currentPage, int limit, String searchpName) {
+			ArrayList<Review> rvList = new ArrayList<>();
+			AdminDao aDao = new AdminDao();
+			
+			Connection conn = getConnection();
+			
+			rvList = aDao.selectReviewList(conn, currentPage, limit, searchpName);
+			
+			close(conn);
+			
+			return rvList;
+		}
 	
 	
 }
