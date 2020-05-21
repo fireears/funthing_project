@@ -40,6 +40,8 @@
 			#product>tbody>tr>td>div{font-size:18px; line-height:100%;}
 			#product>tbody>tr>th{font-size:20px;}
 		</style>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+		<script type="text/javascript" src="https://cdn.iamport.kr/js/iamprot.payment-1.1.5.js"></script>
 	</head>
 	<body>
 		<%@ include file = "../common/header.jsp" %>
@@ -265,4 +267,25 @@
             </article>
         </section>
 	</body>
+	
+	<script>
+		var IMP=window.IMP;
+		IMP.init('imp33962000');
+		
+		IMP.request_pay({
+			pg : 'inicis',
+			pay_method : 'card',
+			merchant_uid : 'merchant_' + new Date().getTime(),
+			name : '주문명:결제테스트',
+			amount : 14000,
+			buyer_email : 'iamport@siot.do',
+			buyer_name : ,
+			buyer_tel : ,
+			buyer_addr : ,
+			buyer_postcode : ,
+			m_redirect_url :
+		}, function(rsp) {
+			
+		})
+	</script>
 </html>
