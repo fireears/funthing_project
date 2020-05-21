@@ -39,8 +39,16 @@ public class ProductQnaList extends HttpServlet {
 		ProductQnAService aService = new ProductQnAService();
 		
 		String mNo = request.getParameter("mNo");
+		System.out.println("mNo :" + mNo);
 		int listCount = aService.getListQnaCount(mNo);
 		System.out.println("Listservlet listCount : " + listCount);
+		
+		
+		// 날짜 선택값 받기
+		String searchDate = request.getParameter("searchDate");
+		String firstDate = request.getParameter("firstDate");
+		String secondDate = request.getParameter("secondDate");
+		
 		
 		// 페이징 처리
 		int currentPage;		// 현재 페이지를 저장할 변수
@@ -70,7 +78,7 @@ public class ProductQnaList extends HttpServlet {
 		PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
 
 		
-		ArrayList<ProductQnaIn> list = aService.selectProductQnaCList(currentPage, limit, mNo);
+		ArrayList<ProductQnaIn> list = aService.selectProductQnaCList(searchDate, firstDate, secondDate,currentPage, limit, mNo);
 		System.out.println("servlet list : " + list);
 		RequestDispatcher view = null;
 		if(!list.isEmpty()) {

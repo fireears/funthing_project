@@ -99,6 +99,7 @@ public class AdminProductInsertServlet extends HttpServlet {
 		catch(NumberFormatException e)
 		{
 			e.printStackTrace();
+			
 		}
 	}
 

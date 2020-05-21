@@ -54,9 +54,11 @@ public class MemberLoginServlet extends HttpServlet {
 			
 		}else {						// 로그인 실패일 경우
 			
-			request.setAttribute("msg", "로그인 실패");
+			request.setAttribute("msg", "회원 정보가 없습니다.");
+			request.setAttribute("userId", userId);
 			
-			RequestDispatcher view = request.getRequestDispatcher("/main/mainView");
+			
+			RequestDispatcher view = request.getRequestDispatcher("/views/member/memberLogin.jsp");
 			view.forward(request, response);
 			
 		}

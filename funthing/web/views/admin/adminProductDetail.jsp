@@ -96,7 +96,7 @@
 	                        <th colspan="4" align="center">img_router</th>
 	                    </tr>
 	                    <tr>
-	                        <td colspan="4"><img src="<%=request.getContextPath()+"/images/detail/" + p.getImgRouter() + ".jpg" %>" style="width:100%"></td>
+	                        <td colspan="4"><img src="<%=request.getContextPath()+"/images/thumbnail/" + p.getImgRouter() + ".jpg" %>" style="width:100%"></td>
 	                    </tr>
                 <% } else if(p == null && msg != null){ %>
                 		<tr><th><%=msg %></th></tr>

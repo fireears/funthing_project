@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+	String msg = (String)request.getAttribute("msg");
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -78,7 +81,14 @@
                         alert("영문자와 숫자로 4글자 이상 12글자 이하여야 합니다.");
                         $("#userid").focus().val('');
                     }
-                });
+         });
+         $(function(){
+         <%if(msg != null){%>
+			alert("<%=msg%>");
+		 <%}%>
+        	 
+         });
+		
     </script>
 
 

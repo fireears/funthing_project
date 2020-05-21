@@ -40,17 +40,27 @@ public class AdminProductQna extends HttpServlet {
 		// 검색창 구현 시작
 		String searchKind = request.getParameter("searchKind");	// 검색 종류 값
 		String searchText = request.getParameter("searchText"); // 검색 입력창 값
-		String search2 = request.getParameter("search");	// 검색 종류 값
-		String search = request.getParameter("search2");	// 검색 종류 값
-		if(searchText != null) {
-			searchText = request.getParameter("searchText");
-		}else {
-			searchText = (String) request.getAttribute("searchText");
-		}
-		System.out.println("servlet searchKind : " + searchKind);
-		System.out.println("servlet searchText : " + searchText);
-		System.out.println("searchText버튼 눌렀을때 : "+ search);
-		System.out.println("searchFind버튼 눌렀을때 : "+ search2);
+//<<<<<<< HEAD
+//		String search2 = request.getParameter("search");	// 검색 종류 값
+//		String search = request.getParameter("search2");	// 검색 종류 값
+//		if(searchText != null) {
+//			searchText = request.getParameter("searchText");
+//		}else {
+//			searchText = (String) request.getAttribute("searchText");
+//		}
+//		System.out.println("servlet searchKind : " + searchKind);
+//		System.out.println("servlet searchText : " + searchText);
+//		System.out.println("searchText버튼 눌렀을때 : "+ search);
+//		System.out.println("searchFind버튼 눌렀을때 : "+ search2);
+//		
+//=======
+	
+//		System.out.println("servlet searchKind : " + searchKind);
+//		System.out.println("servlet searchText : " + searchText);
+		if(searchKind==null || searchKind.equals("null"))
+			searchKind = null;
+		if(searchText==null || searchText.equals("null"))
+			searchText = null;
 		
 		int listCount = aService.getListQnaCount(searchKind,searchText);
 //		System.out.println("servlet listCount : " + listCount);

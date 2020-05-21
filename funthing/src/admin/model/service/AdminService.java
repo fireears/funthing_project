@@ -263,10 +263,10 @@ public class AdminService {
 	}
 	
 	// 회원list select_진교 
-	public ArrayList<Member> selectList(int currentPage, int limit) {
+	public ArrayList<Member> selectList(int currentPage, int limit, String userName, String userId) {
 		Connection conn = getConnection();
 		
-		ArrayList<Member> list = new AdminDao().selectList(conn, currentPage, limit);
+		ArrayList<Member> list = new AdminDao().selectList(conn, currentPage, limit, userName, userId);
 		
 		close(conn);
 		
@@ -387,16 +387,17 @@ public class AdminService {
 	}
 	
 	// 회원 페이지_진교
-	public int getMemberListCount() {
+	public int getMemberListCount(String userName, String userId) {
 		Connection conn = getConnection();
 		
 		AdminDao aDao = new AdminDao();
 		
-		int listCount = aDao.getMemberListCount(conn);
+		int result = aDao.getMemberListCount(conn, userName, userId);
 		
 		close(conn);
 		
-		return listCount;
+		return result;
+		
 	}
 
 	public int getListCount(Product p) {
@@ -406,6 +407,22 @@ public class AdminService {
 		
 		close(conn);
 		return listCount;
+		
+	}
+	// 상품문의 관리자페이지 답변_혜린
+	public int insertProductReply(AdminProductQnA re) {
+		Connection conn = getConnection();
+		
+		int result = new AdminDao().insertProductRe(conn,re);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;	
 	}
 
 	// 리뷰 조회 카운트 * 서윤

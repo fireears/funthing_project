@@ -4,6 +4,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Generated at: 2020-05-18 02:37:17 UTC
 =======
 <<<<<<< HEAD
@@ -17,6 +18,9 @@
 >>>>>>> refs/remotes/origin/master
 =======
  * Generated at: 2020-05-18 13:27:36 UTC
+>>>>>>> refs/remotes/origin/master
+=======
+ * Generated at: 2020-05-20 03:50:07 UTC
 >>>>>>> refs/remotes/origin/master
  * Note: The last modified time of this file was set to
  *       the last modified time of the source file after
@@ -40,7 +44,11 @@ public final class adminOrderInfoDetail_jsp extends org.apache.jasper.runtime.Ht
 
   static {
     _jspx_dependants = new java.util.HashMap<java.lang.String,java.lang.Long>(1);
+<<<<<<< HEAD
     _jspx_dependants.put("/views/admin/../common/adminHeader.jsp", Long.valueOf(1589803029080L));
+=======
+    _jspx_dependants.put("/views/admin/../common/adminHeader.jsp", Long.valueOf(1589931868022L));
+>>>>>>> refs/remotes/origin/master
   }
 
   private static final java.util.Set<java.lang.String> _jspx_imports_packages;

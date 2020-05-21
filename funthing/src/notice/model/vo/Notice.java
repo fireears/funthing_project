@@ -3,6 +3,7 @@ package notice.model.vo;
 import java.io.Serializable;
 import java.sql.Date;
 
+
 public class Notice implements Serializable{
 
 	/**
@@ -15,14 +16,52 @@ public class Notice implements Serializable{
 	private String nContents;	//공지사항 내용
 	private Date nDate;			//공지사항 작성날짜
 	private String nDelYn;		//공지사항 삭제여부
+	private String nDaatee;     //한솔 용 
+	
 	public Notice() {
 		super();
 	}
-	public Notice(String nTitle, Date nDate) {
+	
+	
+	public Notice(int nNo, String nTitle, Date nDate) {
 		super();
+		this.nNo = nNo;
 		this.nTitle = nTitle;
 		this.nDate = nDate;
 	}
+	
+	public Notice(int nNo, String nTitle, String nContents, String nDaatee ,String nDelYn) {
+		super();
+		this.nNo = nNo;
+		this.nTitle = nTitle;
+		this.nContents = nContents;
+		this.nDelYn = nDelYn;
+		this.nDaatee = nDaatee;
+	}
+
+
+
+
+	public Notice(int nNo, String nTitle, String nContents, Date nDate, String nDelYn) {
+		super();
+		this.nNo = nNo;
+		this.nTitle = nTitle;
+		this.nContents = nContents;
+		this.nDate = nDate;
+		this.nDelYn = nDelYn;
+	}
+
+	public String getnDaatee() {
+		return nDaatee;
+	}
+
+	public void setnDaatee(String nDaatee) {
+		this.nDaatee = nDaatee;
+	}
+
+	
+	
+	
 	public int getnNo() {
 		return nNo;
 	}
