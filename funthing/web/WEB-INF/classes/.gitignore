@@ -1,7 +1,33 @@
+<<<<<<< HEAD
 /productQnA/
+=======
+<<<<<<< HEAD
+/product/
+/admin/
+/personalQnA/
+/productQnA/
+/member/
+/women/
+/sql/
+/notice/
+/man/
+=======
+/admin/
+/board/
+/brand/
+/calendar/
+/common/
+/filter/
+/main/
+>>>>>>> refs/remotes/origin/dev4
 /man/
 /member/
 /notice/
 /product/
 /sql/
 /women/
+<<<<<<< HEAD
+=======
+/wrapper/
+>>>>>>> refs/remotes/origin/master
+>>>>>>> refs/remotes/origin/dev4
