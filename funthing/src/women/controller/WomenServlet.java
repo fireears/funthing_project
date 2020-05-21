@@ -51,18 +51,18 @@ public class WomenServlet extends HttpServlet {
 		{
 			currentPage = 1;
 		}
-		limit = 100;
-		maxPage = (int)((double)listCount/12 + 0.9);
+		limit = 32;
+		maxPage = (int)((double)listCount/32 + 0.9999);
 		startPage = (((int)((double)currentPage/10 + 0.9)) - 1)*10 + 1;
-		endPage = startPage + limit - 1;
+		endPage = startPage + 10 - 1;
 		
-		if(endPage > maxPage){
+		if(endPage >= maxPage){
 			endPage = maxPage;
 		}
 		ArrayList<WomenVo> list =null;
 		PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
 		RequestDispatcher view = null;
-		
+		System.out.println(pi);
 		list = ws.selectList(currentPage, limit);	
 				
 		if(list.isEmpty()){

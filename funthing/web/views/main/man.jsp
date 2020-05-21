@@ -141,12 +141,12 @@
    </div>
 
    <div class="prod_cont">
-      <p class="prod_count">100style</p>
+      <p class="prod_count"><%=listCount %>style</p>
       <ul class="prod_sort">
-         <li><a href="#">high price</a></li>
-         <li><a href="#">low price</a></li>
-         <li><a href="#">close to completion</a></li>
-         <li><a href="#">new product</a></li>
+         <li><a href='<%=request.getContextPath()%>/ManHighPrice'>high price</a></li>
+         <li><a href='<%=request.getContextPath()%>/ManLowPrice'>low price</a></li>
+         <li><a href='<%=request.getContextPath()%>/ManCloseToCompletion'>close to completion</a></li>
+         <li><a href='<%=request.getContextPath()%>/ManNewProduct'>new product</a></li>
       </ul>
    </div>
       <div class="prod_area">
@@ -183,13 +183,13 @@
 				<button onclick="location.href='<%=request.getContextPath()%>/ManServlet?currentPage=<%=1%>'"> << </button>
 				
 				<!-- 이전 페이지 -->
-				<%if(currentPage < 1) {%>
+				<%if(currentPage <= 1) {%>
 					<button disabled> < </button>
 				<%}else {%>
 					<button onclick="location.href='<%=request.getContextPath()%>/ManServlet?currentPage=<%=currentPage -1%>'"> < </button>
 				<%} %>
 				<!-- 10개의 페이지 목록 -->
-				<%for(int p = startPage; p<endPage; p++){
+				<%for(int p = startPage; p<=endPage; p++){
 				%><%if(currentPage == p) {%>
 						<button disabled><%=p %></button>
 					<%} else{%>

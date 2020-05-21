@@ -1,4 +1,4 @@
-package man.controller;
+package women.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,20 +11,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import board.model.vo.PageInfo;
-import man.model.service.ManService;
-import man.model.vo.ManVo;
+import women.model.service.WomenService;
+import women.model.vo.WomenVo;
 
 /**
- * Servlet implementation class ManServlet
+ * Servlet implementation class WomenLowPrice
  */
-@WebServlet("/ManServlet")
-public class ManServlet extends HttpServlet {
+@WebServlet("/WomenLowPrice")
+public class WomenLowPrice extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ManServlet() {
+    public WomenLowPrice() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,8 +34,8 @@ public class ManServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			ManService ms = new ManService();
-			int listCount = ms.ManListCount();
+			WomenService ws = new WomenService();
+			int listCount = ws.WomenListCount();
 			
 			int currentPage;	//현재 페이지를 저장할 변수
 			int limit;			// 한 페이지에 보여질 게시글 수
@@ -51,19 +51,19 @@ public class ManServlet extends HttpServlet {
 			{
 				currentPage = 1;
 			}
-			limit = 36;
-			maxPage = (int)((double)listCount/36 + 0.9);
+			limit = 80;
+			maxPage = (int)((double)listCount/80 + 0.9999);
 			startPage = (((int)((double)currentPage/10 + 0.9)) - 1)*10 + 1;
 			endPage = startPage + 10 - 1;
 			
-			if(endPage > maxPage){
+			if(endPage >= maxPage){
 				endPage = maxPage;
 			}
-			ArrayList<ManVo> list =null;
+			ArrayList<WomenVo> list =null;
 			PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
 			RequestDispatcher view = null;
-			
-			list = ms.selectList(currentPage, limit);	
+			System.out.println(pi);
+			list = ws.selectListLowPrice(currentPage, limit);	
 					
 			if(list.isEmpty()){
 				request.setAttribute("msg","게시판 리스트 조회 실패!");
@@ -71,7 +71,7 @@ public class ManServlet extends HttpServlet {
 			}else{
 				request.setAttribute("list", list);
 				request.setAttribute("pi", pi);
-				view = request.getRequestDispatcher("views/main/man.jsp");
+				view = request.getRequestDispatcher("views/main/woman.jsp");
 			}	
 			view.forward(request, response);
 			}catch(NumberFormatException e) {
