@@ -23,7 +23,12 @@ public class Notice implements Serializable{
 	}
 	
 	
-	
+	public Notice(int nNo, String nTitle, Date nDate) {
+		super();
+		this.nNo = nNo;
+		this.nTitle = nTitle;
+		this.nDate = nDate;
+	}
 	
 	public Notice(int nNo, String nTitle, String nContents, String nDaatee ,String nDelYn) {
 		super();
@@ -54,11 +59,9 @@ public class Notice implements Serializable{
 		this.nDaatee = nDaatee;
 	}
 
-	public Notice(String nTitle, Date nDate) {
-		super();
-		this.nTitle = nTitle;
-		this.nDate = nDate;
-	}
+	
+	
+	
 	public int getnNo() {
 		return nNo;
 	}
