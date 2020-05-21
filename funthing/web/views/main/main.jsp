@@ -62,7 +62,7 @@
 		                    <li>
 		                        <div class="prod-img">
 		                            <%-- <a href="#none"><img src=<%=thumbnailUrl %>></a> --%>
-		                            <a href="#none"><img src="<%=request.getContextPath()+"/images/thumbnail/" + thumbnail + ".jpg" %>"></a>
+		                            <a href="<%=request.getContextPath()%>/productDateil?pName=<%=p.getpName() %>"><img src="<%=request.getContextPath()+"/images/thumbnail/" + thumbnail + ".jpg" %>"></a>
 		                            <%-- <img src="<%=request.getContextPath()+"/images/book/"+b.getBookImage() %> --%>
 		                        </div>
 		                        <ul class="prod-cont">

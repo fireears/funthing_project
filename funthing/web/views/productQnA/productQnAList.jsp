@@ -304,10 +304,10 @@
 			<%--   location.href="<%=request.getContextPath()%>/productQnaList?mNo=<%=loginUser2.getmNo()%> --%>
 			
 		
-		
+	/* 	
 		})
 		console.log(qnaNo);
-	})
+	}) */
 	
 	</script>
 
