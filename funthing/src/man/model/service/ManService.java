@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import static common.JDBCTemplate.*;
 import man.model.dao.Mandao;
 import man.model.vo.ManVo;
+import women.model.dao.WomenDao;
+import women.model.vo.WomenVo;
 
 public class ManService {
 
@@ -87,4 +89,30 @@ public class ManService {
 		ArrayList<ManVo> list = new Mandao().selectListTop(conn,currentPage, limit);
 		return list;
 	}
+
+	public ArrayList<ManVo> selectListCloseToCompletion(int currentPage, int limit) {
+		Connection conn = getConnection();
+		ArrayList<ManVo> list = new Mandao().selectListCloseToCompletion(conn,currentPage, limit);
+		return list;
+	}
+
+	public ArrayList<ManVo> selectListLowPrice(int currentPage, int limit) {
+		Connection conn = getConnection();
+		ArrayList<ManVo> list = new Mandao().selectListLowPrice(conn,currentPage, limit);
+		return list;
+	}
+
+	public ArrayList<ManVo> selectListHighPrice(int currentPage, int limit) {
+		Connection conn = getConnection();
+		ArrayList<ManVo> list = new Mandao().selectListHighPrice(conn,currentPage, limit);
+		return list;
+	}
+
+	public ArrayList<ManVo> selectListNewProduct(int currentPage, int limit) {
+		Connection conn = getConnection();
+		ArrayList<ManVo> list = new Mandao().selectNewProduct(conn,currentPage, limit);
+		return list;
+	}
+
+	
 }

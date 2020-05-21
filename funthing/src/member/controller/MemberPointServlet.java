@@ -1,4 +1,5 @@
-package personalQnA.controller;
+// 적립금 내역 페이지_희지
+package member.controller;
 
 import java.io.IOException;
 import java.sql.Date;
@@ -12,23 +13,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import board.model.vo.PageInfo;
-import personalQnA.model.service.PersonalQnAService;
-import personalQnA.model.vo.PersonalQnA;
+import member.model.service.MemberPointService;
+import member.model.vo.MemberPoint;
 
 /**
- * Servlet implementation class PersonalQnAServlet
+ * Servlet implementation class MemberPoint
  */
-@WebServlet(name = "PersonalQnA", urlPatterns = "/PersonalQnA")
-public class PersonalQnAServlet extends HttpServlet {
+@WebServlet("/memberPointServlet")
+public class MemberPointServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
+    /*
      * @see HttpServlet#HttpServlet()
      */
-    public PersonalQnAServlet() {
+	
+    public MemberPointServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
+
+	
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -36,11 +40,8 @@ public class PersonalQnAServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		
 		// 로그인 한 유저 정보 받기
 		String userNo = request.getParameter("userNo");
-		
-		System.out.println("서블릿에 로그인 값이 잘 넘어왔는가" + userNo);
 		
 		// 날짜 선택값 받기
 		String searchDate = request.getParameter("searchDate");
@@ -48,18 +49,12 @@ public class PersonalQnAServlet extends HttpServlet {
 		String secondDate = request.getParameter("secondDate");
 		
 		
-//		// 이거 뭔지 모르겠어여 -희지
-//		int maxSize = 1024*1024*10;	// 이미지 사이즈 제한함 10Mbytes
+		MemberPointService mpService = new MemberPointService();
 		
+		// 로그인 유저에 대한  적립금 리스트 카운트 하기
+		int pListCount = mpService.getPListCount(userNo);
 		
-		PersonalQnAService pqService = new PersonalQnAService();
-		
-		
-		// 로그인 유저에 대한 일대일 문의 리스트 카운트하기
-		int perListCount = pqService.getPerListCount(userNo);
-		
-		System.out.println("Servlet에서 로그인 유저에 대한 일대일 문의 리스트  갯수 :" + perListCount);
-		
+		System.out.println("memberPoint 서블릿에서 적립금 리스트 갯수 : " + pListCount);
 		
 		// 페이징 관련 변수 선언
 		int currentPage;
@@ -79,7 +74,7 @@ public class PersonalQnAServlet extends HttpServlet {
 		
 		limit = 10;
 		
-		maxPage = (int)((double)perListCount / limit + 0.9);
+		maxPage = (int)((double)pListCount / limit + 0.9);
 		startPage = ((int)(((double)currentPage / limit + 0.9) -1) *limit) +1;
 		endPage = startPage + limit -1;
 		
@@ -88,33 +83,29 @@ public class PersonalQnAServlet extends HttpServlet {
 		}
 		
 		// 페이징 처리 관련 객체 만들기
-		PageInfo pi = new PageInfo(currentPage, perListCount, limit, maxPage, startPage, endPage);
+		PageInfo pi = new PageInfo(currentPage, pListCount, limit, maxPage, startPage, endPage);
 		
 		System.out.println("pi" + pi);
 		
 		// 페이징 처리 + 날짜 검색 처리
-		ArrayList<PersonalQnA> list = pqService.selectPersonalQnA(searchDate, firstDate, secondDate, currentPage, limit, userNo);
+		ArrayList<MemberPoint> list = mpService.selectMemberPoint(searchDate, firstDate, secondDate, currentPage, limit, userNo);
 		
-		System.out.println("Servlet에서 일대일 문의 리스트" + list);
+		System.out.println("적립금 servlet에서 리스트 : " +  list);
 		
 		
-		
-		// 서비스 다녀와서 리스트 화면 처리
 		RequestDispatcher view = null;
 		if(!list.isEmpty()) {
-			view = request.getRequestDispatcher("/views/personalQnA/myPagePerQnAList.jsp");
+			view = request.getRequestDispatcher("/views/member/myPagePoint.jsp");
 			request.setAttribute("list", list);
-			request.setAttribute("pi", pi);
-			request.setAttribute("userNo", userNo);
+			request.setAttribute("pi",pi);
 			
 		}else {
-			view = request.getRequestDispatcher("/views/personalQnA/myPagePerQnAList.jsp");
+			view = request.getRequestDispatcher("/views/member/myPagePoint.jsp");
 			request.setAttribute("list", list);
-			request.setAttribute("pi", pi);
+			request.setAttribute("pi",pi);
+			
 		}
-		
-		view.forward(request, response);
-		
+		view.forward(request, response);		
 	}
 
 	/**

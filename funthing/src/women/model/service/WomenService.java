@@ -94,4 +94,24 @@ public class WomenService {
 		ArrayList<WomenVo> list = new WomenDao().selectListTop(conn,currentPage, limit);
 		return list;
 	}
+	public ArrayList<WomenVo> selectListHighPrice(int currentPage, int limit) {
+		Connection conn = getConnection();
+		ArrayList<WomenVo> list = new WomenDao().selectListHighPrice(conn,currentPage, limit);
+		return list;
+	}
+	public ArrayList<WomenVo> selectListLowPrice(int currentPage, int limit) {
+		Connection conn = getConnection();
+		ArrayList<WomenVo> list = new WomenDao().selectListLowPrice(conn,currentPage, limit);
+		return list;
+	}
+	public ArrayList<WomenVo> selectListCloseToCompletion(int currentPage, int limit) {
+		Connection conn = getConnection();
+		ArrayList<WomenVo> list = new WomenDao().selectListCloseToCompletion(conn,currentPage, limit);
+		return list;
+	}
+	public ArrayList<WomenVo> selectListNewProduct(int currentPage, int limit) {
+		Connection conn = getConnection();
+		ArrayList<WomenVo> list = new WomenDao().selectListNewProduct(conn,currentPage, limit);
+		return list;
+	}
 }
