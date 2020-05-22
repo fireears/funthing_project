@@ -1,9 +1,11 @@
 package member.model.service;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
 import member.model.dao.MemberDao;
 import member.model.vo.Member;
+import member.model.vo.MemberShoppingBag;
 
 import static common.JDBCTemplate.*;
 
@@ -88,6 +90,16 @@ public class MemberService {
 		close(conn);
 		
 		return result;
+	}
+	public int shoppinglistCount(String userId) {
+		Connection conn = getConnection();
+		int result = new MemberDao().getshoppingbagCount(conn,userId);
+		return 0;
+	}
+	public ArrayList<MemberShoppingBag> shoppingbagselectList(String userId) {
+		Connection conn = getConnection();
+		ArrayList<MemberShoppingBag> list =  new MemberDao().selectshoppingbaglist(userId,conn);
+		return list;
 	}
 
 }

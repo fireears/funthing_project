@@ -7,9 +7,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Properties;
 
 import member.model.vo.Member;
+import member.model.vo.MemberShoppingBag;
 
 import static common.JDBCTemplate.*;
 
@@ -285,6 +288,80 @@ public class MemberDao {
 		}
 		
 		return result;
+	}
+
+
+	public int getshoppingbagCount(Connection conn, String userId) {
+		Statement stmt =null;
+		ResultSet rset = null;
+		int noticeCount=0;
+		
+		
+		try { 			
+			if(userId != null) {
+					
+				String query = "SELECT COUNT(*) FROM SHOPPINGBAG  WHERE M_NO LIKE '%"+userId+"%'";
+				stmt =conn.createStatement();
+				rset=stmt.executeQuery(query);
+				if(rset.next()) {
+					noticeCount = rset.getInt(1);
+				}
+				
+			}else {
+				String query = "SELECT COUNT(*) FROM SHOPPINGBAG";
+				stmt =conn.createStatement();
+				rset=stmt.executeQuery(query);
+				if(rset.next()) {
+					noticeCount = rset.getInt(1);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(stmt);
+			close(rset);
+		}
+		
+		return noticeCount;
+	}
+
+	public ArrayList<MemberShoppingBag> selectshoppingbaglist(String userId, Connection conn) {
+		ArrayList<MemberShoppingBag> al = new ArrayList<MemberShoppingBag>();
+		
+		Statement sm = null;
+		ResultSet rs = null;
+		String query3 = "SELECT M_NO FROM MEMBER WHERE M_ID="+userId;
+		String mno=null;
+		try {
+			sm=conn.createStatement();
+			rs=sm.executeQuery(query3);
+			mno=rs.getString("M_NO");
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		Statement stmt = null;
+		ResultSet rset = null;
+		String query ="SELECT * FROM SHOPPINGBAG WHERE M_NO ="+mno;
+		
+		try {
+			stmt=conn.createStatement();
+			rset=stmt.executeQuery(query);
+			while(rset.next()) {
+				String query2="SELECT THUMBNAIL,P_NAME,P_POINT,P_PRICE FROM PRODUCT WHERE P_NO ="+rset.getString("P_NO");
+				
+				Statement stmt2=conn.createStatement();
+				ResultSet rset2=stmt2.executeQuery(query2);
+				MemberShoppingBag msb = new MemberShoppingBag(rset2.getString("P_NAME"), rset2.getString("THUMBNAIL"), rset2.getInt("P_POINT"), rset.getInt("SHBAG_NUM"), rset2.getInt("P_PRICE"));
+				al.add(msb);				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return al;
 	}
 
 }
