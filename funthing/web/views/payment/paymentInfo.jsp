@@ -264,12 +264,13 @@
                                 <input type="checkbox" name="" id="">상품 공급사 개인정보 제공 동의에 대한 내용을 확인 하였으며 이에 동의 합니다.(필수)<br>
                             </div>
                             <br><br>
-                            <input type="submit" value="결제하기" style="width: 70%; height: 55px; border: 0px; background-color: rgb(3, 3, 87); color: white; font-size: 20px;">
+                            <!-- <input type="button" id="pqy" value="결제하기" style="width: 70%; height: 55px; border: 0px; background-color: rgb(3, 3, 87); color: white; font-size: 20px;"> -->
+							<button type="button" id="pay" style="width: 70%; height: 55px; border: 0px; background-color: rgb(3, 3, 87); color: white; font-size: 20px;">결제하기</button>
                         </div>
                     </div>
                     <!---->
                 </form>
-					<button type="button" id="pay">결제</button>
+					<!-- <button type="button" id="pay">결제</button> -->
                 
             </article>
         </section>
@@ -309,7 +310,7 @@
 					    buyer_tel : $("#m_tell").val(),
 					    buyer_addr : $("#detailAddress").val(),
 					    buyer_postcode : $("#postcode").val(),
-					    m_redirect_url : 'https://www.yourdomain.com/payments/complete' //결제 완료 후 보낼 컨트롤러의 메소드명
+					    m_redirect_url : '<%=request.getContextPath()%>/PaymentInfo' //결제 완료 후 보낼 컨트롤러의 메소드명
 					}, function(rsp) {
 					    if ( rsp.success ) {
 					        var msg = '결제가 완료되었습니다.';
@@ -317,6 +318,7 @@
 					        msg += '상점 거래ID : ' + rsp.merchant_uid;
 					        msg += '결제 금액 : ' + rsp.paid_amount + '원';
 					        msg += '카드 승인번호 : ' + rsp.apply_num;
+					        location.href = "<%=request.getContextPath()%>/PaymentInfo";
 					    } else {
 					        var msg = '결제에 실패하였습니다.';
 					        msg += '에러내용 : ' + rsp.error_msg;

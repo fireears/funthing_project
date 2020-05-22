@@ -233,25 +233,26 @@
 
                     <!-- 상품 선택 및 구매/장바구니 -->
                     <div class="buy_information">
-                        <form>
+                        <form method="get" action="<%=request.getContextPath()%>/PaymentInfo">
                             <ul id="buyList">
+                            	 <input type="hidden" name="p_no" value="<%=list.get(1).getpNo()%>">
                             	 <li>
-                                    <select id="color">
+                                    <select id="color" name="color">
                                      <option>color 선택</option>
                                    <%if(pd.getpColor().equals("BK")){ %>
-                                    <option>BLACK</option>
+                                    <option value="BK">BLACK</option>
                                    <%}else if(pd.getpColor().equals("BL")){ %>
-                                   <option>BLUE</option>
+                                   <option value="BL">BLUE</option>
                                    <%}else if(pd.getpColor().equals("WH")){ %>
-                                   <option>WHITE</option>
+                                   <option value="WH">WHITE</option>
                                    <%}else if(pd.getpColor().equals("RD")){ %>
-                                   <option>RED</option>
+                                   <option value="RD">RED</option>
                                    <%}else if(pd.getpColor().equals("KH")){ %>
-                                   <option>KHAKI</option>
+                                   <option value="KH">KHAKI</option>
                                    <%}else if(pd.getpColor().equals("YL")){ %>
-                                   <option>YELLOW</option>
+                                   <option value="YL">YELLOW</option>
                                    <%}else if(pd.getpColor().equals("GN")){ %>
-                                   <option>GREEN</option>
+                                   <option value="GN">GREEN</option>
                                    
                                    
                                    <%} %>
@@ -260,10 +261,10 @@
                                     </select>
                                 </li>
                                 <li>
-                                    <select id="color">
+                                    <select id="color" name="size">
                                         <option>size 선택</option>
                                        <%for(ProductDetail pro : sizeList){ %> 
-                                    <option><%= pro.getpSize() %></option>
+                                    <option value="<%= pro.getpSize() %>"><%= pro.getpSize() %></option>
                                     <%} %>
                                     </select>
                                 </li>
@@ -272,7 +273,7 @@
                                 </li>
                             </ul>
                             <div id="allBtn">
-                            <button type="button" id="by_now">BUY IT NOW</button>
+                            <button id="by_now" onclick="byNow();">BUY IT NOW</button>
                             <button type="button" id="shopping_bag">SHOPPING BAG</button>
                             </div>
                         </form>
@@ -381,6 +382,9 @@
 	function productQna(){
 		alert("로그인을 후 입력이 가능합니다.");
 	}
+	
+	
+	
 </script>
 	<%@ include file="../common/footer.jsp" %>
 
