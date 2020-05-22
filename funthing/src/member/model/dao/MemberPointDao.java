@@ -61,7 +61,7 @@ public class MemberPointDao {
 			
 			if(searchDate == null && firstDate == null) {
 				
-				String query = "SELECT ROWNUM RNUM, POINT_NO, POINT_DATE, O_NO, POINT_CONTENT, POINT_AMOUNT, M_NO, POINT_CATE, M_POINT\r\n" + 
+				String query = "SELECT RNUM, POINT_NO, POINT_DATE, O_NO, POINT_CONTENT, POINT_AMOUNT, M_NO, POINT_CATE, M_POINT\r\n" + 
 						"FROM (SELECT ROWNUM RNUM, POINT_NO, POINT_DATE, O_NO, POINT_CONTENT, POINT_AMOUNT, M_NO, POINT_CATE, M_POINT\r\n" + 
 						"FROM POINT_LIST\r\n" + 
 						"WHERE M_NO = ?)\r\n" + 
@@ -78,7 +78,7 @@ public class MemberPointDao {
 			
 			}else if(searchDate != null && searchDate.equals("today")) {
 				
-				String query ="SELECT ROWNUM RNUM, POINT_NO, POINT_DATE, O_NO, POINT_CONTENT, POINT_AMOUNT, M_NO, POINT_CATE, M_POINT\r\n" + 
+				String query ="SELECT RNUM, POINT_NO, POINT_DATE, O_NO, POINT_CONTENT, POINT_AMOUNT, M_NO, POINT_CATE, M_POINT\r\n" + 
 						"FROM (SELECT ROWNUM RNUM, POINT_NO, POINT_DATE, O_NO, POINT_CONTENT, POINT_AMOUNT, M_NO, POINT_CATE, M_POINT\r\n" + 
 						"FROM POINT_LIST\r\n" + 
 						"WHERE M_NO = ? AND TO_DATE(POINT_DATE,'RRRR/MM/DD')=TO_DATE(SYSDATE,'RRRR/MM/DD'))\r\n" + 
@@ -94,7 +94,7 @@ public class MemberPointDao {
 				
 			}else if(searchDate != null && searchDate.equals("week")) {
 				
-				String query = "SELECT ROWNUM RNUM, POINT_NO, POINT_DATE, O_NO, POINT_CONTENT, POINT_AMOUNT, M_NO, POINT_CATE, M_POINT\r\n" + 
+				String query = "SELECT RNUM, POINT_NO, POINT_DATE, O_NO, POINT_CONTENT, POINT_AMOUNT, M_NO, POINT_CATE, M_POINT\r\n" + 
 						"FROM (SELECT ROWNUM RNUM, POINT_NO, POINT_DATE, O_NO, POINT_CONTENT, POINT_AMOUNT, M_NO, POINT_CATE, M_POINT\r\n" + 
 						"FROM POINT_LIST\r\n" + 
 						"WHERE M_NO = ? AND TO_DATE(POINT_DATE,'RRRR/MM/DD') >= TO_DATE(SYSDATE,'RRRR/MM/DD')-7)\r\n" + 
@@ -109,7 +109,7 @@ public class MemberPointDao {
 				
 			}else if(searchDate != null && searchDate.equals("month")) {
 				
-				String query="SELECT ROWNUM RNUM, POINT_NO, POINT_DATE, O_NO, POINT_CONTENT, POINT_AMOUNT, M_NO, POINT_CATE, M_POINT\r\n" + 
+				String query="SELECT RNUM, POINT_NO, POINT_DATE, O_NO, POINT_CONTENT, POINT_AMOUNT, M_NO, POINT_CATE, M_POINT\r\n" + 
 						"FROM (SELECT ROWNUM RNUM, POINT_NO, POINT_DATE, O_NO, POINT_CONTENT, POINT_AMOUNT, M_NO, POINT_CATE, M_POINT\r\n" + 
 						"FROM POINT_LIST\r\n" + 
 						"WHERE M_NO = ? AND TO_DATE(POINT_DATE,'RRRR/MM/DD') >= TO_DATE(SYSDATE,'RRRR/MM/DD')-30)\r\n" + 
@@ -125,7 +125,7 @@ public class MemberPointDao {
 				
 			}else if(searchDate != null && searchDate.equals("3months")) {
 				
-				String query = "SELECT ROWNUM RNUM, POINT_NO, POINT_DATE, O_NO, POINT_CONTENT, POINT_AMOUNT, M_NO, POINT_CATE, M_POINT\r\n" + 
+				String query = "SELECT RNUM, POINT_NO, POINT_DATE, O_NO, POINT_CONTENT, POINT_AMOUNT, M_NO, POINT_CATE, M_POINT\r\n" + 
 						"FROM (SELECT ROWNUM RNUM, POINT_NO, POINT_DATE, O_NO, POINT_CONTENT, POINT_AMOUNT, M_NO, POINT_CATE, M_POINT\r\n" + 
 						"FROM POINT_LIST\r\n" + 
 						"WHERE M_NO = ? AND TO_DATE(POINT_DATE,'RRRR/MM/DD') >= TO_DATE(SYSDATE,'RRRR/MM/DD')-90)\r\n" + 
@@ -141,7 +141,7 @@ public class MemberPointDao {
 			
 			}else if(searchDate != null && searchDate.equals("6months")) {
 				
-				String query = "SELECT ROWNUM RNUM, POINT_NO, POINT_DATE, O_NO, POINT_CONTENT, POINT_AMOUNT, M_NO, POINT_CATE, M_POINT\r\n" + 
+				String query = "SELECT RNUM, POINT_NO, POINT_DATE, O_NO, POINT_CONTENT, POINT_AMOUNT, M_NO, POINT_CATE, M_POINT\r\n" + 
 						"FROM (SELECT ROWNUM RNUM, POINT_NO, POINT_DATE, O_NO, POINT_CONTENT, POINT_AMOUNT, M_NO, POINT_CATE, M_POINT\r\n" + 
 						"FROM POINT_LIST\r\n" + 
 						"WHERE M_NO = ? AND TO_DATE(POINT_DATE,'RRRR/MM/DD') >= TO_DATE(SYSDATE,'RRRR/MM/DD')-180)\r\n" + 
@@ -157,7 +157,7 @@ public class MemberPointDao {
 				
 			}else if(searchDate !=null && searchDate.equals("year")) {
 				
-				String query ="SELECT ROWNUM RNUM, POINT_NO, POINT_DATE, O_NO, POINT_CONTENT, POINT_AMOUNT, M_NO, POINT_CATE, M_POINT\r\n" + 
+				String query ="SELECT RNUM, POINT_NO, POINT_DATE, O_NO, POINT_CONTENT, POINT_AMOUNT, M_NO, POINT_CATE, M_POINT\r\n" + 
 						"FROM (SELECT ROWNUM RNUM, POINT_NO, POINT_DATE, O_NO, POINT_CONTENT, POINT_AMOUNT, M_NO, POINT_CATE, M_POINT\r\n" + 
 						"FROM POINT_LIST\r\n" + 
 						"WHERE M_NO = ? AND TO_DATE(POINT_DATE,'RRRR/MM/DD') >= TO_DATE(SYSDATE,'RRRR/MM/DD')-365)\r\n" + 
@@ -174,7 +174,7 @@ public class MemberPointDao {
 			// 클라이언트가 날짜 선택 했을 때
 			}else {
 				
-				String query = "SELECT ROWNUM RNUM, POINT_NO, POINT_DATE, O_NO, POINT_CONTENT, POINT_AMOUNT, M_NO, POINT_CATE, M_POINT\r\n" + 
+				String query = "SELECT RNUM, POINT_NO, POINT_DATE, O_NO, POINT_CONTENT, POINT_AMOUNT, M_NO, POINT_CATE, M_POINT\r\n" + 
 						"FROM (SELECT ROWNUM RNUM, POINT_NO, POINT_DATE, O_NO, POINT_CONTENT, POINT_AMOUNT, M_NO, POINT_CATE, M_POINT\r\n" + 
 						"FROM POINT_LIST\r\n" + 
 						"WHERE M_NO = ? AND TO_DATE(PER_DATE,'RRRR/MM/DD') BETWEEN TO_DATE(?,'RRRR/MM/DD') AND TO_DATE(?, 'RRRR/MM/DD'))\r\n" + 
