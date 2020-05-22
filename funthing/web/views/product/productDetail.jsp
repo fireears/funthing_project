@@ -252,9 +252,9 @@
         </ul>
     </div>
     <div id="review_area">
-        <form>
+        <form action="<%=request.getContextPath()%>/ReviewInsert" enctype="multipart/form-data" type="post">
             <div class="rev_rate">
-                <select>
+                <select name="rev_rateS" id="rev_rateS">
                     <option value="5">★★★★★</option>
                     <option value="4">★★★★☆</option>
                     <option value="3">★★★☆☆</option>
@@ -263,7 +263,7 @@
                 </select>
             </div>
             <div class="rev_textArea">
-                <textarea rows="10" placeholder="리뷰 등록 시 적립금을 드립니다!"></textarea>
+                <textarea name="rev_textArea" rows="10" placeholder="리뷰 등록 시 적립금을 드립니다!" required></textarea>
             </div>
             <div class="rev_btns">
                 <p class="fileWrap">
@@ -273,7 +273,9 @@
             <button class="rev_submit" type="submit">리뷰 등록</button>
             </div>
         </form>
-
+        <div class="rev_content">
+        <!-- 리뷰 불러올 부분 -->
+        </div>
     </div>
     <!--Q&A-->
     <div id="sec_QnA_nav" class="sec_nav">

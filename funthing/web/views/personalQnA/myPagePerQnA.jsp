@@ -27,10 +27,10 @@
     	/* 팝업창 */
     	.q1_wrap .q1_orderList {  }
     	
-    	#orderSelectWrap { display:none; position:absolute; width:700px; height:300px; padding:0 20px; box-sizing:border-box; background:#fff; border:1px solid #ddd; top:50px; left:50%; margin-left:-350px; }
+    	#orderSelectWrap { display:none; overflow-y:scroll; position:absolute; width:700px; height:400px; padding:20px; box-sizing:border-box; background:#fff; border:1px solid #ddd; top:50px; left:50%; margin-left:-350px; }
         #orderSelectWrap:after { display:block; content:""; clear:both; }
         
-        #orderSelectWrap h2 { text-align:center; margin:20px 0; font-size:24px; }
+        #orderSelectWrap h2 { text-align:center; margin:0 0 20px 0; font-size:24px; }
         #orderSelectWrap form { border:1px solid #ddd; }
         #orderSelectWrap .os_tb { border-collapse: collapse; }
         #orderSelectWrap .os_tb tr { border-bottom:1px solid #ddd; }
@@ -70,7 +70,7 @@
             <h2>1:1 문의</h2>
 
             <div class="q1_wrap">
-                <form action="<%=request.getContextPath()%>/InsertPerQnA" method="post" encType="multipart/form-data">
+                <form action="<%=request.getContextPath()%>/InsertPerQnA" enctype="multipart/form-data" method="post">
                     
                     <table>
                         <tr>
