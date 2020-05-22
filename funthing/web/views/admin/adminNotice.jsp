@@ -21,6 +21,7 @@ String search =(String)request.getAttribute("search");
 <!DOCTYPE html>
 <html lang="ko">
     <head>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
         <style>
             #noticeArea{margin: auto; width: 90%;}
 
@@ -36,7 +37,7 @@ String search =(String)request.getAttribute("search");
             
             .pageBtn{margin-top: 10px;}
             .pageBtn>button{border: 0px; width: 30px; height: 30px; font-weight: 600; size: 10px;}
-
+			.cont{ display:none;}
         </style>
         
 
@@ -61,12 +62,19 @@ String search =(String)request.getAttribute("search");
              <% 
              if(list!=null){
                 for(int i =0;i<list.size();i++){
-                	%> <tr>  
+                	%> <tr class="noticelist">  
 	                        <td><%=list.get(i).getnNo()%></td>
 	                        <td><%=list.get(i).getnTitle()%></td>
-	                        <td><%=list.get(i).getnContents()%></td>
+	                        <td>관리자</td>
 	                        <td><%=list.get(i).getnDaatee()%></td>
 	                        <td><%=list.get(i).getnDelYn()%></td>
+	                    </tr>
+	                    <tr class="cont">
+	                    	<td colspan="5">
+	                    		<span>
+	                    		<%=list.get(i).getnContents()%>
+	                    		</span>
+	                    	</td>
 	                    </tr>	
                   <%}
                    }else{
@@ -79,6 +87,12 @@ String search =(String)request.getAttribute("search");
                 </tbody>
             </table>
             </form>
+            <script>
+           		 $("table .noticelist").click(function(){
+                $(this).next().toggle();
+           		 });
+	        </script>
+            
 				<%
 				if(search ==null){
 				%>	

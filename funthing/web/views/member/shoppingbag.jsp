@@ -9,7 +9,7 @@
  %>
     <head>
 
-
+	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
         <style>
 
             p { margin:0; }
@@ -61,7 +61,7 @@
             <form>
                 <table class="s_table">
                     <tr>
-                        <th><input type="checkbox"></th>
+                        <th><input type="checkbox" id="checkall"></th>
                         <th colspan="2">결제 예정 상품</th>
                         <th>수량</th>
                         <th>금액</th>
@@ -83,7 +83,7 @@
                         <td><%=sum%></td>
                     </tr> 
                 <% 
-                sum =+list.get(i).getShbag_price();
+                sum +=list.get(i).getShbag_price();
                 }
                }%>
                    
@@ -95,7 +95,18 @@
                 </div>
             </form>
         </div>
-        
+        <script>
+        $(document).ready(function(){
+            $("#checkall").click(function(){
+                if($("#checkall").prop("checked")){
+                    $("input[name=check]").prop("checked",true);
+                }else{
+                    $("input[name=check]").prop("checked",false);
+                }
+            })
+        })
+        </script>
+
         <%@ include file="../common/footer.jsp"%>
         
     </body>
