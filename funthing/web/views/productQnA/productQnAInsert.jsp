@@ -1,6 +1,12 @@
 <!-- 상품문의 페이지(클라이언트)_혜린  -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="member.model.vo.*"%>
+<%
+
+	String pName = request.getParameter("pName");
+	String bName = request.getParameter("bName");
+
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,11 +61,11 @@
                         </tr>
                         <tr>
                             <td>상품명</td>
-                            <td><span>상품명 불러오기 예정</span><!-- 상품번호 불러오기  -->
+                            <td><span><%= pName %></span><!-- 상품번호 불러오기  -->
                         </tr>
                          <tr>
                             <td>브랜드명</td>
-                            <td><span>브랜드명 불러오기 예정</span><!-- 브랜드번호 불러오기  -->
+                            <td><span><%= bName %></span><!-- 브랜드번호 불러오기  -->
                         </tr>
                         <!-- tr>
                             <td>말머리</td>
