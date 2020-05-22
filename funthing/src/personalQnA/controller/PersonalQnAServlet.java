@@ -1,3 +1,4 @@
+// 일대일 문의 리스트_희지
 package personalQnA.controller;
 
 import java.io.IOException;
@@ -115,6 +116,7 @@ public class PersonalQnAServlet extends HttpServlet {
 			view = request.getRequestDispatcher("/views/personalQnA/myPagePerQnAList.jsp");
 			request.setAttribute("list", list);
 			request.setAttribute("pi", pi);
+			request.setAttribute("userNo", userNo);
 		}
 		
 		view.forward(request, response);

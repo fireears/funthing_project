@@ -20,7 +20,7 @@
 
         <div id="side">
             <div class="lnb mypage-lnb">
-                <h2><a href=#">MY PAGE</a></h2>
+                <h2><a href='<%=request.getContextPath() %>/myPageMainServlet'>MY PAGE</a></h2>
                 <h3>쇼핑정보</h3>
                 <ul>
                     <li><a href="<%=request.getContextPath()%>/member/myPageOrderList?userNo=<%=loginUser2.getmNo()%>">주문목록/배송조회</a></li> <!-- 동곤이형 서블릿 -->
