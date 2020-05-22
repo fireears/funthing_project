@@ -1,5 +1,19 @@
+<!-- 제품 상세 페이지 _혜린,서윤  -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="product.model.vo.ProductDetail" %>
+<%@ page import="productQnA.model.vo.AdminProductQnA" %>
+<%@ page import="java.text.DecimalFormat" %>
+<%
+	/* ProductDetail pd = (ProductDetail)request.getAttribute("pd"); */
+	DecimalFormat formatter = new DecimalFormat("###,###");
+	ArrayList<ProductDetail> list = (ArrayList<ProductDetail>)request.getAttribute("list");
+	ArrayList<ProductDetail> sizeList = (ArrayList<ProductDetail>)request.getAttribute("sizeList");
+	ArrayList<AdminProductQnA> qnaList = (ArrayList<AdminProductQnA>)request.getAttribute("qnaList");
+	ProductDetail pd = list.get(0);
+	int ratePrice = pd.getRetailPrice() * pd.getDcRate() / 100;
+%>    
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -26,13 +40,16 @@
         #brand{
             font-weight: 800;
             color:#30586e;
+            font-size: initial;
         }
         #name{
             padding-bottom: 5px;
              border-bottom: 1.5px solid #30586e;
+             font-size: large;
         }
         #product_description{
             font-size:small;
+            margin-top: 5px;
         }
         #prod-detail {
             width: 1200px;
@@ -63,7 +80,7 @@
             padding: 0 0 0 40px;
         }
 
-        #right_wrap {}
+        #right_wrap {margin-top: 15px;}
 
         #right_wrap:after {
             content: "";
@@ -73,7 +90,7 @@
 
         #right_wrap ul {}
 
-        #right_wrap ul li {}
+        #right_wrap ul li {padding:1px;}
 
         #right_wrap ul li:after {
             content: "";
@@ -84,10 +101,12 @@
         #right_wrap ul li .price_left {
             float: left;
             font-style: normal;
+            font-weight: 600;
         }
 
         #right_wrap ul li .price_right {
             float: right;
+            font-weight: 400;
         }
 
         .price {
@@ -98,22 +117,24 @@
         }
 
         .buy_information {
-            float: left;
+            float: right;
             width: 50%;
         }
-
+		
+		
+		
         .price_dis{
             color:red;
         }
 
         #color{
-            width: 250px;
-            height: 30px;
+            width: 265px;
+            height: 40px;
         }
 
         #num{
-            width: 245px;
-            height: 25px;
+            width: 260px;
+            height: 40px;
         }
 
         #by_now, #shopping_bag{
@@ -121,7 +142,7 @@
             color:white;
             border:0;
             width:130px;
-            height: 30px;
+            height: 40px;
         }
 
         /* 내비게이션 시작 */
@@ -152,35 +173,41 @@
         #review_area .rev_btns .fileWrap span { position:absolute; top:0; left:0; }
         #review_area .rev_btns .fileWrap span i { color:#30586e; font-size:60px; }
 
-        #QnA_area h3{float: left;}
+        #QnA_area h3{float: left; font-size:x-large; color:#0f4a7e;}
         #QnA_area button{float: right; background-color: #30586e; border: 0px; height: 60px; color: white; font-size: 100%;}
         #QnA_area table{border-top: 2px solid rgb(223, 220, 220); border-bottom: 1px solid rgb(223, 220, 220); width: 100%;}
 
+		#allBtn {padding-top : 10px;}
+		
+		#qnaTb {border-collapse: collapse;}
+		#qnaTb tr {border-top: 1px solid grey;border-bottom: 1px solid grey; }
+		#qnaTb td {line-height: 50px; width: 40px; }
+		#qnaTb th {color:#0f4a7e;line-height: 50px; width: 40px;}
+}}
     </style>
 </head>
 
 <body>
 
 	<%@ include file="../common/header.jsp" %>
-
+	<%if(!list.isEmpty() && !sizeList.isEmpty()){ %>
     <div id="prod-detail">
         <!-- 상품 정보 -->
         <div id="detail_top">
             <div id="photo_area">
-                <img id="photo" name="photo" src="images/thumbnail/thumb001.jpg">
+             
+                <img id="photo" name="photo" src="<%=request.getContextPath()+"/images/thumbnail/" + pd.getThumbnail() + ".jpg" %>">
             </div>
             <div id="p_detalis" name="p_detalis">
                 <ul id="product_ul">
                     <li>
-                        <div id="brand" name="brand">OFT</div>
+                        <div id="brand" name="brand"><%= pd.getbName() %></div>
                     </li>
                     <li>
-                        <div id="name" name="name">V NECK BEAN BUTTON ONEPIECE_2COLORS</div>
+                        <div id="name" name="name"><%= pd.getpName() %></div>
                     </li>
                     <li>
-                        <div id="product_description">
-                            힙을 덮지 않는 길이감으로 데님, 스커트에 매치해도 잘 어울립니다.
-                        </div>
+                        <div id="product_description"><%= pd.getpDetail() %></div>
                     </li>
                 </ul>
 
@@ -188,39 +215,66 @@
                 <div id="right_wrap">
                     <ul class="price">
                         <li>
-                            <span class="price_left">정상가</span><span class="price_right"><s>140,700</s></span>
+                            <span class="price_left">정상가</span><span class="price_right"><s><%= formatter.format(pd.getRetailPrice()) %></s></span>
                         </li>
                         <li>
-                            <span class="price_left">판매가</span><span class="price_right"><span
-                                    class="price_dis">5%▼</span> 139,500</span>
+                        <%-- <%=formatter.format(pPrice) %> --%>
+                            <span class="price_left">할인가</span><span class="price_right">
+                            <span class="price_dis"><%= pd.getDcRate()%>%▼</span><span><%=formatter.format(ratePrice) %></span>
                         </li>
                         <li>
-                            <span class="price_left">적립금</span><span class="price_right">6,975p</span>
+                            <span class="price_left">적립금</span><span class="price_right"><%=formatter.format(pd.getpPoint()) %></span> 
                         </li>
                         <li>
-                            <span class="price_left">회원가</span><span class="price_right"><span
-                                    class="price_dis">15%▼</span> 118,575</span>
+                            <span class="price_left">회원가</span> <span class="price_right"><%=formatter.format(pd.getpPrice()) %></span>
+                                    
                         </li>
                     </ul>
 
                     <!-- 상품 선택 및 구매/장바구니 -->
                     <div class="buy_information">
                         <form>
-                            <ul>
+                            <ul id="buyList">
+                            	 <li>
+                                    <select id="color">
+                                     <option>color 선택</option>
+                                   <%if(pd.getpColor().equals("BK")){ %>
+                                    <option>BLACK</option>
+                                   <%}else if(pd.getpColor().equals("BL")){ %>
+                                   <option>BLUE</option>
+                                   <%}else if(pd.getpColor().equals("WH")){ %>
+                                   <option>WHITE</option>
+                                   <%}else if(pd.getpColor().equals("RD")){ %>
+                                   <option>RED</option>
+                                   <%}else if(pd.getpColor().equals("KH")){ %>
+                                   <option>KHAKI</option>
+                                   <%}else if(pd.getpColor().equals("YL")){ %>
+                                   <option>YELLOW</option>
+                                   <%}else if(pd.getpColor().equals("GN")){ %>
+                                   <option>GREEN</option>
+                                   
+                                   
+                                   <%} %>
+                                   
+                                    
+                                    </select>
+                                </li>
                                 <li>
                                     <select id="color">
                                         <option>size 선택</option>
-                                        <option>S</option>
-                                        <option>M</option>
-                                        <option>L</option>
+                                       <%for(ProductDetail pro : sizeList){ %> 
+                                    <option><%= pro.getpSize() %></option>
+                                    <%} %>
                                     </select>
                                 </li>
                                 <li>
                                     <input type="number" id="num" min="1" max="100" step="1" value="1">
                                 </li>
                             </ul>
+                            <div id="allBtn">
                             <button type="button" id="by_now">BUY IT NOW</button>
                             <button type="button" id="shopping_bag">SHOPPING BAG</button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -239,7 +293,8 @@
         </ul>
     </div>
     <div id="details_area">
-        <img src="images/detail/detail001.jpg">
+        <!-- <img src="images/detail/detail001.jpg"> -->
+        <img id="photo" name="photo" src="<%=request.getContextPath()+"/images/thumbnail/" + pd.getImgRoter() + ".jpg" %>">
 
     </div>
 
@@ -288,21 +343,45 @@
     <br>
     <div id="QnA_area">
         <h3>상품 Q&A</h3>
-        <button>상품문의 글쓰기</button>
-        
+        <%if(loginUser != null){ %>
+        <button onclick="location.href='<%=request.getContextPath() %>/views/productQnA/productQnAInsert.jsp?mNo=<%=loginUser.getmNo() %>&pName=<%=pd.getpName()%>&bName=<%=pd.getbName()%>'">상품문의 글쓰기</button>
+        <%}else { %>
+        <button onclick="productQna();">상품문의 글쓰기</button>
+        <%} %>
         <br clear="both"><br>
-        <table>
+        <table id="qnaTb">
             <tbody>
-                <tr>
-                    <th>asd</th>
+            	<% if(!qnaList.isEmpty()){ %>
+            	<%for(AdminProductQnA ap : qnaList){ %>
+            	 <tr>
+                     <th align="center">아이디</th><th align="center">제목</th><th align="center">작성날짜</th>
+                    
                 </tr>
-
+                <tr>
+                    <td><%= ap.getmId() %></td><td><%= ap.getQnaTitle() %></td><td><%= ap.getQnaDate() %></td>
+                    
+                </tr>
+				<%} %>
+				<%}else{ %>
+				<tr>
+                    <th align="center">아이디</th><th align="center">제목</th><th align="center">작성날짜</th>
+                    
+                </tr>
+				<tr>
+                    <td colspan="3" align="center">상품문의글이 없습니다.</td>
+                    
+                </tr>
+                <%} %>
             </tbody>
         </table>
     </div>
 </div>
-
-
+<%} %>
+<script>
+	function productQna(){
+		alert("로그인을 후 입력이 가능합니다.");
+	}
+</script>
 	<%@ include file="../common/footer.jsp" %>
 
 </body>

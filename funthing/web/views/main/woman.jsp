@@ -158,11 +158,11 @@
                 	%>
             <li>
                <div class="prod-img">
-                     <a href="#none"><img src="<%=request.getContextPath()+"/images/thumbnail/" + list.get(i).getTumbnail() + ".jpg" %>"></a>
+                     <a href="<%=request.getContextPath()%>/productDateil?pName=<%=list.get(i).getP_name() %>"><img src="<%=request.getContextPath()+"/images/thumbnail/" + list.get(i).getTumbnail() + ".jpg" %>"></a>
                </div>
                <ul class="prod-cont">
-                     <li class="prod-brand"><a href="#none"><%=list.get(i).getP_name()%></a></li>
-                     <li class="prod-tit"><a href="#none"><%=list.get(i).getP_type()%></a></li>
+                     <li class="prod-brand"><a href="<%=request.getContextPath()%>/productDateil?pName=<%=list.get(i).getP_name() %>"><%=list.get(i).getP_name()%></a></li>
+                     <li class="prod-tit"><a href="<%=request.getContextPath()%>/productDateil?pName=<%=list.get(i).getP_name() %>"><%=list.get(i).getP_type()%></a></li>
                      <li class="prod_price"><span class="origin_p"><%=list.get(i).getO_price()%>원</span><span class="new_p"><%=list.get(i).getP_price()%>원</span><span class="discount"><%=list.get(i).getDc_rate()%>%</span></li>
                      <li class="fun-sdate"><%=list.get(i).getStart_date().substring(0,10) %>~<%=list.get(i).getEnd_date().substring(0,10) %></li>
                </ul>

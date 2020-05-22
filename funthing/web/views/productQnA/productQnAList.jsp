@@ -302,10 +302,10 @@
 			 <%-- var mNo = <%=loginUser2.getmNo()%>; --%> 
 			<%-- location.href="<%=request.getContextPath()%>/productQnaDetail?mNo=" + mNo + "&QnaNo=" + QnaNo; --%>
 			  location.href="<%=request.getContextPath()%>/productQnaDetail?mNo=<%=loginUser2.getmNo()%>&qnaNo=" + qnaNo;  
-			  location.href="<%=request.getContextPath()%>/productQnaList?mNo=<%=loginUser2.getmNo()%>
+			<%--   location.href="<%=request.getContextPath()%>/productQnaList?mNo=<%=loginUser2.getmNo()%> --%>
 			
 		
-		
+	 	
 		})
 		console.log(qnaNo);
 	})
