@@ -108,7 +108,7 @@ public class ReviewInsertServlet extends HttpServlet {
 //			System.out.println("값이 있다");
 		
 			if(result > 0) {
-				System.out.println("입력");
+//				response.sendRedirect();
 			}
 			
 		}else {

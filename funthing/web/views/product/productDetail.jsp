@@ -237,9 +237,15 @@
                     
                         <form method="get" action="<%=request.getContextPath()%>/PaymentInfo" id="colorSizeform">
                             <ul id="buyList">
-                            	 <input type="hidden" name="p_no" value="<%=list.get(1).getpNo()%>">
-                            	 <input type="hidden" name="userNo" value="<%=loginUser.getmNo() %>">
-                            	 <input type="hidden" name="mEmail" value="<%=loginUser.getmEmail() %>">
+                            <%if(loginUser != null){ %>
+                             <input type="hidden" name="p_no" value="<%=list.get(1).getpNo()%>">
+                          	  <input type="hidden" name="userNo" value="<%=loginUser.getmNo() %>"> 
+                          	  <input type="hidden" name="mEmail" value="<%=loginUser.getmEmail() %>"> 
+                            <%}else{ %>
+                           	 <input type="hidden" name="p_no" value="<%=list.get(1).getpNo()%>">
+                           	 <%-- <input type="hidden" name="userNo" value="<%=loginUser.getmNo() %>"> --%>
+                           	 <%-- <input type="hidden" name="mEmail" value="<%=loginUser.getmEmail() %>"> --%>
+                            <% } %>	 
                             	 <li>
                                    <select class="sizeColor" id="color" name="color">
                                      <option value="noColor">color 선택</option>
@@ -315,7 +321,7 @@
                  <%if(loginUser != null){%>
     			$("#by_now").attr("disabled",false);
     			$("#shopping_bag").attr("disabled",false);
-    			
+
     			<%}else{%>
     			
     			$("#by_now").attr("disabled",true);
