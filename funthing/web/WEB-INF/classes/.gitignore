@@ -3,7 +3,13 @@
 /product/
 /member/
 /admin/
+<<<<<<< HEAD
 /common/
 /main/
 /personalQnA/
+=======
+/personalQnA/
+/common/
+/main/
+>>>>>>> refs/remotes/origin/dev8
 /review/
