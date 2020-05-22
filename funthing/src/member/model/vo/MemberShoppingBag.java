@@ -14,6 +14,12 @@ public class MemberShoppingBag implements Serializable{
 	private int p_point;
 	private int shbag_num;
 	private int shbag_price;
+	
+	public MemberShoppingBag(String p_name, int shbag_num) {
+		super();
+		this.p_name = p_name;
+		this.shbag_num = shbag_num;
+	}
 	@Override
 	public String toString() {
 		return "MemberShoppingBag [p_name=" + p_name + ", p_thumbnail=" + p_thumbnail + ", p_point=" + p_point

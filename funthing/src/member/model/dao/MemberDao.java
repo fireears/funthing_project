@@ -324,42 +324,122 @@ public class MemberDao {
 		return noticeCount;
 	}
 
-	public ArrayList<MemberShoppingBag> selectshoppingbaglist(String userId, Connection conn) {
+	public ArrayList<MemberShoppingBag> selectshoppingbaglist(String userNo, Connection conn, ArrayList<String> list1, ArrayList<Integer> list2) {
 		ArrayList<MemberShoppingBag> al = new ArrayList<MemberShoppingBag>();
-		
-		Statement sm = null;
-		ResultSet rs = null;
-		String query3 = "SELECT M_NO FROM MEMBER WHERE M_ID="+userId;
-		String mno=null;
 		try {
-			sm=conn.createStatement();
-			rs=sm.executeQuery(query3);
-			mno=rs.getString("M_NO");
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
-		Statement stmt = null;
-		ResultSet rset = null;
-		String query ="SELECT * FROM SHOPPINGBAG WHERE M_NO ="+mno;
-		
-		try {
-			stmt=conn.createStatement();
-			rset=stmt.executeQuery(query);
-			while(rset.next()) {
-				String query2="SELECT THUMBNAIL,P_NAME,P_POINT,P_PRICE FROM PRODUCT WHERE P_NO ="+rset.getString("P_NO");
-				
-				Statement stmt2=conn.createStatement();
-				ResultSet rset2=stmt2.executeQuery(query2);
-				MemberShoppingBag msb = new MemberShoppingBag(rset2.getString("P_NAME"), rset2.getString("THUMBNAIL"), rset2.getInt("P_POINT"), rset.getInt("SHBAG_NUM"), rset2.getInt("P_PRICE"));
-				al.add(msb);				
+
+			for(int i=0;i<list1.size();i++) {				
+					String query2="SELECT THUMBNAIL,P_NAME,P_POINT,P_PRICE FROM PRODUCT WHERE P_NO ="+list1.get(i);	
+					Statement stmt2=conn.createStatement();
+					ResultSet rset2=stmt2.executeQuery(query2);
+					if(rset2.next()) {
+					MemberShoppingBag msb = new MemberShoppingBag(rset2.getString("P_NAME"), rset2.getString("THUMBNAIL"), rset2.getInt("P_POINT"),list2.get(i), rset2.getInt("P_PRICE"));
+					al.add(msb);				
+					}
 			}
+			
+			
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return al;
+	}
+
+	public int InsertShoppingbag(String p_no, Connection conn, int number, String userNo) {
+		
+		String b_no= null;
+		String p_name=null;
+		int p_price=0;
+		ResultSet rset=null;
+		Statement sm = null;
+		String quary = "SELECT B_NO,P_NAME,P_PRICE FROM PRODUCT WHERE P_NO ="+p_no;
+		try {
+			sm=conn.createStatement();
+			rset=sm.executeQuery(quary);
+			b_no = rset.getString("B_NO");
+			p_name = rset.getString("P_NAME");
+			p_price = rset.getInt("P_PRICE");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		String quary1 = "INSERT INTO SHOPPINGBAG VALUES("+userNo+","+p_no+","+b_no+","+p_name+","+number+","+p_price+")";
+		int result=0;
+		Statement stmt=null;
+		try {
+			stmt=conn.createStatement();
+			result = stmt.executeUpdate(quary1);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+	public int DeleteShoppingbag(Connection conn, String[] check) {
+		int result=0;
+		
+			Statement stmt =null;
+			String quary = null;
+			try {
+				for(int i =0;i<check.length;i++) {
+					stmt=conn.createStatement();
+					quary ="DELTE  FROM SHOPPINGBAG WHERE P_NAME ="+check[i];
+				result+=stmt.executeUpdate(quary);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+		
+		return result;
+	}
+
+	public ArrayList<String> selectshoppingbaglist2(String userNo, Connection conn) {
+		ArrayList<String> list = new ArrayList<String>();
+		Statement stmt = null;
+		ResultSet rset = null;
+		String query ="SELECT P_NO FROM SHOPPINGBAG WHERE M_NO ="+userNo;
+		try {
+			stmt=conn.createStatement();
+			rset=stmt.executeQuery(query);
+			while(rset.next()) {
+				list.add(rset.getString("P_NO"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+	public ArrayList<Integer> selectshoppingbaglist3(String userNo, Connection conn) {
+		Statement stmt3 = null;
+		ResultSet rset3 = null;
+		String query11 = "SELECT SHBAG_NUM FROM SHOPPINGBAG WHERE M_NO ="+userNo;
+		ArrayList<Integer> list2 = new ArrayList<Integer>();
+		
+		try {
+			stmt3=conn.createStatement();
+			rset3=stmt3.executeQuery(query11);
+			while(rset3.next()) {
+				list2.add(rset3.getInt("SHBAG_NUM"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return list2;
 	}
 
 

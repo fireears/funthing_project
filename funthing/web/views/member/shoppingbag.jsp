@@ -74,7 +74,7 @@
          if(list!=null){
                 for(int i =0;i<list.size();i++){%>
                  	<tr>
-                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox" name="check" value="<%=list.get(i).getP_name()%>"></td>
                         <td class="imgArea"><img src="<%=request.getContextPath()+"/images/thumbnail/" + list.get(i).getP_thumbnail() + ".jpg" %>" /></td>
                         <td><%=list.get(i).getP_name()%></td>
                         <td><%=list.get(i).getShbag_num()%></td>
@@ -90,7 +90,7 @@
                     <!-- for문 end -->
                 </table> 
                 <div class="s_btns">
-                    <button type="button" class="l_btn">선택상품삭제</button>
+                    <button type="button" onclick="location.href='<%=request.getContextPath() %>member/controller/MemberShoppingDelete'"   class="l_btn">선택상품삭제</button>
                     <button type="submit" class="r_btn">결제</button>
                 </div>
             </form>

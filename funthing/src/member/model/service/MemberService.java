@@ -96,10 +96,22 @@ public class MemberService {
 		int result = new MemberDao().getshoppingbagCount(conn,userId);
 		return result;
 	}
-	public ArrayList<MemberShoppingBag> shoppingbagselectList(String userId) {
+	public ArrayList<MemberShoppingBag> shoppingbagselectList(String userNo) {
 		Connection conn = getConnection();
-		ArrayList<MemberShoppingBag> list =  new MemberDao().selectshoppingbaglist(userId,conn);
+		ArrayList<String> list1 = new MemberDao().selectshoppingbaglist2(userNo, conn);
+		ArrayList<Integer> list2 = new MemberDao().selectshoppingbaglist3(userNo, conn);
+		ArrayList<MemberShoppingBag> list =  new MemberDao().selectshoppingbaglist(userNo,conn,list1,list2);
 		return list;
+	}
+	public int shoppingbagInsert(String p_no, int number, String userNo) {
+		Connection conn = getConnection();
+		int result = new MemberDao().InsertShoppingbag(p_no,conn,number,userNo);
+		return result;
+	}
+	public int shoppingbagDelete(String[] check) {
+		Connection conn = getConnection();
+		int result = new MemberDao().DeleteShoppingbag(conn,check);
+		return result;
 	}
 
 }
