@@ -9,7 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import payment.model.vo.Payment;
+import member.model.service.MemberService;
+import member.model.vo.MemberPoint;
 import product.model.service.ProductService;
 import product.model.vo.Product;
 
@@ -48,15 +49,17 @@ public class PaymentInfoServlet extends HttpServlet {
 		System.out.println("number : " + number);
 		
 		Product p = new ProductService().paymentProductSearch(pNo);
+		MemberPoint m = new MemberService().paymentMemberSearch(userNo);
 		
 		System.out.println(p);
 //		Payment pm = new Payment(pNo, userNo, mEmail, number);
-		
+		System.out.println(m);
 		RequestDispatcher view = null;
 		if(p != null)
 		{
 			view = request.getRequestDispatcher("/views/payment/paymentInfo.jsp");
 			request.setAttribute("p", p);
+			request.setAttribute("m", m);
 			request.setAttribute("number", number);
 			view.forward(request, response);
 		}

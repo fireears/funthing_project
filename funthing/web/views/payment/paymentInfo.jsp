@@ -1,20 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="product.model.vo.Product" %>
+<%@ page import="member.model.vo.MemberPoint" %>
 <%@ page import="java.text.DecimalFormat" %>
 <%
 	Product p = (Product)request.getAttribute("p");
-	String number = (String)request.getAttribute("number");
+	int number = Integer.valueOf((String)request.getAttribute("number"));
 	DecimalFormat formatter = new DecimalFormat("###,###");
+	MemberPoint mp = (MemberPoint)request.getAttribute("m");
 	
 	String thumbnail = p.getThumbnail();
 	String pName = p.getpName();
 	String color = p.getP_color();
 	String size = p.getP_size();
+	
 	int retailPrice = p.getRetailPrice();
 	int dcRate = p.getDcRate();
 	int pPrice = p.getpPrice();
 	int pPoint = p.getpPoint();
+	
+	String mNo = mp.getmNo();
+	int mPoint = mp.getmPoint();
+	double point_rate = mp.getPoint_rate();
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -195,10 +203,10 @@
                                 <tr style="line-heigth:150px;">
                                     <td align="center"><img src="<%=request.getContextPath()+"/images/thumbnail/" + thumbnail + ".jpg" %>" alt="상품사진" id="productImg" style="width:100px; height:150px;"><span><%=pName %>/<%=color %>/<%=size %></span></td>
                                     <td style="text-align: center; "><div id="num"><%=number %></div></td>
-                                    <td style="text-align: center;"><div id="retail_price"><%=formatter.format(retailPrice) %></div></td>
-                                    <td style="text-align: center;"><div id="dc_point"><%=dcRate %>%/<%=pPoint %>p</div></td>
-                                    <td style="text-align: center;"><div id="result_price"><%=formatter.format(pPrice) %></div></td>
-                                    <%if(pPrice > 50000) { %>
+                                    <td style="text-align: center;"><div id="retail_price"><%=formatter.format(retailPrice*number) %></div></td>
+                                    <td style="text-align: center;"><div id="dc_point"><%=dcRate %>%/<%=pPoint*number %>p</div></td>
+                                    <td style="text-align: center;"><div id="result_price"><%=formatter.format(pPrice*number) %></div></td>
+                                    <%if(pPrice*number > 50000) { %>
                                     <td style="text-align: center;"><div id="ship_price">0</div></td>
                                     <%} else { %>
                                     <td style="text-align: center;"><div id="ship_price">5,000</div></td>
@@ -217,19 +225,19 @@
                             <tbody>
                                 <tr>
                                     <th class="ta-1" aria-required="true">상품 합계 금액</th>
-                                    <%if(pPrice > 50000) { %>
-                                    <td><div class="txt-field"><div id="product_sum_price"></div><%=formatter.format(pPrice) %></div></td>
+                                    <%if(pPrice*number > 50000) { %>
+                                    <td><div class="txt-field"><div id="product_sum_price"></div><%=formatter.format(pPrice*number) %></div></td>
                                     <%} else { %>
-                                    <td><div class="txt-field"><div id="product_sum_price"></div><%=formatter.format(pPrice+5000) %></div></td>
+                                    <td><div class="txt-field"><div id="product_sum_price"></div><%=formatter.format((pPrice*number)+5000) %></div></td>
                                     <%} %>
                                 </tr>
                                 <tr>
                                     <th class="ta-1" aria-required="true">보유 적립금</th>
-                                    <td><div class="txt-field">총 보유 적립금 : <div id="totalPoint"></div></div></td>
+                                    <td><div class="txt-field">총 보유 적립금 : <%=mPoint %>p<div id="totalPoint"></div></div></td>
                                 </tr>
                                 <tr>
                                     <th class="ta-1" aria-required="true">적립금 사용</th>
-                                    <td><div class="txt-field"><input type="text" name="point_user" style="width: 100px;">P</div></td>
+                                    <td><div class="txt-field"><input type="text" id="point_user" name="point_user" style="width: 100px;">P</div></td>
                                 </tr>
                                 <tr>
                                     <th class="ta-1" aria-required="true">최종 결제 금액</th>
@@ -276,7 +284,7 @@
     
                             <table>
                                 <tr><th>최종 결제 금액</th><td id="resultprice">65,600원</td></tr>
-                                <tr><th>총 적립예정 적립금</th><td>0p</td></tr>
+                                <tr><th>총 적립예정 적립금</th><td><%=pPrice * point_rate %>p</td></tr>
                             </table>
     
                             <hr>
