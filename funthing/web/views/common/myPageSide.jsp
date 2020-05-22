@@ -18,7 +18,7 @@
                 <h2>MY PAGE</h2>
                 <h3>쇼핑정보</h3>
                 <ul>
-                    <li><a href="#">주문목록/배송조회</a></li>
+                    <li><a href="<%=request.getContextPath()%>/member/myPageOrderList">주문목록/배송조회</a></li> <!-- 동곤이형 서블릿 -->
                     <li><a href="#">취소내역</a></li>
                 </ul>
     

@@ -63,10 +63,10 @@
                         <tr>
                             <td class="g_title">기간별</td>
                             <td colspan="3">
-                                <button value="day">일간</button>
-                                <button value="day">주간</button>
-                                <button value="day">월간</button>
-                                <button value="day">분기별</button>
+                                <button value="0">일간</button>
+                                <button value="7">주간</button>
+                                <button value="30">월간</button>
+                                <button value="90">분기별</button>
                                 <input type="date" id="start" name="start"
                                 value="2020-01-01"
                                 min="2010-01-01" max="2021-12-31"> ~ 

@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import = "payment.model.vo.OrderList, java.util.ArrayList"%>
+    
+<%
+	ArrayList<OrderList> list = (ArrayList<OrderList>)request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -275,36 +279,37 @@
 		                <div border = "1">
 		                    <p>조회기간</p>
 		                    <div class="order_btns">
-		                        <button id = "date" values = "today">오늘</button>
-		                        <button id = "date" values = "week">7일</button>
-		                        <button id = "date" values = "month">1개월</button>
-		                        <button id = "date" values = "3month">3개월</button>
-		                        <button id = "date" values = "year">1년</button>
+		                        <button id = "date" values = "0">오늘</button>
+		                        <button id = "date" values = "7">7일</button>
+		                        <button id = "date" values = "30">1개월</button>
+		                        <button id = "date" values = "90">3개월</button>
+		                        <button id = "date" values = "365">1년</button>
 		                        <input type="date" id="start" name="start"
 		                        value="2020-01-01"
 		                        min="2010-01-01" max="2021-12-31"> ~ 
 		                        <input type="date" id="end" name="end"
 		                        value="2020-01-01"
 		                        min="2010-01-01" max="2021-12-31">
-		                        <button>조회하기</button>
+		                        <button type = "submit">조회하기</button>
 		                    </div>
 		                </div>
 		                <br>
 		                <table class="product_info">
 		                    <tr>
 		                        <th>날짜/주문번호</th>
-		                        <th>상품명</th>
+		                        <th>상품명/컬러/사이즈</th>
 		                        <th>상품금액/수량</th>
 		                        <th>주문상태</th>
 		                    </tr>
+		                    <%-- <% for(OrderList ol : list){ %>
 		                    <tr>
-		                        <td>2020/05/12<br>
-		                        2020051212458</td>
-		                        <td>상품명</td>
-		                        <td>상품금액/수량</td>
-		                        <td>주문상태</td>
-		                        
+		                        <td><%=ol.getoDate() %><br>
+		                        <%=ol.getoNo() %></td>
+		                        <td><%=ol.getpName() %>/<%=ol.getpColor() %>/<%=ol.getpSize() %></td>
+		                        <td><%=ol.getpPrice() %>/<%=ol.getoNum() %></td>
+		                        <td><%=ol.getPrcsStatus() %></td>		                        
 		                    </tr>
+		                    <%} %> --%>
 		                   
 		
 		                </table>
