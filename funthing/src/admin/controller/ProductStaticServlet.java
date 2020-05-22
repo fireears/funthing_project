@@ -1,4 +1,4 @@
-package payment.controller;
+package admin.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class PaymentServlet
+ * Servlet implementation class ProductStaticServlet
  */
-@WebServlet("/PaymentServlet")
-public class PaymentServlet extends HttpServlet {
+@WebServlet("/admin/productStatic")
+public class ProductStaticServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PaymentServlet() {
+    public ProductStaticServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,7 +27,6 @@ public class PaymentServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("paymentServlet");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 

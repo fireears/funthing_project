@@ -1,5 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="product.model.vo.Product" %>
+<%@ page import="member.model.vo.MemberPoint" %>
+<%@ page import="java.text.DecimalFormat" %>
+<%
+	Product p = (Product)request.getAttribute("p");
+	int number = Integer.valueOf((String)request.getAttribute("number"));
+	DecimalFormat formatter = new DecimalFormat("###,###");
+	MemberPoint mp = (MemberPoint)request.getAttribute("m");
+	
+	String thumbnail = p.getThumbnail();
+	String pName = p.getpName();
+	String color = p.getP_color();
+	String size = p.getP_size();
+	
+	int retailPrice = p.getRetailPrice();
+	int dcRate = p.getDcRate();
+	int pPrice = p.getpPrice();
+	int pPoint = p.getpPoint();
+	
+	String mNo = mp.getmNo();
+	int mPoint = mp.getmPoint();
+	double point_rate = mp.getPoint_rate();
+	
+%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -56,19 +80,19 @@
                             <tbody>
                                 <tr>
                                     <th class="ta-1" aria-required="true">주문하시는 분</th>
-                                    <td><div class="txt-field"><input type="text" name="m_name" maxlength="20" value="m_name"></div></td>
+                                    <td><div class="txt-field"><input type="text" name="m_name" maxlength="20" value="<%=loginUser.getmName()%>"></div></td>
                                 </tr>
                                 <tr>
                                     <th class="ta-1" aria-required="true">휴대폰 번호</th>
-                                    <td><div class="txt-field"><input type="text" name="m_tell" maxlength="20" placeholder="'-'없이 입력해주세요." value="m_tell"></div></td>
+                                    <td><div class="txt-field"><input type="text" name="m_tell" maxlength="20" placeholder="'-'없이 입력해주세요." value="<%=loginUser.getmTell()%>"></div></td>
                                 </tr>
                                 <tr>
                                     <th class="ta-1" aria-required="true">이메일</th>
                                     <td>
-	                                    <div class="txt-field"><input type="text" name="m_email">&nbsp;
-		                                    <select name="">
+	                                    <div class="txt-field"><input type="text" name="m_email" value="<%=loginUser.getmEmail()%>">&nbsp;
+		                                    <!-- <select name="">
 		                                    	<option value="naver.com">naver.com</option>
-		                                    </select>
+		                                    </select> -->
 	                                    </div>
                                     </td>
                                 </tr>
@@ -173,16 +197,22 @@
                         <table id="product">
                             <tbody>
                                 <tr>
-                                    <th>상품/옵션 정보</th><th>수량</th><th>상품금액</th><th>할인/적립</th><th>합계금액</th><th>배송비</th>
+                                    <th>상품/옵션 정보(color/size)</th><th>수량</th><th>상품금액</th><th>할인/적립</th><th>합계금액</th><th>배송비</th>
                                 </tr>
+                                <%if(p != null) { %>
                                 <tr style="line-heigth:150px;">
-                                    <td align="left"><img src="<%=request.getContextPath()+"/images/thumbnail/thumb001.jpg" %>" alt="상품사진" id="productImg" style="width:100px; height:150px;"><span>상품명</span></td>
-                                    <td style="text-align: center; "><div id="num">1</div></td>
-                                    <td style="text-align: center;"><div id="retail_price">정가</div></td>
-                                    <td style="text-align: center;"><div id="dc_point">할인/적립</div></td>
-                                    <td style="text-align: center;"><div id="result_price">합계금액</div></td>
-                                    <td style="text-align: center;"><div id="ship_price">배송비</div></td>
+                                    <td align="center"><img src="<%=request.getContextPath()+"/images/thumbnail/" + thumbnail + ".jpg" %>" alt="상품사진" id="productImg" style="width:100px; height:150px;"><span><%=pName %>/<%=color %>/<%=size %></span></td>
+                                    <td style="text-align: center; "><div id="num"><%=number %></div></td>
+                                    <td style="text-align: center;"><div id="retail_price"><%=formatter.format(retailPrice*number) %></div></td>
+                                    <td style="text-align: center;"><div id="dc_point"><%=dcRate %>%/<%=pPoint*number %>p</div></td>
+                                    <td style="text-align: center;"><div id="result_price"><%=formatter.format(pPrice*number) %></div></td>
+                                    <%if(pPrice*number > 50000) { %>
+                                    <td style="text-align: center;"><div id="ship_price">0</div></td>
+                                    <%} else { %>
+                                    <td style="text-align: center;"><div id="ship_price">5,000</div></td>
+                                    <%} %>
                                 </tr>
+                                <%} %>
                             </tbody>
                         </table>
                     </div>
@@ -195,15 +225,19 @@
                             <tbody>
                                 <tr>
                                     <th class="ta-1" aria-required="true">상품 합계 금액</th>
-                                    <td><div class="txt-field"><div id="product_sum_price"></div>원</div></td>
+                                    <%if(pPrice*number > 50000) { %>
+                                    <td><div class="txt-field"><div id="product_sum_price"></div><%=formatter.format(pPrice*number) %></div></td>
+                                    <%} else { %>
+                                    <td><div class="txt-field"><div id="product_sum_price"></div><%=formatter.format((pPrice*number)+5000) %></div></td>
+                                    <%} %>
                                 </tr>
                                 <tr>
-                                    <th class="ta-1" aria-required="true">적립</th>
-                                    <td><div class="txt-field">총 적립금 : <div id="totalPoint"></div></div></td>
+                                    <th class="ta-1" aria-required="true">보유 적립금</th>
+                                    <td><div class="txt-field">총 보유 적립금 : <%=mPoint %>p<div id="totalPoint"></div></div></td>
                                 </tr>
                                 <tr>
                                     <th class="ta-1" aria-required="true">적립금 사용</th>
-                                    <td><div class="txt-field"><input type="text" name="point_user" style="width: 100px;">P</div></td>
+                                    <td><div class="txt-field"><input type="text" id="point_user" name="point_user" style="width: 100px;">P</div></td>
                                 </tr>
                                 <tr>
                                     <th class="ta-1" aria-required="true">최종 결제 금액</th>
@@ -226,9 +260,6 @@
                                             <input type="radio" name="pmnt_mthd" id="pmnt1" value="무통장 입금"><label for="pmnt1">무통장 입금</label>
                                             <!-- <input type="radio" name="pmnt_mthd" id="pmnt2" value="신용카드"><label for="pmnt2">신용카드</label> -->
                                             <input type="radio" name="pmnt_mthd" id="pmnt3" value="카카오페이"><label for="pmnt3">카카오페이</label>
-                                        </div>
-                                        <div>
-                                        	무통장 입력 area
                                         </div>
                                     </td>
                                 </tr>
@@ -253,7 +284,7 @@
     
                             <table>
                                 <tr><th>최종 결제 금액</th><td id="resultprice">65,600원</td></tr>
-                                <tr><th>총 적립예정 적립금</th><td>0p</td></tr>
+                                <tr><th>총 적립예정 적립금</th><td><%=pPrice * point_rate %>p</td></tr>
                             </table>
     
                             <hr>
@@ -274,13 +305,13 @@
                 
             </article>
         </section>
+        <%@include file="/views/common/footer.jsp" %>
 	</body>
 	
 	
 	<!-- 카카오페이 -->
 	<script>
 		$(function(){
-			alert("결제");
 			var IMP=window.IMP;
 			IMP.init('imp33962000');			
 			
