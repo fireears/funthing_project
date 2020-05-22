@@ -607,7 +607,7 @@
             </ul>
             <br><br><br><br><br>
             <div style="text-align: center;">
-                <input type="submit" value="회원가입" id="submit_btn" style="width: 90px; height: 40px; color: white; background: darkgrey; border-radius: 7px;" onclick="check()">
+                <input type="button" value="회원가입" id="submit_btn" style="width: 90px; height: 40px; color: white; background: darkgrey; border-radius: 7px;" onclick="check();">
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 <input type="button" value="취소" id="cancel" onclick=cancle(); style="width: 90px; height: 40px; color: black; background-color: lightgray; border-radius: 7px;">
             </div>
@@ -616,6 +616,13 @@
       		function cancle(){
       			location.href="<%=request.getContextPath()%>/main/mainView";
       		}
+      		function check(){
+            	 if($("#check1").prop('checked') == false || $("#check2").prop("checked") == false || $("#check3").prop("checked") == false){
+                     alert("필수 약관에 동의 하셔야 합니다.");
+            	 }else{
+            		 $("#joinForm").submit();
+            	 }
+            }
             $(function(){
             	
             	
@@ -680,13 +687,14 @@
                     }
                 });
                 
-                $("#submit_btn").click(function(){
+               /*  $("#submit_btn").click(function(){
                         if($("#check1").prop('checked') == false || $("#check2").prop("checked") == false || $("#check3").prop("checked") == false){
                                 alert("필수 약관에 동의 하셔야 합니다.")
                             }else{
                                     // $(location).attr('href','join.html');
                             }
-                }); 
+                });  */
+                
             });
                 $(function(){	// 메일 수신 동의 시 
 	                 if($("input:checkbox[id='check4']:checked")==true){
