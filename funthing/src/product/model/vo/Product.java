@@ -33,6 +33,7 @@ public class Product implements Serializable{
 	private String fYn;
 	private String calNo;
 	private int fPrgRate;
+	private int rNum;
 	
 	public Product() {
 		super();
@@ -124,6 +125,32 @@ public class Product implements Serializable{
 		this.calNo = calNo;
 		this.fPrgRate = fPrgRate;
 	}
+	
+	//product insert생성자
+	public Product(String pNo, String bNo, String thumbnail, String pName, String p_color, String p_size,
+			int retailPrice, int dcRate, int pPrice, int pCategory, int sNo, String pDetail, String imgRouter,
+			int pPoint, Date shipDate, Date fStartDate, Date fEndDate, int fGoal, String fYn) {
+		super();
+		this.pNo = pNo;
+		this.bNo = bNo;
+		this.thumbnail = thumbnail;
+		this.pName = pName;
+		this.p_color = p_color;
+		this.p_size = p_size;
+		this.retailPrice = retailPrice;
+		this.dcRate = dcRate;
+		this.pPrice = pPrice;
+		this.pCategory = pCategory;
+		this.sNo = sNo;
+		this.pDetail = pDetail;
+		this.imgRouter = imgRouter;
+		this.pPoint = pPoint;
+		this.shipDate = shipDate;
+		this.fStartDate = fStartDate;
+		this.fEndDate = fEndDate;
+		this.fGoal = fGoal;
+		this.fYn = fYn;
+	}
 
 
 	public Product(String pNo, String thumbnail, String pName, int retailPrice, int pPrice, Date fStartDate,
@@ -139,12 +166,12 @@ public class Product implements Serializable{
 		this.fPrgRate = fPrgRate;
 	}
 	
+	
+
 	//admin페이지 product수정 생성자
-	public Product(String p_color, String p_size, int retailPrice, int dcRate, int pPrice, String pDetail, int pPoint,
+	public Product(int retailPrice, int dcRate, int pPrice, String pDetail, int pPoint,
 			Date shipDate, Date fStartDate, Date fEndDate, int fGoal, int fSelPrice, String fYn, String calNo) {
 		super();
-		this.p_color = p_color;
-		this.p_size = p_size;
 		this.retailPrice = retailPrice;
 		this.dcRate = dcRate;
 		this.pPrice = pPrice;
@@ -159,6 +186,54 @@ public class Product implements Serializable{
 		this.calNo = calNo;
 	}
 
+	//admin페이지 상품search
+	public Product(String pNo, String bNo, String pName, int pPrice, int pCategory, int sNo, Date fStartDate,
+			Date fEndDate, String fYn) {
+		super();
+		
+		this.pNo = pNo;
+		this.bNo = bNo;
+		this.pName = pName;
+		this.pPrice = pPrice;
+		this.pCategory = pCategory;
+		this.sNo = sNo;
+		this.fStartDate = fStartDate;
+		this.fEndDate = fEndDate;
+		this.fYn = fYn;
+	}
+	
+	
+	public Product(String pNo, String pName, int retailPrice, int dcRate, int pPrice, int pCategory, Date fStartDate,
+			Date fEndDate, String fYn, int rNum) {
+		super();
+		this.pNo = pNo;
+		this.pName = pName;
+		this.retailPrice = retailPrice;
+		this.dcRate = dcRate;
+		this.pPrice = pPrice;
+		this.pCategory = pCategory;
+		this.fStartDate = fStartDate;
+		this.fEndDate = fEndDate;
+		this.fYn = fYn;
+		this.rNum = rNum;
+	}
+
+	public Product(int rnum, String pNo, String bNo, String pName, int pPrice, int pCategory, int sNo, Date fStartDate,
+			Date fEndDate, String fYn) {
+		super();
+		this.rNum = rnum;
+		this.pNo = pNo;
+		this.bNo = bNo;
+		this.pName = pName;
+		this.pPrice = pPrice;
+		this.pCategory = pCategory;
+		this.sNo = sNo;
+		this.fStartDate = fStartDate;
+		this.fEndDate = fEndDate;
+		this.fYn = fYn;
+	}
+	
+	
 	public String getpNo() {
 		return pNo;
 	}
@@ -336,6 +411,14 @@ public class Product implements Serializable{
 		this.fPrgRate = fPrgRate;
 	}
 
+	public int getrNum() {
+		return rNum;
+	}
+	
+	public void setrNum(int rNum) {
+		this.rNum = rNum;
+	}
+	
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

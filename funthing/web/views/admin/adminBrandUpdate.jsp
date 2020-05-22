@@ -3,6 +3,7 @@
     
 <%
 	Brand b = (Brand)request.getAttribute("brand");
+	String uErrorMsg = (String)request.getAttribute("uErrorMsg");
 
 %>
     
@@ -32,10 +33,10 @@
 	<h1 style="text-align: center;">브랜드 정보 수정</h1>
     <section id="brandInsert">
 		<article id="center">
-			<form action="<%=request.getContextPath() %>/admin/brandUpdate" method="post">
+			<form action="<%=request.getContextPath() %>/admin/brandUpdate" method="post" id="brandUpdate">
 				<table>
 					<tr>
-						<th>브랜드 코드</th><td><input type="text" id="bNo" name="bNo" value=<%=b.getbNo() %>></td>
+						<th>브랜드 코드</th><td><input type="text" id="bNo" name="bNo" value=<%=b.getbNo() %> readonly></td>
 					</tr>
 					
 					<tr>
@@ -75,20 +76,32 @@
 			
 			 <br><br>
              <input type="submit" id="brandInsertBtn" value="정보수정">
-             <button type="button" id="brandDeleteBtn" onclick="brandDeleteBtn();">삭제하기</button>
+            
+             <button type="button" id="brandDeleteBtn" onclick="aa();">삭제하기</button>
              <br><br>
-			
 			</form>
+			
 	
 		</article>
 	</section>
 
     <script>
-    	function brandDeleteBtn(){
-    		location.href="<%=request.getContextPath()%>/admin/brandDelete?bNo=" + '<%=b.getbNo() %>';
-    		
+    	function aa(){
+    	
+    		<%-- location.href="<%=request.getContextPath()%>/admin/brandDelete?bNo=" + '<%=b.getbNo() %>'; --%>
+    		$("#brandUpdate").attr("action", "<%=request.getContextPath() %>/admin/brandDelete");
+    		$("#brandUpdate").submit();
     		
     	}
+    	
+    	// update 실패 시 
+    	$(function(){
+    		<%if(uErrorMsg != null){%>
+    			alert("<%=uErrorMsg%>")
+    		
+    		<%}%>
+    		
+    	})
     
     
     

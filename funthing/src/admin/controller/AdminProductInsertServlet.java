@@ -1,6 +1,9 @@
 package admin.controller;
 
 import java.io.IOException;
+import java.sql.Date;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
+import admin.model.service.AdminService;
+import product.model.vo.Product;
 
 /**
  * Servlet implementation class AdminProductInsertServlet
@@ -29,22 +35,72 @@ public class AdminProductInsertServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		System.out.println("/admin/productInsert");
 		request.setCharacterEncoding("utf-8");
+		try
+		{
+			int maxSize = 1024*1024*10;
+			
+			String root = request.getSession().getServletContext().getRealPath("/");
+			
+			String thumbnailSavePath = root + "/images/thumbnail";
+//			String detailSavePath = root + "/images/detail";
+			System.out.println(thumbnailSavePath);
+//			MultipartRequest detailMultipart = new MultipartRequest(request, detailSavePath, maxSize, "utf-8");
+			MultipartRequest Multipart = new MultipartRequest(request, thumbnailSavePath, maxSize, "utf-8", new DefaultFileRenamePolicy());
+			
+			String thumbnail = Multipart.getFilesystemName("thumbnail");
+			String imgRouter = Multipart.getFilesystemName("imgRouter");
+			String bNo = Multipart.getParameter("bNo");
+
+			String sNo = Multipart.getParameter("sNo");
+			String gender = Multipart.getParameter("gender");
+			String pName = Multipart.getParameter("pName");
+
+			String pCategory = Multipart.getParameter("pCategory");
+			String color = Multipart.getParameter("color");
+			String pSize = Multipart.getParameter("pSize");
+			int retailPrice = Integer.valueOf(Multipart.getParameter("retailPrice"));
+			int dcRate = Integer.valueOf(Multipart.getParameter("dcRate"));
+			int pPoint = Integer.valueOf(Multipart.getParameter("pPoint"));
+			String pDetail = Multipart.getParameter("pDetail");
+			Date shipDate = Date.valueOf(Multipart.getParameter("shipDate"));
+			Date fStartDate = Date.valueOf(Multipart.getParameter("fStartDate"));
+			Date fEndDate = Date.valueOf(Multipart.getParameter("fEndDate"));
+			int fGoal = Integer.valueOf(Multipart.getParameter("fGoal"));
+//			int fSelPrice = Integer.valueOf(Multipart.getParameter("fSelPrice"));
+			String fYn = Multipart.getParameter("fYn");
+			
+			String pNo = gender + bNo + pCategory + sNo + color + pSize;
+			int pPrice = (int)(double)(retailPrice - ((double)retailPrice * ((double)dcRate * 0.01)));
+			
+			Product p = new Product(pNo, bNo, thumbnail, pName, color, pSize, retailPrice, dcRate, pPrice, Integer.valueOf(pCategory), Integer.valueOf(sNo), pDetail, imgRouter, pPoint, shipDate, fStartDate, fEndDate, fGoal, fYn);
 		
-		int maxSize = 1024*1024*10;
-		
-		String root = request.getSession().getServletContext().getRealPath("/");
-		
-		String thumbnailSavePath = root + "/images/thumbnail";
-		
-		MultipartRequest tumbnailMultipart = new MultipartRequest(request, thumbnailSavePath, maxSize, "utf-8", new DefaultFileRenamePolicy());
-		
-		
-		System.out.println("productInsertServlet");
-		String pNo = request.getParameter("pNo");
-		String bNo = request.getParameter("bNo");
-//		String thumbnail = request.getParameter(")
+			
+			System.out.println(p);
+			
+			int result = new AdminService().productInsert(p);
+			System.out.println("productInsert servlet result : " + result);
+			
+			RequestDispatcher view = null;
+			if(result > 0)
+			{
+				view = request.getRequestDispatcher("/admin/mainView");
+				view.forward(request, response);
+			}
+			else
+			{
+				//error
+				view = request.getRequestDispatcher("/admin/mainView");
+				view.forward(request, response);
+			}
+			
+		}
+		catch(NumberFormatException e)
+		{
+			e.printStackTrace();
+			
+		}
 	}
 
 	/**

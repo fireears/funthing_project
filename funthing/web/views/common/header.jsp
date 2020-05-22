@@ -20,7 +20,7 @@
 		
   		  <script src="https://kit.fontawesome.com/39b470622c.js" crossorigin="anonymous"></script>
 		<script src="<%=request.getContextPath()%>/js/action.js"></script>
-		<!--script src="<%=request.getContextPath()%>/js/swiper.min.js"></script-->
+		<!--script src="<!--%=request.getContextPath()%>/js/swiper.min.js"></script-->
 		<script type="text/javascript" src="<%=request.getContextPath()%>/slick/slick.min.js"></script>
 	</head>
 	<body>
@@ -41,7 +41,7 @@
 	                <% }else{ %>
 	                <ul class="log-sec logout">
 	                    <li><a href="#none">HELP</a></li>
-	                    <li><a href="#none">JOIN</a></li>
+	                    <li><a href="<%=request.getContextPath()%>/views/member/memberJoin.jsp">JOIN</a></li>
 	                    <li><a href="<%=request.getContextPath()%>/views/member/memberLogin.jsp">LOGIN</a></li>
 	                    <li><a href="#none"><i class="fas fa-shopping-cart"></i></a></li>
 	                </ul>
@@ -51,7 +51,7 @@
 	        </div>
 	        <div id="nav-wrap">
 	            <div class="logo-wrap">
-	                <h1 class="logo"><a href="index.jsp">FUN-THING</a></h1>
+	                <h1 class="logo"><a href="<%=request.getContextPath() %>/index.jsp">FUN-THING</a></h1>
 	                
 	                <div class="search-box"><span><i class="fas fa-search"></i></span></div>
 	                
@@ -59,22 +59,23 @@
 	            <nav id="nav">
 	                <ul>
 	                    <li>
-	                        <a href="#none">WOMAN</a>
+	                        <a href="<%=request.getContextPath()%>/WomenServlet">WOMAN</a>
 	                        <ul class="sub-menu">
-	                            <li><a href="#none">OUTER</a></li>
-	                            <li><a href="#none">TOP</a></li>
-	                            <li><a href="#none">BOTTOM</a></li>
-	                            <li><a href="#none">JEAN</a></li>
-	                            <li><a href="#none">ONEPIECE</a></li>
+	                            <li><a href="<%=request.getContextPath() %>/WomenOuterServlet">OUTER</a></li>
+	                            <li><a href="<%=request.getContextPath() %>/WomenTopServlet">TOP</a></li>
+	                            <li><a href="<%=request.getContextPath() %>/WomenBottomServlet">BOTTOM</a></li>
+	                            <li><a href="<%=request.getContextPath() %>/WomenJeanServlet">JEAN</a></li>
+	                            <li><a href="<%=request.getContextPath() %>/WomenOnepieceServlet">ONEPIECE</a></li>
 	                        </ul>
 	                    </li>
 	                    <li>
-	                        <a href="#none">MAN</a>
+	                    
+	                        <a href="<%=request.getContextPath()%>/ManServlet">MAN</a>
 	                        <ul class="sub-menu">
-	                            <li><a href="#none">OUTER</a></li>
-	                            <li><a href="#none">TOP</a></li>
-	                            <li><a href="#none">BOTTOM</a></li>
-	                            <li><a href="#none">JEAN</a></li>
+	                            <li><a href="<%=request.getContextPath() %>/ManOuterServlet">OUTER</a></li>
+	                            <li><a href="<%=request.getContextPath() %>/ManTopServlet">TOP</a></li>
+	                            <li><a href="<%=request.getContextPath() %>/ManBottomServlet">BOTTOM</a></li>
+	                            <li><a href="<%=request.getContextPath() %>/ManJeanServlet">JEAN</a></li>
 	                        </ul>
 	                    </li>
 	                    <li><a href="<%=request.getContextPath()%>/CalendarSelect">CALENDAR</a></li>

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String msg = (String)request.getAttribute("msg");
+%>
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -32,6 +35,9 @@
 				/* border: 1px solid black; */
 				text-align: center;
 			}
+			.p{
+				    vertical-align: middle;
+            }
             
         </style>
     </head>
@@ -48,7 +54,7 @@
         <br>
         
         <div class="cont">
-        <form>
+        <form method="get" action="<%=request.getContextPath()%>/searchId.me">
             <h2>아이디 찾기</h2>
             <hr style="height: 5px; background: black;">
             <br>
@@ -58,22 +64,22 @@
             <label>휴대폰 번호</label>
             <hr>
             <br>
-            <div id="email">
+            <div>
                 <table>
-                    <tr>
-                        <td>
-                            <input type="text" id="userid" style=" height: 30px; width: 400px; border-radius: 8px;" placeholder="아이디를 입력해주세요">
+                    <tr class="p">
+                        <td class="p">
+                            <input type="text" id="userName" name="userName" style=" height: 30px; width: 400px; border-radius: 8px;" placeholder="이름를 입력하세요.">
                         </td>
                         <td rowspan="2">
-                            <input type="button" id="btn" value="아이디 찾기" style="height: 100px; width: 180px; color: white; border-radius: 8px; background: darkgrey;">
+                            <input type="submit" id="btn1" value="아이디 찾기" style="height: 100px; width: 180px; color: white; border-radius: 8px; background: darkgrey;">
                         </td>
                         
                     </tr>
-                    <tr>
+                    <tr id="email">
                         <td>
-                            <input type="email" id="email1" style=" height: 30px; width: 210px; border-radius: 8px;"  placeholder="이메일을 입력해주세요">
-                            <select id="selectEmail" style=" height: 35px; width: 180px; border-radius: 8px;">
-                                <option value="1" >직접입력</option>
+                            <input type="email" id="email1" name="email" style=" height: 30px; width: 210px; border-radius: 8px;"  placeholder="이메일을 입력해주세요">
+                            <select name="email" id="selectEmail" onchange="emailSelect" style=" height: 35px; width: 180px; border-radius: 8px;">
+                                <option value ="">직접입력</option>
                                 <option value="@naver.com">@naver.com</option>
                                 <option value="@gmail.com">@gmail.com</option>
                                 <option value="@hanmail.net">@hanmail.net</option>
@@ -82,40 +88,36 @@
                             </select>
                         </td>       
                     </tr>
-                </table>
-            </div>
-            <div id="phone" style="display: none;">
-                <table>
-                    <tr>
+                    <tr id="phone" style="display: none;">
                         <td>
-                            <input type="text" id="userid1" style=" height: 30px; width: 400px; border-radius: 8px;" placeholder="아이디를 입력하세요.">
-                        </td>
-                        <td rowspan="2">
-                            <input type="button" id="btn" value="아이디 찾기" style="height: 100px; width: 180px; color: white; border-radius: 8px; background: darkgrey;">
-                        </td>
-                        
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="tel" id="phone1" style="width: 400px; height: 30px; border-radius: 8px;" placeholder="-빼고 입력해주세요">
+                            <input type="tel" id="phone1" name="phone" style="width: 400px; height: 30px; border-radius: 8px;" placeholder="-빼고 입력해주세요">
                         </td>       
                     </tr>
                 </table>
             </div>
+            
             <br>
             <hr>
             <br>
             <div style="text-align: center;"> 
                 <input type="button" id="pwd" value="비밀번호 찾기" style=" width: 200px; height: 40px; border-radius: 8px; font-size: 16px; background: lightgray;">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" id="login" value="로그인하기" style=" width: 200px; height: 40px; border-radius: 8px; background: darkgrey; font-size: 16px; color: white;">
+                <input type="button" id="login" value="로그인하기" style=" width: 200px; height: 40px; border-radius: 8px; background: darkgrey; font-size: 16px; color: white;">
             </div>
         </form>
         </div>
-
+		<script>
+		$(function(){
+			
+		 <%if(msg != null){%>
+			alert("<%=msg%>");
+		 <%}%>
+		});
+		</script>
         
 
         <script>
+        	// 라디오 버튼 선택
              $('input[type=radio][name=idchk]').on('click',function(){
             var chkValue = $('input[type=radio][name=idchk]:checked').val();
 
@@ -130,22 +132,7 @@
             }
         });
         $(function(){
-            $("#userid").change(function(){
-                    var value = $("#userid").val();
-                    var reg = /^[a-z0-9]{4,12}$/;
-                    if(!reg.test(value)){
-                        alert("영문자와 숫자로 4글자 이상 12글자 이하여야 합니다.");
-                        $("#userid").focus().val('');
-                    }
-                });
-                $("#userid1").change(function(){
-                    var value = $("#userid1").val();
-                    var reg = /^[a-z0-9]{4,12}$/;
-                    if(!reg.test(value)){
-                        alert("영문자와 숫자로 4글자 이상 12글자 이하여야 합니다.");
-                        $("#userid1").focus().val('');
-                    }
-                });
+             	// 휴대폰 정규화
                 $("#phone1").change(function(){
                     var value = $("#phone1").val();
                     var reg = /^[0-9]{11,11}$/;
@@ -155,12 +142,36 @@
                         $("#phone1").focus().val('');
                     }
                 });
-                $("#selectEmail").change(function(){
-                	var sum = ($("#email1").val()) + ($("#selectEmail").val());
-                	$("#email1").val(sum);
-                
+             	// 이름 정규화
+                $("#userName").change(function(){
+                    var value = $("#userName").val();
+                    var reg = /^[가-힣]{2,4}$/;
+                    
+                    if(!reg.test(value)){
+                        alert("한글로 2글자 이상 입력해주세요.");
+                        $("#userName").focus().val('');
+                    }
                 });
+                
+            	// 로그인으로 이동
+                $("#login").click(function(){
+                	location.href="<%= request.getContextPath()%>/views/member/memberLogin.jsp";
+                });
+                // 비밀번호 찾기로 이동
+                $("#pwd").click(function(){
+                	location.href="<%= request.getContextPath()%>/views/member/searchPwd1.jsp";
+                });
+                // 이메일 선택(미완성..)
+                $("#selectEmail").change(function(){
+                var sum = $("#email1").val()+$("#selectEmail").val();
+                $("#email1").val(sum);
+                
+                })
         })
+       
+
+        
+        
        
         </script>
         

@@ -104,9 +104,9 @@
     				   var $cal_op = $("<span>").attr("class", "cal_op").text(value.prodRetailPrice);
     				   var $cal_sp = $("<span>").attr("class", "cal_sp").text(value.prodPPrice);
     				   
-    				   var $cal_sd = $("<li>").attr("class", "cal_sd").text(value.fStartdate);
-    				   var $cal_ed = $("<li>").attr("class", "cal_ed").text(value.fEnddate);
-    				   var $cal_frt = $("<li>").attr("class", "cal_fdRate").text(value.fPrgRate + "%");
+    				   var $cal_sd = $("<li>").attr("class", "cal_sd").text("펀딩 시작 : " + value.fStartdate);
+    				   var $cal_ed = $("<li>").attr("class", "cal_ed").text("펀딩 종료 : " + value.fEnddate);
+    				   var $cal_frt = $("<li>").attr("class", "cal_fdRate").text(value.fPrgRate + "% 달성!");
 
     				   $cal_img.append($img);
     				   

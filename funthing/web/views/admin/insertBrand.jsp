@@ -3,8 +3,7 @@
     pageEncoding="UTF-8"%>
 
 <%
-	String message = (String)request.getAttribute("msg");
-	String result = (String)request.getAttribute("result");
+	String iErrorMsg = (String)request.getAttribute("iErrorMsg");
 %>
     
     
@@ -35,9 +34,9 @@
 		<article id="center">
 			<form action="<%=request.getContextPath() %>/admin/brandInsert" method="post">
 				<table>
-					<tr>
+					<!-- <tr>
 						<th>브랜드 코드</th><td><input type="text" id="bNo" name="bNo"></td>
-					</tr>
+					</tr> -->
 					
 					<tr>
 						<th>브랜드 명</th><td><input type="text" id="bName" name="bName"></td>
@@ -85,12 +84,18 @@
 
 
 
-
-
     
     
     <script>
-    	
+    	// 정보 등록 실패 시 alert
+    	$(function(){
+    		<%if(iErrorMsg != null){%>
+    			alert("<%=iErrorMsg%>");
+    			
+    		
+    		<%}%>
+    		
+    	})
     
     
     
