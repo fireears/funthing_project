@@ -273,7 +273,8 @@
                                 </li>
                             </ul>
                             <div id="allBtn">
-                            <button id="by_now" onclick="byNow();">BUY IT NOW</button>
+                            <button id="by_now" onclick="byNo
+                            w();">BUY IT NOW</button>
                             <button type="button" id="shopping_bag">SHOPPING BAG</button>
                             </div>
                         </form>
