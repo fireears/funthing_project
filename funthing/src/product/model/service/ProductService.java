@@ -122,6 +122,16 @@ public class ProductService {
 		close(conn);
 		return result;
 	}
+
+	public Product paymentProductSearch(String pNo) {
+
+		Connection conn = getConnection();
+		
+		Product p = new ProductDao().paymentProductSearch(conn, pNo);
+		
+		close(conn);
+		return p;
+	}
 	
 	
 }

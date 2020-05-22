@@ -236,6 +236,8 @@
                         <form method="get" action="<%=request.getContextPath()%>/PaymentInfo">
                             <ul id="buyList">
                             	 <input type="hidden" name="p_no" value="<%=list.get(1).getpNo()%>">
+                            	 <input type="hidden" name="userNo" value="<%=loginUser.getmNo() %>">
+                            	 <input type="hidden" name="mEmail" value="<%=loginUser.getmEmail() %>">
                             	 <li>
                                     <select id="color" name="color">
                                      <option>color 선택</option>
@@ -269,7 +271,7 @@
                                     </select>
                                 </li>
                                 <li>
-                                    <input type="number" id="num" min="1" max="100" step="1" value="1">
+                                    <input type="number" name="number" id="num" min="1" max="100" step="1" value="1">
                                 </li>
                             </ul>
                             <div id="allBtn">

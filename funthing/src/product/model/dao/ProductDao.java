@@ -408,4 +408,40 @@ public class ProductDao {
 		return list;
 	}
 
+	public Product paymentProductSearch(Connection conn, String pNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Product p = null;
+		
+		String query = "SELECT * FROM PRODUCT WHERE P_NO = '" + pNo + "'";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next())
+			{
+				p = new Product(rset.getString("p_no"),
+								rset.getString("thumbnail"),
+								rset.getString("p_name"),
+								rset.getString("p_color"),
+								rset.getString("p_size"),
+								rset.getInt("retail_price"),
+								rset.getInt("dc_rate"),
+								rset.getInt("p_price"),
+								rset.getInt("p_point"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally
+		{
+			close(pstmt);
+			close(rset);
+		}
+		return p;
+	}
+
 }
