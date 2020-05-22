@@ -598,7 +598,7 @@
                     </li>
                     <br>
                     <li style="list-style: none;">
-                        <input type="checkbox" id="check5" name="agree_chk" class="infoBox">
+                        <input type="checkbox" id="check5" value="N" name="agree_chk" class="infoBox">
                         <label>(선택)정보/이벤트 SMS 수신에 동의합니다.</label>
                     </li>
                     <br>
@@ -613,9 +613,12 @@
             </div>
         </form>
         <script>
+        	// 취소
       		function cancle(){
       			location.href="<%=request.getContextPath()%>/main/mainView";
       		}
+        	
+        	// 필수동의 체크 여부
       		function check(){
             	 if($("#check1").prop('checked') == false || $("#check2").prop("checked") == false || $("#check3").prop("checked") == false){
                      alert("필수 약관에 동의 하셔야 합니다.");
@@ -623,6 +626,7 @@
             		 $("#joinForm").submit();
             	 }
             }
+        	
             $(function(){
             	
             	
@@ -686,59 +690,55 @@
                         $("#phone").focus().val('');
                     }
                 });
-                
-               /*  $("#submit_btn").click(function(){
-                        if($("#check1").prop('checked') == false || $("#check2").prop("checked") == false || $("#check3").prop("checked") == false){
-                                alert("필수 약관에 동의 하셔야 합니다.")
-                            }else{
-                                    // $(location).attr('href','join.html');
-                            }
-                });  */
+             
                 
             });
-                $(function(){	// 메일 수신 동의 시 
-	                 if($("input:checkbox[id='check4']:checked")==true){
+         		// 메일 수신 동의 시 
+               $(function(){	
+	                 if($("input:checkbox[id='check4']:checked") == true){
 	                    $("#check4").val("N"); 
 	                 }else{
 	                 	$("#check4").val("Y");
 	                 }
                  });  
+                 
 
+                
                
-                // ajax!
-                $(function(){
-                	// 중복체크 버튼에 대해 ajax처리
-                	
-                	$("#idCheck").click(function(){
-                		var userId = $("#joinForm input[name='userId']");
-                		console.log(userId);
-                		
-                		if(!userId || userId.val().length < 4){
-                			userId.focuse();
-                		}else{
-                			$.ajax({
-                				url:"<%= request.getContextPath()%>/idCheck.me",
-                				type:"post",
-                				data:{userId:userId.val()},
-                				success:function(data){
-                					if(data == 'fail'){
-                						alert("아이디가 중복됩니다.");
-                						userId.focus();
-                					}else{
-                						alert("아이디가 사용가능합니다.");
-                						
-                						
-                					}
-                				},
-                				error:function(data){
-                					console.log("서버 통신 안됨");
-                				}
-                			});
-                		}
-                	});
-           
-                	
-                });
+                	// ajax!
+                     $(function(){
+                     	// 중복체크 버튼에 대해 ajax처리
+                     	
+                     	$("#idCheck").click(function(){
+                     		var userId = $("#joinForm input[name='userId']");
+                     		console.log(userId);
+                     		
+                     		if(!userId || userId.val().length < 4){
+                     			userId.focuse();
+                     		}else{
+                     			$.ajax({
+                     				url:"<%= request.getContextPath()%>/idCheck.me",
+                     				type:"post",
+                     				data:{userId:userId.val()},
+                     				success:function(data){
+                     					if(data == 'fail'){
+                     						alert("아이디가 중복됩니다.");
+                     						userId.focus();
+                     					}else{
+                     						alert("아이디가 사용가능합니다.");
+                     						
+                     						
+                     					}
+                     				},
+                     				error:function(data){
+                     					console.log("서버 통신 안됨");
+                     				}
+                     			});
+                     		}
+                     	});
+                
+                     	
+                     });
                 
             
             

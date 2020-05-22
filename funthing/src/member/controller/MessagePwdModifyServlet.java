@@ -1,3 +1,4 @@
+// 비밀번호 변경
 package member.controller;
 
 import java.io.IOException;
@@ -8,22 +9,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import member.model.service.MemberService;
 import member.model.vo.Member;
 
 /**
- * Servlet implementation class MemberJoinServlet
+ * Servlet implementation class MessagePwdModifyServlet
  */
-//@WebServlet("/join.me")	// 암호화 처리 전
-@WebServlet(name="MemberJoinServlet",urlPatterns="/join.me") // 암호화 처리 후 
-public class MemberJoinServlet extends HttpServlet {
+//@WebServlet("/update.pwd") 암호화 처리 전
+@WebServlet(name="MessagePwdModifyServlet", urlPatterns="/update.pwd") // 암호화 처리 후
+public class MessagePwdModifyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberJoinServlet() {
+    public MessagePwdModifyServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,31 +34,29 @@ public class MemberJoinServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		
 		String userId = request.getParameter("userId");
 		String userPwd = request.getParameter("userPwd");
-		String userName = request.getParameter("userName");
-		String email = request.getParameter("email");
-		String phone = request.getParameter("phone");
-		String birth = request.getParameter("year") + request.getParameter("mon") + request.getParameter("day");
-		String reference = request.getParameter("reference");
-		String alarm_YN = request.getParameter("alarm_YN");
 		
+		System.out.println("servlet으로 넘어온 mNo : " + userId);
+		System.out.println("servelt으로 넘어온 userPwd : " + userPwd);
 		
-		System.out.println("servlet alarm_YN : " + alarm_YN);
-		Member member = new Member(userId, userPwd, userName, email, phone, birth, reference, alarm_YN);
+		Member m = new Member(userId, userPwd);
 		
-		System.out.println(member);
-		int result = new MemberService().insertMember(member);
+		int result = new MemberService().UpdatePwd(m);
+		System.out.println("회원 정보 수정 Servlet에서 update 결과 : " + result);
 		
 		RequestDispatcher view = null;
+		
 		if(result > 0) {
-			view = request.getRequestDispatcher("views/member/joinSuccess.jsp");
-			request.setAttribute("member", member);
+			// 현재 로그인한 사람의 session도 수정
+			HttpSession session = request.getSession();
+			session.setAttribute("member", m);
+			
+			view = request.getRequestDispatcher("views/member/searchPwd5.jsp");
+			request.setAttribute("msg", "비밀번호 변경이 되었습니다.");
 		}else {
-			view = request.getRequestDispatcher("views/member/joinFail.jsp");
-			request.setAttribute("msg", "회원가입 실패");
+			view = request.getRequestDispatcher("views/member/searchPwd1.jsp");
+			request.setAttribute("msg2", "비밀번호 변경 실패");
 		}
 		view.forward(request, response);
 	}

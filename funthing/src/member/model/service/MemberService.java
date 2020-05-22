@@ -42,7 +42,7 @@ public class MemberService {
 		
 		return searchPwd;
 	}
-	// myPage 회원 정보 수정
+	// myPage 회원 정보 창
 	public Member selectMember(String userId) {
 //		System.out.println("Service단까지 옴");
 		Connection conn = getConnection();
@@ -76,7 +76,7 @@ public class MemberService {
 		return result;
 	}
 	
-	// 회원 정보 update
+	// 회원 정보 수정 update
 	public int updateMember(Member member) {
 		Connection conn = getConnection();
 		
@@ -100,6 +100,47 @@ public class MemberService {
 		Connection conn = getConnection();
 		ArrayList<MemberShoppingBag> list =  new MemberDao().selectshoppingbaglist(userId,conn);
 		return list;
+	}
+	
+	// 메일 인증(회원 메일 가져오기)
+	public Member memberemail(String email) {
+		Connection conn = getConnection();
+		
+		Member memberEmail = new MemberDao().memberEmail(conn,email);
+		
+		close(conn);
+		
+		return memberEmail;
+	}
+	// 비밀번호 변경(회원 아이디 가져오기)
+	public Member memberSend(String userId) {
+		Connection conn = getConnection();
+		
+		Member memberSend = new MemberDao().memberSend(conn,userId);
+		
+		close(conn);
+		
+		return memberSend;	
+	}
+	
+	// 비밀번호 변경(update) 
+	public int UpdatePwd(Member member) {
+		Connection conn = getConnection();
+		
+		System.out.println("servlet은 왔나");
+		System.out.println("M_Id : " + member.getmId());
+		System.out.println("M_PWD : " + member.getmPwd());
+		int result = new MemberDao().updatePwd(conn, member);
+		
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		} 
+		close(conn);
+		
+		return result;
 	}
 
 }

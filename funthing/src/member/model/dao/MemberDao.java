@@ -166,7 +166,7 @@ public class MemberDao {
 		
 		return searchPwd;
 	}
-	// myPage 회원 정보 수정
+	// myPage 회원 정보 창
 	public Member selectMember(Connection conn, String userId) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -263,7 +263,7 @@ public class MemberDao {
 		return result;
 	}
 	
-	// 회원 정보 update
+	// 회원 정보 수정 update
 	public int updateMember(Connection conn, Member member) {
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -360,6 +360,117 @@ public class MemberDao {
 			e.printStackTrace();
 		}
 		return al;
+	}
+	
+	// 메일 인증(회원 메일 가져오기)
+	public Member memberEmail(Connection conn, String email) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Member memberEmail = null;
+		
+		String query = "SELECT M_NO, M_ID, M_PWD, M_NAME, M_EMAIL, M_TELL, TO_CHAR(B_DAY,'YYYY/MM/DD'), JOIN_DATE, REFERENCE, GRADE_CODE, ALARM_YN, STATUS_YN, M_POINT, H_POINT FROM MEMBER WHERE M_EMAIL=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, email);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				memberEmail = new Member(rset.getString("M_NO"),
+										 rset.getString("M_ID"),
+										 rset.getString("M_PWD"),
+										 rset.getString("M_NAME"),
+										 rset.getString("TO_CHAR(B_DAY,'YYYY/MM/DD')"),
+										 rset.getString("M_EMAIL"),
+										 rset.getDate("JOIN_DATE"),
+										 rset.getString("REFERENCE"),
+										 rset.getString("GRADE_CODE"),
+										 rset.getString("ALARM_YN"),
+										 rset.getString("STATUS_YN"),
+										 rset.getInt("M_POINT"),
+										 rset.getString("M_TELL"),
+										 rset.getInt("H_POINT"));
+			}
+			System.out.println("memberEmail : " +   memberEmail);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		
+		return memberEmail;
+	}
+
+	public Member memberSend(Connection conn, String userId) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Member memberSend = null;
+		
+		String query = "SELECT M_NO, M_ID, M_PWD, M_NAME, M_EMAIL, M_TELL, TO_CHAR(B_DAY,'YYYY/MM/DD'), JOIN_DATE, REFERENCE, GRADE_CODE, ALARM_YN, STATUS_YN, M_POINT, H_POINT FROM MEMBER WHERE M_ID=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				memberSend = new Member(rset.getString("M_NO"),
+										 rset.getString("M_ID"),
+										 rset.getString("M_PWD"),
+										 rset.getString("M_NAME"),
+										 rset.getString("TO_CHAR(B_DAY,'YYYY/MM/DD')"),
+										 rset.getString("M_EMAIL"),
+										 rset.getDate("JOIN_DATE"),
+										 rset.getString("REFERENCE"),
+										 rset.getString("GRADE_CODE"),
+										 rset.getString("ALARM_YN"),
+										 rset.getString("STATUS_YN"),
+										 rset.getInt("M_POINT"),
+										 rset.getString("M_TELL"),
+										 rset.getInt("H_POINT"));
+			}
+			System.out.println("memberSend : " +   memberSend);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		
+		return memberSend;
+	}
+	
+	// 비밀번호 변경(update)
+	public int updatePwd(Connection conn, Member member) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		System.out.println("Dao는 왔니");
+		System.out.println("M_Id : " + member.getmId());
+		System.out.println("M_PWD : " + member.getmPwd());
+		String query = "UPDATE MEMBER SET M_PWD=? WHERE M_ID=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, member.getmPwd());
+			pstmt.setString(2, member.getmId());
+			
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		System.out.println("DAO : " + result);
+		return result;
 	}
 
 
