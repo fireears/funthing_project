@@ -8,6 +8,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import brand.model.vo.Brand;
@@ -15,11 +16,11 @@ import member.model.vo.Member;
 import payment.model.vo.OrderInfo;
 import payment.model.vo.OrderInfoDetail;
 import personalQnA.model.vo.AdmimPersonalQna;
-import personalQnA.model.vo.PersonalQnA;
 import personalQnA.model.vo.PersonalQnaReply;
 import product.model.vo.Product;
 import productQnA.model.vo.AdminProductQnA;
 import productQnA.model.vo.ProductQnAReply;
+import review.model.vo.Review;
 
 public class AdminDao {
 
@@ -1376,6 +1377,112 @@ public class AdminDao {
 		return result;
 	}
 
+	public int getRvListCount(Connection conn) {
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		int rvListCont = 0;
+		
+		String query = "SELECT COUNT(*) FROM REVIEW";
+		
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(query);
+
+			if (rs.next()) {
+				rvListCont = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(stmt);
+			close(rs);
+		}
+		
+		return rvListCont;
+	}
+
+	public ArrayList<Review> selectReviewList(Connection conn, int currentPage, int limit, String searchpName) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String query = "";
+		ArrayList<Review> rvList = new ArrayList<>();
+		
+		System.out.println(searchpName);
+		
+		
+		if(searchpName == null) {
+			query = "SELECT * FROM REVIEW R JOIN MEMBER M ON(R.M_NO = M.M_NO) JOIN PRODUCT P ON(R.P_NO = P.P_NO) WHERE REV_NO BETWEEN ? AND ? ORDER BY 1";
+			
+		}else {
+			query = "SELECT * FROM REVIEW R JOIN MEMBER M ON(R.M_NO = M.M_NO) JOIN PRODUCT P ON(R.P_NO = P.P_NO) WHERE REV_NO BETWEEN ? AND ? AND P.P_NO LIKE(?) ORDER BY 1";
+		}
+		
+		
+//		System.out.println("dao hi");
+		
+		int startRow = (currentPage - 1) * limit + 1;
+		int endRow = startRow + limit - 1;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			if(searchpName != null) {
+				pstmt.setString(3, "%" + searchpName + "%");
+//				System.out.println("if문 확인 : " + searchpName);
+			}else {
+				
+			}
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Review r = new Review(
+						rs.getInt("REV_NO"),
+						rs.getString("M_NO"),
+						rs.getString("REV_TITLE"),
+						rs.getString("P_NO"),
+						rs.getString("REV_CONTENTS"),
+						rs.getString("REV_DATE"),
+						rs.getInt("VIEWS_NUM"),
+						rs.getInt("RATE"),
+						
+						rs.getString("REV_PIC_DIR"),
+						rs.getString("M_NAME"),
+						rs.getString("THUMBNAIL"));
+								
+				rvList.add(r);
+			}
+			
+			
+			// 받아준 rate 숫자형을 문자형으로 변경
+			for(int i = 0; i < rvList.size(); i ++) {
+				switch(rvList.get(i).getRate()) {
+					case 1 : rvList.get(i).setRateStar("★☆☆☆☆"); break;
+					case 2 : rvList.get(i).setRateStar("★★☆☆☆"); break;
+					case 3 : rvList.get(i).setRateStar("★★★☆☆"); break;
+					case 4 : rvList.get(i).setRateStar("★★★★☆"); break;
+					case 5 : rvList.get(i).setRateStar("★★★★★"); break;
+				}
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rs);
+		}
+		 
+
+		return rvList;
+	}
+	
 	
 
 	
@@ -1386,7 +1493,3 @@ public class AdminDao {
 	
 }
 	
-	
-	
-	
-

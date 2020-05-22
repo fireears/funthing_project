@@ -57,6 +57,9 @@ public class Product implements Serializable{
 		this.fStartDate = fStartDate;
 		this.fEndDate = fEndDate;
 	}
+	
+	
+
 
 	public Product(String thumbnail, String pName, int pPrice, Date fStartDate, Date fEndDate) {
 		super();
@@ -233,10 +236,27 @@ public class Product implements Serializable{
 		this.fYn = fYn;
 	}
 	
+	//paymentInfo
+	public Product(String pNo, String thumbnail, String pName, String p_color, String p_size, int retailPrice,
+			int dcRate, int pPrice, int pPoint) {
+		super();
+		this.pNo = pNo;
+		this.thumbnail = thumbnail;
+		this.pName = pName;
+		this.p_color = p_color;
+		this.p_size = p_size;
+		this.retailPrice = retailPrice;
+		this.dcRate = dcRate;
+		this.pPrice = pPrice;
+		this.pPoint = pPoint;
+	}
+	
+	
 	
 	public String getpNo() {
 		return pNo;
 	}
+
 
 	public void setpNo(String pNo) {
 		this.pNo = pNo;

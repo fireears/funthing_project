@@ -4,7 +4,7 @@ package member.model.service;
 import java.sql.Connection;
 import java.util.ArrayList;
 
-
+import member.model.dao.MemberDao;
 import member.model.dao.MemberPointDao;
 import member.model.vo.MemberPoint;
 
@@ -35,6 +35,19 @@ public class MemberPointService {
 		close(conn);
 		
 		return list;
+	}
+	
+
+	// 로그인 유저 값 받아오기_희지
+	public MemberPoint memberInfo(String userNo) {
+		Connection conn = getConnection();
+		MemberPoint mp = new MemberPoint();
+		
+		mp = new MemberPointDao().memberInfo(conn,userNo);
+		
+		close(conn);
+		
+		return mp;
 	}
 
 }

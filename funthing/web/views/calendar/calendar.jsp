@@ -51,7 +51,7 @@
 	#content .cal_content .cal_pNo_hd { display:none; }
 	#content .cal_content .cal_imgArea { width:100%; }
 	#content .cal_content .cal_imgArea img { width:100%; border:1px solid #ddd; }
-	#content .cal_content .cal_tit { font-size:34px; font-weight:700; margin:20px 0 10px; }
+	#content .cal_content .cal_tit a{ font-size:34px; font-weight:700; margin:20px 0 10px; }
 	#content .cal_content .cal_price { margin-bottom:10px; }
 	#content .cal_content .cal_price .cal_op { color:#888; font-size:24px; text-decoration:line-through; }
 	#content .cal_content .cal_price .cal_sp { color:#333; font-size:28px; color:#0f4a7e; font-weight:700; display: inline-block; margin-left: 20px;}
@@ -95,9 +95,10 @@
     				   var $cal_pNo = $("<li>").attr("class", "cal_pNo_hd").text(value.prodNo);
 
     				   var $cal_img = $("<li>").attr("class", "cal_imgArea");
+    				   var $aImg = $("<a>").attr("href", "<%=request.getContextPath()%>/productDateil?pName=" + value.prodName);
     				   var $img = $("<img>").attr("src", "/funthing/images/thumbnail/"+value.thumbnail+".jpg");
-    				   
-    				   var $cal_tit = $("<li>").attr("class", "cal_tit").text(value.prodName);
+    				   var $a = $("<a>").attr("href", "<%=request.getContextPath()%>/productDateil?pName=" + value.prodName).text(value.prodName);
+    				   var $cal_tit = $("<li>").attr("class", "cal_tit");
     				   
     				   var $cal_price = $("<li>").attr("class", "cal_price");
 
@@ -108,13 +109,17 @@
     				   var $cal_ed = $("<li>").attr("class", "cal_ed").text("펀딩 종료 : " + value.fEnddate);
     				   var $cal_frt = $("<li>").attr("class", "cal_fdRate").text(value.fPrgRate + "% 달성!");
 
-    				   $cal_img.append($img);
+    				   $cal_img.append($aImg);
+    				   $aImg.append($img);	
     				   
     				   $cal_price.append($cal_op);
     				   $cal_price.append($cal_sp);    				   
     				   
     				   $calCont.append($cal_pNo);
     				   $calCont.append($cal_img);
+    				   
+    				  
+    				   $cal_tit.append($a);
     				   $calCont.append($cal_tit);
     				   $calCont.append($cal_price);
     				   

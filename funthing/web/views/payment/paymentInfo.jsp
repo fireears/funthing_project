@@ -1,5 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="product.model.vo.Product" %>
+<%@ page import="member.model.vo.MemberPoint" %>
+<%@ page import="java.text.DecimalFormat" %>
+<%
+	Product p = (Product)request.getAttribute("p");
+	int number = Integer.valueOf((String)request.getAttribute("number"));
+	DecimalFormat formatter = new DecimalFormat("###,###");
+	MemberPoint mp = (MemberPoint)request.getAttribute("m");
+	String mEmail = (String)request.getAttribute("mEmail");
+	
+	String thumbnail = p.getThumbnail();
+	String pName = p.getpName();
+	String color = p.getP_color();
+	String size = p.getP_size();
+	
+	int retailPrice = p.getRetailPrice();
+	int dcRate = p.getDcRate();
+	int pPrice = p.getpPrice();
+	int pPoint = p.getpPoint();
+	
+	String mNo = mp.getmNo();
+	int mPoint = mp.getmPoint();
+	double point_rate = mp.getPoint_rate();
+	
+%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -32,7 +57,7 @@
 			
 			
 			
-			#resultPayArea{position: fixed; top: 25%; left: 75%; width: 350px; height: 450px; border: 4px solid #0f4a7e; text-align: center;}
+			#resultPayArea{position: fixed; top: 25%; left: 75%; width: 350px; height: 480px; border: 4px solid #0f4a7e; text-align: center;}
 			#resultPayArea>div{margin: auto; width: 90%;}
 			#resultPayArea>div>table{width: 100%;}
 			#resultPayArea>div>table th{text-align: left;}
@@ -56,19 +81,19 @@
                             <tbody>
                                 <tr>
                                     <th class="ta-1" aria-required="true">주문하시는 분</th>
-                                    <td><div class="txt-field"><input type="text" name="m_name" maxlength="20" value="m_name"></div></td>
+                                    <td><div class="txt-field"><input type="text" name="m_name" maxlength="20" value="<%=loginUser.getmName()%>"></div></td>
                                 </tr>
                                 <tr>
                                     <th class="ta-1" aria-required="true">휴대폰 번호</th>
-                                    <td><div class="txt-field"><input type="text" name="m_tell" maxlength="20" placeholder="'-'없이 입력해주세요." value="m_tell"></div></td>
+                                    <td><div class="txt-field"><input type="text" name="m_tell" maxlength="20" placeholder="'-'없이 입력해주세요." value="<%=loginUser.getmTell()%>"></div></td>
                                 </tr>
                                 <tr>
                                     <th class="ta-1" aria-required="true">이메일</th>
                                     <td>
-	                                    <div class="txt-field"><input type="text" name="m_email">&nbsp;
-		                                    <select name="">
+	                                    <div class="txt-field"><input type="text" id="email"name="m_email" value="<%=loginUser.getmEmail()%>">&nbsp;
+		                                    <!-- <select name="">
 		                                    	<option value="naver.com">naver.com</option>
-		                                    </select>
+		                                    </select> -->
 	                                    </div>
                                     </td>
                                 </tr>
@@ -173,16 +198,22 @@
                         <table id="product">
                             <tbody>
                                 <tr>
-                                    <th>상품/옵션 정보</th><th>수량</th><th>상품금액</th><th>할인/적립</th><th>합계금액</th><th>배송비</th>
+                                    <th>상품/옵션 정보(color/size)</th><th>수량</th><th>상품금액</th><th>할인/적립</th><th>합계금액</th><th>배송비</th>
                                 </tr>
+                                <%if(p != null) { %>
                                 <tr style="line-heigth:150px;">
-                                    <td align="left"><img src="<%=request.getContextPath()+"/images/thumbnail/thumb001.jpg" %>" alt="상품사진" id="productImg" style="width:100px; height:150px;"><span>상품명</span></td>
-                                    <td style="text-align: center; "><div id="num">1</div></td>
-                                    <td style="text-align: center;"><div id="retail_price">정가</div></td>
-                                    <td style="text-align: center;"><div id="dc_point">할인/적립</div></td>
-                                    <td style="text-align: center;"><div id="result_price">합계금액</div></td>
-                                    <td style="text-align: center;"><div id="ship_price">배송비</div></td>
+                                    <td align="center"><img src="<%=request.getContextPath()+"/images/thumbnail/" + thumbnail + ".jpg" %>" alt="상품사진" id="productImg" style="width:100px; height:150px;"><span><%=pName %>/<%=color %>/<%=size %></span></td>
+                                    <td style="text-align: center; "><div id="num"><%=number %></div></td>
+                                    <td style="text-align: center;"><div id="retail_price"><%=formatter.format(retailPrice*number) %></div></td>
+                                    <td style="text-align: center;"><div id="dc_point"><%=dcRate %>%/<%=pPoint*number %>p</div></td>
+                                    <td style="text-align: center;"><div id="result_price"><%=formatter.format(pPrice*number) %></div></td>
+                                    <%if(pPrice*number > 50000) { %>
+                                    <td style="text-align: center;"><div id="ship_price">0</div></td>
+                                    <%} else { %>
+                                    <td style="text-align: center;"><div id="ship_price">5,000</div></td>
+                                    <%} %>
                                 </tr>
+                                <%} %>
                             </tbody>
                         </table>
                     </div>
@@ -195,15 +226,19 @@
                             <tbody>
                                 <tr>
                                     <th class="ta-1" aria-required="true">상품 합계 금액</th>
-                                    <td><div class="txt-field"><div id="product_sum_price"></div>원</div></td>
+                                    <%if(pPrice*number > 50000) { %>
+                                    <td><div class="txt-field"><div id="product_sum_price"></div><%=formatter.format(pPrice*number) %></div></td>
+                                    <%} else { %>
+                                    <td><div class="txt-field"><div id="product_sum_price"></div><%=formatter.format((pPrice*number)+5000) %></div></td>
+                                    <%} %>
                                 </tr>
                                 <tr>
-                                    <th class="ta-1" aria-required="true">적립</th>
-                                    <td><div class="txt-field">총 적립금 : <div id="totalPoint"></div></div></td>
+                                    <th class="ta-1" aria-required="true">보유 적립금</th>
+                                    <td><div class="txt-field">총 보유 적립금 : <%=mPoint %>p<div id="totalPoint"></div></div></td>
                                 </tr>
                                 <tr>
                                     <th class="ta-1" aria-required="true">적립금 사용</th>
-                                    <td><div class="txt-field"><input type="text" name="point_user" style="width: 100px;">P</div></td>
+                                    <td><div class="txt-field"><input type="text" id="point_user" name="point_user" style="width: 100px;">P</div></td>
                                 </tr>
                                 <tr>
                                     <th class="ta-1" aria-required="true">최종 결제 금액</th>
@@ -215,7 +250,7 @@
                     </div>
 
 
-                    <p id="title">결제수단 결제 / 결제</p>
+                    <!-- <p id="title">결제수단 결제 / 결제</p>
                     <div class="table1">
                         <table>
                             <tbody>
@@ -224,18 +259,15 @@
                                     <td>
                                         <div class="txt-field1">
                                             <input type="radio" name="pmnt_mthd" id="pmnt1" value="무통장 입금"><label for="pmnt1">무통장 입금</label>
-                                            <!-- <input type="radio" name="pmnt_mthd" id="pmnt2" value="신용카드"><label for="pmnt2">신용카드</label> -->
+                                            <input type="radio" name="pmnt_mthd" id="pmnt2" value="신용카드"><label for="pmnt2">신용카드</label>
                                             <input type="radio" name="pmnt_mthd" id="pmnt3" value="카카오페이"><label for="pmnt3">카카오페이</label>
-                                        </div>
-                                        <div>
-                                        	무통장 입력 area
                                         </div>
                                     </td>
                                 </tr>
                                 
                             </tbody>
                         </table>
-                    </div>
+                    </div> -->
 					
 					<br><br><br><br>
                     <!-- 오른쪽 사이드 결제하기 구역-->
@@ -245,15 +277,25 @@
                             <hr>
     
                             <table>
-                                <tr><th>상품 합계 금액</th><td style="text-align: right;">65,600원</td></tr>
+                            	<%if(pPrice*number > 50000) { %>
+                                <tr><th>상품 합계 금액</th><td id="totalPrice" style="text-align: right;"><%=formatter.format(pPrice*number) %>원</td></tr>
+                                <%} else { %>
+                                <tr><th>상품 합계 금액</th><td id="totalPrice" style="text-align: right;"><%=formatter.format(pPrice*number)+5000 %>원</td></tr>
+                                <%} %>
+                                <%if((pPrice * number) > 50000) {%>
                                 <tr><th>배송비</th><td  style="text-align: right;">0원</td></tr>
+                                <%} else { %>
+                                <tr><th>배송비</th><td  style="text-align: right;">5000원</td></tr>
+                                <%} %>
                             </table>
     
                             <hr>
     
                             <table>
-                                <tr><th>최종 결제 금액</th><td id="resultprice">65,600원</td></tr>
-                                <tr><th>총 적립예정 적립금</th><td>0p</td></tr>
+                                <tr><th>최종 결제 금액</th><td id="resultprice"><%=formatter.format(pPrice*number) %>원</td></tr>
+                                <tr><th>회원 등급별 적립금</th><td><%=pPrice * point_rate %>p</td></tr>
+                                <tr><th>상품별 적립금</th><td><%=pPoint %>p</td></tr>
+                                <tr><th>총 적립예정 적립금</th><td><%=(pPrice * point_rate) + pPoint %>p</td></tr>
                             </table>
     
                             <hr>
@@ -264,30 +306,83 @@
                                 <input type="checkbox" name="" id="">상품 공급사 개인정보 제공 동의에 대한 내용을 확인 하였으며 이에 동의 합니다.(필수)<br>
                             </div>
                             <br><br>
-                            <input type="submit" value="결제하기" style="width: 70%; height: 55px; border: 0px; background-color: rgb(3, 3, 87); color: white; font-size: 20px;">
+                            <!-- <input type="button" id="pqy" value="결제하기" style="width: 70%; height: 55px; border: 0px; background-color: rgb(3, 3, 87); color: white; font-size: 20px;"> -->
+							<button type="button" id="pay" style="width: 70%; height: 55px; border: 0px; background-color: rgb(3, 3, 87); color: white; font-size: 20px;">결제하기</button>
                         </div>
                     </div>
                     <!---->
                 </form>
-					<button type="button" id="pay">결제</button>
+					<!-- <button type="button" id="pay">결제</button> -->
                 
             </article>
         </section>
+        <%@include file="/views/common/footer.jsp" %>
 	</body>
 	
 	
 	<!-- 카카오페이 -->
 	<script>
 		$(function(){
-			alert("결제");
 			var IMP=window.IMP;
-			IMP.init('imp33962000');			
+			IMP.init('imp33962000');	
+			var tp = <%=pPrice*number%>;
+			$("#resultprice").text(tp);
+			var result;
+			
+			$("#point_user").blur(function(){
+				if($(this).val() > <%=mPoint%>)
+				{
+					alert("사용가능한 적립금을 초과하였습니다.");
+				}
+				else if($(this).val() <= <%=mPoint%>)
+				{
+					/* var tp = $("#totalPrice").text().substring(0,$("#totalPrice").text().length-1); */
+					
+					var pu = $("#point_user").val();
+					result = tp-pu;
+					/* alert(typeof result);
+					var temp = result.substr(1, result.length()-3); */
+					$("#resultprice").text(result);
+					$("#result_price").text(result);
+				}
+				
+			})
+			$(this).focus();
+			
 			
 		})
 			
 		$("#pay").click(function(){
 			/* val payMethod = $("input[name=pmnt_mthd]").val(); */
-			if($("input[name=pmnt_mthd]").is(":checked") == true)
+			
+			IMP.request_pay({
+				
+					    pg : 'kakaopay', // version 1.1.0부터 지원.
+					    pay_method : 'card',
+					    merchant_uid : 'funthing_' + new Date().getTime(),
+					    name : '주문번호',	// order 테이블에 들어갈  주문명 혹은 주문 번호
+					    amount : 10000,
+					    buyer_email : $("#email").val(),
+					    buyer_name : $("#m_name").val(),
+					    buyer_tel : $("#m_tell").val(),
+					    buyer_addr : $("#detailAddress").val(),
+					    buyer_postcode : $("#postcode").val(),
+					    m_redirect_url : '<%=request.getContextPath()%>/PaymentInfo' //결제 완료 후 보낼 컨트롤러의 메소드명
+					}, function(rsp) {
+					    if ( rsp.success ) {
+					        var msg = '결제가 완료되었습니다.';
+					        msg += '고유ID : ' + rsp.imp_uid;
+					        msg += '상점 거래ID : ' + rsp.merchant_uid;
+					        msg += '결제 금액 : ' + rsp.paid_amount + '원';
+					        msg += '카드 승인번호 : ' + rsp.apply_num;
+					        location.href = "<%=request.getContextPath()%>/PaymentInfo";
+					    } else {
+					        var msg = '결제에 실패하였습니다.';
+					        msg += '에러내용 : ' + rsp.error_msg;
+					    }
+					    alert(msg);
+					});
+			<%-- if($("input[name=pmnt_mthd]").is(":checked") == true)
 			{
 				var payMethod = $("input[name=pmnt_mthd]:checked").val();
 				
@@ -309,7 +404,7 @@
 					    buyer_tel : $("#m_tell").val(),
 					    buyer_addr : $("#detailAddress").val(),
 					    buyer_postcode : $("#postcode").val(),
-					    m_redirect_url : 'https://www.yourdomain.com/payments/complete' //결제 완료 후 보낼 컨트롤러의 메소드명
+					    m_redirect_url : '<%=request.getContextPath()%>/PaymentInfo' //결제 완료 후 보낼 컨트롤러의 메소드명
 					}, function(rsp) {
 					    if ( rsp.success ) {
 					        var msg = '결제가 완료되었습니다.';
@@ -317,6 +412,7 @@
 					        msg += '상점 거래ID : ' + rsp.merchant_uid;
 					        msg += '결제 금액 : ' + rsp.paid_amount + '원';
 					        msg += '카드 승인번호 : ' + rsp.apply_num;
+					        location.href = "<%=request.getContextPath()%>/PaymentInfo";
 					    } else {
 					        var msg = '결제에 실패하였습니다.';
 					        msg += '에러내용 : ' + rsp.error_msg;
@@ -325,7 +421,7 @@
 					});	
 					
 				}
-			}
+			} --%>
 				
 			
 		})

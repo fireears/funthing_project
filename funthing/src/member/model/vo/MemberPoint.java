@@ -21,27 +21,20 @@ public class MemberPoint implements Serializable{
 	private String mNo;				// 회원번호
 	private String pointCate;		// 적립금 유형
 	private int mPoint;				// 회원 적립금 내역
-	
+
+	private int myPoint;			// 누적 적립금 내역
+	private String gradeName;		// 등급 이름
+	private String mName;			// 회원이름
+
+	private double point_rate;		// 등급별 적립율
+	private String grade_code;		// 회원 등급
 	
 
+
+	
+	
 	public MemberPoint() {
 	}
-
-
-
-	public MemberPoint(int rnum, String pointNo, Date pointDate, String oNo, String pointContent, int pointAmount,
-			String mNo, String pointCate, int mPoint) {
-		this.rnum = rnum;
-		this.pointNo = pointNo;
-		this.pointDate = pointDate;
-		this.oNo = oNo;
-		this.pointContent = pointContent;
-		this.pointAmount = pointAmount;
-		this.mNo = mNo;
-		this.pointCate = pointCate;
-		this.mPoint = mPoint;
-	}
-
 
 
 	public MemberPoint(int rnum, Date pointDate, String oNo, String pointContent, int pointAmount, String mNo,
@@ -58,8 +51,50 @@ public class MemberPoint implements Serializable{
 
 
 
+	public MemberPoint(int rnum, String pointNo, Date pointDate, String oNo, String pointContent, int pointAmount,
+			String mNo, String pointCate, int mPoint, int myPoint) {
+		this.rnum = rnum;
+		this.pointNo = pointNo;
+		this.pointDate = pointDate;
+		this.oNo = oNo;
+		this.pointContent = pointContent;
+		this.pointAmount = pointAmount;
+		this.mNo = mNo;
+		this.pointCate = pointCate;
+		this.mPoint = mPoint;
+		this.myPoint = myPoint;
+	}
+	
+	
+
+	
+
+
+
+	public MemberPoint(int rnum, String pointNo, Date pointDate, String oNo, String pointContent, int pointAmount,
+			String mNo, String pointCate, int myPoint) {
+		this.rnum = rnum;
+		this.pointNo = pointNo;
+		this.pointDate = pointDate;
+		this.oNo = oNo;
+		this.pointContent = pointContent;
+		this.pointAmount = pointAmount;
+		this.mNo = mNo;
+		this.pointCate = pointCate;
+		this.myPoint = myPoint;
+	}
+
+
+	public MemberPoint(int mPoint, String gradeName, String mName) {
+		this.mPoint = mPoint;
+		this.gradeName = gradeName;
+		this.mName = mName;
+	
+	}
+
 	public int getRnum() {
 		return rnum;
+
 	}
 
 
@@ -166,22 +201,78 @@ public class MemberPoint implements Serializable{
 
 
 
+	public int getMyPoint() {
+		return myPoint;
+	}
+
+
+
+	public void setMyPoint(int myPoint) {
+		this.myPoint = myPoint;
+	}
+
+
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 
+	public double getPoint_rate() {
+		return point_rate;
+	}
+	
+	public void setPoint_rate(double point_rate) {
+		this.point_rate = point_rate;
+	}
+	
+	public String getGrade_code() {
+		return grade_code;
+	}
+	
+	public void setGrade_code(String grade_code) {
+		this.grade_code = grade_code;
+	}
+
+
+	
+	
+	
+	public String getGradeName() {
+		return gradeName;
+	}
+
+
+
+
+
+	public void setGradeName(String gradeName) {
+		this.gradeName = gradeName;
+	}
+
+
+
+
+
+	public String getmName() {
+		return mName;
+	}
+
+
+
+
+
+	public void setmName(String mName) {
+		this.mName = mName;
+	}
 
 
 	@Override
 	public String toString() {
 		return "MemberPoint [rnum=" + rnum + ", pointNo=" + pointNo + ", pointDate=" + pointDate + ", oNo=" + oNo
 				+ ", pointContent=" + pointContent + ", pointAmount=" + pointAmount + ", mNo=" + mNo + ", pointCate="
-				+ pointCate + ", mPoint=" + mPoint + "]";
+				+ pointCate + ", mPoint=" + mPoint + ", myPoint=" + myPoint + ", gradeName=" + gradeName + ", mName="
+				+ mName + ", point_rate=" + point_rate + ", grade_code=" + grade_code + "]";
 	}
-
-	
-	
-	
 
 
 
