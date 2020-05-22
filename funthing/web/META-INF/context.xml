@@ -19,10 +19,9 @@
 --><!-- The contents of this file will be loaded for each web application -->
 <!-- 데스크탑 -->
 
-
-
-
 <Context workDir="C:\Users\cyon3\Desktop\semi_funthing\branch\dev8\workspace\funthing_project\funthing\web\WEB-INF\jspwork">
+
+
 
     <!-- Default set of monitored resources. If one of these changes, the    -->
     <!-- web application will be reloaded.                                   -->

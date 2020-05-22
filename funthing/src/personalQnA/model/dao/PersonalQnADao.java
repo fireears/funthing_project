@@ -15,7 +15,7 @@ import payment.model.vo.OrderInfoDetail;
 import personalQnA.model.vo.PersonalInsert;
 import personalQnA.model.vo.PersonalQnA;
 
-
+ 
 
 public class PersonalQnADao {
 	// 일대일문의 삽입 서윤

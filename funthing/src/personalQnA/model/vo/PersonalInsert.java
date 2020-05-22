@@ -1,6 +1,6 @@
 // 1:1문의 페이지_혜린,서윤
 package personalQnA.model.vo;
-
+ 
 import java.io.Serializable;
 
 public class PersonalInsert implements Serializable {
