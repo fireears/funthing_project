@@ -102,7 +102,7 @@
                      	
                         <tr>
                        
-                        <td style="background:white; width:50px;" align="center"><span><%=apq.getQnareId() %></span></td>
+                        <td style="background:white; width:50px;" align="center" ><span><%=apq.getQnareId() %></span></td>
                         <td style="width:50px;" align="center"><span><%=apq.getQnareContent() %></span></td>
 						<td style="width:50px;" align="center"><span><%=apq.getQnareDate() %></span></td>
                         </tr>

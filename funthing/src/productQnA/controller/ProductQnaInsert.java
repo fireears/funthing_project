@@ -35,11 +35,15 @@ public class ProductQnaInsert extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		String mNo = request.getParameter("mNo");
+		String pNo = request.getParameter("pNo");
+		String bNo = request.getParameter("bNo");
+		System.out.println("insertServlet mNo : " + mNo);
+		System.out.println("insertServlet pNo : " + pNo);
 		String title = request.getParameter("q1_tit");
 		String content = request.getParameter("q1_cont");
 		// 상품번호와 브랜드번호도 불러와야함
-		String pNo = "W0101001BKS";
-		String bNo = "01";
+		
+		
 		
 		ProductQnaIn qna = new ProductQnaIn(mNo, title, content, pNo, bNo);
 		int result = new ProductQnAService().productQnaInsert(qna);
