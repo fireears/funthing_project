@@ -112,6 +112,7 @@ public class PersonalQnAServlet extends HttpServlet {
 			view = request.getRequestDispatcher("/views/personalQnA/myPagePerQnAList.jsp");
 			request.setAttribute("list", list);
 			request.setAttribute("pi", pi);
+			request.setAttribute("userNo", userNo);
 		}
 		
 		view.forward(request, response);

@@ -21,9 +21,15 @@ public class MemberPoint implements Serializable{
 	private String mNo;				// 회원번호
 	private String pointCate;		// 적립금 유형
 	private int mPoint;				// 회원 적립금 내역
+
 	private int myPoint;			// 누적 적립금 내역
 	private String gradeName;		// 등급 이름
 	private String mName;			// 회원이름
+
+	private double point_rate;		// 등급별 적립율
+	private String grade_code;		// 회원 등급
+	
+
 
 	
 	
@@ -211,6 +217,22 @@ public class MemberPoint implements Serializable{
 		return serialVersionUID;
 	}
 
+	public double getPoint_rate() {
+		return point_rate;
+	}
+	
+	public void setPoint_rate(double point_rate) {
+		this.point_rate = point_rate;
+	}
+	
+	public String getGrade_code() {
+		return grade_code;
+	}
+	
+	public void setGrade_code(String grade_code) {
+		this.grade_code = grade_code;
+	}
+
 
 	
 	
@@ -244,22 +266,14 @@ public class MemberPoint implements Serializable{
 	}
 
 
-
-
-
 	@Override
 	public String toString() {
 		return "MemberPoint [rnum=" + rnum + ", pointNo=" + pointNo + ", pointDate=" + pointDate + ", oNo=" + oNo
 				+ ", pointContent=" + pointContent + ", pointAmount=" + pointAmount + ", mNo=" + mNo + ", pointCate="
 				+ pointCate + ", mPoint=" + mPoint + ", myPoint=" + myPoint + ", gradeName=" + gradeName + ", mName="
-				+ mName + "]";
+				+ mName + ", point_rate=" + point_rate + ", grade_code=" + grade_code + "]";
 	}
 
 
 
-
-
-	
-	
-	
 }
