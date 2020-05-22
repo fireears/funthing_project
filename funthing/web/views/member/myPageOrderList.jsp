@@ -225,8 +225,8 @@
 					<%if(!list.isEmpty()) {%>
 					<%for(OrderList ol : list){ %>
 					<tr align="center">
-						<%-- <input type="hidden" id="listNo" value=<%=ol.getlistNo() %>>
-						<input type="hidden" id="mNo" value=<%=loginUser1.getmNo()%>> --%>
+						<input type="hidden" id="listNo" value=<%=ol.getListNo() %>>
+						<input type="hidden" id="mNo" value=<%=loginUser.getmNo()%>>
 						<td class="tb-zero"><%=ol.getrNum() %></td>
 						<td class="tb-first"><%=ol.getoDate() %></td>
 						<td><%=ol.getoNo() %></td>
@@ -305,7 +305,7 @@
 	<%@ include file="../common/footer.jsp"%>
 
 
-	<%-- <script>
+	<script>
     
     	$(function(){
     		$("#list-table td").mouseenter(function(){
@@ -313,13 +313,13 @@
     			
     		}).click(function(){
         		var No = $(this).parent().children("input").val();
-        		location.href="<%=request.getContextPath()%>/personalQnADetail?mNo=<%=loginUser2.getmNo()%>&perNo=" + perNo;
+        		location.href="<%=request.getContextPath()%>/personalQnADetail?mNo=<%=loginUser.getmNo()%>&listNo=" + ol.getListNo();
         		
     		})
     		
     		
     	})
     	
-    </script> --%>
+    </script>
 </body>
 </html>
