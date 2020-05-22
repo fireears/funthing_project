@@ -250,24 +250,24 @@
                     </div>
 
 
-                    <p id="title">결제수단 결제 / 결제</p>
+                    <!-- <p id="title">결제수단 결제 / 결제</p>
                     <div class="table1">
                         <table>
                             <tbody>
                                 <tr>
                                     <th class="ta-1" aria-required="true">일반결제</th>
-                                    <!-- <td>
+                                    <td>
                                         <div class="txt-field1">
                                             <input type="radio" name="pmnt_mthd" id="pmnt1" value="무통장 입금"><label for="pmnt1">무통장 입금</label>
                                             <input type="radio" name="pmnt_mthd" id="pmnt2" value="신용카드"><label for="pmnt2">신용카드</label>
                                             <input type="radio" name="pmnt_mthd" id="pmnt3" value="카카오페이"><label for="pmnt3">카카오페이</label>
                                         </div>
-                                    </td> -->
+                                    </td>
                                 </tr>
                                 
                             </tbody>
                         </table>
-                    </div>
+                    </div> -->
 					
 					<br><br><br><br>
                     <!-- 오른쪽 사이드 결제하기 구역-->
@@ -292,7 +292,7 @@
                             <hr>
     
                             <table>
-                                <tr><th>최종 결제 금액</th><td id="resultprice">65,600원</td></tr>
+                                <tr><th>최종 결제 금액</th><td id="resultprice"><%=formatter.format(pPrice*number) %>원</td></tr>
                                 <tr><th>회원 등급별 적립금</th><td><%=pPrice * point_rate %>p</td></tr>
                                 <tr><th>상품별 적립금</th><td><%=pPoint %>p</td></tr>
                                 <tr><th>총 적립예정 적립금</th><td><%=(pPrice * point_rate) + pPoint %>p</td></tr>
@@ -325,7 +325,8 @@
 		$(function(){
 			var IMP=window.IMP;
 			IMP.init('imp33962000');	
-			
+			var tp = <%=pPrice*number%>;
+			$("#resultprice").text(tp);
 			var result;
 			
 			$("#point_user").blur(function(){
@@ -336,13 +337,13 @@
 				else if($(this).val() <= <%=mPoint%>)
 				{
 					/* var tp = $("#totalPrice").text().substring(0,$("#totalPrice").text().length-1); */
-					var tp = <%=pPrice*number%>;
+					
 					var pu = $("#point_user").val();
-					 
 					result = tp-pu;
 					/* alert(typeof result);
 					var temp = result.substr(1, result.length()-3); */
-					$("#resultprice").text("result");
+					$("#resultprice").text(result);
+					$("#result_price").text(result);
 				}
 				
 			})
