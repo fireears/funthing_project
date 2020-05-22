@@ -47,6 +47,9 @@ public class PersonalQnAServlet extends HttpServlet {
 		String firstDate = request.getParameter("firstDate");
 		String secondDate = request.getParameter("secondDate");
 		
+		// 서윤언니 insert 결과 메세지 받기
+		String msg = (String)request.getAttribute("message");
+		
 		
 //		// 이거 뭔지 모르겠어여 -희지
 //		int maxSize = 1024*1024*10;	// 이미지 사이즈 제한함 10Mbytes
@@ -106,6 +109,7 @@ public class PersonalQnAServlet extends HttpServlet {
 			request.setAttribute("list", list);
 			request.setAttribute("pi", pi);
 			request.setAttribute("userNo", userNo);
+			request.setAttribute("msg", msg);
 			
 		}else {
 			view = request.getRequestDispatcher("/views/personalQnA/myPagePerQnAList.jsp");
