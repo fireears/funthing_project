@@ -163,6 +163,7 @@
         #review_area .rev_rate  { width:100%; margin:20px 0 0; }
         #review_area .rev_rate select { width:100%; font-size:24px; height:50px; }
         #review_area .rev_textArea { box-sizing:border-box; margin: 20px 0 20px;  }
+        #review_area .rev_textArea #rev_tit { width:100%; height:40px; margin-bottom:6px; box-sizing:border-box; font-size:18px; }
         #review_area .rev_textArea textarea { width:100%; resize: none; padding:10px; box-sizing:border-box; }
         #review_area .rev_textArea textarea::placeholder { color:#666; }
         #review_area .rev_btns { width:100%; }
@@ -308,7 +309,8 @@
         </ul>
     </div>
     <div id="review_area">
-        <form action="<%=request.getContextPath()%>/ReviewInsert" enctype="multipart/form-data" type="post">
+        <form action="<%=request.getContextPath()%>/ReviewInsert" method="post" enctype="multipart/form-data">
+        	<input type="hidden" name="rev_pNo" value="<%= pd.getpNo() %>" />
             <div class="rev_rate">
                 <select name="rev_rateS" id="rev_rateS">
                     <option value="5">★★★★★</option>
@@ -319,6 +321,7 @@
                 </select>
             </div>
             <div class="rev_textArea">
+            	<input type="text" id="rev_tit" name="rev_tit" placeholder="리뷰 제목을 입력하세요." required/>
                 <textarea name="rev_textArea" rows="10" placeholder="리뷰 등록 시 적립금을 드립니다!" required></textarea>
             </div>
             <div class="rev_btns">
