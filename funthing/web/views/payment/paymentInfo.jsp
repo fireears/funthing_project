@@ -56,7 +56,7 @@
 			
 			
 			
-			#resultPayArea{position: fixed; top: 25%; left: 75%; width: 350px; height: 450px; border: 4px solid #0f4a7e; text-align: center;}
+			#resultPayArea{position: fixed; top: 25%; left: 75%; width: 350px; height: 480px; border: 4px solid #0f4a7e; text-align: center;}
 			#resultPayArea>div{margin: auto; width: 90%;}
 			#resultPayArea>div>table{width: 100%;}
 			#resultPayArea>div>table th{text-align: left;}
@@ -276,15 +276,25 @@
                             <hr>
     
                             <table>
-                                <tr><th>상품 합계 금액</th><td style="text-align: right;">65,600원</td></tr>
+                            	<%if(pPrice*number > 50000) { %>
+                                <tr><th>상품 합계 금액</th><td id="totalPrice" style="text-align: right;"><%=formatter.format(pPrice*number) %>원</td></tr>
+                                <%} else { %>
+                                <tr><th>상품 합계 금액</th><td id="totalPrice" style="text-align: right;"><%=formatter.format(pPrice*number)+5000 %>원</td></tr>
+                                <%} %>
+                                <%if((pPrice * number) > 50000) {%>
                                 <tr><th>배송비</th><td  style="text-align: right;">0원</td></tr>
+                                <%} else { %>
+                                <tr><th>배송비</th><td  style="text-align: right;">5000원</td></tr>
+                                <%} %>
                             </table>
     
                             <hr>
     
                             <table>
                                 <tr><th>최종 결제 금액</th><td id="resultprice">65,600원</td></tr>
-                                <tr><th>총 적립예정 적립금</th><td><%=pPrice * point_rate %>p</td></tr>
+                                <tr><th>회원 등급별 적립금</th><td><%=pPrice * point_rate %>p</td></tr>
+                                <tr><th>상품별 적립금</th><td><%=pPoint %>p</td></tr>
+                                <tr><th>총 적립예정 적립금</th><td><%=(pPrice * point_rate) + pPoint %>p</td></tr>
                             </table>
     
                             <hr>
@@ -314,6 +324,27 @@
 		$(function(){
 			var IMP=window.IMP;
 			IMP.init('imp33962000');			
+			
+			$("#point_user").blur(function(){
+				if($(this).val() > <%=mPoint%>)
+				{
+					alert("사용가능한 적립금을 초과하였습니다.");
+				}
+				else if($(this).val() <= <%=mPoint%>)
+				{
+					/* var tp = $("#totalPrice").text().substring(0,$("#totalPrice").text().length-1); */
+					var tp = <%=pPrice*number%>;
+					var pu = $("#point_user").val();
+					 
+					result = Number(tp)-Number(pu);
+					var temp = result.substring(-1,3);
+					alert(temp);
+					<%-- $("#resultprice").text(<%=formatter.format(result)%>); --%>	
+				}
+				
+			})
+			$(this).focus();
+			
 			
 		})
 			
