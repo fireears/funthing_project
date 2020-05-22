@@ -10,6 +10,7 @@
 	DecimalFormat formatter = new DecimalFormat("###,###");
 	ArrayList<ProductDetail> list = (ArrayList<ProductDetail>)request.getAttribute("list");
 	ArrayList<ProductDetail> sizeList = (ArrayList<ProductDetail>)request.getAttribute("sizeList");
+	ArrayList<ProductDetail> colorList = (ArrayList<ProductDetail>)request.getAttribute("colorList");
 	ArrayList<AdminProductQnA> qnaList = (ArrayList<AdminProductQnA>)request.getAttribute("qnaList");
 	ProductDetail pd = list.get(0);
 	int ratePrice = pd.getRetailPrice() * pd.getDcRate() / 100;
@@ -127,7 +128,7 @@
             color:red;
         }
 
-        #color{
+        .sizeColor{
             width: 265px;
             height: 40px;
         }
@@ -189,14 +190,13 @@
 </head>
 
 <body>
-
+	
 	<%@ include file="../common/header.jsp" %>
-	<%if(!list.isEmpty() && !sizeList.isEmpty()){ %>
+	<%if(!list.isEmpty() && !sizeList.isEmpty()){ %> 
     <div id="prod-detail">
         <!-- 상품 정보 -->
         <div id="detail_top">
             <div id="photo_area">
-             
                 <img id="photo" name="photo" src="<%=request.getContextPath()+"/images/thumbnail/" + pd.getThumbnail() + ".jpg" %>">
             </div>
             <div id="p_detalis" name="p_detalis">
@@ -234,48 +234,57 @@
 
                     <!-- 상품 선택 및 구매/장바구니 -->
                     <div class="buy_information">
-                        <form method="get" action="<%=request.getContextPath()%>/PaymentInfo">
+                    
+                        <form method="get" action="<%=request.getContextPath()%>/PaymentInfo" id="colorSizeform">
                             <ul id="buyList">
                             	 <input type="hidden" name="p_no" value="<%=list.get(1).getpNo()%>">
+                            	 <input type="hidden" name="userNo" value="<%=loginUser.getmNo() %>">
+                            	 <input type="hidden" name="mEmail" value="<%=loginUser.getmEmail() %>">
                             	 <li>
-                                    <select id="color" name="color">
-                                     <option>color 선택</option>
-                                   <%if(pd.getpColor().equals("BK")){ %>
-                                    <option value="BK">BLACK</option>
-                                   <%}else if(pd.getpColor().equals("BL")){ %>
-                                   <option value="BL">BLUE</option>
-                                   <%}else if(pd.getpColor().equals("WH")){ %>
-                                   <option value="WH">WHITE</option>
-                                   <%}else if(pd.getpColor().equals("RD")){ %>
-                                   <option value="RD">RED</option>
-                                   <%}else if(pd.getpColor().equals("KH")){ %>
-                                   <option value="KH">KHAKI</option>
-                                   <%}else if(pd.getpColor().equals("YL")){ %>
-                                   <option value="YL">YELLOW</option>
-                                   <%}else if(pd.getpColor().equals("GN")){ %>
-                                   <option value="GN">GREEN</option>
+                                   <select class="sizeColor" id="color" name="color">
+                                     <option value="noColor">color 선택</option>
+                                    <%for(ProductDetail pDetail : colorList){ %>
                                    
-                                   
-                                   <%} %>
-                                   
-                                    
-                                    </select>
+	                                 	<%if(pDetail.getpColor().equals("BK")){ %>
+	                                    <option value="BK">BLACK</option>
+	                                   <%} %>
+	                                   <%if(pDetail.getpColor().equals("BL")){ %>
+	                                   <option value="BL">BLUE</option>
+	                                    <%} %>
+	                                   <%if(pDetail.getpColor().equals("WH")){ %>
+	                                   <option value="WH">WHITE</option>
+	                                    <%} %>
+	                                   <%if(pDetail.getpColor().equals("RD")){ %>
+	                                   <option value="RD">RED</option>
+	                                    <%} %>
+	                                   <%if(pDetail.getpColor().equals("KH")){ %>
+	                                   <option value="KH">KHAKI</option>
+	                                    <%} %>
+	                                   <%if(pDetail.getpColor().equals("YL")){ %>
+	                                   <option value="YL">YELLOW</option>
+	                                    <%} %>
+	                                   <%if(pDetail.getpColor().equals("GN")){ %>
+	                                   <option value="GN">GREEN</option>
+                                   		<%} %> 
+                                    <%} %>
+                                    </select> 
                                 </li>
                                 <li>
-                                    <select id="color" name="size">
-                                        <option>size 선택</option>
+                                    <select class="sizeColor" id="size" name="size">
+                                        <option value="noSize">size 선택</option>
                                        <%for(ProductDetail pro : sizeList){ %> 
                                     <option value="<%= pro.getpSize() %>"><%= pro.getpSize() %></option>
                                     <%} %>
                                     </select>
                                 </li>
                                 <li>
-                                    <input type="number" id="num" min="1" max="100" step="1" value="1">
+                                    <input type="number" name="number" id="num" min="1" max="100" step="1" value="1">
                                 </li>
                             </ul>
-                            <div id="allBtn">
-                            <button id="by_now" onclick="byNow();">BUY IT NOW</button>
-                            <button type="button" id="shopping_bag">SHOPPING BAG</button>
+                           
+                            <div id="allBtn" >
+                            <button type="button" id="by_now" onclick="byNow();">BUY IT NOW</button>
+                            <button type="button" onclick="shoppingBag();" id="shopping_bag" >SHOPPING BAG</button>
                             </div>
                         </form>
                     </div>
@@ -283,6 +292,37 @@
             </div>
         </div>
     </div>
+    <script>
+
+       	function byNow(){
+       			if($("#color option:selected").val() != "noColor" &&  $("#size option:selected").val() != "noSize"  ){
+    				$("#colorSizeform").submit();
+    			}else{
+           			alert("색상, 사이즈, 수량을 선택해주세요");
+           		}
+       		}
+       	
+       	function shoppingBag(){
+       		if($("#color option:selected").val() != "noColor" &&  $("#size option:selected").val() != "noSize"  ){
+				$("#colorSizeform").attr("action", "<%=request.getContextPath() %>/SBInsertServlet");
+       			$("#colorSizeform").submit();
+			}else{
+       			alert("색상, 사이즈, 수량을 선택해주세요");
+       		}
+       	}
+    	$(function(){
+    
+                 <%if(loginUser != null){%>
+    			$("#by_now").attr("disabled",false);
+    			$("#shopping_bag").attr("disabled",false);
+    			
+    			<%}else{%>
+    			
+    			$("#by_now").attr("disabled",true);
+    			$("#shopping_bag").attr("disabled",true);
+    			<%}%>
+    	}) 
+    </script>
 
 <!-- 내비게이션 시작 -->
 <div id="section">
