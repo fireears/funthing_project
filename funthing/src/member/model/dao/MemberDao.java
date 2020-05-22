@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import member.model.vo.Member;
+import member.model.vo.MemberPoint;
 import member.model.vo.MemberShoppingBag;
 
 import static common.JDBCTemplate.*;
@@ -362,5 +363,43 @@ public class MemberDao {
 		return al;
 	}
 
+	
+	// 마이페이지 회원 이름, 등급, 적립금 내역 가져오기_희지
+	public MemberPoint memberInfo(Connection conn, String userNo) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		MemberPoint mp  = null;
+		
+		String query = "SELECT M.M_NAME, G.GRADE_NAME, M.M_POINT \r\n" + 
+				"FROM MEMBER M\r\n" + 
+				"    JOIN GRADE G ON(M.GRADE_CODE = G.GRADE_CODE)\r\n" + 
+				"WHERE M_NO=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				mp = new MemberPoint(rset.getInt("M_POINT"),
+						rset.getString("GRADE_NAME"),
+						rset.getString("M_NAME"));
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return mp;
+	}
+
+	
 
 }

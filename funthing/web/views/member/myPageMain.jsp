@@ -3,6 +3,9 @@
 <%@ page import="member.model.vo.*" %>
 <%
 	String msg = (String)request.getAttribute("msg");
+	MemberPoint mp = (MemberPoint)request.getAttribute("mp");
+	String userNo = (String)request.getAttribute("userNo");
+	
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -80,20 +83,19 @@
 
 						<div class="r-cont-header2">
 							<p>
-								<span>신희지님의</span> 회원등급은
+								<span style="font-size:30px"><%=mp.getmName() %></span> 회원등급은
 							</p>
 
 							<h2>
-								<strong style="color: #0f4a7e;">HAGO VIP</strong> 등급 입니다.
+								<strong style="color: #0f4a7e; font-size:30px;"><%=mp.getGradeName() %></strong> 등급 입니다.
 							</h2>
 						</div>
 
 						<div class="r-cont-header-images">
-							<img id="header-images" src="../images/business.png">
-							<h4>적립금</h4>
-							<input type="text">
-							<!-- 여기에 DB에서 회원 적립금 가져오기 -->
-
+							 <i class="fas fa-dollar-sign" style="font-size:70px"></i>
+                    		<h4>적립금</h4>
+                    		<div style="font-size:30px;"><%=mp.getmPoint()%>p</div>
+		
 						</div>
 
 					</div>
