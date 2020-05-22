@@ -8,6 +8,7 @@
 	int number = Integer.valueOf((String)request.getAttribute("number"));
 	DecimalFormat formatter = new DecimalFormat("###,###");
 	MemberPoint mp = (MemberPoint)request.getAttribute("m");
+	String mEmail = (String)request.getAttribute("mEmail");
 	
 	String thumbnail = p.getThumbnail();
 	String pName = p.getpName();
@@ -89,7 +90,7 @@
                                 <tr>
                                     <th class="ta-1" aria-required="true">이메일</th>
                                     <td>
-	                                    <div class="txt-field"><input type="text" name="m_email" value="<%=loginUser.getmEmail()%>">&nbsp;
+	                                    <div class="txt-field"><input type="text" id="email"name="m_email" value="<%=loginUser.getmEmail()%>">&nbsp;
 		                                    <!-- <select name="">
 		                                    	<option value="naver.com">naver.com</option>
 		                                    </select> -->
@@ -255,13 +256,13 @@
                             <tbody>
                                 <tr>
                                     <th class="ta-1" aria-required="true">일반결제</th>
-                                    <td>
+                                    <!-- <td>
                                         <div class="txt-field1">
                                             <input type="radio" name="pmnt_mthd" id="pmnt1" value="무통장 입금"><label for="pmnt1">무통장 입금</label>
-                                            <!-- <input type="radio" name="pmnt_mthd" id="pmnt2" value="신용카드"><label for="pmnt2">신용카드</label> -->
+                                            <input type="radio" name="pmnt_mthd" id="pmnt2" value="신용카드"><label for="pmnt2">신용카드</label>
                                             <input type="radio" name="pmnt_mthd" id="pmnt3" value="카카오페이"><label for="pmnt3">카카오페이</label>
                                         </div>
-                                    </td>
+                                    </td> -->
                                 </tr>
                                 
                             </tbody>
@@ -323,7 +324,9 @@
 	<script>
 		$(function(){
 			var IMP=window.IMP;
-			IMP.init('imp33962000');			
+			IMP.init('imp33962000');	
+			
+			var result;
 			
 			$("#point_user").blur(function(){
 				if($(this).val() > <%=mPoint%>)
@@ -336,10 +339,10 @@
 					var tp = <%=pPrice*number%>;
 					var pu = $("#point_user").val();
 					 
-					result = Number(tp)-Number(pu);
-					var temp = result.substring(-1,3);
-					alert(temp);
-					<%-- $("#resultprice").text(<%=formatter.format(result)%>); --%>	
+					result = tp-pu;
+					/* alert(typeof result);
+					var temp = result.substr(1, result.length()-3); */
+					$("#resultprice").text("result");
 				}
 				
 			})
@@ -350,7 +353,35 @@
 			
 		$("#pay").click(function(){
 			/* val payMethod = $("input[name=pmnt_mthd]").val(); */
-			if($("input[name=pmnt_mthd]").is(":checked") == true)
+			
+			IMP.request_pay({
+				
+					    pg : 'kakaopay', // version 1.1.0부터 지원.
+					    pay_method : 'card',
+					    merchant_uid : 'funthing_' + new Date().getTime(),
+					    name : '주문번호',	// order 테이블에 들어갈  주문명 혹은 주문 번호
+					    amount : 10000,
+					    buyer_email : $("#email").val(),
+					    buyer_name : $("#m_name").val(),
+					    buyer_tel : $("#m_tell").val(),
+					    buyer_addr : $("#detailAddress").val(),
+					    buyer_postcode : $("#postcode").val(),
+					    m_redirect_url : '<%=request.getContextPath()%>/PaymentInfo' //결제 완료 후 보낼 컨트롤러의 메소드명
+					}, function(rsp) {
+					    if ( rsp.success ) {
+					        var msg = '결제가 완료되었습니다.';
+					        msg += '고유ID : ' + rsp.imp_uid;
+					        msg += '상점 거래ID : ' + rsp.merchant_uid;
+					        msg += '결제 금액 : ' + rsp.paid_amount + '원';
+					        msg += '카드 승인번호 : ' + rsp.apply_num;
+					        location.href = "<%=request.getContextPath()%>/PaymentInfo";
+					    } else {
+					        var msg = '결제에 실패하였습니다.';
+					        msg += '에러내용 : ' + rsp.error_msg;
+					    }
+					    alert(msg);
+					});
+			<%-- if($("input[name=pmnt_mthd]").is(":checked") == true)
 			{
 				var payMethod = $("input[name=pmnt_mthd]:checked").val();
 				
@@ -389,7 +420,7 @@
 					});	
 					
 				}
-			}
+			} --%>
 				
 			
 		})
