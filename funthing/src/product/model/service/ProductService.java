@@ -122,6 +122,7 @@ public class ProductService {
 		close(conn);
 		return result;
 	}
+
 	// 제품 상세 페이지_혜린
 	public ArrayList<ProductDetail> colorSelectProDetail(String pName) {
 		Connection conn = getConnection();
@@ -131,6 +132,17 @@ public class ProductService {
 		close(conn);
 		
 		return list;
+
+	}
+	public Product paymentProductSearch(String pNo) {
+
+		Connection conn = getConnection();
+		
+		Product p = new ProductDao().paymentProductSearch(conn, pNo);
+		
+		close(conn);
+		return p;
+
 	}
 	
 	
