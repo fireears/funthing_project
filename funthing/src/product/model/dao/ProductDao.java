@@ -395,7 +395,46 @@ public class ProductDao {
 				list.add(ap);
 				
 			}
-			System.out.println("AdminProductQnA Dao list : " + list);
+//			System.out.println("AdminProductQnA Dao list : " + list);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		
+		return list;
+	}
+	// 제품 상세 페이지 색상_혜린
+	public ArrayList<ProductDetail> colorSelectProDetail(Connection conn, String pName) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<ProductDetail> list = new ArrayList<>();
+		ProductDetail pd = null;
+		
+		String query =  " select distinct substr(p.P_NO,0,8), P_NAME, p_color, s_no " 
+				 + " from product p " 
+				 + " where p_name = ? "
+				 + " order by p_color desc ";
+		
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, pName);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+			pd = new ProductDetail(
+				rset.getString("substr(p.P_NO,0,8)"),
+				rset.getString("P_NAME"),
+				rset.getString("P_COLOR"),
+				rset.getInt("S_NO"));
+			
+				list.add(pd);
+				
+			}
+			System.out.println("color productDetail Dao list : " + list);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
