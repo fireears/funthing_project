@@ -1,5 +1,7 @@
 package member.model.dao;
 
+import static common.JDBCTemplate.close;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -12,9 +14,8 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import member.model.vo.Member;
+import member.model.vo.MemberPoint;
 import member.model.vo.MemberShoppingBag;
-
-import static common.JDBCTemplate.*;
 
 public class MemberDao {
 
@@ -289,16 +290,16 @@ public class MemberDao {
 		
 		return result;
 	}
-	public int getshoppingbagCount(Connection conn, String userId) {
+	public int getshoppingbagCount(Connection conn, String userNo) {
 		Statement stmt =null;
 		ResultSet rset = null;
 		int noticeCount=0;
 		
 		
 		try { 			
-			if(userId != null) {
+			if(userNo != null) {
 					
-				String query = "SELECT COUNT(*) FROM SHOPPINGBAG  WHERE M_NO LIKE '%"+userId+"%'";
+				String query = "SELECT COUNT(*) FROM SHOPPINGBAG  WHERE M_NO LIKE '%"+userNo+"%'";
 				stmt =conn.createStatement();
 				rset=stmt.executeQuery(query);
 				if(rset.next()) {
@@ -329,7 +330,7 @@ public class MemberDao {
 		try {
 
 			for(int i=0;i<list1.size();i++) {				
-					String query2="SELECT THUMBNAIL,P_NAME,P_POINT,P_PRICE FROM PRODUCT WHERE P_NO ="+list1.get(i);	
+					String query2="SELECT THUMBNAIL,P_NAME,P_POINT,P_PRICE FROM PRODUCT WHERE P_NO ='"+list1.get(i)+"'";	
 					Statement stmt2=conn.createStatement();
 					ResultSet rset2=stmt2.executeQuery(query2);
 					if(rset2.next()) {
@@ -347,39 +348,33 @@ public class MemberDao {
 		return al;
 	}
 
-	public int InsertShoppingbag(String p_no, Connection conn, int number, String userNo) {
+
+	public String InsertShoppingbag(String p_no, Connection conn, int number, String userNo) {
 		
 		String b_no= null;
 		String p_name=null;
 		int p_price=0;
 		ResultSet rset=null;
 		Statement sm = null;
-		String quary = "SELECT B_NO,P_NAME,P_PRICE FROM PRODUCT WHERE P_NO ="+p_no;
+		String quary = "SELECT B_NO,P_NAME,P_PRICE FROM PRODUCT WHERE P_NO ='"+p_no+"'";
 		try {
 			sm=conn.createStatement();
 			rset=sm.executeQuery(quary);
+			while(rset.next()) {
 			b_no = rset.getString("B_NO");
 			p_name = rset.getString("P_NAME");
 			p_price = rset.getInt("P_PRICE");
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		
+		String quary1 = "INSERT INTO SHOPPINGBAG VALUES('"+userNo+"','"+p_no+"','"+b_no+"','"+p_name+"',"+number+","+p_price+")";
 		
-		String quary1 = "INSERT INTO SHOPPINGBAG VALUES("+userNo+","+p_no+","+b_no+","+p_name+","+number+","+p_price+")";
-		int result=0;
-		Statement stmt=null;
-		try {
-			stmt=conn.createStatement();
-			result = stmt.executeUpdate(quary1);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
-		return result;
+		return quary1;
 	}
 
 	public int DeleteShoppingbag(Connection conn, String[] check) {
@@ -390,7 +385,8 @@ public class MemberDao {
 			try {
 				for(int i =0;i<check.length;i++) {
 					stmt=conn.createStatement();
-					quary ="DELTE  FROM SHOPPINGBAG WHERE P_NAME ="+check[i];
+					quary ="DELETE  FROM SHOPPINGBAG WHERE P_NAME ='"+check[i]+"'";
+					System.out.println(quary);
 				result+=stmt.executeUpdate(quary);
 				}
 			} catch (SQLException e) {
@@ -407,7 +403,7 @@ public class MemberDao {
 		ArrayList<String> list = new ArrayList<String>();
 		Statement stmt = null;
 		ResultSet rset = null;
-		String query ="SELECT P_NO FROM SHOPPINGBAG WHERE M_NO ="+userNo;
+		String query ="SELECT P_NO FROM SHOPPINGBAG WHERE M_NO ='"+userNo+"'";
 		try {
 			stmt=conn.createStatement();
 			rset=stmt.executeQuery(query);
@@ -425,7 +421,7 @@ public class MemberDao {
 	public ArrayList<Integer> selectshoppingbaglist3(String userNo, Connection conn) {
 		Statement stmt3 = null;
 		ResultSet rset3 = null;
-		String query11 = "SELECT SHBAG_NUM FROM SHOPPINGBAG WHERE M_NO ="+userNo;
+		String query11 = "SELECT SHBAG_NUM FROM SHOPPINGBAG WHERE M_NO ='"+userNo+"'";
 		ArrayList<Integer> list2 = new ArrayList<Integer>();
 		
 		try {
@@ -440,6 +436,52 @@ public class MemberDao {
 		}
 		
 		return list2;
+	}
+
+	public MemberPoint paymentMemberSearch(Connection conn, String userNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		MemberPoint m = null;
+		
+		String query = "SELECT M_NO, M_POINT, M.GRADE_CODE, POINT_RATE\r\n" + 
+				"FROM MEMBER M\r\n" + 
+				"JOIN GRADE G ON M.GRADE_CODE = G.GRADE_CODE\r\n" + 
+				"WHERE M_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userNo);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next())
+			{
+				m = new MemberPoint();
+				m.setmNo(rset.getString("m_no"));
+				m.setmPoint(rset.getInt("m_point"));
+				m.setGrade_code(rset.getString("grade_code"));
+				m.setPoint_rate(rset.getDouble("point_rate"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return m;
+
+	}
+
+	public int InsertShoppingBagsql(String sql, Connection conn) {
+		int result=0;
+		Statement sm=null;
+		try {
+			sm=conn.createStatement();
+			result = sm.executeUpdate(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 

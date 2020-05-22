@@ -395,7 +395,7 @@ public class ProductDao {
 				list.add(ap);
 				
 			}
-			System.out.println("AdminProductQnA Dao list : " + list);
+//			System.out.println("AdminProductQnA Dao list : " + list);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -406,6 +406,81 @@ public class ProductDao {
 		
 		
 		return list;
+	}
+	// 제품 상세 페이지 색상_혜린
+	public ArrayList<ProductDetail> colorSelectProDetail(Connection conn, String pName) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<ProductDetail> list = new ArrayList<>();
+		ProductDetail pd = null;
+		
+		String query =  " select distinct substr(p.P_NO,0,8), P_NAME, p_color, s_no " 
+				 + " from product p " 
+				 + " where p_name = ? "
+				 + " order by p_color desc ";
+		
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, pName);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+			pd = new ProductDetail(
+				rset.getString("substr(p.P_NO,0,8)"),
+				rset.getString("P_NAME"),
+				rset.getString("P_COLOR"),
+				rset.getInt("S_NO"));
+			
+				list.add(pd);
+				
+			}
+			System.out.println("color productDetail Dao list : " + list);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		
+		return list;
+	}
+
+	public Product paymentProductSearch(Connection conn, String pNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Product p = null;
+		
+		String query = "SELECT * FROM PRODUCT WHERE P_NO = '" + pNo + "'";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next())
+			{
+				p = new Product(rset.getString("p_no"),
+								rset.getString("thumbnail"),
+								rset.getString("p_name"),
+								rset.getString("p_color"),
+								rset.getString("p_size"),
+								rset.getInt("retail_price"),
+								rset.getInt("dc_rate"),
+								rset.getInt("p_price"),
+								rset.getInt("p_point"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally
+		{
+			close(pstmt);
+			close(rset);
+		}
+		return p;
 	}
 
 }

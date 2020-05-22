@@ -1,13 +1,17 @@
 package member.model.service;
 
+import static common.JDBCTemplate.close;
+import static common.JDBCTemplate.commit;
+import static common.JDBCTemplate.getConnection;
+import static common.JDBCTemplate.rollback;
+
 import java.sql.Connection;
 import java.util.ArrayList;
 
 import member.model.dao.MemberDao;
 import member.model.vo.Member;
+import member.model.vo.MemberPoint;
 import member.model.vo.MemberShoppingBag;
-
-import static common.JDBCTemplate.*;
 
 public class MemberService {
 	// 로그인
@@ -91,11 +95,13 @@ public class MemberService {
 		
 		return result;
 	}
-	public int shoppinglistCount(String userId) {
+	//shoppingbag 페이자 :한솔
+	public int shoppinglistCount(String userNo) {
 		Connection conn = getConnection();
-		int result = new MemberDao().getshoppingbagCount(conn,userId);
+		int result = new MemberDao().getshoppingbagCount(conn,userNo);
 		return result;
 	}
+	//shoppingbag 페이자 :한솔
 	public ArrayList<MemberShoppingBag> shoppingbagselectList(String userNo) {
 		Connection conn = getConnection();
 		ArrayList<String> list1 = new MemberDao().selectshoppingbaglist2(userNo, conn);
@@ -103,15 +109,41 @@ public class MemberService {
 		ArrayList<MemberShoppingBag> list =  new MemberDao().selectshoppingbaglist(userNo,conn,list1,list2);
 		return list;
 	}
+	//shoppingbag 페이자 :한솔
 	public int shoppingbagInsert(String p_no, int number, String userNo) {
 		Connection conn = getConnection();
-		int result = new MemberDao().InsertShoppingbag(p_no,conn,number,userNo);
+		String sql = new MemberDao().InsertShoppingbag(p_no,conn,number,userNo);
+		int result = new MemberDao().InsertShoppingBagsql(sql,conn);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		} 
+		close(conn);
 		return result;
 	}
+	//shoppingbag 페이자 :한솔
 	public int shoppingbagDelete(String[] check) {
 		Connection conn = getConnection();
 		int result = new MemberDao().DeleteShoppingbag(conn,check);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		} 
+		close(conn);
 		return result;
 	}
+
+	//paymentInfo 페이지 : 상원
+	public MemberPoint paymentMemberSearch(String userNo) {
+		Connection conn = getConnection();
+		
+		MemberPoint m = new MemberDao().paymentMemberSearch(conn, userNo);
+		
+		close(conn);
+		return m;
+	}
+	
 
 }

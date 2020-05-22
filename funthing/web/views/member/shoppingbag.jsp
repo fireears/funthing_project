@@ -4,6 +4,7 @@
 <html lang="ko">
  <%@ page import="java.util.ArrayList" %>
  <%@ page import="member.model.vo.MemberShoppingBag"%>
+ <%@ page import="board.model.vo.PageInfo" %>
  <%
  ArrayList<MemberShoppingBag> list = (ArrayList<MemberShoppingBag>)request.getAttribute("list");
  %>
@@ -58,7 +59,8 @@
             <div class="s_title">
                 <h3>결제 예정 상품</h3>
             </div>
-            <form>
+            <form id="shoppingbagForm">
+            <input type="hidden" name="userNo" value="<%=loginUser.getmNo() %>">
                 <table class="s_table">
                     <tr>
                         <th><input type="checkbox" id="checkall"></th>
@@ -72,6 +74,13 @@
                       <%
           int sum =0;
          if(list!=null){
+        	 for(int i =0;i<list.size();i++){
+        		 sum +=list.get(i).getShbag_price();
+        	 }
+        	 
+        	 
+        	 
+        	 
                 for(int i =0;i<list.size();i++){%>
                  	<tr>
                         <td><input type="checkbox" name="check" value="<%=list.get(i).getP_name()%>"></td>
@@ -83,19 +92,52 @@
                         <td><%=sum%></td>
                     </tr> 
                 <% 
-                sum +=list.get(i).getShbag_price();
+                
                 }
+                
                }%>
                    
                     <!-- for문 end -->
                 </table> 
+                
+                
+                
+                
+                
+                
+                
+                
                 <div class="s_btns">
-                    <button type="button" onclick="location.href='<%=request.getContextPath() %>member/controller/MemberShoppingDelete'"   class="l_btn">선택상품삭제</button>
+                    <button type="button" onclick="shoppingBag();"   class="l_btn">선택상품삭제</button>
                     <button type="submit" class="r_btn">결제</button>
                 </div>
             </form>
+            
+  
         </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         <script>
+    	function shoppingBag(){   		
+				$("#shoppingbagForm").attr("action", "<%=request.getContextPath() %>/MemberShoppingDelete");
+       			$("#shoppingbagForm").submit();
+       	}
+        
+        
+        
+        
         $(document).ready(function(){
             $("#checkall").click(function(){
                 if($("#checkall").prop("checked")){

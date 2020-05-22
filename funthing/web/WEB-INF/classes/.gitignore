@@ -1,8 +1,12 @@
 /payment/
+<<<<<<< HEAD
 /personalQnA/
 /product/
 /productQnA/
 /review/
 /women/
 /wrapper/
+=======
+/product/
+>>>>>>> refs/remotes/origin/master
 /member/

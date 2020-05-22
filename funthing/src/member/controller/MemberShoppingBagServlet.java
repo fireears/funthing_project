@@ -34,8 +34,8 @@ public class MemberShoppingBagServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		String userNo = request.getParameter("userNo");
-		MemberService ms = new MemberService();
+		String userNo = request.getParameter("userNo");	
+	    MemberService ms = new MemberService();
 		ArrayList<MemberShoppingBag> list = ms.shoppingbagselectList(userNo);
 		RequestDispatcher view = null;		
 		if(list.isEmpty()){
