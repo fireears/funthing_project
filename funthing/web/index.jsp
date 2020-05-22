@@ -4,6 +4,8 @@
 
 
 
+
+
 <head>
 <meta charset="UTF-8">
 
@@ -13,7 +15,9 @@
 <body>
 
 	<%
+
  		 	response.sendRedirect(request.getContextPath()+"/main/mainView");    
+
 	%>
 
 </body>

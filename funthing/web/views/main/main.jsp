@@ -102,7 +102,7 @@
 								 String pName = p.getpName();
 						%>
 		                        <div>
-		                            <a href="#none"><img src="<%=request.getContextPath()+"/images/thumbnail/" + thumbnail + ".jpg" %>"></a>
+		                            <a href="<%=request.getContextPath()%>/productDateil?pName=<%=p.getpName() %>"><img src="<%=request.getContextPath()+"/images/thumbnail/" + thumbnail + ".jpg" %>"></a>
 		                        </div>
 	                   <%	} %>
                        <%}else { %>
@@ -127,7 +127,7 @@
 	                	%>
 	                    <li>
 	                        <div class="prod-img">
-	                            <a href="#none"><img src="<%=request.getContextPath()+"/images/thumbnail/" + thumbnail + ".jpg" %>"></a>
+	                            <a href="<%=request.getContextPath()%>/productDateil?pName=<%=p.getpName() %>"><img src="<%=request.getContextPath()+"/images/thumbnail/" + thumbnail + ".jpg" %>"></a>
 	                        </div>
 	                        <ul class="prod-cont">
 	                            <!-- <li class="prod-brand">brand</li> -->
