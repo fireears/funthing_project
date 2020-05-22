@@ -32,6 +32,28 @@ public class ProductDetail {
 		super();
 	}
 	
+	
+	
+
+
+	
+	
+
+	public ProductDetail(String pNo, String pName, String pColor, int sno) {
+		super();
+		this.pNo = pNo;
+		this.pName = pName;
+		this.pColor = pColor;
+		this.Sno = sno;
+	}
+
+
+
+
+
+
+
+
 	public ProductDetail(String pNo, String pName, String pSize) {
 		super();
 		this.pNo = pNo;
