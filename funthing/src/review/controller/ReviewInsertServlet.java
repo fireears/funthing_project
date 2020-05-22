@@ -81,14 +81,18 @@ public class ReviewInsertServlet extends HttpServlet {
 		String revContent = multiRequest.getParameter("rev_textArea");
 		
 		
+		String prdName = null;
+
 		ArrayList<Review> rvList = new ArrayList<>();
 		// 아이디와 상품 번호를 가지고 조회
 //		Boolean rvb = rvService.searchOrder(revmId,revpNo);
 		rvList = rvService.searchOrder(revmId,revpNo);
+
 		
-		String prdName = rvList.get(0).getpNo();
 		
-//		System.out.println(rvb);
+		if(rvList.size() != 0) {
+			prdName = rvList.get(0).getpNo();
+		}
 		
 		// rvb 값이 true일때 insert
 		if(!rvList.isEmpty()) {
@@ -105,14 +109,14 @@ public class ReviewInsertServlet extends HttpServlet {
 			rv.setRevPic(rev_saveFile);		// 리뷰 업로드 이미지
 
 			int result = new ReviewService().insertReview(rv,revmId);
-//			System.out.println("값이 있다");
+			System.out.println("값이 있다");
 		
 			if(result > 0) {
-//				response.sendRedirect();
+//				response.sendRedirect("/product/product.jsp");
 			}
 			
 		}else {
-//			System.out.println("값이 없다");
+			System.out.println("값이 없다");
 		}
 		
 	}
