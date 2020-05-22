@@ -42,6 +42,7 @@ public class ProductDetailServlet extends HttpServlet {
 		
 		ArrayList<ProductDetail> list  = pService.selectProDetail(pName);
 		ArrayList<ProductDetail> sizeList = pService.sizeSelectProDetail(pName);
+		ArrayList<ProductDetail> colorList = pService.colorSelectProDetail(pName);
 		ArrayList<AdminProductQnA> qnaList = pService.qnaSelectProduct(pName);
 		RequestDispatcher view = null;
 		
@@ -82,6 +83,7 @@ public class ProductDetailServlet extends HttpServlet {
 			request.setAttribute("list", list);
 			request.setAttribute("sizeList", sizeList);
 			request.setAttribute("qnaList", qnaList);
+			request.setAttribute("colorList", colorList);
 			
 		}else {
 			System.out.println("제품상세 업로드  실패");
