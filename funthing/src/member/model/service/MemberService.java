@@ -105,6 +105,20 @@ public class MemberService {
 		ArrayList<MemberShoppingBag> list =  new MemberDao().selectshoppingbaglist(userId,conn);
 		return list;
 	}
+
+	
+	// 마이페이지 회원 이름, 등급, 적립금 내역 가져오기_희지
+	public MemberPoint memberInfo(String userNo) {
+		Connection conn = getConnection();
+		MemberPoint mp = new MemberPoint();
+		
+		mp = new MemberDao().memberInfo(conn, userNo);
+		
+		close(conn);
+		
+		return mp;
+	}
+
 	//paymentInfo 페이지 : 상원
 	public MemberPoint paymentMemberSearch(String userNo) {
 		Connection conn = getConnection();
@@ -114,6 +128,7 @@ public class MemberService {
 		close(conn);
 		return m;
 	}
+
 
 
 }
