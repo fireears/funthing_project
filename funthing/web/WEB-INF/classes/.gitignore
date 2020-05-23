@@ -1,19 +1,17 @@
-<<<<<<< HEAD
-/payment/
-=======
 /admin/
-/payment/
-/product/
+/board/
+/brand/
+/calendar/
+/common/
+/filter/
+/main/
+/man/
 /member/
-/admin/
-<<<<<<< HEAD
-/common/
-/main/
+/notice/
+/payment/
 /personalQnA/
-=======
-/personalQnA/
-/common/
-/main/
->>>>>>> refs/remotes/origin/dev8
+/product/
+/productQnA/
 /review/
->>>>>>> refs/remotes/origin/master
+/women/
+/wrapper/
