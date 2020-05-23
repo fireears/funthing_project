@@ -99,7 +99,7 @@ public class ReviewDao {
 		
 		int totalPoint = revmPoint + point;
 		
-		System.out.println(totalPoint);
+		System.out.println("포인트 테이블 총 적립금 : " + totalPoint);
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -116,12 +116,43 @@ public class ReviewDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally
-		{
+		}finally {
 			close(pstmt);
 		}
 		
 		return pointRs;
+	}
+
+	public int updateMemberPoint(Connection conn, String revmNo) {
+		PreparedStatement pstmt = null;
+		int mbRs = 0;
+		
+		int point = 10000;		// 지급 포인트
+		
+		
+		System.out.println(revmNo);
+		
+		String query = "UPDATE MEMBER SET M_POINT = M_POINT + 10000 WHERE M_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+//			pstmt.setInt(1, point);
+			pstmt.setString(1, revmNo);
+			
+
+			mbRs = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		
+		return mbRs;
 	}
 
 

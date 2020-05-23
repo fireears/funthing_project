@@ -54,6 +54,22 @@ public class ReviewService {
 	}
 
 
+	public int updateMemberPoint(String revmNo) {
+		Connection conn = getConnection();
+		ReviewDao rvDao = new ReviewDao();
+		
+		int mbRs = rvDao.updateMemberPoint(conn,revmNo);
+
+		if(mbRs > 0){
+			commit(conn);
+		}else{
+			rollback(conn);
+		}
+		
+		return mbRs;
+	}
+
+
 	
 
 

@@ -102,7 +102,7 @@ public class ReviewInsertServlet extends HttpServlet {
 			System.out.println(oNo);
 		}
 		
-		//  insert
+		// 멤버가 해당 상품을 산 경우 내용 insert
 		if(!rvList.isEmpty()) {
 			
 			Review rv = new Review();
@@ -118,7 +118,8 @@ public class ReviewInsertServlet extends HttpServlet {
 
 			int result = rvService.insertReview(rv,revmId);
 			System.out.println("값이 있다");
-		
+
+			// 리뷰 작성을 성공한 경우 포인트 지급
 			if(result > 0) {
 //				response.sendRedirect("/product/product.jsp");
 //				Member mbp = new Member();
@@ -126,7 +127,16 @@ public class ReviewInsertServlet extends HttpServlet {
 				int pointRs = rvService.insertReviewPoint(oNo, revmNo, revmPoint);
 				
 				if(pointRs > 0) {
-					System.out.println("리뷰 적립 완료");
+					// point 테이블에 인서트 성공한 경우 멤버 테이블의 h_point에도 포인트 추가
+					int mbRs = rvService.updateMemberPoint(revmNo);
+					
+					
+					if(mbRs > 0) {
+						System.out.println("됐다");
+						
+					}
+					
+					
 				}
 				
 				
