@@ -227,14 +227,15 @@
 					<tr align="center">
 						<input type="hidden" id="listNo" value=<%=ol.getListNo() %>>
 						<input type="hidden" id="mNo" value=<%=loginUser.getmNo()%>>
+						<input type="hidden" id="oNo" value=<%=ol.getoNo()%>>
 						<td class="tb-zero"><%=ol.getrNum() %></td>
 						<td class="tb-first"><%=ol.getoDate() %></td>
-						<td><%=ol.getoNo() %></td>
+						<td ><%=ol.getoNo() %></td>
 						<td><%=ol.getpName() %>/ <%=ol.getpColor() %> / <%=ol.getpSize() %></td>
 						<td><%=formatter.format(ol.getpPrice()) %> 원 / <%=ol.getoNum() %> 개</td>
 						<td><%=ol.getPrcsStatus() %></td>
 						<th>
-						<input type = "button" value = "배송지수정" id="submit" style="width:70px;font-size: 12px;"> 
+						<input type = "button" value = "배송지수정" id="submit" onclick="shippingModify();" style="width:70px;font-size: 12px;"> 
 						<input type = "button" value="취소하기" id="submit" style="width:70px;font-size: 12px;">
 						</th>
 					</tr>
@@ -313,13 +314,19 @@
     			
     		}).click(function(){
         		var No = $(this).parent().children("input").val();
-        		location.href="<%=request.getContextPath()%>/personalQnADetail?mNo=<%=loginUser.getmNo()%>&listNo=" + ol.getListNo();
+        		location.href="<%=request.getContextPath()%>/shippingModify?mNo=<%=loginUser.getmNo()%>&listNo=" + ol.getListNo();
         		
     		})
     		
     		
     	})
     	
+    	
+    	function shippingModify(){
+    		var oNo = $("#oNo").val();
+    		 location.href="<%=request.getContextPath()%>/shippingModify?mNo=<%=loginUser.getmNo()%>&oNo=" + oNo;  
+    			
+    	}
     </script>
 </body>
 </html>

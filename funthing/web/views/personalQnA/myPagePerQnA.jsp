@@ -158,6 +158,7 @@
     			success : function(data){
     				//alert("성공");
     				$("#orderSelectWrap").show();
+    				// 닫는 버튼
     				$(".close").click(function(){
     					$("#orderSelectWrap").hide();
       		    	 	$(".oiCont").empty();	// 데이터가 쌓이지 않게 입력값 삭제해줌
