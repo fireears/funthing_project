@@ -95,16 +95,46 @@ public class MemberService {
 		
 		return result;
 	}
-	public int shoppinglistCount(String userId) {
+	//shoppingbag 페이자 :한솔
+	public int shoppinglistCount(String userNo) {
 		Connection conn = getConnection();
-		int result = new MemberDao().getshoppingbagCount(conn,userId);
+		int result = new MemberDao().getshoppingbagCount(conn,userNo);
 		return result;
 	}
-	public ArrayList<MemberShoppingBag> shoppingbagselectList(String userId) {
+	//shoppingbag 페이자 :한솔
+	public ArrayList<MemberShoppingBag> shoppingbagselectList(String userNo) {
 		Connection conn = getConnection();
-		ArrayList<MemberShoppingBag> list =  new MemberDao().selectshoppingbaglist(userId,conn);
+		ArrayList<String> list1 = new MemberDao().selectshoppingbaglist2(userNo, conn);
+		ArrayList<Integer> list2 = new MemberDao().selectshoppingbaglist3(userNo, conn);
+		ArrayList<MemberShoppingBag> list =  new MemberDao().selectshoppingbaglist(userNo,conn,list1,list2);
 		return list;
 	}
+	//shoppingbag 페이자 :한솔
+	public int shoppingbagInsert(String p_no, int number, String userNo) {
+		Connection conn = getConnection();
+		String sql = new MemberDao().InsertShoppingbag(p_no,conn,number,userNo);
+		int result = new MemberDao().InsertShoppingBagsql(sql,conn);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		} 
+		close(conn);
+		return result;
+	}
+	//shoppingbag 페이자 :한솔
+	public int shoppingbagDelete(String[] check) {
+		Connection conn = getConnection();
+		int result = new MemberDao().DeleteShoppingbag(conn,check);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		} 
+		close(conn);
+		return result;
+	}
+
 
 	
 	// 마이페이지 회원 이름, 등급, 적립금 내역 가져오기_희지
