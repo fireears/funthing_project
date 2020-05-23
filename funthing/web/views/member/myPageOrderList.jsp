@@ -94,7 +94,7 @@
 		}
 		
 		/* 날짜 조회 버튼 */
-		#submit {
+		.submit {
 			width: 120px;
 			height: 30px;
 			background-color: #0f4a7e;
@@ -157,6 +157,110 @@
 			background: white;
 			cursor: pointer;
 		}
+		
+		/* 배송지 수정 */
+		 body {
+            font-family: sans-serif;
+            color: rgb(67, 74, 82)
+        }
+
+        h2 {
+            margin: 10px;
+
+        }
+
+        #c_h2 {
+            border-bottom: solid 1.5px grey;
+        }
+
+
+
+
+        #info {
+            margin: 20px;
+            border-top: solid lightslategrey 0.5px;
+            border-bottom: solid lightslategrey 0.5px;
+            background: rgba(218, 219, 219, 0.479);
+            /* height: 20%;
+            width: 30%; */
+            text-align: center;
+
+        }
+
+
+        #c_image {
+            display: inline-block;
+
+        }
+
+        #c_img {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            height: 100px;
+            width: 70px;
+        }
+
+        #c_title {
+            width: 50%;
+            height: 100%;
+            float: none;
+            display: inline-block;
+                       
+
+        }
+
+        #c_price {
+            display: inline-block;
+        }
+
+        div {
+            /* border: solid 1px; */
+
+        }
+
+
+
+        table {
+            width:100%;
+            border-bottom: 1px solid lightslategray;
+            
+        }
+
+
+        .corr {
+            border-top: 0.5px solid lightslategray;
+            font-size: small;
+            height: 20px;
+            line-height: 30px;
+        }
+
+        #corr_info td {
+            padding-right:0;
+            
+            
+        }
+
+        #corr_info th {
+
+            background: rgba(218, 219, 219, 0.479);
+            padding-right: 50px;
+        
+        }
+      
+        #correction {
+            margin: 20px;
+
+        }
+
+        #addressBtn{
+            float: right;
+            border:0;
+            border-radius: 5px;
+            height:25px;
+            background: lightgrey;
+        }
+        
+        #shipping{width:200px;}
 		</style>
 </head>
 <body>
@@ -200,7 +304,7 @@
 						</li>
 						<li><input type="date" name="secondDate" value="09/01/01">
 						</li>
-						<li><input type="submit" id="submit" value="조회"></li>
+						<li><input type="submit" class="submit" value="조회"></li>
 
 					</ul>
 				</div>
@@ -235,12 +339,13 @@
 						<td><%=formatter.format(ol.getpPrice()) %> 원 / <%=ol.getoNum() %> 개</td>
 						<td><%=ol.getPrcsStatus() %></td>
 						<th>
-						<input type = "button" value = "배송지수정" id="submit" onclick="shippingModify();" style="width:70px;font-size: 12px;"> 
-						<input type = "button" value="취소하기" id="submit" style="width:70px;font-size: 12px;">
+						<input type = "button" value = "배송지수정" class="submit" id="shipBtn"  style="width:70px;font-size: 12px;"> 
+						<input type = "button" value="취소하기" class="submit" style="width:70px;font-size: 12px;">
 						</th>
 					</tr>
 					
-                                     
+					
+                           
 					<%}}else{ %>
 				
 					<tr style="margin-top: 30px;">
@@ -322,7 +427,7 @@
     	})
     	
     	
-    	function shippingModify(){
+    	 function shippingModify(){
     		var oNo = $("#oNo").val();
     		 location.href="<%=request.getContextPath()%>/shippingModify?mNo=<%=loginUser.getmNo()%>&oNo=" + oNo;  
     			
