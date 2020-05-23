@@ -34,10 +34,37 @@ public class Review implements Serializable {
 	private String rvName;			// 회원 이름
 	private String rvThumb;			// 상품 사진
 	private String rateStar;		// 별 모양 별점
+	private String revONo;			// 주문 번호
+	
+	
+	
+	
 	public Review() {
 		super();
 	}
 	
+	
+	
+	public Review(int revNo, String mNo, String revTitle, String pNo, String revContents, String revDate, int viewsNum,
+			int rate, String revPic, String rvmId, String rvName, String rvThumb, String rateStar, String revONo) {
+		super();
+		this.revNo = revNo;
+		this.mNo = mNo;
+		this.revTitle = revTitle;
+		this.pNo = pNo;
+		this.revContents = revContents;
+		this.revDate = revDate;
+		this.viewsNum = viewsNum;
+		this.rate = rate;
+		this.revPic = revPic;
+		this.rvmId = rvmId;
+		this.rvName = rvName;
+		this.rvThumb = rvThumb;
+		this.rateStar = rateStar;
+		this.revONo = revONo;
+	}
+
+
 
 
 
@@ -51,11 +78,13 @@ public class Review implements Serializable {
 
 
 
-	public Review(String pNo, String rvmId) {
+
+	public Review(String pNo, String revONo) {
 		super();
 		this.pNo = pNo;
-		this.rvmId = rvmId;
+		this.revONo = revONo;
 	}
+
 
 
 	public Review(int revNo, String mNo, String revTitle, String pNo, String revContents, String revDate, int viewsNum,
@@ -91,6 +120,22 @@ public class Review implements Serializable {
 		this.rvName = rvName;
 		this.rvThumb = rvThumb;
 	}
+	
+	
+	
+	
+	public String getRevONo() {
+		return revONo;
+	}
+
+
+
+	public void setRevONo(String revONo) {
+		this.revONo = revONo;
+	}
+
+
+
 	public int getRevNo() {
 		return revNo;
 	}
@@ -175,14 +220,17 @@ public class Review implements Serializable {
 	public void setRateStar(String rateStar) {
 		this.rateStar = rateStar;
 	}
-	
+
+
 
 	@Override
 	public String toString() {
 		return "Review [revNo=" + revNo + ", mNo=" + mNo + ", revTitle=" + revTitle + ", pNo=" + pNo + ", revContents="
 				+ revContents + ", revDate=" + revDate + ", viewsNum=" + viewsNum + ", rate=" + rate + ", revPic="
 				+ revPic + ", rvmId=" + rvmId + ", rvName=" + rvName + ", rvThumb=" + rvThumb + ", rateStar=" + rateStar
-				+ "]";
+				+ ", revONo=" + revONo + "]";
 	}
+	
+
 
 }

@@ -13,6 +13,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import member.model.vo.Member;
+import member.model.vo.MemberPoint;
 import review.model.service.ReviewService;
 import review.model.vo.Review;
 
@@ -67,6 +68,9 @@ public class ReviewInsertServlet extends HttpServlet {
 		String revmName = ((Member)request.getSession().getAttribute("loginUser")).getmName().toString();
 		//
 		String revmId = ((Member)request.getSession().getAttribute("loginUser")).getmId().toString();
+		int revmPoint = ((Member)request.getSession().getAttribute("loginUser")).getmPoint();
+		
+		System.out.println(revmPoint);
 		
 		//상품번호 불러오기
 		String revpNo = multiRequest.getParameter("rev_pNo");
@@ -82,6 +86,7 @@ public class ReviewInsertServlet extends HttpServlet {
 		
 		
 		String prdName = null;
+		String oNo = null;
 
 		ArrayList<Review> rvList = new ArrayList<>();
 		// 아이디와 상품 번호를 가지고 조회
@@ -92,9 +97,12 @@ public class ReviewInsertServlet extends HttpServlet {
 		
 		if(rvList.size() != 0) {
 			prdName = rvList.get(0).getpNo();
+			oNo = rvList.get(0).getRevONo();
+			
+			System.out.println(oNo);
 		}
 		
-		// rvb 값이 true일때 insert
+		//  insert
 		if(!rvList.isEmpty()) {
 			
 			Review rv = new Review();
@@ -108,11 +116,20 @@ public class ReviewInsertServlet extends HttpServlet {
 			rv.setpNo(prdName);				// 조합된 상품 번호
 			rv.setRevPic(rev_saveFile);		// 리뷰 업로드 이미지
 
-			int result = new ReviewService().insertReview(rv,revmId);
+			int result = rvService.insertReview(rv,revmId);
 			System.out.println("값이 있다");
 		
 			if(result > 0) {
 //				response.sendRedirect("/product/product.jsp");
+//				Member mbp = new Member();
+				
+				int pointRs = rvService.insertReviewPoint(oNo, revmNo, revmPoint);
+				
+				if(pointRs > 0) {
+					System.out.println("리뷰 적립 완료");
+				}
+				
+				
 			}
 			
 		}else {
