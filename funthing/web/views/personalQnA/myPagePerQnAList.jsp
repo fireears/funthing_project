@@ -8,7 +8,7 @@
 	
 	Member loginUser3 = (Member)session.getAttribute("loginUser");
 	String userNo = (String)request.getAttribute("userNo");
-
+ 
 	
 	// PageIngo값 뽑아내기
 		int currentPage = pi.getCurrentPage();
@@ -94,7 +94,7 @@
 
                 <!-- 1:1 문의하기 버튼 -->
                 <div class="r-cont-button">
-                    <a href="#">1:1 문의하기</a>
+                    <a href="<%=request.getContextPath()%>/views/personalQnA/myPagePerQnA.jsp">1:1 문의하기</a>
                 </div>
             
             </div> <!-- 오른쪽 컨텐츠 헤더 end -->

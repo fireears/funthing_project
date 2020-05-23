@@ -43,13 +43,21 @@ public class MemberPointServlet extends HttpServlet {
 		// 로그인 한 유저 정보 받기
 		String userNo = request.getParameter("userNo");
 		
+		MemberPointService mpService = new MemberPointService();
+
+		
+		// 회원이름, 등급, 적립금 가져오기
+		MemberPoint mp2 = new MemberPoint();
+		mp2 = mpService.memberInfo(userNo);
+		
+		System.out.println("적립금 페이지에서 유저 정보 : " + userNo);
+		
 		// 날짜 선택값 받기
 		String searchDate = request.getParameter("searchDate");
 		String firstDate = request.getParameter("firstDate");
 		String secondDate = request.getParameter("secondDate");
 		
 		
-		MemberPointService mpService = new MemberPointService();
 		
 		// 로그인 유저에 대한  적립금 리스트 카운트 하기
 		int pListCount = mpService.getPListCount(userNo);
@@ -99,11 +107,14 @@ public class MemberPointServlet extends HttpServlet {
 			request.setAttribute("list", list);
 			request.setAttribute("pi",pi);
 			request.setAttribute("userNo", userNo);
+			request.setAttribute("mp2", mp2);
 			
 		}else {
 			view = request.getRequestDispatcher("/views/member/myPagePoint.jsp");
 			request.setAttribute("list", list);
 			request.setAttribute("pi",pi);
+			request.setAttribute("userNo", userNo);
+			request.setAttribute("mp2", mp2);
 			
 		}
 		view.forward(request, response);		

@@ -2,18 +2,6 @@
 <!DOCTYPE html>
 <html>
 
-
-
-
-
-
-
-
-
-
-
-
-
 <head>
 <meta charset="UTF-8">
 
@@ -27,6 +15,6 @@
  		 	response.sendRedirect(request.getContextPath()+"/main/mainView");    
 
 	%>
-
+ 
 </body>
 </html>
