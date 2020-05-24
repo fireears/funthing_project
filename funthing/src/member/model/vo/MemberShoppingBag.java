@@ -14,10 +14,21 @@ public class MemberShoppingBag implements Serializable{
 	private int p_point;
 	private int shbag_num;
 	private int shbag_price;
+	private String p_no;
+	
+	
+	public String getP_no() {
+		return p_no;
+	}
+	public void setP_no(String p_no) {
+		this.p_no = p_no;
+	}
+
+
 	@Override
 	public String toString() {
 		return "MemberShoppingBag [p_name=" + p_name + ", p_thumbnail=" + p_thumbnail + ", p_point=" + p_point
-				+ ", shbag_num=" + shbag_num + ", shbag_price=" + shbag_price + "]";
+				+ ", shbag_num=" + shbag_num + ", shbag_price=" + shbag_price + ", p_no=" + p_no + "]";
 	}
 	public String getP_name() {
 		return p_name;

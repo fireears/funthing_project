@@ -26,7 +26,7 @@ String search =(String)request.getAttribute("search");
             #noticeArea{margin: auto; width: 90%;}
 
             h3{font-weight:bold; font-size: 40px;}
-
+			
             #search{width: 500px; height: 30px; border: 1px solid black; border-radius: 7px; margin-right: 30px;}
             #searchBtn{height: 33px; width: 80px; border: 0px; border-radius: 7px; background-color: gray; color: white;}
          	#WriteBtn{height: 33px; width: 80px; border: 0px; border-radius: 7px; background-color: gray; color: white;}
@@ -34,9 +34,8 @@ String search =(String)request.getAttribute("search");
             #noticelistArea>tbody>tr{border-bottom: 2px solid black; height: 30px;}
             #noticelistArea>tbody>tr>td{text-align: center;}
             #noticelistArea>tbody:first-child{height: 80px;}
-            
-            .pageBtn{margin-top: 10px;}
-            .pageBtn>button{border: 0px; width: 30px; height: 30px; font-weight: 600; size: 10px;}
+            .noticehead{background-color: gray}   
+            .search{border: 0; font-size: middle; background: white; cursor: pointer;}
          .cont{ display:none;}
         </style>
         
@@ -47,14 +46,14 @@ String search =(String)request.getAttribute("search");
        <%@ include file="../common/adminHeader.jsp" %>
        
          <section id="noticeArea">
-            <h3>LIST Search</h3>
+            <h3>NOTICE AREA</h3>
             <form  method="GET" action="<%=request.getContextPath()%>/admin/NoticeView">
             <input type="text" id="search" name="noticeSearch"  placeholder="검색어를 입력해주세요"> <input type="submit" id="searchBtn" value="SEARCH">
             <input type="Button"  onclick="location.href='<%=request.getContextPath() %>/views/admin/insertNotice.jsp'"  id="WriteBtn" value="글쓰기">
             
             <table id="noticelistArea">
                 <tbody>
-                    <tr>
+                    <tr class="noticehead">
                         <th>NO</th> <th>제목</th> <th>작성자</th> <th>날짜</th> <th>삭제여부</th>
                     </tr>
 
@@ -92,7 +91,7 @@ String search =(String)request.getAttribute("search");
                 $(this).next().toggle();
                   });
            </script>
-            
+             <div class="pageinArea" align="center">
             <%
             if(search ==null){
             %>   
@@ -100,11 +99,11 @@ String search =(String)request.getAttribute("search");
              <!-- search가 널일때  -->
              <!-- 맨 처음으로 -->
             
-            <button onclick="location.href='<%=request.getContextPath() %>/admin/NoticeView?currentPage=<%=1 %>'"> << </button>
+            <button class="search"  onclick="location.href='<%=request.getContextPath() %>/admin/NoticeView?currentPage=<%=1 %>'"> << </button>
        
             <!-- 이전 페이지 -->
             <%if(currentPage <= 1) {%>
-               <button disabled> < </button>
+               <button class="search"  disabled> < </button>
             <%}else {%>
                <button class="search" onclick="location.href='<%=request.getContextPath() %>/admin/NoticeView?currentPage=<%=currentPage-1%>'"> < </button>
             <%} %>                                
@@ -112,7 +111,7 @@ String search =(String)request.getAttribute("search");
             <%for(int p = startPage; p<=endPage; p++){
             %>
                <%if(currentPage == p) {%>
-                  <button disabled><%=p %></button>
+                  <button class="search"  disabled><%=p %></button>
                   <%} else{%>
                   
                   <button class="search" onclick="location.href='<%=request.getContextPath() %>/admin/NoticeView?currentPage=<%=p%>'"><%=p %></button>
@@ -121,7 +120,7 @@ String search =(String)request.getAttribute("search");
             <%}%>
             <!-- 다음 페이지로 -->
             <%if(currentPage >= maxPage) {%>
-               <button disabled> > </button>
+               <button class="search"  disabled> > </button>
             <%}else { %>
                <button class="search" onclick="location.href='<%=request.getContextPath() %>/admin/NoticeView?currentPage=<%=currentPage + 1%>'"> > </button>
             <%} %>
@@ -135,18 +134,18 @@ String search =(String)request.getAttribute("search");
             <% }else{%>
                
                 <!-- 맨 처음으로 -->
-            <button onclick="location.href='<%=request.getContextPath() %>/admin/NoticeView?currentPage=<%=1 %>&search=<%=search%>'"> << </button>
+            <button class="search"  onclick="location.href='<%=request.getContextPath() %>/admin/NoticeView?currentPage=<%=1 %>&search=<%=search%>'"> << </button>
        
             <!-- 이전 페이지 -->
             <%if(currentPage <= 1) {%>
-               <button disabled> < </button>
+               <button class="search"  disabled> < </button>
             <%}else {%>
                <button class="search" onclick="location.href='<%=request.getContextPath() %>/admin/NoticeView?currentPage=<%=1 %>&search=<%=search%>'"> < </button>
             <%} %>                                
             <!-- 10개의 페이지 목록 -->
             <%for(int p = startPage; p<=endPage; p++){
             %><%if(currentPage == p) {%>
-                  <button disabled><%=p %></button>
+                  <button class="search"  disabled><%=p %></button>
                <%} else{%>
                   <%-- <button class="search" onclick="location.href='<%=request.getContextPath() %>/admin/NoticeView?currentPage='+<%=p %>&noticeSearch=<%=csearch%>'"><%=p %></button> --%>
                   <button class="search" onclick="location.href='<%=request.getContextPath() %>/admin/NoticeView?currentPage=<%=p %>&search=<%=search%>'"><%=p %></button>
@@ -155,7 +154,7 @@ String search =(String)request.getAttribute("search");
             <%}%>
             <!-- 다음 페이지로 -->
             <%if(currentPage >= maxPage) {%>
-               <button disabled> > </button>
+               <button class="search"  disabled> > </button>
             <%}else { %>
                <button class="search" onclick="location.href='<%=request.getContextPath() %>/admin/NoticeView?currentPage=<%=currentPage + 1%>&search=<%=search%>'"> > </button>
             <%} %>
@@ -167,7 +166,7 @@ String search =(String)request.getAttribute("search");
             %>
           
             
-             <div class="pageinArea" align="center">
+            
            
          </div>
         </section>

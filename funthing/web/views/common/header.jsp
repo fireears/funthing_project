@@ -43,7 +43,7 @@
 	                    <li><a href="#none">HELP</a></li>
 	                    <li><a href="<%=request.getContextPath()%>/views/member/memberJoin.jsp">JOIN</a></li>
 	                    <li><a href="<%=request.getContextPath()%>/views/member/memberLogin.jsp">LOGIN</a></li>
-	                    <li><a href="#none"><i class="fas fa-shopping-cart"></i></a></li>
+	                    <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
 	                </ul>
 	                <% } %>
 	                

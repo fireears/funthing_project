@@ -35,9 +35,13 @@ public class MemberShoppingBagServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		String userNo = request.getParameter("userNo");	
+		if(request.getParameter("userNoSession")!=null) {
+			userNo=request.getParameter("userNoSession");
+		}
 	    MemberService ms = new MemberService();
 		ArrayList<MemberShoppingBag> list = ms.shoppingbagselectList(userNo);
 		RequestDispatcher view = null;		
+		System.out.println(list.get(0));
 		if(list.isEmpty()){
 			request.setAttribute("msg","게시판 리스트 조회 실패!");
 			view = request.getRequestDispatcher("index.jsp");
