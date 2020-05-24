@@ -9,11 +9,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import payment.model.vo.OrderList;
-<<<<<<< HEAD
+
 import payment.model.vo.OrderUpdate;
-=======
+
 import payment.model.vo.Payment;
->>>>>>> refs/remotes/origin/master
+
 import personalQnA.model.vo.PersonalQnA;
 
 public class PaymentDao {
@@ -342,7 +342,7 @@ public class PaymentDao {
 	}
 
 
-<<<<<<< HEAD
+
 	// 배송지 수정 페이지_혜린
 	public int updateShipModi(Connection conn, OrderUpdate ou) {
 		PreparedStatement pstmt = null;
@@ -449,8 +449,8 @@ public class PaymentDao {
 		}
 		
 		return list;
-=======
 
+	}
 	public int insertPayment(Connection conn, Payment p) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -460,7 +460,7 @@ public class PaymentDao {
 		String query = "INSERT INTO PAYMENT_INFO VALUE()";
 				
 		return 0;
->>>>>>> refs/remotes/origin/master
+
 	}
 
 	
