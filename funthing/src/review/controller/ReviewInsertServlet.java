@@ -145,7 +145,6 @@ public class ReviewInsertServlet extends HttpServlet {
 					
 				}
 				
-				// 어떻게 다시 프로덕트 페이지로 넘기지?
 				view = request.getRequestDispatcher("/productDateil?pName="+revpName);
 				
 			}
