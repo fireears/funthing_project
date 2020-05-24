@@ -86,4 +86,15 @@ public class PaymentService {
 		return result;
 	}
 
+	// 주문목록 상세페이지_혜린
+	public ArrayList<OrderUpdate> selectOrderDetail(String oNo, String userNo) {
+		Connection conn = getConnection();
+		
+		ArrayList<OrderUpdate> oList = new PaymentDao().selectOrderDetail(conn, oNo, userNo);
+		
+		close(conn);
+		
+		return oList;
+	}
+
 }

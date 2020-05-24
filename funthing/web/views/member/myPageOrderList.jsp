@@ -101,6 +101,7 @@
 			color: white;
 			border: none;
 			font-size: 15px;
+			cursor:pointer;
 		}
 		
 		/* 1:1문의 조회 list 영역 */
@@ -199,6 +200,13 @@
             height: 100px;
             width: 70px;
         }
+        
+         #orderImg {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            height: 60px;
+            width: 40px;
+        }
 
         #c_title {
             width: 50%;
@@ -229,6 +237,7 @@
 
         .corr {
             border-top: 0.5px solid lightslategray;
+            border-bottom: 0.5px solid lightslategray;
             font-size: small;
             height: 20px;
             line-height: 30px;
@@ -375,12 +384,12 @@
 						<%for(OrderUpdate ol : list){ %>
 						<tr align="center">
 							<%-- <input type="hidden" id="listNo" value=<%=ol.getListNo() %>> --%>
-							<input type="hidden" id="mNo" value=<%=loginUser.getmNo()%>>
+							<input type="hidden" id="userNo" value=<%=loginUser.getmNo()%>>
 							<input type="hidden" id="oNo" value=<%=ol.getO_no()%>>
 							<td class="tb-zero"><%=ol.getrNum()%></td>
 							<td class="tb-first"><%=ol.getO_date()%></td>
 							<td ><%=ol.getO_no() %></td>
-							<td><a href="<%=request.getContextPath()%>/productDateil?pName=<%=ol.getpName() %>"><%=ol.getpName() %>/ <%=ol.getpColor()%> / <%=ol.getpSize() %></td>
+							<td><img id="orderImg" src="<%=request.getContextPath()+"/images/thumbnail/" + ol.getThumbnail() + ".jpg" %>"><a href="<%=request.getContextPath()%>/productDateil?pName=<%=ol.getpName() %>"><%=ol.getpName() %>/ <%=ol.getpColor()%> / <%=ol.getpSize() %></td>
 							<td><%=formatter.format(ol.getTotalPrice()) %> 원 / <%=ol.getoNum() %> 개</td>
 							<%if(ol.getCancelYn().equals("N")){%>
 							<td><%=ol.getPrcsStatus()%></td>
@@ -419,19 +428,19 @@
 							          <%for(OrderUpdate ou : list){ %>
 							                  <tr>
 							                  	  <input type="hidden" id="userNo" name="userNo" value=<%=loginUser.getmNo()%>>
-							                  	  <input type="hidden" id="userNo" name="oNo" value=<%=ou.getO_no()%>>
+							                  	  <input type="hidden" id="oNoinfo" name="oNo" value=<%=ou.getO_no()%>>
 							                      <td id="c_image" name="c_image">
 							                      <img id="c_img" src="<%=request.getContextPath()+"/images/thumbnail/" + ou.getThumbnail() + ".jpg" %>">
 							                      </td>
 							                      <td id="c_title" name="c_title" ><%=ou.getpName() %></td>
-							                      <td id="c_price" name="c_price" ><%=formatter.format(ou.getTotalPrice()) %> </td>
+							                      <td id="c_price" name="c_price" ><%=formatter.format(ou.getTotalPrice()) %> 원 </td>
 							                  </tr>
 							            
 							              </table>
 							              
 							          </div>
 							          <div id="correction">
-							              <h3>받으실 분 </h3>
+							              <h3>배송지 정보</h3>
 							              <table id="corr_info" class="shippingTb">
 							                  <tr>
 							                      <th class="corr" align="left" >이름</th>
@@ -486,7 +495,7 @@
 						                      <img id="c_img" src="<%=request.getContextPath()+"/images/thumbnail/" + ou.getThumbnail() + ".jpg" %>">
 						                      </td>
 						                      <td id="c_title" name="c_title" ><%=ou.getpName() %></td>
-						                      <td id="c_price" name="c_price" ><%=formatter.format(ou.getTotalPrice()) %> </td>
+						                      <td id="c_price" name="c_price" ><%=formatter.format(ou.getTotalPrice()) %> 원 </td>
 						                  </tr>
 							            
 							            </table>
@@ -585,11 +594,15 @@
 	    
 	    	$(function(){
 	    		$("#list-table td").mouseenter(function(){
-	    			$(this).parent().css({"cursor" : "pointer"});
+	    			 $(this).parent().css({"cursor" : "pointer"}); 
+	    			/* $(this).parent().css({"background" : "grey"}); */
 	    			
 	    		}).click(function(){
-	        		var No = $(this).parent().children("input").val();
-	        		location.href="<%=request.getContextPath()%>/shippingModify?mNo=<%=loginUser.getmNo()%>&listNo=" + ol.getListNo();
+	    			var oNo = $("#oNoinfo").val();
+	    			var userNo = $("#userNo").val();
+	    			
+	        		<%-- location.href = "<%=request.getContextPath()%>/orderListDetail?oNo="+oNo+"&userNo="+userNo; --%>
+	        		location.href="<%=request.getContextPath()%>/orderListDetail?userNo=<%=loginUser.getmNo()%>&oNo=" + oNo;  
 	        		
 	    		})
 	    		

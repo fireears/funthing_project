@@ -272,8 +272,8 @@ public class PaymentDao {
 					}else {
 						System.out.println("캘린더 선택 날자선택");
 						
-						String query = " SELECT THUMBNAIL, P_NAME, P_COLOR, P_SIZE,  TOTAL_PRICE, O_NO, O_DATE,RCV_NAME, rcv_adrs, rcv_phone, commentt, M_NO ,PRCS_STATUS,CANCEL_YN, O_NUM "
-								+ " FROM(SELECT rownum rnum,pd.THUMBNAIL,PD.P_NAME, PD.P_COLOR, PD.P_SIZE,  PI.TOTAL_PRICE, PO.O_NO, PI.O_DATE,pi.RCV_NAME, pI.rcv_adrs, pi.rcv_phone, pi.commentt, M.M_NO ,J.PRCS_STATUS,j.CANCEL_YN,  PO.O_NUM "
+						String query = "THUMBNAIL, P_NAME, P_COLOR, P_SIZE,  TOTAL_PRICE, O_NO, O_DATE,RCV_NAME, rcv_adrs, rcv_phone, commentt, M_NO ,PRCS_STATUS,CANCEL_YN, O_NUM "
+								+ " FROM(SELECT rownum rnum, pd.THUMBNAIL,PD.P_NAME, PD.P_COLOR, PD.P_SIZE,  PI.TOTAL_PRICE, PO.O_NO, PI.O_DATE,pi.RCV_NAME, pI.rcv_adrs, pi.rcv_phone, pi.commentt, M.M_NO ,J.PRCS_STATUS,j.CANCEL_YN,  PO.O_NUM "
 								+ " FROM PRODUCT_ORDER PO "
 								+ " JOIN PAYMENT_INFO PI ON PO.O_NO = PI.O_NO "
 								+ " JOIN PRODUCT PD ON PO.P_NO = PD.P_NO "
@@ -285,11 +285,11 @@ public class PaymentDao {
 
 							
 						pstmt = conn.prepareStatement(query);
-						pstmt.setInt(4, startRow);
-						pstmt.setInt(5, endRow);	
 						pstmt.setString(1 , userNo);
 						pstmt.setString(2, firstDate);
 						pstmt.setString(3, secondDate);
+						pstmt.setInt(4, startRow);
+						pstmt.setInt(5, endRow);	
 						
 						rset = pstmt.executeQuery();
 						
@@ -300,6 +300,7 @@ public class PaymentDao {
 						/* System.out.println("while(rset.next())"); */
 						
 						ol = new OrderUpdate(
+//											rset.getInt("rownum"),
 											rset.getString("THUMBNAIL"),
 											rset.getString("P_NAME"),
 											rset.getString("P_COLOR"),
@@ -384,6 +385,65 @@ public class PaymentDao {
 		}
 		
 		return result;
+	}
+
+
+	// 주문목록 상세 페이지_혜린
+	public ArrayList<OrderUpdate> selectOrderDetail(Connection conn, String oNo, String userNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		OrderUpdate ou = null;
+		ArrayList<OrderUpdate> list = new ArrayList<>();
+		
+		String query =" SELECT  O_NO, O_DATE, P_NAME, P_COLOR, P_SIZE, O_NUM, RCV_NAME, rcv_adrs, rcv_phone, commentt,  TOTAL_PRICE, point_use,pmnt_mthd,SHIP_PRICE, pmnt_price, expt_point ,PRCS_STATUS,CANCEL_YN "
+						+ " FROM(SELECT  PO.O_NO, PI.O_DATE, PD.P_NAME, PD.P_COLOR, PD.P_SIZE,PO.O_NUM, pi.RCV_NAME, pI.rcv_adrs, pi.rcv_phone, pi.commentt,  PI.TOTAL_PRICE, pi.point_use, pi.pmnt_mthd, pi.SHIP_PRICE,pi.pmnt_price, pi.expt_point, J.PRCS_STATUS, j.CANCEL_YN "
+						+ " FROM PRODUCT_ORDER PO "
+						+ " JOIN PAYMENT_INFO PI ON PO.O_NO = PI.O_NO " 
+						+ " JOIN PRODUCT PD ON PO.P_NO = PD.P_NO "
+						+ " JOIN JUMUN J ON PO.O_NO = J.O_NO " 
+						+ " JOIN MEMBER M ON PI.M_NO = M.M_NO "
+						+ " WHERE j.o_no= ?) ";
+
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1,oNo);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				ou = new OrderUpdate(
+						rset.getString("O_NO"),
+						rset.getDate("O_DATE"),
+						rset.getString("P_NAME"),
+						rset.getString("P_COLOR"),
+						rset.getString("P_SIZE"),
+						rset.getInt("O_NUM"),
+						rset.getString("RCV_NAME"),
+						rset.getString("rcv_adrs"),
+						rset.getInt("rcv_phone"),
+						rset.getString("commentt"),
+						rset.getInt("TOTAL_PRICE"),
+						rset.getInt("point_use"),
+						rset.getString("pmnt_mthd"),
+						rset.getString("SHIP_PRICE"),
+						rset.getInt("pmnt_price"),
+						rset.getInt("expt_point"),
+						rset.getString("PRCS_STATUS"),
+						rset.getString("CANCEL_YN")
+						);
+				
+				list.add(ou);
+			}
+			
+			System.out.println("detail list : " + list);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return list;
 	}
 
 	

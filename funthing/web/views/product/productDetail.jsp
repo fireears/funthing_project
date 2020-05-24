@@ -402,11 +402,11 @@
         <table id="qnaTb">
             <tbody>
             	<% if(!qnaList.isEmpty()){ %>
-            	<%for(AdminProductQnA ap : qnaList){ %>
             	 <tr>
                      <th align="center">아이디</th><th align="center">제목</th><th align="center">작성날짜</th>
                     
                 </tr>
+            	<%for(AdminProductQnA ap : qnaList){ %>
                 <tr>
                     <td><%= ap.getmId() %></td><td><%= ap.getQnaTitle() %></td><td><%= ap.getQnaDate() %></td>
                     
