@@ -383,6 +383,7 @@
     <div id="review_area">
         <form action="<%=request.getContextPath()%>/ReviewInsert" method="post" enctype="multipart/form-data">
         	<input type="hidden" name="rev_pNo" value="<%= pd.getpNo() %>" />
+        	<input type="hidden" name="rev_pName" value="<%= pd.getpName() %>" />
             <div class="rev_rate">
                 <select name="rev_rateS" id="rev_rateS">
                     <option value="5">★★★★★</option>
@@ -489,7 +490,7 @@
         			
         		},
         		error : function(data){
-        			alert("실패");
+        			alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
         		}
         	});
         	// ajax end
