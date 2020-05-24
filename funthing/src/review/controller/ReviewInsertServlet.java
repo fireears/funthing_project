@@ -3,6 +3,7 @@ package review.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -92,8 +93,10 @@ public class ReviewInsertServlet extends HttpServlet {
 		// 아이디와 상품 번호를 가지고 조회
 //		Boolean rvb = rvService.searchOrder(revmId,revpNo);
 		rvList = rvService.searchOrder(revmId,revpNo);
-
 		
+		RequestDispatcher view = null;
+		
+		String msg = "";
 		
 		if(rvList.size() != 0) {
 			prdName = rvList.get(0).getpNo();
@@ -132,20 +135,22 @@ public class ReviewInsertServlet extends HttpServlet {
 					
 					
 					if(mbRs > 0) {
-						System.out.println("됐다");
-						
+						System.out.println("meber point update");
+						msg = "리뷰가 등록되었습니다.";
 					}
 					
 					
 				}
 				
-				
+				// 어떻게 다시 프로덕트 페이지로 넘기지?
+//				view = request.getRequestDispatcher("/views/product/productDetail.jsp");
 			}
 			
 		}else {
-			System.out.println("값이 없다");
+			System.out.println("리뷰 업로드 실패");
 		}
 		
+//		view.forward(request, response);
 	}
 
 	/**

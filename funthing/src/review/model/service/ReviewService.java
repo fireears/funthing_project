@@ -1,12 +1,12 @@
 package review.model.service;
 
-import static common.JDBCTemplate.*;
+import static common.JDBCTemplate.commit;
+import static common.JDBCTemplate.getConnection;
+import static common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.ArrayList;
 
-import member.model.vo.Member;
-import member.model.vo.MemberPoint;
 import review.model.dao.ReviewDao;
 import review.model.vo.Review;
 
@@ -67,6 +67,16 @@ public class ReviewService {
 		}
 		
 		return mbRs;
+	}
+
+
+	public ArrayList<Review> selectReview(String pNo) {
+		Connection conn = getConnection();
+		ArrayList<Review> rvListView = new ReviewDao().selectReview(conn, pNo);
+		
+		
+		
+		return rvListView;
 	}
 
 

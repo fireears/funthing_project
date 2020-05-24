@@ -155,5 +155,61 @@ public class ReviewDao {
 		return mbRs;
 	}
 
+	public ArrayList<Review> selectReview(Connection conn, String p_no) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<Review> rvListView = new ArrayList<>();
+		
+		System.out.println("dao p_no : " + p_no);
+		
+		String p_noLike = p_no + "%";		// 상품 번호의 색상, 사이즈 다른 값까지 찾아 줌
+		
+		String query = "SELECT * FROM REVIEW R JOIN MEMBER M ON(R.M_NO = M.M_NO) WHERE P_NO LIKE ? ORDER BY 1 DESC";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setString(1, p_noLike);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Review rv = new Review(
+						rs.getInt("REV_NO"),
+						rs.getString("REV_TITLE"),
+						rs.getString("P_NO"),
+						rs.getString("REV_CONTENTS"),
+						rs.getString("REV_DATE"),
+						rs.getInt("VIEWS_NUM"),
+						rs.getInt("RATE"),
+						rs.getString("REV_PIC_DIR"),
+						rs.getString("M_NAME"));
+				
+				rvListView.add(rv);
+			}
+
+			// 받아준 rate 숫자형을 문자형으로 변경
+			for(int i = 0; i < rvListView.size(); i ++) {
+				switch(rvListView.get(i).getRate()) {
+					case 1 : rvListView.get(i).setRateStar("★☆☆☆☆"); break;
+					case 2 : rvListView.get(i).setRateStar("★★☆☆☆"); break;
+					case 3 : rvListView.get(i).setRateStar("★★★☆☆"); break;
+					case 4 : rvListView.get(i).setRateStar("★★★★☆"); break;
+					case 5 : rvListView.get(i).setRateStar("★★★★★"); break;
+				}
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rs);
+		}
+		
+		
+		return rvListView;
+	}
+
 
 }
