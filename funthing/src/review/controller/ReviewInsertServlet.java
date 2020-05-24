@@ -75,6 +75,9 @@ public class ReviewInsertServlet extends HttpServlet {
 		
 		//상품번호 불러오기
 		String revpNo = multiRequest.getParameter("rev_pNo");
+		// 상품 이름 불러오기
+		String revpName = multiRequest.getParameter("rev_pName");
+		System.out.println("insert pname : " + revpName);
 		
 		//별점
 		int revRate = Integer.valueOf(multiRequest.getParameter("rev_rateS"));
@@ -143,14 +146,15 @@ public class ReviewInsertServlet extends HttpServlet {
 				}
 				
 				// 어떻게 다시 프로덕트 페이지로 넘기지?
-//				view = request.getRequestDispatcher("/views/product/productDetail.jsp");
+				view = request.getRequestDispatcher("/productDateil?pName="+revpName);
+				
 			}
 			
 		}else {
 			System.out.println("리뷰 업로드 실패");
 		}
 		
-//		view.forward(request, response);
+		view.forward(request, response);
 	}
 
 	/**
