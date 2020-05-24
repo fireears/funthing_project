@@ -1,33 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="payment.model.vo.ShoppingPayment" %>
 <%@ page import="member.model.vo.MemberPoint" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="payment.model.vo.ShoppingPayment" %>
 <%@ page import="java.text.DecimalFormat" %>
 <%
-	ShoppingPayment p = (ShoppingPayment)request.getAttribute("p");
-
 	DecimalFormat formatter = new DecimalFormat("###,###");
 	MemberPoint mp = (MemberPoint)request.getAttribute("m");
-	/* String mEmail = (String)request.getAttribute("mEmail"); */
-	
-	String thumbnail = p.getThumbnail();
-	String pName = p.getP_name();
-	String color = p.getP_color();
-	String size = p.getP_size();
-	
-	int number = Integer.valueOf(p.getNumber());
-	int retailPrice = p.getRetail_price();
-	int dcRate = p.getDc_rate();
-	int pPrice = p.getP_price();
-	int pPoint = p.getP_point();
-	
+	ArrayList<ShoppingPayment> resultList = (ArrayList<ShoppingPayment>)request.getAttribute("resultList");
+
 	String mNo = mp.getmNo();
 	int mPoint = mp.getmPoint();
 	double point_rate = mp.getPoint_rate();
 	
-	
+	int p_point = 0;
+	int totalPrice = 0;
+	try
+	{
+		
+		if(!resultList.isEmpty())
+		{
+			for(ShoppingPayment sp : resultList)
+			{
+				totalPrice += sp.getP_price() * Integer.valueOf(sp.getNumber());
+			}
+		}
+	}
+	catch(NumberFormatException e)
+	{
+		e.printStackTrace();
+	}
 	
 %>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -205,19 +210,21 @@
                                 <tr>
                                     <th>상품/옵션 정보(color/size)</th><th>수량</th><th>상품금액</th><th>할인/적립</th><th>합계금액</th><th>배송비</th>
                                 </tr>
-                                <%if(p != null) { %>
+                                <%if(!resultList.isEmpty()) { %>
+                                <%for(ShoppingPayment sp : resultList) {%>
                                 <tr style="line-heigth:150px;">
-                                    <td align="left"><img src="<%=request.getContextPath()+"/images/thumbnail/" + thumbnail + ".jpg" %>" alt="상품사진" id="productImg" style="width:80px; height:100px;"><span><%=pName %>/<%=color %>/<%=size %></span></td>
-                                    <td style="text-align: center; "><div id="num"><%=number %></div></td>
-                                    <td style="text-align: center;"><div id="retail_price"><%=formatter.format(retailPrice*number) %></div></td>
-                                    <td style="text-align: center;"><div id="dc_point"><%=dcRate %>%/<%=pPoint*number %>p</div></td>
-                                    <td style="text-align: center;"><div id="result_price"><%=formatter.format(pPrice*number) %></div></td>
-                                    <%if(pPrice*number > 50000) { %>
+                                    <td align="left"><img src="<%=request.getContextPath()+"/images/thumbnail/" + sp.getThumbnail() + ".jpg" %>" alt="상품사진" id="productImg" style="width:80px; height:100px;"><span><%=sp.getP_name() %>/<%=sp.getP_color() %>/<%=sp.getP_size() %></span></td>
+                                    <td style="text-align: center; "><div id="num"><%=sp.getNumber() %></div></td>
+                                    <td style="text-align: center;"><div id="retail_price"><%=formatter.format(sp.getRetail_price() * Integer.valueOf(sp.getNumber())) %></div></td>
+                                    <td style="text-align: center;"><div id="dc_point"><%=sp.getDc_rate() %>%/<%=sp.getP_point() %>p</div></td>
+                                    <td style="text-align: center;"><div id="result_price"><%=formatter.format(sp.getP_price() * Integer.valueOf(sp.getNumber())) %></div></td>
+                                    <%if(sp.getP_price() * Integer.valueOf(sp.getNumber()) > 50000) { %>
                                     <td style="text-align: center;"><div id="ship_price">0</div></td>
                                     <%} else { %>
                                     <td style="text-align: center;"><div id="ship_price">5,000</div></td>
                                     <%} %>
                                 </tr>
+                                <%p_point += sp.getP_point();} %>
                                 <%} %>
                             </tbody>
                         </table>
@@ -231,10 +238,10 @@
                             <tbody>
                                 <tr>
                                     <th class="ta-1" aria-required="true">상품 합계 금액</th>
-                                    <%if(pPrice*number > 50000) { %>
-                                    <td><div class="txt-field"><div id="product_sum_price"></div><%=formatter.format(pPrice*number) %></div></td>
+                                    <%if(totalPrice > 50000) { %>
+                                    <td><div class="txt-field"><div id="product_sum_price"></div><%=formatter.format(totalPrice) %></div></td>
                                     <%} else { %>
-                                    <td><div class="txt-field"><div id="product_sum_price"></div><%=formatter.format((pPrice*number)+5000) %></div></td>
+                                    <td><div class="txt-field"><div id="product_sum_price"></div><%=formatter.format(totalPrice +5000) %></div></td>
                                     <%} %>
                                 </tr>
                                 <tr>
@@ -262,12 +269,12 @@
                             <hr>
     
                             <table>
-                            	<%if(pPrice*number > 50000) { %>
-                                <tr><th>상품 합계 금액</th><td id="totalPrice" style="text-align: right;"><input type="hidden" name="total_price" value="<%=pPrice*number%>"><%=formatter.format(pPrice*number) %>원</td></tr>
+                            	<%if(totalPrice > 50000) { %>
+                                <tr><th>상품 합계 금액</th><td id="totalPrice" style="text-align: right;"><input type="hidden" name="total_price" value="<%=totalPrice%>"><%=formatter.format(totalPrice) %>원</td></tr>
                                 <%} else { %>
-                                <tr><th>상품 합계 금액</th><td id="totalPrice" style="text-align: right;"><input type="hidden" name="total_price" value="<%=pPrice*number + 5000%>"><%=formatter.format(pPrice*number +5000) %>원</td></tr>
+                                <tr><th>상품 합계 금액</th><td id="totalPrice" style="text-align: right;"><input type="hidden" name="total_price" value="<%=totalPrice + 5000%>"><%=formatter.format(totalPrice +5000) %>원</td></tr>
                                 <%} %>
-                                <%if((pPrice * number) > 50000) {%>
+                                <%if(totalPrice > 50000) {%>
                                 <tr><th>배송비</th><td  style="text-align: right;"><input type="hidden" name="ship_price" value="0">0원</td></tr>
                                 <%} else { %>
                                 <tr><th>배송비</th><td  style="text-align: right;"><input type="hidden" name="ship_price" value="5000">5000원</td></tr>
@@ -277,10 +284,10 @@
                             <hr>
     
                             <table>
-                                <tr><th>최종 결제 금액</th><td id="resultprice"><input type="hidden" id="expt_price" name="expt_price"><%=formatter.format(pPrice*number) %>원</td></tr>
-                                <tr><th>회원 등급별 적립금</th><td><%=(int)(pPrice * point_rate) %>p</td></tr>
-                                <tr><th>상품별 적립금</th><td><%=pPoint %>p</td></tr>
-                                <tr><th>총 적립예정 적립금</th><td><input type="hidden" name="expt_point" value="<%=(int)((pPrice * point_rate) + pPoint) %>"><%=(int)((pPrice * point_rate) + pPoint) %>p</td></tr>
+                                <tr><th>최종 결제 금액</th><td id="resultprice"><input type="hidden" id="expt_price" name="expt_price"><%=formatter.format(totalPrice) %>원</td></tr>
+                                <tr><th>회원 등급별 적립금</th><td><%=(int)(totalPrice * point_rate) %>p</td></tr>
+                                <tr><th>상품별 적립금</th><td><%=p_point %>p</td></tr>
+                                <tr><th>총 적립예정 적립금</th><td><input type="hidden" name="expt_point" value="<%=(int)((totalPrice * point_rate) + p_point) %>"><%=(int)((totalPrice * point_rate) + p_point) %>p</td></tr>
                             </table>
     
                             <hr>
@@ -310,10 +317,10 @@
 			var IMP=window.IMP;
 			IMP.init('imp33962000');	
 			$("#rcv_name").focus();
-			<%if(pPrice*number > 50000) { %>
-            	var tp = <%=pPrice*number %>;
+			<%if(totalPrice > 50000) { %>
+            	var tp = <%=totalPrice %>;
             <%} else { %>
-      			var tp = <%=pPrice*number +5000 %>;
+      			var tp = <%=totalPrice +5000 %>;
             <%} %>
 			
 			$("#resultprice").text(tp+"원");
@@ -349,10 +356,10 @@
 		$("#pay").click(function(){
 			/* val payMethod = $("input[name=pmnt_mthd]").val(); */
 			alert("결제");
-			<%if(pPrice*number > 50000) { %>
-        		var tp = <%=pPrice*number %>;
+			<%if(totalPrice > 50000) { %>
+        		var tp = <%=totalPrice %>;
         	<%} else { %>
-  				var tp = <%=pPrice*number +5000 %>;
+  				var tp = <%=totalPrice +5000 %>;
         	<%} %>
 			var pu = $("#point_user").val();
 			
@@ -373,10 +380,10 @@
 			}, function(rsp) {
 			    if ( rsp.success ) {
 			        var msg = '결제가 완료되었습니다.';
-			        msg += '고유ID : ' + rsp.imp_uid;
+			        /* msg += '고유ID : ' + rsp.imp_uid;
 			        msg += '상점 거래ID : ' + rsp.merchant_uid;
 			        msg += '결제 금액 : ' + rsp.paid_amount;
-			        msg += '카드 승인번호 : ' + rsp.apply_num;
+			        msg += '카드 승인번호 : ' + rsp.apply_num; */
 			    } else {
 			        var msg = '결제에 실패하였습니다.';
 			        msg += '에러내용 : ' + rsp.error_msg;
@@ -386,15 +393,5 @@
 			});
 		})
 	</script>
-	<script>
-		
-			
-		
-			
-				
-			
-		
-		
-		
-	</script>
+	
 </html>

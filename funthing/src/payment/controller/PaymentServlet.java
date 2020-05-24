@@ -39,7 +39,7 @@ public class PaymentServlet extends HttpServlet {
 		{
 			String rcv_name = request.getParameter("rcv_name");
 			String rcv_adrs = request.getParameter("rcv_adrs");
-			int rcv_phone = Integer.valueOf(request.getParameter("rcv_phone"));
+			String rcv_phone = request.getParameter("rcv_phone");
 			String comment = request.getParameter("comment");
 			int point_use = Integer.valueOf(request.getParameter("point_use"));
 			int total_price = Integer.valueOf(request.getParameter("total_price"));
@@ -64,6 +64,16 @@ public class PaymentServlet extends HttpServlet {
 			System.out.println(ship_price);
 			System.out.println(pmnt_price);
 			System.out.println(expt_point);
+
+			if(result > 0)
+			{
+				System.out.println("결제 완료");
+			}
+			else
+			{
+				System.out.println("결제 실패");
+			}
+			
 		}
 		catch(NumberFormatException e)
 		{
