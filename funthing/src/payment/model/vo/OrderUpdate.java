@@ -11,6 +11,7 @@ public class OrderUpdate {
 	private String pName;		// 상품이름
 	private String pColor;		// 상품색상
 	private String pSize;		// 상품사이즈
+
 	private int totalPrice;		// 상품가격(PAYMANT_INFO)
 	// PAYMENT_IMFO table
 	private String o_no;		// 주문번호
@@ -84,12 +85,14 @@ public class OrderUpdate {
 	}
 
 
+	
+
+
 
 	public OrderUpdate(String thumbnail, String pName, String pColor, String pSize, int totalPrice, String o_no, Date o_date,
 			String rcv_name, String rcv_adrs, int rcv_phone, String comment, String m_no, String prcsStatus,
 			String cancelYn, int oNum) {
 		super();
-//		this.rNum = rNum;
 		this.thumbnail = thumbnail;
 		this.pName = pName;
 		this.pColor = pColor;

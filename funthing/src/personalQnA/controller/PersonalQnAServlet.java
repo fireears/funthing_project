@@ -110,7 +110,15 @@ public class PersonalQnAServlet extends HttpServlet {
 			request.setAttribute("list", list);
 			request.setAttribute("pi", pi);
 			request.setAttribute("userNo", userNo);
+			
+			// insert 성공 시 메세지 같이 jsp파일로 보내기
+		}else if(!list.isEmpty() && msg != null) {
+			view = request.getRequestDispatcher("/views/personalQnA/myPagePerQnAList.jsp");
+			request.setAttribute("list", list);
+			request.setAttribute("pi", pi);
+			request.setAttribute("userNo", userNo);
 			request.setAttribute("msg", msg);
+			
 			
 		}else {
 			view = request.getRequestDispatcher("/views/personalQnA/myPagePerQnAList.jsp");

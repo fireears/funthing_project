@@ -16,6 +16,7 @@ import java.util.Properties;
 import member.model.vo.Member;
 import member.model.vo.MemberPoint;
 import member.model.vo.MemberShoppingBag;
+import payment.model.vo.OrderUpdate;
 
 public class MemberDao {
 
@@ -342,11 +343,12 @@ public class MemberDao {
 	      try {
 
 	         for(int i=0;i<list1.size();i++) {            
-	               String query2="SELECT THUMBNAIL,P_NAME,P_POINT,P_PRICE FROM PRODUCT WHERE P_NO ='"+list1.get(i)+"'";   
+	               String query2="SELECT 	P_NO,THUMBNAIL,P_NAME,P_POINT,P_PRICE FROM PRODUCT WHERE P_NO ='"+list1.get(i)+"'";   
 	               Statement stmt2=conn.createStatement();
 	               ResultSet rset2=stmt2.executeQuery(query2);
 	               if(rset2.next()) {
 	               MemberShoppingBag msb = new MemberShoppingBag(rset2.getString("P_NAME"), rset2.getString("THUMBNAIL"), rset2.getInt("P_POINT"),list2.get(i), rset2.getInt("P_PRICE"));
+	               msb.setP_no(rset2.getString("P_NO"));
 	               al.add(msb);            
 	               }
 	         }
@@ -452,7 +454,7 @@ public class MemberDao {
 
 	
 	// 마이페이지 회원 이름, 등급, 적립금 내역 가져오기_희지
-	public MemberPoint memberInfo(Connection conn, String userNo) {
+	public MemberPoint memberInfo(Connection conn, String userNoM) {
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -466,7 +468,7 @@ public class MemberDao {
 		
 		try {
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, userNo);
+			pstmt.setString(1, userNoM);
 			
 			rset = pstmt.executeQuery();
 			
@@ -519,6 +521,106 @@ public class MemberDao {
 		
 		
 		return m;
+	}
+
+	
+	// 마이 페이지 최근 주문 목록 리스트 카운트_희지
+	public int currentListCount(Connection conn, String userNoM) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int currentListCount = 0;
+		System.out.println("dao에서 userNoM : " + userNoM);
+		
+		String query = "SELECT COUNT(*) \r\n" + 
+				"FROM ORDER_LIST \r\n" + 
+				"WHERE M_NO =? AND TO_DATE(O_DATE,'RRRR/MM/DD')>= TO_DATE(SYSDATE,'RRRR/MM/DD') -30";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userNoM);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				currentListCount = rset.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		System.out.println("dao에서 리스트 카운트 : " + currentListCount);
+		return currentListCount;
+	}
+	
+	
+	// 마이 페이지 최근 주문 목록 select_희지
+	public ArrayList<OrderUpdate> selectCurrentOrderList(Connection conn, int currentPage, int limit, String userNoM) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		OrderUpdate co = null;
+		
+		ArrayList<OrderUpdate> coList = new ArrayList<>();
+		System.out.println("memberDao 에서 currentPage, limit, userNo : " + currentPage + limit + userNoM);
+		
+		int startRow = (currentPage -1) * limit +1;
+		int endRow = startRow + (limit -1);
+		
+		String query = " SELECT THUMBNAIL, P_NAME, P_COLOR, P_SIZE,  TOTAL_PRICE, O_NO, O_DATE,RCV_NAME, rcv_adrs, rcv_phone, commentt, M_NO ,PRCS_STATUS,CANCEL_YN, O_NUM "
+				+ " FROM(SELECT rownum rnum,pd.THUMBNAIL,PD.P_NAME, PD.P_COLOR, PD.P_SIZE,  PI.TOTAL_PRICE, PO.O_NO, PI.O_DATE,pi.RCV_NAME, pI.rcv_adrs, pi.rcv_phone, pi.commentt, M.M_NO ,J.PRCS_STATUS,j.CANCEL_YN,  PO.O_NUM "
+				+ " FROM PRODUCT_ORDER PO "
+				+ " JOIN PAYMENT_INFO PI ON PO.O_NO = PI.O_NO "
+				+ " JOIN PRODUCT PD ON PO.P_NO = PD.P_NO "
+				+ " JOIN JUMUN J ON PO.O_NO = J.O_NO "
+				+ " JOIN MEMBER M ON PI.M_NO = M.M_NO "
+				+ " WHERE M.M_NO= ?) " 
+				+ " WHERE RNUM BETWEEN ? AND ? " ;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userNoM);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			
+			while(rset.next()) {
+				/* System.out.println("while(rset.next())"); */
+				
+				co = new OrderUpdate(
+									rset.getString("THUMBNAIL"),
+									rset.getString("P_NAME"),
+									rset.getString("P_COLOR"),
+									rset.getString("P_SIZE"),
+									rset.getInt("TOTAL_PRICE"),
+									rset.getString("O_NO"),
+									rset.getDate("O_DATE"),
+									rset.getString("RCV_NAME"),
+									rset.getString("RCV_ADRS"),
+									rset.getInt("RCV_PHONE"),
+									rset.getString("COMMENTT"),
+									rset.getString("M_NO"),
+									rset.getString("PRCS_STATUS"),
+									rset.getString("CANCEL_YN"),
+									rset.getInt("O_NUM"));
+				
+				coList.add(co);
+			}
+				
+			System.out.println("Dao에서 coList : " + coList);
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return coList;
 	}
 	
 
