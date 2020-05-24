@@ -59,7 +59,7 @@
             <div class="s_title">
                 <h3>결제 예정 상품</h3>
             </div>
-            <form id="shoppingbagForm">
+            <form id="shoppingbagForm" method="get" action="#none">
             <input type="hidden" name="userNo" value="<%=loginUser.getmNo() %>">
                 <table class="s_table">
                     <tr>
@@ -79,6 +79,7 @@
             }
                        
                 for(int i =0;i<list.size();i++){%>
+                	<%-- <input type="hidden" value="<%=%>">//상품번호 --%>
                     <tr>
                         <td><input type="checkbox" name="check" value="<%=list.get(i).getP_name()%>"></td>
                         <td class="imgArea"><img src="<%=request.getContextPath()+"/images/thumbnail/" + list.get(i).getP_thumbnail() + ".jpg" %>" /></td>

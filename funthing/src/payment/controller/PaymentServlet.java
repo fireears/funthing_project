@@ -1,11 +1,14 @@
 package payment.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import payment.model.vo.Payment;
 
 /**
  * Servlet implementation class PaymentServlet
@@ -29,6 +32,43 @@ public class PaymentServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		System.out.println("paymentServlet");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		try
+		{
+			String rcv_name = request.getParameter("rcv_name");
+			String rcv_adrs = request.getParameter("rcv_adrs");
+			int rcv_phone = Integer.valueOf(request.getParameter("rcv_phone"));
+			String comment = request.getParameter("comment");
+			int point_use = Integer.valueOf(request.getParameter("point_use"));
+			int total_price = Integer.valueOf(request.getParameter("total_price"));
+			String ship_price = request.getParameter("ship_price");
+//			String expt_price = request.getParameter("expt_price");
+			int expt_point = Integer.valueOf(request.getParameter("expt_point"));
+			String mNo = request.getParameter("mNo");
+			
+			//최종 결제 금액
+			//상품합계 금액 - 적립금 사용
+			int pmnt_price = total_price - point_use;
+			Payment p = new Payment(rcv_name, rcv_adrs, rcv_phone, comment, total_price, point_use, ship_price, pmnt_price, expt_point, mNo);
+			
+			
+			System.out.println(mNo);
+			System.out.println(rcv_name);
+			System.out.println(rcv_adrs);
+			System.out.println(rcv_phone);
+			System.out.println(comment);
+			System.out.println(point_use);
+			System.out.println(total_price);
+			System.out.println(ship_price);
+			System.out.println(pmnt_price);
+			System.out.println(expt_point);
+		}
+		catch(NumberFormatException e)
+		{
+			
+		}
+		
+		
 	}
 
 	/**
