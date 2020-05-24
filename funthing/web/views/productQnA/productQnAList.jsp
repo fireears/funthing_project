@@ -3,9 +3,9 @@
     pageEncoding="UTF-8"%>
 <%@ page import="board.model.vo.PageInfo" %>    
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="productQnA.model.vo.ProductQnaIn" %>
+<%@ page import="productQnA.model.vo.AdminProductQnA" %>
 <%
-		ArrayList<ProductQnaIn> list = (ArrayList<ProductQnaIn>)request.getAttribute("list");
+		ArrayList<AdminProductQnA> list = (ArrayList<AdminProductQnA>)request.getAttribute("list");
 		PageInfo pi = (PageInfo)request.getAttribute("pi");
 		String mNo = (String)request.getAttribute("mNo");
 		
@@ -228,17 +228,17 @@
                         <th class="tb-last">문의상태</th>
                     </tr>
                     <%if(!list.isEmpty()){ %>
-				<%for(ProductQnaIn pq : list) {%> 
+				<%for(AdminProductQnA pq : list) {%> 
                     <tr>
                     	<input type="hidden" id="QnaNo" value=<%= pq.getQnaNo()%>>
                     	<input type="hidden" id="mNo" value=<%= loginUser2.getmNo()%>>
                         <td class="tb-first"><%=pq.getQnaDate() %></td>
                         <td><%=pq.getpNo() %></td>
                         <td><%=pq.getQnaTitle() %></td>
-                        <%if(pq.getQnaDate().equals("Y")) {%>
-                        <td class="tb-last">답변완료</td>
-                        <%}else{ %>
+                        <%if(pq.getQnareId() == null) {%>
                         <td class="tb-last">답변대기</td>
+                        <%}else{ %>
+                        <td class="tb-last">답변완료</td>
                          <%} %>
                           </tr>
 			<!-- 상품문의 디테일 -->
