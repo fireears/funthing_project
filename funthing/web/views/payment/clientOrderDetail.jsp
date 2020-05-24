@@ -32,6 +32,8 @@
         .q1_wrap .q1_btnArea { width:100%; text-align:center; margin-top:20px; }
         .q1_wrap .q1_btnArea .btn { margin:0 3px; width:160px; height:60px; font-size:16px; border:1px solid #ddd; background:#eee; }
         .q1_wrap .q1_btnArea .btn.submit { background:#0f4a7e; border:1px solid #aaa; color:#fff; }
+        
+        .totalPrice{font-weight:600; font-size:18px;}
     </style>
 </head>
 <body>
@@ -63,7 +65,7 @@
                         </tr>
                         <tr>
                       		<td>상품명 / 상품색상 / 사이즈  / 수량  </td>
-                      		<td><%= ou.getpName()%> / <%= ou.getpSize()%> / <%= ou.getpColor()%> / <%=ou.getoNum() %>개</td>
+                      		<td><%= ou.getpName()%> /  <%= ou.getpColor()%> / <%= ou.getpSize()%>  / <%=ou.getoNum() %>개</td>
                         </tr>
                         <tr>
                       		<td>받으실 분 </td>
@@ -81,6 +83,10 @@
                       		<td>배송 메모</td>
                       		<td><%= ou.getComment()%></td>
                         </tr>
+                         <tr>
+                      		<td>결제 방법</td>
+                      		<td><%=ou.getPmnt_mthd()%></td>
+                        </tr>
                         <tr>
                       		<td>상품 가격</td>
                       		<td><%= formatter.format(ou.getTotalPrice())%> 원</td>
@@ -96,7 +102,7 @@
                         </tr>
                          <tr>
                       		<td>총 결제 금액</td>
-                      		<td><%= formatter.format(ou.getPmnt_price() + 5000 )%> 원</td>
+                      		<td class="totalPrice"><%= formatter.format(ou.getPmnt_price() + 5000 )%> 원</td>
                         </tr>
                         <%}else{ %>
                          <tr>
@@ -105,7 +111,7 @@
                         </tr>
                          <tr>
                       		<td>총 결제 금액</td>
-                      		<td><%= ou.getPmnt_price()%></td>
+                      		<td class="totalPrice"><%= ou.getPmnt_price()%></td>
                         </tr>
                         <%} %>
                       <%if(ou.getCancelYn().equals("Y")){ %>
