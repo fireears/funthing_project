@@ -79,13 +79,8 @@
             }
                        
                 for(int i =0;i<list.size();i++){%>
-<<<<<<< HEAD
                 <input type="hidden" name="p_no" value="<%=list.get(i).getP_no()%>">
                     <tr>                   	
-=======
-                	<%-- <input type="hidden" value="<%=%>">//상품번호 --%>
-                    <tr>
->>>>>>> refs/remotes/origin/dev8
                         <td><input type="checkbox" name="check" value="<%=list.get(i).getP_name()%>"></td>
                         <td class="imgArea"><img src="<%=request.getContextPath()+"/images/thumbnail/" + list.get(i).getP_thumbnail() + ".jpg" %>" /></td>
                         <td><%=list.get(i).getP_name()%></td>
