@@ -79,7 +79,8 @@
             }
                        
                 for(int i =0;i<list.size();i++){%>
-                    <tr>
+                <input type="hidden" name="p_no" value="<%=list.get(i).getP_no()%>">
+                    <tr>                   	
                         <td><input type="checkbox" name="check" value="<%=list.get(i).getP_name()%>"></td>
                         <td class="imgArea"><img src="<%=request.getContextPath()+"/images/thumbnail/" + list.get(i).getP_thumbnail() + ".jpg" %>" /></td>
                         <td><%=list.get(i).getP_name()%></td>
