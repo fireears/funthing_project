@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import payment.model.service.PaymentService;
 import payment.model.vo.Payment;
 
 /**
@@ -33,6 +34,7 @@ public class PaymentServlet extends HttpServlet {
 		System.out.println("paymentServlet");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
+		PaymentService pService = new PaymentService();
 		try
 		{
 			String rcv_name = request.getParameter("rcv_name");
@@ -51,7 +53,7 @@ public class PaymentServlet extends HttpServlet {
 			int pmnt_price = total_price - point_use;
 			Payment p = new Payment(rcv_name, rcv_adrs, rcv_phone, comment, total_price, point_use, ship_price, pmnt_price, expt_point, mNo);
 			
-			
+			int result = pService.insertPayment(p);
 			System.out.println(mNo);
 			System.out.println(rcv_name);
 			System.out.println(rcv_adrs);
