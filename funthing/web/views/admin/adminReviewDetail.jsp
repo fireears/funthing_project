@@ -55,7 +55,7 @@
 				<td colspan="5">
 				
 					<div class="content">
-						<%if(rv.getRevPic().isEmpty()){ %>
+						<%if(rv.getRevPic() != null){ %>
 							<img src="<%=request.getContextPath()%>/images/review/<%=rv.getRevPic() %>.jpg"><br/>
 						<%} %>
 						<%=rv.getRevContents() %>
