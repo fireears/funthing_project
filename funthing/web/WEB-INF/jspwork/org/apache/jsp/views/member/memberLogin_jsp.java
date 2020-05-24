@@ -3,6 +3,7 @@
  * Version: Apache Tomcat/8.5.54
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Generated at: 2020-05-22 00:06:11 UTC
 =======
 <<<<<<< HEAD
@@ -13,6 +14,9 @@
 >>>>>>> refs/remotes/origin/master
 =======
  * Generated at: 2020-05-23 11:12:29 UTC
+>>>>>>> refs/remotes/origin/master
+=======
+ * Generated at: 2020-05-24 09:28:43 UTC
 >>>>>>> refs/remotes/origin/master
  * Note: The last modified time of this file was set to
  *       the last modified time of the source file after
@@ -39,6 +43,7 @@ public final class memberLogin_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_dependants = new java.util.HashMap<java.lang.String,java.lang.Long>(2);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     _jspx_dependants.put("/views/member/../common/header.jsp", Long.valueOf(1590105963709L));
     _jspx_dependants.put("/views/member/../common/footer.jsp", Long.valueOf(1590105085191L));
 =======
@@ -49,6 +54,9 @@ public final class memberLogin_jsp extends org.apache.jasper.runtime.HttpJspBase
 >>>>>>> refs/remotes/origin/dev8
 =======
     _jspx_dependants.put("/views/member/../common/header.jsp", Long.valueOf(1590144657466L));
+>>>>>>> refs/remotes/origin/master
+=======
+    _jspx_dependants.put("/views/member/../common/header.jsp", Long.valueOf(1590312207200L));
 >>>>>>> refs/remotes/origin/master
     _jspx_dependants.put("/views/member/../common/footer.jsp", Long.valueOf(1590069923270L));
 >>>>>>> refs/remotes/origin/master
@@ -303,12 +311,16 @@ if(loginUser.getmId().equals("master")){
       out.write("\t                    <li><a href=\"");
       out.print(request.getContextPath());
 <<<<<<< HEAD
+<<<<<<< HEAD
       out.write("/views/member/myPageMain.jsp\">MY PAGE</a></li>\n");
       out.write("\t                    ");
 } 
       out.write("\n");
 =======
       out.write("/myPageMainServlet?userNo=");
+=======
+      out.write("/myPageMainServlet?userNoM=");
+>>>>>>> refs/remotes/origin/master
       out.print(loginUser.getmNo());
       out.write("\">MY PAGE</a></li>\n");
 >>>>>>> refs/remotes/origin/master

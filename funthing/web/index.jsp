@@ -14,6 +14,6 @@
  		 	response.sendRedirect(request.getContextPath()+"/main/mainView");    
 
 	%>
- 
+  
 </body>
 </html>

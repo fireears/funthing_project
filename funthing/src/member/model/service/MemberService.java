@@ -12,6 +12,7 @@ import member.model.dao.MemberDao;
 import member.model.vo.Member;
 import member.model.vo.MemberPoint;
 import member.model.vo.MemberShoppingBag;
+import payment.model.vo.OrderUpdate;
 
 public class MemberService {
 	// 로그인
@@ -181,11 +182,11 @@ public class MemberService {
 
 	
 	// 마이페이지 회원 이름, 등급, 적립금 내역 가져오기_희지
-	public MemberPoint memberInfo(String userNo) {
+	public MemberPoint memberInfo(String userNoM) {
 		Connection conn = getConnection();
 		MemberPoint mp = new MemberPoint();
 		
-		mp = new MemberDao().memberInfo(conn, userNo);
+		mp = new MemberDao().memberInfo(conn, userNoM);
 		
 		close(conn);
 		
@@ -200,6 +201,30 @@ public class MemberService {
 		
 		close(conn);
 		return m;
+	}
+	
+	
+	// 마이 페이지 최근 주문 목록 리스트 카운트_희지
+	public int currentListCount(String userNoM) {
+		Connection conn = getConnection();
+		
+		int currentListCount = new MemberDao().currentListCount(conn, userNoM);
+			
+		close(conn);
+		
+		return currentListCount;
+	}
+	
+	
+	// 마이 페이지 최근 주문 목록 select_희지
+	public ArrayList<OrderUpdate> selectCurrentOrderList(int currentPage, int limit, String userNoM) {
+		Connection conn = getConnection();
+		
+		ArrayList<OrderUpdate> coList = new MemberDao().selectCurrentOrderList(conn,currentPage,limit,userNoM);
+		
+		close(conn);
+		
+		return coList;
 	}
 
 

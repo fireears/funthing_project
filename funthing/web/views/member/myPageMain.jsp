@@ -1,10 +1,25 @@
+<!-- 마이페이지 메인_희지 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="member.model.vo.*" %>
+<%@ page import="payment.model.vo.OrderUpdate, java.util.ArrayList, board.model.vo.*" %>
+<%@ page import="java.text.DecimalFormat" %>
+
 <%
 	String msg = (String)request.getAttribute("msg");
 	MemberPoint mp = (MemberPoint)request.getAttribute("mp");
-	String userNo = (String)request.getAttribute("userNo");
+	ArrayList<OrderUpdate> coList = (ArrayList<OrderUpdate>)request.getAttribute("coList");
+	String userNoM = (String)request.getAttribute("userNoM");
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	
+	int currentPage = pi.getCurrentPage();
+	int limit = pi.getLimit();
+	int maxPage = pi.getMaxPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	
+	DecimalFormat formatter = new DecimalFormat("###,###");
+	
 	
 %>
 <!DOCTYPE html>
@@ -61,6 +76,13 @@
 		.recent-tb .tb-first {width: 200px;}
 		
 		.recent-tb .tb-last {width: 200px;}
+		
+		/* 페이징 처리 부분 */     
+        .pagingArea{margin: 0 auto; margin-top:20px; margin-bottom:20px;}
+        .pagingArea button{border:0; font-size:middle; background:white; cursor:pointer;}
+		
+		
+		
 	</style>
 
 
@@ -94,7 +116,7 @@
 						<div class="r-cont-header-images">
 							 <i class="fas fa-dollar-sign" style="font-size:70px"></i>
                     		<h4>적립금</h4>
-                    		<div style="font-size:30px;"><%=mp.getmPoint()%>p</div>
+                    		<div style="font-size:30px;"><%=formatter.format(mp.getmPoint()) %>p</div>
 		
 						</div>
 
@@ -144,17 +166,87 @@
 
 						<table class="recent-tb">
 							<tr>
-								<th class="tb-first">날짜/주문정보</th>
-								<th>상품명/옵션</th>
+								<th class="tb-first">날짜</th>
+								<th>주문번호</th>
+								<th>상품명/색상/사이즈</th>
 								<th>상품금액/수량</th>
 								<th>주문상태</th>
 								<th class="tb-last">확인/리뷰</th>
 							</tr>
-
 							
+							<%if(!coList.isEmpty()){ %>
+							<%for(OrderUpdate co : coList){ %>
+							<tr align="center">
+								<input type="hidden" id="mNo" value=<%=loginUser.getmNo() %>>
+								<input type="hidden" id="oNo" value=<%=co.getO_no() %>>
+								<td class="tb-first"><%=co.getO_date() %></td>
+								<td><%=co.getO_no() %></td>
+								<td><a href="<%=request.getContextPath()%>/productDetail?pName=<%=co.getpName()%>"><%=co.getpName() %>/<%=co.getpColor() %>/<%=co.getpSize() %></td>
+								<td><%=formatter.format(co.getTotalPrice()) %> 원 / <%=co.getoNum() %></td>
+								
+								<%if(co.getCancelYn().equals("N")){ %>
+								<td><%=co.getPrcsStatus() %></td>
+								<%}else{ %>
+								<td>주문 취소</td>
+								<%} %>
+								
+								<th class="tb-last">
+								<input type="button" value="리뷰작성" class="submit" id="rvBtn" style="width:100px;font-size:12px">
+								</th>
+							</tr>
+							<%} %><!-- for문 end -->
+							
+							<%}else{%> 
+							<tr style="margin-top:30px;">
+								<td colspan="6"><div style="text-align:center">최근 주문 정보가 없습니다.</div></td>
+							</tr>
+						
+							<%} %>
 						</table>
 					</div>
 					<!-- 최근 주문 내역 end -->
+			
+			<!-- 페이징 처리 시작 -->
+		<div class="pagingArea" align="center">
+		
+			<!-- 맨 처음으로 -->
+			<button onclick="location.href='<%=request.getContextPath() %>/myPageMainServlet?currntPage=1&userNoM=<%=userNoM%>'"> << </button>
+		
+		
+			<!-- 이전 페이지로 -->
+			<%if(currentPage == 1){ %>
+				<button disabled> < </button>
+		
+			<%}else{ %>
+				<button onclick="location.href='<%=request.getContextPath() %>/myPageMainServlet?currentPage=<%=currentPage -1 %>&userNoM=<%=userNoM%>'"> < </button>
+			<%} %>
+		
+		
+			<!-- 10개의 페이지 목록 -->
+			<%for(int p = startPage; p <= endPage; p++){ %>
+				<%if(currentPage == p){ %>
+					<button disabled><%=p %></button>
+					
+				<%}else{ %>
+					<button onclick="location.href='<%=request.getContextPath() %>/myPageMainServlet?currentPage=<%=p %>&userNoM=<%=userNoM%>'"><%=p %></button>
+				<%} %>
+			<%} %>
+			
+			
+			<!-- 다음 페이지로 -->
+			<%if(currentPage == maxPage){ %>
+				<button disabled> > </button>
+			<%}else{ %>
+				<button onclick="location.href='<%=request.getContextPath() %>/myPageMainServlet?currentPage=<%=currentPage + 1 %>&userNoM=<%=userNoM%>'"> > </button>
+			<%} %>
+		
+		
+			<!-- 맨 뒷 페이지로  -->
+			<button onclick="location.href='<%=request.getContextPath() %>/myPageMainServlet?currentPage=<%=maxPage %>&userNoM=<%=userNoM%>'"> >> </button>
+		
+	</div><!-- 페이징 처리 완료 -->
+			
+			
 				</div>
 				<!--오른쪽 컨텐츠 영역 end-->
 

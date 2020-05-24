@@ -25,38 +25,30 @@
 	</head>
 	<body>
 		<header id="header">
-	        <div class="menu-wrap">
-	            <div class="log-menu">
-	            
-	            <% if(loginUser != null){ %>
-	                <ul class="log-sec login">
-	                <%if(loginUser.getmId().equals("master")){ %>
-	                	<li class="master"><a href="<%=request.getContextPath()%>/admin/mainView">MASTER</a></li>
-	                	<%} %>
-	                    <li><a href="#none">HELP</a></li>
-	                    <li><a href="<%=request.getContextPath() %>/logout.me">LOGOUT</a></li>
-
-	                     <%if(loginUser.getmId().equals("master")){ %>
-	                    <li><a style="display:none" href="<%=request.getContextPath()%>/views/member/myPageMain.jsp">MY PAGE</a></li>
-	                    <%}else{ %>
-	                    <li><a href="<%=request.getContextPath()%>/views/member/myPageMain.jsp">MY PAGE</a></li>
-	                    <%} %>
-
-	                    <li><a href="<%=request.getContextPath()%>/myPageMainServlet?userNo=<%=loginUser.getmNo()%>">MY PAGE</a></li>
-
-	                    <li><a href="#none"><i class="fas fa-shopping-cart"></i></a></li>
-	                </ul>
-	                <% }else{ %>
-	                <ul class="log-sec logout">
-	                    <li><a href="#none">HELP</a></li>
-	                    <li><a href="<%=request.getContextPath()%>/views/member/memberJoin.jsp">JOIN</a></li>
-	                    <li><a href="<%=request.getContextPath()%>/views/member/memberLogin.jsp">LOGIN</a></li>
-	                    <li><a href="#none"><i class="fas fa-shopping-cart"></i></a></li>
-	                </ul>
-	                <% } %>
-	                
-	            </div>
-	        </div>
+	       <div class="menu-wrap">
+               <div class="log-menu">
+               
+               <% if(loginUser != null){ %>
+                   <ul class="log-sec login">
+                   <%if(loginUser.getmId().equals("master")){ %>
+                      <li class="master"><a href="<%=request.getContextPath()%>/admin/mainView">MASTER</a></li>
+                      <%} %>
+                       <li><a href="#none">HELP</a></li>
+                       <li><a href="<%=request.getContextPath() %>/logout.me">LOGOUT</a></li>
+                       <li><a href="<%=request.getContextPath()%>/myPageMainServlet?userNoM=<%=loginUser.getmNo()%>">MY PAGE</a></li>
+                       <li><a href="#none"><i class="fas fa-shopping-cart"></i></a></li>
+                   </ul>
+                   <% }else{ %>
+                   <ul class="log-sec logout">
+                       <li><a href="#none">HELP</a></li>
+                       <li><a href="<%=request.getContextPath()%>/views/member/memberJoin.jsp">JOIN</a></li>
+                       <li><a href="<%=request.getContextPath()%>/views/member/memberLogin.jsp">LOGIN</a></li>
+                       <li><a href="#none"><i class="fas fa-shopping-cart"></i></a></li>
+                   </ul>
+                   <% } %>
+                   
+               </div>
+           </div>
 	        <div id="nav-wrap">
 	            <div class="logo-wrap">
 	                <h1 class="logo"><a href="<%=request.getContextPath() %>/index.jsp">FUN-THING</a></h1>

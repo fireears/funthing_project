@@ -3,12 +3,16 @@
  * Version: Apache Tomcat/8.5.54
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Generated at: 2020-05-22 00:06:18 UTC
 =======
  * Generated at: 2020-05-22 10:24:22 UTC
 >>>>>>> refs/remotes/origin/master
 =======
  * Generated at: 2020-05-23 07:30:17 UTC
+>>>>>>> refs/remotes/origin/master
+=======
+ * Generated at: 2020-05-24 09:08:38 UTC
 >>>>>>> refs/remotes/origin/master
  * Note: The last modified time of this file was set to
  *       the last modified time of the source file after
@@ -37,12 +41,16 @@ public final class adminMain_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_dependants = new java.util.HashMap<java.lang.String,java.lang.Long>(1);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     _jspx_dependants.put("/views/admin/../common/adminHeader.jsp", Long.valueOf(1590105092856L));
 =======
     _jspx_dependants.put("/views/admin/../common/adminHeader.jsp", Long.valueOf(1590080982031L));
 >>>>>>> refs/remotes/origin/master
 =======
     _jspx_dependants.put("/views/admin/../common/adminHeader.jsp", Long.valueOf(1590215363454L));
+>>>>>>> refs/remotes/origin/master
+=======
+    _jspx_dependants.put("/views/admin/../common/adminHeader.jsp", Long.valueOf(1590080982031L));
 >>>>>>> refs/remotes/origin/master
   }
 
