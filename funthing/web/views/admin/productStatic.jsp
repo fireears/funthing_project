@@ -44,8 +44,11 @@
 
             #g_button_area tr:last-child td:nth-of-type(2) { width:20%; }
             #g_button_area tr:last-child td:nth-of-type(4) { width:40%; }
+            /* #g_button_area tr:first-child button { width:100px; height:36px; }
+            #g_button_area tr:first-child input {  height:46px; width:140px; } */
             #g_button_area tr:first-child button { width:100px; height:36px; }
-            #g_button_area tr:first-child input {  height:46px; width:140px; }
+            #submit {  height:46px; width:140px; }
+            #searchDate { width : 10%;}
             #graphWrap #g_button_area tr.g_title, #graphWrap #g_button_area td.g_title { background:#ddd; width:10%; }
 
 
@@ -63,10 +66,10 @@
                         <tr>
                             <td class="g_title">기간별</td>
                             <td colspan="3">
-                                <button value="0">일간</button>
-                                <button value="7">주간</button>
-                                <button value="30">월간</button>
-                                <button value="90">분기별</button>
+                                <input type = "radio" id = "searchDate" name = "searchDate" value="0">일간
+                                <input type = "radio" id = "searchDate" name = "searchDate"value="7">주간
+                                <input type = "radio" id = "searchDate" name = "searchDate"value="30">월간
+                                <input type = "radio" id = "searchDate" name = "searchDate"value="90">분기별
                                 <input type="date" id="start" name="start"
                                 value="2020-01-01"
                                 min="2010-01-01" max="2021-12-31"> ~ 
@@ -75,22 +78,22 @@
                                 min="2010-01-01" max="2021-12-31">
                             </td>
                             <td rowspan="2" colspan="2" class="g_btn_submit">
-                                <input type="submit" value="조회">
+                                <input type="submit" id = "submit" value="조회">
                             </td>
                         </tr>
                         <td class="g_title">성별</td>
                         <td>
-                            <input type = "radio" values="all" id="gender">전체
-                            <input type = "radio" values="male" id="gender">남자
-                            <input type = "radio" values="female" id="gender">여자
+                            <input type = "radio" values="all" id="gender" name = "gender">전체
+                            <input type = "radio" values="male" id="gender" name = "gender">남자
+                            <input type = "radio" values="female" id="gender" name = "gender">여자
                         </td>
                         <td class="g_title">카테고리별</td>
                         <td>
-                            <input type = "checkbox" values="outer">겉옷
-                            <input type = "checkbox" values="outer">상의
-                            <input type = "checkbox" values="outer">하의
-                            <input type = "checkbox" values="outer">데님
-                            <input type = "checkbox" values="outer">원피스
+                            <input type = "checkbox" id = "category" name = "category" values="outer">겉옷
+                            <input type = "checkbox" id = "category" name = "category"values="outer">상의
+                            <input type = "checkbox" id = "category" name = "category"values="outer">하의
+                            <input type = "checkbox" id = "category" name = "category"values="outer">데님
+                            <input type = "checkbox" id = "category" name = "category"values="outer">원피스
                         </td>
                     </tr>
                     </table>

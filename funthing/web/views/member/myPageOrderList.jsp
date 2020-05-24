@@ -225,8 +225,8 @@
 					<%if(!list.isEmpty()) {%>
 					<%for(OrderList ol : list){ %>
 					<tr align="center">
-						<%-- <input type="hidden" id="listNo" value=<%=ol.getlistNo() %>>
-						<input type="hidden" id="mNo" value=<%=loginUser1.getmNo()%>> --%>
+						<input type="hidden" id="listNo" value=<%=ol.getListNo() %>>
+						<input type="hidden" id="userNo" value=<%=loginUser.getmNo()%>>
 						<td class="tb-zero"><%=ol.getrNum() %></td>
 						<td class="tb-first"><%=ol.getoDate() %></td>
 						<td><%=ol.getoNo() %></td>
@@ -304,7 +304,7 @@
 	</div>
 	<%@ include file="../common/footer.jsp"%>
 
-
+ 
 	<%-- <script>
     
     	$(function(){

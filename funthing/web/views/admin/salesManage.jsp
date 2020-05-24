@@ -45,7 +45,7 @@
             #g_button_area tr:last-child td:nth-of-type(2) { width:20%; }
             #g_button_area tr:last-child td:nth-of-type(4) { width:40%; }
             #g_button_area tr:first-child button { width:100px; height:36px; }
-            #g_button_area tr:first-child input {  height:46px; width:140px; }
+            /* #g_button_area tr:first-child input {  height:46px; width:140px; } */
             #graphWrap #g_button_area tr.g_title, #graphWrap #g_button_area td.g_title { background:#ddd; width:10%; }
 
 
@@ -63,10 +63,10 @@
                         <tr>
                             <td class="g_title">기간별</td>
                             <td colspan="3">
-                                <button value="0">일간</button>
-                                <button value="7">주간</button>
-                                <button value="30">월간</button>
-                                <button value="90">분기별</button>
+                                <input type = "radio" name ="searchDate" id = "today" value="today"><label for ="today">일간</label>
+                                <input type = "radio" name ="searchDate" id = "week" value="week"><label for ="week">주간</label>
+                                <input type = "radio" name ="searchDate" id = "month" value="month"><label for ="month">월간</label>
+                                <input type = "radio" name ="searchDate" id = "3months" value="3months"><label for ="3months">분기별</label>
                                 <input type="date" id="start" name="start"
                                 value="2020-01-01"
                                 min="2010-01-01" max="2021-12-31"> ~ 

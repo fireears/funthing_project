@@ -28,8 +28,8 @@
                         <li><button type="button" onclick="productManage();">상품관리</button></li>
                         <li><button type="button" onclick="productQnA();">상품문의</button></li>
                         <li><button type="button" onclick="orderManage();">주문관리</button></li>
-                        <li><button type="button" onclick="">매출관리</button></li>
-                        <li><button type="button" onclick="">상품통계</button></li>
+                        <li><button type="button" onclick="salesManage();">매출관리</button></li>
+                        <li><button type="button" onclick="productStatic();">상품통계</button></li>
                         <li><button type="button" onclick="memberManage();">회원 관리</button></li>
                         <li><button type="button" onclick="brandManage();">브랜드 관리</button></li>
                         <li><button type="button" onclick="reviewManage">리뷰관리</button></li>
@@ -90,6 +90,14 @@
 		function client()
 		{
 			location.href = "<%=request.getContextPath()%>/main/mainView";
+		}
+		function salesManage()
+		{
+			location.href = "<%=request.getContextPath()%>/admin/salesManage";
+		}
+		function productStatic()
+		{
+			location.href = "<%=request.getContextPath()%>/admin/productStatic";
 		}
 		
 		
