@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import payment.model.dao.PaymentDao;
 import payment.model.vo.OrderList;
+import payment.model.vo.OrderUpdate;
 
 public class PaymentService {
 	
@@ -37,16 +38,52 @@ public class PaymentService {
 	}
 	
 	
-	public ArrayList<OrderList> selectOrderList(String searchDate, String firstDate, String secondDate, int currentPage,
+	public ArrayList<OrderUpdate> selectOrderList(String searchDate, String firstDate, String secondDate, int currentPage,
 			int limit, String userNo) {
 		
 		Connection conn = getConnection();
 		
-		ArrayList<OrderList> oList = new PaymentDao().selectOrderList(conn, searchDate, firstDate, secondDate, currentPage, limit, userNo);
+		ArrayList<OrderUpdate> oList = new PaymentDao().selectOrderList(conn, searchDate, firstDate, secondDate, currentPage, limit, userNo);
 		
 		close(conn);
 		
 		return oList;
+	}
+
+	// 배송지수정 페이지_혜린
+	public int updateShipModi(OrderUpdate ou) {
+		Connection conn = getConnection();
+		
+		int result = new PaymentDao().updateShipModi(conn,ou);
+		
+		// DML작업이니 트랜잭션 처리
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+
+	// 주무뉘소 페이지_혜린
+	public int orderCancle(OrderUpdate ou) {
+		Connection conn = getConnection();
+		
+		int result = new PaymentDao().orderCancle(conn,ou);
+		
+		// DML작업이니 트랜잭션 처리
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
 	}
 
 }

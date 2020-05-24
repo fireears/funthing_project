@@ -8,24 +8,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import payment.model.service.PaymentService;
 import payment.model.vo.OrderUpdate;
 
-
-
 /**
- * Servlet implementation class ShippingModify
+ * Servlet implementation class OrderCancle
  */
-@WebServlet("/shippingModify")
-public class ShippingModify extends HttpServlet {
+@WebServlet("/orderCancle")
+public class OrderCancle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ShippingModify() {
+    public OrderCancle() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -42,16 +39,12 @@ public class ShippingModify extends HttpServlet {
 //		System.out.println("update servlet searchDate : " + searchDate);
 //		System.out.println("update Servlet firstDate :" + firstDate);
 		String oNo = request.getParameter("oNo");
-		String shipName = request.getParameter("shipName");
-		String shipAds = request.getParameter("shipAds");
-		int shipTel = Integer.valueOf(request.getParameter("shipTel"));
-		String shipCom = request.getParameter("shipCom");
+		String cancleYn = request.getParameter("cancleYn");
+//		System.out.println("cancleYn : " +  cancleYn);
+		OrderUpdate ou = new OrderUpdate(oNo, cancleYn);
 		
-//		System.out.println("oNo : " + oNo);
-		
-		OrderUpdate ou = new OrderUpdate(oNo, shipName, shipAds, shipTel, shipCom);
-		
-		int result = new PaymentService().updateShipModi(ou);
+		int result = new PaymentService().orderCancle(ou);
+
 		
 		RequestDispatcher view = null;
 		
@@ -66,6 +59,7 @@ public class ShippingModify extends HttpServlet {
 		
 		view.forward(request, response);
 	}
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
