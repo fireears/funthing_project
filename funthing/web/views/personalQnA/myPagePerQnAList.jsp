@@ -9,6 +9,10 @@
 	Member loginUser3 = (Member)session.getAttribute("loginUser");
 	String userNo = (String)request.getAttribute("userNo");
  
+	// insert 성공 시 메세지 받기
+	String msg = (String)request.getAttribute("msg");
+	String q1_num = (String)request.getAttribute("q1_num");
+	
 	
 	// PageIngo값 뽑아내기
 		int currentPage = pi.getCurrentPage();
@@ -265,7 +269,14 @@
         		var perNo = $(this).parent().children("input").val();
         		location.href="<%=request.getContextPath()%>/personalQnADetail?mNo=<%=loginUser2.getmNo()%>&perNo=" + perNo;
         		
-    		})
+    		});
+    		
+    		// insert 성공시 alert
+    		<%if(msg != null){ %>
+    			alert("<%=msg%>");
+    		
+    		<%}%>
+    		
     		
     		
     	})

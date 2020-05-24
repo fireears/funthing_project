@@ -2,6 +2,7 @@
 package member.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,8 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import board.model.vo.PageInfo;
 import member.model.service.MemberService;
 import member.model.vo.MemberPoint;
+import payment.model.vo.OrderUpdate;
 
 /**
  * Servlet implementation class MyPageMainServlet
@@ -34,15 +37,18 @@ public class MyPageMainServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		String userNo = request.getParameter("userNo");
+		String userNoM = request.getParameter("userNoM");
 		
-		System.out.println("마이페이지 메인 서블릿에서 유저 넘버 : " + userNo);
+		System.out.println("마이페이지 메인 서블릿에서 유저 넘버 : " + userNoM);
 		
 		MemberService mService = new MemberService();
 		
+		// 회원이름, 등급, 적립금 가져오기
+		MemberPoint mp = new MemberPoint();
 		
-		// 리스트 카운드
-//		int listCount = mService.currentListCount(userNo);
+		mp = mService.memberInfo(userNoM);
+		
+		System.out.println("마이 페이지 메인에서 회원 정보 객체 mp : " + mp);
 		
 		
 		// 페이징 관련 변수 선언
@@ -60,26 +66,42 @@ public class MyPageMainServlet extends HttpServlet {
 			currentPage = 1;
 		}
 		
+		// 최근 주문 목록 리스트 카운드
+		int currentListCount = mService.currentListCount(userNoM);
+		
 		limit = 10;
+		maxPage = (int) ((double) currentListCount / limit + 0.9);
+		startPage = ((int) (((double) currentPage / limit + 0.9) - 1) * limit) + 1;
+		endPage = startPage + limit - 1;
+		
+		// 페이징 처리 객체 만들기
+		PageInfo pi = new PageInfo(currentPage, currentListCount, limit, maxPage, startPage, endPage);
 		
 		
 		
-		// 회원이름, 등급, 적립금 가져오기
-		MemberPoint mp = new MemberPoint();
 		
-		mp = mService.memberInfo(userNo);
+		// 최근 주문 목록 select
+		ArrayList<OrderUpdate> coList = mService.selectCurrentOrderList(currentPage, limit, userNoM);
 		
-		System.out.println("마이 페이지 메인에서 회원 정보 객체 mp : " + mp);
+		System.out.println("myPageMain Serlvet에서 coList : " + coList);
+		
+		
 		
 		RequestDispatcher view = null;
-		if(mp != null) {
+		if(mp != null && !coList.isEmpty()) {
 			view = request.getRequestDispatcher("/views/member/myPageMain.jsp");
 			request.setAttribute("mp",mp);
-			request.setAttribute("userNo", userNo);
+			request.setAttribute("coList",coList);
+			request.setAttribute("userNoM", userNoM);
+			request.setAttribute("pi", pi);
+		
 		}else {
 			view = request.getRequestDispatcher("/views/member/myPageMain.jsp");
 			request.setAttribute("mp",mp);
-			request.setAttribute("userNo", userNo);
+			request.setAttribute("coList",coList);
+			request.setAttribute("userNoM", userNoM);
+			request.setAttribute("pi", pi);
+			
 		}
 		
 		view.forward(request, response);
