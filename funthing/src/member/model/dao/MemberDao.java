@@ -343,11 +343,12 @@ public class MemberDao {
 	      try {
 
 	         for(int i=0;i<list1.size();i++) {            
-	               String query2="SELECT THUMBNAIL,P_NAME,P_POINT,P_PRICE FROM PRODUCT WHERE P_NO ='"+list1.get(i)+"'";   
+	               String query2="SELECT 	P_NO,THUMBNAIL,P_NAME,P_POINT,P_PRICE FROM PRODUCT WHERE P_NO ='"+list1.get(i)+"'";   
 	               Statement stmt2=conn.createStatement();
 	               ResultSet rset2=stmt2.executeQuery(query2);
 	               if(rset2.next()) {
 	               MemberShoppingBag msb = new MemberShoppingBag(rset2.getString("P_NAME"), rset2.getString("THUMBNAIL"), rset2.getInt("P_POINT"),list2.get(i), rset2.getInt("P_PRICE"));
+	               msb.setP_no(rset2.getString("P_NO"));
 	               al.add(msb);            
 	               }
 	         }

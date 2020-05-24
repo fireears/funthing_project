@@ -98,7 +98,7 @@ public class InsertPerQnAServlet extends HttpServlet {
 //			response.sendRedirect("perQnAlist");	// list Servlet으로 연결해주기
 			//System.out.println("insert 성공");
 //			response.sendRedirect("PersonalQnA");
-			
+			System.out.println("personalQnA로 이동"+message);
 			view = request.getRequestDispatcher("/PersonalQnA");
 			request.setAttribute("message",message);
 			request.setAttribute("userNo", userNo);
