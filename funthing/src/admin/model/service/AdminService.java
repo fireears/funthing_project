@@ -450,6 +450,16 @@ public class AdminService {
 			
 			return rvList;
 		}
+
+		// 리뷰 디테일 * 서윤
+		public Review reviewDatail(int revNo) {
+			Connection conn = getConnection();
+			Review rv = new AdminDao().reviewDetail(conn,revNo);			
+
+			close(conn);
+			
+			return rv;
+		}
 	
 	
 }

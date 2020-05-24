@@ -1482,6 +1482,51 @@ public class AdminDao {
 
 		return rvList;
 	}
+
+	public Review reviewDetail(Connection conn, int revNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		Review rv = new Review();
+		
+		String query = "SELECT * FROM REVIEW R JOIN MEMBER M ON(R.M_NO = M.M_NO) JOIN PRODUCT P ON(R.P_NO = P.P_NO) WHERE REV_NO = ?";
+		
+
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setInt(1, revNo);
+
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				rv = new Review(
+						rs.getInt("REV_NO"),
+						rs.getString("M_NO"),
+						rs.getString("REV_TITLE"),
+						rs.getString("P_NO"),
+						rs.getString("REV_CONTENTS"),
+						rs.getString("REV_DATE"),
+						rs.getInt("RATE"),
+						rs.getString("REV_PIC_DIR"),
+						rs.getString("M_ID"),
+						rs.getString("M_NAME"),
+						rs.getString("THUMBNAIL"));
+				
+				
+			}
+			System.out.println("review Detail Dao : " + rv);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rs);
+		}
+		
+		
+		return rv;
+	}
 	
 	
 

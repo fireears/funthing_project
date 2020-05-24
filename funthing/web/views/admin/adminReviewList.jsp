@@ -81,7 +81,8 @@
                     <th>리뷰 날짜</th>
                 </tr>
                 <% for(Review rv : rvList){ %>
-                <tr>
+                <tr class="rvLine">
+                	<input type="hidden" class="rvNo" name="rvNo" value="<%=rv.getRevNo() %>">
                     <td><%=rv.getRevNo() %></td>
                     <td class="rv_tbImg"><img src="<%=request.getContextPath()%>/images/thumbnail/<%=rv.getRvThumb() %>.jpg"></td>
                     <td><%=rv.getpNo() %></td>
@@ -93,6 +94,15 @@
                 </tr>
                 <%} %>
             </table> 
+            <script>
+            	$(".rvLine").click(function(){
+            		var rvNo = $(this).children(".rvNo").val();
+            		console.log(rvNo);
+            		
+            		location.href = "<%=request.getContextPath()%>/admin/AdminReviewDetail?revNo=" + rvNo;
+            		
+            	})
+            </script>
         </div>
         <!-- 페이지네이션 -->	
         <div id="pageBtn" align="center">

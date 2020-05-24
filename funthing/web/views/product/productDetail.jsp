@@ -18,7 +18,7 @@
 	
 	// review
 	ArrayList<Review> rvList = (ArrayList<Review>)request.getAttribute("rvList");
-	String rvMsg = (String)request.getAttribute("rvMsg");
+	String rvMsg = (String)request.getAttribute("msg");
 %>    
 <!DOCTYPE html>
 <html lang="ko">
@@ -418,7 +418,7 @@
         	</table>
         <!-- 리뷰 불러올 부분 -->
         <script>
-        	// alert("!");
+        	 alert(rvMsg);
         $(window).load(function(){
         	$.ajax({
         		url : "<%=request.getContextPath()%>/ReviewList",

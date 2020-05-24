@@ -139,7 +139,7 @@ public class ReviewInsertServlet extends HttpServlet {
 					
 					if(mbRs > 0) {
 						System.out.println("meber point update");
-						msg = "리뷰가 등록되었습니다.";
+						request.setAttribute("msg","리뷰가 등록되었습니다.");
 					}
 					
 					
@@ -151,6 +151,9 @@ public class ReviewInsertServlet extends HttpServlet {
 			
 		}else {
 			System.out.println("리뷰 업로드 실패");
+			request.setAttribute("msg","리뷰 업로드 실패");
+			view = request.getRequestDispatcher("/productDateil?pName="+revpName);
+			
 		}
 		
 		view.forward(request, response);
