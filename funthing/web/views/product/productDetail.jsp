@@ -238,9 +238,12 @@
                         <form method="get" action="<%=request.getContextPath()%>/PaymentInfo" id="colorSizeform">
                             <ul id="buyList">
                             <%if(loginUser != null){ %>
-                             <input type="hidden" name="p_no" value="<%=list.get(1).getpNo()%>">
+                             <input type="hidden" name="pNo" value="<%=list.get(1).getpNo()%>">
                           	  <input type="hidden" name="userNo" value="<%=loginUser.getmNo() %>"> 
                           	  <input type="hidden" name="mEmail" value="<%=loginUser.getmEmail() %>"> 
+                          	  <input type="hidden" name="pName" value="<%=pd.getpName() %>">
+                          	  <input type="hidden" name="bNo" value="<%=pd.getbNo() %>"> 
+                          	  <input type="hidden" name="bName" value="<%=pd.getbName() %>"> 
                             <%}else{ %>
                            	 <input type="hidden" name="p_no" value="<%=list.get(1).getpNo()%>">
                            	 <%-- <input type="hidden" name="userNo" value="<%=loginUser.getmNo() %>"> --%>
@@ -394,7 +397,8 @@
     <div id="QnA_area">
         <h3>상품 Q&A</h3>
         <%if(loginUser != null){ %>
-        <button onclick="location.href='<%=request.getContextPath() %>/views/productQnA/productQnAInsert.jsp?mNo=<%=loginUser.getmNo() %>&pName=<%=pd.getpName()%>&bName=<%=pd.getbName()%>'">상품문의 글쓰기</button>
+        <%-- <button onclick="location.href='<%=request.getContextPath() %>/views/productQnA/productQnAInsert.jsp?mNo=<%=loginUser.getmNo() %>&pName=<%=pd.getpName()%>&bName=<%=pd.getbName()%>&pNo=<%=pd.getpNo()%>'">상품문의 글쓰기</button> --%>
+        <button onclick="productInsertQna();">상품문의 글쓰기</button>
         <%}else { %>
         <button onclick="productQna();">상품문의 글쓰기</button>
         <%} %>
@@ -408,7 +412,7 @@
                 </tr>
             	<%for(AdminProductQnA ap : qnaList){ %>
                 <tr>
-                    <td><%= ap.getmId() %></td><td><%= ap.getQnaTitle() %></td><td><%= ap.getQnaDate() %></td>
+                    <td align="center"><%= ap.getmId() %></td><td align="center"><%= ap.getQnaTitle() %></td><td align="center"><%= ap.getQnaDate() %></td>
                     
                 </tr>
 				<%} %>
@@ -432,7 +436,15 @@
 		alert("로그인을 후 입력이 가능합니다.");
 	}
 	
-	
+	function productInsertQna(){
+		if($("#color").val() == "noColor" && $("#size").val() == "noSize"){
+			alert("색상과 사이즈 선택 후 문의를 해주세요.");
+		}else{
+			
+		$("#colorSizeform").attr("action","<%=request.getContextPath()%>/views/productQnA/productQnAInsert.jsp");
+		$("#colorSizeform").submit();
+		}
+	}
 	
 </script>
 	<%@ include file="../common/footer.jsp" %>

@@ -5,6 +5,12 @@
 
 	String pName = request.getParameter("pName");
 	String bName = request.getParameter("bName");
+	String pNo = request.getParameter("pNo");
+	String bNo = request.getParameter("bNo");
+	String color = request.getParameter("color");
+	String size = request.getParameter("size");
+			
+	
 
 %>
 <!DOCTYPE html>
@@ -53,6 +59,12 @@
             <div class="q1_wrap">
                 <form action="<%=request.getContextPath()%>/productQnaInsert" method="post">
                     <input type="hidden" name="mNo" value="<%=loginUser.getmNo() %>"> <!-- loginUser2.getmNo()  -->
+                     <input type="hidden" name="pName" value="<%=pName %>">
+                     <input type="hidden" name="misPNo" value="<%=pNo %>">
+                     <input type="hidden" name="bNo" value="<%=bNo %>">
+                     <input type="hidden" name="color" value="<%=color %>">
+                     <input type="hidden" name="size" value="<%=size %>">
+                     <input type="hidden" name="pNo" value="<%=pNo %><%=color %><%=size %>">
                     <table>
                         <tr>
                       		
@@ -67,17 +79,6 @@
                             <td>브랜드명</td>
                             <td><span><%= bName %></span><!-- 브랜드번호 불러오기  -->
                         </tr>
-                        <!-- tr>
-                            <td>말머리</td>
-                            <td>
-                                <select name="q1_type" id="q1_type">
-                                    <option value="">tltle</option>
-                                    <option value="">tltle</option>
-                                    <option value="">tltle</option>
-                                    <option value="">tltle</option>
-                                </select>
-                            </td>
-                        </tr--> <!-- 테이블에 말머리 없음 -->
                         <tr>
                             <td>작성자</td>
                             <td><%=loginUser.getmName() %></td>
