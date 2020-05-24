@@ -8,7 +8,7 @@
 	int number = Integer.valueOf((String)request.getAttribute("number"));
 	DecimalFormat formatter = new DecimalFormat("###,###");
 	MemberPoint mp = (MemberPoint)request.getAttribute("m");
-	String mEmail = (String)request.getAttribute("mEmail");
+	/* String mEmail = (String)request.getAttribute("mEmail"); */
 	
 	String thumbnail = p.getThumbnail();
 	String pName = p.getpName();

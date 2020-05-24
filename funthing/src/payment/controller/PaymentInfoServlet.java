@@ -38,14 +38,14 @@ public class PaymentInfoServlet extends HttpServlet {
 		String size = request.getParameter("size");
 		String userNo = request.getParameter("userNo");
 		String number = request.getParameter("number");
-		String mEmail = request.getParameter("mEmail");
+//		String mEmail = request.getParameter("mEmail");
 		
 		System.out.println("productDetail.jsp에서 받은 값 : " + p_no + color + size);
 		
 		String pNo = p_no + color + size;
 		System.out.println("pNo " + pNo);
 		System.out.println("userNo : " + userNo);
-		System.out.println("mEmail" + mEmail);
+//		System.out.println("mEmail" + mEmail);
 		System.out.println("number : " + number);
 		
 		Product p = new ProductService().paymentProductSearch(pNo);
@@ -61,7 +61,7 @@ public class PaymentInfoServlet extends HttpServlet {
 			request.setAttribute("p", p);
 			request.setAttribute("m", m);
 			request.setAttribute("number", number);
-			request.setAttribute("mEmail", mEmail);
+//			request.setAttribute("mEmail", mEmail);
 			view.forward(request, response);
 		}
 	}
