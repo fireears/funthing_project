@@ -146,9 +146,14 @@
 	        
 	        <!-- 페이징처리 -->
 	        <div id="pageBtn" align="center">
-	        	<button class="pageBtn" onclick="location.href='<%=request.getContextPath() %>/admin/point?currentPage=<%=1 %>&searchText=<%=searchText %>&searchKind=<%=searchKind%>'"> << </button>
+	        	<%if(maxPage == 1){ %>
+	        	<button class="pageBtn" disabled onclick="location.href='<%=request.getContextPath() %>/admin/point?currentPage=<%=1 %>&searchText=<%=searchText %>&searchKind=<%=searchKind%>'"> << </button>
 	        	
-	        	<%if(currentPage <= 1) { %>
+	        	
+	        	<%}else { %>
+	        	<button class="pageBtn" onclick="location.href='<%=request.getContextPath() %>/admin/point?currentPage=<%=1 %>&searchText=<%=searchText %>&searchKind=<%=searchKind%>'"> << </button>
+	        	<%} %>
+	        	<%if(currentPage == 1) { %>
 	        		<button class="pageBtn" disabled> < </button>
 	        	<%} else {%>
 	        		<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/admin/point?currentPage=<%=currentPage-1%>&searchText=<%=searchText %>&searchKind=<%=searchKind%>'"> < </button>
@@ -162,12 +167,13 @@
 	        	<%} %>	
 	        	<%} %>
 	        	
-	        	<%if(currentPage == maxPage) {%>
+	        	<%if(maxPage == 1) {%>
 	        		<button class="pageBtn" disabled> > </button>
+	        		<button class="pageBtn" disabled onclick="location.href='<%=request.getContextPath()%>/admin/point?currentPage=<%=maxPage%>&searchText=<%=searchText %>&searchKind=<%=searchKind%>'"> >> </button>
 	        	<%} else { %>
 	        		<button class="pageBtn" onclick="location.href='<%=request.getContextPath() %>/admin/point?currentPage=<%=currentPage+1 %>&searchText=<%=searchText %>&searchKind=<%=searchKind%>'"> > </button>
-	        	<%} %>
 	        	<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/admin/point?currentPage=<%=maxPage%>&searchText=<%=searchText %>&searchKind=<%=searchKind%>'"> >> </button>
+	        	<%} %>
 	        	
 	        	
 	        </div>
