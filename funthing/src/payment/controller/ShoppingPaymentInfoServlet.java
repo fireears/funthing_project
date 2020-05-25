@@ -1,6 +1,7 @@
 package payment.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,20 +12,20 @@ import javax.servlet.http.HttpServletResponse;
 
 import member.model.service.MemberService;
 import member.model.vo.MemberPoint;
+import payment.model.service.PaymentService;
 import payment.model.vo.ShoppingPayment;
-import product.model.service.ProductService;
 
 /**
- * Servlet implementation class PaymentInfoServlet
+ * Servlet implementation class ShoppingPaymentInfoServlet
  */
-@WebServlet("/PaymentInfo")
-public class PaymentInfoServlet extends HttpServlet {
+@WebServlet("/ShoppingPaymentInfo")
+public class ShoppingPaymentInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PaymentInfoServlet() {
+    public ShoppingPaymentInfoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,37 +34,52 @@ public class PaymentInfoServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String p_no = request.getParameter("p_no");
-		String color = request.getParameter("color");
-		String size = request.getParameter("size");
+		// TODO Auto-generated method stub
+		System.out.println("ShoppingPaymentInfo");
+		PaymentService pService = new PaymentService();
+		ArrayList<ShoppingPayment> list = new ArrayList<>();
+		ArrayList<ShoppingPayment> resultList = new ArrayList<>();
+		ShoppingPayment p = null;
+		MemberPoint m = new MemberPoint();
+		
 		String userNo = request.getParameter("userNo");
-		String number = request.getParameter("number");
-//		String mEmail = request.getParameter("mEmail");
+		String[] arrPno = request.getParameterValues("p_no");
+		String[] arrNumber = request.getParameterValues("number");
 		
-		System.out.println("productDetail.jsp에서 받은 값 : " + p_no + color + size);
+		System.out.println(userNo);
+		for(int i = 0; i<arrPno.length; i++)
+		{
+			System.out.println(arrPno[i]);
+			System.out.println(arrNumber[i]);
+			p = new ShoppingPayment(arrPno[i], arrNumber[i]);
+			
+			list.add(p);
+		}
+		System.out.println("------------------------------");
 		
-		String pNo = p_no + color + size;
-		System.out.println("pNo " + pNo);
-		System.out.println("userNo : " + userNo);
-//		System.out.println("mEmail" + mEmail);
-		System.out.println("number : " + number);
 		
-		ShoppingPayment p = new ProductService().paymentProductSearch(pNo, number);
-		MemberPoint m = new MemberService().paymentMemberSearch(userNo);
+		resultList = pService.searchProducts(list);
+		m = new MemberService().paymentMemberSearch(userNo);
 		
-		System.out.println(p);
-//		Payment pm = new Payment(pNo, userNo, mEmail, number);
+		for(ShoppingPayment sp : resultList)
+		{
+			System.out.println(sp);
+		}
 		System.out.println(m);
 		RequestDispatcher view = null;
-		if(p != null)
+		if(!resultList.isEmpty())
 		{
-			view = request.getRequestDispatcher("/views/payment/paymentInfo.jsp");
-			request.setAttribute("p", p);
+			view = request.getRequestDispatcher("/views/payment/paymentInfoList.jsp");
+			request.setAttribute("resultList", resultList);
 			request.setAttribute("m", m);
-//			request.setAttribute("number", number);
-//			request.setAttribute("mEmail", mEmail);
 			view.forward(request, response);
 		}
+		else
+		{
+			
+		}
+		
+		
 	}
 
 	/**

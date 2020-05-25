@@ -15,7 +15,7 @@ public class Payment implements Serializable{
 	private String dstn_chk;
 	private String rcv_name;
 	private String rcv_adrs;
-	private int rcv_phone;
+	private String rcv_phone;
 	private String comment;
 	private int total_price;
 	private int point_use;
@@ -32,7 +32,7 @@ public class Payment implements Serializable{
 	
 	
 	
-	public Payment(String rcv_name, String rcv_adrs, int rcv_phone, String comment, int total_price,
+	public Payment(String rcv_name, String rcv_adrs, String rcv_phone, String comment, int total_price,
 			int point_use, String ship_price, int pmnt_price, int expt_point, String m_no) {
 		super();
 		this.rcv_name = rcv_name;
@@ -49,7 +49,7 @@ public class Payment implements Serializable{
 
 
 
-	public Payment(String o_no, Date o_date, String dstn_chk, String rcv_name, String rcv_adrs, int rcv_phone,
+	public Payment(String o_no, Date o_date, String dstn_chk, String rcv_name, String rcv_adrs, String rcv_phone,
 			String comment, int total_price, int point_use, String pmnt_mthd, String ship_price, int pmnt_price,
 			int expt_point, String m_no) {
 		super();
@@ -98,10 +98,10 @@ public class Payment implements Serializable{
 	public void setRcv_adrs(String rcv_adrs) {
 		this.rcv_adrs = rcv_adrs;
 	}
-	public int getRcv_phone() {
+	public String getRcv_phone() {
 		return rcv_phone;
 	}
-	public void setRcv_phone(int rcv_phone) {
+	public void setRcv_phone(String rcv_phone) {
 		this.rcv_phone = rcv_phone;
 	}
 	public String getComment() {
