@@ -60,7 +60,7 @@ public class InsertPerQnAServlet extends HttpServlet {
 		String q1_name = ((Member)request.getSession().getAttribute("loginUser")).getmName().toString();
 		String q1_num = ((Member)request.getSession().getAttribute("loginUser")).getmNo().toString();
 		
-//		System.out.println(q1_num);		
+		System.out.println("1:1 insert servlet : " + q1_num);		
 		
 		String q1_saveFile = multiRequest.getFilesystemName("q1_file");
 		String q1_originFile = multiRequest.getOriginalFileName("q1_file");
@@ -91,7 +91,7 @@ public class InsertPerQnAServlet extends HttpServlet {
 		int result = new PersonalQnAService().insertPerQnA(perQA, q1_num);
 		
 		String message = "일대일 문의 등록에 성공하셨습니다.";
-		String userNo = q1_num;
+//		String userNo = q1_num;
 		
 		RequestDispatcher view = null;
 		if(result > 0) {
@@ -101,7 +101,7 @@ public class InsertPerQnAServlet extends HttpServlet {
 			System.out.println("personalQnA로 이동"+message);
 			view = request.getRequestDispatcher("/PersonalQnA");
 			request.setAttribute("message",message);
-			request.setAttribute("userNo", userNo);
+			request.setAttribute("userNo", q1_num);
 			
 		}else {
 

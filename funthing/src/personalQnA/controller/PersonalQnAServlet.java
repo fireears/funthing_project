@@ -39,9 +39,13 @@ public class PersonalQnAServlet extends HttpServlet {
 		
 		
 		// 로그인 한 유저 정보 받기
-		String userNo = request.getParameter("userNo");
+		String userNo = userNo = request.getParameter("userNo");
+		if(userNo == null) {
+			
+			userNo = (String)request.getAttribute("userNo");
+		}
 		
-		System.out.println("서블릿에 로그인 값이 잘 넘어왔는가" + userNo);
+		System.out.println("select 1:1 servlet : " + userNo);
 		
 		// 날짜 선택값 받기
 		String searchDate = request.getParameter("searchDate");

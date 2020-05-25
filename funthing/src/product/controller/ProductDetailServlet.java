@@ -35,6 +35,7 @@ public class ProductDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("까꿍");
 		ProductService pService = new ProductService();
 		// 상품이름
 		String pName = request.getParameter("pName");

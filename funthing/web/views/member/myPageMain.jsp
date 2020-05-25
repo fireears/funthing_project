@@ -181,7 +181,7 @@
 								<input type="hidden" id="oNo" value=<%=co.getO_no() %>>
 								<td class="tb-first"><%=co.getO_date() %></td>
 								<td><%=co.getO_no() %></td>
-								<td><a href="<%=request.getContextPath()%>/productDetail?pName=<%=co.getpName()%>"><%=co.getpName() %>/<%=co.getpColor() %>/<%=co.getpSize() %></td>
+								<td><a href="<%=request.getContextPath()%>/productDateil?pName=<%=co.getpName()%>"><%=co.getpName() %>/<%=co.getpColor() %>/<%=co.getpSize() %></td>
 								<td><%=formatter.format(co.getTotalPrice()) %> 원 / <%=co.getoNum() %></td>
 								
 								<%if(co.getCancelYn().equals("N")){ %>
