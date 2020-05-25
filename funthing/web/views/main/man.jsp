@@ -5,10 +5,11 @@
  <%@ page import="java.util.ArrayList" %>
  <%@ page import="man.model.vo.ManVo"%>
  <%@ page import="board.model.vo.PageInfo" %>
+ <%@ page import="java.text.DecimalFormat" %>
     <%
     	ArrayList<ManVo> list = (ArrayList<ManVo>)request.getAttribute("list");
     	PageInfo pi = (PageInfo)request.getAttribute("pi");
-    	
+    	DecimalFormat formatter = new DecimalFormat("###,###");
     	int listCount = pi.getListCount();
     	int currentPage = pi.getCurrentPage();
     	int maxPage = pi.getMaxPage();
@@ -105,7 +106,7 @@
     #productWrap .product { width:100%; }
     #productWrap .product:after { display:block; content:""; clear:both; }
     #productWrap .product > li { float:left; width:25%; box-sizing:border-box; padding:0 20px; margin-bottom:60px; }
-    #productWrap .product li a img { width:100%; border:1px solid #666; }
+    #productWrap .product li a img { width:100%; }
 
     #productWrap .product li .prod-cont { margin-top:10px; }
     #productWrap .product li .prod-cont .prod-brand { color:#0f4a7e; }
@@ -128,6 +129,7 @@
     #productWrap .prod_cont .prod_sort li:last-child:after { background:transparent; }
     #productWrap .prod_cont .prod_sort li a { color:#666; }
     #productWrap .prod_cont .prod_sort li a:hover { color:#aaa; }
+    button{background : white ; border : 0;}
    </style>
 </head>
 
@@ -137,11 +139,11 @@
 
   <div id="productWrap">
    <div class="prod_top">
-      <img src="C://Users/violi/Desktop/image01.jpg">
+       <img src="<%=request.getContextPath()%>/images/main_img.jpg" />
    </div>
 
    <div class="prod_cont">
-      <p class="prod_count"><%=listCount %>style</p>
+      <p class="prod_count"><%=listCount %> style</p>
       <ul class="prod_sort">
          <li><a href='<%=request.getContextPath()%>/ManHighPrice'>high price</a></li>
          <li><a href='<%=request.getContextPath()%>/ManLowPrice'>low price</a></li>
@@ -162,7 +164,7 @@
                <ul class="prod-cont">
                      <li class="prod-brand"><a href="<%=request.getContextPath()%>/productDateil?pName=<%=list.get(i).getP_name() %>"><%=list.get(i).getP_name()%></a></li>
                      <li class="prod-tit"><a href="<%=request.getContextPath()%>/productDateil?pName=<%=list.get(i).getP_name() %>"><%=list.get(i).getP_type()%></a></li>
-                     <li class="prod_price"><span class="origin_p"><%=list.get(i).getO_price()%>원</span><span class="new_p"><%=list.get(i).getP_price()%>원</span><span class="discount"><%=list.get(i).getDc_rate()%>%</span></li>
+                     <li class="prod_price"><span class="origin_p"><%=formatter.format(list.get(i).getO_price()) %>원</span><span class="new_p"><%=formatter.format(list.get(i).getP_price()) %>원</span><span class="discount"><%=list.get(i).getDc_rate()%>%</span></li>
                      <li class="fun-sdate"><%=list.get(i).getStart_date().substring(0,10) %>~<%=list.get(i).getEnd_date().substring(0,10) %></li>
                </ul>
             </li>

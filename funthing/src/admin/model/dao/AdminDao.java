@@ -1674,6 +1674,32 @@ public class AdminDao {
 		
 		return list;
 	}
+
+	public int deleteNotice(Connection conn, String nNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "UPDATE NOTICE SET N_DEL_YN='Y' WHERE N_NO=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1,nNo);
+			
+			
+			result = pstmt.executeUpdate();
+			
+			
+			if(result>0) {
+				conn.commit();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 	
 	
 
