@@ -8,7 +8,12 @@
 	
 	Member loginUser3 = (Member)session.getAttribute("loginUser");
 	String userNo = (String)request.getAttribute("userNo");
- 
+ 	String searchDate = (String)request.getAttribute("searchDate");
+ 	String firstDate = (String)request.getAttribute("firstDate");
+ 	String secondDate = (String)request.getAttribute("secondDate");
+	
+	
+	
 	// insert 성공 시 메세지 받기
 	String msg = (String)request.getAttribute("msg");
 	String q1_num = (String)request.getAttribute("q1_num");
@@ -16,7 +21,7 @@
 	
 	// PageIngo값 뽑아내기
 		int currentPage = pi.getCurrentPage();
-		/* int listCount = pi.getBrandListCount(); */
+		int listCount = pi.getListCount(); 
 		int limit = pi.getLimit();
 		int maxPage = pi.getMaxPage();
 		int startPage = pi.getStartPage();
@@ -125,7 +130,7 @@
                             </li>
                             <li>
                                 <input type="radio" name="searchDate" id="3months" value="3months">
-                                <label for="3month">3개월</label>
+                                <label for="3months">3개월</label>
                             </li>
                             <li>
                                 <input type="radio" name="searchDate" id="6months" value="6months">
@@ -136,10 +141,10 @@
                                 <label for="year">1년</label>
                             </li>
                             <li>
-                                <input type="date" name="firstDate" value="09/01/01">
+                                <input type="date" name="firstDate" value="2009/01/01">
                             </li>
                             <li>
-                                <input type="date" name="secondDate" value="09/01/01">
+                                <input type="date" name="secondDate" value="2009/01/01">
                             </li>
                             <li>
                                 <input type="submit" id="submit" value="조회">
@@ -211,8 +216,14 @@
 	<!-- 페이징 처리 시작 -->
 		<div class="pagingArea" align="center">
 		
+			<%if(maxPage == 1){ %>
+				<button disabled onclick="location.href='<%=request.getContextPath() %>/PersonalQnA?currntPage=1&userNo=<%=userNo%>&searchDate1=<%=searchDate %>&firstDate1=<%=firstDate %>&secondDate1=<%=secondDate%>'"> << </button>
+			
+			<%}else { %>
+				<button onclick="location.href='<%=request.getContextPath() %>/PersonalQnA?currntPage=1&userNo=<%=userNo%>&searchDate1=<%=searchDate %>&firstDate1=<%=firstDate %>&secondDate1=<%=secondDate%>'"> << </button>
+			<%} %>
 			<!-- 맨 처음으로 -->
-			<button onclick="location.href='<%=request.getContextPath() %>/PersonalQnA?currntPage=1&userNo=<%=userNo%>'"> << </button>
+			
 		
 		
 			<!-- 이전 페이지로 -->
@@ -220,7 +231,7 @@
 				<button disabled> < </button>
 		
 			<%}else{ %>
-				<button onclick="location.href='<%=request.getContextPath() %>/PersonalQnA?currentPage=<%=currentPage -1 %>&userNo=<%=userNo%>'"> < </button>
+				<button onclick="location.href='<%=request.getContextPath() %>/PersonalQnA?currentPage=<%=currentPage -1 %>&userNo=<%=userNo%>&searchDate1=<%=searchDate %>&firstDate1=<%=firstDate %>&secondDate1=<%=secondDate%>'"> < </button>
 			<%} %>
 		
 		
@@ -230,7 +241,7 @@
 					<button disabled><%=p %></button>
 					
 				<%}else{ %>
-					<button onclick="location.href='<%=request.getContextPath() %>/PersonalQnA?currentPage=<%=p %>&userNo=<%=userNo%>'"><%=p %></button>
+					<button onclick="location.href='<%=request.getContextPath() %>/PersonalQnA?currentPage=<%=p %>&userNo=<%=userNo%>&searchDate1=<%=searchDate %>&firstDate1=<%=firstDate %>&secondDate1=<%=secondDate%>'"><%=p %></button>
 				<%} %>
 			<%} %>
 			
@@ -239,12 +250,16 @@
 			<%if(currentPage == maxPage){ %>
 				<button disabled> > </button>
 			<%}else{ %>
-				<button onclick="location.href='<%=request.getContextPath() %>/PersonalQnA?currentPage=<%=currentPage + 1 %>&userNo=<%=userNo%>'"> > </button>
+				<button onclick="location.href='<%=request.getContextPath() %>/PersonalQnA?currentPage=<%=currentPage + 1 %>&userNo=<%=userNo%>&searchDate1=<%=searchDate %>&firstDate1=<%=firstDate %>&secondDate1=<%=secondDate%>'"> > </button>
 			<%} %>
 		
-		
+			<%if(maxPage == 1){ %>
+				<button disabled onclick="location.href='<%=request.getContextPath() %>/PersonalQnA?currentPage=<%=maxPage %>&userNo=<%=userNo%>&searchDate1=<%=searchDate %>&firstDate1=<%=firstDate %>&secondDate1=<%=secondDate%>'"> >> </button>
+			<%}else{ %>
+				<button onclick="location.href='<%=request.getContextPath() %>/PersonalQnA?currentPage=<%=maxPage %>&userNo=<%=userNo%>&searchDate1=<%=searchDate %>&firstDate1=<%=firstDate %>&secondDate1=<%=secondDate%>'"> >> </button>
+			<%} %>
 			<!-- 맨 뒷 페이지로  -->
-			<button onclick="location.href='<%=request.getContextPath() %>/PersonalQnA?currentPage=<%=maxPage %>&userNo=<%=userNo%>'"> >> </button>
+			
 		
 	</div>
 
