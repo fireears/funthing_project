@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
+import member.model.vo.MemberPoint;
 import payment.model.vo.OrderList;
 
 import payment.model.vo.OrderUpdate;
@@ -598,6 +598,58 @@ public class PaymentDao {
 			close(pstmt);
 		}
 		
+		return result;
+	}
+
+
+	public int updateMpoint(Connection conn, MemberPoint mp) {
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		String query = "UPDATE MEMBER SET M_POINT = ? WHERE M_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, mp.getmPoint());
+			pstmt.setString(2, mp.getmNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally
+		{
+			close(pstmt);
+		}
+		return result;
+	}
+
+
+
+	public int insertPoint(Connection conn, MemberPoint mp) {
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		String query = "INSERT INTO POINT VALUES('POINT'||TO_CHAR(SEQ_POINT.NEXTVAL), SYSDATE, 'O'||TO_CHAR(SEQ_PAYINFO.CURRVAL), '상품 구매 후 적립', ?, ? ,'구매적립', ?)";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, mp.getPointAmount());
+			pstmt.setString(2, mp.getmNo());
+			pstmt.setInt(3, mp.getMyPoint());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally
+		{
+			close(pstmt);
+		}
 		return result;
 	}
 
