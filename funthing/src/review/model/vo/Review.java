@@ -41,6 +41,26 @@ public class Review implements Serializable {
 	
 	
 	
+	public Review(int revNo, String mNo, String revTitle, String pNo, String revContents, String revDate, int rate,
+			String revPic, String rvmId, String rvName, String rvThumb, String revONo) {
+		super();
+		this.revNo = revNo;
+		this.mNo = mNo;
+		this.revTitle = revTitle;
+		this.pNo = pNo;
+		this.revContents = revContents;
+		this.revDate = revDate;
+		this.rate = rate;
+		this.revPic = revPic;
+		this.rvmId = rvmId;
+		this.rvName = rvName;
+		this.rvThumb = rvThumb;
+		this.revONo = revONo;
+	}
+
+
+
+
 	public Review() {
 		super();
 	}
