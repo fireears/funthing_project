@@ -2,6 +2,8 @@
     pageEncoding="UTF-8" import="member.model.vo.*, java.util.ArrayList, board.model.vo.*"%>
     
 <%
+	String msg = (String)request.getAttribute("msg");
+	String msg1 = (String)request.getAttribute("msg1");	
 	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
 	String userName = (String)request.getAttribute("userName");
 	String userId = (String)request.getAttribute("userId");
@@ -12,6 +14,7 @@
 	int maxPage = pi.getMaxPage();
 	int startPage = pi.getStartPage();
 	int endPage = pi.getEndPage();
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -147,5 +150,21 @@
        		</div>
     	</article>
 	</section>
+	<script>
+
+	$(function(){
+		
+	 <%if(msg != null){%>
+		alert("<%=msg%>");
+	 <%}%>
+	});
+
+	$(function(){
+		
+	 <%if(msg1 != null){%>
+		alert("<%=msg1%>");
+	 <%}%>
+	});
+	</script>
 </body>
 </html>

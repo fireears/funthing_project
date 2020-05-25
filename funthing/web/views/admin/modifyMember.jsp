@@ -299,7 +299,7 @@
                         <label>추천인</label>
                     </td>
                     <td id="inp">
-                        <input type="text" id="reference" name="reference" value="<%=member.getReference() %>">
+                        <input type="text" id="reference" name="reference" value="<%=member.getReference() %>" disabled>
                     </td>
                 </tr>
             </table>
