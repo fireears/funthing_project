@@ -427,12 +427,12 @@ public class AdminService {
 	}
 
 	// 리뷰 조회 카운트 * 서윤
-		public int getRvListCount() {
+		public int getRvListCount(String searchpName) {
 			Connection conn = getConnection();
 			
 			AdminDao aDao = new AdminDao();
 
-			int rvListCont = aDao.getRvListCount(conn);
+			int rvListCont = aDao.getRvListCount(conn,searchpName);
 			
 			close(conn);
 
@@ -447,11 +447,21 @@ public class AdminService {
 			
 			rvList = aDao.selectReviewList(conn, currentPage, limit, searchpName);
 			
+			
 			close(conn);
 			
 			return rvList;
 		}
 
+		// 리뷰 디테일 * 서윤
+		public Review reviewDatail(int revNo) {
+			Connection conn = getConnection();
+			Review rv = new AdminDao().reviewDetail(conn,revNo);			
+
+			close(conn);
+			
+			return rv;
+		}
 		
 		// 적립금 관리자 페이지_희지
 		public int getPointListCount(String searchKind, String searchText) {
