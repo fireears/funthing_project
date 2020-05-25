@@ -462,12 +462,7 @@ public class PaymentDao {
 		
 		int result = 0;
 		
-<<<<<<< HEAD
-		String query = "INSERT INTO PAYMENT_INFO VALUE()";
-				
-		return 0;
 
-=======
 		String query = "INSERT INTO PAYMENT_INFO(O_NO, O_DATE, RCV_NAME, RCV_ADRS, RCV_PHONE, COMMENTT, TOTAL_PRICE, POINT_USE, SHIP_PRICE, PMNT_PRICE, EXPT_POINT, M_NO)\r\n" + 
 				"VALUES('0'||TO_CHAR(SEQ_PAYINFO.NEXTVAL),SYSDATE,?,?,?,?,?,?,?,?,?, 'M01')";
 		
@@ -494,7 +489,7 @@ public class PaymentDao {
 			close(pstmt);
 		}
 		return result;
->>>>>>> refs/remotes/origin/master
+
 	}
 
 
