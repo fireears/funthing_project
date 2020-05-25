@@ -54,12 +54,12 @@ public class MemberPointDao {
 		ArrayList<MemberPoint> list = new ArrayList<>();
 		
 		int startRow = (currentPage -1) * limit +1;
-		int endRow = 20; // 다시 보기
+		int endRow = startRow + (limit -1); 
 		
 		
 		try {
 			
-			if(searchDate == null && firstDate == null) {
+			if(searchDate == null && firstDate == "2009/01/01") {
 				
 				String query = "SELECT RNUM, POINT_NO, POINT_DATE, O_NO, POINT_CONTENT, POINT_AMOUNT, M_NO, POINT_CATE, MY_POINT\r\n" + 
 						"FROM (SELECT ROWNUM RNUM, POINT_NO, POINT_DATE, O_NO, POINT_CONTENT, POINT_AMOUNT, M_NO, POINT_CATE, MY_POINT\r\n" + 
@@ -177,7 +177,7 @@ public class MemberPointDao {
 				String query = "SELECT RNUM, POINT_NO, POINT_DATE, O_NO, POINT_CONTENT, POINT_AMOUNT, M_NO, POINT_CATE, MY_POINT\r\n" + 
 						"FROM (SELECT ROWNUM RNUM, POINT_NO, POINT_DATE, O_NO, POINT_CONTENT, POINT_AMOUNT, M_NO, POINT_CATE, MY_POINT\r\n" + 
 						"FROM POINT_LIST\r\n" + 
-						"WHERE M_NO = ? AND TO_DATE(PER_DATE,'RRRR/MM/DD') BETWEEN TO_DATE(?,'RRRR/MM/DD') AND TO_DATE(?, 'RRRR/MM/DD'))\r\n" + 
+						"WHERE M_NO = ? AND TO_DATE(POINT_DATE,'RRRR/MM/DD') BETWEEN TO_DATE(?,'RRRR/MM/DD') AND TO_DATE(?, 'RRRR/MM/DD'))\r\n" + 
 						"WHERE RNUM BETWEEN ? AND ?";
 				
 				pstmt = conn.prepareStatement(query);

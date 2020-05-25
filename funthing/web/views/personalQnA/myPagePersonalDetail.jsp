@@ -7,7 +7,6 @@
     
 <%
 	PersonalQnA pq = (PersonalQnA)request.getAttribute("pq");
-
 %>   
  
 <!DOCTYPE html>
@@ -72,8 +71,8 @@
                             <td><span><%= pq.getmName() %></span></td>
                         </tr>
                          <tr>
-                            <td>상품번호</td>
-                            <td><span><%= pq.getpNo()%></span></td>
+                            <td>주문번호</td>
+                            <td><span><%= pq.getoNo()%></span></td>
                         </tr>
                         <tr>
                             <td>상품명</td>

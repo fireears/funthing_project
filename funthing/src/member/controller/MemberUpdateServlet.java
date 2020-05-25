@@ -52,13 +52,18 @@ public class MemberUpdateServlet extends HttpServlet {
 		
 		RequestDispatcher view = null;
 		
+	
+		
+		
 		if(result > 0) {
 			// 현재 로그인한 사람의 session도 수정
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", m);
 			
 			view = request.getRequestDispatcher("/myPageMainServlet");
+
 			request.setAttribute("userNoM", mNo);
+
 			request.setAttribute("msg", "회원정보 수정 완료");
 		}else {
 			view = request.getRequestDispatcher("views/login/fail.jsp");

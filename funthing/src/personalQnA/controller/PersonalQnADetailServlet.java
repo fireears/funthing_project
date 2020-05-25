@@ -35,8 +35,21 @@ public class PersonalQnADetailServlet extends HttpServlet {
 	
 		request.setCharacterEncoding("UTF-8");
 		
+		
 		String mNo = request.getParameter("mNo");
+		if(mNo == null) {
+			mNo = (String)request.getAttribute("mNo");
+		}
+		
 		String perNo = request.getParameter("perNo");
+		if(perNo == null) {
+			perNo = (String)request.getAttribute("perNo");
+		}
+		
+		
+		System.out.println("일대일 문의 디테일 서블릿에서 perNo : " + perNo);
+		System.out.println("일대일 문의 디테일 서블릿에서 mNo : " + mNo);
+		
 		
 		PersonalQnA pq = new PersonalQnAService().perDetail(mNo, perNo);
 		
@@ -46,7 +59,7 @@ public class PersonalQnADetailServlet extends HttpServlet {
 		if(pq != null) {
 			view = request.getRequestDispatcher("/views/personalQnA/myPagePersonalDetail.jsp");
 			request.setAttribute("pq", pq);
-			System.out.println("servlet에서 pq : " + pq);
+//			System.out.println("servlet에서 pq : " + pq);
 			
 		}else{
 			request.setAttribute("msg", "게시판 상세조회 실패");

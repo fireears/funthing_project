@@ -12,6 +12,10 @@
 	String userNoM = (String)request.getAttribute("userNoM");
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	
+	// 진교 회원정보 수정 메세지 확인
+	String muMsg = (String)request.getAttribute("msg");
+	
+	
 	int currentPage = pi.getCurrentPage();
 	int limit = pi.getLimit();
 	int maxPage = pi.getMaxPage();
@@ -189,9 +193,9 @@
 								<%}else{ %>
 								<td>주문 취소</td>
 								<%} %>
-								
+							
 								<th class="tb-last">
-								<input type="button" value="리뷰작성" class="submit" id="rvBtn" style="width:100px;font-size:12px">
+								<a href="<%=request.getContextPath()%>/productDateil?pName=<%=co.getpName()%>#sec_review_nav">리뷰작성</a>
 								</th>
 							</tr>
 							<%} %><!-- for문 end -->
@@ -261,6 +265,13 @@
 		 <%if(msg != null){%>
 			alert("<%=msg%>");
 		 <%}%>
+		 
+		 
+		 <%if(muMsg != null){%>
+		 	alert("<%=muMsg%>");
+		 <%}%>
+		 
+		 
 		});
 	</script>
 
