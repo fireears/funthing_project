@@ -5,6 +5,7 @@
 <%@ page import="product.model.vo.ProductDetail" %>
 <%@ page import="productQnA.model.vo.AdminProductQnA" %>
 <%@ page import="java.text.DecimalFormat" %>
+<%@ page import="review.model.vo.*" %>
 <%
 	/* ProductDetail pd = (ProductDetail)request.getAttribute("pd"); */
 	DecimalFormat formatter = new DecimalFormat("###,###");
@@ -14,6 +15,10 @@
 	ArrayList<AdminProductQnA> qnaList = (ArrayList<AdminProductQnA>)request.getAttribute("qnaList");
 	ProductDetail pd = list.get(0);
 	int ratePrice = pd.getRetailPrice() * pd.getDcRate() / 100;
+	
+	// review
+	ArrayList<Review> rvList = (ArrayList<Review>)request.getAttribute("rvList");
+	String rvMsg = (String)request.getAttribute("rvMsg");
 %>    
 <!DOCTYPE html>
 <html lang="ko">
@@ -185,7 +190,27 @@
 		#qnaTb tr {border-top: 1px solid grey;border-bottom: 1px solid grey; }
 		#qnaTb td {line-height: 50px; width: 40px; }
 		#qnaTb th {color:#0f4a7e;line-height: 50px; width: 40px;}
-}}
+		
+		/* review table */
+		.rev_content { width:100%; margin:40px 0; border-top:2px solid #ddd; border-bottom:2px solid #ddd; }
+		.rev_content .rev_table { width:100%; box-sizing:border-box; border-collapse: collapse; text-align:center; line-height:3; font-size:16px; }
+		.rev_content .rev_table tr { border-bottom:1px solid #ddd; }
+		
+		.rev_content .rev_table tr th:nth-child(1) { width:50%; }
+		.rev_content .rev_table tr th:nth-child(2) { width:10%; }
+		.rev_content .rev_table tr th:nth-child(3) { width:10%; }
+		.rev_content .rev_table tr th:nth-child(4) { width:15%; }
+		.rev_content .rev_table tr th:nth-child(5) { width:15%; }
+		
+		.rev_content .rev_table tr.rvCont td { text-align:left; box-sizing:border-box; padding:20px 10px; background:#f8f8f8; }
+		.rev_content .rev_table tr.rvCont td img { width:300px; border:1px solid #ddd; box-sizing:border-box; margin-right:40px; }
+		.rev_content .rev_table tr.rvCont td .divLeft { float:left; }
+		.rev_content .rev_table tr.rvCont td .divRight { float:left; width:70%; }
+		
+		
+        .rev_content .rev_table tr.rvCont { display:none; }
+        .rev_content .rev_table tr.rvCont.show { display:table-row; }
+		
     </style>
 </head>
 
@@ -211,6 +236,7 @@
                         <div id="product_description"><%= pd.getpDetail() %></div>
                     </li>
                 </ul>
+                <input type="hidden" name="hiddenPno" value="<%= pd.getpNo() %>">
 
                 <!-- 상품 판매가 -->
                 <div id="right_wrap">
@@ -379,7 +405,97 @@
             </div>
         </form>
         <div class="rev_content">
+        	<table class="rev_table">
+        		<tr>
+        			<!-- th>No</th-->
+        			<th>Title</th>
+        			<th>Rate</th>
+        			<th>View</th>
+        			<th>Writer</th>
+        			<th>Date</th>
+        		</tr>
+        	</table>
         <!-- 리뷰 불러올 부분 -->
+        <script>
+        	// alert("!");
+        $(window).load(function(){
+        	$.ajax({
+        		url : "<%=request.getContextPath()%>/ReviewList",
+        		type : "post",
+        		data : {"rev_pNo" : "<%= pd.getpNo() %>"},
+        		success : function(data){
+        			//alert("성공");
+        			
+        			$.each(data, function(index, value){
+        				// 제목 부분
+        				var $trLine = $("<tr>").attr("class", "rvLine");
+        				// var $tdNo = $("<td>").text(value.rvNo);
+        				var $tdTitle = $("<td>").text(value.rvTitle);
+        				var $tdRate = $("<td>").text(value.rvRateStar);
+        				var $tdView = $("<td>").text(value.rvView);
+        				var $tdWriter = $("<td>").text(value.rvName);
+        				var $tdDate = $("<td>").text(value.rvDate);
+        				
+        				// 컨텐츠 부분
+        				var $trCont = $("<tr>").attr("class", "rvCont");
+        				var $tdCont = $("<td>").attr("colspan", "5");
+        				
+        				var $divLeft = $("<div>").attr("class", "divLeft");
+        				var $divRight = $("<div>").attr("class", "divRight");
+        				
+        				
+        				if(value.rvImg != null){
+        					var $pImgArea = $("<p>");
+        					var $pImg = $("<img>").attr("src", "<%=request.getContextPath()%>/images/review/" + value.rvImg + ".jpg");
+        					
+        					$pImgArea.append($pImg);
+        					$divLeft.append($pImgArea);
+        					$tdCont.append($divLeft);
+        				}
+        				
+        				
+        				var $pPrdNo = $("<p>").text("상품명 : " + value.rvpNo);
+        				var $pContt = $("<p>").text(value.rvContents);
+        				
+        				
+        				
+        				
+        				// $tr.append($tdNo);
+        				$trLine.append($tdTitle);
+        				$trLine.append($tdRate);
+        				$trLine.append($tdView);
+        				$trLine.append($tdWriter);
+        				$trLine.append($tdDate);
+        				
+        				$divRight.append($pPrdNo);
+        				$divRight.append($pContt);
+        				
+        				$tdCont.append($divRight);
+        				
+        				$trCont.append($tdCont);
+        				
+        				
+        				
+        				$(".rev_table").append($trLine);
+        				$(".rev_table").append($trCont);
+        				
+        				
+        				
+        			});
+
+                    $(".rvLine").click(function(){
+                        $(this).next().toggleClass("show");
+                    });
+        			
+        		},
+        		error : function(data){
+        			alert("실패");
+        		}
+        	});
+        	// ajax end
+        	
+        });
+        </script>
         </div>
     </div>
     <!--Q&A-->

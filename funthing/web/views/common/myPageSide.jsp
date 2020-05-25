@@ -20,7 +20,7 @@
 
         <div id="side">
             <div class="lnb mypage-lnb">
-                <h2><a href='<%=request.getContextPath() %>/myPageMainServlet'>MY PAGE</a></h2>
+                <h2><a href="<%=request.getContextPath() %>/myPageMainServlet?userNoM=<%=loginUser2.getmNo()%>">MY PAGE</a></h2>
                 <h3>쇼핑정보</h3>
                 <ul>
                     <li><a href="<%=request.getContextPath()%>/member/myPageOrderList?userNo=<%=loginUser2.getmNo()%>">주문목록/배송조회</a></li> <!-- 동곤이형 서블릿 -->
@@ -29,7 +29,7 @@
     
                 <h3>혜택관리</h3>
                 <ul>
-                    <li><a href="#">회원등급혜택안내</a></li>
+                    <li><a href="<%=request.getContextPath()%>/memberPointServlet?userNo=<%=loginUser2.getmNo()%>">회원등급혜택안내</a></li>
                     <li><a href="<%=request.getContextPath()%>/memberPointServlet?userNo=<%=loginUser2.getmNo()%>">적립금</a></li>
                 </ul>
     
