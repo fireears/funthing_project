@@ -61,6 +61,9 @@ public class MemberUpdateServlet extends HttpServlet {
 			session.setAttribute("loginUser", m);
 			
 			view = request.getRequestDispatcher("/myPageMainServlet");
+
+			request.setAttribute("userNoM", mNo);
+
 			request.setAttribute("msg", "회원정보 수정 완료");
 		}else {
 			view = request.getRequestDispatcher("views/login/fail.jsp");

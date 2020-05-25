@@ -60,7 +60,7 @@ public class InsertPerQnAServlet extends HttpServlet {
 		String q1_name = ((Member)request.getSession().getAttribute("loginUser")).getmName().toString();
 		String q1_num = ((Member)request.getSession().getAttribute("loginUser")).getmNo().toString();
 		
-//		System.out.println(q1_num);		
+		System.out.println("1:1 insert servlet : " + q1_num);		
 		
 		String q1_saveFile = multiRequest.getFilesystemName("q1_file");
 		String q1_originFile = multiRequest.getOriginalFileName("q1_file");
@@ -92,7 +92,6 @@ public class InsertPerQnAServlet extends HttpServlet {
 		System.out.println("일대일 인서트 서블릿에서 result : " + result);
 		
 		
-		
 		String InMsg = "일대일 문의 등록에 성공하셨습니다.";
 		
 		
@@ -103,7 +102,9 @@ public class InsertPerQnAServlet extends HttpServlet {
 //			response.sendRedirect("PersonalQnA");
 			System.out.println("personalQnA로 이동"+InMsg);
 			view = request.getRequestDispatcher("/PersonalQnA");
+
 			request.setAttribute("InMsg", InMsg);
+
 			request.setAttribute("userNo", q1_num);
 			
 		}else {
