@@ -40,7 +40,7 @@
                        <%}else{ %>
                         	<li><a href="<%=request.getContextPath()%>/myPageMainServlet?userNoM=<%=loginUser.getmNo()%>">MY PAGE</a></li>
                        <%} %>
-                       <li><a href="#none"><i class="fas fa-shopping-cart"></i></a></li>
+                       <li><a href="<%=request.getContextPath()%>/MemberShoppingBagServlet?userNoM=<%=loginUser.getmNo()%>"><i class="fas fa-shopping-cart"></i></a></li>
                    </ul>
                    <% }else{ %>
                    <ul class="log-sec logout">
