@@ -49,7 +49,9 @@
 		                        <div class="prod-img">
 		                            <%-- <a href="#none"><img src=<%=thumbnailUrl %>></a> --%>
 		                            <%-- ex) <a href="<%=requset.getContextPath()%>/서블릿 앱핑?pNo="+<%=pNo%> + > --%>
-		                             <a href="<%=request.getContextPath()%>/productDateil?pName=<%=pName %>"><img src="<%=request.getContextPath()+"/images/thumbnail/" + thumbnail + ".jpg" %>"></a>
+
+		                             <a href="<%=request.getContextPath()%>/productDateil?pName=<%=pName %>"><img src="<%=request.getContextPath()+"/images/thumbnail/" + thumbnail + ".jpg" %>"></a> 
+
 		                            <%-- <img src="<%=request.getContextPath()+"/images/book/"+b.getBookImage() %> --%>
 		                            
 		                       
