@@ -70,7 +70,7 @@ h2 { text-align:center; font-size:36px; margin:80px 0 40px; }
 /* product 공통 css */
 .product { width:100%; }
 .product:after { display:block; content:""; clear:both; }
-.product > li { float:left; width:25%; box-sizing:border-box; padding:0 20px; margin-bottom:60px; }
+.product > li { float:left; width:25%; box-sizing:border-box; padding:0 19px; margin-bottom:60px; }
 .product li a img { width:100%; }
 .product li .prod-cont { margin-top:10px; }
 .product li .prod-cont .prod-brand { color:#0f4a7e; }

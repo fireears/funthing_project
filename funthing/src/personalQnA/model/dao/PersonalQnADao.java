@@ -146,12 +146,12 @@ public class PersonalQnADao {
 		try {
 			
 			// 맨 처음 리스트 출력 값
-			if(searchDate == null && firstDate == null) {
+			if(searchDate == null && firstDate == "2009/01/01" ) {
 
 				System.out.println("searchDate가 null일때" + searchDate);
 		
 				String query = "SELECT RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
-						"FROM(SELECT ROWNUM RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
+						"FROM(SELECT ROWNUM RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE\r\n" + 
 								"FROM PER_LIST\r\n" + 
 								"WHERE M_NO=?)\r\n" + 
 						"WHERE RNUM BETWEEN ? AND ?";
@@ -169,7 +169,7 @@ public class PersonalQnADao {
 				String query = "SELECT RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
 								"FROM(SELECT ROWNUM RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
 									"FROM PER_LIST\r\n" + 
-									"WHERE M_NO=? AND TO_DATE(PER_DATE,'RRRR/MM/DD') = TO_DATE(SYSDATE,'RRRR/MM/DD'))\r\n" + 
+									"WHERE M_NO=? AND TO_DATE(PER_DATE,'YYYY/MM/DD') = TO_DATE(SYSDATE,'YYYY/MM/DD'))\r\n" + 
 								"WHERE RNUM BETWEEN ? AND ?";
 						
 				pstmt = conn.prepareStatement(query);
@@ -187,7 +187,7 @@ public class PersonalQnADao {
 				String query =  "SELECT RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
 								"FROM(SELECT ROWNUM RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
 									"FROM PER_LIST\r\n" + 
-									"WHERE M_NO=? AND TO_DATE(PER_DATE,'RRRR/MM/DD') >= TO_DATE(SYSDATE,'RRRR/MM/DD')-7)\r\n" + 
+									"WHERE M_NO=? AND TO_DATE(PER_DATE,'YYYY/MM/DD') >= TO_DATE(SYSDATE,'YYYY/MM/DD')-7)\r\n" + 
 								"WHERE RNUM BETWEEN ? AND ?";
 				
 				pstmt = conn.prepareStatement(query);
@@ -204,7 +204,7 @@ public class PersonalQnADao {
 				String query = "SELECT RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
 								"FROM(SELECT ROWNUM RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
 									"FROM PER_LIST\r\n" + 
-									"WHERE M_NO=? AND TO_DATE(PER_DATE,'RRRR/MM/DD') >= TO_DATE(SYSDATE,'RRRR/MM/DD')-30)\r\n" + 
+									"WHERE M_NO=? AND TO_DATE(PER_DATE,'YYYY/MM/DD') >= TO_DATE(SYSDATE,'YYYY/MM/DD')-30)\r\n" + 
 								"WHERE RNUM BETWEEN ? AND ?";
 				
 				pstmt = conn.prepareStatement(query);
@@ -221,7 +221,7 @@ public class PersonalQnADao {
 				String query = "SELECT RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
 								"FROM(SELECT ROWNUM RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
 									"FROM PER_LIST\r\n" + 
-									"WHERE M_NO=? AND TO_DATE(PER_DATE,'RRRR/MM/DD') >= TO_DATE(SYSDATE,'RRRR/MM/DD')-90)\r\n" + 
+									"WHERE M_NO=? AND TO_DATE(PER_DATE,'YYYY/MM/DD') >= TO_DATE(SYSDATE,'YYYY/MM/DD')-90)\r\n" + 
 								"WHERE RNUM BETWEEN ? AND ?";
 				
 				pstmt = conn.prepareStatement(query);
@@ -238,7 +238,7 @@ public class PersonalQnADao {
 				String query = "SELECT RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
 								"FROM(SELECT ROWNUM RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
 									"FROM PER_LIST\r\n" + 
-									"WHERE M_NO=? AND TO_DATE(PER_DATE,'RRRR/MM/DD') >= TO_DATE(SYSDATE,'RRRR/MM/DD')-180)\r\n" + 
+									"WHERE M_NO=? AND TO_DATE(PER_DATE,'YYYY/MM/DD') >= TO_DATE(SYSDATE,'YYYY/MM/DD')-180)\r\n" + 
 								"WHERE RNUM BETWEEN ? AND ?";
 				
 				
@@ -257,7 +257,7 @@ public class PersonalQnADao {
 				String query = "SELECT RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
 								"FROM(SELECT ROWNUM RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
 									"FROM PER_LIST\r\n" + 
-									"WHERE M_NO=? AND TO_DATE(PER_DATE,'RRRR/MM/DD') >= TO_DATE(SYSDATE,'RRRR/MM/DD')-365)\r\n" + 
+									"WHERE M_NO=? AND TO_DATE(PER_DATE,'YYYY/MM/DD') >= TO_DATE(SYSDATE,'YYYY/MM/DD')-365)\r\n" + 
 								"WHERE RNUM BETWEEN ? AND ?";
 				
 				pstmt = conn.prepareStatement(query);
@@ -275,7 +275,7 @@ public class PersonalQnADao {
 				String query = "SELECT RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
 								"FROM(SELECT ROWNUM RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
 									"FROM PER_LIST\r\n" + 
-									"WHERE M_NO=? AND TO_DATE(PER_DATE,'RRRR/MM/DD') BETWEEN TO_DATE(?,'RRRR/MM/DD') AND TO_DATE(?,'RRRR/MM/DD'))\r\n" + 
+									"WHERE M_NO=? AND TO_DATE(PER_DATE,'YYYY/MM/DD') BETWEEN TO_DATE(?,'YYYY/MM/DD') AND TO_DATE(?,'YYYY/MM/DD'))\r\n" + 
 								"WHERE RNUM BETWEEN ? AND ?";
 
 					
@@ -306,7 +306,7 @@ public class PersonalQnADao {
 						rset.getString("PER_CATE"),
 						rset.getDate("PER_DATE"));
 				
-				System.out.println("pq는?" + pq);
+//				System.out.println("pq는?" + pq);
 				perList.add(pq);
 			}
 			
@@ -365,7 +365,7 @@ public class PersonalQnADao {
 			
 				
 			}
-			
+			System.out.println("QNA디테일 : " + pq);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -376,32 +376,10 @@ public class PersonalQnADao {
 		return pq;
 	}
 
+	
+	
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

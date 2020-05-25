@@ -217,7 +217,7 @@
             </div><!-- 1:1 문의 조회 영역 end -->
 
             <br clear="both">
- 			<a href="<%=request.getContextPath()%>/views/productQnA/productQnAInsert.jsp" >Insert</a>
+ 			<%-- <a href="<%=request.getContextPath()%>/views/productQnA/productQnAInsert.jsp" >Insert</a> --%>
             <!-- 1:1 문의 조회 결과 영역 -->
             <div class="search-list">
                 <table class="list-tb" id="list-tb">
