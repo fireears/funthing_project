@@ -67,14 +67,22 @@ public class AdminPoint extends HttpServlet {
 			currentPage = 1;
 		}
 		
-		limit = 10;
-		maxPage = (int)((double)listCount/limit + 0.9);
-		startPage = ((int)((double)currentPage/limit + 0.9)-1)*limit + 1;
+		
+		limit = 20;
+		maxPage = (int)((double)listCount/limit + 0.95);
+		startPage = ((int)(((double)currentPage/limit + 0.95)-1)*limit)+ 1;
 		endPage = startPage + limit -1;
 		
-		if(maxPage < endPage) {
+		if(endPage > maxPage ) {
 			endPage = maxPage;
 		}
+		
+//		System.out.println("servlet에서 리스트 카운트  : " + listCount);
+//		System.out.println("servlet에서 currentPage : " + currentPage);
+//		System.out.println("startPage : " +startPage);
+//		System.out.println("maxPage : " + maxPage);
+		
+		
 		
 		PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
 
