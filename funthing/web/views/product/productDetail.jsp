@@ -60,7 +60,7 @@
             margin-top: 5px;
         }
         #prod-detail {
-            width: 1200px;
+            width: 1460px;
             margin: 0 auto;
         }
 
@@ -83,7 +83,7 @@
 
         #p_detalis {
             float: left;
-            width: 50%;
+            width: 70%;
             box-sizing: border-box;
             padding: 0 0 0 40px;
         }
@@ -98,7 +98,7 @@
 
         #right_wrap ul {}
 
-        #right_wrap ul li {padding:1px;}
+        #right_wrap ul li {padding:5px;}
 
         #right_wrap ul li:after {
             content: "";
@@ -119,29 +119,31 @@
 
         .price {
             float: left;
-            width: 40%;
+            width: 60%;
             box-sizing: border-box;
             padding-right: 5%;
         }
 
         .buy_information {
             float: right;
-            width: 50%;
+            width: 40%;
         }
 		
-		
+		.buy_information form{
+			width:100%;
+		}
 		
         .price_dis{
             color:red;
         }
 
         .sizeColor{
-            width: 265px;
+            width: 385px;
             height: 40px;
         }
 
         #num{
-            width: 260px;
+            width: 380px;
             height: 40px;
         }
 
@@ -149,12 +151,12 @@
             background:#9fa5a8;
             color:white;
             border:0;
-            width:130px;
-            height: 40px;
+            width:190px;
+            height: 50px;
         }
 
         /* 내비게이션 시작 */
-        #section{margin: auto; width: 80%; height: 100%;}
+        #section{margin: auto; width: 100%; height: 100%;}
         .sec_nav{margin: 0; width: 100%; height: 80px; background-color: rgb(223, 220, 220); text-align:center;}
 
         .sec_nav ul {height: 100%; line-height: 80px; margin:0 auto; display:inline-block; }
@@ -214,8 +216,8 @@
         .rev_content .rev_table tr.rvCont.show { display:table-row; }
 		
 		/* .border1{boarder-top:lightgrey; border-bottom:lightgrey;} */
-		.gauge{height:10px; width:19px; background:lightgrey; padding:0; maring:0; display:inline-block; border-top:1px solid lightgrey;border-bottom:1px solid lightgrey; }
-		.gaugewhite{height:10px; width:19px;background:white;padding:0; maring:0; color:white; display:inline-block; border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;}
+		.gauge{height:10px; width:50px; background:lightgrey; padding:0; maring:0; display:inline-block; border-top:1px solid lightgrey;border-bottom:1px solid lightgrey; }
+		.gaugewhite{height:10px; width:50px;background:white;padding:0; maring:0; color:white; display:inline-block; border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;}
 		.leftradius{border-radius: 5px 0px 0px 5px; border-left:1px solid lightgrey;}
 		.rightradius{border-radius: 0px 5px 5px 0px; border-right:1px solid lightgrey;}
     </style>
@@ -266,6 +268,7 @@
                         <li style="padding-top:25px;">
                         	<div align="right" style="color:grey;"><%= funded %> % Funded</div>
  							<!-- <div class="gauge leftradius"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge rightradius"></div> -->
+ 							<div align="right">
  							<%if(funded == 0 ){ %>     
  							<div class="gaugewhite leftradius"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite rightradius"></div>                  
                         	<%}else if(1<= funded && funded <=10 ){ %>
@@ -289,7 +292,7 @@
  							<%}else if(91<= funded && funded <=100){%>	                      
  							<div class="gauge leftradius"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge rightradius"></div>
  							<%} %>
-                       
+                       		</div>
                         </li>
                         <li style="padding-top:5px;">
                             <div align="right" style="color:grey;">Funding Ends</div><h4 align="right" id="sample04"  style="color:#30586e;"></h4>	
