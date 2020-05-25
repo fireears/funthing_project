@@ -50,8 +50,8 @@ String email = request.getParameter("email");
 //		System.out.println("email : " + m.getmEmail());
 		// mail server 설정
 		String host = "smtp.gmail.com";
-		String user = "";		// 자신의 gmail 아이디 넣기
-		String password = "";	// 자신의 gmail 비밀번호 넣기
+		String user = "rngus3698";		// 자신의 gmail 아이디 넣기
+		String password = "tkddnjs123";	// 자신의 gmail 비밀번호 넣기
 		
 		// 메일 받을 주소
 		String to_email = m.getmEmail();
