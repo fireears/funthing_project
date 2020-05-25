@@ -1,15 +1,17 @@
 package payment.model.dao;
 
-import static common.JDBCTemplate.*;
+import static common.JDBCTemplate.close;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import member.model.vo.MemberPoint;
 import payment.model.vo.OrderList;
 import payment.model.vo.Payment;
-import personalQnA.model.vo.PersonalQnA;
+import payment.model.vo.ShoppingPayment;
 
 public class PaymentDao {
 
@@ -302,10 +304,87 @@ public class PaymentDao {
 		
 		int result = 0;
 		
-		String query = "INSERT INTO PAYMENT_INFO VALUE()";
-				
-		return 0;
+		String query = "INSERT INTO PAYMENT_INFO(O_NO, O_DATE, RCV_NAME, RCV_ADRS, RCV_PHONE, COMMENTT, TOTAL_PRICE, POINT_USE, SHIP_PRICE, PMNT_PRICE, EXPT_POINT, M_NO)\r\n" + 
+				"VALUES('0'||TO_CHAR(SEQ_PAYINFO.NEXTVAL),SYSDATE,?,?,?,?,?,?,?,?,?, 'M01')";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, p.getRcv_name());
+			pstmt.setString(2, p.getRcv_adrs());
+			pstmt.setString(3, p.getRcv_phone());
+			pstmt.setString(4, p.getComment());
+			pstmt.setInt(5, p.getTotal_price());
+			pstmt.setInt(6, p.getPoint_use());
+			pstmt.setString(7, p.getShip_price());
+			pstmt.setInt(8, p.getPmnt_price());
+			pstmt.setInt(9, p.getExpt_point());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally
+		{
+			close(pstmt);
+		}
+		return result;
 	}
+
+
+
+	public ArrayList<ShoppingPayment> searchProducts(Connection conn, ArrayList<ShoppingPayment> list) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		ShoppingPayment shoppingPayment = null;
+		ArrayList<ShoppingPayment> daoList = new ArrayList<>();
+		
+			try {
+				for(ShoppingPayment sp : list)
+				{
+					String query = "SELECT P_NO, THUMBNAIL, P_NAME, P_COLOR, P_SIZE, RETAIL_PRICE, DC_RATE, P_PRICE, P_POINT\r\n" + 
+							"FROM PRODUCT\r\n" + 
+							"WHERE P_NO = ?";
+					pstmt = conn.prepareStatement(query);
+					
+					pstmt.setString(1, sp.getP_no());
+					
+					rset = pstmt.executeQuery();
+					while(rset.next())
+					{
+						shoppingPayment = new ShoppingPayment(rset.getString("p_no"),
+																rset.getString("thumbnail"),
+																rset.getString("p_name"),
+																rset.getString("p_color"),
+																rset.getString("p_size"),
+																rset.getInt("retail_price"),
+																rset.getInt("dc_rate"),
+																rset.getInt("p_price"),
+																rset.getInt("p_point"),
+																sp.getNumber());
+						
+						daoList.add(shoppingPayment);
+					}
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			finally
+			{
+				close(pstmt);
+				close(rset);
+			}
+		
+		
+		return daoList;
+	}
+
+
+
+	
 
 	
 	

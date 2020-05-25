@@ -266,7 +266,7 @@
                             <%if(loginUser != null){ %>
                              <input type="hidden" name="p_no" value="<%=list.get(1).getpNo()%>">
                           	  <input type="hidden" name="userNo" value="<%=loginUser.getmNo() %>"> 
-                          	  <input type="hidden" name="mEmail" value="<%=loginUser.getmEmail() %>"> 
+                          	  <%-- <input type="hidden" name="mEmail" value="<%=loginUser.getmEmail() %>">  --%>
                             <%}else{ %>
                            	 <input type="hidden" name="p_no" value="<%=list.get(1).getpNo()%>">
                            	 <%-- <input type="hidden" name="userNo" value="<%=loginUser.getmNo() %>"> --%>

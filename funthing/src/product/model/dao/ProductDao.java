@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import payment.model.vo.ShoppingPayment;
 import product.model.vo.Product;
 import product.model.vo.ProductDetail;
 import productQnA.model.vo.AdminProductQnA;
@@ -447,10 +448,10 @@ public class ProductDao {
 		return list;
 	}
 
-	public Product paymentProductSearch(Connection conn, String pNo) {
+	public ShoppingPayment paymentProductSearch(Connection conn, String pNo, String number) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		Product p = null;
+		ShoppingPayment p = null;
 		
 		String query = "SELECT * FROM PRODUCT WHERE P_NO = '" + pNo + "'";
 		
@@ -461,7 +462,7 @@ public class ProductDao {
 			
 			while(rset.next())
 			{
-				p = new Product(rset.getString("p_no"),
+				p = new ShoppingPayment(rset.getString("p_no"),
 								rset.getString("thumbnail"),
 								rset.getString("p_name"),
 								rset.getString("p_color"),
@@ -469,7 +470,8 @@ public class ProductDao {
 								rset.getInt("retail_price"),
 								rset.getInt("dc_rate"),
 								rset.getInt("p_price"),
-								rset.getInt("p_point"));
+								rset.getInt("p_point"),
+								number);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
