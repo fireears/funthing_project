@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import admin.model.dao.AdminDao;
 import brand.model.vo.Brand;
 import member.model.vo.Member;
+import member.model.vo.MemberPoint;
 import payment.model.vo.OrderInfo;
 import payment.model.vo.OrderInfoDetail;
 import personalQnA.model.vo.AdmimPersonalQna;
@@ -449,6 +450,33 @@ public class AdminService {
 			close(conn);
 			
 			return rvList;
+		}
+
+		
+		// 적립금 관리자 페이지_희지
+		public int getPointListCount(String searchKind, String searchText) {
+			Connection conn = getConnection();
+			
+			int result = new AdminDao().getPointListCount(conn, searchKind, searchText);
+			
+			close(conn);
+			
+			
+			return result;
+		}
+
+		
+		// 적립금 관리자 페이지_희지
+		public ArrayList<MemberPoint> selectPointList(int currentPage, int limit, String searchKind,
+				String searchText) {
+			Connection conn = getConnection();
+			
+			ArrayList<MemberPoint> list = new AdminDao().selectPointList(conn, currentPage, limit, searchKind, searchText);
+			
+			close(conn);
+			
+			
+			return list;
 		}
 	
 	
