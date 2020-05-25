@@ -256,8 +256,57 @@
                             <span class="price_left">회원가</span> <span class="price_right"><%=formatter.format(pd.getpPrice()) %></span>
                                     
                         </li>
+                        <li>
+                            <span>게이지바</span>
+                                    
+                        </li>
+                        <li style="padding-top:20px;">
+                            <div align="right" style="color:grey;">Funding Ends</div><h4 align="right" id="sample04"  style="color:#30586e;">타임</h4>	
+                                    
+                        </li>
                     </ul>
-
+					<!-- 타이머 script -->
+					<script>
+		            const countDownTimer = function (id, date) {
+		                var _vDate = new Date(date); // 전달 받은 일자
+		                var _second = 1000;
+		                var _minute = _second * 60;
+		                var _hour = _minute * 60;
+		                var _day = _hour * 24;
+		                var timer;
+		        
+		                function showRemaining() {
+		                    var now = new Date();
+		                    var distDt = _vDate - now;
+		        
+		                    if (distDt < 0) {
+		                        clearInterval(timer);
+		                        document.getElementById(id).textContent = '해당 이벤트가 종료 되었습니다!';
+		                        return;
+		                    }
+		        
+		                    var days = Math.floor(distDt / _day);
+		                    var hours = Math.floor((distDt % _day) / _hour);
+		                    var minutes = Math.floor((distDt % _hour) / _minute);
+		                    var seconds = Math.floor((distDt % _minute) / _second);
+		        
+		                    //document.getElementById(id).textContent = date.toLocaleString() + "까지 : ";
+		                    document.getElementById(id).textContent = days + ' d ';
+		                    document.getElementById(id).textContent += hours + ' h ';
+		                    document.getElementById(id).textContent += minutes + ' m ';
+		                    document.getElementById(id).textContent += seconds + ' s ';
+		                }
+		        
+		
+		                timer = setInterval(showRemaining, 1000);
+		            }
+		        
+		            var dateObj = new Date();
+		            
+		            countDownTimer('sample04', '  <%=pd.getfEndDate() %>'); 
+		            /* countDownTimer('sample04', '2020/05/28'); // 2024년 4월 1일까지 */
+     			   </script>
+     			 
                     <!-- 상품 선택 및 구매/장바구니 -->
                     <div class="buy_information">
                     
