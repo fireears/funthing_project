@@ -54,22 +54,25 @@ public class PaymentService {
 	}
 
 
-	public int insertPayment(Payment p) {
+	public int insertPayment(Payment p, String mNo) {
 		Connection conn = getConnection();
 		
 		PaymentDao pDao = new PaymentDao();
 		
 		int result = pDao.insertPayment(conn, p);
+		int result1 = 0;
 		if(result > 0)
 		{
+			result1 = pDao.insertJumun(conn, mNo);
 			commit(conn);
+			
 		}
 		else
 		{
 			rollback(conn);
 		}
 		close(conn);
-		return result;
+		return result1;
 	}
 
 
@@ -109,16 +112,18 @@ public class PaymentService {
 		
 		int result = new PaymentDao().insertJumun(conn, mNo);
 		
+		
 		if(result > 0)
 		{
 			commit(conn);
+			
 		}
 		else
 		{
 			rollback(conn);
 		}
 		close(conn);
-		return 0;
+		return result;
 	}
 
 

@@ -80,9 +80,11 @@ public class PaymentServlet extends HttpServlet {
 			}
 			int result_product = pService.updateProduct(productList);
 			
+			//payment_info insert
+			int result = pService.insertPayment(p, mNo);
 			//주문테이블 insert
-			int result = pService.insertPayment(p);
-			int result_jumun = pService.insetJumun(mNo);
+//			int result_jumun = pService.insetJumun(mNo);
+			
 			System.out.println(mNo);
 			System.out.println(rcv_name);
 			System.out.println(rcv_adrs);
@@ -94,7 +96,7 @@ public class PaymentServlet extends HttpServlet {
 			System.out.println(pmnt_price);
 			System.out.println(expt_point);
 
-			if(result > 0 && result_product > 0 && result_jumun > 0)
+			if(result > 0 && result_product > 0)
 			{
 				System.out.println("결제 완료");
 			}

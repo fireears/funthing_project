@@ -304,8 +304,8 @@ public class PaymentDao {
 		
 		int result = 0;
 		
-		String query = "INSERT INTO PAYMENT_INFO(O_NO, O_DATE, RCV_NAME, RCV_ADRS, RCV_PHONE, COMMENTT, TOTAL_PRICE, POINT_USE, SHIP_PRICE, PMNT_PRICE, EXPT_POINT, M_NO)\r\n" + 
-				"VALUES('O'||TO_CHAR(SEQ_PAYINFO.NEXTVAL),SYSDATE,?,?,?,?,?,?,?,?,?, 'M01')";
+		String query = "INSERT INTO PAYMENT_INFO(O_NO, O_DATE, RCV_NAME, RCV_ADRS, RCV_PHONE, COMMENTT, TOTAL_PRICE, POINT_USE, PMNT_MTHD, SHIP_PRICE, PMNT_PRICE, EXPT_POINT, M_NO)\r\n" + 
+				"VALUES('O'||TO_CHAR(SEQ_PAYINFO.NEXTVAL),SYSDATE,?,?,?,?,?,?, 'kakaopay',?,?,?, 'M01')";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
