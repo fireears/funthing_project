@@ -456,40 +456,43 @@ public class PaymentDao {
 		return list;
 
 	}
-	
-	 public int insertPayment(Connection conn, Payment p) {
-	      PreparedStatement pstmt = null;
-	      ResultSet rset = null;
-	      
-	      int result = 0;
-	      
-	      String query = "INSERT INTO PAYMENT_INFO(O_NO, O_DATE, RCV_NAME, RCV_ADRS, RCV_PHONE, COMMENTT, TOTAL_PRICE, POINT_USE, SHIP_PRICE, PMNT_PRICE, EXPT_POINT, M_NO)\r\n" + 
-	            "VALUES('0'||TO_CHAR(SEQ_PAYINFO.NEXTVAL),SYSDATE,?,?,?,?,?,?,?,?,?, 'M01')";
-	      
-	      try {
-	         pstmt = conn.prepareStatement(query);
-	         pstmt.setString(1, p.getRcv_name());
-	         pstmt.setString(2, p.getRcv_adrs());
-	         pstmt.setString(3, p.getRcv_phone());
-	         pstmt.setString(4, p.getComment());
-	         pstmt.setInt(5, p.getTotal_price());
-	         pstmt.setInt(6, p.getPoint_use());
-	         pstmt.setString(7, p.getShip_price());
-	         pstmt.setInt(8, p.getPmnt_price());
-	         pstmt.setInt(9, p.getExpt_point());
-	         
-	         result = pstmt.executeUpdate();
-	         
-	      } catch (SQLException e) {
-	         // TODO Auto-generated catch block
-	         e.printStackTrace();
-	      }
-	      finally
-	      {
-	         close(pstmt);
-	      }
-	      return result;
-	   }
+
+	public int insertPayment(Connection conn, Payment p) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		int result = 0;
+		
+
+		String query = "INSERT INTO PAYMENT_INFO(O_NO, O_DATE, RCV_NAME, RCV_ADRS, RCV_PHONE, COMMENTT, TOTAL_PRICE, POINT_USE, SHIP_PRICE, PMNT_PRICE, EXPT_POINT, M_NO)\r\n" + 
+				"VALUES('O'||TO_CHAR(SEQ_PAYINFO.NEXTVAL),SYSDATE,?,?,?,?,?,?,?,?,?, 'M01')";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, p.getRcv_name());
+			pstmt.setString(2, p.getRcv_adrs());
+			pstmt.setString(3, p.getRcv_phone());
+			pstmt.setString(4, p.getComment());
+			pstmt.setInt(5, p.getTotal_price());
+			pstmt.setInt(6, p.getPoint_use());
+			pstmt.setString(7, p.getShip_price());
+			pstmt.setInt(8, p.getPmnt_price());
+			pstmt.setInt(9, p.getExpt_point());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally
+		{
+			close(pstmt);
+		}
+		return result;
+
+	}
+
 
 
 

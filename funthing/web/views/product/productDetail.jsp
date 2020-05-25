@@ -265,6 +265,7 @@
                             <ul id="buyList">
                             <%if(loginUser != null){ %>
                              <input type="hidden" name="pNo" value="<%=list.get(1).getpNo()%>">
+                             <input type="hidden" name="p_no" value="<%=list.get(1).getpNo()%>">
                           	  <input type="hidden" name="userNo" value="<%=loginUser.getmNo() %>"> 
 
                           	  <input type="hidden" name="mEmail" value="<%=loginUser.getmEmail() %>"> 

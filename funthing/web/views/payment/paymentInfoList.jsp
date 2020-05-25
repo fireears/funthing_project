@@ -246,7 +246,7 @@
                                 </tr>
                                 <tr>
                                     <th class="ta-1" aria-required="true">보유 적립금</th>
-                                    <td><div class="txt-field">총 보유 적립금 : <%=mPoint %>p<div id="totalPoint"></div></div></td>
+                                    <td><div class="txt-field"><input type="hidden" name="m_point" value="<%=mPoint%>">총 보유 적립금 : <%=mPoint %>p<div id="totalPoint"></div></div></td>
                                 </tr>
                                 <tr>
                                     <th class="ta-1" aria-required="true">적립금 사용</th>

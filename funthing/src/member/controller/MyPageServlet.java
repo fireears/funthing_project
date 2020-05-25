@@ -1,3 +1,4 @@
+// myPage 회원정보 창
 package member.controller;
 
 import java.io.IOException;

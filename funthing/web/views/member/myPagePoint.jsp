@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.ArrayList, member.model.vo.*, board.model.vo.*"%>
+<%@ page import="java.text.DecimalFormat" %>
 
 <%
 	Member loginUser3 = (Member)session.getAttribute("loginUser");
@@ -15,6 +16,8 @@
 	int maxPage= pi.getMaxPage();
 	int startPage = pi.getStartPage();
 	int endPage= pi.getEndPage();
+	
+	DecimalFormat formatter = new DecimalFormat("###,###");
 	
 %>
 
@@ -107,7 +110,7 @@
                 <div class="r-cont-header-images">
                     <i class="fas fa-dollar-sign" style="font-size:70px"></i>
                     <h4>적립금</h4>
-                    <div style="font-size:30px;"><%=mp2.getmPoint()%>p</div>
+                    <div style="font-size:30px;"><%=formatter.format(mp2.getmPoint())%>p</div>
 
                 </div>
 
