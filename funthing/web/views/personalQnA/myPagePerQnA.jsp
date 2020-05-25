@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="member.model.vo.*, payment.model.vo.*, java.util.ArrayList"%>
+    import="member.model.vo.*, payment.model.vo.*, java.util.ArrayList, java.text.DecimalFormat" %>
+    <%
+    	DecimalFormat formatter = new DecimalFormat("###,###");
+    %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -157,6 +160,9 @@
     			data : {"userId" : userId },
     			success : function(data){
     				//alert("성공");
+    				
+    				//var price = Number(value.oiTotalPrice);
+    				
     				$("#orderSelectWrap").show();
     				// 닫는 버튼
     				$(".close").click(function(){

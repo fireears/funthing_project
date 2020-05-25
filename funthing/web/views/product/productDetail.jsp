@@ -471,6 +471,7 @@
     <div id="review_area">
         <form action="<%=request.getContextPath()%>/ReviewInsert" method="post" enctype="multipart/form-data">
         	<input type="hidden" name="rev_pNo" value="<%= pd.getpNo() %>" />
+        	<input type="hidden" name="rev_pName" value="<%= pd.getpName() %>" />
             <div class="rev_rate">
                 <select name="rev_rateS" id="rev_rateS">
                     <option value="5">★★★★★</option>
@@ -505,7 +506,9 @@
         	</table>
         <!-- 리뷰 불러올 부분 -->
         <script>
-        	// alert("!");
+        if("<%=rvMsg%>" != "null"){
+        	alert("<%=rvMsg%>");
+        }
         $(window).load(function(){
         	$.ajax({
         		url : "<%=request.getContextPath()%>/ReviewList",
@@ -546,8 +549,6 @@
         				var $pContt = $("<p>").text(value.rvContents);
         				
         				
-        				
-        				
         				// $tr.append($tdNo);
         				$trLine.append($tdTitle);
         				$trLine.append($tdRate);
@@ -577,7 +578,7 @@
         			
         		},
         		error : function(data){
-        			alert("실패");
+        			alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
         		}
         	});
         	// ajax end

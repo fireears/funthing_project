@@ -4,7 +4,7 @@ import static common.JDBCTemplate.*;
 import java.sql.Connection;
 import java.util.ArrayList;
 
-import member.model.vo.MemberPoint;
+
 import payment.model.dao.PaymentDao;
 import payment.model.vo.OrderList;
 
@@ -12,6 +12,7 @@ import payment.model.vo.OrderUpdate;
 
 import payment.model.vo.Payment;
 import payment.model.vo.ShoppingPayment;
+import product.model.vo.Product;
 
 
 public class PaymentService {
@@ -104,6 +105,27 @@ public class PaymentService {
 	}
 
 
+	//상원
+	public int insertPayment(Payment p, String mNo) {
+		Connection conn = getConnection();
+		
+		PaymentDao pDao = new PaymentDao();
+		
+		int result = pDao.insertPayment(conn, p);
+		int result1 = 0;
+		if(result > 0)
+		{
+			result1 = pDao.insertJumun(conn, mNo);
+			commit(conn);
+			
+		}
+		else
+		{
+			rollback(conn);
+		}
+		close(conn);
+		return result1;
+	}
 
 
 
@@ -126,17 +148,63 @@ public class PaymentService {
 	   }
 
 
-	   public ArrayList<ShoppingPayment> searchProducts(ArrayList<ShoppingPayment> list) {
-	      Connection conn = getConnection();
-	      PaymentDao pDao = new PaymentDao();
-	      
-	      ArrayList<ShoppingPayment> servicelist = new ArrayList<>();
-	      
-	      servicelist = pDao.searchProducts(conn, list);
-	      
-	      close(conn);
-	      return servicelist;
-	   }
+
+	public int updateProduct(ArrayList<Product> productList) {
+		Connection conn = getConnection();
+		
+		int result = new PaymentDao().updateProduct(conn, productList);
+		
+		if(result > 0)
+		{
+			commit(conn);
+		}
+		else
+		{
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+
+
+	public int insetJumun(String mNo) {
+		Connection conn = getConnection();
+		
+		int result = new PaymentDao().insertJumun(conn, mNo);
+		
+		
+		if(result > 0)
+		{
+			commit(conn);
+			
+		}
+		else
+		{
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+
+
+	
+
+
+	
+
+   public ArrayList<ShoppingPayment> searchProducts(ArrayList<ShoppingPayment> list)
+   {
+      Connection conn = getConnection();
+      PaymentDao pDao = new PaymentDao();
+      
+      ArrayList<ShoppingPayment> servicelist = new ArrayList<>();
+      
+      servicelist = pDao.searchProducts(conn, list);
+      
+      close(conn);
+      return servicelist;
+   }
+
 
 
 	   
