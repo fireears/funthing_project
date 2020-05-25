@@ -426,12 +426,12 @@ public class AdminService {
 	}
 
 	// 리뷰 조회 카운트 * 서윤
-		public int getRvListCount() {
+		public int getRvListCount(String searchpName) {
 			Connection conn = getConnection();
 			
 			AdminDao aDao = new AdminDao();
 
-			int rvListCont = aDao.getRvListCount(conn);
+			int rvListCont = aDao.getRvListCount(conn,searchpName);
 			
 			close(conn);
 
@@ -445,6 +445,7 @@ public class AdminService {
 			Connection conn = getConnection();
 			
 			rvList = aDao.selectReviewList(conn, currentPage, limit, searchpName);
+			
 			
 			close(conn);
 			

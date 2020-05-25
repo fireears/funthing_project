@@ -12,6 +12,8 @@
  	int maxPage = pi.getMaxPage();
  	int startPage = pi.getStartPage();
  	int endPage = pi.getEndPage();
+ 	
+ 	String search = (String)request.getAttribute("search");
  %>
 <!DOCTYPE html>
 <html>
@@ -83,7 +85,7 @@
                 <% for(Review rv : rvList){ %>
                 <tr class="rvLine">
                 	<input type="hidden" class="rvNo" name="rvNo" value="<%=rv.getRevNo() %>">
-                    <td><%=rv.getRevNo() %></td>
+                    <td><%=rv.getRowNum() %></td>
                     <td class="rv_tbImg"><img src="<%=request.getContextPath()%>/images/thumbnail/<%=rv.getRvThumb() %>.jpg"></td>
                     <td><%=rv.getpNo() %></td>
                     <td><%=rv.getRevTitle() %></td>
@@ -106,6 +108,9 @@
         </div>
         <!-- 페이지네이션 -->	
         <div id="pageBtn" align="center">
+            <%
+            if(search == null){
+            %>   
         	<button class="pageBtn" onclick="location.href='<%=request.getContextPath() %>/admin/AdminReviewSelect?currentPage=<%=1 %>'"> << </button>
         	
         	<%if(currentPage <= 1) { %>
@@ -129,7 +134,42 @@
         	<%} %>
         	<button class="pageBtn" onclick="location.href='<%=request.getContextPath()%>/admin/AdminReviewSelect?currentPage=<%=maxPage%>'"> >> </button>
         	
-       
+        	
+        	
+        	<%}else{%>
+            
+            
+            
+            <!-- 맨 처음으로 -->
+        <button class="pageBtn"  onclick="location.href='<%=request.getContextPath() %>/admin/AdminReviewSelect?currentPage=<%=1 %>&ad_rvPrdName=<%=search%>'"> << </button>
+   
+        <!-- 이전 페이지 -->
+        <%if(currentPage <= 1) {%>
+           <button class="pageBtn"  disabled> < </button>
+        <%}else {%>
+           <button class="pageBtn" onclick="location.href='<%=request.getContextPath() %>/admin/AdminReviewSelect?currentPage=<%=1 %>&ad_rvPrdName=<%=search%>'"> < </button>
+        <%} %>                                
+        <!-- 10개의 페이지 목록 -->
+        <%for(int p = startPage; p<=endPage; p++){
+        %><%if(currentPage == p) {%>
+              <button class="pageBtn"  disabled><%=p %></button>
+           <%} else{%>
+              <%-- <button class="search" onclick="location.href='<%=request.getContextPath() %>/admin/NoticeView?currentPage='+<%=p %>&noticeSearch=<%=csearch%>'"><%=p %></button> --%>
+              <button class="pageBtn" onclick="location.href='<%=request.getContextPath() %>/admin/AdminReviewSelect?currentPage=<%=p %>&ad_rvPrdName=<%=search%>'"><%=p %></button>
+              <!-- url에 값을 넣어서 보내는 방식 쿼리 스트링방식 -->
+           <%} %>
+        <%}%>
+        <!-- 다음 페이지로 -->
+        <%if(currentPage >= maxPage) {%>
+           <button class="pageBtn"  disabled> > </button>
+        <%}else { %>
+           <button class="pageBtn" onclick="location.href='<%=request.getContextPath() %>/admin/AdminReviewSelect?currentPage=<%=currentPage + 1%>&ad_rvPrdName=<%=search%>'"> > </button>
+        <%} %>
+        <!-- 맨 끝으로  -->
+        <button class="pageBtn" onclick="location.href='<%=request.getContextPath() %>/admin/AdminReviewSelect?currentPage=<%=maxPage %>&ad_rvPrdName=<%=search%>'"> >> </button>   
+           
+           
+        <%} %>
         </div>
 
     </div>
