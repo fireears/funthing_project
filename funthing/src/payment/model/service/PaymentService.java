@@ -104,38 +104,41 @@ public class PaymentService {
 	}
 
 
-	public int insertPayment(Payment p) {
-		Connection conn = getConnection();
-		
-		PaymentDao pDao = new PaymentDao();
-		
-		int result = pDao.insertPayment(conn, p);
-		if(result > 0)
-		{
-			commit(conn);
-		}
-		else
-		{
-			rollback(conn);
-		}
-		close(conn);
-		return result;
+
+
+
+	   public int insertPayment(Payment p) {
+	      Connection conn = getConnection();
+	      
+	      PaymentDao pDao = new PaymentDao();
+	      
+	      int result = pDao.insertPayment(conn, p);
+	      if(result > 0)
+	      {
+	         commit(conn);
+	      }
+	      else
+	      {
+	         rollback(conn);
+	      }
+	      close(conn);
+	      return result;
+	   }
+
+
+	   public ArrayList<ShoppingPayment> searchProducts(ArrayList<ShoppingPayment> list) {
+	      Connection conn = getConnection();
+	      PaymentDao pDao = new PaymentDao();
+	      
+	      ArrayList<ShoppingPayment> servicelist = new ArrayList<>();
+	      
+	      servicelist = pDao.searchProducts(conn, list);
+	      
+	      close(conn);
+	      return servicelist;
+	   }
+
+
+	   
+
 	}
-
-
-	public ArrayList<ShoppingPayment> searchProducts(ArrayList<ShoppingPayment> list) {
-		Connection conn = getConnection();
-		PaymentDao pDao = new PaymentDao();
-		
-		ArrayList<ShoppingPayment> servicelist = new ArrayList<>();
-		
-		servicelist = pDao.searchProducts(conn, list);
-		
-		close(conn);
-		return servicelist;
-	}
-
-
-	
-
-}
