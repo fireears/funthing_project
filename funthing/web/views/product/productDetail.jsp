@@ -19,6 +19,8 @@
 	// review
 	ArrayList<Review> rvList = (ArrayList<Review>)request.getAttribute("rvList");
 	String rvMsg = (String)request.getAttribute("rvMsg");
+	
+	int funded = (int)(((double)pd.getfSelPrice() /  pd.getfGoal()) *100);
 %>    
 <!DOCTYPE html>
 <html lang="ko">
@@ -211,6 +213,11 @@
         .rev_content .rev_table tr.rvCont { display:none; }
         .rev_content .rev_table tr.rvCont.show { display:table-row; }
 		
+		/* .border1{boarder-top:lightgrey; border-bottom:lightgrey;} */
+		.gauge{height:10px; width:19px; background:lightgrey; padding:0; maring:0; display:inline-block; border-top:1px solid lightgrey;border-bottom:1px solid lightgrey; }
+		.gaugewhite{height:10px; width:19px;background:white;padding:0; maring:0; color:white; display:inline-block; border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;}
+		.leftradius{border-radius: 5px 0px 0px 5px; border-left:1px solid lightgrey;}
+		.rightradius{border-radius: 0px 5px 5px 0px; border-right:1px solid lightgrey;}
     </style>
 </head>
 
@@ -256,12 +263,36 @@
                             <span class="price_left">회원가</span> <span class="price_right"><%=formatter.format(pd.getpPrice()) %></span>
                                     
                         </li>
-                        <li>
-                            <span>게이지바</span>
-                                    
+                        <li style="padding-top:25px;">
+                        	<div align="right" style="color:grey;"><%= funded %> % Funded</div>
+ 							<!-- <div class="gauge leftradius"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge rightradius"></div> -->
+ 							<%if(funded == 0 ){ %>     
+ 							<div class="gaugewhite leftradius"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite rightradius"></div>                  
+                        	<%}else if(1<= funded && funded <=10 ){ %>
+                            <div class="gauge leftradius"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite rightradius"></div>        
+ 							<%}else if(11<= funded && funded <=20){%>
+ 							<div class="gauge leftradius"></div><div class="gauge"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite rightradius"></div>
+ 							<%}else if(21<= funded && funded <=30){%>
+ 							<div class="gauge leftradius"></div><div class="gauge"></div><div class="gauge"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite rightradius"></div>
+ 							<%}else if(31<= funded && funded <=40){%>
+ 							<div class="gauge leftradius"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite rightradius"></div>
+ 							<%}else if(41<= funded && funded <=50){%>
+ 							<div class="gauge leftradius"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite rightradius"></div>
+ 							<%}else if(51<= funded && funded <=60){%>
+ 							<div class="gauge leftradius"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite rightradius"></div>
+ 							<%}else if(61<= funded && funded <=70){%>
+ 							<div class="gauge leftradius"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite rightradius"></div>
+ 							<%}else if(71<= funded && funded <=80){%>
+ 							<div class="gauge leftradius"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gaugewhite"></div><div class="gaugewhite rightradius"></div>
+ 							<%}else if(81<= funded && funded <=90){%>
+ 							<div class="gauge leftradius"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gaugewhite rightradius"></div>
+ 							<%}else if(91<= funded && funded <=100){%>	                      
+ 							<div class="gauge leftradius"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge rightradius"></div>
+ 							<%} %>
+                       
                         </li>
-                        <li style="padding-top:20px;">
-                            <div align="right" style="color:grey;">Funding Ends</div><h4 align="right" id="sample04"  style="color:#30586e;">타임</h4>	
+                        <li style="padding-top:5px;">
+                            <div align="right" style="color:grey;">Funding Ends</div><h4 align="right" id="sample04"  style="color:#30586e;"></h4>	
                                     
                         </li>
                     </ul>
