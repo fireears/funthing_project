@@ -42,7 +42,9 @@ public class MemberJoinServlet extends HttpServlet {
 		String birth = request.getParameter("year") + request.getParameter("mon") + request.getParameter("day");
 		String reference = request.getParameter("reference");
 		String alarm_YN = request.getParameter("alarm_YN");
-		
+		if(alarm_YN == null) {
+			alarm_YN = "N";
+		}
 		
 		System.out.println("servlet alarm_YN : " + alarm_YN);
 		Member member = new Member(userId, userPwd, userName, email, phone, birth, reference, alarm_YN);
@@ -55,7 +57,7 @@ public class MemberJoinServlet extends HttpServlet {
 			view = request.getRequestDispatcher("views/member/joinSuccess.jsp");
 			request.setAttribute("member", member);
 		}else {
-			view = request.getRequestDispatcher("views/member/joinFail.jsp");
+			view = request.getRequestDispatcher("views/member/memberJoin.jsp");
 			request.setAttribute("msg", "회원가입 실패");
 		}
 		view.forward(request, response);

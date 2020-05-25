@@ -69,7 +69,7 @@
             <br>
             <label id="emailcheck" name="email" value="<%=email %>"><%=userName%>님의 이메일:<%=email %>로 전송하시겠습니까?</label>
             <br>
-            <div style="font-size: 12px; color: darkgray;">가입시 등록한 이메일로 인증번홀가 발송됩니다.</div>
+            <div style="font-size: 12px; color: darkgray;">가입시 등록한 이메일로 인증번호가 발송됩니다.</div>
             <br>
             <input type="radio" id="email" name="radio" style="zoom: 1.5;">
             <label>SMS 인증</label>

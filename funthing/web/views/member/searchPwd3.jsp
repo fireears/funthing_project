@@ -72,7 +72,7 @@
             <br>
             <br>
             <div style="font-size: 12px; color: darkgrey">인증번호가 도착하지 않았나요?
-                <a href="#">인증번호 다시받기</a>
+                <a href="<%=request.getContextPath()%>/message.send?email=<%=memberSend.getmEmail()%>">인증번호 다시받기</a>
             </div>
             <br>
             <hr>

@@ -78,7 +78,7 @@
                     <tr id="email">
                         <td>
                             <input type="email" id="email1" name="email" style=" height: 30px; width: 210px; border-radius: 8px;"  placeholder="이메일을 입력해주세요">
-                            <select name="email" id="selectEmail" onchange="emailSelect" style=" height: 35px; width: 180px; border-radius: 8px;">
+                            <select name="email" id="selectEmail" onchange="emailSelect" style=" height: 35px; width: 100px; border-radius: 8px;">
                                 <option value ="">직접입력</option>
                                 <option value="@naver.com">@naver.com</option>
                                 <option value="@gmail.com">@gmail.com</option>
@@ -86,6 +86,8 @@
                                 <option value="@daum.net">@daum.net</option>
                                 <option value="@nate.com">@nate.com</option>
                             </select>
+                            <input type="checkbox" id="em">
+                            <label>직접입력</label>
                         </td>       
                     </tr>
                     <tr id="phone" style="display: none;">
@@ -107,6 +109,7 @@
         </form>
         </div>
 		<script>
+		
 		$(function(){
 			
 		 <%if(msg != null){%>
@@ -118,7 +121,7 @@
 
         <script>
         	// 라디오 버튼 선택
-             $('input[type=radio][name=idchk]').on('click',function(){
+            $('input[type=radio][name=idchk]').on('click',function(){
             var chkValue = $('input[type=radio][name=idchk]:checked').val();
 
             if(chkValue == 1){
@@ -130,7 +133,18 @@
 
                 $('#phone').css('display','block');
             }
+            
         });
+        	// 아이디 찾기(이메일 직접입력)
+            $("#em").on('click',function(){
+                var chk = $('input:checkbox[id="em"]').is(":checked");
+                if(chk==true){
+                    $("#selectEmail").attr("disabled", true);
+                }else{
+                    $("#selectEmail").removeAttr('disabled'); 
+                }
+            });
+           
         $(function(){
              	// 휴대폰 정규화
                 $("#phone1").change(function(){

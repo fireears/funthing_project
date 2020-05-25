@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String msg = (String)request.getAttribute("msg");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -593,7 +596,7 @@
                     </li>
                     <br>
                     <li style="list-style: none;">
-                        <input type="checkbox" id="check4" value="1" name="alarm_YN" class="infoBox">
+                        <input type="checkbox" id="check4" value="N" name="alarm_YN" class="infoBox">
                         <label>(선택)정보/이벤트 메일 수신에 동의합니다.</label>
                     </li>
                     <br>
@@ -620,12 +623,16 @@
         	
         	// 필수동의 체크 여부
       		function check(){
-            	 if($("#check1").prop('checked') == false || $("#check2").prop("checked") == false || $("#check3").prop("checked") == false){
+            	 if($("#check1").prop('checked') == false || $("#check2").prop("checked") == false || $("#check3").prop("checked") != true){
                      alert("필수 약관에 동의 하셔야 합니다.");
             	 }else{
             		 $("#joinForm").submit();
             	 }
             }
+	      	// 회원가입 실패
+	       	 <%if(msg != null){%>
+	   			alert("<%=msg%>");
+	   		 <%}%>
         	
             $(function(){
             	
@@ -637,6 +644,8 @@
                 $("#checkAll").click(function(){
                     var bool = $("#checkAll").prop("checked");
                     $(".infoBox").prop("checked",bool);
+                   
+                    
                 });
                 // 체크박스 end
                 
@@ -696,12 +705,14 @@
          		// 메일 수신 동의 시 
                $(function(){	
 	                 if($("input:checkbox[id='check4']:checked") == true){
-	                    $("#check4").val("N"); 
+						
+	                	 $("#check4").val();
 	                 }else{
-	                 	$("#check4").val("Y");
+	                	 $("#check4").val("Y");
 	                 }
-                 });  
-                 
+	     
+                 });   
+              
 
                 
                
