@@ -3,6 +3,7 @@
  * Version: Apache Tomcat/8.5.54
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Generated at: 2020-05-24 10:14:12 UTC
 =======
  * Generated at: 2020-05-25 00:27:33 UTC
@@ -12,6 +13,9 @@
  * Generated at: 2020-05-25 00:03:34 UTC
 >>>>>>> refs/remotes/origin/dev30
 >>>>>>> refs/remotes/origin/master
+=======
+ * Generated at: 2020-05-25 01:39:04 UTC
+>>>>>>> refs/remotes/origin/dev8
  * Note: The last modified time of this file was set to
  *       the last modified time of the source file after
  *       generation to assist with modification tracking.

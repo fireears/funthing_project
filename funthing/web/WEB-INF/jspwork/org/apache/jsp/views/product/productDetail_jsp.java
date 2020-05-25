@@ -3,6 +3,7 @@
  * Version: Apache Tomcat/8.5.54
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Generated at: 2020-05-25 00:45:15 UTC
 =======
  * Generated at: 2020-05-25 00:36:53 UTC
@@ -10,6 +11,9 @@
 =======
  * Generated at: 2020-05-25 00:36:09 UTC
 >>>>>>> refs/remotes/origin/dev30
+=======
+ * Generated at: 2020-05-25 01:39:21 UTC
+>>>>>>> refs/remotes/origin/dev8
  * Note: The last modified time of this file was set to
  *       the last modified time of the source file after
  *       generation to assist with modification tracking.
@@ -39,7 +43,11 @@ public final class productDetail_jsp extends org.apache.jasper.runtime.HttpJspBa
     _jspx_dependants = new java.util.HashMap<java.lang.String,java.lang.Long>(2);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     _jspx_dependants.put("/views/product/../common/header.jsp", Long.valueOf(1590366283239L));
+=======
+    _jspx_dependants.put("/views/product/../common/header.jsp", Long.valueOf(1590370405915L));
+>>>>>>> refs/remotes/origin/dev8
     _jspx_dependants.put("/views/product/../common/footer.jsp", Long.valueOf(1590069923270L));
 =======
     _jspx_dependants.put("/views/product/../common/header.jsp", Long.valueOf(1590366890804L));
