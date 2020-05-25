@@ -1,4 +1,34 @@
+<<<<<<< HEAD
 /payment/
 /member/
 /personalQnA/
 /product/
+=======
+<<<<<<< HEAD
+/review/
+/women/
+/wrapper/
+/member/
+/payment/
+/personalQnA/
+=======
+/admin/
+/board/
+/brand/
+/calendar/
+/common/
+/filter/
+/main/
+/man/
+/member/
+/notice/
+/payment/
+/personalQnA/
+/product/
+/productQnA/
+/review/
+/sql/
+/women/
+/wrapper/
+>>>>>>> refs/remotes/origin/dev30
+>>>>>>> refs/remotes/origin/master

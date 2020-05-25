@@ -38,7 +38,9 @@ public class MyPageMainServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		String userNoM = request.getParameter("userNoM");
-		
+		if(userNoM == null) {
+			userNoM = (String)request.getAttribute("userNoM");
+		}
 		System.out.println("마이페이지 메인 서블릿에서 유저 넘버 : " + userNoM);
 		
 		MemberService mService = new MemberService();
@@ -47,6 +49,8 @@ public class MyPageMainServlet extends HttpServlet {
 		MemberPoint mp = new MemberPoint();
 		
 		mp = mService.memberInfo(userNoM);
+		
+		
 		
 		System.out.println("마이 페이지 메인에서 회원 정보 객체 mp : " + mp);
 		
