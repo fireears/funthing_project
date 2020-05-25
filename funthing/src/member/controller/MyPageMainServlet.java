@@ -65,15 +65,18 @@ public class MyPageMainServlet extends HttpServlet {
 		}else {
 			currentPage = 1;
 		}
-		
+		System.out.println("히지 currentPage : " +  currentPage);
 		// 최근 주문 목록 리스트 카운드
 		int currentListCount = mService.currentListCount(userNoM);
-		
+//		System.out.println("히지 listCount : " + currentListCount);
 		limit = 10;
 		maxPage = (int) ((double) currentListCount / limit + 0.9);
 		startPage = ((int) (((double) currentPage / limit + 0.9) - 1) * limit) + 1;
 		endPage = startPage + limit - 1;
 		
+		if(endPage > maxPage) {
+			endPage = maxPage;
+		}
 		// 페이징 처리 객체 만들기
 		PageInfo pi = new PageInfo(currentPage, currentListCount, limit, maxPage, startPage, endPage);
 		

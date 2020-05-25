@@ -34,7 +34,7 @@
                         <li><button type="button" onclick="brandManage();">브랜드 관리</button></li>
                         <li><button type="button" onclick="reviewManage();">리뷰관리</button></li>
                         <li><button type="button" onclick="qnaManage();">1:1문의 관리</button></li>
-                        <li><button type="button" onclick="pointManage();">포인트</button></li>
+                        <li><button type="button" onclick="pointManage();">적립금</button></li>
                         <li><button type="button" onclick="notice();">공지사항 게시판</button></li>
                         <li><button type="button" onclick="client();">클라이언트</button></li>
                         
@@ -81,7 +81,7 @@
 		}
 		function pointManage()
 		{
-			
+			location.href="<%=request.getContextPath()%>/admin/point";
 		}
 		function notice()
 		{

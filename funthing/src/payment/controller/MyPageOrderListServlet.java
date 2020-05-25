@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import board.model.vo.PageInfo;
 import payment.model.service.PaymentService;
 import payment.model.vo.OrderList;
-import personalQnA.model.vo.PersonalQnA;
+import payment.model.vo.OrderUpdate;
 
 /**
  * Servlet implementation class MyPageOrderListServlet
@@ -42,11 +42,17 @@ public class MyPageOrderListServlet extends HttpServlet {
 		String userNo = request.getParameter("userNo");
 
 //		System.out.println("로그인값 넘어왔니?" + userNo);
-
+		
 		// 날짜 선택값 받기
 		String searchDate = request.getParameter("searchDate");
 		String firstDate = request.getParameter("firstDate");
 		String secondDate = request.getParameter("secondDate");
+		
+		/*
+		 * if(searchDate.equals("null") && firstDate.equals("null")) { searchDate =
+		 * null; firstDate = null; }
+		 */
+		
 		
 		System.out.println("servlet searchDate : " +  searchDate);
 		
@@ -82,32 +88,38 @@ public class MyPageOrderListServlet extends HttpServlet {
 		}
 		
 		// 페이징 처리 관련 객체 만들기
-				PageInfo pi = new PageInfo(currentPage, orderListCount, limit, maxPage, startPage, endPage);
-				
-				System.out.println("pi" + pi);
-				
-				// 페이징 처리 + 날짜 검색 처리
-				ArrayList<OrderList> list = pService.selectOrderList(searchDate, firstDate, secondDate, currentPage, limit, userNo);
-				
-				System.out.println("Servlet에서  주문목록 리스트" + list);
+		PageInfo pi = new PageInfo(currentPage, orderListCount, limit, maxPage, startPage, endPage);
+		
+		System.out.println("pi" + pi);
+		
+		// 페이징 처리 + 날짜 검색 처리
+		/*
+		 * ArrayList<OrderList> list = pService.selectOrderList(searchDate, firstDate,
+		 * secondDate, currentPage, limit, userNo);
+		 */
+		ArrayList<OrderUpdate> list = pService.selectOrderList(searchDate, firstDate, secondDate, currentPage, limit, userNo);
+		// 배송지 수정 및 주문취소
+		
+		
+		System.out.println("Servlet에서  주문목록 리스트" + list);
 
-				// 서비스 다녀와서 리스트 화면 처리
-				RequestDispatcher view = null;
-				if(!list.isEmpty()) {
-					view = request.getRequestDispatcher("/views/member/myPageOrderList.jsp");
-					request.setAttribute("list", list);
-					request.setAttribute("pi", pi);
-					request.setAttribute("userNo", userNo);
-					
-				}else {
-					view = request.getRequestDispatcher("/views/member/myPageOrderList.jsp");
-					request.setAttribute("list", list);
-					request.setAttribute("pi", pi);
-				}
-				
-				view.forward(request, response);		
-				
-				
+		// 서비스 다녀와서 리스트 화면 처리
+		RequestDispatcher view = null;
+		if(!list.isEmpty()) {
+			view = request.getRequestDispatcher("/views/member/myPageOrderList.jsp");
+			request.setAttribute("list", list);
+			request.setAttribute("pi", pi);
+			request.setAttribute("userNo", userNo);
+			
+		}else {
+			view = request.getRequestDispatcher("/views/member/myPageOrderList.jsp");
+			request.setAttribute("list", list);
+			request.setAttribute("pi", pi);
+		}
+		
+		view.forward(request, response);		
+		
+		
 				
 				
 				

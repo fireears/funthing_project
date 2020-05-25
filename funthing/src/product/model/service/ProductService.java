@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import admin.model.dao.AdminDao;
 import payment.model.vo.OrderInfo;
+import payment.model.vo.ShoppingPayment;
 import product.model.dao.ProductDao;
 import product.model.vo.Product;
 import product.model.vo.ProductDetail;
@@ -134,11 +135,11 @@ public class ProductService {
 		return list;
 
 	}
-	public Product paymentProductSearch(String pNo) {
+	public ShoppingPayment paymentProductSearch(String pNo, String number) {
 
 		Connection conn = getConnection();
 		
-		Product p = new ProductDao().paymentProductSearch(conn, pNo);
+		ShoppingPayment p = new ProductDao().paymentProductSearch(conn, pNo, number);
 		
 		close(conn);
 		return p;

@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import member.model.service.MemberService;
 import member.model.vo.MemberPoint;
+import payment.model.vo.ShoppingPayment;
 import product.model.service.ProductService;
-import product.model.vo.Product;
 
 /**
  * Servlet implementation class PaymentInfoServlet
@@ -38,17 +38,17 @@ public class PaymentInfoServlet extends HttpServlet {
 		String size = request.getParameter("size");
 		String userNo = request.getParameter("userNo");
 		String number = request.getParameter("number");
-		String mEmail = request.getParameter("mEmail");
+//		String mEmail = request.getParameter("mEmail");
 		
 		System.out.println("productDetail.jsp에서 받은 값 : " + p_no + color + size);
 		
 		String pNo = p_no + color + size;
 		System.out.println("pNo " + pNo);
 		System.out.println("userNo : " + userNo);
-		System.out.println("mEmail" + mEmail);
+//		System.out.println("mEmail" + mEmail);
 		System.out.println("number : " + number);
 		
-		Product p = new ProductService().paymentProductSearch(pNo);
+		ShoppingPayment p = new ProductService().paymentProductSearch(pNo, number);
 		MemberPoint m = new MemberService().paymentMemberSearch(userNo);
 		
 		System.out.println(p);
@@ -60,8 +60,8 @@ public class PaymentInfoServlet extends HttpServlet {
 			view = request.getRequestDispatcher("/views/payment/paymentInfo.jsp");
 			request.setAttribute("p", p);
 			request.setAttribute("m", m);
-			request.setAttribute("number", number);
-			request.setAttribute("mEmail", mEmail);
+//			request.setAttribute("number", number);
+//			request.setAttribute("mEmail", mEmail);
 			view.forward(request, response);
 		}
 	}
