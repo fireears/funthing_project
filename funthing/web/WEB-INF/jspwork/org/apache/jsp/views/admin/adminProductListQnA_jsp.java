@@ -3,6 +3,7 @@
  * Version: Apache Tomcat/8.5.54
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Generated at: 2020-05-25 00:47:04 UTC
 =======
  * Generated at: 2020-05-24 10:20:07 UTC
@@ -10,6 +11,9 @@
 =======
  * Generated at: 2020-05-24 13:59:30 UTC
 >>>>>>> refs/remotes/origin/dev30
+=======
+ * Generated at: 2020-05-25 03:52:22 UTC
+>>>>>>> refs/remotes/origin/dev8
  * Note: The last modified time of this file was set to
  *       the last modified time of the source file after
  *       generation to assist with modification tracking.
@@ -37,6 +41,7 @@ public final class adminProductListQnA_jsp extends org.apache.jasper.runtime.Htt
     _jspx_dependants = new java.util.HashMap<java.lang.String,java.lang.Long>(1);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     _jspx_dependants.put("/views/admin/../common/adminHeader.jsp", Long.valueOf(1590144657614L));
 =======
     _jspx_dependants.put("/views/admin/../common/adminHeader.jsp", Long.valueOf(1590315406676L));
@@ -44,6 +49,9 @@ public final class adminProductListQnA_jsp extends org.apache.jasper.runtime.Htt
 =======
     _jspx_dependants.put("/views/admin/../common/adminHeader.jsp", Long.valueOf(1590208689717L));
 >>>>>>> refs/remotes/origin/dev30
+=======
+    _jspx_dependants.put("/views/admin/../common/adminHeader.jsp", Long.valueOf(1590375488365L));
+>>>>>>> refs/remotes/origin/dev8
   }
 
   private static final java.util.Set<java.lang.String> _jspx_imports_packages;

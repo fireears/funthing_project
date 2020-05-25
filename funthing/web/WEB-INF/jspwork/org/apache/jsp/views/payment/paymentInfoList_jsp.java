@@ -3,6 +3,7 @@
  * Version: Apache Tomcat/8.5.54
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Generated at: 2020-05-25 00:48:45 UTC
 =======
  * Generated at: 2020-05-25 01:39:34 UTC
@@ -10,6 +11,9 @@
 =======
  * Generated at: 2020-05-25 00:49:41 UTC
 >>>>>>> refs/remotes/origin/dev22222
+=======
+ * Generated at: 2020-05-25 03:50:47 UTC
+>>>>>>> refs/remotes/origin/dev8
  * Note: The last modified time of this file was set to
  *       the last modified time of the source file after
  *       generation to assist with modification tracking.
@@ -39,6 +43,7 @@ public final class paymentInfoList_jsp extends org.apache.jasper.runtime.HttpJsp
 <<<<<<< HEAD
     _jspx_dependants.put("/views/common/footer.jsp", Long.valueOf(1590069923270L));
 <<<<<<< HEAD
+<<<<<<< HEAD
     _jspx_dependants.put("/views/payment/../common/header.jsp", Long.valueOf(1590366283239L));
 =======
     _jspx_dependants.put("/views/payment/../common/header.jsp", Long.valueOf(1590370405915L));
@@ -47,6 +52,9 @@ public final class paymentInfoList_jsp extends org.apache.jasper.runtime.HttpJsp
     _jspx_dependants.put("/views/common/footer.jsp", Long.valueOf(1589628484051L));
     _jspx_dependants.put("/views/payment/../common/header.jsp", Long.valueOf(1590366890804L));
 >>>>>>> refs/remotes/origin/dev22222
+=======
+    _jspx_dependants.put("/views/payment/../common/header.jsp", Long.valueOf(1590375488208L));
+>>>>>>> refs/remotes/origin/dev8
   }
 
   private static final java.util.Set<java.lang.String> _jspx_imports_packages;
@@ -588,6 +596,12 @@ if(!resultList.isEmpty()) {
 for(ShoppingPayment sp : resultList) {
       out.write("\r\n");
       out.write("                                <tr style=\"line-heigth:150px;\">\r\n");
+      out.write("                                \t<input type=\"hidden\" name=\"pName\" value=\"");
+      out.print(sp.getP_name() );
+      out.write("\">\r\n");
+      out.write("                                \t<input type=\"hidden\" name=\"result_price\" value=\"");
+      out.print(sp.getP_price() * Integer.valueOf(sp.getNumber()) );
+      out.write("\">\r\n");
       out.write("                                    <td align=\"left\"><img src=\"");
       out.print(request.getContextPath()+"/images/thumbnail/" + sp.getThumbnail() + ".jpg" );
       out.write("\" alt=\"상품사진\" id=\"productImg\" style=\"width:80px; height:100px;\"><span>");

@@ -3,12 +3,16 @@
  * Version: Apache Tomcat/8.5.54
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Generated at: 2020-05-25 00:45:23 UTC
 =======
  * Generated at: 2020-05-25 00:36:57 UTC
 >>>>>>> refs/remotes/origin/dev22222
 =======
  * Generated at: 2020-05-25 01:39:30 UTC
+>>>>>>> refs/remotes/origin/dev8
+=======
+ * Generated at: 2020-05-25 03:48:06 UTC
 >>>>>>> refs/remotes/origin/dev8
  * Note: The last modified time of this file was set to
  *       the last modified time of the source file after
@@ -37,9 +41,13 @@ public final class shoppingbag_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_dependants = new java.util.HashMap<java.lang.String,java.lang.Long>(2);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     _jspx_dependants.put("/views/member/../common/header.jsp", Long.valueOf(1590366283239L));
 =======
     _jspx_dependants.put("/views/member/../common/header.jsp", Long.valueOf(1590370405915L));
+>>>>>>> refs/remotes/origin/dev8
+=======
+    _jspx_dependants.put("/views/member/../common/header.jsp", Long.valueOf(1590375488208L));
 >>>>>>> refs/remotes/origin/dev8
     _jspx_dependants.put("/views/member/../common/footer.jsp", Long.valueOf(1590069923270L));
 =======
