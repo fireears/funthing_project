@@ -48,6 +48,8 @@ public class MyPageMainServlet extends HttpServlet {
 		
 		mp = mService.memberInfo(userNoM);
 		
+		
+		
 		System.out.println("마이 페이지 메인에서 회원 정보 객체 mp : " + mp);
 		
 		
