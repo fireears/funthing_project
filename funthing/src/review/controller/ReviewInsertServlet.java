@@ -1,6 +1,7 @@
 package review.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -14,7 +15,6 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import member.model.vo.Member;
-import member.model.vo.MemberPoint;
 import review.model.service.ReviewService;
 import review.model.vo.Review;
 
@@ -39,6 +39,8 @@ public class ReviewInsertServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		request.setCharacterEncoding("utf-8");
+
+		response.setContentType("text/html;charset=utf-8");
 	
 		 ReviewService rvService = new ReviewService();
 		
@@ -75,6 +77,9 @@ public class ReviewInsertServlet extends HttpServlet {
 		
 		//상품번호 불러오기
 		String revpNo = multiRequest.getParameter("rev_pNo");
+		// 상품 이름 불러오기
+		String revpName = multiRequest.getParameter("rev_pName");
+		System.out.println("insert pname : " + revpName);
 		
 		//별점
 		int revRate = Integer.valueOf(multiRequest.getParameter("rev_rateS"));
@@ -96,7 +101,11 @@ public class ReviewInsertServlet extends HttpServlet {
 		
 		RequestDispatcher view = null;
 		
-		String msg = "";
+		// jsp로 출력하기 위함
+		PrintWriter pw = response.getWriter();
+
+		
+		String msg = "null";
 		
 		if(rvList.size() != 0) {
 			prdName = rvList.get(0).getpNo();
@@ -137,20 +146,26 @@ public class ReviewInsertServlet extends HttpServlet {
 					if(mbRs > 0) {
 						System.out.println("meber point update");
 						msg = "리뷰가 등록되었습니다.";
+						request.setAttribute("rvMsg", msg);
+
 					}
 					
 					
 				}
 				
-				// 어떻게 다시 프로덕트 페이지로 넘기지?
-//				view = request.getRequestDispatcher("/views/product/productDetail.jsp");
+				view = request.getRequestDispatcher("/productDateil?pName="+revpName);
+				
 			}
 			
 		}else {
 			System.out.println("리뷰 업로드 실패");
+			msg = "리뷰 업로드 실패";
+			request.setAttribute("rvMsg", msg);
+			view = request.getRequestDispatcher("/productDateil?pName="+revpName);
+			
 		}
 		
-//		view.forward(request, response);
+		view.forward(request, response);
 	}
 
 	/**

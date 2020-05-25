@@ -28,8 +28,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>FUN-THING</title>
 		
-		<script src="<%=request.getContextPath()%>/js/action.js"></script>
-		<script src="<%=request.getContextPath()%>/js/swiper.min.js"></script>
 	
 	</head>
 	<body>

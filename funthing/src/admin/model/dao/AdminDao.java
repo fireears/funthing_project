@@ -1378,20 +1378,31 @@ public class AdminDao {
 		return result;
 	}
 
-	public int getRvListCount(Connection conn) {
+	public int getRvListCount(Connection conn, String searchpName) {
 		Statement stmt = null;
 		ResultSet rs = null;
 		
 		int rvListCont = 0;
 		
-		String query = "SELECT COUNT(*) FROM REVIEW";
 		
 		try {
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(query);
-
-			if (rs.next()) {
-				rvListCont = rs.getInt(1);
+			if(searchpName != null) {
+				String query = "SELECT COUNT(*) FROM REVIEW R JOIN PRODUCT P ON (R.P_NO = P.P_NO) WHERE R.P_NO LIKE '%"+ searchpName +"%'";
+				stmt = conn.createStatement();
+				rs = stmt.executeQuery(query);
+	
+				if (rs.next()) {
+					rvListCont = rs.getInt(1);
+				}
+			}else {
+				String query = "SELECT COUNT(*) FROM REVIEW";
+				stmt = conn.createStatement();
+				rs = stmt.executeQuery(query);
+	
+				if (rs.next()) {
+					rvListCont = rs.getInt(1);
+				}
+				
 			}
 			
 		} catch (SQLException e) {
@@ -1411,14 +1422,13 @@ public class AdminDao {
 		String query = "";
 		ArrayList<Review> rvList = new ArrayList<>();
 		
-		System.out.println(searchpName);
-		
+		System.out.println("searchpName : " + searchpName);
 		
 		if(searchpName == null) {
-			query = "SELECT * FROM REVIEW R JOIN MEMBER M ON(R.M_NO = M.M_NO) JOIN PRODUCT P ON(R.P_NO = P.P_NO) WHERE REV_NO BETWEEN ? AND ? ORDER BY 1";
+			query = "SELECT * FROM (SELECT ROWNUM RN, REV_NO, M.M_NO, REV_TITLE, P.P_NO, REV_CONTENTS, REV_DATE, VIEWS_NUM, RATE, REV_PIC_DIR, M.M_ID, M.M_NAME, THUMBNAIL, P_NAME FROM REVIEW R JOIN MEMBER M ON(R.M_NO = M.M_NO) JOIN PRODUCT P ON(R.P_NO = P.P_NO) ORDER BY RN) WHERE RN BETWEEN ? AND ?";
 			
 		}else {
-			query = "SELECT * FROM REVIEW R JOIN MEMBER M ON(R.M_NO = M.M_NO) JOIN PRODUCT P ON(R.P_NO = P.P_NO) WHERE REV_NO BETWEEN ? AND ? AND P.P_NO LIKE(?) ORDER BY 1";
+			query = "SELECT * FROM (SELECT ROWNUM RN, REV_NO, M.M_NO, REV_TITLE, P.P_NO, REV_CONTENTS, REV_DATE, VIEWS_NUM, RATE, REV_PIC_DIR, M.M_ID, M.M_NAME, THUMBNAIL, P_NAME FROM REVIEW R JOIN MEMBER M ON(R.M_NO = M.M_NO) JOIN PRODUCT P ON(R.P_NO = P.P_NO) WHERE P.P_NO LIKE('%"+ searchpName +"%') ORDER BY RN) WHERE RN BETWEEN ? AND ?";
 		}
 		
 		
@@ -1427,17 +1437,13 @@ public class AdminDao {
 		int startRow = (currentPage - 1) * limit + 1;
 		int endRow = startRow + limit - 1;
 		
+		System.out.println("endRow : " + endRow);
+		
 		try {
 			pstmt = conn.prepareStatement(query);
 			
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
-			if(searchpName != null) {
-				pstmt.setString(3, "%" + searchpName + "%");
-//				System.out.println("if문 확인 : " + searchpName);
-			}else {
-				
-			}
+				pstmt.setInt(1, startRow);
+				pstmt.setInt(2, endRow);
 			
 			rs = pstmt.executeQuery();
 			
@@ -1454,7 +1460,8 @@ public class AdminDao {
 						
 						rs.getString("REV_PIC_DIR"),
 						rs.getString("M_NAME"),
-						rs.getString("THUMBNAIL"));
+						rs.getString("THUMBNAIL"),
+						rs.getInt("RN"));
 								
 				rvList.add(r);
 			}
@@ -1484,6 +1491,51 @@ public class AdminDao {
 		return rvList;
 	}
 
+	// 리뷰 디테일 페이지 서윤
+	public Review reviewDetail(Connection conn, int revNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		Review rv = new Review();
+		
+		String query = "SELECT * FROM REVIEW R JOIN MEMBER M ON(R.M_NO = M.M_NO) JOIN PRODUCT P ON(R.P_NO = P.P_NO) WHERE REV_NO = ?";
+		
+
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setInt(1, revNo);
+
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				rv = new Review(
+						rs.getInt("REV_NO"),
+						rs.getString("M_NO"),
+						rs.getString("REV_TITLE"),
+						rs.getString("P_NO"),
+						rs.getString("REV_CONTENTS"),
+						rs.getString("REV_DATE"),
+						rs.getInt("RATE"),
+						rs.getString("REV_PIC_DIR"),
+						rs.getString("M_ID"),
+						rs.getString("M_NAME"),
+						rs.getString("THUMBNAIL"));
+				
+				
+			}
+			System.out.println("review Detail Dao : " + rv);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rs);
+		}
+		
+		
+		return rv;
+	}
 	
 	// 적립금 관리자 페이지_희지
 	public int getPointListCount(Connection conn, String searchKind, String searchText) {

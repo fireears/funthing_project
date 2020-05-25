@@ -149,3 +149,9 @@ h2 { text-align:center; font-size:36px; margin:80px 0 40px; }
 
 
 
+.sc-btns { position:fixed; right:20px; bottom:20px; }
+.sc-btns .up, .sc-btns .down { background:#bbb; width:50px; text-align:center; line-height:50px; height:50px; border-radius:50%; margin:6px 0; transition: .3s ease; cursor:pointer; }
+.sc-btns .up:hover, .sc-btns .down:hover { background:#0f4a7e; }
+.sc-btns i { color:#fff; font-size:16px; }
+
+
