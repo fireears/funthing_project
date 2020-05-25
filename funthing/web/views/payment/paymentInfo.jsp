@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="product.model.vo.Product" %>
 <%@ page import="payment.model.vo.ShoppingPayment" %>
 <%@ page import="member.model.vo.MemberPoint" %>
 <%@ page import="java.text.DecimalFormat" %>
 <%
-	ShoppingPayment p = (ShoppingPayment)request.getAttribute("p");
-
+ShoppingPayment p = (ShoppingPayment)request.getAttribute("p");
+	int number = Integer.valueOf((String)request.getAttribute("number"));
 	DecimalFormat formatter = new DecimalFormat("###,###");
 	MemberPoint mp = (MemberPoint)request.getAttribute("m");
 	/* String mEmail = (String)request.getAttribute("mEmail"); */
@@ -15,7 +16,6 @@
 	String color = p.getP_color();
 	String size = p.getP_size();
 	
-	int number = Integer.valueOf(p.getNumber());
 	int retailPrice = p.getRetail_price();
 	int dcRate = p.getDc_rate();
 	int pPrice = p.getP_price();
@@ -207,7 +207,9 @@
                                 </tr>
                                 <%if(p != null) { %>
                                 <tr style="line-heigth:150px;">
-                                    <td align="left"><img src="<%=request.getContextPath()+"/images/thumbnail/" + thumbnail + ".jpg" %>" alt="상품사진" id="productImg" style="width:80px; height:100px;"><span><%=pName %>/<%=color %>/<%=size %></span></td>
+                                	<input type="hidden" name="pName" value="<%=pName %>">
+                                	<input type="hidden" name="result_price" value="<%=pPrice*number %>">
+                                    <td align="center"><img src="<%=request.getContextPath()+"/images/thumbnail/" + thumbnail + ".jpg" %>" alt="상품사진" id="productImg" style="width:100px; height:150px;"><span><%=pName %>/<%=color %>/<%=size %></span></td>
                                     <td style="text-align: center; "><div id="num"><%=number %></div></td>
                                     <td style="text-align: center;"><div id="retail_price"><%=formatter.format(retailPrice*number) %></div></td>
                                     <td style="text-align: center;"><div id="dc_point"><%=dcRate %>%/<%=pPoint*number %>p</div></td>

@@ -1,6 +1,7 @@
 package payment.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import member.model.vo.MemberPoint;
 import payment.model.service.PaymentService;
 import payment.model.vo.Payment;
+import product.model.vo.Product;
 
 /**
  * Servlet implementation class PaymentServlet
@@ -38,6 +40,8 @@ public class PaymentServlet extends HttpServlet {
 		PaymentService pService = new PaymentService();
 		try
 		{
+			String[] arrPname = request.getParameterValues("pName");
+			String[] arrResult_price = request.getParameterValues("result_price");
 			String rcv_name = request.getParameter("rcv_name");
 			String rcv_adrs = request.getParameter("rcv_adrs");
 			String rcv_phone = request.getParameter("rcv_phone");
@@ -58,11 +62,27 @@ public class PaymentServlet extends HttpServlet {
 			//상품합계 금액 - 적립금 사용
 			int pmnt_price = total_price - point_use;
 			Payment p = new Payment(rcv_name, rcv_adrs, rcv_phone, comment, total_price, point_use, ship_price, pmnt_price, expt_point, mNo);
-			
+			//point update
 			MemberPoint mp = new MemberPoint();
 			
+			//펀딩 판매금액 업데이트
+			ArrayList<Product> productList = new ArrayList<>();
+			Product product = new Product();
+			String pName;
+			String result_price;
+			for(int i = 0; i<arrPname.length; i++)
+			{
+				pName = arrPname[i];
+				result_price = arrResult_price[i];
+				product.setpName(pName);
+				product.setfSelPrice(Integer.valueOf(result_price));
+				productList.add(product);
+			}
+			int result_product = pService.updateProduct(productList);
 			
+			//주문테이블 insert
 			int result = pService.insertPayment(p);
+			int result_jumun = pService.insetJumun(mNo);
 			System.out.println(mNo);
 			System.out.println(rcv_name);
 			System.out.println(rcv_adrs);
@@ -74,7 +94,7 @@ public class PaymentServlet extends HttpServlet {
 			System.out.println(pmnt_price);
 			System.out.println(expt_point);
 
-			if(result > 0)
+			if(result > 0 && result_product > 0 && result_jumun > 0)
 			{
 				System.out.println("결제 완료");
 			}

@@ -60,7 +60,7 @@ public class PaymentInfoServlet extends HttpServlet {
 			view = request.getRequestDispatcher("/views/payment/paymentInfo.jsp");
 			request.setAttribute("p", p);
 			request.setAttribute("m", m);
-//			request.setAttribute("number", number);
+			request.setAttribute("number", number);
 //			request.setAttribute("mEmail", mEmail);
 			view.forward(request, response);
 		}

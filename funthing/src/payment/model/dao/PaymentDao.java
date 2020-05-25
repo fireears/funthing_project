@@ -8,10 +8,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import member.model.vo.MemberPoint;
+
 import payment.model.vo.OrderList;
 import payment.model.vo.Payment;
 import payment.model.vo.ShoppingPayment;
+import product.model.vo.Product;
 
 public class PaymentDao {
 
@@ -300,12 +301,11 @@ public class PaymentDao {
 
 	public int insertPayment(Connection conn, Payment p) {
 		PreparedStatement pstmt = null;
-		ResultSet rset = null;
 		
 		int result = 0;
 		
 		String query = "INSERT INTO PAYMENT_INFO(O_NO, O_DATE, RCV_NAME, RCV_ADRS, RCV_PHONE, COMMENTT, TOTAL_PRICE, POINT_USE, SHIP_PRICE, PMNT_PRICE, EXPT_POINT, M_NO)\r\n" + 
-				"VALUES('0'||TO_CHAR(SEQ_PAYINFO.NEXTVAL),SYSDATE,?,?,?,?,?,?,?,?,?, 'M01')";
+				"VALUES('O'||TO_CHAR(SEQ_PAYINFO.NEXTVAL),SYSDATE,?,?,?,?,?,?,?,?,?, 'M01')";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -380,6 +380,61 @@ public class PaymentDao {
 		
 		
 		return daoList;
+	}
+
+
+
+	public int updateProduct(Connection conn, ArrayList<Product> productList) {
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		try {
+			for(Product p : productList)
+			{
+				String query = "UPDATE PRODUCT SET F_SEL_PRICE = ? WHERE P_NAME = ?";
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, p.getfSelPrice());
+				pstmt.setString(2, p.getpName());
+			}
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally
+		{
+			close(pstmt);
+		}
+		
+		
+		return result;
+	}
+
+
+
+	public int insertJumun(Connection conn, String mNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "INSERT INTO JUMUN VALUES('O'||TO_CHAR(SEQ_PAYINFO.CURRVAL),'결제완료','N',?,'Y')";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, mNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally
+		{
+			close(pstmt);
+		}
+		
+		return result;
 	}
 
 
