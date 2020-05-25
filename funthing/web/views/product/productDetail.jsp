@@ -18,7 +18,7 @@
 	
 	// review
 	ArrayList<Review> rvList = (ArrayList<Review>)request.getAttribute("rvList");
-	String rvMsg = (String)request.getAttribute("msg");
+	String rvMsg = (String)request.getAttribute("rvMsg");
 %>    
 <!DOCTYPE html>
 <html lang="ko">
@@ -418,7 +418,9 @@
         	</table>
         <!-- 리뷰 불러올 부분 -->
         <script>
-        	 alert(rvMsg);
+        if("<%=rvMsg%>" != "null"){
+        	alert("<%=rvMsg%>");
+        }
         $(window).load(function(){
         	$.ajax({
         		url : "<%=request.getContextPath()%>/ReviewList",
@@ -457,8 +459,6 @@
         				
         				var $pPrdNo = $("<p>").text("상품명 : " + value.rvpNo);
         				var $pContt = $("<p>").text(value.rvContents);
-        				
-        				
         				
         				
         				// $tr.append($tdNo);
