@@ -53,7 +53,8 @@
         #name{
             padding-bottom: 5px;
              border-bottom: 1.5px solid #30586e;
-             font-size: large;
+             font-size: 25px;
+             
         }
         #product_description{
             font-size:small;
@@ -62,6 +63,7 @@
         #prod-detail {
             width: 1460px;
             margin: 0 auto;
+            
         }
 
         #prod-detail:after {
@@ -109,7 +111,8 @@
         #right_wrap ul li .price_left {
             float: left;
             font-style: normal;
-            font-weight: 600;
+            /* font-weight: 600; */
+            font-size:16px;
         }
 
         #right_wrap ul li .price_right {
@@ -119,14 +122,14 @@
 
         .price {
             float: left;
-            width: 60%;
+            width: 50%;
             box-sizing: border-box;
             padding-right: 5%;
         }
 
         .buy_information {
             float: right;
-            width: 40%;
+            width: 50%;
         }
 		
 		.buy_information form{
@@ -138,12 +141,12 @@
         }
 
         .sizeColor{
-            width: 385px;
+            width: 425px;
             height: 40px;
         }
 
         #num{
-            width: 380px;
+            width: 422px;
             height: 40px;
         }
 
@@ -151,7 +154,7 @@
             background:#9fa5a8;
             color:white;
             border:0;
-            width:190px;
+            width:212px;
             height: 50px;
         }
 
@@ -216,8 +219,8 @@
         .rev_content .rev_table tr.rvCont.show { display:table-row; }
 		
 		/* .border1{boarder-top:lightgrey; border-bottom:lightgrey;} */
-		.gauge{height:10px; width:50px; background:lightgrey; padding:0; maring:0; display:inline-block; border-top:1px solid lightgrey;border-bottom:1px solid lightgrey; }
-		.gaugewhite{height:10px; width:50px;background:white;padding:0; maring:0; color:white; display:inline-block; border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;}
+		.gauge{height:10px; width:40px; background:lightgrey; padding:0; maring:0; display:inline-block; border-top:1px solid lightgrey;border-bottom:1px solid lightgrey; }
+		.gaugewhite{height:10px; width:40px;background:white;padding:0; maring:0; color:white; display:inline-block; border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;}
 		.leftradius{border-radius: 5px 0px 0px 5px; border-left:1px solid lightgrey;}
 		.rightradius{border-radius: 0px 5px 5px 0px; border-right:1px solid lightgrey;}
     </style>
@@ -262,10 +265,10 @@
                             <span class="price_left">적립금</span><span class="price_right"><%=formatter.format(pd.getpPoint()) %></span> 
                         </li>
                         <li>
-                            <span class="price_left">회원가</span> <span class="price_right"><%=formatter.format(pd.getpPrice()) %></span>
+                            <span class="price_left">회원가</span> <span class="price_right" style="font-weight:700;"><%=formatter.format(pd.getpPrice()) %></span>
                                     
                         </li>
-                        <li style="padding-top:25px;">
+                        <li style="padding-top:15px;">
                         	<div align="right" style="color:grey;"><%= funded %> % Funded</div>
  							<!-- <div class="gauge leftradius"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge rightradius"></div> -->
  							<div align="right">
