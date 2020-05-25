@@ -1504,14 +1504,14 @@ public class AdminDao {
 				rset = pstmt.executeQuery();
 				
 			}else if(searchKind != null && searchText != null) {
-				String query = "SELECT COUNT(*) FRPM POINT";
+				String query = "SELECT COUNT(*) FROM POINT";
 				pstmt = conn.prepareStatement(query);
 				rset = pstmt.executeQuery();
 				
 			}
 			
 			if(rset.next()) {
-				result = rset.getInt(1);
+				result = rset.getInt("COUNT(*)");
 			}
 			
 			
