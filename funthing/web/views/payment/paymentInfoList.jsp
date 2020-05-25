@@ -252,7 +252,7 @@
                                 </tr>
                                 <tr>
                                     <th class="ta-1" aria-required="true">적립금 사용</th>
-                                    <td><div class="txt-field"><input type="text" id="point_user" name="point_use" style="width: 100px;">P</div></td>
+                                    <td><div class="txt-field"><input type="text" id="point_user" name="point_use" value="0" style="width: 100px;">P</div></td>
                                 </tr>
                                 <tr>
                                     <th class="ta-1" aria-required="true">최종 결제 금액</th>

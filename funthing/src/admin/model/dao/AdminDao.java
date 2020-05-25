@@ -1498,7 +1498,7 @@ public class AdminDao {
 		
 		Review rv = new Review();
 		
-		String query = "SELECT * FROM REVIEW R JOIN MEMBER M ON(R.M_NO = M.M_NO) JOIN PRODUCT P ON(R.P_NO = P.P_NO) WHERE REV_NO = ?";
+		String query = "SELECT * FROM REVIEW R JOIN MEMBER M ON(R.M_NO = M.M_NO) JOIN PRODUCT P ON(R.P_NO = P.P_NO) FULL JOIN PAYMENT_INFO PI ON(M.M_NO = PI.M_NO) WHERE REV_NO =?";
 		
 
 		try {
@@ -1520,7 +1520,8 @@ public class AdminDao {
 						rs.getString("REV_PIC_DIR"),
 						rs.getString("M_ID"),
 						rs.getString("M_NAME"),
-						rs.getString("THUMBNAIL"));
+						rs.getString("THUMBNAIL"),
+						rs.getString("O_NO"));
 				
 				
 			}
