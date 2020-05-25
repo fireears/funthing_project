@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String msg = (String)request.getAttribute("msg");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -593,12 +596,12 @@
                     </li>
                     <br>
                     <li style="list-style: none;">
-                        <input type="checkbox" id="check4" value="1" name="alarm_YN" class="infoBox">
+                        <input type="checkbox" id="check4" value="N" name="alarm_YN" class="infoBox">
                         <label>(선택)정보/이벤트 메일 수신에 동의합니다.</label>
                     </li>
                     <br>
                     <li style="list-style: none;">
-                        <input type="checkbox" id="check5" name="agree_chk" class="infoBox">
+                        <input type="checkbox" id="check5" value="N" name="agree_chk" class="infoBox">
                         <label>(선택)정보/이벤트 SMS 수신에 동의합니다.</label>
                     </li>
                     <br>
@@ -607,15 +610,30 @@
             </ul>
             <br><br><br><br><br>
             <div style="text-align: center;">
-                <input type="submit" value="회원가입" id="submit_btn" style="width: 90px; height: 40px; color: white; background: darkgrey; border-radius: 7px;" onclick="check()">
+                <input type="button" value="회원가입" id="submit_btn" style="width: 90px; height: 40px; color: white; background: darkgrey; border-radius: 7px;" onclick="check();">
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 <input type="button" value="취소" id="cancel" onclick=cancle(); style="width: 90px; height: 40px; color: black; background-color: lightgray; border-radius: 7px;">
             </div>
         </form>
         <script>
+        	// 취소
       		function cancle(){
       			location.href="<%=request.getContextPath()%>/main/mainView";
       		}
+        	
+        	// 필수동의 체크 여부
+      		function check(){
+            	 if($("#check1").prop('checked') == false || $("#check2").prop("checked") == false || $("#check3").prop("checked") != true){
+                     alert("필수 약관에 동의 하셔야 합니다.");
+            	 }else{
+            		 $("#joinForm").submit();
+            	 }
+            }
+	      	// 회원가입 실패
+	       	 <%if(msg != null){%>
+	   			alert("<%=msg%>");
+	   		 <%}%>
+        	
             $(function(){
             	
             	
@@ -626,6 +644,8 @@
                 $("#checkAll").click(function(){
                     var bool = $("#checkAll").prop("checked");
                     $(".infoBox").prop("checked",bool);
+                   
+                    
                 });
                 // 체크박스 end
                 
@@ -679,58 +699,57 @@
                         $("#phone").focus().val('');
                     }
                 });
+             
                 
-                $("#submit_btn").click(function(){
-                        if($("#check1").prop('checked') == false || $("#check2").prop("checked") == false || $("#check3").prop("checked") == false){
-                                alert("필수 약관에 동의 하셔야 합니다.")
-                            }else{
-                                    // $(location).attr('href','join.html');
-                            }
-                }); 
             });
-                $(function(){	// 메일 수신 동의 시 
-	                 if($("input:checkbox[id='check4']:checked")==true){
-	                    $("#check4").val("N"); 
+         		// 메일 수신 동의 시 
+               $(function(){	
+	                 if($("input:checkbox[id='check4']:checked") == true){
+						
+	                	 $("#check4").val();
 	                 }else{
-	                 	$("#check4").val("Y");
+	                	 $("#check4").val("Y");
 	                 }
-                 });  
+	     
+                 });   
+              
 
+                
                
-                // ajax!
-                $(function(){
-                	// 중복체크 버튼에 대해 ajax처리
-                	
-                	$("#idCheck").click(function(){
-                		var userId = $("#joinForm input[name='userId']");
-                		console.log(userId);
-                		
-                		if(!userId || userId.val().length < 4){
-                			userId.focuse();
-                		}else{
-                			$.ajax({
-                				url:"<%= request.getContextPath()%>/idCheck.me",
-                				type:"post",
-                				data:{userId:userId.val()},
-                				success:function(data){
-                					if(data == 'fail'){
-                						alert("아이디가 중복됩니다.");
-                						userId.focus();
-                					}else{
-                						alert("아이디가 사용가능합니다.");
-                						
-                						
-                					}
-                				},
-                				error:function(data){
-                					console.log("서버 통신 안됨");
-                				}
-                			});
-                		}
-                	});
-           
-                	
-                });
+                	// ajax!
+                     $(function(){
+                     	// 중복체크 버튼에 대해 ajax처리
+                     	
+                     	$("#idCheck").click(function(){
+                     		var userId = $("#joinForm input[name='userId']");
+                     		console.log(userId);
+                     		
+                     		if(!userId || userId.val().length < 4){
+                     			userId.focuse();
+                     		}else{
+                     			$.ajax({
+                     				url:"<%= request.getContextPath()%>/idCheck.me",
+                     				type:"post",
+                     				data:{userId:userId.val()},
+                     				success:function(data){
+                     					if(data == 'fail'){
+                     						alert("아이디가 중복됩니다.");
+                     						userId.focus();
+                     					}else{
+                     						alert("아이디가 사용가능합니다.");
+                     						
+                     						
+                     					}
+                     				},
+                     				error:function(data){
+                     					console.log("서버 통신 안됨");
+                     				}
+                     			});
+                     		}
+                     	});
+                
+                     	
+                     });
                 
             
             

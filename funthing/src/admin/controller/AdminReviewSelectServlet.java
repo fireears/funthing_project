@@ -36,7 +36,6 @@ public class AdminReviewSelectServlet extends HttpServlet {
 request.setCharacterEncoding("UTF-8");
 		
 		AdminService adSev = new AdminService();
-		int rvListCont = adSev.getRvListCount();
 		
 //		System.out.println("rvservlet : " + rvListCont);
 		
@@ -53,7 +52,30 @@ request.setCharacterEncoding("UTF-8");
 		}else {
 			currentPage = 1;
 		}
+		ArrayList<Review> rvList = new ArrayList<>();
+		String searchpName = request.getParameter("ad_rvPrdName");
 		
+		
+		if(searchpName != null && searchpName != "") {
+			request.setAttribute("search", searchpName);
+			
+			System.out.println("search : " + searchpName);
+			
+		}
+		
+		if(request.getParameter("currentPage") != null){
+			currentPage = Integer.valueOf(request.getParameter("currentPage")); // String -> int
+		}else{
+			currentPage = 1;
+		}
+		
+		if(request.getParameter("ad_rvPrdName") == null) {
+			searchpName = request.getParameter("search");
+		}
+
+		int rvListCont = adSev.getRvListCount(searchpName);
+		
+		System.out.println("currentPage" + currentPage);
 		maxPage = (int)((double)rvListCont/limit + 0.9);
 		startPage = ((int)((double)currentPage/limit + 0.9)-1)*limit + 1;
 		endPage = startPage + limit -1;
@@ -65,17 +87,18 @@ request.setCharacterEncoding("UTF-8");
 		PageInfo pi = new PageInfo(currentPage, rvListCont, limit, maxPage, startPage, endPage);
 		
 		
-		//
-		ArrayList<Review> rvList = new ArrayList<>();
-		String searchpName = request.getParameter("ad_rvPrdName");
-		
-		System.out.println(searchpName);
+		System.out.println("servlet pName : " + searchpName);
 		
 		rvList = adSev.selectReviewLIst(currentPage, limit, searchpName);
 
-		for(int i = 0; i < rvList.size(); i ++) {
-			System.out.println(rvList.get(i));
-		}
+//		for(int i = 0; i < rvList.size(); i ++) {
+//			System.out.println(rvList.get(i));
+//		}
+
+		
+
+		
+		
 		
 		
 		RequestDispatcher view = null;

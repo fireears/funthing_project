@@ -19,7 +19,7 @@ import product.model.vo.Product;
  */
 @WebServlet("/Payment")
 public class PaymentServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+   private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -28,6 +28,7 @@ public class PaymentServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
+
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -96,6 +97,7 @@ public class PaymentServlet extends HttpServlet {
 			System.out.println(pmnt_price);
 			System.out.println(expt_point);
 
+
 			if(result > 0 && result_product > 0)
 			{
 				System.out.println("결제 완료");
@@ -114,12 +116,13 @@ public class PaymentServlet extends HttpServlet {
 		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+
+   /**
+    * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+    */
+   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      // TODO Auto-generated method stub
+      doGet(request, response);
+   }
 
 }

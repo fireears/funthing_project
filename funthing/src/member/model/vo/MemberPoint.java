@@ -25,9 +25,15 @@ public class MemberPoint implements Serializable{
 	private int myPoint;			// 누적 적립금 내역
 	private String gradeName;		// 등급 이름
 	private String mName;			// 회원이름
+	private String mId;				// 회원 아이디
 
 	private double point_rate;		// 등급별 적립율
 	private String grade_code;		// 회원 등급
+	
+	private int revNo;				// 리뷰 번호
+	private String revTitle;		// 리뷰 제목
+	private Date revDate;			// 리뷰 작성 날짜
+	private String revCont;			// 리뷰 내용
 	
 
 
@@ -91,6 +97,79 @@ public class MemberPoint implements Serializable{
 		this.mName = mName;
 	
 	}
+	
+
+	public MemberPoint(int rnum, String pointNo, Date pointDate, String oNo, String pointContent, int pointAmount,
+			String mNo, String pointCate, int mPoint, int myPoint, String gradeName, String mName, String mId,
+			double point_rate, String grade_code) {
+		this.rnum = rnum;
+		this.pointNo = pointNo;
+		this.pointDate = pointDate;
+		this.oNo = oNo;
+		this.pointContent = pointContent;
+		this.pointAmount = pointAmount;
+		this.mNo = mNo;
+		this.pointCate = pointCate;
+		this.mPoint = mPoint;
+		this.myPoint = myPoint;
+		this.gradeName = gradeName;
+		this.mName = mName;
+		this.mId = mId;
+		this.point_rate = point_rate;
+		this.grade_code = grade_code;
+	}
+
+	
+	
+	
+
+	public MemberPoint(int rnum, String pointNo, Date pointDate, String oNo, String pointContent, int pointAmount,
+			String mNo, String pointCate, int mPoint, int myPoint, String gradeName, String mName, String mId,
+			double point_rate, String grade_code, int revNo, String revTitle, Date revDate, String revCont) {
+		this.rnum = rnum;
+		this.pointNo = pointNo;
+		this.pointDate = pointDate;
+		this.oNo = oNo;
+		this.pointContent = pointContent;
+		this.pointAmount = pointAmount;
+		this.mNo = mNo;
+		this.pointCate = pointCate;
+		this.mPoint = mPoint;
+		this.myPoint = myPoint;
+		this.gradeName = gradeName;
+		this.mName = mName;
+		this.mId = mId;
+		this.point_rate = point_rate;
+		this.grade_code = grade_code;
+		this.revNo = revNo;
+		this.revTitle = revTitle;
+		this.revDate = revDate;
+		this.revCont = revCont;
+	}
+
+	
+	
+	
+
+	public MemberPoint(int rnum, String pointNo, Date pointDate, String oNo, String pointContent, int pointAmount,
+			String mNo, String pointCate, int myPoint, String gradeName, String mName, String mId, double point_rate,
+			String grade_code) {
+		this.rnum = rnum;
+		this.pointNo = pointNo;
+		this.pointDate = pointDate;
+		this.oNo = oNo;
+		this.pointContent = pointContent;
+		this.pointAmount = pointAmount;
+		this.mNo = mNo;
+		this.pointCate = pointCate;
+		this.myPoint = myPoint;
+		this.gradeName = gradeName;
+		this.mName = mName;
+		this.mId = mId;
+		this.point_rate = point_rate;
+		this.grade_code = grade_code;
+	}
+
 
 	public int getRnum() {
 		return rnum;
@@ -265,15 +344,75 @@ public class MemberPoint implements Serializable{
 		this.mName = mName;
 	}
 
+	
+	
+	
+	
+
+	public String getmId() {
+		return mId;
+	}
+
+
+	public void setmId(String mId) {
+		this.mId = mId;
+	}
+
+	
+	
+	
+
+	public int getRevNo() {
+		return revNo;
+	}
+
+
+	public void setRevNo(int revNo) {
+		this.revNo = revNo;
+	}
+
+
+	public String getRevTitle() {
+		return revTitle;
+	}
+
+
+	public void setRevTitle(String revTitle) {
+		this.revTitle = revTitle;
+	}
+
+
+	public Date getRevDate() {
+		return revDate;
+	}
+
+
+	public void setRevDate(Date revDate) {
+		this.revDate = revDate;
+	}
+
+
+	public String getRevCont() {
+		return revCont;
+	}
+
+
+	public void setRevCont(String revCont) {
+		this.revCont = revCont;
+	}
+
 
 	@Override
 	public String toString() {
 		return "MemberPoint [rnum=" + rnum + ", pointNo=" + pointNo + ", pointDate=" + pointDate + ", oNo=" + oNo
 				+ ", pointContent=" + pointContent + ", pointAmount=" + pointAmount + ", mNo=" + mNo + ", pointCate="
 				+ pointCate + ", mPoint=" + mPoint + ", myPoint=" + myPoint + ", gradeName=" + gradeName + ", mName="
-				+ mName + ", point_rate=" + point_rate + ", grade_code=" + grade_code + "]";
+				+ mName + ", mId=" + mId + ", point_rate=" + point_rate + ", grade_code=" + grade_code + ", revNo="
+				+ revNo + ", revTitle=" + revTitle + ", revDate=" + revDate + ", revCont=" + revCont + "]";
 	}
 
 
+	
+	
 
 }

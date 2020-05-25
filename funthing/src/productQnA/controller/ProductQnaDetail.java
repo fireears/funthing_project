@@ -42,7 +42,8 @@ public class ProductQnaDetail extends HttpServlet {
 			
 		}else {
 			
-			request.setAttribute("msg", "게시판 상세조회 실패");
+			view = request.getRequestDispatcher("/productQnaList");
+			request.setAttribute("mNo", mNo);
 		}
 		view.forward(request, response);
 	}

@@ -5,6 +5,7 @@
 <%@ page import="member.model.vo.MemberPoint" %>
 <%@ page import="java.text.DecimalFormat" %>
 <%
+
 ShoppingPayment p = (ShoppingPayment)request.getAttribute("p");
 	int number = Integer.valueOf((String)request.getAttribute("number"));
 	DecimalFormat formatter = new DecimalFormat("###,###");
@@ -27,59 +28,60 @@ ShoppingPayment p = (ShoppingPayment)request.getAttribute("p");
 	
 	
 	
+
 %>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>주문결제</title>
-		<!-- <script  src="http://code.jquery.com/jquery-latest.min.js"></script> -->
-		<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
-		<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-		<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-		<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-		<link rel="stylesheet" href="<%=request.getContextPath() %>/css/paymentInfo.css">
-		<style>
-			#area{margin-top: 2.5%;}
-			#title{font-size:20px; font-weight: 600;}
-			
-			#area{margin-left: 30px; width: 70%; border-top: 3px solid #0f4a7e;}
-			
-			.table1{border-top: 2px solid black; border-bottom: 1px solid gray;}
-			.table1 > table{width: 100%;}
-			.ta-1{width: 20%; height: 40px; line-height: 40px; font-size: 14px; font-weight: 800; color: rgb(104, 103, 103); background-color: rgb(207, 205, 205);}
-			.txt-field{padding-left: 30px; width: 100%; height: 100%;}
-			.txt-field>input{ height: 20px; width: 200px;}
-			
-			
-			.txt-field1{padding-left: 30px;}
-			.txt-field2{padding-left: 30px; height: 100%;}
-			.txt-field2>input{width: 600px; height: 20px;}
-			
-			#title{font-size:20px; font-weight: 600; margin-top:20px; margin-bottom:20px}
-			
-			
-			
-			
-			#resultPayArea{position: fixed; top: 25%; left: 75%; width: 350px; height: 480px; border: 4px solid #0f4a7e; text-align: center;}
-			#resultPayArea>div{margin: auto; width: 90%;}
-			#resultPayArea>div>table{width: 100%;}
-			#resultPayArea>div>table th{text-align: left;}
-			#resultPayArea>div>table td{text-align: right;}
-			#resultprice{font-size: 30px; font-weight: 600;}
-			
-			#product>tbody>tr>td>div{font-size:18px; line-height:100%;}
-			#product>tbody>tr>th{font-size:20px;}
-		</style>
-		
-	</head>
-	<body>
-		<%@ include file = "../common/header.jsp" %>
-		<section>
+   <head>
+      <meta charset="UTF-8">
+      <title>주문결제</title>
+      <!-- <script  src="http://code.jquery.com/jquery-latest.min.js"></script> -->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+      <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+      <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+      <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+      <link rel="stylesheet" href="<%=request.getContextPath() %>/css/paymentInfo.css">
+      <style>
+         #area{margin-top: 2.5%;}
+         #title{font-size:20px; font-weight: 600;}
+         
+         #area{margin-left: 30px; width: 70%; border-top: 3px solid #0f4a7e;}
+         
+         .table1{border-top: 2px solid black; border-bottom: 1px solid gray;}
+         .table1 > table{width: 100%;}
+         .ta-1{width: 20%; height: 40px; line-height: 40px; font-size: 14px; font-weight: 800; color: rgb(104, 103, 103); background-color: rgb(207, 205, 205);}
+         .txt-field{padding-left: 30px; width: 100%; height: 100%;}
+         .txt-field>input{ height: 20px; width: 200px;}
+         
+         
+         .txt-field1{padding-left: 30px;}
+         .txt-field2{padding-left: 30px; height: 100%;}
+         .txt-field2>input{width: 600px; height: 20px;}
+         
+         #title{font-size:20px; font-weight: 600; margin-top:20px; margin-bottom:20px}
+         
+         
+         
+         
+         #resultPayArea{position: fixed; top: 25%; left: 75%; width: 350px; height: 480px; border: 4px solid #0f4a7e; text-align: center;}
+         #resultPayArea>div{margin: auto; width: 90%;}
+         #resultPayArea>div>table{width: 100%;}
+         #resultPayArea>div>table th{text-align: left;}
+         #resultPayArea>div>table td{text-align: right;}
+         #resultprice{font-size: 30px; font-weight: 600;}
+         
+         #product>tbody>tr>td>div{font-size:18px; line-height:100%;}
+         #product>tbody>tr>th{font-size:20px;}
+      </style>
+      
+   </head>
+   <body>
+      <%@ include file = "../common/header.jsp" %>
+      <section>
             
             <article id="area">
                 <form action="<%=request.getContextPath() %>/Payment" id="payment" method="GET">
-                	<input type="hidden" name="mNo" value="<%=mNo %>">
+                   <input type="hidden" name="mNo" value="<%=mNo %>">
                     <p id="title">주문자 정보</p>
                     <div class="table1">
                         <table>
@@ -95,11 +97,11 @@ ShoppingPayment p = (ShoppingPayment)request.getAttribute("p");
                                 <tr>
                                     <th class="ta-1" aria-required="true">이메일</th>
                                     <td>
-	                                    <div class="txt-field"><input type="text" id="email"name="m_email" value="<%=loginUser.getmEmail()%>">&nbsp;
-		                                    <!-- <select name="">
-		                                    	<option value="naver.com">naver.com</option>
-		                                    </select> -->
-	                                    </div>
+                                       <div class="txt-field"><input type="text" id="email"name="m_email" value="<%=loginUser.getmEmail()%>">&nbsp;
+                                          <!-- <select name="">
+                                             <option value="naver.com">naver.com</option>
+                                          </select> -->
+                                       </div>
                                     </td>
                                 </tr>
                                 
@@ -126,60 +128,60 @@ ShoppingPayment p = (ShoppingPayment)request.getAttribute("p");
                                     <td>
                                         <div class="txt-field">
                                             <input type="text" id="postcode" placeholder="우편번호">
-											<input type="button" onclick="DaumPostcode()" value="우편번호 찾기" style="height:25px; width:100px"><br>
-											<input type="text" id="detailAddress" name="rcv_adrs" placeholder="상세주소">
-											<input type="text" id="extraAddress" placeholder="참고항목">
-											
-											
-											<script>
-											    function DaumPostcode() {
-											        new daum.Postcode({
-											            oncomplete: function(data) {
-											                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-											
-											                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-											                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-											                var addr = ''; // 주소 변수
-											                var extraAddr = ''; // 참고항목 변수
-											
-											                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-											                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-											                    addr = data.roadAddress;
-											                } else { // 사용자가 지번 주소를 선택했을 경우(J)
-											                    addr = data.jibunAddress;
-											                }
-											
-											                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-											                if(data.userSelectedType === 'R'){
-											                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-											                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-											                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-											                        extraAddr += data.bname;
-											                    }
-											                    // 건물명이 있고, 공동주택일 경우 추가한다.
-											                    if(data.buildingName !== '' && data.apartment === 'Y'){
-											                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-											                    }
-											                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-											                    if(extraAddr !== ''){
-											                        extraAddr = ' (' + extraAddr + ')';
-											                    }
-											                    // 조합된 참고항목을 해당 필드에 넣는다.
-											                    document.getElementById("extraAddress").value = extraAddr;
-											                
-											                } else {
-											                    document.getElementById("extraAddress").value = '';
-											                }
-											
-											                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-											                document.getElementById('postcode').value = data.zonecode;
-											                document.getElementById("detailAddress").value = addr;
-											                document.getElementById("detailAddress").focus();
-											                alert("주소란에 상세 주소를 입력해주세요.");
-											            }
-											        }).open();
-											    }
-											</script>
+                                 <input type="button" onclick="DaumPostcode()" value="우편번호 찾기" style="height:25px; width:100px"><br>
+                                 <input type="text" id="detailAddress" name="rcv_adrs" placeholder="상세주소">
+                                 <input type="text" id="extraAddress" placeholder="참고항목">
+                                 
+                                 
+                                 <script>
+                                     function DaumPostcode() {
+                                         new daum.Postcode({
+                                             oncomplete: function(data) {
+                                                 // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+                                 
+                                                 // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                                                 // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                                                 var addr = ''; // 주소 변수
+                                                 var extraAddr = ''; // 참고항목 변수
+                                 
+                                                 //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                                                 if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                                                     addr = data.roadAddress;
+                                                 } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                                                     addr = data.jibunAddress;
+                                                 }
+                                 
+                                                 // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                                                 if(data.userSelectedType === 'R'){
+                                                     // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                                                     // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                                                     if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                                                         extraAddr += data.bname;
+                                                     }
+                                                     // 건물명이 있고, 공동주택일 경우 추가한다.
+                                                     if(data.buildingName !== '' && data.apartment === 'Y'){
+                                                         extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                                                     }
+                                                     // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                                                     if(extraAddr !== ''){
+                                                         extraAddr = ' (' + extraAddr + ')';
+                                                     }
+                                                     // 조합된 참고항목을 해당 필드에 넣는다.
+                                                     document.getElementById("extraAddress").value = extraAddr;
+                                                 
+                                                 } else {
+                                                     document.getElementById("extraAddress").value = '';
+                                                 }
+                                 
+                                                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                                                 document.getElementById('postcode').value = data.zonecode;
+                                                 document.getElementById("detailAddress").value = addr;
+                                                 document.getElementById("detailAddress").focus();
+                                                 alert("주소란에 상세 주소를 입력해주세요.");
+                                             }
+                                         }).open();
+                                     }
+                                 </script>
                                         </div>
                                     </td>
                                 </tr>
@@ -224,9 +226,9 @@ ShoppingPayment p = (ShoppingPayment)request.getAttribute("p");
                             </tbody>
                         </table>
                     </div>
-					<!--            -->
-					
-					
+               <!--            -->
+               
+               
                     <p id="title">결제정보</p>
                     <div class="table1">
                         <table>
@@ -255,8 +257,8 @@ ShoppingPayment p = (ShoppingPayment)request.getAttribute("p");
                             </tbody>
                         </table>
                     </div>
-					
-					<br><br>
+               
+               <br><br>
                     <!-- 오른쪽 사이드 결제하기 구역-->
                     <div id="resultPayArea">
                         <div>
@@ -264,7 +266,7 @@ ShoppingPayment p = (ShoppingPayment)request.getAttribute("p");
                             <hr>
     
                             <table>
-                            	<%if(pPrice*number > 50000) { %>
+                               <%if(pPrice*number > 50000) { %>
                                 <tr><th>상품 합계 금액</th><td id="totalPrice" style="text-align: right;"><input type="hidden" name="total_price" value="<%=pPrice*number%>"><%=formatter.format(pPrice*number) %>원</td></tr>
                                 <%} else { %>
                                 <tr><th>상품 합계 금액</th><td id="totalPrice" style="text-align: right;"><input type="hidden" name="total_price" value="<%=pPrice*number + 5000%>"><%=formatter.format(pPrice*number +5000) %>원</td></tr>
@@ -294,109 +296,109 @@ ShoppingPayment p = (ShoppingPayment)request.getAttribute("p");
                             </div>
                             <br><br>
                             <!-- <input type="button" id="pqy" value="결제하기" style="width: 70%; height: 55px; border: 0px; background-color: rgb(3, 3, 87); color: white; font-size: 20px;"> -->
-							<button type="button" id="pay" style="width: 70%; height: 55px; border: 0px; background-color: rgb(3, 3, 87); color: white; font-size: 20px;">결제하기</button>
+                     <button type="button" id="pay" style="width: 70%; height: 55px; border: 0px; background-color: rgb(3, 3, 87); color: white; font-size: 20px;">결제하기</button>
                         </div>
                     </div>
                     <!---->
                 </form>
-					<!-- <button type="button" id="pay">결제</button> -->
+               <!-- <button type="button" id="pay">결제</button> -->
                 
             </article>
         </section>
         <%@include file="/views/common/footer.jsp" %>
-	</body>
-	
-	<script>
-		$(function(){
-			
-			var IMP=window.IMP;
-			IMP.init('imp33962000');	
-			$("#rcv_name").focus();
-			<%if(pPrice*number > 50000) { %>
-            	var tp = <%=pPrice*number %>;
+   </body>
+   
+   <script>
+      $(function(){
+         
+         var IMP=window.IMP;
+         IMP.init('imp33962000');   
+         $("#rcv_name").focus();
+         <%if(pPrice*number > 50000) { %>
+               var tp = <%=pPrice*number %>;
             <%} else { %>
-      			var tp = <%=pPrice*number +5000 %>;
+               var tp = <%=pPrice*number +5000 %>;
             <%} %>
-			
-			$("#resultprice").text(tp+"원");
-			$("#expt_price").val(tp);
-			$("#result_price1").text(tp+"원");
-			var result;
-			
-			$("#point_user").blur(function(){
-				if($(this).val() > <%=mPoint%>)
-				{
-					alert("사용가능한 적립금을 초과하였습니다.");
-				}
-				else if($(this).val() <= <%=mPoint%>)
-				{
-					/* var tp = $("#totalPrice").text().substring(0,$("#totalPrice").text().length-1); */
-					
-					var pu = $("#point_user").val();
-					result = tp-pu;
-					/* alert(typeof result);
-					var temp = result.substr(1, result.length()-3); */
-					$("#resultprice").text(result+"원");
-					$("#expt_price").val(result);
-					$("#result_price1").text(result+"원");
-				}
-				
-			})
-			$(this).focus();
-		})
-	</script>
-	
-	<!-- 카카오페이 -->
-	<script>
-		$("#pay").click(function(){
-			/* val payMethod = $("input[name=pmnt_mthd]").val(); */
-			alert("결제");
-			<%if(pPrice*number > 50000) { %>
-        		var tp = <%=pPrice*number %>;
-        	<%} else { %>
-  				var tp = <%=pPrice*number +5000 %>;
-        	<%} %>
-			var pu = $("#point_user").val();
-			
-			var result1 = tp - Number(pu);
-			
-			IMP.request_pay({
-			    pg : 'inicis', // version 1.1.0부터 지원.
-			    pay_method : 'card',
-			    merchant_uid : 'merchant_' + new Date().getTime(),
-			    name : 'FUN-THING 결제 테스트',
-			    amount : result1,
-			    buyer_email : '<%=loginUser.getmEmail()%>',
-			    buyer_name : '<%=loginUser.getmName()%>',
-			    buyer_tel : '<%=loginUser.getmTell()%>',
-			    buyer_addr : $("#detailAddress").val(),
-			    buyer_postcode : $("#postcode").val(),
-			    m_redirect_url : 'https://www.yourdomain.com/payments/complete'
-			}, function(rsp) {
-			    if ( rsp.success ) {
-			        var msg = '결제가 완료되었습니다.';
-			        msg += '고유ID : ' + rsp.imp_uid;
-			        msg += '상점 거래ID : ' + rsp.merchant_uid;
-			        msg += '결제 금액 : ' + rsp.paid_amount;
-			        msg += '카드 승인번호 : ' + rsp.apply_num;
-			    } else {
-			        var msg = '결제에 실패하였습니다.';
-			        msg += '에러내용 : ' + rsp.error_msg;
-			    }
-			    alert(msg);
-			    $("#payment").submit();
-			});
-		})
-	</script>
-	<script>
-		
-			
-		
-			
-				
-			
-		
-		
-		
-	</script>
+         
+         $("#resultprice").text(tp+"원");
+         $("#expt_price").val(tp);
+         $("#result_price1").text(tp+"원");
+         var result;
+         
+         $("#point_user").blur(function(){
+            if($(this).val() > <%=mPoint%>)
+            {
+               alert("사용가능한 적립금을 초과하였습니다.");
+            }
+            else if($(this).val() <= <%=mPoint%>)
+            {
+               /* var tp = $("#totalPrice").text().substring(0,$("#totalPrice").text().length-1); */
+               
+               var pu = $("#point_user").val();
+               result = tp-pu;
+               /* alert(typeof result);
+               var temp = result.substr(1, result.length()-3); */
+               $("#resultprice").text(result+"원");
+               $("#expt_price").val(result);
+               $("#result_price1").text(result+"원");
+            }
+            
+         })
+         $(this).focus();
+      })
+   </script>
+   
+   <!-- 카카오페이 -->
+   <script>
+      $("#pay").click(function(){
+         /* val payMethod = $("input[name=pmnt_mthd]").val(); */
+         alert("결제");
+         <%if(pPrice*number > 50000) { %>
+              var tp = <%=pPrice*number %>;
+           <%} else { %>
+              var tp = <%=pPrice*number +5000 %>;
+           <%} %>
+         var pu = $("#point_user").val();
+         
+         var result1 = tp - Number(pu);
+         
+         IMP.request_pay({
+             pg : 'inicis', // version 1.1.0부터 지원.
+             pay_method : 'card',
+             merchant_uid : 'merchant_' + new Date().getTime(),
+             name : 'FUN-THING 결제 테스트',
+             amount : result1,
+             buyer_email : '<%=loginUser.getmEmail()%>',
+             buyer_name : '<%=loginUser.getmName()%>',
+             buyer_tel : '<%=loginUser.getmTell()%>',
+             buyer_addr : $("#detailAddress").val(),
+             buyer_postcode : $("#postcode").val(),
+             m_redirect_url : 'https://www.yourdomain.com/payments/complete'
+         }, function(rsp) {
+             if ( rsp.success ) {
+                 var msg = '결제가 완료되었습니다.';
+                 msg += '고유ID : ' + rsp.imp_uid;
+                 msg += '상점 거래ID : ' + rsp.merchant_uid;
+                 msg += '결제 금액 : ' + rsp.paid_amount;
+                 msg += '카드 승인번호 : ' + rsp.apply_num;
+             } else {
+                 var msg = '결제에 실패하였습니다.';
+                 msg += '에러내용 : ' + rsp.error_msg;
+             }
+             alert(msg);
+             $("#payment").submit();
+         });
+      })
+   </script>
+   <script>
+      
+         
+      
+         
+            
+         
+      
+      
+      
+   </script>
 </html>

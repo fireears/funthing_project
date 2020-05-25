@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import brand.model.vo.Brand;
 import member.model.vo.Member;
+import member.model.vo.MemberPoint;
 import payment.model.vo.OrderInfo;
 import payment.model.vo.OrderInfoDetail;
 import personalQnA.model.vo.AdmimPersonalQna;
@@ -1377,20 +1378,31 @@ public class AdminDao {
 		return result;
 	}
 
-	public int getRvListCount(Connection conn) {
+	public int getRvListCount(Connection conn, String searchpName) {
 		Statement stmt = null;
 		ResultSet rs = null;
 		
 		int rvListCont = 0;
 		
-		String query = "SELECT COUNT(*) FROM REVIEW";
 		
 		try {
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(query);
-
-			if (rs.next()) {
-				rvListCont = rs.getInt(1);
+			if(searchpName != null) {
+				String query = "SELECT COUNT(*) FROM REVIEW R JOIN PRODUCT P ON (R.P_NO = P.P_NO) WHERE R.P_NO LIKE '%"+ searchpName +"%'";
+				stmt = conn.createStatement();
+				rs = stmt.executeQuery(query);
+	
+				if (rs.next()) {
+					rvListCont = rs.getInt(1);
+				}
+			}else {
+				String query = "SELECT COUNT(*) FROM REVIEW";
+				stmt = conn.createStatement();
+				rs = stmt.executeQuery(query);
+	
+				if (rs.next()) {
+					rvListCont = rs.getInt(1);
+				}
+				
 			}
 			
 		} catch (SQLException e) {
@@ -1410,14 +1422,13 @@ public class AdminDao {
 		String query = "";
 		ArrayList<Review> rvList = new ArrayList<>();
 		
-		System.out.println(searchpName);
-		
+		System.out.println("searchpName : " + searchpName);
 		
 		if(searchpName == null) {
-			query = "SELECT * FROM REVIEW R JOIN MEMBER M ON(R.M_NO = M.M_NO) JOIN PRODUCT P ON(R.P_NO = P.P_NO) WHERE REV_NO BETWEEN ? AND ? ORDER BY 1";
+			query = "SELECT * FROM (SELECT ROWNUM RN, REV_NO, M.M_NO, REV_TITLE, P.P_NO, REV_CONTENTS, REV_DATE, VIEWS_NUM, RATE, REV_PIC_DIR, M.M_ID, M.M_NAME, THUMBNAIL, P_NAME FROM REVIEW R JOIN MEMBER M ON(R.M_NO = M.M_NO) JOIN PRODUCT P ON(R.P_NO = P.P_NO) ORDER BY RN) WHERE RN BETWEEN ? AND ?";
 			
 		}else {
-			query = "SELECT * FROM REVIEW R JOIN MEMBER M ON(R.M_NO = M.M_NO) JOIN PRODUCT P ON(R.P_NO = P.P_NO) WHERE REV_NO BETWEEN ? AND ? AND P.P_NO LIKE(?) ORDER BY 1";
+			query = "SELECT * FROM (SELECT ROWNUM RN, REV_NO, M.M_NO, REV_TITLE, P.P_NO, REV_CONTENTS, REV_DATE, VIEWS_NUM, RATE, REV_PIC_DIR, M.M_ID, M.M_NAME, THUMBNAIL, P_NAME FROM REVIEW R JOIN MEMBER M ON(R.M_NO = M.M_NO) JOIN PRODUCT P ON(R.P_NO = P.P_NO) WHERE P.P_NO LIKE('%"+ searchpName +"%') ORDER BY RN) WHERE RN BETWEEN ? AND ?";
 		}
 		
 		
@@ -1426,17 +1437,13 @@ public class AdminDao {
 		int startRow = (currentPage - 1) * limit + 1;
 		int endRow = startRow + limit - 1;
 		
+		System.out.println("endRow : " + endRow);
+		
 		try {
 			pstmt = conn.prepareStatement(query);
 			
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
-			if(searchpName != null) {
-				pstmt.setString(3, "%" + searchpName + "%");
-//				System.out.println("if문 확인 : " + searchpName);
-			}else {
-				
-			}
+				pstmt.setInt(1, startRow);
+				pstmt.setInt(2, endRow);
 			
 			rs = pstmt.executeQuery();
 			
@@ -1453,7 +1460,8 @@ public class AdminDao {
 						
 						rs.getString("REV_PIC_DIR"),
 						rs.getString("M_NAME"),
-						rs.getString("THUMBNAIL"));
+						rs.getString("THUMBNAIL"),
+						rs.getInt("RN"));
 								
 				rvList.add(r);
 			}
@@ -1481,6 +1489,190 @@ public class AdminDao {
 		 
 
 		return rvList;
+	}
+
+	// 리뷰 디테일 페이지 서윤
+	public Review reviewDetail(Connection conn, int revNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		Review rv = new Review();
+		
+		String query = "SELECT * FROM REVIEW R JOIN MEMBER M ON(R.M_NO = M.M_NO) JOIN PRODUCT P ON(R.P_NO = P.P_NO) WHERE REV_NO = ?";
+		
+
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setInt(1, revNo);
+
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				rv = new Review(
+						rs.getInt("REV_NO"),
+						rs.getString("M_NO"),
+						rs.getString("REV_TITLE"),
+						rs.getString("P_NO"),
+						rs.getString("REV_CONTENTS"),
+						rs.getString("REV_DATE"),
+						rs.getInt("RATE"),
+						rs.getString("REV_PIC_DIR"),
+						rs.getString("M_ID"),
+						rs.getString("M_NAME"),
+						rs.getString("THUMBNAIL"));
+				
+				
+			}
+			System.out.println("review Detail Dao : " + rv);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rs);
+		}
+		
+		
+		return rv;
+	}
+	
+	// 적립금 관리자 페이지_희지
+	public int getPointListCount(Connection conn, String searchKind, String searchText) {
+		PreparedStatement  pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
+		
+		try {
+			
+			if(searchKind == null && searchText == null) {
+				String query = "SELECT COUNT(*) FROM POINT";
+				pstmt = conn.prepareStatement(query);
+				rset = pstmt.executeQuery();
+				
+			}else if(searchKind != null && searchText == "") {
+				String query = "SELECT COUNT(*) FROM POINT";
+				pstmt = conn.prepareStatement(query);
+				rset = pstmt.executeQuery();
+				
+			}else if(searchKind != null && searchText != null) {
+				String query = "SELECT COUNT(*) FROM POINT";
+				pstmt = conn.prepareStatement(query);
+				rset = pstmt.executeQuery();
+				
+			}
+			
+			if(rset.next()) {
+				result = rset.getInt("COUNT(*)");
+			}
+			
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+			
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		
+		return result;
+	}
+
+	// 관리자 적립금 페이지_희지
+	public ArrayList<MemberPoint> selectPointList(Connection conn, int currentPage, int limit, String searchKind, String searchText) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		MemberPoint mp = null;
+		ArrayList<MemberPoint> list = new ArrayList<>();
+		
+		int startRow = (currentPage -1) * limit +1;
+		int endRow = startRow + limit -1;
+		
+		
+		try {
+			
+			String query = null;
+			
+			if(searchKind == null && searchText == null) {
+				query = "SELECT *\r\n" + 
+						"FROM (SELECT ROWNUM RNUM, P.POINT_NO, P.POINT_DATE, P.O_NO, P.POINT_CONTENT, P.POINT_AMOUNT, P.M_NO, P.POINT_CATE, P.MY_POINT,\r\n" + 
+						"        M.M_ID, M.M_NAME, M.GRADE_CODE, G.GRADE_NAME, G.POINT_RATE\r\n" + 
+						"    FROM POINT P\r\n" + 
+						"    JOIN MEMBER M ON (P.M_NO = M.M_NO)\r\n" + 
+						"    JOIN GRADE G ON (M.GRADE_CODE = G.GRADE_CODE)\r\n" + 
+						"   \r\n" + 
+						"    )\r\n" + 
+						"WHERE RNUM BETWEEN ? AND ?";
+				
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, startRow);
+				pstmt.setInt(2, endRow);
+				
+			}else if(searchKind != null && searchText.equals("")) {
+				query = "SELECT *\r\n" + 
+						"FROM (SELECT ROWNUM RNUM, P.POINT_NO, P.POINT_DATE, P.O_NO, P.POINT_CONTENT, P.POINT_AMOUNT, P.M_NO, P.POINT_CATE, P.MY_POINT,\r\n" + 
+						"        M.M_ID, M.M_NAME, M.GRADE_CODE, G.GRADE_NAME, G.POINT_RATE\r\n" + 
+						"    FROM POINT P\r\n" + 
+						"    JOIN MEMBER M ON (P.M_NO = M.M_NO)\r\n" + 
+						"    JOIN GRADE G ON (M.GRADE_CODE = G.GRADE_CODE)\r\n" + 
+						"   \r\n" + 
+						"    )\r\n" + 
+						"WHERE RNUM BETWEEN ? AND ?";
+				
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, startRow);
+				pstmt.setInt(2, endRow);
+				
+				
+			}else if(searchKind != null && searchText != null) {
+				query = "SELECT *\r\n" + 
+						"FROM (SELECT ROWNUM RNUM, P.POINT_NO, P.POINT_DATE, P.O_NO, P.POINT_CONTENT, P.POINT_AMOUNT, P.M_NO, P.POINT_CATE, P.MY_POINT,\r\n" + 
+						"M.M_ID, M.M_NAME , M.GRADE_CODE, G.GRADE_NAME, G.POINT_RATE\r\n" + 
+						"FROM POINT P\r\n" + 
+						"JOIN MEMBER M ON (P.M_NO = M.M_NO)\r\n" + 
+						"JOIN GRADE G ON (M.GRADE_CODE = G.GRADE_CODE))\r\n" + 
+						"WHERE "+searchKind+" = ? AND RNUM BETWEEN ? AND ?";
+				
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, searchText);
+				pstmt.setInt(2, startRow);
+				pstmt.setInt(3, endRow);
+				
+			}
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				mp= new MemberPoint(rset.getInt("RNUM"),
+						rset.getString("POINT_NO"),
+						rset.getDate("POINT_DATE"),
+						rset.getString("O_NO"),
+						rset.getString("POINT_CONTENT"),
+						rset.getInt("POINT_AMOUNT"),
+						rset.getString("M_NO"),
+						rset.getString("POINT_CATE"),
+						rset.getInt("MY_POINT"),
+						rset.getString("GRADE_NAME"),
+						rset.getString("M_NAME"),
+						rset.getString("M_ID"),
+						rset.getDouble("POINT_RATE"),
+						rset.getString("GRADE_CODE"));
+				
+				list.add(mp);
+				
+			}
+		System.out.println("point Dao부분에서 list : " + list);
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return list;
 	}
 	
 	

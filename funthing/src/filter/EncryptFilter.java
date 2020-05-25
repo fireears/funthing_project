@@ -16,7 +16,7 @@ import wrapper.EncryptWrapper;
 /**
  * Servlet Filter implementation class EncryptFilter
  */
-@WebFilter(filterName="EncryptFilter", servletNames= {"MemberJoinServlet","MemberLoginServlet"})
+@WebFilter(filterName="EncryptFilter", servletNames= {"MemberJoinServlet","MemberLoginServlet","MessagePwdModifyServlet"})
 public class EncryptFilter implements Filter {
 
     /**

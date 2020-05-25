@@ -36,8 +36,24 @@ public class AdminProductQnA  implements Serializable	{
 	}
 
 	
+	// 상품문의 list (답변까지)_혜린
+	public AdminProductQnA(int qnaNo,String mNo, String qnaTitle, String qnaContents, String qnaDate,  String pNo,
+			String qnareId) {
+		super();
+		this.qnaNo = qnaNo;
+		this.pNo = pNo;
+		this.qnaTitle = qnaTitle;
+		this.qnaContents = qnaContents;
+		this.qnaDate = qnaDate;
+		this.mNo = mNo;
+		this.qnareId = qnareId;
+	}
+
+
+
+
 	// 상품문의 클라이언트 상세 페이지 (qna)_혜린
-	public AdminProductQnA(String mId, String pName, String qnaTitle, String qnaDate) {
+	public AdminProductQnA(String pName,String mId,  String qnaTitle, String qnaDate) {
 		super();
 		this.mId = mId;
 		this.pName = pName;
@@ -46,6 +62,9 @@ public class AdminProductQnA  implements Serializable	{
 	}
 
 
+
+
+	
 
 	// 상품문의 클라이언트 상세 페이지 _혜린
 	public AdminProductQnA(int qnaNo, String mId, String mName, String pNo, String pName, String qnaTitle,

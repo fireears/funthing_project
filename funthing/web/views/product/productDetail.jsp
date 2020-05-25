@@ -19,6 +19,8 @@
 	// review
 	ArrayList<Review> rvList = (ArrayList<Review>)request.getAttribute("rvList");
 	String rvMsg = (String)request.getAttribute("rvMsg");
+	
+	int funded = (int)(((double)pd.getfSelPrice() /  pd.getfGoal()) *100);
 %>    
 <!DOCTYPE html>
 <html lang="ko">
@@ -211,6 +213,11 @@
         .rev_content .rev_table tr.rvCont { display:none; }
         .rev_content .rev_table tr.rvCont.show { display:table-row; }
 		
+		/* .border1{boarder-top:lightgrey; border-bottom:lightgrey;} */
+		.gauge{height:10px; width:19px; background:lightgrey; padding:0; maring:0; display:inline-block; border-top:1px solid lightgrey;border-bottom:1px solid lightgrey; }
+		.gaugewhite{height:10px; width:19px;background:white;padding:0; maring:0; color:white; display:inline-block; border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;}
+		.leftradius{border-radius: 5px 0px 0px 5px; border-left:1px solid lightgrey;}
+		.rightradius{border-radius: 0px 5px 5px 0px; border-right:1px solid lightgrey;}
     </style>
 </head>
 
@@ -256,17 +263,98 @@
                             <span class="price_left">회원가</span> <span class="price_right"><%=formatter.format(pd.getpPrice()) %></span>
                                     
                         </li>
+                        <li style="padding-top:25px;">
+                        	<div align="right" style="color:grey;"><%= funded %> % Funded</div>
+ 							<!-- <div class="gauge leftradius"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge rightradius"></div> -->
+ 							<%if(funded == 0 ){ %>     
+ 							<div class="gaugewhite leftradius"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite rightradius"></div>                  
+                        	<%}else if(1<= funded && funded <=10 ){ %>
+                            <div class="gauge leftradius"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite rightradius"></div>        
+ 							<%}else if(11<= funded && funded <=20){%>
+ 							<div class="gauge leftradius"></div><div class="gauge"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite rightradius"></div>
+ 							<%}else if(21<= funded && funded <=30){%>
+ 							<div class="gauge leftradius"></div><div class="gauge"></div><div class="gauge"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite rightradius"></div>
+ 							<%}else if(31<= funded && funded <=40){%>
+ 							<div class="gauge leftradius"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite rightradius"></div>
+ 							<%}else if(41<= funded && funded <=50){%>
+ 							<div class="gauge leftradius"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite rightradius"></div>
+ 							<%}else if(51<= funded && funded <=60){%>
+ 							<div class="gauge leftradius"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite rightradius"></div>
+ 							<%}else if(61<= funded && funded <=70){%>
+ 							<div class="gauge leftradius"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite rightradius"></div>
+ 							<%}else if(71<= funded && funded <=80){%>
+ 							<div class="gauge leftradius"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gaugewhite"></div><div class="gaugewhite rightradius"></div>
+ 							<%}else if(81<= funded && funded <=90){%>
+ 							<div class="gauge leftradius"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gaugewhite rightradius"></div>
+ 							<%}else if(91<= funded && funded <=100){%>	                      
+ 							<div class="gauge leftradius"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge rightradius"></div>
+ 							<%} %>
+                       
+                        </li>
+                        <li style="padding-top:5px;">
+                            <div align="right" style="color:grey;">Funding Ends</div><h4 align="right" id="sample04"  style="color:#30586e;"></h4>	
+                                    
+                        </li>
                     </ul>
-
+					<!-- 타이머 script -->
+					<script>
+		            const countDownTimer = function (id, date) {
+		                var _vDate = new Date(date); // 전달 받은 일자
+		                var _second = 1000;
+		                var _minute = _second * 60;
+		                var _hour = _minute * 60;
+		                var _day = _hour * 24;
+		                var timer;
+		        
+		                function showRemaining() {
+		                    var now = new Date();
+		                    var distDt = _vDate - now;
+		        
+		                    if (distDt < 0) {
+		                        clearInterval(timer);
+		                        document.getElementById(id).textContent = '해당 이벤트가 종료 되었습니다!';
+		                        return;
+		                    }
+		        
+		                    var days = Math.floor(distDt / _day);
+		                    var hours = Math.floor((distDt % _day) / _hour);
+		                    var minutes = Math.floor((distDt % _hour) / _minute);
+		                    var seconds = Math.floor((distDt % _minute) / _second);
+		        
+		                    //document.getElementById(id).textContent = date.toLocaleString() + "까지 : ";
+		                    document.getElementById(id).textContent = days + ' d ';
+		                    document.getElementById(id).textContent += hours + ' h ';
+		                    document.getElementById(id).textContent += minutes + ' m ';
+		                    document.getElementById(id).textContent += seconds + ' s ';
+		                }
+		        
+		
+		                timer = setInterval(showRemaining, 1000);
+		            }
+		        
+		            var dateObj = new Date();
+		            
+		            countDownTimer('sample04', '  <%=pd.getfEndDate() %>'); 
+		            /* countDownTimer('sample04', '2020/05/28'); // 2024년 4월 1일까지 */
+     			   </script>
+     			 
                     <!-- 상품 선택 및 구매/장바구니 -->
                     <div class="buy_information">
                     
                         <form method="get" action="<%=request.getContextPath()%>/PaymentInfo" id="colorSizeform">
                             <ul id="buyList">
                             <%if(loginUser != null){ %>
+                             <input type="hidden" name="pNo" value="<%=list.get(1).getpNo()%>">
                              <input type="hidden" name="p_no" value="<%=list.get(1).getpNo()%>">
                           	  <input type="hidden" name="userNo" value="<%=loginUser.getmNo() %>"> 
+
+                          	  <input type="hidden" name="mEmail" value="<%=loginUser.getmEmail() %>"> 
+                          	  <input type="hidden" name="pName" value="<%=pd.getpName() %>">
+                          	  <input type="hidden" name="bNo" value="<%=pd.getbNo() %>"> 
+                          	  <input type="hidden" name="bName" value="<%=pd.getbName() %>"> 
+
                           	  <%-- <input type="hidden" name="mEmail" value="<%=loginUser.getmEmail() %>">  --%>
+
                             <%}else{ %>
                            	 <input type="hidden" name="p_no" value="<%=list.get(1).getpNo()%>">
                            	 <%-- <input type="hidden" name="userNo" value="<%=loginUser.getmNo() %>"> --%>
@@ -383,6 +471,7 @@
     <div id="review_area">
         <form action="<%=request.getContextPath()%>/ReviewInsert" method="post" enctype="multipart/form-data">
         	<input type="hidden" name="rev_pNo" value="<%= pd.getpNo() %>" />
+        	<input type="hidden" name="rev_pName" value="<%= pd.getpName() %>" />
             <div class="rev_rate">
                 <select name="rev_rateS" id="rev_rateS">
                     <option value="5">★★★★★</option>
@@ -417,7 +506,9 @@
         	</table>
         <!-- 리뷰 불러올 부분 -->
         <script>
-        	// alert("!");
+        if("<%=rvMsg%>" != "null"){
+        	alert("<%=rvMsg%>");
+        }
         $(window).load(function(){
         	$.ajax({
         		url : "<%=request.getContextPath()%>/ReviewList",
@@ -458,8 +549,6 @@
         				var $pContt = $("<p>").text(value.rvContents);
         				
         				
-        				
-        				
         				// $tr.append($tdNo);
         				$trLine.append($tdTitle);
         				$trLine.append($tdRate);
@@ -489,7 +578,7 @@
         			
         		},
         		error : function(data){
-        			alert("실패");
+        			alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
         		}
         	});
         	// ajax end
@@ -510,7 +599,8 @@
     <div id="QnA_area">
         <h3>상품 Q&A</h3>
         <%if(loginUser != null){ %>
-        <button onclick="location.href='<%=request.getContextPath() %>/views/productQnA/productQnAInsert.jsp?mNo=<%=loginUser.getmNo() %>&pName=<%=pd.getpName()%>&bName=<%=pd.getbName()%>'">상품문의 글쓰기</button>
+        <%-- <button onclick="location.href='<%=request.getContextPath() %>/views/productQnA/productQnAInsert.jsp?mNo=<%=loginUser.getmNo() %>&pName=<%=pd.getpName()%>&bName=<%=pd.getbName()%>&pNo=<%=pd.getpNo()%>'">상품문의 글쓰기</button> --%>
+        <button onclick="productInsertQna();">상품문의 글쓰기</button>
         <%}else { %>
         <button onclick="productQna();">상품문의 글쓰기</button>
         <%} %>
@@ -518,13 +608,13 @@
         <table id="qnaTb">
             <tbody>
             	<% if(!qnaList.isEmpty()){ %>
-            	<%for(AdminProductQnA ap : qnaList){ %>
             	 <tr>
                      <th align="center">아이디</th><th align="center">제목</th><th align="center">작성날짜</th>
                     
                 </tr>
+            	<%for(AdminProductQnA ap : qnaList){ %>
                 <tr>
-                    <td><%= ap.getmId() %></td><td><%= ap.getQnaTitle() %></td><td><%= ap.getQnaDate() %></td>
+                    <td align="center"><%= ap.getmId() %></td><td align="center"><%= ap.getQnaTitle() %></td><td align="center"><%= ap.getQnaDate() %></td>
                     
                 </tr>
 				<%} %>
@@ -548,7 +638,15 @@
 		alert("로그인을 후 입력이 가능합니다.");
 	}
 	
-	
+	function productInsertQna(){
+		if($("#color").val() == "noColor" && $("#size").val() == "noSize"){
+			alert("색상과 사이즈 선택 후 문의를 해주세요.");
+		}else{
+			
+		$("#colorSizeform").attr("action","<%=request.getContextPath()%>/views/productQnA/productQnAInsert.jsp");
+		$("#colorSizeform").submit();
+		}
+	}
 	
 </script>
 	<%@ include file="../common/footer.jsp" %>

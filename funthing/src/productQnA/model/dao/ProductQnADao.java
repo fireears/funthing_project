@@ -131,41 +131,35 @@ public class ProductQnADao {
 		return listCount;
 	}
 	// 상품 문의페이지(클라이언트)리스트_혜린
-	public ArrayList<ProductQnaIn> selectOrderSearch(Connection conn, String searchDate, String firstDate, String secondDate, int currentPage, int limit, String mNo) {
+	public ArrayList<AdminProductQnA> selectOrderSearch(Connection conn, String searchDate, String firstDate, String secondDate, int currentPage, int limit, String mNo) {
 		System.out.println("여기까진오지?");
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		ProductQnaIn qna = null;
-		ArrayList<ProductQnaIn> list = new ArrayList<>();
-//		String query = "SELECT QNA_NO,M_NO,QNA_TITLE,QNA_CONTENTS,QNA_DATE,P_NO2,B_NO,RE_YN "
-//				+ "from (SELECT QNA_NO,M_NO,QNA_TITLE,QNA_CONTENTS,QNA_DATE,P_NO2,B_NO,RE_YN ,rownum as rnum FROM QNA WHERE M_NO= ?) "
-//				+ "WHERE rnum between ? and ? ";
-		
+		AdminProductQnA qna = null;
+		ArrayList<AdminProductQnA> list = new ArrayList<>();
+
 		try {
 			int startRow = (currentPage -1) * limit +1;
 			int endRow = startRow + (limit -1);
-			
-//			pstmt = conn.prepareStatement(query);
-//			pstmt.setString(1, mNo);
-//			pstmt.setInt(2, startRow);
-//			pstmt.setInt(3, endRow);
-//			
-//			rset = pstmt.executeQuery();
-			
+
 			// 맨 처음 리스트 출력 값
 		if(searchDate == null && firstDate == null) {
 
 			System.out.println("searchDate가 null일때" + searchDate);
 	
-			String query = "SELECT QNA_NO,M_NO,QNA_TITLE,QNA_CONTENTS,QNA_DATE,P_NO2,B_NO,RE_YN "
-					+ "from (SELECT QNA_NO,M_NO,QNA_TITLE,QNA_CONTENTS,QNA_DATE,P_NO2,B_NO,RE_YN ,rownum as rnum FROM QNA WHERE M_NO= ?) "
-					+ "WHERE rnum between ? and ? ";
+			String query =" SELECT QNA_NO,M_NO,QNA_TITLE,QNA_CONTENTS,QNA_DATE,P_NO2,B_NO,RE_YN , qnare_id "
+							+ " from (SELECT q.QNA_NO, q.M_NO, q.QNA_TITLE, q.QNA_CONTENTS, q.QNA_DATE, q.P_NO2, q.B_NO, q.RE_YN , qr.qnare_id ,rownum rnum "
+							+ " FROM QNA q " 
+							+ " full join qnare qr on q.qna_no = qr.qna_no "
+							+ " WHERE q.M_NO= ?) "
+							+ " WHERE rnum between ? and ? ";
 			
 			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, mNo);
 			pstmt.setInt(2, startRow);
 			pstmt.setInt(3, endRow);
-			pstmt.setString(1, mNo);
+			
 			
 			rset = pstmt.executeQuery();
 			
@@ -287,17 +281,17 @@ public class ProductQnADao {
 			rset = pstmt.executeQuery();
 			
 			
-						}
+		}
+	
 			while(rset.next()) {
-				qna = new ProductQnaIn(
+				qna = new AdminProductQnA(
 						rset.getInt("QNA_NO"),
 						rset.getString("M_NO"),
 						rset.getString("QNA_TITLE"),
 						rset.getString("QNA_CONTENTS"),
-						rset.getDate("QNA_DATE"),
+						rset.getString("QNA_DATE"),
 						rset.getString("P_NO2"),
-						rset.getString("B_NO"),
-						rset.getString("RE_YN")
+						rset.getString("qnare_id")
 							);
 			list.add(qna);
 			}
@@ -323,10 +317,11 @@ public class ProductQnADao {
 //					+ "from qna q join qnare qre on q.qna_no = qre.qna_no join member m on m.m_no = q.m_no join product p on q.p_no2 = p.p_no";
 			
 			String query = "select q.qna_no, m_id, m_name,p_no2, p_name, qna_title, qna_contents, to_char(qna_date,'yy/mm/dd'), re_yn , qnare_id, qnare_content, qnare_date "
-					+ "from qna q join qnare qre on q.qna_no = qre.qna_no join member m on m.m_no = q.m_no join product p on q.p_no2 = p.p_no";
+					+ " from qna q join qnare qre on q.qna_no = qre.qna_no join member m on m.m_no = q.m_no join product p on q.p_no2 = p.p_no "
+					+ "where q.qna_no = ? ";
 			try {
 				pstmt = conn.prepareStatement(query);
-				
+				pstmt.setString(1, qnaNo);
 				
 				rset = pstmt.executeQuery();
 				
@@ -360,5 +355,5 @@ public class ProductQnADao {
 			
 			return apq;
 	}
-
+	
 }
