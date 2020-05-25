@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import board.model.vo.PageInfo;
 import productQnA.model.service.ProductQnAService;
+import productQnA.model.vo.AdminProductQnA;
 import productQnA.model.vo.ProductQnaIn;
 
 
@@ -78,7 +79,8 @@ public class ProductQnaList extends HttpServlet {
 		PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
 
 		
-		ArrayList<ProductQnaIn> list = aService.selectProductQnaCList(searchDate, firstDate, secondDate,currentPage, limit, mNo);
+		ArrayList<AdminProductQnA> list = aService.selectProductQnaCList(searchDate, firstDate, secondDate,currentPage, limit, mNo);
+		
 		System.out.println("servlet list : " + list);
 		RequestDispatcher view = null;
 		if(!list.isEmpty()) {
