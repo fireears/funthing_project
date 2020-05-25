@@ -15,8 +15,9 @@
 	
 	
 	// insert 성공 시 메세지 받기
-	String msg = (String)request.getAttribute("msg");
+	String InMsg = (String)request.getAttribute("InMsg");
 	String q1_num = (String)request.getAttribute("q1_num");
+	
 	
 	
 	// PageIngo값 뽑아내기
@@ -287,8 +288,8 @@
     		});
     		
     		// insert 성공시 alert
-    		<%if(msg != null){ %>
-    			alert("<%=msg%>");
+    		<%if(InMsg != null){ %>
+    			alert("<%=InMsg%>");
     		
     		<%}%>
     		

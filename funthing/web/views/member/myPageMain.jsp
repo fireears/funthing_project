@@ -12,6 +12,10 @@
 	String userNoM = (String)request.getAttribute("userNoM");
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	
+	// 진교 회원정보 수정 메세지 확인
+	String muMsg = (String)request.getAttribute("msg");
+	
+	
 	int currentPage = pi.getCurrentPage();
 	int limit = pi.getLimit();
 	int maxPage = pi.getMaxPage();
@@ -181,7 +185,7 @@
 								<input type="hidden" id="oNo" value=<%=co.getO_no() %>>
 								<td class="tb-first"><%=co.getO_date() %></td>
 								<td><%=co.getO_no() %></td>
-								<td><a href="<%=request.getContextPath()%>/productDetail?pName=<%=co.getpName()%>"><%=co.getpName() %>/<%=co.getpColor() %>/<%=co.getpSize() %></td>
+								<td><a href="<%=request.getContextPath()%>/productDateil?pName=<%=co.getpName()%>"><%=co.getpName() %>/<%=co.getpColor() %>/<%=co.getpSize() %></td>
 								<td><%=formatter.format(co.getTotalPrice()) %> 원 / <%=co.getoNum() %></td>
 								
 								<%if(co.getCancelYn().equals("N")){ %>
@@ -261,6 +265,13 @@
 		 <%if(msg != null){%>
 			alert("<%=msg%>");
 		 <%}%>
+		 
+		 
+		 <%if(muMsg != null){%>
+		 	alert("<%=muMsg%>");
+		 <%}%>
+		 
+		 
 		});
 	</script>
 

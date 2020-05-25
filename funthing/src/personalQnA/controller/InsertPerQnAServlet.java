@@ -89,19 +89,22 @@ public class InsertPerQnAServlet extends HttpServlet {
 		perQA.setAddFile(q1_saveFile);	// 업로드 파일
 		
 		int result = new PersonalQnAService().insertPerQnA(perQA, q1_num);
+		System.out.println("일대일 인서트 서블릿에서 result : " + result);
 		
-		String message = "일대일 문의 등록에 성공하셨습니다.";
-		String userNo = q1_num;
+		
+		
+		String InMsg = "일대일 문의 등록에 성공하셨습니다.";
+		
 		
 		RequestDispatcher view = null;
 		if(result > 0) {
 //			response.sendRedirect("perQnAlist");	// list Servlet으로 연결해주기
 			//System.out.println("insert 성공");
 //			response.sendRedirect("PersonalQnA");
-			System.out.println("personalQnA로 이동"+message);
+			System.out.println("personalQnA로 이동"+InMsg);
 			view = request.getRequestDispatcher("/PersonalQnA");
-			request.setAttribute("message",message);
-			request.setAttribute("userNo", userNo);
+			request.setAttribute("InMsg", InMsg);
+			request.setAttribute("userNo", q1_num);
 			
 		}else {
 

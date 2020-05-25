@@ -41,6 +41,11 @@ public class PersonalQnAServlet extends HttpServlet {
 		// 로그인 한 유저 정보 받기
 		String userNo = request.getParameter("userNo");
 		
+		if(userNo == null) {
+			userNo = (String)request.getAttribute("userNo");
+		}
+		
+		
 		System.out.println("서블릿에 로그인 값이 잘 넘어왔는가" + userNo);
 		
 		// 날짜 선택값 받기
@@ -85,8 +90,10 @@ public class PersonalQnAServlet extends HttpServlet {
 		
 		
 		// 서윤언니 insert 결과 메세지 받기
-		String msg = (String)request.getAttribute("message");
+		String InMsg = (String)request.getAttribute("InMsg");
+		String q1_num = (String)request.getAttribute("q1_num");
 		
+		System.out.println("일대일 서블릿에서 서윤언니 로그인 유저  : " + q1_num);
 		
 //		// 이거 뭔지 모르겠어여 -희지
 //		int maxSize = 1024*1024*10;	// 이미지 사이즈 제한함 10Mbytes
@@ -97,6 +104,9 @@ public class PersonalQnAServlet extends HttpServlet {
 		
 		// 로그인 유저에 대한 일대일 문의 리스트 카운트하기
 		int perListCount = pqService.getPerListCount(userNo);
+		
+		
+		
 		
 		System.out.println("Servlet에서 로그인 유저에 대한 일대일 문의 리스트  갯수 :" + perListCount);
 		
@@ -146,7 +156,7 @@ public class PersonalQnAServlet extends HttpServlet {
 		
 		// 서비스 다녀와서 리스트 화면 처리
 		RequestDispatcher view = null;
-		if(!list.isEmpty()) {
+		if(!list.isEmpty() && InMsg == null) {
 			view = request.getRequestDispatcher("/views/personalQnA/myPagePerQnAList.jsp");
 			request.setAttribute("list", list);
 			request.setAttribute("pi", pi);
@@ -157,7 +167,8 @@ public class PersonalQnAServlet extends HttpServlet {
 			
 			
 			// insert 성공 시 메세지 같이 jsp파일로 보내기
-		}else if(!list.isEmpty() && msg != null) {
+		}else if(!list.isEmpty() && InMsg != null) {
+			System.out.println("else if문에서 걸리나??????");
 			view = request.getRequestDispatcher("/views/personalQnA/myPagePerQnAList.jsp");
 			request.setAttribute("list", list);
 			request.setAttribute("pi", pi);
@@ -165,6 +176,7 @@ public class PersonalQnAServlet extends HttpServlet {
 			request.setAttribute("searchDate", searchDate);
 			request.setAttribute("firstDate", firstDate);
 			request.setAttribute("secondDate", secondDate);
+			request.setAttribute("InMsg", InMsg);
 			
 			
 		}else {
