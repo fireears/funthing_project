@@ -556,7 +556,7 @@ public class PaymentDao {
 		try {
 			for(Product p : productList)
 			{
-				String query = "UPDATE PRODUCT SET F_SEL_PRICE = ? WHERE P_NAME = ?";
+				String query = "UPDATE PRODUCT SET F_SEL_PRICE = F_SEL_PRICE + ? WHERE P_NAME = ?";
 				pstmt = conn.prepareStatement(query);
 				pstmt.setInt(1, p.getfSelPrice());
 				pstmt.setString(2, p.getpName());
