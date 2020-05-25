@@ -175,7 +175,7 @@
 					<%for(PersonalQnA pq : list){ %>
                     <tr align="center">
                     	<input type="hidden" id="perNo" value=<%=pq.getPerNo()%>>
-                    	<input type="hidden"  id="mNo" value=<%=loginUser2.getmNo()%>>
+                    	<input type="hidden"  id="mNo" value=<%=loginUser3.getmNo()%>>
                     	<td class="tb-zero"><%=pq.getRnum() %></td>
                         <td class="tb-first"><%=pq.getPerDate() %></td>
                         <td><%=pq.getPerCate() %></td>
@@ -276,20 +276,25 @@
     
     
     <script>
-    
+   
     	$(function(){
     		$("#list-table td").mouseenter(function(){
     			$(this).parent().css({"cursor" : "pointer"});
     			
     		}).click(function(){
         		var perNo = $(this).parent().children("input").val();
-        		location.href="<%=request.getContextPath()%>/personalQnADetail?mNo=<%=loginUser2.getmNo()%>&perNo=" + perNo;
+        		
+        		<%-- location.href="<%=request.getContextPath()%>/personalQnADetail?mNo=<%=loginUser3.getmNo()%>&perNo=" + perNo; --%>
+        		location.href="<%=request.getContextPath()%>/personalQnADetail?mNo=<%=loginUser3.getmNo()%>&perNo=" + perNo;
         		
     		});
     		
     		// insert 성공시 alert
     		<%if(InMsg != null){ %>
     			alert("<%=InMsg%>");
+    		
+    		<%}else{%>
+
     		
     		<%}%>
     		

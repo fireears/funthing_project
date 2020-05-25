@@ -35,6 +35,7 @@ public class PersonalQnAServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("List까꿍");
 		request.setCharacterEncoding("UTF-8");
 		
 		
@@ -91,9 +92,9 @@ public class PersonalQnAServlet extends HttpServlet {
 		
 		// 서윤언니 insert 결과 메세지 받기
 		String InMsg = (String)request.getAttribute("InMsg");
-		String q1_num = (String)request.getAttribute("q1_num");
+//		String q1_num = (String)request.getAttribute("q1_num");
 		
-		System.out.println("일대일 서블릿에서 서윤언니 로그인 유저  : " + q1_num);
+//		System.out.println("일대일 서블릿에서 서윤언니 로그인 유저  : " + q1_num);
 		
 //		// 이거 뭔지 모르겠어여 -희지
 //		int maxSize = 1024*1024*10;	// 이미지 사이즈 제한함 10Mbytes

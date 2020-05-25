@@ -306,7 +306,7 @@ public class PersonalQnADao {
 						rset.getString("PER_CATE"),
 						rset.getDate("PER_DATE"));
 				
-				System.out.println("pq는?" + pq);
+//				System.out.println("pq는?" + pq);
 				perList.add(pq);
 			}
 			
@@ -365,7 +365,7 @@ public class PersonalQnADao {
 			
 				
 			}
-			
+			System.out.println("QNA디테일 : " + pq);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

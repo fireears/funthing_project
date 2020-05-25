@@ -193,9 +193,9 @@
 								<%}else{ %>
 								<td>주문 취소</td>
 								<%} %>
-								
+							
 								<th class="tb-last">
-								<input type="button" value="리뷰작성" class="submit" id="rvBtn" style="width:100px;font-size:12px">
+								<a href="<%=request.getContextPath()%>/productDateil?pName=<%=co.getpName()%>#sec_review_nav">리뷰작성</a>
 								</th>
 							</tr>
 							<%} %><!-- for문 end -->
