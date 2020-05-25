@@ -457,6 +457,7 @@ public class PaymentDao {
 		return list;
 
 	}
+
 	public int insertPayment(Connection conn, Payment p) {
 		PreparedStatement pstmt = null;
 		
@@ -495,53 +496,55 @@ public class PaymentDao {
 
 
 
-	public ArrayList<ShoppingPayment> searchProducts(Connection conn, ArrayList<ShoppingPayment> list) {
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		
-		ShoppingPayment shoppingPayment = null;
-		ArrayList<ShoppingPayment> daoList = new ArrayList<>();
-		
-			try {
-				for(ShoppingPayment sp : list)
-				{
-					String query = "SELECT P_NO, THUMBNAIL, P_NAME, P_COLOR, P_SIZE, RETAIL_PRICE, DC_RATE, P_PRICE, P_POINT\r\n" + 
-							"FROM PRODUCT\r\n" + 
-							"WHERE P_NO = ?";
-					pstmt = conn.prepareStatement(query);
-					
-					pstmt.setString(1, sp.getP_no());
-					
-					rset = pstmt.executeQuery();
-					while(rset.next())
-					{
-						shoppingPayment = new ShoppingPayment(rset.getString("p_no"),
-																rset.getString("thumbnail"),
-																rset.getString("p_name"),
-																rset.getString("p_color"),
-																rset.getString("p_size"),
-																rset.getInt("retail_price"),
-																rset.getInt("dc_rate"),
-																rset.getInt("p_price"),
-																rset.getInt("p_point"),
-																sp.getNumber());
-						
-						daoList.add(shoppingPayment);
-					}
-				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			finally
-			{
-				close(pstmt);
-				close(rset);
-			}
-		
-		
-		return daoList;
-	}
+
+	   public ArrayList<ShoppingPayment> searchProducts(Connection conn, ArrayList<ShoppingPayment> list) {
+	      PreparedStatement pstmt = null;
+	      ResultSet rset = null;
+	      
+	      ShoppingPayment shoppingPayment = null;
+	      ArrayList<ShoppingPayment> daoList = new ArrayList<>();
+	      
+	         try {
+	            for(ShoppingPayment sp : list)
+	            {
+	               String query = "SELECT P_NO, THUMBNAIL, P_NAME, P_COLOR, P_SIZE, RETAIL_PRICE, DC_RATE, P_PRICE, P_POINT\r\n" + 
+	                     "FROM PRODUCT\r\n" + 
+	                     "WHERE P_NO = ?";
+	               pstmt = conn.prepareStatement(query);
+	               
+	               pstmt.setString(1, sp.getP_no());
+	               
+	               rset = pstmt.executeQuery();
+	               while(rset.next())
+	               {
+	                  shoppingPayment = new ShoppingPayment(rset.getString("p_no"),
+	                                                rset.getString("thumbnail"),
+	                                                rset.getString("p_name"),
+	                                                rset.getString("p_color"),
+	                                                rset.getString("p_size"),
+	                                                rset.getInt("retail_price"),
+	                                                rset.getInt("dc_rate"),
+	                                                rset.getInt("p_price"),
+	                                                rset.getInt("p_point"),
+	                                                sp.getNumber());
+	                  
+	                  daoList.add(shoppingPayment);
+	               }
+	            }
+	         } catch (SQLException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	         }
+	         finally
+	         {
+	            close(pstmt);
+	            close(rset);
+	         }
+	      
+	      
+	      return daoList;
+	   }
+
 
 
 

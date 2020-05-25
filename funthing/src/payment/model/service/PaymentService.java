@@ -105,6 +105,7 @@ public class PaymentService {
 	}
 
 
+	//상원
 	public int insertPayment(Payment p, String mNo) {
 		Connection conn = getConnection();
 		
@@ -127,17 +128,25 @@ public class PaymentService {
 	}
 
 
-	public ArrayList<ShoppingPayment> searchProducts(ArrayList<ShoppingPayment> list) {
-		Connection conn = getConnection();
-		PaymentDao pDao = new PaymentDao();
-		
-		ArrayList<ShoppingPayment> servicelist = new ArrayList<>();
-		
-		servicelist = pDao.searchProducts(conn, list);
-		
-		close(conn);
-		return servicelist;
-	}
+
+	   public int insertPayment(Payment p) {
+	      Connection conn = getConnection();
+	      
+	      PaymentDao pDao = new PaymentDao();
+	      
+	      int result = pDao.insertPayment(conn, p);
+	      if(result > 0)
+	      {
+	         commit(conn);
+	      }
+	      else
+	      {
+	         rollback(conn);
+	      }
+	      close(conn);
+	      return result;
+	   }
+
 
 
 	public int updateProduct(ArrayList<Product> productList) {
@@ -183,4 +192,21 @@ public class PaymentService {
 
 	
 
-}
+   public ArrayList<ShoppingPayment> searchProducts(ArrayList<ShoppingPayment> list)
+   {
+      Connection conn = getConnection();
+      PaymentDao pDao = new PaymentDao();
+      
+      ArrayList<ShoppingPayment> servicelist = new ArrayList<>();
+      
+      servicelist = pDao.searchProducts(conn, list);
+      
+      close(conn);
+      return servicelist;
+   }
+
+
+
+	   
+
+	}
