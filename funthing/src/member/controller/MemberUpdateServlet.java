@@ -63,6 +63,7 @@ public class MemberUpdateServlet extends HttpServlet {
 			
 		}else {
 			view = request.getRequestDispatcher("views/member/myPageMain.jsp");
+			request.setAttribute("userNoM", mNo);
 			request.setAttribute("msg", "회원 정보 수정 실패");
 		}
 		view.forward(request, response);

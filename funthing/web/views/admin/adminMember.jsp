@@ -95,7 +95,11 @@
                     <td><%=b.getmPoint() %></td>
                     <td><%=b.gethPoint() %></td>
                     <td><%=b.getStatus_YN() %></td>
+                    <%if(b.getmId().equals("master")) {%>
+                    <td><button onclick="location.href='<%=request.getContextPath() %>/admin/modify?userId=<%= b.getmId()%>';" disabled>수정</button></td>
+                    <%}else{ %>
                     <td><button onclick="location.href='<%=request.getContextPath() %>/admin/modify?userId=<%= b.getmId()%>';">수정</button></td>
+                    <%} %>
                 </tr>
                 <%} %>
                 <%}else{ %>
@@ -116,8 +120,8 @@
                     <th>변경</th>
                 </tr>
                 <tr style="margin-top:30px;">
-                	<td colspan="6"><div style="text-align:center">검색 결과가 없습니다. 다시 검색해주세요.</div></td>
-                </tr>	
+                	<td colspan="14"><div style="text-align:center">검색 결과가 없습니다. 다시 검색해주세요.</div></td>
+                </tr>
                	
                 <%} %>
        		</table>

@@ -323,7 +323,8 @@
 	</body>
 	<script>
 		function cancle(){
-			location.href="views/admin/adminMember.jsp"
+			 location.href="<%=request.getContextPath()%>/admin/memberList"; 
+			
 		}
 		function productManage()
 		{

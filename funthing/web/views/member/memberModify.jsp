@@ -313,7 +313,7 @@
     <%@ include file="../common/footer.jsp" %>
         <script>
         	function cancle(){
-        		location.href="<%=request.getContextPath()%>/views/member/myPageMain.jsp";
+        		location.href="<%=request.getContextPath()%>/myPageMainServlet?userNoM=<%=member.getmNo()%>";
         	}
         	$(function(){
         		
