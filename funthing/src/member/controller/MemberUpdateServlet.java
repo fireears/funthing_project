@@ -60,7 +60,7 @@ public class MemberUpdateServlet extends HttpServlet {
 			view = request.getRequestDispatcher("views/member/myPageMain.jsp");
 			request.setAttribute("msg", "회원정보 수정 완료");
 		}else {
-			view = request.getRequestDispatcher("views/login/fail.jsp");
+			view = request.getRequestDispatcher("views/member/myPageMain.jsp");
 			request.setAttribute("msg", "회원 정보 수정 실패");
 		}
 		view.forward(request, response);
