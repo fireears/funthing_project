@@ -59,7 +59,7 @@
             <div class="s_title">
                 <h3>결제 예정 상품</h3>
             </div>
-            <form id="shoppingbagForm" method="get" action="#none">
+            <form id="shoppingbagForm" method="get" action="<%=request.getContextPath()%>/ShoppingPaymentInfo">
             <input type="hidden" name="userNo" value="<%=loginUser.getmNo() %>">
                 <table class="s_table">
                     <tr>
@@ -78,18 +78,17 @@
                sum +=list.get(i).getShbag_price()*list.get(i).getShbag_num();
             }
                        
+
                 for(int i =0;i<list.size();i++){%>
 
                 <input type="hidden" name="p_no" value="<%=list.get(i).getP_no()%>">
-                    <tr>                   	
 
-                	<%-- <input type="hidden" value="<%=%>">//상품번호 --%>
-                    <tr>
+                    <tr>                   	
 
                         <td><input type="checkbox" name="check" value="<%=list.get(i).getP_name()%>"></td>
                         <td class="imgArea"><img src="<%=request.getContextPath()+"/images/thumbnail/" + list.get(i).getP_thumbnail() + ".jpg" %>" /></td>
                         <td><%=list.get(i).getP_name()%></td>
-                        <td><%=list.get(i).getShbag_num()%></td>
+                        <td><input type="hidden" name="number" value="<%=list.get(i).getShbag_num()%>"><%=list.get(i).getShbag_num()%></td>
                         <td><%=list.get(i).getShbag_price()*list.get(i).getShbag_num()%></td>
                         <td><%=list.get(i).getP_point()%></td>
                         <td><%=sum%></td>

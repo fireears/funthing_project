@@ -4,12 +4,14 @@ import static common.JDBCTemplate.*;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import member.model.vo.MemberPoint;
 import payment.model.dao.PaymentDao;
 import payment.model.vo.OrderList;
 
 import payment.model.vo.OrderUpdate;
 
 import payment.model.vo.Payment;
+import payment.model.vo.ShoppingPayment;
 
 
 public class PaymentService {
@@ -119,5 +121,21 @@ public class PaymentService {
 		close(conn);
 		return result;
 	}
+
+
+	public ArrayList<ShoppingPayment> searchProducts(ArrayList<ShoppingPayment> list) {
+		Connection conn = getConnection();
+		PaymentDao pDao = new PaymentDao();
+		
+		ArrayList<ShoppingPayment> servicelist = new ArrayList<>();
+		
+		servicelist = pDao.searchProducts(conn, list);
+		
+		close(conn);
+		return servicelist;
+	}
+
+
+	
 
 }

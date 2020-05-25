@@ -266,10 +266,14 @@
                             <%if(loginUser != null){ %>
                              <input type="hidden" name="pNo" value="<%=list.get(1).getpNo()%>">
                           	  <input type="hidden" name="userNo" value="<%=loginUser.getmNo() %>"> 
+
                           	  <input type="hidden" name="mEmail" value="<%=loginUser.getmEmail() %>"> 
                           	  <input type="hidden" name="pName" value="<%=pd.getpName() %>">
                           	  <input type="hidden" name="bNo" value="<%=pd.getbNo() %>"> 
                           	  <input type="hidden" name="bName" value="<%=pd.getbName() %>"> 
+
+                          	  <%-- <input type="hidden" name="mEmail" value="<%=loginUser.getmEmail() %>">  --%>
+
                             <%}else{ %>
                            	 <input type="hidden" name="p_no" value="<%=list.get(1).getpNo()%>">
                            	 <%-- <input type="hidden" name="userNo" value="<%=loginUser.getmNo() %>"> --%>
