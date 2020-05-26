@@ -133,12 +133,14 @@
             <hr>
             <br>
             <div style="text-align: center;">
-                <label>SNS 로그인</label>
+            	<label style="color:lightgray;">준비중 입니당</label><br>
+                <label style="color:lightgray;">SNS 로그인</label>
                 <br>
                 <br>
                 <br>
                 <br>
-                카카오 아이디 로그인
+                <label style="color:lightgray;">카카오 아이디 로그인</label>
+                	
             </div>
 
         </form>
