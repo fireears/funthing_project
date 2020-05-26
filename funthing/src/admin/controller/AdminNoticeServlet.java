@@ -91,10 +91,13 @@ public class AdminNoticeServlet extends HttpServlet {
 			   System.out.println();
 			if(list.isEmpty()){
 				request.setAttribute("msg","게시판 리스트 조회 실패!");
-				view = request.getRequestDispatcher("adminMain.jsp");
+				view = request.getRequestDispatcher("/views/admin/adminNotice.jsp");
 			}else{	
 				request.setAttribute("list", list);
 				request.setAttribute("pi", pi);
+				if(request.getAttribute("msg")!=null) {
+					request.setAttribute("msg",request.getAttribute("msg"));
+				}
 				view = request.getRequestDispatcher("/views/admin/adminNotice.jsp");
 			}
 			view.forward(request, response);

@@ -12,7 +12,7 @@ int currentPage = pi.getCurrentPage();
 int maxPage = pi.getMaxPage();
 int startPage = pi.getStartPage();
 int endPage = pi.getEndPage();
-
+String msg = (String)request.getAttribute("msg");
 
 
 String search =(String)request.getAttribute("search");
@@ -107,6 +107,22 @@ String search =(String)request.getAttribute("search");
                       $("#shoppingbagForm").attr("action", "<%=request.getContextPath()%>/admin/NoticeView");
                           $("#shoppingbagForm").submit();
                     }
+                  
+                      $("#checkall").click(function(){
+                          if($("#checkall").prop("checked")){
+                              $("input[name=nNo]").prop("checked",true);
+                          }else{
+                              $("input[name=nNo]").prop("checked",false);
+                          }
+                      })
+                      
+                       
+            			 <%if(msg != null){%>
+        					alert("<%=msg%>");
+        		 		<%}%>
+        		 
+            	
+                 
            </script>
              <div class="pageinArea" align="center">
             <%
