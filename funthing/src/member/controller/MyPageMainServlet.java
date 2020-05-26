@@ -35,10 +35,13 @@ public class MyPageMainServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("넘어가나?");
 		request.setCharacterEncoding("UTF-8");
 		
-		String userNoM = request.getParameter("userNoM");
-		
+		 String userNoM = request.getParameter("userNoM");
+	      if(userNoM == null) {
+	         userNoM = (String)request.getAttribute("userNoM");
+	      }
 		System.out.println("마이페이지 메인 서블릿에서 유저 넘버 : " + userNoM);
 		
 		MemberService mService = new MemberService();

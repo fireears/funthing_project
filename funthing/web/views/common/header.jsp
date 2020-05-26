@@ -11,7 +11,6 @@
 		<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<meta charset="UTF-8">
 		<title>Insert title here</title>
-		<link rel="stylesheet" href="<%=request.getContextPath() %>/css/main.css">
 		<link rel="stylesheet" href="<%=request.getContextPath() %>/css/reset.css">
 		<link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
 	    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/slick/slick.css"/>

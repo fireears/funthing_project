@@ -1,3 +1,11 @@
+/admin/
+/board/
+/brand/
+/calendar/
+/common/
+/filter/
+/main/
+/man/
 /member/
 /notice/
 /payment/
@@ -7,4 +15,3 @@
 /review/
 /women/
 /wrapper/
-/admin/

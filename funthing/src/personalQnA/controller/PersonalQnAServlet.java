@@ -40,14 +40,20 @@ public class PersonalQnAServlet extends HttpServlet {
 		
 		
 		// 로그인 한 유저 정보 받기
-		String userNo = request.getParameter("userNo");
+		String userNo = userNo = request.getParameter("userNo");
+		if(userNo == null) {
+			
+			userNo = (String)request.getAttribute("userNo");
+		}
 		
+
 		if(userNo == null) {
 			userNo = (String)request.getAttribute("userNo");
 		}
 		
 		
 		System.out.println("서블릿에 로그인 값이 잘 넘어왔는가" + userNo);
+
 		
 		// 날짜 선택값 받기
 		String searchDate = "";
@@ -74,8 +80,8 @@ public class PersonalQnAServlet extends HttpServlet {
 			secondDate = "2009/01/01";
 		}
 				
-		
-		// 초기값이 아닌 소비자가 검색 값을 입력했을때
+		// ------------------------------------------------------------------------------------------------------------------------------------------------
+		// 처음셀렉하고 페이징 처리할때
 		if(request.getParameter("searchDate") == null && request.getParameter("firstDate") == "2009/01/01" &&  request.getParameter("secondDate")=="2009/01/01") {
 			searchDate = request.getParameter("searchDate1");
 			firstDate = request.getParameter("firstDate1");

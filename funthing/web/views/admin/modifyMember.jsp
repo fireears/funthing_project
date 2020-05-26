@@ -111,6 +111,7 @@
             <hr>
             <h3>기본정보</h3>
             <br>
+            <hr>
             <h5 id="hh5">*은 반드시 적어야 하는 항목</h5>
             <table id="ta">
                 <tr>
@@ -299,7 +300,7 @@
                         <label>추천인</label>
                     </td>
                     <td id="inp">
-                        <input type="text" id="reference" name="reference" value="<%=member.getReference() %>">
+                        <input type="text" id="reference" name="reference" value="<%=member.getReference() %>" disabled>
                     </td>
                 </tr>
             </table>
@@ -322,7 +323,8 @@
 	</body>
 	<script>
 		function cancle(){
-			location.href="views/admin/adminMember.jsp"
+			 location.href="<%=request.getContextPath()%>/admin/memberList"; 
+			
 		}
 		function productManage()
 		{

@@ -11,6 +11,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+	.lnb mypage-lab{font-size:100px;}
+
 
 </style>
 

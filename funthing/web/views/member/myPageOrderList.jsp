@@ -25,7 +25,7 @@
 		<style>
 		.r-cont-header {
 			width: 100%;
-			padding: 20px 20px;
+			padding: 10px 20px;
 			border-top: 1px solid #bbb;
 			border-bottom: 1px solid #bbb;
 		}
@@ -330,8 +330,8 @@
 				<div class="r-cont-header">
 	
 					<div class="r-cont-text">
-						<h2>
-							<b style="color: #0f4a7e;">주문목록</b>
+						<h2 style="text-align:left;">
+							<b style="color: #0f4a7e; font-size:20px;">주문목록</b>
 						</h2>
 					</div>
 				</div>

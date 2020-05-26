@@ -35,7 +35,7 @@
 
         .header-mypage{
             position: relative; 
-            background-color:#30586e;
+            background-color:#0f4a7e;
             width: 100%;
             height: 220px;
             margin-bottom: 0px;
@@ -87,9 +87,13 @@
         .mypage-lnb h2 { 
             border-top:1px solid #bbb; 
             border-bottom:1px solid #bbb; 
-            padding:20px 0; 
+            padding:10px 10px;
+            text-align:left;
         }
-
+        
+		.mypage-lnb h2 a{font-size:25px;}
+		
+        
         .mypage-lnb h3 { 
             padding:20px 0; 
             color:#0f4a7e; 
@@ -115,7 +119,7 @@
            float:left;
            width:76%;
             padding: 20px 0; 
-            margin-top: 60px;
+            margin-top: 40px;
             box-sizing: border-box;
             margin-left:4%;
         }
