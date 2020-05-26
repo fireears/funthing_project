@@ -43,10 +43,10 @@ public class MyReviewListServlet extends HttpServlet {
 		ReviewService rvs = new ReviewService();
 		
 		rvList = rvs.reviewSelect(mNo);
-		
-		for(int i = 0; i < rvList.size(); i ++) {
-			System.out.println(rvList.get(i));
-		}
+//		
+//		for(int i = 0; i < rvList.size(); i ++) {
+//			System.out.println(rvList.get(i));
+//		}
 		
 		RequestDispatcher view = null;
 		if(!rvList.isEmpty()) {
@@ -54,6 +54,10 @@ public class MyReviewListServlet extends HttpServlet {
 			request.setAttribute("rvList", rvList);
 			
 		}else {
+			view = request.getRequestDispatcher("/views/review/myPageReview.jsp");
+			request.setAttribute("rvList", rvList);
+			String rvMsg = "작성한 리뷰가 없습니다.";
+			request.setAttribute("rvMsg", rvMsg);
 			
 		}
 

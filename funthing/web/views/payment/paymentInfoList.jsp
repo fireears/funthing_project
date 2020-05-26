@@ -101,9 +101,6 @@
                                     <th class="ta-1" aria-required="true">이메일</th>
                                     <td>
                                        <div class="txt-field"><input type="text" id="email"name="m_email" value="<%=loginUser.getmEmail()%>">&nbsp;
-                                          <!-- <select name="">
-                                             <option value="naver.com">naver.com</option>
-                                          </select> -->
                                        </div>
                                     </td>
                                 </tr>
@@ -116,12 +113,6 @@
                     <div class="table1">
                         <table>
                             <tbody>
-                                <!-- <tr>
-                                    <th class="ta-1" aria-required="true">배송지 확인</th>
-                                    <td><div class="txt-field1"><input type="radio" name="dstn_chk" id="default" value="기본배송지"><label for="default">기본 배송지</label>
-                                            <input type="radio" name="dstn_chk" id="input" value="직접입력" checked><label for="input">직접 입력</label>
-                                        </div></td>
-                                </tr> -->
                                 <tr>
                                     <th class="ta-1" aria-required="true">받으실분</th>
                                     <td><div class="txt-field"><input type="text" id="rcv_name" name="rcv_name" maxlength="20"></div></td>
@@ -214,7 +205,9 @@
                                 <%for(ShoppingPayment sp : resultList) {%>
                                 <tr style="line-heigth:150px;">
                                 	<input type="hidden" name="pName" value="<%=sp.getP_name() %>">
+                                	<input type="hidden" name="pNo" value="<%=sp.getP_no() %>">
                                 	<input type="hidden" name="result_price" value="<%=sp.getP_price() * Integer.valueOf(sp.getNumber()) %>">
+                                	<input type="hidden" name="o_num" value="<%=sp.getNumber() %>">
                                     <td align="left"><img src="<%=request.getContextPath()+"/images/thumbnail/" + sp.getThumbnail() + ".jpg" %>" alt="상품사진" id="productImg" style="width:80px; height:100px;"><span><%=sp.getP_name() %>/<%=sp.getP_color() %>/<%=sp.getP_size() %></span></td>
                                     <td style="text-align: center; "><div id="num"><%=sp.getNumber() %></div></td>
                                     <td style="text-align: center;"><div id="retail_price"><%=formatter.format(sp.getRetail_price() * Integer.valueOf(sp.getNumber())) %></div></td>
@@ -231,7 +224,6 @@
                             </tbody>
                         </table>
                     </div>
-               <!--            -->
                
                
                     <p id="title">결제정보</p>
@@ -300,13 +292,13 @@
                                 <input type="checkbox" name="" id="">상품 공급사 개인정보 제공 동의에 대한 내용을 확인 하였으며 이에 동의 합니다.(필수)<br>
                             </div>
                             <br><br>
-                            <!-- <input type="button" id="pqy" value="결제하기" style="width: 70%; height: 55px; border: 0px; background-color: rgb(3, 3, 87); color: white; font-size: 20px;"> -->
+
                      <button type="button" id="pay" style="width: 70%; height: 55px; border: 0px; background-color: rgb(3, 3, 87); color: white; font-size: 20px;">결제하기</button>
                         </div>
                     </div>
-                    <!---->
+
                 </form>
-               <!-- <button type="button" id="pay">결제</button> -->
+
                 
             </article>
         </section>
@@ -337,12 +329,9 @@
             }
             else if($(this).val() <= <%=mPoint%>)
             {
-               /* var tp = $("#totalPrice").text().substring(0,$("#totalPrice").text().length-1); */
                
                var pu = $("#point_user").val();
                result = tp-pu;
-               /* alert(typeof result);
-               var temp = result.substr(1, result.length()-3); */
                $("#resultprice").text(result+"원");
                $("#expt_price").val(result);
                $("#result_price1").text(result+"원");
@@ -356,8 +345,6 @@
    <!-- 카카오페이 -->
    <script>
       $("#pay").click(function(){
-         /* val payMethod = $("input[name=pmnt_mthd]").val(); */
-         alert("결제");
          <%if(totalPrice > 50000) { %>
               var tp = <%=totalPrice %>;
            <%} else { %>
@@ -382,10 +369,7 @@
          }, function(rsp) {
              if ( rsp.success ) {
                  var msg = '결제가 완료되었습니다.';
-                 /* msg += '고유ID : ' + rsp.imp_uid;
-                 msg += '상점 거래ID : ' + rsp.merchant_uid;
-                 msg += '결제 금액 : ' + rsp.paid_amount;
-                 msg += '카드 승인번호 : ' + rsp.apply_num; */
+                 
              } else {
                  var msg = '결제에 실패하였습니다.';
                  msg += '에러내용 : ' + rsp.error_msg;

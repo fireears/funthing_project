@@ -4,6 +4,8 @@
 	ArrayList<Review> rvList = (ArrayList<Review>)request.getAttribute("rvList");
 
 	String mNo = (String)request.getAttribute("mNo");
+	
+	String rvMsg = (String)request.getAttribute("rvMsg");
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -97,24 +99,30 @@
                     	<th>조회수</th>
                     	<th>날짜</th>
                     </tr>
-                   	<%for(Review rv : rvList) {%>
-                    <tr class="tb_line">
-                    	<input type="hidden" id="mNo" value=<%= loginUser2.getmNo()%>>
-						<td><%=rv.getRowNum() %></td>
-						<td><%=rv.getpNo() %></td>
-						<td><%=rv.getRevTitle() %></td>
-						<td><%=rv.getRateStar() %></td>
-						<td><%=rv.getViewsNum() %></td>
-						<td><%=rv.getRevDate() %></td>
-                    </tr>
-                    <tr class="tb_cont">
-                    	<td colspan = "6">
-                    	<%if(rv.getRevPic() != null){ %>
-                   			<div class="cont_img"><%=rv.getRevPic() %></div>
-                   		<%} %>
-                    		<div class="cont_text"><%=rv.getRevContents() %></div>
-                    	</td>
-                    </tr>
+                   	<input type="hidden" id="mNo" value=<%= loginUser2.getmNo()%>>
+                    <%if(!rvList.isEmpty()) {%>
+	                   	<%for(Review rv : rvList) {%>
+	                    <tr class="tb_line">
+							<td><%=rv.getRowNum() %></td>
+							<td><%=rv.getpNo() %></td>
+							<td><%=rv.getRevTitle() %></td>
+							<td><%=rv.getRateStar() %></td>
+							<td><%=rv.getViewsNum() %></td>
+							<td><%=rv.getRevDate() %></td>
+	                    </tr>
+	                    <tr class="tb_cont">
+	                    	<td colspan = "6">
+	                    	<%if(rv.getRevPic() != null){ %>
+	                   			<div class="cont_img"><%=rv.getRevPic() %></div>
+	                   		<%} %>
+	                    		<div class="cont_text"><%=rv.getRevContents() %></div>
+	                    	</td>
+	                    </tr>
+						<%} %>
+					<%}else { %>
+						<tr class="tb_line">
+							<td colspan="6"><%=rvMsg %></td>
+						</tr>
 					<%} %>
 			<!-- 상품문의 디테일 -->
                 </table>

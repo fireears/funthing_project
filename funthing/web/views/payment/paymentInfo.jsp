@@ -6,11 +6,11 @@
 <%@ page import="java.text.DecimalFormat" %>
 <%
 
-ShoppingPayment p = (ShoppingPayment)request.getAttribute("p");
+	ShoppingPayment p = (ShoppingPayment)request.getAttribute("p");
 	int number = Integer.valueOf((String)request.getAttribute("number"));
 	DecimalFormat formatter = new DecimalFormat("###,###");
 	MemberPoint mp = (MemberPoint)request.getAttribute("m");
-	/* String mEmail = (String)request.getAttribute("mEmail"); */
+	String pNo = (String)request.getAttribute("pNo");
 	
 	String thumbnail = p.getThumbnail();
 	String pName = p.getP_name();
@@ -81,6 +81,7 @@ ShoppingPayment p = (ShoppingPayment)request.getAttribute("p");
             
             <article id="area">
                 <form action="<%=request.getContextPath() %>/Payment" id="payment" method="GET">
+               		<input type="hidden" name="pNo" value="<%=pNo%>">
                    <input type="hidden" name="mNo" value="<%=mNo %>">
                     <p id="title">주문자 정보</p>
                     <div class="table1">
@@ -98,9 +99,6 @@ ShoppingPayment p = (ShoppingPayment)request.getAttribute("p");
                                     <th class="ta-1" aria-required="true">이메일</th>
                                     <td>
                                        <div class="txt-field"><input type="text" id="email"name="m_email" value="<%=loginUser.getmEmail()%>">&nbsp;
-                                          <!-- <select name="">
-                                             <option value="naver.com">naver.com</option>
-                                          </select> -->
                                        </div>
                                     </td>
                                 </tr>
@@ -113,12 +111,6 @@ ShoppingPayment p = (ShoppingPayment)request.getAttribute("p");
                     <div class="table1">
                         <table>
                             <tbody>
-                                <!-- <tr>
-                                    <th class="ta-1" aria-required="true">배송지 확인</th>
-                                    <td><div class="txt-field1"><input type="radio" name="dstn_chk" id="default" value="기본배송지"><label for="default">기본 배송지</label>
-                                            <input type="radio" name="dstn_chk" id="input" value="직접입력" checked><label for="input">직접 입력</label>
-                                        </div></td>
-                                </tr> -->
                                 <tr>
                                     <th class="ta-1" aria-required="true">받으실분</th>
                                     <td><div class="txt-field"><input type="text" id="rcv_name" name="rcv_name" maxlength="20"></div></td>
@@ -211,6 +203,7 @@ ShoppingPayment p = (ShoppingPayment)request.getAttribute("p");
                                 <tr style="line-heigth:150px;">
                                 	<input type="hidden" name="pName" value="<%=pName %>">
                                 	<input type="hidden" name="result_price" value="<%=pPrice*number %>">
+                                	<input type="hidden" name="o_num" value="<%=number %>">
                                     <td align="center"><img src="<%=request.getContextPath()+"/images/thumbnail/" + thumbnail + ".jpg" %>" alt="상품사진" id="productImg" style="width:100px; height:150px;"><span><%=pName %>/<%=color %>/<%=size %></span></td>
                                     <td style="text-align: center; "><div id="num"><%=number %></div></td>
                                     <td style="text-align: center;"><div id="retail_price"><%=formatter.format(retailPrice*number) %></div></td>
@@ -295,13 +288,11 @@ ShoppingPayment p = (ShoppingPayment)request.getAttribute("p");
                                 <input type="checkbox" name="" id="">상품 공급사 개인정보 제공 동의에 대한 내용을 확인 하였으며 이에 동의 합니다.(필수)<br>
                             </div>
                             <br><br>
-                            <!-- <input type="button" id="pqy" value="결제하기" style="width: 70%; height: 55px; border: 0px; background-color: rgb(3, 3, 87); color: white; font-size: 20px;"> -->
                      <button type="button" id="pay" style="width: 70%; height: 55px; border: 0px; background-color: rgb(3, 3, 87); color: white; font-size: 20px;">결제하기</button>
                         </div>
                     </div>
-                    <!---->
+                    
                 </form>
-               <!-- <button type="button" id="pay">결제</button> -->
                 
             </article>
         </section>
@@ -351,8 +342,6 @@ ShoppingPayment p = (ShoppingPayment)request.getAttribute("p");
    <!-- 카카오페이 -->
    <script>
       $("#pay").click(function(){
-         /* val payMethod = $("input[name=pmnt_mthd]").val(); */
-         alert("결제");
          <%if(pPrice*number > 50000) { %>
               var tp = <%=pPrice*number %>;
            <%} else { %>
@@ -377,10 +366,7 @@ ShoppingPayment p = (ShoppingPayment)request.getAttribute("p");
          }, function(rsp) {
              if ( rsp.success ) {
                  var msg = '결제가 완료되었습니다.';
-                 msg += '고유ID : ' + rsp.imp_uid;
-                 msg += '상점 거래ID : ' + rsp.merchant_uid;
-                 msg += '결제 금액 : ' + rsp.paid_amount;
-                 msg += '카드 승인번호 : ' + rsp.apply_num;
+                 
              } else {
                  var msg = '결제에 실패하였습니다.';
                  msg += '에러내용 : ' + rsp.error_msg;
@@ -389,16 +375,5 @@ ShoppingPayment p = (ShoppingPayment)request.getAttribute("p");
              $("#payment").submit();
          });
       })
-   </script>
-   <script>
-      
-         
-      
-         
-            
-         
-      
-      
-      
    </script>
 </html>
