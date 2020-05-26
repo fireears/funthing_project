@@ -36,6 +36,8 @@
         .q1_wrap .q1_btnArea .btn.submit { background:#0f4a7e; border:1px solid #aaa; color:#fff; }
         
         
+        
+        
     </style>
 </head>
 <body>
@@ -108,6 +110,10 @@
 						<td style="width:50px;" align="center"><span><%=pq.getPqreDate() %></span></td>
                         </tr>
                     </table>
+                    
+                    <div class="q1_btnArea">
+                    	<input type = "button" class="btn submit" id="backPage" onclick="backPage();" value="돌아가기">
+                    </div>
                   
                
             </div>
@@ -124,6 +130,16 @@
     </div>
     
     <%@ include file="../common/footer.jsp" %>
+    
+    <script>
+    	function backPage(){
+    		location.href="<%=request.getContextPath()%>/PersonalQnA?userNo=<%=loginUser.getmNo()%>";	
+    	}
+    
+    
+    
+    </script>
+    
     
 </body>
 </html>

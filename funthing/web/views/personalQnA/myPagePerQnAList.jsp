@@ -37,12 +37,12 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<style>
-		.r-cont-header{width: 100%; padding: 20px 20px; border-top: 1px solid #bbb;  border-bottom:1px solid #bbb;}
+		.r-cont-header{width: 100%; padding: 10px 20px; border-top: 1px solid #bbb;  border-bottom:1px solid #bbb;}
 
         .r-cont-header:after {clear:both; content:""; display:block;}
 
         .r-cont-text{width: 30%; margin: 0 0 0 0; margin-right: 0; padding: 0 0 0 0; float:left;}
-        .r-cont-button{float: right;border: 1px solid #bbb; background-color: #bbb;}
+        .r-cont-button{float: right;border: 1px solid #bbb; background-color: #bbb;height:30px;margin-top:13px;}
 
         .r-cont-button a{margin:20px; font-size: 15px; color: white;}
 
@@ -97,8 +97,8 @@
             <div class="r-cont-header">
                
                 <div class="r-cont-text">
-                    <h2>
-                        <b style="color:#0f4a7e;">1:1 문의</b>
+                    <h2 style=" text-align:left;">
+                        <b style="color:#0f4a7e; font-size:20px;">1:1 문의</b>
                     </h2>
                 </div>
 

@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import admin.model.dao.AdminDao;
+import admin.model.vo.ProductStatic;
+import admin.model.vo.SalesManage;
 import brand.model.vo.Brand;
 import member.model.vo.Member;
 import member.model.vo.MemberPoint;
@@ -453,6 +455,29 @@ public class AdminService {
 			return rvList;
 		}
 
+		public ArrayList<ProductStatic> searchProduct(ProductStatic pStatic) {
+			System.out.println("service");
+			Connection conn = getConnection();
+			ArrayList<ProductStatic> list = new ArrayList<>();
+			
+			list = new AdminDao().searchProduct(conn, pStatic);
+			
+			close(conn);
+			return list;
+		}
+
+
+		public ArrayList<SalesManage> searchSales(SalesManage sManage) {
+			Connection conn = getConnection();
+			ArrayList<SalesManage> list = new ArrayList<>();
+			
+			list = new AdminDao().searchSales(conn, sManage);
+			
+			close(conn);
+			return list;
+		}
+
+		
 		// 리뷰 디테일 * 서윤
 		public Review reviewDatail(int revNo) {
 			Connection conn = getConnection();
