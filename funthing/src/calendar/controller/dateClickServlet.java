@@ -91,6 +91,10 @@ public class dateClickServlet extends HttpServlet {
 	         pjObj.put("fEnddate", utilfEndtDate);
 	         pjObj.put("fPrgRate", cProd.getfPrgRate());
 	         
+
+	         pjObj.put("fGoal", cProd.getfGoal());
+	         pjObj.put("fSelPrice", cProd.getfSelPrice());
+	         
 	         pjArray.add(pjObj);
 	      }
 	      
