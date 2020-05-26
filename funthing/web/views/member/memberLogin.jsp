@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="member.model.vo.Member" %>
 <%
-	Member searchId = (Member)session.getAttribute("searchId");	
+	Member searchId = (Member)request.getAttribute("searchId");	
 	String msg = (String)request.getAttribute("msg");
 %>
 <!DOCTYPE html>

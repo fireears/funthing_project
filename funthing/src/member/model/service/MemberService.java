@@ -15,7 +15,7 @@ import member.model.vo.MemberShoppingBag;
 import payment.model.vo.OrderUpdate;
 
 public class MemberService {
-	// 로그인
+	// 로그인_진교
 	public Member loginMember(Member member) {
 		Connection conn = getConnection();
 		
@@ -25,7 +25,7 @@ public class MemberService {
 		
 		return loginMember;
 	}
-	// 아이디 찾기
+	// 아이디 찾기_진교
 	public Member searchIdMember(Member member) {
 //		System.out.println("Service단까지 옴");
 		Connection conn = getConnection();
@@ -36,7 +36,7 @@ public class MemberService {
 		
 		return searchIdMember;
 	}
-	// 비밀번호 찾기
+	// 비밀번호 찾기_진교
 	public Member searchPwd(String userId) {
 //		System.out.println("Service단까지 옴");
 		Connection conn = getConnection();
@@ -47,7 +47,7 @@ public class MemberService {
 		
 		return searchPwd;
 	}
-	// myPage 회원 정보 창
+	// myPage 회원 정보 창_진교
 	public Member selectMember(String userId) {
 //		System.out.println("Service단까지 옴");
 		Connection conn = getConnection();
@@ -58,7 +58,7 @@ public class MemberService {
 		
 		return loginMember;
 	}
-	// 회원가입
+	// 회원가입_진교
 	public int insertMember(Member member) {
 //		System.out.println("Service단까지 옴");
 		Connection conn = getConnection();
@@ -69,7 +69,7 @@ public class MemberService {
 		
 		return result;
 	}
-	// 아이디 중복 체크
+	// 아이디 중복 체크_진교
 	public int idCheck(String userId) {
 		Connection conn = getConnection();
 		int result = 0;
@@ -81,7 +81,7 @@ public class MemberService {
 		return result;
 	}
 	
-	// 회원 정보 수정 update
+	// 회원 정보 수정 update_진교
 	public int updateMember(Member member) {
 		Connection conn = getConnection();
 		
@@ -111,7 +111,7 @@ public class MemberService {
 		return list;
 	}
 	
-	// 메일 인증(회원 메일 가져오기)
+	// 메일 인증(회원 메일 가져오기)_진교
 	public Member memberemail(String email) {
 		Connection conn = getConnection();
 		
@@ -121,7 +121,7 @@ public class MemberService {
 		
 		return memberEmail;
 	}
-	// 비밀번호 변경(회원 아이디 가져오기)
+	// 비밀번호 변경(회원 아이디 가져오기)_진교
 	public Member memberSend(String userId) {
 		Connection conn = getConnection();
 		
@@ -132,7 +132,7 @@ public class MemberService {
 		return memberSend;	
 	}
 	
-	// 비밀번호 변경(update) 
+	// 비밀번호 변경(update)_진교
 	public int UpdatePwd(Member member) {
 		Connection conn = getConnection();
 		

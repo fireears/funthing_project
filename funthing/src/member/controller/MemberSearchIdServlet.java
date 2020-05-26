@@ -49,22 +49,20 @@ public class MemberSearchIdServlet extends HttpServlet {
 		Member searchIdMember = new MemberService().searchIdMember(member);
 		
 //		System.out.println("Servlet에서 화면에 뿌려주기 전 : " + searchIdMember);
+		RequestDispatcher view = null;
 		
 		if(searchIdMember != null) {
 			
-			HttpSession session = request.getSession();
+			request.setAttribute("searchId", searchIdMember);
 			
-			session.setAttribute("searchId", searchIdMember);
-			
-			
-			response.sendRedirect("views/member/memberLogin.jsp");
+			view = request.getRequestDispatcher("views/member/memberLogin.jsp");
 		}else{
 			request.setAttribute("msg", "입력하신 정보가 없습니다.");
 			
-			RequestDispatcher view = request.getRequestDispatcher("views/member/searchId.jsp");
+			view = request.getRequestDispatcher("views/member/searchId.jsp");
 
-			view.forward(request, response);
 		}
+		view.forward(request, response);
 	}
 
 	/**
