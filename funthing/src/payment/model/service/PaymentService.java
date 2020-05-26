@@ -4,7 +4,7 @@ import static common.JDBCTemplate.*;
 import java.sql.Connection;
 import java.util.ArrayList;
 
-
+import member.model.vo.MemberPoint;
 import payment.model.dao.PaymentDao;
 import payment.model.vo.OrderList;
 
@@ -106,25 +106,24 @@ public class PaymentService {
 
 
 	//상원
-	public int insertPayment(Payment p, String mNo) {
+	public int insertPayment(Payment p, String mNo, MemberPoint mp) {
 		Connection conn = getConnection();
 		
 		PaymentDao pDao = new PaymentDao();
 		
 		int result = pDao.insertPayment(conn, p);
-		int result1 = 0;
-		if(result > 0)
+		int result1 = pDao.insertJumun(conn, mNo);
+		int result2 = pDao.insertPoint(conn, mp);
+		if(result > 0 && result1 > 0 && result2 > 0)
 		{
-			result1 = pDao.insertJumun(conn, mNo);
-			commit(conn);
-			
+			commit(conn);	
 		}
 		else
 		{
 			rollback(conn);
 		}
 		close(conn);
-		return result1;
+		return result2;
 	}
 
 
@@ -206,7 +205,26 @@ public class PaymentService {
    }
 
 
+   public int insertMpoint(MemberPoint mp) {
+	   Connection conn = getConnection();
+	   PaymentDao pDao = new PaymentDao();
+	   
+	   int result = pDao.updateMpoint(conn, mp);
+	   
+	   if(result > 0)
+	   {
+		   commit(conn);
+	   }
+	   else
+	   {
+		   rollback(conn);
+	   }
+	   close(conn);
+	   return result;
+   }
+
+
 
 	   
 
-	}
+}
