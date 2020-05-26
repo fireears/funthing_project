@@ -2,10 +2,12 @@
     pageEncoding="UTF-8"%>
     <%@ page import="board.model.vo.PageInfo" %>
     <%@ page import="product.model.vo.Product" %>
+    <%@ page import="brand.model.vo.Brand" %>
     <%@ page import="java.util.ArrayList" %>
     <%@ page import="java.text.DecimalFormat" %>
     <%
     	ArrayList<Product> list = (ArrayList<Product>)request.getAttribute("list");
+    	ArrayList<Brand> blist = (ArrayList<Brand>)request.getAttribute("blist");
     	ArrayList<Product> plist = (ArrayList<Product>)request.getAttribute("plist");
     	Product product = (Product)request.getAttribute("product");
     	
@@ -40,7 +42,6 @@
 		#area{margin: auto; width: 100%;}
 		#area table{width: 100%; border: 1px solid;}
 		#area table th{background-color: rgb(199, 196, 196); color: rgb(53, 52, 52);}
-		/* #area table tr button{width: 100%; height: 30px; background-color: gray; border: 1px solid; border-color: white; font-weight: 600; color: rgb(255, 255, 255);} */
 		
 		/* 상품계시판 밑에 버튼 */
 		#pageBtn{margin:auto; width:50%;}
@@ -59,12 +60,16 @@
 			<%if(product == null) { %>
 		    <ul>
 		        <li><label>상품번호 : </label><input type="text" class="box" id="p_no" name="p_no"></li>
-		        <li><label>브랜드 : </label><input type="text" class="box" id="b_no" name="b_no"></li>
+		        <li><label>브랜드 : </label>
+		        <select class="box" name="b_no">
+		        <%for(Brand b : blist) {%>
+		        	<option value=<%=b.getbNo() %>><%=b.getbName() %></option>
+		        <%} %>
+		        </select></li>
 		        <li><label>스타일 번호 : </label><input type="text" class="box" id="s_no" name="s_no" value="001"></li>
 		        <li><label>상품명 : </label><input type="text" class="box" id="p_name" name="p_name"></li>
 		        <li>
 		        	<label>상품종류 : </label>
-		        	<!-- <input type="text" class="box" id="p_category" name="p_category" placeholder="01"> -->
 		        	<select name="pCategory">
 		        		<option value="1">OUTER</option>
 		        		<option value="2">TOP</option>
@@ -88,12 +93,16 @@
 	        <%} else { %>
 	        	<ul>
 			        <li><label>상품번호 : </label><input type="text" class="box" id="p_no" name="p_no" value="<%=product.getpNo()%>"></li>
-			        <li><label>브랜드 : </label><input type="text" class="box" id="b_no" name="b_no" value="<%=product.getbNo()%>"></li>
+			        <li><label>브랜드 : </label>
+			        <select class="box" name="b_no">
+			        <%for(Brand b : blist) {%>
+			        	<option value=<%=b.getbNo() %>><%=b.getbName() %></option>
+			        <%} %>
+			        </select></li>
 			        <li><label>스타일 번호 : </label><input type="text" class="box" id="s_no" name="s_no" value="<%=product.getsNo()%>"></li>
 			        <li><label>상품명 : </label><input type="text" class="box" id="p_name" name="p_name" value="<%=product.getpName()%>"></li>
 			        <li>
 			        	<label>상품종류 : </label>
-			        	<!-- <input type="text" class="box" id="p_category" name="p_category" placeholder="01"> -->
 			        	<select name="pCategory">
 			        		<option value="1">OUTER</option>
 			        		<option value="2">TOP</option>
@@ -142,9 +151,9 @@
 	            	
 	            </tr>
                 <%} %>
-                <%} else { %>
+                <%} else if(list.isEmpty()) { %>
                 <tr align="center">
-	            	<input type="hidden"">
+	            	
 	            	<td colspan="10" align="center"><%=msg %></td> 
 	            	
 	            </tr>

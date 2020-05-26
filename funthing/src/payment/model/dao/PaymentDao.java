@@ -3,20 +3,18 @@ package payment.model.dao;
 import static common.JDBCTemplate.close;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
+import member.model.vo.MemberPoint;
 import payment.model.vo.OrderList;
 
 import payment.model.vo.OrderUpdate;
 
 import payment.model.vo.Payment;
-
-
+import payment.model.vo.ProductOrder;
 import personalQnA.model.vo.PersonalQnA;
 
 import payment.model.vo.ShoppingPayment;
@@ -556,7 +554,7 @@ public class PaymentDao {
 		try {
 			for(Product p : productList)
 			{
-				String query = "UPDATE PRODUCT SET F_SEL_PRICE = ? WHERE P_NAME = ?";
+				String query = "UPDATE PRODUCT SET F_SEL_PRICE = F_SEL_PRICE + ? WHERE P_NAME = ?";
 				pstmt = conn.prepareStatement(query);
 				pstmt.setInt(1, p.getfSelPrice());
 				pstmt.setString(2, p.getpName());
@@ -600,6 +598,121 @@ public class PaymentDao {
 		
 		return result;
 	}
+
+
+	public int updateMpoint(Connection conn, MemberPoint mp) {
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		String query = "UPDATE MEMBER SET M_POINT = ? WHERE M_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, mp.getmPoint());
+			pstmt.setString(2, mp.getmNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally
+		{
+			close(pstmt);
+		}
+		return result;
+	}
+
+
+
+	public int insertPoint(Connection conn, MemberPoint mp) {
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		String query = "INSERT INTO POINT VALUES('POINT'||TO_CHAR(SEQ_POINT.NEXTVAL), SYSDATE, 'O'||TO_CHAR(SEQ_PAYINFO.CURRVAL), '상품 구매 후 적립', ?, ? ,'구매적립', ?)";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, mp.getPointAmount());
+			pstmt.setString(2, mp.getmNo());
+			pstmt.setInt(3, mp.getMyPoint());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally
+		{
+			close(pstmt);
+		}
+		return result;
+	}
+
+
+
+	public String[] searchBrand(Connection conn, String[] pNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String[] b_no = new String[pNo.length];
+		int j = 0;	//while안에서 사용할 변수
+		String query = "SELECT B_NO FROM PRODUCT WHERE P_NO = ?";
+		
+		try {
+			for(int i = 0; i<pNo.length; i++)
+			{
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, pNo[i]);
+				
+				rset = pstmt.executeQuery();
+				
+				while(rset.next())
+				{
+					b_no[j] = rset.getString("b_no");
+					j++;
+				}
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return b_no;
+	}
+
+
+
+	public int insetProductOrder(Connection conn, ArrayList<ProductOrder> orderList) {
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		String query = "INSERT INTO PRODUCT_ORDER VALUES(?,'O'||TO_CHAR(SEQ_PAYINFO.CURRVAL),?,?)";
+		
+		try {
+			for(ProductOrder po : orderList)
+			{
+				pstmt = conn.prepareStatement(query);
+				
+				pstmt.setString(1, po.getP_no());
+				pstmt.setString(2, po.getB_no());
+				pstmt.setInt(3, po.getO_num());
+				
+				result = pstmt.executeUpdate();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+
 
 
 

@@ -4,13 +4,14 @@ import static common.JDBCTemplate.*;
 import java.sql.Connection;
 import java.util.ArrayList;
 
-
+import member.model.vo.MemberPoint;
 import payment.model.dao.PaymentDao;
 import payment.model.vo.OrderList;
 
 import payment.model.vo.OrderUpdate;
 
 import payment.model.vo.Payment;
+import payment.model.vo.ProductOrder;
 import payment.model.vo.ShoppingPayment;
 import product.model.vo.Product;
 
@@ -106,46 +107,50 @@ public class PaymentService {
 
 
 	//상원
-	public int insertPayment(Payment p, String mNo) {
+	public int insertPayment(Payment p, String mNo, MemberPoint mp, ArrayList<ProductOrder> orderList) {
 		Connection conn = getConnection();
 		
 		PaymentDao pDao = new PaymentDao();
 		
+		//paymentInfo insert
 		int result = pDao.insertPayment(conn, p);
-		int result1 = 0;
-		if(result > 0)
+		//jumun insert
+		int result1 = pDao.insertJumun(conn, mNo);
+		//point insert
+		int result2 = pDao.insertPoint(conn, mp);
+		//product_order insert
+		int result3 = pDao.insetProductOrder(conn, orderList);
+		if(result > 0 && result1 > 0 && result2 > 0 && result3 > 0)
 		{
-			result1 = pDao.insertJumun(conn, mNo);
-			commit(conn);
-			
+			commit(conn);	
 		}
 		else
 		{
 			rollback(conn);
 		}
 		close(conn);
-		return result1;
+		return result2;
 	}
 
 
 
-	   public int insertPayment(Payment p) {
-	      Connection conn = getConnection();
-	      
-	      PaymentDao pDao = new PaymentDao();
-	      
-	      int result = pDao.insertPayment(conn, p);
-	      if(result > 0)
-	      {
-	         commit(conn);
-	      }
-	      else
-	      {
-	         rollback(conn);
-	      }
-	      close(conn);
-	      return result;
-	   }
+//	   public int insertPayment(Payment p, String mNo, MemberPoint mp, ArrayList<Product> pNoList) {
+//	      Connection conn = getConnection();
+//	      
+//	      PaymentDao pDao = new PaymentDao();
+//	      
+//	      int result = pDao.insertPayment(conn, p);
+//	      if(result > 0)
+//	      {
+//	         commit(conn);
+//	      }
+//	      else
+//	      {
+//	         rollback(conn);
+//	      }
+//	      close(conn);
+//	      return result;
+//	   }
 
 
 
@@ -206,7 +211,37 @@ public class PaymentService {
    }
 
 
+   public int insertMpoint(MemberPoint mp) {
+	   Connection conn = getConnection();
+	   PaymentDao pDao = new PaymentDao();
+	   
+	   int result = pDao.updateMpoint(conn, mp);
+	   
+	   if(result > 0)
+	   {
+		   commit(conn);
+	   }
+	   else
+	   {
+		   rollback(conn);
+	   }
+	   close(conn);
+	   return result;
+    }
+
+
+    public String[] searchBrand(String[] pNo) {
+    	Connection conn = getConnection();
+    	
+    	String[] b_no = new PaymentDao().searchBrand(conn, pNo);
+    	
+    	close(conn);
+		return b_no;
+	}
+
+
+
 
 	   
 
-	}
+}
