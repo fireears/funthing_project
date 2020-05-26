@@ -848,38 +848,48 @@ public class AdminDao {
 		
 		try {
 			if(userName == null && userId == null ) {	
-				query= "SELECT RNUM, M_NO, M_ID, M_NAME, B_DAY, M_EMAIL, M_TELL, JOIN_DATE, REFERENCE, ALARM_YN, GRADE_CODE, M_POINT, H_POINT, STATUS_YN FROM MEMBERLIST WHERE RNUM BETWEEN ? AND ?";
-						
+				query= " select RNUM, M_NO, M_ID, M_NAME, B_DAY, M_EMAIL, M_TELL, JOIN_DATE, REFERENCE, ALARM_YN, GRADE_CODE, M_POINT, H_POINT, STATUS_YN "
+						+ " from( SELECT rownum rrr, RNUM, M_NO, M_ID, M_NAME, B_DAY, M_EMAIL, M_TELL, JOIN_DATE, REFERENCE, ALARM_YN, GRADE_CODE, M_POINT, H_POINT, STATUS_YN " 
+						+ " FROM MEMBERLIST)"
+						+ " where rrr BETWEEN ? AND ? ";
 				pstmt = conn.prepareStatement(query);
 				pstmt.setInt(1, startRow);
 				pstmt.setInt(2, endRow);
 			}
 			else if(userName == "" && userId== "") {
-				query= "SELECT RNUM, M_NO, M_ID, M_NAME, B_DAY, M_EMAIL, M_TELL, JOIN_DATE, REFERENCE, ALARM_YN, GRADE_CODE, M_POINT, H_POINT, STATUS_YN FROM MEMBERLIST WHERE RNUM BETWEEN ? AND ?";
-				
+				query= " select RNUM, M_NO, M_ID, M_NAME, B_DAY, M_EMAIL, M_TELL, JOIN_DATE, REFERENCE, ALARM_YN, GRADE_CODE, M_POINT, H_POINT, STATUS_YN "
+						+ " from( SELECT rownum rrr, RNUM, M_NO, M_ID, M_NAME, B_DAY, M_EMAIL, M_TELL, JOIN_DATE, REFERENCE, ALARM_YN, GRADE_CODE, M_POINT, H_POINT, STATUS_YN " 
+						+ " FROM MEMBERLIST)"
+						+ " where rrr BETWEEN ? AND ? "; 
 				pstmt = conn.prepareStatement(query);
 				pstmt.setInt(1, startRow);
 				pstmt.setInt(2, endRow);
 			}
 			else if(userName != null && userId == "") {
-				query= "SELECT RNUM, M_NO, M_ID, M_NAME, B_DAY, M_EMAIL, M_TELL, JOIN_DATE, REFERENCE, ALARM_YN, GRADE_CODE, M_POINT, H_POINT, STATUS_YN FROM MEMBERLIST WHERE M_NAME=? AND RNUM BETWEEN ? AND ?";
-				
+				query= " select RNUM, M_NO, M_ID, M_NAME, B_DAY, M_EMAIL, M_TELL, JOIN_DATE, REFERENCE, ALARM_YN, GRADE_CODE, M_POINT, H_POINT, STATUS_YN "
+						+ " from( SELECT rownum rrr, RNUM, M_NO, M_ID, M_NAME, B_DAY, M_EMAIL, M_TELL, JOIN_DATE, REFERENCE, ALARM_YN, GRADE_CODE, M_POINT, H_POINT, STATUS_YN " 
+						+ " FROM MEMBERLIST WHERE M_NAME= ? ) "
+						+ " where rrr BETWEEN ? AND ? "; 
 				pstmt = conn.prepareStatement(query);
 				pstmt.setString(1, userName);
 				pstmt.setInt(2, startRow);
 				pstmt.setInt(3, endRow);
 			}
 			else if(userName == "" && userId != null) {
-				query= "SELECT RNUM, M_NO, M_ID, M_NAME, B_DAY, M_EMAIL, M_TELL, JOIN_DATE, REFERENCE, ALARM_YN, GRADE_CODE, M_POINT, H_POINT, STATUS_YN FROM MEMBERLIST WHERE M_ID=? AND RNUM BETWEEN ? AND ?";
-				
+				query= " select RNUM, M_NO, M_ID, M_NAME, B_DAY, M_EMAIL, M_TELL, JOIN_DATE, REFERENCE, ALARM_YN, GRADE_CODE, M_POINT, H_POINT, STATUS_YN "
+						+ " from( SELECT rownum rrr, RNUM, M_NO, M_ID, M_NAME, B_DAY, M_EMAIL, M_TELL, JOIN_DATE, REFERENCE, ALARM_YN, GRADE_CODE, M_POINT, H_POINT, STATUS_YN " 
+						+ " FROM MEMBERLIST WHERE M_ID= ?) "
+						+ " where rrr BETWEEN ? AND ? "; 
 				pstmt = conn.prepareStatement(query);
 				
 				pstmt.setString(1, userId);
 				pstmt.setInt(2, startRow);
 				pstmt.setInt(3, endRow);
 			}else if(userName != null && userId != null) {
-				query= "SELECT RNUM, M_NO, M_ID, M_NAME, B_DAY, M_EMAIL, M_TELL, JOIN_DATE, REFERENCE, ALARM_YN, GRADE_CODE, M_POINT, H_POINT, STATUS_YN FROM MEMBERLIST WHERE M_NAME=? AND M_ID=? AND RNUM BETWEEN ? AND ?";
-				
+				query= " select RNUM, M_NO, M_ID, M_NAME, B_DAY, M_EMAIL, M_TELL, JOIN_DATE, REFERENCE, ALARM_YN, GRADE_CODE, M_POINT, H_POINT, STATUS_YN "
+						+ " from( SELECT rownum rrr, RNUM, M_NO, M_ID, M_NAME, B_DAY, M_EMAIL, M_TELL, JOIN_DATE, REFERENCE, ALARM_YN, GRADE_CODE, M_POINT, H_POINT, STATUS_YN " 
+						+ " FROM MEMBERLIST WHERE M_NAME= ? AND M_ID = ?) "
+						+ " where rrr BETWEEN ? AND ? "; 
 				pstmt = conn.prepareStatement(query);
 				pstmt.setString(1, userName);
 				pstmt.setString(2, userId);
