@@ -60,11 +60,11 @@ public class AdminMemberUpdateServlet extends HttpServlet {
 			 * session.setAttribute("modifyUpdate", m);
 			 */
 			
-			view = request.getRequestDispatcher("/memberList.me");
+			view = request.getRequestDispatcher("/admin/memberList");
 			request.setAttribute("msg", "회원정보 수정 완료");
 		}else {
-			view = request.getRequestDispatcher("views/login/fail.jsp");
-			request.setAttribute("msg", "회원 정보 수정 실패");
+			view = request.getRequestDispatcher("admin/memberList");
+			request.setAttribute("msg1", "회원 정보 수정 실패");
 		}
 		view.forward(request, response);
 	}

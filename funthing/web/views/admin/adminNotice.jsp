@@ -54,7 +54,7 @@ String search =(String)request.getAttribute("search");
             <table id="noticelistArea">
                 <tbody>
                     <tr class="noticehead">
-                        <th>NO</th> <th>제목</th> <th>작성자</th> <th>날짜</th> <th>삭제여부</th>
+                        <th>NO</th> <th>제목</th> <th>작성자</th> <th>날짜</th> <th>삭제여부</th><th>삭제</th>
                     </tr>
 
                  
@@ -62,14 +62,15 @@ String search =(String)request.getAttribute("search");
              if(list!=null){
                 for(int i =0;i<list.size();i++){
                    %> <tr class="noticelist">  
-                           <td><%=list.get(i).getnNo()%></td>
-                           <td><%=list.get(i).getnTitle()%></td>
-                           <td>관리자</td>
-                           <td><%=list.get(i).getnDaatee()%></td>
-                           <td><%=list.get(i).getnDelYn()%></td>
+                           <td class="clk"><%=list.get(i).getnNo()%></td>
+                           <td class="clk"><%=list.get(i).getnTitle()%></td>
+                           <td class="clk">관리자</td>
+                           <td class="clk"><%=list.get(i).getnDaatee()%></td>
+                           <td class="clk"><%=list.get(i).getnDelYn()%></td>
+                           <td class="del"> <button onclick="location.href='<%=request.getContextPath()%>/admin/NoticeDelete?nNo=<%=list.get(i).getnNo()%>'"> 삭제 </button></td>
                        </tr>
                        <tr class="cont">
-                          <td colspan="5">
+                          <td colspan="6">
                              <span>
                              <%=list.get(i).getnContents()%>
                              </span>
@@ -87,9 +88,13 @@ String search =(String)request.getAttribute("search");
             </table>
             </form>
             <script>
-                  $("table .noticelist").click(function(){
-                $(this).next().toggle();
+                  $("table .noticelist .clk").click(function(){
+                $(this).parent().next().toggle();
                   });
+                  
+                  $("table .noticelist .del").click(function(){
+                      $(this).next().toggleClass("show");
+                 		 });
            </script>
              <div class="pageinArea" align="center">
             <%
