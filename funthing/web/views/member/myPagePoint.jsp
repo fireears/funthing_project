@@ -30,7 +30,7 @@
     <title>myPage_Point_적립금</title>
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
     <style>
-        .r-cont-header{width: 100%; padding: 50px 20px;border-top: 7px solid #0f4a7e; border-bottom:1px solid #0f4a7e;}
+        .r-cont-header{width: 100%; padding: 40px 20px;border-top: 7px solid #0f4a7e; border-bottom:1px solid #0f4a7e;}
 
         .r-cont-header:after {clear:both;content:"";display:block;}
 
@@ -105,8 +105,8 @@
                         <span style="font-size:30px"><%=mp2.getmName()%></span> 회원등급은
                     </p>
 
-                    <h2>
-                        <strong style="color: #0f4a7e; font-size:30px;"><%=mp2.getGradeName()%></strong>등급 입니다.
+                    <h2 style="text-align:left;">
+                        <strong style="color: #0f4a7e; font-size:30px;"><%=mp2.getGradeName()%></strong> 등급 입니다.
                     </h2>
                 </div>
 
@@ -121,7 +121,7 @@
 
             <!-- 적립금 날짜 조회 영역 -->
             <div class="point">
-                <h2>적립금</h2>
+                <h2 style="text-align:left; font-size:20px; padding:0px 20px;">적립금</h2>
 
                 <form method="get" action="<%=request.getContextPath()%>/memberPointServlet">
                     <div class="point-search">

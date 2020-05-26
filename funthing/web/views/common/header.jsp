@@ -32,7 +32,7 @@
                    <%if(loginUser.getmId().equals("master")){ %>
                       <li class="master"><a href="<%=request.getContextPath()%>/admin/mainView">MASTER</a></li>
                       <%} %>
-                       <li><a href="#none">HELP</a></li>
+                       <li><a href="<%=request.getContextPath()%>/PersonalQnA?userNo=<%=loginUser.getmNo()%>">HELP</a></li>
                        <li><a href="<%=request.getContextPath() %>/logout.me">LOGOUT</a></li>
                        <%if(loginUser.getmId().equals("master")){ %>
                        		<li><a style="display:none;" href="<%=request.getContextPath()%>/myPageMainServlet?userNoM=<%=loginUser.getmNo()%>">MY PAGE</a></li>

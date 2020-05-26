@@ -31,7 +31,7 @@
 <title>myPage</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<style>
-		.r-cont-header {width: 100%;padding: 50px 20px;border-top: 7px solid #0f4a7e;border-bottom: 1px solid #0f4a7e;}
+		.r-cont-header {width: 100%;padding: 40px 20px;border-top: 7px solid #0f4a7e;border-bottom: 1px solid #0f4a7e;}
 		
 		.r-cont-header:after {clear: both;content: "";display: block;}
 		
@@ -39,7 +39,7 @@
 		
 		.r-cont-header span {width: 500px;color: cadetblue;font-weight: 200;}
 		
-		.r-cont-header h2 {font-size: 24px;font-weight: 200;color: #003148;}
+		.r-cont-header h2 {font-size: 24px;font-weight: 200;color: #003148;text-align:left;}
 		
 		/* 적립금 아이콘 부분 div */
 		.r-cont-header-images {width: 70%;text-align: center;margin-right: 0;float: right;margin-top: 0;text-align: center;}
@@ -70,7 +70,7 @@
 		
 		.recent-tb {margin-top: 30px;border-top: 2px solid #0f4a7e;width: 100%;border-bottom: 1px solid #0f4a7e;line-height: 50px;border-collapse: collapse;}
 		
-		.recent-tb th {border-bottom: 1px solid #0f4a7e;}
+		.recent-tb th {border-bottom: 1px solid #bbb;}
 		
 		.recent-tb tr {border: 0;padding: 0;border-bottom: 1px solid #bbb;}
 		
@@ -162,7 +162,7 @@
 					<!-- 최근 주문 내역 -->
 					<div class="recent">
 						<div class="recent-cont">
-							<h2 style="color: #0f4a7e;">
+							<h2 style="color: #0f4a7e;text-align:left;font-size:25px;">
 								최근 주문 내역 &nbsp; <span>최근 30일 내에 주문하신 내역입니다.</span>
 							</h2>
 						</div>
