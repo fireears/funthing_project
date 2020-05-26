@@ -65,6 +65,11 @@ public class PaymentServlet extends HttpServlet {
 			Payment p = new Payment(rcv_name, rcv_adrs, rcv_phone, comment, total_price, point_use, ship_price, pmnt_price, expt_point, mNo);
 			//point update
 			MemberPoint mp = new MemberPoint();
+			mp.setmNo(mNo);
+			mp.setPointAmount(point_amount);
+			mp.setmPoint(my_point);
+			mp.setMyPoint(my_point);
+			int resultPoint = pService.insertMpoint(mp);
 			
 			//펀딩 판매금액 업데이트
 			ArrayList<Product> productList = new ArrayList<>();
@@ -82,7 +87,7 @@ public class PaymentServlet extends HttpServlet {
 			int result_product = pService.updateProduct(productList);
 			
 			//payment_info insert
-			int result = pService.insertPayment(p, mNo);
+			int result = pService.insertPayment(p, mNo, mp);
 			//주문테이블 insert
 //			int result_jumun = pService.insetJumun(mNo);
 			
@@ -98,7 +103,7 @@ public class PaymentServlet extends HttpServlet {
 			System.out.println(expt_point);
 
 
-			if(result > 0 && result_product > 0)
+			if(result > 0 && result_product > 0 && resultPoint > 0)
 			{
 				System.out.println("결제 완료");
 			}
