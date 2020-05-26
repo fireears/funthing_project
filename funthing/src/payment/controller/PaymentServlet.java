@@ -3,6 +3,7 @@ package payment.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -127,9 +128,14 @@ public class PaymentServlet extends HttpServlet {
 			System.out.println(expt_point);
 
 
+			RequestDispatcher view = null;
 			if(result > 0 && result_product > 0 && resultPoint > 0)
 			{
 				System.out.println("결제 완료");
+				view = request.getRequestDispatcher("/member/myPageOrderList");
+				request.setAttribute("userNo",mNo);
+				view.forward(request, response);
+//				response.sendRedirect(request.getContextPath() + "/member/myPageOrderList");
 			}
 			else
 			{
