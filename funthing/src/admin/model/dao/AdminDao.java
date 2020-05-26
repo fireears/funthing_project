@@ -1755,7 +1755,7 @@ public class AdminDao {
 		
 		String query = "";
 		try {
-			if(firstDate != null && gender == "" && category == "") {
+			if(searchDate == null && gender == "" && category == "") {
 				
 				query = "SELECT B_NAME, COUNT(O_NUM) \r\n" + 
 						"FROM(\r\n" + 
@@ -1769,7 +1769,7 @@ public class AdminDao {
 				pstmt.setString(1, firstDate);
 				pstmt.setString(2, secondDate);
 				
-			}else if(firstDate != null && gender == ""){
+			}else if(searchDate == null && gender == ""){
 				query = "SELECT B_NAME, COUNT(O_NUM) \r\n" + 
 						"FROM(\r\n" + 
 						"SELECT B_NAME, O_NUM, O_DATE\r\n" + 
@@ -1783,7 +1783,7 @@ public class AdminDao {
 				pstmt.setString(2, secondDate);
 				pstmt.setString(3, category);
 				
-			}else if(firstDate != null && category == ""){
+			}else if(searchDate == null && category == ""){
 				query = "SELECT B_NAME, COUNT(O_NUM) \r\n" + 
 						"FROM(\r\n" + 
 						"SELECT B_NAME, O_NUM, O_DATE\r\n" + 
@@ -1796,7 +1796,7 @@ public class AdminDao {
 				pstmt.setString(1, firstDate);
 				pstmt.setString(2, secondDate);
 				pstmt.setString(3, gender);
-			}else if(firstDate != null){
+			}else if(searchDate == null){
 				query = "SELECT B_NAME, COUNT(O_NUM) \r\n" + 
 						"FROM(\r\n" + 
 						"SELECT B_NAME, O_NUM, O_DATE\r\n" + 
@@ -1873,6 +1873,7 @@ public class AdminDao {
 			while(rset.next())
 			{
 				p = new ProductStatic(rset.getString("B_NAME"), rset.getInt("count(o_num)"));
+				System.out.println(searchDate);
 				System.out.println(p);
 				list.add(p);
 			}
@@ -1901,7 +1902,7 @@ public class AdminDao {
 		
 		String query = "";
 		try {
-			if(firstDate != null && gender == "" && category == "") {
+			if(searchDate==null && gender == "" && category == "") {
 				
 				query = "SELECT B_NAME, SUM(P_PRICE) \r\n" + 
 						"FROM(\r\n" + 
@@ -1915,7 +1916,7 @@ public class AdminDao {
 				pstmt.setString(1, firstDate);
 				pstmt.setString(2, secondDate);
 				
-			}else if(firstDate != null && gender == ""){
+			}else if(searchDate==null && gender == ""){
 				query = "SELECT B_NAME, SUM(P_PRICE) \r\n" + 
 						"FROM(\r\n" + 
 						"SELECT B_NAME, P_PRICE, O_DATE\r\n" + 
@@ -1929,7 +1930,7 @@ public class AdminDao {
 				pstmt.setString(2, secondDate);
 				pstmt.setString(3, category);
 				
-			}else if(firstDate != null && category == ""){
+			}else if(searchDate==null && category == ""){
 				query = "SELECT B_NAME, SUM(P_PRICE) \r\n" + 
 						"FROM(\r\n" + 
 						"SELECT B_NAME, P_PRICE, O_DATE\r\n" + 
@@ -1942,7 +1943,7 @@ public class AdminDao {
 				pstmt.setString(1, firstDate);
 				pstmt.setString(2, secondDate);
 				pstmt.setString(3, gender);
-			}else if(firstDate != null){
+			}else if(searchDate==null){
 				query = "SELECT B_NAME, SUM(P_PRICE) \r\n" + 
 						"FROM(\r\n" + 
 						"SELECT B_NAME, P_PRICE, O_DATE\r\n" + 
@@ -2019,8 +2020,8 @@ public class AdminDao {
 			while(rset.next())
 			{
 				s = new SalesManage(rset.getString("B_NAME"), rset.getInt("SUM(P_PRICE)"));
-				System.out.println(s);
 				list.add(s);
+				System.out.println(searchDate);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

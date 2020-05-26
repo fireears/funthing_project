@@ -61,7 +61,7 @@
 </head>
 <body>
 <%@ include file="/views/common/adminHeader.jsp" %>
-<h2>상품통계</h2>
+<h2>매출관리</h2>
   <div id="graphWrap">
             <form method="get" action="<%=request.getContextPath() %>/admin/salesManage">
             <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
@@ -86,6 +86,7 @@
                                 <input type="submit" id = "submit" value="조회">
                             </td>
                         </tr>
+                   <tr>
                         <td class="g_title">성별</td>
                         <td>
                             <input type = "radio" value=""  id="gender" name = "gender" checked="checked">전체

@@ -86,6 +86,7 @@
                                 <input type="submit" id = "submit" value="조회">
                             </td>
                         </tr>
+                 	<tr>
                         <td class="g_title">성별</td>
                         <td>
                             <input type = "radio" value=""  id="gender" name = "gender" checked="checked">전체
