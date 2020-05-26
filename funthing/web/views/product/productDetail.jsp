@@ -257,7 +257,6 @@
                             <span class="price_left">정상가</span><span class="price_right"><s><%= formatter.format(pd.getRetailPrice()) %></s></span>
                         </li>
                         <li>
-                        <%-- <%=formatter.format(pPrice) %> --%>
                             <span class="price_left">할인가</span><span class="price_right">
                             <span class="price_dis"><%= pd.getDcRate()%>%▼</span><span><%=formatter.format(ratePrice) %></span>
                         </li>
@@ -270,7 +269,6 @@
                         </li>
                         <li style="padding-top:15px;">
                         	<div align="right" style="color:grey;"><%= funded %> % Funded</div>
- 							<!-- <div class="gauge leftradius"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge rightradius"></div> -->
  							<div align="right">
  							<%if(funded == 0 ){ %>     
  							<div class="gaugewhite leftradius"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite rightradius"></div>                  
@@ -327,7 +325,7 @@
 		                    var minutes = Math.floor((distDt % _hour) / _minute);
 		                    var seconds = Math.floor((distDt % _minute) / _second);
 		        
-		                    //document.getElementById(id).textContent = date.toLocaleString() + "까지 : ";
+
 		                    document.getElementById(id).textContent = days + ' d ';
 		                    document.getElementById(id).textContent += hours + ' h ';
 		                    document.getElementById(id).textContent += minutes + ' m ';
