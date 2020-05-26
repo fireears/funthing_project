@@ -11,7 +11,8 @@ public class OrderUpdate {
 	private String pName;		// 상품이름
 	private String pColor;		// 상품색상
 	private String pSize;		// 상품사이즈
-	private int totalPrice;			// 상품가격(PAYMANT_INFO)
+
+	private int totalPrice;		// 상품가격(PAYMANT_INFO)
 	// PAYMENT_IMFO table
 	private String o_no;		// 주문번호
 	private Date o_date;		// 주문일자
@@ -39,6 +40,32 @@ public class OrderUpdate {
 	
 	
 
+	public OrderUpdate(String o_no, Date o_date,String pName, String pColor, String pSize, int oNum, String rcv_name, String rcv_adrs, int rcv_phone, String comment,int totalPrice, 
+			 int point_use, String pmnt_mthd,String ship_price, int pmnt_price, int expt_point, String prcsStatus, String cancelYn) {
+			
+		super();
+		this.pName = pName;
+		this.pColor = pColor;
+		this.pSize = pSize;
+		this.totalPrice = totalPrice;
+		this.o_no = o_no;
+		this.o_date = o_date;
+		this.rcv_name = rcv_name;
+		this.rcv_adrs = rcv_adrs;
+		this.rcv_phone = rcv_phone;
+		this.comment = comment;
+		this.point_use = point_use;
+		this.pmnt_mthd = pmnt_mthd;
+		this.ship_price = ship_price;
+		this.pmnt_price = pmnt_price;
+		this.expt_point = expt_point;
+		this.prcsStatus = prcsStatus;
+		this.oNum = oNum;
+		this.cancelYn = cancelYn;
+	}
+
+
+
 	public OrderUpdate(String o_no, String cancelYn) {
 		super();
 		this.o_no = o_no;
@@ -56,6 +83,9 @@ public class OrderUpdate {
 		this.comment = comment;
 		
 	}
+
+
+	
 
 
 

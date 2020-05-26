@@ -17,7 +17,7 @@ import member.model.vo.Member;
 /**
  * Servlet implementation class MemberUpdateServlet
  */
-@WebServlet("/update.me")
+@WebServlet("/update.me") 
 public class MemberUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -52,15 +52,23 @@ public class MemberUpdateServlet extends HttpServlet {
 		
 		RequestDispatcher view = null;
 		
+	
+		
+		
 		if(result > 0) {
 			// 현재 로그인한 사람의 session도 수정
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", m);
 			
-			view = request.getRequestDispatcher("views/member/myPageMain.jsp");
+			view = request.getRequestDispatcher("/myPageMainServlet");
+
+			request.setAttribute("userNoM", mNo);
+
 			request.setAttribute("msg", "회원정보 수정 완료");
+			
 		}else {
-			view = request.getRequestDispatcher("views/login/fail.jsp");
+			view = request.getRequestDispatcher("views/member/myPageMain.jsp");
+			request.setAttribute("userNoM", mNo);
 			request.setAttribute("msg", "회원 정보 수정 실패");
 		}
 		view.forward(request, response);

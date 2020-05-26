@@ -1,8 +1,10 @@
 package review.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,6 +39,8 @@ public class ReviewInsertServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		request.setCharacterEncoding("utf-8");
+
+		response.setContentType("text/html;charset=utf-8");
 	
 		 ReviewService rvService = new ReviewService();
 		
@@ -67,9 +71,15 @@ public class ReviewInsertServlet extends HttpServlet {
 		String revmName = ((Member)request.getSession().getAttribute("loginUser")).getmName().toString();
 		//
 		String revmId = ((Member)request.getSession().getAttribute("loginUser")).getmId().toString();
+		int revmPoint = ((Member)request.getSession().getAttribute("loginUser")).getmPoint();
+		
+		System.out.println(revmPoint);
 		
 		//상품번호 불러오기
 		String revpNo = multiRequest.getParameter("rev_pNo");
+		// 상품 이름 불러오기
+		String revpName = multiRequest.getParameter("rev_pName");
+		System.out.println("insert pname : " + revpName);
 		
 		//별점
 		int revRate = Integer.valueOf(multiRequest.getParameter("rev_rateS"));
@@ -82,19 +92,29 @@ public class ReviewInsertServlet extends HttpServlet {
 		
 		
 		String prdName = null;
+		String oNo = null;
 
 		ArrayList<Review> rvList = new ArrayList<>();
 		// 아이디와 상품 번호를 가지고 조회
 //		Boolean rvb = rvService.searchOrder(revmId,revpNo);
 		rvList = rvService.searchOrder(revmId,revpNo);
+		
+		RequestDispatcher view = null;
+		
+		// jsp로 출력하기 위함
+		PrintWriter pw = response.getWriter();
 
 		
+		String msg = "null";
 		
 		if(rvList.size() != 0) {
 			prdName = rvList.get(0).getpNo();
+			oNo = rvList.get(0).getRevONo();
+			
+			System.out.println(oNo);
 		}
 		
-		// rvb 값이 true일때 insert
+		// 멤버가 해당 상품을 산 경우 내용 insert
 		if(!rvList.isEmpty()) {
 			
 			Review rv = new Review();
@@ -108,17 +128,44 @@ public class ReviewInsertServlet extends HttpServlet {
 			rv.setpNo(prdName);				// 조합된 상품 번호
 			rv.setRevPic(rev_saveFile);		// 리뷰 업로드 이미지
 
-			int result = new ReviewService().insertReview(rv,revmId);
+			int result = rvService.insertReview(rv,revmId);
 			System.out.println("값이 있다");
-		
+
+			// 리뷰 작성을 성공한 경우 포인트 지급
 			if(result > 0) {
 //				response.sendRedirect("/product/product.jsp");
+//				Member mbp = new Member();
+				
+				int pointRs = rvService.insertReviewPoint(oNo, revmNo, revmPoint);
+				
+				if(pointRs > 0) {
+					// point 테이블에 인서트 성공한 경우 멤버 테이블의 h_point에도 포인트 추가
+					int mbRs = rvService.updateMemberPoint(revmNo);
+					
+					
+					if(mbRs > 0) {
+						System.out.println("meber point update");
+						msg = "리뷰가 등록되었습니다.";
+						request.setAttribute("rvMsg", msg);
+
+					}
+					
+					
+				}
+				
+				view = request.getRequestDispatcher("/productDateil?pName="+revpName);
+				
 			}
 			
 		}else {
-			System.out.println("값이 없다");
+			System.out.println("리뷰 업로드 실패");
+			msg = "리뷰 업로드 실패";
+			request.setAttribute("rvMsg", msg);
+			view = request.getRequestDispatcher("/productDateil?pName="+revpName);
+			
 		}
 		
+		view.forward(request, response);
 	}
 
 	/**

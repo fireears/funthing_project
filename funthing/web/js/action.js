@@ -41,4 +41,25 @@ $(function(){
 
     });
 
+   /* // 위아래 이동하는 버튼
+    $(".sc-btns").hide();
+
+    var conTp = $(".discover").offset().top - 350;
+    // console.log(conTp);
+    $(window).scroll(function(){
+      if($(document).scrollTop() > conTp){
+        $(".sc-btns").fadeIn();
+      }else {
+        $(".sc-btns").fadeOut();
+      }
+    });
+
+    // up down
+    $(".sc-btns .up").click(function(){
+      $("html").animate({scrollTop : 0}, 300);
+    });
+    $(".sc-btns .down").click(function(){
+      $("html").animate({
+        scrollTop: $("html").height()}, 300);
+    });*/
 })

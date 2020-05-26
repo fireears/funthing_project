@@ -13,6 +13,7 @@ import admin.model.vo.ProductStatic;
 import admin.model.vo.SalesManage;
 import brand.model.vo.Brand;
 import member.model.vo.Member;
+import member.model.vo.MemberPoint;
 import payment.model.vo.OrderInfo;
 import payment.model.vo.OrderInfoDetail;
 import personalQnA.model.vo.AdmimPersonalQna;
@@ -428,12 +429,12 @@ public class AdminService {
 	}
 
 	// 리뷰 조회 카운트 * 서윤
-		public int getRvListCount() {
+		public int getRvListCount(String searchpName) {
 			Connection conn = getConnection();
 			
 			AdminDao aDao = new AdminDao();
 
-			int rvListCont = aDao.getRvListCount(conn);
+			int rvListCont = aDao.getRvListCount(conn,searchpName);
 			
 			close(conn);
 
@@ -447,6 +448,7 @@ public class AdminService {
 			Connection conn = getConnection();
 			
 			rvList = aDao.selectReviewList(conn, currentPage, limit, searchpName);
+			
 			
 			close(conn);
 			
@@ -476,6 +478,63 @@ public class AdminService {
 		}
 
 		
+		// 리뷰 디테일 * 서윤
+		public Review reviewDatail(int revNo) {
+			Connection conn = getConnection();
+			Review rv = new AdminDao().reviewDetail(conn,revNo);			
+
+			close(conn);
+			
+			return rv;
+		}
+		
+		// 적립금 관리자 페이지_희지
+		public int getPointListCount(String searchKind, String searchText) {
+			Connection conn = getConnection();
+			
+			int result = new AdminDao().getPointListCount(conn, searchKind, searchText);
+			
+			close(conn);
+			
+			
+			return result;
+		}
+
+		
+		// 적립금 관리자 페이지_희지
+		public ArrayList<MemberPoint> selectPointList(int currentPage, int limit, String searchKind,
+				String searchText) {
+			Connection conn = getConnection();
+			
+			ArrayList<MemberPoint> list = new AdminDao().selectPointList(conn, currentPage, limit, searchKind, searchText);
+			
+			close(conn);
+			
+			
+			return list;
+		}
+		//공지사항 삭제 페이지 한솔 
+		public int deleteNotice(String nNo) {
+			Connection conn = getConnection();
+			
+			int result = new AdminDao().deleteNotice(conn, nNo);
+			
+			close(conn);
+			
+			
+			return result;
+		}
+
+		public ArrayList<Brand> selectBrandNameList() {
+			Connection conn = getConnection();
+			
+			ArrayList<Brand> blist = new ArrayList<>();
+			
+			blist = new AdminDao().selectBrandNameList(conn);
+			
+			close(conn);
+			return blist;
+		}
 	
 	
 }

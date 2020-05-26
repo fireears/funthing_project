@@ -111,6 +111,7 @@
             <hr>
             <h3>기본정보</h3>
             <br>
+            <hr>
             <h5 id="hh5">*은 반드시 적어야 하는 항목</h5>
             <table id="ta">
                 <tr>
@@ -119,7 +120,7 @@
                     </td>
                     <td id="inp">
                         <input type="text" id="userId" name="userId" required placeholder="4글자 이상 12글자 이하 영문자(소문자)와 숫자" value="<%=member.getmId()%>">
-                        <input type="button" id="ch" value="중복확인" style="width: 70px; background: darkgrey; color: white;" onclick="openIdChk()">
+                        <input type="button" id="idCheck" value="중복확인" style="width: 70px; background: darkgrey; color: white;">
                     </td>
                 </tr>
                 <tr>
@@ -299,7 +300,7 @@
                         <label>추천인</label>
                     </td>
                     <td id="inp">
-                        <input type="text" id="reference" name="reference" value="<%=member.getReference() %>">
+                        <input type="text" id="reference" name="reference" value="<%=member.getReference() %>" disabled>
                     </td>
                 </tr>
             </table>
@@ -322,7 +323,8 @@
 	</body>
 	<script>
 		function cancle(){
-			location.href="views/admin/adminMember.jsp"
+			 location.href="<%=request.getContextPath()%>/admin/memberList"; 
+			
 		}
 		function productManage()
 		{
@@ -336,24 +338,24 @@
                     var bool = $("#checkAll").prop("checked");
                     $(".infoBox").prop("checked",bool);
                 });
-                $("#userid").change(function(){
-                    var value = $("#userid").val();
+                $("#userId").change(function(){
+                    var value = $("#userId").val();
                     var reg = /^[a-z0-9]{4,12}$/;
                     if(!reg.test(value)){
                         alert("영문자와 숫자로 4글자 이상 12글자 이하여야 합니다.");
-                        $("#userid").focus().val('');
+                        $("#userId").focus().val('');
                     }
                 });
-                $("#userpwd").change(function(){
-                    var value = $("#userpwd").val();
+                $("#userPwd").change(function(){
+                    var value = $("#userPwd").val();
                     var reg = /^[a-z0-9]{6,18}$/;
                     if(!reg.test(value)){
                         alert("영문자와 숫자로 6글자 이상 12글자 이하여야 합니다.");
-                        $("#userpwd").focus().val('');
+                        $("#userPwd").focus().val('');
                     }
                 });
                 $("#pwd_check").change(function(){
-                    var pw1 = $("#userpwd").val();
+                    var pw1 = $("#userPwd").val();
                     var pw2 = $("#pwd_check").val();
                     
                     if(pw1 == pw2){
@@ -363,13 +365,13 @@
                         $("#pwd_check").focus().val('');
                     }
                 });
-                $("#username").change(function(){
-                    var value = $("#username").val();
+                $("#userName").change(function(){
+                    var value = $("#userName").val();
                     var reg = /^[가-힣]{2,4}$/;
                     
                     if(!reg.test(value)){
                         alert("한글로 2글자 이상 입력해주세요.");
-                        $("#username").focus().val('');
+                        $("#userName").focus().val('');
                     }
                 });
                 $("#phone").change(function(){
@@ -391,7 +393,7 @@
         	// 중복체크 버튼에 대해 ajax처리
         	
         	$("#idCheck").click(function(){
-        		var userId = $("#joinForm input[name='userId']");
+        		var userId = $("#modify input[name='userId']");
         		console.log(userId);
         		if(!userId || userId.val().length < 4){
         			userId.focuse();

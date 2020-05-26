@@ -53,9 +53,40 @@ public class MemberPointServlet extends HttpServlet {
 		System.out.println("적립금 페이지에서 유저 정보 : " + userNo);
 		
 		// 날짜 선택값 받기
-		String searchDate = request.getParameter("searchDate");
-		String firstDate = request.getParameter("firstDate");
-		String secondDate = request.getParameter("secondDate");
+		String searchDate = "";
+		if( request.getParameter("searchDate") !=null) {
+			searchDate = request.getParameter("searchDate");
+		}else {
+			searchDate = null;
+		}
+		
+		String firstDate = "";
+		if(request.getParameter("firstDate") != null) {
+			firstDate = request.getParameter("firstDate");
+		}else {
+			firstDate = "2009/01/01";
+		}
+				
+		String secondDate = "";
+		if(request.getParameter("secondDate") != null) {
+			secondDate = request.getParameter("secondDate");
+		}else {
+			secondDate = "2009/01/01";
+		}
+		
+		
+		// 초기값이 아닌 소비자가 검색 값을 입력했을때
+		if(request.getParameter("searchDate") == null && request.getParameter("firstDate") == "2009/01/01" &&  request.getParameter("secondDate")=="2009/01/01") {
+			searchDate = request.getParameter("searchDate1");
+			firstDate = request.getParameter("firstDate1");
+			secondDate = request.getParameter("secondDate1");
+				
+		}
+		
+		
+//		System.out.println("맴버 적립금 서블릿에서 searchDate : " + searchDate);		// null
+//		System.out.println("맴버 적립금 서블릿에서 firstDate : " + firstDate);		// null
+//		System.out.println("맴버 적립금 서블릿에서 secondDate : " + secondDate);		// null
 		
 		
 		
@@ -108,6 +139,9 @@ public class MemberPointServlet extends HttpServlet {
 			request.setAttribute("pi",pi);
 			request.setAttribute("userNo", userNo);
 			request.setAttribute("mp2", mp2);
+			request.setAttribute("searchDate", searchDate);
+			request.setAttribute("firstDate", firstDate);
+			request.setAttribute("secondDate", secondDate);
 			
 		}else {
 			view = request.getRequestDispatcher("/views/member/myPagePoint.jsp");
@@ -115,6 +149,9 @@ public class MemberPointServlet extends HttpServlet {
 			request.setAttribute("pi",pi);
 			request.setAttribute("userNo", userNo);
 			request.setAttribute("mp2", mp2);
+			request.setAttribute("searchDate", searchDate);
+			request.setAttribute("firstDate", firstDate);
+			request.setAttribute("secondDate", secondDate);
 			
 		}
 		view.forward(request, response);		

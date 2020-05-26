@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import admin.model.service.AdminService;
 import board.model.vo.PageInfo;
+import brand.model.vo.Brand;
 import product.model.vo.Product;
 
 /**
@@ -37,6 +38,10 @@ public class AdminMainServlet extends HttpServlet {
 
 
 		AdminService aService = new AdminService();
+		
+		//브랜드 번호 명 가져오기
+		ArrayList<Brand> blist = new ArrayList<>();
+		blist = aService.selectBrandNameList();
 		
 		if(request.getParameter("s_no") == null)
 		{
@@ -91,11 +96,14 @@ public class AdminMainServlet extends HttpServlet {
 			list = aService.selectProductList(currentPage, limit);
 			System.out.println("listSize : " + list.size());
 			
+			
+			
 			if(!list.isEmpty())
 			{
 				RequestDispatcher view = request.getRequestDispatcher("/views/admin/adminMain.jsp");
 				request.setAttribute("pi", pi);
 				request.setAttribute("list", list);
+				request.setAttribute("blist", blist);
 				view.forward(request, response);
 			}
 //			else if(!list.isEmpty() && pNo != null)
@@ -176,7 +184,7 @@ public class AdminMainServlet extends HttpServlet {
 				
 				
 				PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
-				
+				System.out.println("currentPage : " + currentPage);
 				list = aService.productSearch(currentPage, limit, product);
 				System.out.println("listSize : " + list.size());
 				
@@ -193,17 +201,20 @@ public class AdminMainServlet extends HttpServlet {
 					request.setAttribute("pi", pi);
 					request.setAttribute("list", list);
 					request.setAttribute("product", product);
+					request.setAttribute("blist", blist);
 					view.forward(request, response);
 				}
 				
 				else if(list.isEmpty())
 				{
 					System.out.println("adminMain.jsp 이덩");
+					System.out.println("p : " + product);
 					view = request.getRequestDispatcher("/views/admin/adminMain.jsp");
 					System.out.println("list가 비어있음");
 					request.setAttribute("pi", pi);
 					request.setAttribute("list", list);
 					request.setAttribute("product", product);
+					request.setAttribute("blist", blist);
 					request.setAttribute("msg", "검색결과가 없습니다.");
 					view.forward(request, response);
 				}

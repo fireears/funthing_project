@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%
 	String msg = (String)request.getAttribute("msg");
+	String msg1 = (String)request.getAttribute("msg1");
+	String msg2 = (String)request.getAttribute("msg2");
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -88,7 +90,18 @@
 		 <%}%>
         	 
          });
-		
+         $(function(){
+             <%if(msg1 != null){%>
+    			alert("<%=msg1%>");
+    		 <%}%>
+            	 
+             });
+         $(function(){
+             <%if(msg2 != null){%>
+    			alert("<%=msg2%>");
+    		 <%}%>
+            	 
+             });
     </script>
 
 

@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="member.model.vo.*"%>
+<%
+	String msg = (String)request.getAttribute("msg");
+	Member memberPwd = (Member)request.getAttribute("memberPwd");
+%>
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -49,19 +53,19 @@
         <br>
         
         <div class="cont">
-        <form>
+        <form method="post" action="<%=request.getContextPath()%>/update.pwd?userId=<%=memberPwd.getmId() %>">
             <h2>비밀번호 찾기</h2>
             <hr style="height: 5px; background: black;">
            
-                <h3>비밀번호 변경<h3>
+                <h3>비밀번호 변경</h3>
                 <div style="font-size: 12px; color: darkgray;">새로운 비밀번호를 등록해 주세요</div>
                 <hr>
                 <br>
                 
-                <input id="userpwd" type="password" style="width: 300px; height: 25px; border-radius: 8px;" placeholder="새로운 비밀번호를 입력해주세요">
+                <input id="userpwd" type="password" name="userPwd" style="width: 300px; height: 25px; border-radius: 8px;" placeholder="새로운 비밀번호를 입력해주세요">
                 <br>
                 <br>
-                <input id="pwd_check" type="password" style="width: 300px; height: 25px; border-radius: 8px;" placeholder="다시 한번 입력해주세요">
+                <input id="pwd_check" type="password" name="pwd_check" style="width: 300px; height: 25px; border-radius: 8px;" placeholder="다시 한번 입력해주세요">
                 <br>
                 <br>
                 <hr>
@@ -92,6 +96,12 @@
                         alert("비밀번호가 일치하지 않습니다.");
                         $("#pwd_check").focus().val('');
                     }
+                });
+                $(function(){
+                    <%if(msg != null){%>
+           			alert("<%=msg%>");
+           		 <%}%>
+                   	 
                 });
         </script>
         

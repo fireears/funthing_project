@@ -35,10 +35,13 @@ public class MyPageMainServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("넘어가나?");
 		request.setCharacterEncoding("UTF-8");
 		
-		String userNoM = request.getParameter("userNoM");
-		
+		 String userNoM = request.getParameter("userNoM");
+	      if(userNoM == null) {
+	         userNoM = (String)request.getAttribute("userNoM");
+	      }
 		System.out.println("마이페이지 메인 서블릿에서 유저 넘버 : " + userNoM);
 		
 		MemberService mService = new MemberService();
@@ -47,6 +50,8 @@ public class MyPageMainServlet extends HttpServlet {
 		MemberPoint mp = new MemberPoint();
 		
 		mp = mService.memberInfo(userNoM);
+		
+		
 		
 		System.out.println("마이 페이지 메인에서 회원 정보 객체 mp : " + mp);
 		
@@ -65,15 +70,18 @@ public class MyPageMainServlet extends HttpServlet {
 		}else {
 			currentPage = 1;
 		}
-		
+		System.out.println("히지 currentPage : " +  currentPage);
 		// 최근 주문 목록 리스트 카운드
 		int currentListCount = mService.currentListCount(userNoM);
-		
+//		System.out.println("히지 listCount : " + currentListCount);
 		limit = 10;
 		maxPage = (int) ((double) currentListCount / limit + 0.9);
 		startPage = ((int) (((double) currentPage / limit + 0.9) - 1) * limit) + 1;
 		endPage = startPage + limit - 1;
 		
+		if(endPage > maxPage) {
+			endPage = maxPage;
+		}
 		// 페이징 처리 객체 만들기
 		PageInfo pi = new PageInfo(currentPage, currentListCount, limit, maxPage, startPage, endPage);
 		
