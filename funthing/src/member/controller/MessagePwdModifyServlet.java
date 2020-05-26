@@ -37,13 +37,13 @@ public class MessagePwdModifyServlet extends HttpServlet {
 		String userId = request.getParameter("userId");
 		String userPwd = request.getParameter("userPwd");
 		
-		System.out.println("servlet으로 넘어온 mNo : " + userId);
-		System.out.println("servelt으로 넘어온 userPwd : " + userPwd);
+//		System.out.println("servlet으로 넘어온 mNo : " + userId);
+//		System.out.println("servelt으로 넘어온 userPwd : " + userPwd);
 		
 		Member m = new Member(userId, userPwd);
 		
 		int result = new MemberService().UpdatePwd(m);
-		System.out.println("회원 정보 수정 Servlet에서 update 결과 : " + result);
+//		System.out.println("회원 정보 수정 Servlet에서 update 결과 : " + result);
 		
 		RequestDispatcher view = null;
 		

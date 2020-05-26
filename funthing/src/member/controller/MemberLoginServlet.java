@@ -40,7 +40,7 @@ public class MemberLoginServlet extends HttpServlet {
 //		System.out.println(member);
 		
 		Member loginMember = new MemberService().loginMember(member);
-		System.out.println("Servlet에서 화면에 뿌려주기 전 : " + loginMember);
+//		System.out.println("Servlet에서 화면에 뿌려주기 전 : " + loginMember);
 		
 		if(loginMember != null) {	// 로그인이 성공했을 경우
 			

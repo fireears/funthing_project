@@ -86,7 +86,7 @@
         
     </body>
     <script>
-       	
+       	// 비밀번호 변경 성공 시
          $(function(){
              <%if(msg != null){%>
     			alert("<%=msg%>");
@@ -94,9 +94,11 @@
             	 
              });
          
+       	// 홈버튼
          function goHome(){
         	 location.href="<%=request.getContextPath()%>/main/mainView";
          }
+       	// 로그인 버튼
          function goLogin(){
         	 location.href="<%=request.getContextPath()%>/views/member/memberLogin.jsp";
          }
