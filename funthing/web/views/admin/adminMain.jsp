@@ -42,7 +42,6 @@
 		#area{margin: auto; width: 100%;}
 		#area table{width: 100%; border: 1px solid;}
 		#area table th{background-color: rgb(199, 196, 196); color: rgb(53, 52, 52);}
-		/* #area table tr button{width: 100%; height: 30px; background-color: gray; border: 1px solid; border-color: white; font-weight: 600; color: rgb(255, 255, 255);} */
 		
 		/* 상품계시판 밑에 버튼 */
 		#pageBtn{margin:auto; width:50%;}
@@ -71,7 +70,6 @@
 		        <li><label>상품명 : </label><input type="text" class="box" id="p_name" name="p_name"></li>
 		        <li>
 		        	<label>상품종류 : </label>
-		        	<!-- <input type="text" class="box" id="p_category" name="p_category" placeholder="01"> -->
 		        	<select name="pCategory">
 		        		<option value="1">OUTER</option>
 		        		<option value="2">TOP</option>
@@ -105,7 +103,6 @@
 			        <li><label>상품명 : </label><input type="text" class="box" id="p_name" name="p_name" value="<%=product.getpName()%>"></li>
 			        <li>
 			        	<label>상품종류 : </label>
-			        	<!-- <input type="text" class="box" id="p_category" name="p_category" placeholder="01"> -->
 			        	<select name="pCategory">
 			        		<option value="1">OUTER</option>
 			        		<option value="2">TOP</option>
