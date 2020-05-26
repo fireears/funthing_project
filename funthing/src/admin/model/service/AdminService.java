@@ -489,7 +489,7 @@ public class AdminService {
 			return list;
 		}
 		//공지사항 삭제 페이지 한솔 
-		public int deleteNotice(String nNo) {
+		public int deleteNotice(String[] nNo) {
 			Connection conn = getConnection();
 			
 			int result = new AdminDao().deleteNotice(conn, nNo);

@@ -1,7 +1,3 @@
-/admin/
-/board/
-/brand/
-/calendar/
 /common/
 /filter/
 /main/
@@ -15,3 +11,4 @@
 /review/
 /women/
 /wrapper/
+/admin/
