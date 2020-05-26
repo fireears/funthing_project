@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import member.model.dao.MemberDao;
 import member.model.vo.Member;
 import member.model.vo.MemberPoint;
+import member.model.vo.MemberReview;
 import member.model.vo.MemberShoppingBag;
 import payment.model.vo.OrderUpdate;
 
@@ -226,7 +227,20 @@ public class MemberService {
 		
 		return coList;
 	}
-
-
+	//리뷰 페이지 한솔
+    public int reviewCount(String search, String mNo) {
+       Connection conn = getConnection();
+       int num = new MemberDao().getReviewCount(conn,search,mNo);
+       close(conn);
+       return num;
+    }
+    //리뷰 페이지 한솔
+    public ArrayList<MemberReview> reviewSelectList(String search, int currentPage, int limit, String mNo) {
+        Connection conn = getConnection();
+          ArrayList<MemberReview> list = new MemberDao().ReviewSelectList(conn,search,currentPage,limit,mNo);
+          //BoardDao를 가서 selectList메소드 구현하기
+          close(conn);
+          return list;
+    }
 
 }
