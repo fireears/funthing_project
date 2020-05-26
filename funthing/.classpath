@@ -6,19 +6,18 @@
 	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v8.5">
 		<attributes>
 			<attribute name="owner.project.facets" value="jst.web"/>
-
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_251"/>
-	<classpathentry kind="lib" path="C:/Users/west2/Desktop/SEMI50/workspace/funthing_project/funthing/web/WEB-INF/lib/cos.jar"/>
-	<classpathentry kind="lib" path="C:/Users/west2/Desktop/SEMI50/workspace/funthing_project/funthing/web/WEB-INF/lib/dsn.jar"/>
-	<classpathentry kind="lib" path="C:/Users/west2/Desktop/SEMI50/workspace/funthing_project/funthing/web/WEB-INF/lib/gimap.jar"/>
-	<classpathentry kind="lib" path="C:/Users/west2/Desktop/SEMI50/workspace/funthing_project/funthing/web/WEB-INF/lib/imap.jar"/>
-	<classpathentry kind="lib" path="C:/Users/west2/Desktop/SEMI50/workspace/funthing_project/funthing/web/WEB-INF/lib/javax.mail-api-1.4.7.jar"/>
-	<classpathentry kind="lib" path="C:/Users/west2/Desktop/SEMI50/workspace/funthing_project/funthing/web/WEB-INF/lib/json_simple-1.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/west2/Desktop/SEMI50/workspace/funthing_project/funthing/web/WEB-INF/lib/mailapi.jar"/>
-	<classpathentry kind="lib" path="C:/Users/west2/Desktop/SEMI50/workspace/funthing_project/funthing/web/WEB-INF/lib/ojdbc6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/west2/Desktop/SEMI50/workspace/funthing_project/funthing/web/WEB-INF/lib/pop3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/west2/Desktop/SEMI50/workspace/funthing_project/funthing/web/WEB-INF/lib/smtp.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_231"/>
+	<classpathentry kind="lib" path="C:/Users/cyon3/Desktop/semi_funthing/branch/dev8/workspace/funthing_project/funthing/web/WEB-INF/lib/cos.jar"/>
+	<classpathentry kind="lib" path="C:/Users/cyon3/Desktop/semi_funthing/branch/dev8/workspace/funthing_project/funthing/web/WEB-INF/lib/dsn.jar"/>
+	<classpathentry kind="lib" path="C:/Users/cyon3/Desktop/semi_funthing/branch/dev8/workspace/funthing_project/funthing/web/WEB-INF/lib/gimap.jar"/>
+	<classpathentry kind="lib" path="C:/Users/cyon3/Desktop/semi_funthing/branch/dev8/workspace/funthing_project/funthing/web/WEB-INF/lib/imap.jar"/>
+	<classpathentry kind="lib" path="C:/Users/cyon3/Desktop/semi_funthing/branch/dev8/workspace/funthing_project/funthing/web/WEB-INF/lib/javax.mail-api-1.4.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/cyon3/Desktop/semi_funthing/branch/dev8/workspace/funthing_project/funthing/web/WEB-INF/lib/json_simple-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/cyon3/Desktop/semi_funthing/branch/dev8/workspace/funthing_project/funthing/web/WEB-INF/lib/mailapi.jar"/>
+	<classpathentry kind="lib" path="C:/Users/cyon3/Desktop/semi_funthing/branch/dev8/workspace/funthing_project/funthing/web/WEB-INF/lib/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/cyon3/Desktop/semi_funthing/branch/dev8/workspace/funthing_project/funthing/web/WEB-INF/lib/pop3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/cyon3/Desktop/semi_funthing/branch/dev8/workspace/funthing_project/funthing/web/WEB-INF/lib/smtp.jar"/>
 	<classpathentry kind="output" path="web/WEB-INF/classes"/>
 </classpath>
