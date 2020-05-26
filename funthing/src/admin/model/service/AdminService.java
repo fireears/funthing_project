@@ -499,6 +499,17 @@ public class AdminService {
 			
 			return result;
 		}
+
+		public ArrayList<Brand> selectBrandNameList() {
+			Connection conn = getConnection();
+			
+			ArrayList<Brand> blist = new ArrayList<>();
+			
+			blist = new AdminDao().selectBrandNameList(conn);
+			
+			close(conn);
+			return blist;
+		}
 	
 	
 }

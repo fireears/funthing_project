@@ -93,9 +93,11 @@ public class AdminMemberListServlet extends HttpServlet {
 			request.setAttribute("list", list);
 			request.setAttribute("pi", pi);
 		}else {
-			view = request.getRequestDispatcher(request.getContextPath() +  "views/common/errorPage.jsp");
-			request.setAttribute("msg", "게시판 리스트 조회 실패!");
-			return;
+			view = request.getRequestDispatcher("/views/admin/adminMember.jsp");
+			request.setAttribute("userName", userName);
+			request.setAttribute("userId", userId);
+			request.setAttribute("list", list);
+			request.setAttribute("pi", pi);
 		}
 		
 		view.forward(request, response);

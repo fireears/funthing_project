@@ -42,7 +42,7 @@ public class MessageSendServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-String email = request.getParameter("email");
+		String email = request.getParameter("email");
 		
 		System.out.println("servlet : " + email);
 		Member m = new MemberService().memberemail(email);
@@ -108,10 +108,8 @@ String email = request.getParameter("email");
 			Transport.send(msg);
 			System.out.println("이메일 전송");
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (MessagingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
