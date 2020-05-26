@@ -11,7 +11,7 @@ public class AdminProductQnA  implements Serializable	{
 	 * 
 	 */
 	private static final long serialVersionUID = 6988009231277015510L;
-	
+	private int rnum; 				
 	private int qnaNo;				// qna 번호
 	private String mId;				// 회원아이디
 	private String mName;			// 회원 이름
@@ -97,10 +97,10 @@ public class AdminProductQnA  implements Serializable	{
 
 
 
-	public AdminProductQnA(int qnaNo, String mId, String mName, String pNo, String pName, String qnaTitle,
+	public AdminProductQnA(int rnum, int qnaNo, String mId, String mName, String pNo, String pName, String qnaTitle,
 			String qnaContents, String qnaDate, String reYn) {
 		super();
-		
+		this.rnum = rnum;
 		this.qnaNo = qnaNo;
 		this.mId = mId;
 		this.mName = mName;
@@ -154,6 +154,17 @@ public class AdminProductQnA  implements Serializable	{
 	}
 	
 	
+	
+
+	public int getRnum() {
+		return rnum;
+	}
+
+
+	public void setRnum(int rnum) {
+		this.rnum = rnum;
+	}
+
 
 	public int getQnareNo() {
 		return qnareNo;
@@ -307,15 +318,13 @@ public class AdminProductQnA  implements Serializable	{
 
 	@Override
 	public String toString() {
-		return "AdminProductQnA [qnaNo=" + qnaNo + ", mId=" + mId + ", mName=" + mName + ", pNo=" + pNo + ", pName="
-				+ pName + ", qnaTitle=" + qnaTitle + ", qnaContents=" + qnaContents + ", qnaDate=" + qnaDate + ", bNo="
-				+ bNo + ", reYn=" + reYn + ", qnareNo=" + qnareNo + ", mNo=" + mNo + ", qnareId=" + qnareId
-				+ ", qnareContent=" + qnareContent + ", qnareDate=" + qnareDate + "]";
+		return "AdminProductQnA [rnum=" + rnum + ", qnaNo=" + qnaNo + ", mId=" + mId + ", mName=" + mName + ", pNo="
+				+ pNo + ", pName=" + pName + ", qnaTitle=" + qnaTitle + ", qnaContents=" + qnaContents + ", qnaDate="
+				+ qnaDate + ", bNo=" + bNo + ", reYn=" + reYn + ", qnareNo=" + qnareNo + ", mNo=" + mNo + ", qnareId="
+				+ qnareId + ", qnareContent=" + qnareContent + ", qnareDate=" + qnareDate + "]";
 	}
 
 
-
-	
 	
 	
 	
