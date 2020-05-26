@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import member.model.vo.MemberPoint;
 import payment.model.service.PaymentService;
 import payment.model.vo.Payment;
+import payment.model.vo.ProductOrder;
 import product.model.vo.Product;
 
 /**
@@ -54,16 +55,24 @@ public class PaymentServlet extends HttpServlet {
 			int expt_point = Integer.valueOf(request.getParameter("expt_point"));	//총 적립예정 적립금
 			int m_point = Integer.valueOf(request.getParameter("m_point"));			//보유 적립금
 			String mNo = request.getParameter("mNo");
+			String[] pNo = request.getParameterValues("pNo");						//상품번호
+			String[] o_num = request.getParameterValues("o_num");					//수량
+			
+			
 			
 			int resultM_point = m_point + expt_point - point_use;					//member테이블에 update할 m_point
 			
 			int point_amount = expt_point;	//point 테이블 update 적립금액
 			int my_point = resultM_point;	//point 테이블에 update
+			
 			//최종 결제 금액
 			//상품합계 금액 - 적립금 사용
 			int pmnt_price = total_price - point_use;
+			
+			//payment결제 정보
 			Payment p = new Payment(rcv_name, rcv_adrs, rcv_phone, comment, total_price, point_use, ship_price, pmnt_price, expt_point, mNo);
-			//point update
+			
+			//member table m_point update
 			MemberPoint mp = new MemberPoint();
 			mp.setmNo(mNo);
 			mp.setPointAmount(point_amount);
@@ -86,10 +95,25 @@ public class PaymentServlet extends HttpServlet {
 			}
 			int result_product = pService.updateProduct(productList);
 			
+			System.out.println("p_no : " + pNo);
+
+			//b_no 가져오기
+			String[] b_no = pService.searchBrand(pNo);
+			
+			//productOrder 객체를 담을 list
+			ArrayList<ProductOrder> orderList = new ArrayList<>();
+			for(int i = 0; i<pNo.length;i++)
+			{
+				String p_no = pNo[i];
+				String bNo = b_no[i];
+				int oNum = Integer.valueOf(o_num[i]);
+				ProductOrder pd = new ProductOrder(p_no, bNo, oNum);
+				orderList.add(pd);
+			}
+			
 			//payment_info insert
-			int result = pService.insertPayment(p, mNo, mp);
-			//주문테이블 insert
-//			int result_jumun = pService.insetJumun(mNo);
+			int result = pService.insertPayment(p, mNo, mp, orderList);
+
 			
 			System.out.println(mNo);
 			System.out.println(rcv_name);

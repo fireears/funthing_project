@@ -15,8 +15,7 @@ import payment.model.vo.OrderList;
 import payment.model.vo.OrderUpdate;
 
 import payment.model.vo.Payment;
-
-
+import payment.model.vo.ProductOrder;
 import personalQnA.model.vo.PersonalQnA;
 
 import payment.model.vo.ShoppingPayment;
@@ -652,6 +651,69 @@ public class PaymentDao {
 		}
 		return result;
 	}
+
+
+
+	public String[] searchBrand(Connection conn, String[] pNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String[] b_no = new String[pNo.length];
+		int j = 0;	//while안에서 사용할 변수
+		String query = "SELECT B_NO FROM PRODUCT WHERE P_NO = ?";
+		
+		try {
+			for(int i = 0; i<pNo.length; i++)
+			{
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, pNo[i]);
+				
+				rset = pstmt.executeQuery();
+				
+				while(rset.next())
+				{
+					b_no[j] = rset.getString("b_no");
+					j++;
+				}
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return b_no;
+	}
+
+
+
+	public int insetProductOrder(Connection conn, ArrayList<ProductOrder> orderList) {
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		String query = "INSERT INTO PRODUCT_ORDER VALUES(?,'O'||TO_CHAR(SEQ_PAYINFO.CURRVAL),?,?)";
+		
+		try {
+			for(ProductOrder po : orderList)
+			{
+				pstmt = conn.prepareStatement(query);
+				
+				pstmt.setString(1, po.getP_no());
+				pstmt.setString(2, po.getB_no());
+				pstmt.setInt(3, po.getO_num());
+				
+				result = pstmt.executeUpdate();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+
 
 
 

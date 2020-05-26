@@ -6,11 +6,11 @@
 <%@ page import="java.text.DecimalFormat" %>
 <%
 
-ShoppingPayment p = (ShoppingPayment)request.getAttribute("p");
+	ShoppingPayment p = (ShoppingPayment)request.getAttribute("p");
 	int number = Integer.valueOf((String)request.getAttribute("number"));
 	DecimalFormat formatter = new DecimalFormat("###,###");
 	MemberPoint mp = (MemberPoint)request.getAttribute("m");
-	/* String mEmail = (String)request.getAttribute("mEmail"); */
+	String pNo = (String)request.getAttribute("pNo");
 	
 	String thumbnail = p.getThumbnail();
 	String pName = p.getP_name();
@@ -81,6 +81,7 @@ ShoppingPayment p = (ShoppingPayment)request.getAttribute("p");
             
             <article id="area">
                 <form action="<%=request.getContextPath() %>/Payment" id="payment" method="GET">
+               		<input type="hidden" name="pNo" value="<%=pNo%>">
                    <input type="hidden" name="mNo" value="<%=mNo %>">
                     <p id="title">주문자 정보</p>
                     <div class="table1">
@@ -211,6 +212,7 @@ ShoppingPayment p = (ShoppingPayment)request.getAttribute("p");
                                 <tr style="line-heigth:150px;">
                                 	<input type="hidden" name="pName" value="<%=pName %>">
                                 	<input type="hidden" name="result_price" value="<%=pPrice*number %>">
+                                	<input type="hidden" name="o_num" value="<%=number %>">
                                     <td align="center"><img src="<%=request.getContextPath()+"/images/thumbnail/" + thumbnail + ".jpg" %>" alt="상품사진" id="productImg" style="width:100px; height:150px;"><span><%=pName %>/<%=color %>/<%=size %></span></td>
                                     <td style="text-align: center; "><div id="num"><%=number %></div></td>
                                     <td style="text-align: center;"><div id="retail_price"><%=formatter.format(retailPrice*number) %></div></td>

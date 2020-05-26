@@ -214,7 +214,9 @@
                                 <%for(ShoppingPayment sp : resultList) {%>
                                 <tr style="line-heigth:150px;">
                                 	<input type="hidden" name="pName" value="<%=sp.getP_name() %>">
+                                	<input type="hidden" name="pNo" value="<%=sp.getP_no() %>">
                                 	<input type="hidden" name="result_price" value="<%=sp.getP_price() * Integer.valueOf(sp.getNumber()) %>">
+                                	<input type="hidden" name="o_num" value="<%=sp.getNumber() %>">
                                     <td align="left"><img src="<%=request.getContextPath()+"/images/thumbnail/" + sp.getThumbnail() + ".jpg" %>" alt="상품사진" id="productImg" style="width:80px; height:100px;"><span><%=sp.getP_name() %>/<%=sp.getP_color() %>/<%=sp.getP_size() %></span></td>
                                     <td style="text-align: center; "><div id="num"><%=sp.getNumber() %></div></td>
                                     <td style="text-align: center;"><div id="retail_price"><%=formatter.format(sp.getRetail_price() * Integer.valueOf(sp.getNumber())) %></div></td>
