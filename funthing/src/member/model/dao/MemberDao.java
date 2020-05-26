@@ -15,6 +15,7 @@ import java.util.Properties;
 
 import member.model.vo.Member;
 import member.model.vo.MemberPoint;
+import member.model.vo.MemberReview;
 import member.model.vo.MemberShoppingBag;
 import payment.model.vo.OrderUpdate;
 
@@ -773,6 +774,83 @@ public class MemberDao {
 		
 		return coList;
 	}
+
+	public int getReviewCount(Connection conn, String search, String mNo) {
+	      Statement stmt =null;
+	      ResultSet rset = null;
+	      int noticeCount=0;
+	      
+	      
+	      try {          
+	         if(search != null) {
+	               
+	            String query = "SELECT COUNT(*) FROM REVIEW  WHERE REV_TITLE LIKE '%"+search+"%' AND M_NO='"+mNo+"'";
+	            stmt =conn.createStatement();
+	            rset=stmt.executeQuery(query);
+	            if(rset.next()) {
+	               noticeCount = rset.getInt(1);
+	            }
+	            
+	         }else {
+	            String query = "SELECT COUNT(*) FROM REVIEW WHERE M_NO='"+mNo+"'";
+	            stmt =conn.createStatement();
+	            rset=stmt.executeQuery(query);
+	            if(rset.next()) {
+	               noticeCount = rset.getInt(1);
+	            }
+	         }
+	      } catch (SQLException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      }finally {
+	         close(stmt);
+	         close(rset);
+	      }
+	      
+	      return noticeCount;
+	   }
+
+	   public ArrayList<MemberReview> ReviewSelectList(Connection conn, String search, int currentPage, int limit,
+	         String mNo) {
+	      ArrayList<MemberReview> al = new ArrayList<MemberReview>();
+	      try {
+	      if(search != null) {
+	         PreparedStatement pstmt = null;
+	         String quary = "SELECT * FROM ( SELECT RATE,ROWNUM RN,REV_NO,M_NO,REV_TITLE,P_NO,REV_CONTENTS,REV_DATE FROM REVIEW   WHERE REV_TITLE LIKE '%"+search+"%' AND M_NO='"+mNo+"' ORDER BY REV_NO ASC) where RN >= ? AND RN<=?";
+	         int startRow =(currentPage -1)*limit +1;
+	         int endRow = startRow + limit -1;
+	         pstmt = conn.prepareStatement(quary);
+	         pstmt.setInt(1, startRow);
+	         pstmt.setInt(2, endRow);
+	         ResultSet rs = pstmt.executeQuery();
+	         while(rs.next()) {
+	            MemberReview nt = new MemberReview(rs.getString("m_no"), rs.getString("REV_TITLE"), rs.getString("P_NO"),rs.getString("REV_CONTENTS"),rs.getString("REV_DATE"),rs.getInt("rate"));   
+	            al.add(nt);
+	         }
+	      }else{
+	         PreparedStatement pstmt = null;
+	         String quary = "SELECT * FROM ( SELECT RATE,ROWNUM RN,REV_NO,M_NO,REV_TITLE,P_NO,REV_CONTENTS,REV_DATE FROM REVIEW  WHERE  M_NO='"+mNo+"' ORDER BY REV_NO ASC) where RN >= ? AND RN<=?";
+	         int startRow =(currentPage -1)*limit +1;
+	         int endRow = startRow + limit -1;
+	         System.out.println("여기까진 가냐?");
+	         pstmt = conn.prepareStatement(quary);
+	         pstmt.setInt(1, startRow);
+	         pstmt.setInt(2, endRow);
+	         ResultSet rs = pstmt.executeQuery();
+	         while(rs.next()) {
+	            MemberReview nt = new MemberReview(rs.getString("M_NO"), rs.getString("REV_TITLE"), rs.getString("P_NO"),rs.getString("REV_CONTENTS"),rs.getString("REV_DATE"),rs.getInt("RATE"));         
+	            al.add(nt);
+	         }
+	   
+	      }
+	      } catch (SQLException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      }
+
+	      return al;
+	   }
+	   
 	
 
 
