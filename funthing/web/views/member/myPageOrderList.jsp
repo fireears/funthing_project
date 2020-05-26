@@ -25,7 +25,7 @@
       <style>
       .r-cont-header {
          width: 100%;
-         padding: 20px 20px;
+         padding: 10px 20px;
          border-top: 1px solid #bbb;
          border-bottom: 1px solid #bbb;
       }
@@ -330,8 +330,8 @@
             <div class="r-cont-header">
    
                <div class="r-cont-text">
-                  <h2>
-                     <b style="color: #0f4a7e;">주문목록</b>
+                  <h2 style="text-align:left;">
+                     <b style="color: #0f4a7e; font-size:20px;">주문목록</b>
                   </h2>
                </div>
             </div>
@@ -371,7 +371,7 @@
                <table class="list-tb" id = "list-table">
                   
                   <tr>
-                     <th class="tb-zero">번호</th>
+                     <!-- <th class="tb-zero">번호</th> -->
                      <th class="tb-first">날짜</th>
                      <th>주문번호</th>
                      <th>상품명/컬러/사이즈</th>
@@ -386,7 +386,7 @@
                      <%-- <input type="hidden" id="listNo" value=<%=ol.getListNo() %>> --%>
                      <input type="hidden" id="userNo" value=<%=loginUser.getmNo()%>>
                      <input type="hidden" id="oNo" value=<%=ol.getO_no()%>>
-                     <td class="tb-zero"><%=ol.getrNum()%></td>
+                     <%-- <td class="tb-zero"><%=ol.getrNum()%></td> --%>
                      <td class="tb-first"><%=ol.getO_date()%></td>
                      <td ><%=ol.getO_no() %></td>
                      <td><img id="orderImg" src="<%=request.getContextPath()+"/images/thumbnail/" + ol.getThumbnail() + ".jpg" %>"><a href="<%=request.getContextPath()%>/productDateil?pName=<%=ol.getpName() %>"><%=ol.getpName() %>/ <%=ol.getpColor()%> / <%=ol.getpSize() %></td>

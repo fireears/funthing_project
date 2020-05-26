@@ -78,16 +78,19 @@
         <%@ include file="../common/footer.jsp" %>
 
         <script>
-            $("#userpwd").change(function(){
-                    var value = $("#userpwd").val();
+        		// 비밀번호 
+            	$("#userPwd").change(function(){
+                    var value = $("#userPwd").val();
                     var reg = /^[a-z0-9]{6,18}$/;
                     if(!reg.test(value)){
                         alert("영문자와 숫자로 6글자 이상 12글자 이하여야 합니다.");
-                        $("#userpwd").focus().val('');
+                        $("#userPwd").focus().val('');
                     }
                 });
+        		
+        		// 비밀번호 체크
                 $("#pwd_check").change(function(){
-                    var pw1 = $("#userpwd").val();
+                    var pw1 = $("#userPwd").val();
                     var pw2 = $("#pwd_check").val();
                     
                     if(pw1 == pw2){
@@ -97,6 +100,8 @@
                         $("#pwd_check").focus().val('');
                     }
                 });
+        		
+                // 인증 번호 성공 시
                 $(function(){
                     <%if(msg != null){%>
            			alert("<%=msg%>");

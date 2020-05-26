@@ -11,6 +11,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+	.lnb mypage-lab{font-size:100px;}
+
 
 </style>
 
@@ -37,7 +39,7 @@
                 <ul>
                     <li><a href="<%=request.getContextPath()%>/PersonalQnA?userNo=<%=loginUser2.getmNo()%>">1:1 문의</a></li>
                      <li><a href="<%=request.getContextPath()%>/productQnaList?mNo=<%=loginUser2.getmNo()%>">나의 상품문의</a></li>
-                    <li><a href="#">나의 리뷰</a></li>
+                    <li><a href="<%=request.getContextPath()%>/MemberReviewSelect?mNo=<%=loginUser2.getmNo()%>">나의 리뷰</a></li>
                 </ul>
     
                 <h3>회원정보</h3>

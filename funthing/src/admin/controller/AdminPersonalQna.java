@@ -36,6 +36,8 @@ public class AdminPersonalQna extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		AdminService aService = new AdminService();
+		
+		
 		// 검색창 구현 
 		String searchKind = request.getParameter("searchKind");	// 검색 종류 값
 		String searchText = request.getParameter("searchText"); // 검색 입력창 값
@@ -72,7 +74,8 @@ public class AdminPersonalQna extends HttpServlet {
 		if(maxPage < endPage) {
 			endPage = maxPage;
 		}
-		
+		System.out.println("startPage : " + startPage);
+		System.out.println("endPage :" + endPage );
 		PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
 
 		
@@ -85,12 +88,14 @@ public class AdminPersonalQna extends HttpServlet {
 		RequestDispatcher view = null;
 		if(!list.isEmpty()) {
 			view = request.getRequestDispatcher("/views/admin/adminPersonalQna.jsp");
+			request.setAttribute("currentPage", currentPage);
 			request.setAttribute("searchKind", searchKind);
 			request.setAttribute("searchText", searchText);
 			request.setAttribute("list", list);
 			request.setAttribute("pi", pi);
 		}else {
 			view = request.getRequestDispatcher("/views/admin/adminPersonalQna.jsp");
+			request.setAttribute("currentPage", currentPage);
 			request.setAttribute("searchKind", searchKind);
 			request.setAttribute("searchText", searchText);
 			request.setAttribute("list", list);

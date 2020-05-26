@@ -3,6 +3,7 @@
  * Version: Apache Tomcat/8.5.54
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Generated at: 2020-05-22 10:27:54 UTC
  * Note: The last modified time of this file was set to
  *       the last modified time of the source file after
@@ -333,6 +334,12 @@ public final class adminBrand_jsp extends org.apache.jasper.runtime.HttpJspBase
 =======
  * Generated at: 2020-05-25 08:29:56 UTC
 >>>>>>> refs/remotes/origin/master
+=======
+ * Generated at: 2020-05-26 09:01:54 UTC
+=======
+ * Generated at: 2020-05-26 03:36:20 UTC
+>>>>>>> refs/remotes/origin/dev22222
+>>>>>>> refs/remotes/origin/master
  * Note: The last modified time of this file was set to
  *       the last modified time of the source file after
  *       generation to assist with modification tracking.
@@ -357,7 +364,11 @@ public final class adminBrand_jsp extends org.apache.jasper.runtime.HttpJspBase
 
   static {
     _jspx_dependants = new java.util.HashMap<java.lang.String,java.lang.Long>(1);
-    _jspx_dependants.put("/views/admin/../common/adminHeader.jsp", Long.valueOf(1590370928109L));
+<<<<<<< HEAD
+    _jspx_dependants.put("/views/admin/../common/adminHeader.jsp", Long.valueOf(1590387855490L));
+=======
+    _jspx_dependants.put("/views/admin/../common/adminHeader.jsp", Long.valueOf(1590324235644L));
+>>>>>>> refs/remotes/origin/dev22222
   }
 
   private static final java.util.Set<java.lang.String> _jspx_imports_packages;
@@ -470,6 +481,8 @@ public final class adminBrand_jsp extends org.apache.jasper.runtime.HttpJspBase
 	String deleteMsg = (String)request.getAttribute("deleteMsg");
 	String insertMsg = (String)request.getAttribute("insertMsg");
 
+	String searchKind = (String)request.getAttribute("searchKind");
+	String searchVal = (String)request.getAttribute("searchVal");
 	
 
       out.write("\r\n");
@@ -790,7 +803,11 @@ for(Brand b : list){
       out.write("\t\t\t<!-- 맨 처음으로 -->\r\n");
       out.write("\t\t\t<button onclick=\"location.href='");
       out.print(request.getContextPath() );
-      out.write("/admin/brandServlet?currntPage=1'\"> << </button>\r\n");
+      out.write("/admin/brandServlet?currntPage=1&searchKind=");
+      out.print(searchKind);
+      out.write("&searchVal=");
+      out.print(searchVal);
+      out.write("\"> << </button>\r\n");
       out.write("\t\t\r\n");
       out.write("\t\t\r\n");
       out.write("\t\t\t<!-- 이전 페이지로 -->\r\n");
@@ -806,6 +823,10 @@ if(currentPage == 1){
       out.print(request.getContextPath() );
       out.write("/admin/brandServlet?currentPage=");
       out.print(currentPage -1 );
+      out.write("&searchKind=");
+      out.print(searchKind);
+      out.write("&searchVal=");
+      out.print(searchVal);
       out.write("'\"> < </button>\r\n");
       out.write("\t\t\t");
 } 
@@ -830,6 +851,10 @@ if(currentPage == p){
       out.print(request.getContextPath() );
       out.write("/admin/brandServlet?currentPage=");
       out.print(p );
+      out.write("&searchKind=");
+      out.print(searchKind);
+      out.write("&searchVal=");
+      out.print(searchVal);
       out.write('\'');
       out.write('"');
       out.write('>');
@@ -855,6 +880,10 @@ if(currentPage == maxPage){
       out.print(request.getContextPath() );
       out.write("/admin/brandServlet?currentPage=");
       out.print(currentPage + 1 );
+      out.write("&searchKind=");
+      out.print(searchKind);
+      out.write("&searchVal=");
+      out.print(searchVal);
       out.write("'\"> > </button>\r\n");
       out.write("\t\t\t");
 } 
@@ -866,6 +895,10 @@ if(currentPage == maxPage){
       out.print(request.getContextPath() );
       out.write("/admin/brandServlet?currentPage=");
       out.print(maxPage );
+      out.write("&searchKind=");
+      out.print(searchKind);
+      out.write("&searchVal=");
+      out.print(searchVal);
       out.write("'\"> >> </button>\r\n");
       out.write("\t\t\r\n");
       out.write("\t</div>\r\n");

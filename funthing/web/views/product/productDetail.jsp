@@ -52,10 +52,14 @@
         }
         #name{
             padding-bottom: 5px;
-             border-bottom: 1.5px solid #30586e;
+           /*   border-bottom: 1.5px solid #30586e; */
              font-size: 25px;
              
         }
+        /* :after할 때 필수  position:relative; / display:block; content:""; clear:both; position:absolute; / bottom:0; left:0; 기준의 위치를 지정해줌*/
+        #line{position:relative; padding-bottom:10px; }
+        #line:after{height:2px; width:450px; display:block; content:""; clear:both; position:absolute; bottom:0; left:0; background:grey;}
+        
         #product_description{
             font-size:small;
             margin-top: 5px;
@@ -159,7 +163,7 @@
         }
 
         /* 내비게이션 시작 */
-        #section{margin: auto; width: 100%; height: 100%;}
+        #section{margin: auto; width: 1460px; height: 100%;}
         .sec_nav{margin: 0; width: 100%; height: 80px; background-color: rgb(223, 220, 220); text-align:center;}
 
         .sec_nav ul {height: 100%; line-height: 80px; margin:0 auto; display:inline-block; }
@@ -241,10 +245,11 @@
                     <li>
                         <div id="brand" name="brand"><%= pd.getbName() %></div>
                     </li>
-                    <li>
-                        <div id="name" name="name"><%= pd.getpName() %></div>
+                    <li id="line">
+                        <span id="name" name="name"><%= pd.getpName() %> &nbsp</span><span><%=pd.getpNo() %></span>
                     </li>
                     <li>
+                        
                         <div id="product_description"><%= pd.getpDetail() %></div>
                     </li>
                 </ul>
@@ -257,7 +262,6 @@
                             <span class="price_left">정상가</span><span class="price_right"><s><%= formatter.format(pd.getRetailPrice()) %></s></span>
                         </li>
                         <li>
-                        <%-- <%=formatter.format(pPrice) %> --%>
                             <span class="price_left">할인가</span><span class="price_right">
                             <span class="price_dis"><%= pd.getDcRate()%>%▼</span><span><%=formatter.format(ratePrice) %></span>
                         </li>
@@ -270,7 +274,6 @@
                         </li>
                         <li style="padding-top:15px;">
                         	<div align="right" style="color:grey;"><%= funded %> % Funded</div>
- 							<!-- <div class="gauge leftradius"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge"></div><div class="gauge rightradius"></div> -->
  							<div align="right">
  							<%if(funded == 0 ){ %>     
  							<div class="gaugewhite leftradius"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite"></div><div class="gaugewhite rightradius"></div>                  
@@ -327,7 +330,7 @@
 		                    var minutes = Math.floor((distDt % _hour) / _minute);
 		                    var seconds = Math.floor((distDt % _minute) / _second);
 		        
-		                    //document.getElementById(id).textContent = date.toLocaleString() + "까지 : ";
+
 		                    document.getElementById(id).textContent = days + ' d ';
 		                    document.getElementById(id).textContent += hours + ' h ';
 		                    document.getElementById(id).textContent += minutes + ' m ';

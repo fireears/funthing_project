@@ -76,7 +76,6 @@
 	                     <th>*s_no</th><td><input type="text" name="sNo" value="1"></td>
 	                     <th>*p_category</th>
 	                 	<td>
-	                 		<!-- <input type="text" name="pCategory"> -->
 	                 		<select name="pCategory" id="pCategory">
 	                 			<option value="01">OUTER</option>
 	                 			<option value="02">TOP</option>
@@ -108,16 +107,12 @@
 	                     
 	                     <th>*funding_YN</th>
 	                     <td>
-	                     	<!-- <input type="text" name="fYn"> -->
 	                     	<select name="fYn">
 	                     		<option value="Y">Y</option>
 	                     		<option value="N">N</option>
 	                     	</select>
                    		 </td>
 	                 </tr>
-	                 <!-- <tr>
-	                     <th>cal_no</th><td><input type="text" name="calNo"></td>
-	                 </tr> -->
 	             </table>
 	             <br><br>
 	             <input type="submit" id="productInsertBtn" value="상품등록">

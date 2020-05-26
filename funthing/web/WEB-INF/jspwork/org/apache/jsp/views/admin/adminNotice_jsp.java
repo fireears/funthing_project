@@ -3,6 +3,7 @@
  * Version: Apache Tomcat/8.5.54
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Generated at: 2020-05-22 10:27:59 UTC
  * Note: The last modified time of this file was set to
  *       the last modified time of the source file after
@@ -538,6 +539,9 @@ if(currentPage >= maxPage) {
 =======
  * Generated at: 2020-05-25 09:18:23 UTC
 >>>>>>> refs/remotes/origin/master
+=======
+ * Generated at: 2020-05-26 09:58:35 UTC
+>>>>>>> refs/remotes/origin/master
  * Note: The last modified time of this file was set to
  *       the last modified time of the source file after
  *       generation to assist with modification tracking.
@@ -562,7 +566,7 @@ public final class adminNotice_jsp extends org.apache.jasper.runtime.HttpJspBase
 
   static {
     _jspx_dependants = new java.util.HashMap<java.lang.String,java.lang.Long>(1);
-    _jspx_dependants.put("/views/admin/../common/adminHeader.jsp", Long.valueOf(1590395409869L));
+    _jspx_dependants.put("/views/admin/../common/adminHeader.jsp", Long.valueOf(1590387855490L));
   }
 
   private static final java.util.Set<java.lang.String> _jspx_imports_packages;
@@ -685,12 +689,15 @@ String search =(String)request.getAttribute("search");
       out.write("            #search{width: 500px; height: 30px; border: 1px solid black; border-radius: 7px; margin-right: 30px;}\r\n");
       out.write("            #searchBtn{height: 33px; width: 80px; border: 0px; border-radius: 7px; background-color: gray; color: white;}\r\n");
       out.write("            #WriteBtn{height: 33px; width: 80px; border: 0px; border-radius: 7px; background-color: gray; color: white;}\r\n");
+      out.write("            #deleteNote{height: 33px; width: 80px; border: 0px; border-radius: 7px; background-color: gray; color: white;}\r\n");
       out.write("            #noticelistArea{width: 100%; margin-top: 40px; border: 1px solid rgb(208, 206, 206); border-collapse: collapse;}\r\n");
       out.write("            #noticelistArea>tbody>tr{border-bottom: 2px solid black; height: 30px;}\r\n");
       out.write("            #noticelistArea>tbody>tr>td{text-align: center;}\r\n");
       out.write("            #noticelistArea>tbody:first-child{height: 80px;}\r\n");
       out.write("            .noticehead{background-color: gray}   \r\n");
       out.write("            .search{border: 0; font-size: middle; background: white; cursor: pointer;}\r\n");
+      out.write("            \r\n");
+      out.write("            \r\n");
       out.write("         .cont{ display:none;}\r\n");
       out.write("        </style>\r\n");
       out.write("        \r\n");
@@ -820,18 +827,19 @@ String search =(String)request.getAttribute("search");
       out.write("       \r\n");
       out.write("         <section id=\"noticeArea\">\r\n");
       out.write("            <h3>NOTICE AREA</h3>\r\n");
-      out.write("            <form  method=\"GET\" action=\"");
+      out.write("            <form  id=\"shoppingbagForm\" method=\"GET\"   action=\"");
       out.print(request.getContextPath());
       out.write("/admin/NoticeView\">\r\n");
-      out.write("            <input type=\"text\" id=\"search\" name=\"noticeSearch\"  placeholder=\"검색어를 입력해주세요\"> <input type=\"submit\" id=\"searchBtn\" value=\"SEARCH\">\r\n");
-      out.write("            <input type=\"Button\"  onclick=\"location.href='");
+      out.write("            <input type=\"text\" id=\"search\" name=\"noticeSearch\"  placeholder=\"검색어를 입력해주세요\"> \r\n");
+      out.write("            <button id=\"searchBtn\" onclick=\"SUMIT();\"> SEARCH</button>\r\n");
+      out.write("            <input type=\"Button\" onclick=\"location.href='");
       out.print(request.getContextPath() );
       out.write("/views/admin/insertNotice.jsp'\"  id=\"WriteBtn\" value=\"글쓰기\">\r\n");
-      out.write("            \r\n");
+      out.write("            <button type=\"button\" id=\"deleteNote\"  onclick=\"deleteNotice();\"   class=\"l_btn\">선택삭제</button>\r\n");
       out.write("            <table id=\"noticelistArea\">\r\n");
       out.write("                <tbody>\r\n");
       out.write("                    <tr class=\"noticehead\">\r\n");
-      out.write("                        <th>NO</th> <th>제목</th> <th>작성자</th> <th>날짜</th> <th>삭제여부</th><th>삭제</th>\r\n");
+      out.write("                       <th><input type=\"checkbox\" id=\"checkall\"></th> <th>NO</th> <th>제목</th> <th>작성자</th> <th>날짜</th> <th>삭제여부</th>\r\n");
       out.write("                    </tr>\r\n");
       out.write("\r\n");
       out.write("                 \r\n");
@@ -840,7 +848,12 @@ String search =(String)request.getAttribute("search");
              if(list!=null){
                 for(int i =0;i<list.size();i++){
                    
-      out.write(" <tr class=\"noticelist\">  \r\n");
+      out.write("\r\n");
+      out.write("                  \r\n");
+      out.write("                    <tr class=\"noticelist\">\r\n");
+      out.write("                          <td><input type=\"checkbox\" name=\"nNo\" value=\"");
+      out.print(list.get(i).getnNo());
+      out.write("\"></td>  \r\n");
       out.write("                           <td class=\"clk\">");
       out.print(list.get(i).getnNo());
       out.write("</td>\r\n");
@@ -854,11 +867,6 @@ String search =(String)request.getAttribute("search");
       out.write("                           <td class=\"clk\">");
       out.print(list.get(i).getnDelYn());
       out.write("</td>\r\n");
-      out.write("                           <td> <button onclick=\"location.href='");
-      out.print(request.getContextPath());
-      out.write("/admin/NoticeDelete?nNo=");
-      out.print(list.get(i).getnNo());
-      out.write("'\"> 삭제 </button></td>\r\n");
       out.write("                       </tr>\r\n");
       out.write("                       <tr class=\"cont\">\r\n");
       out.write("                          <td colspan=\"6\">\r\n");
@@ -888,6 +896,27 @@ String search =(String)request.getAttribute("search");
       out.write("                  $(\"table .noticelist .clk\").click(function(){\r\n");
       out.write("                $(this).parent().next().toggle();\r\n");
       out.write("                  });\r\n");
+      out.write("                  \r\n");
+      out.write("                  function deleteNotice(){         \r\n");
+      out.write("                      $(\"#shoppingbagForm\").attr(\"action\", \"");
+      out.print(request.getContextPath());
+      out.write("/admin/NoticeDelete\");\r\n");
+      out.write("                          $(\"#shoppingbagForm\").submit();\r\n");
+      out.write("                    }\r\n");
+      out.write("                  function SUMIT(){         \r\n");
+      out.write("                      $(\"#shoppingbagForm\").attr(\"action\", \"");
+      out.print(request.getContextPath());
+      out.write("/admin/NoticeView\");\r\n");
+      out.write("                          $(\"#shoppingbagForm\").submit();\r\n");
+      out.write("                    }\r\n");
+      out.write("                  \r\n");
+      out.write("                  $(\"#checkall\").click(function(){\r\n");
+      out.write("                      if($(\"#checkall\").prop(\"checked\")){\r\n");
+      out.write("                          $(\"input[name=nNo]\").prop(\"checked\",true);\r\n");
+      out.write("                      }else{\r\n");
+      out.write("                          $(\"input[name=nNo]\").prop(\"checked\",false);\r\n");
+      out.write("                      }\r\n");
+      out.write("                  })\r\n");
       out.write("           </script>\r\n");
       out.write("             <div class=\"pageinArea\" align=\"center\">\r\n");
       out.write("            ");

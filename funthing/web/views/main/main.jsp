@@ -174,7 +174,7 @@
 	                			String title = n.getnTitle();
 	                			Date date = n.getnDate();
 	                	%>
-	                    	<li><a href="#none"><%=title %></a><span><%=date %></span></li>
+	                    	<li><a href="<%=request.getContextPath()%>/MainNoticeServlet"><%=title %></a><span><%=date %></span></li>
 	                    
 	                    <%	} %>
 	                    <%} else {} %>

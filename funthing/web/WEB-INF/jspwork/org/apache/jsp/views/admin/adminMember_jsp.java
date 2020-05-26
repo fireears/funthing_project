@@ -3,6 +3,7 @@
  * Version: Apache Tomcat/8.5.54
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Generated at: 2020-05-22 09:34:10 UTC
  * Note: The last modified time of this file was set to
  *       the last modified time of the source file after
@@ -289,6 +290,12 @@ public final class adminMember_jsp extends org.apache.jasper.runtime.HttpJspBase
 =======
  * Generated at: 2020-05-26 01:31:44 UTC
 >>>>>>> refs/remotes/origin/master
+=======
+ * Generated at: 2020-05-26 09:01:51 UTC
+=======
+ * Generated at: 2020-05-26 02:05:29 UTC
+>>>>>>> refs/remotes/origin/dev22222
+>>>>>>> refs/remotes/origin/master
  * Note: The last modified time of this file was set to
  *       the last modified time of the source file after
  *       generation to assist with modification tracking.
@@ -313,7 +320,7 @@ public final class adminMember_jsp extends org.apache.jasper.runtime.HttpJspBase
 
   static {
     _jspx_dependants = new java.util.HashMap<java.lang.String,java.lang.Long>(1);
-    _jspx_dependants.put("/views/admin/../common/adminHeader.jsp", Long.valueOf(1590387855490L));
+    _jspx_dependants.put("/views/admin/../common/adminHeader.jsp", Long.valueOf(1590324235644L));
   }
 
   private static final java.util.Set<java.lang.String> _jspx_imports_packages;
@@ -419,6 +426,7 @@ public final class adminMember_jsp extends org.apache.jasper.runtime.HttpJspBase
 	int maxPage = pi.getMaxPage();
 	int startPage = pi.getStartPage();
 	int endPage = pi.getEndPage();
+	
 	
 
       out.write("\r\n");

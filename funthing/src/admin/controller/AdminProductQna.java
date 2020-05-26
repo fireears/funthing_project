@@ -48,7 +48,7 @@ public class AdminProductQna extends HttpServlet {
 		if(searchText==null || searchText.equals("null"))
 			searchText = null;
 		int listCount = aService.getListQnaCount(searchKind,searchText);
-//		System.out.println("servlet listCount : " + listCount);
+		System.out.println("servlet listCount : " + listCount);
 		
 		// 페이징 처리
 		int currentPage;		// 현재 페이지를 저장할 변수

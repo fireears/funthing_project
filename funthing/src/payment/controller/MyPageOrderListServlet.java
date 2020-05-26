@@ -40,8 +40,11 @@ public class MyPageOrderListServlet extends HttpServlet {
 		System.out.println("member/myPageOrderList");
 
 		String userNo = request.getParameter("userNo");
+		if(userNo == null) {
+			userNo = (String)request.getAttribute("userNo");
+		}
 
-//		System.out.println("로그인값 넘어왔니?" + userNo);
+		System.out.println("로그인값 넘어왔니?" + userNo);
 		
 		// 날짜 선택값 받기
 		String searchDate = request.getParameter("searchDate");
