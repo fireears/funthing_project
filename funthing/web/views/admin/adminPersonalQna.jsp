@@ -73,12 +73,12 @@
 	<form action="<%=request.getContextPath() %>/admin/personalQna" method="post">
 		<div id="nav_section">
 			<div id="searchArea">
-			  
+			  	<input type="hidden" name="currentPage" value="<%=pi.getCurrentPage() %>">
 			        <span>
 						 <select id="search_kind" name="searchKind">
 						 		<option value="PER_CATE">문의유형</option>
-								<option value="m_Id">아이디</option>
-								<option value="o_No">주문번호</option>
+								<option value="M_ID">아이디</option>
+								<option value="O_NO">주문번호</option>
 								<option value="PER_RE_YN">답변여부</option>
 					     </select>
 					</span>
@@ -99,6 +99,7 @@
 	<br>
 
 			 <section id=area> 
+			 <%System.out.println("jsp 현재 페이지 : " + currentPage); %>
             <table id="areaTable">
  				<% if(!list.isEmpty()){ %>
                 <tr>
@@ -108,7 +109,7 @@
 	            <%for(AdmimPersonalQna pq : list) {%>  
 	            <tr align="center" class="line">
 	            	<input type="hidden" value="<%=pq.getPerQnaNo() %>">
-	            	<td><%=pq.getPerQnaNo() %></td> <td><%=pq.getPerCate() %></td><td><%=pq.getmId() %></td> <td><%=pq.getPerTitle() %></td>
+	            	<td><%=pq.getRnum() %></td> <td><%=pq.getPerCate() %></td><td><%=pq.getmId() %></td> <td><%=pq.getPerTitle() %></td>
 	            	 <td><%=pq.getoNo() %></td><td><%=pq.getPerReYn()%></td> 
 	            </tr>
 	            <tr class="cont">

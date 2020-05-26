@@ -35,8 +35,10 @@ public class AdminOrderInfo extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			AdminService aService = new AdminService();
+			String searchKind = request.getParameter("searchKind");	// 검색 종류 값
+			String searchText = request.getParameter("searchText"); // 검색 입력창 값
 			
-			int listCount = aService.getOrderListCount();
+			int listCount = aService.getOrderListCount(searchKind,searchText);
 			
 			// 페이지 수 처리용 변수 선언
 			int currentPage;	// 현재 페이지
@@ -67,8 +69,7 @@ public class AdminOrderInfo extends HttpServlet {
 			
 			// 검색창 구현 시작
 			
-			String searchKind = request.getParameter("searchKind");	// 검색 종류 값
-			String searchText = request.getParameter("searchText"); // 검색 입력창 값
+		
 //			if(searchText != null) {
 //				searchText = request.getParameter("searchText");
 //			}else {

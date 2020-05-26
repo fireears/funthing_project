@@ -36,7 +36,9 @@ public class AdminSerachOrderInfo extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AdminService aService = new AdminService();
 		
-		int listCount = aService.getOrderListCount();
+		String searchKind = request.getParameter("searchKind");
+		String searchText = request.getParameter("searchText");
+		int listCount = aService.getOrderListCount(searchKind,searchText);
 		
 				// 페이지 수 처리용 변수 선언
 				int currentPage;	// 현재 페이지
@@ -67,8 +69,8 @@ public class AdminSerachOrderInfo extends HttpServlet {
 				PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
 				
 				// 검색창 구현 시작
-				String searchKind = request.getParameter("searchKind");
-				String searchText = null;
+//				String searchKind = request.getParameter("searchKind");
+//				String searchText = null;
 
 				ArrayList<OrderInfo> searchList = aService.selectOrderSearch(currentPage, limit, searchKind, searchText);
 
