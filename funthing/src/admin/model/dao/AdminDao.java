@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import admin.model.vo.ProductStatic;
+import admin.model.vo.SalesManage;
 import brand.model.vo.Brand;
 import member.model.vo.Member;
 import member.model.vo.MemberPoint;
@@ -1509,6 +1511,7 @@ public class AdminDao {
 		return rvList;
 	}
 
+
 	// 리뷰 디테일 페이지 서윤
 	public Review reviewDetail(Connection conn, int revNo) {
 		PreparedStatement pstmt = null;
@@ -1756,6 +1759,302 @@ public class AdminDao {
 	}
 	
 
+	
+
+	public ArrayList<ProductStatic> searchProduct(Connection conn, ProductStatic pStatic) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<ProductStatic> list = new ArrayList<>();
+		ProductStatic p = null;
+		
+		String searchDate = pStatic.getSearchDate();
+		String gender = pStatic.getGender();
+		String category = pStatic.getpCategory();
+		String firstDate = pStatic.getFirstDate();
+		String secondDate = pStatic.getSecondDate();
+		
+		String query = "";
+		try {
+			if(searchDate == null && gender == "" && category == "") {
+				
+				query = "SELECT B_NAME, COUNT(O_NUM) \r\n" + 
+						"FROM(\r\n" + 
+						"SELECT B_NAME, O_NUM, O_DATE\r\n" + 
+						"FROM PRODUCT_STATIC\r\n" + 
+						"WHERE TO_DATE(O_DATE,'RRRR/MM/DD') BETWEEN TO_DATE(?,'RRRR/MM/DD') AND TO_DATE(?,'RRRR/MM/DD')\r\n" + 
+						")\r\n" + 
+						"GROUP BY B_NAME";
+				
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, firstDate);
+				pstmt.setString(2, secondDate);
+				
+			}else if(searchDate == null && gender == ""){
+				query = "SELECT B_NAME, COUNT(O_NUM) \r\n" + 
+						"FROM(\r\n" + 
+						"SELECT B_NAME, O_NUM, O_DATE\r\n" + 
+						"FROM PRODUCT_STATIC\r\n" + 
+						"WHERE TO_DATE(O_DATE,'RRRR/MM/DD') BETWEEN TO_DATE(?,'RRRR/MM/DD') AND TO_DATE(?,'RRRR/MM/DD') AND P_CATEGORY = ?\r\n" + 
+						")\r\n" + 
+						"GROUP BY B_NAME";
+				
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, firstDate);
+				pstmt.setString(2, secondDate);
+				pstmt.setString(3, category);
+				
+			}else if(searchDate == null && category == ""){
+				query = "SELECT B_NAME, COUNT(O_NUM) \r\n" + 
+						"FROM(\r\n" + 
+						"SELECT B_NAME, O_NUM, O_DATE\r\n" + 
+						"FROM PRODUCT_STATIC\r\n" + 
+						"WHERE TO_DATE(O_DATE,'RRRR/MM/DD') BETWEEN TO_DATE(?,'RRRR/MM/DD') AND TO_DATE(?,'RRRR/MM/DD') AND SUBSTR(P_NO, 0,1) = ?\r\n" + 
+						")\r\n" + 
+						"GROUP BY B_NAME";
+				
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, firstDate);
+				pstmt.setString(2, secondDate);
+				pstmt.setString(3, gender);
+			}else if(searchDate == null){
+				query = "SELECT B_NAME, COUNT(O_NUM) \r\n" + 
+						"FROM(\r\n" + 
+						"SELECT B_NAME, O_NUM, O_DATE\r\n" + 
+						"FROM PRODUCT_STATIC\r\n" + 
+						"WHERE TO_DATE(O_DATE,'RRRR/MM/DD') BETWEEN TO_DATE(?,'RRRR/MM/DD') AND TO_DATE(?,'RRRR/MM/DD') AND SUBSTR(P_NO, 0,1) = ? AND P_CATEGORY = ?\r\n" + 
+						")\r\n" + 
+						"GROUP BY B_NAME";
+				
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, firstDate);
+				pstmt.setString(2, secondDate);
+				pstmt.setString(3, gender);
+				pstmt.setString(4, category);
+			}else if(searchDate != null && gender == "" && category == "") {
+				
+				query = "SELECT B_NAME, COUNT(O_NUM) \r\n" + 
+						"FROM(\r\n" + 
+						"SELECT B_NAME, O_NUM, O_DATE\r\n" + 
+						"FROM PRODUCT_STATIC\r\n" + 
+						"WHERE TO_DATE(O_DATE,'RRRR/MM/DD') >= TO_DATE(SYSDATE,'RRRR/MM/DD')-?\r\n" + 
+						")\r\n" + 
+						"GROUP BY B_NAME";
+				
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, searchDate);
+				
+			}else if(searchDate != null && gender == "") {
+				
+				query = "SELECT B_NAME, COUNT(O_NUM) \r\n" + 
+						"FROM(\r\n" + 
+						"SELECT B_NAME, O_NUM, O_DATE\r\n" + 
+						"FROM PRODUCT_STATIC\r\n" + 
+						"WHERE TO_DATE(O_DATE,'RRRR/MM/DD') >= TO_DATE(SYSDATE,'RRRR/MM/DD')-? AND P_CATEGORY = ?\r\n" + 
+						")\r\n" + 
+						"GROUP BY B_NAME";
+				
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, searchDate);
+				pstmt.setString(2, category);
+				
+			}else if(searchDate != null && category=="") {
+				
+				query = "SELECT B_NAME, COUNT(O_NUM) \r\n" + 
+						"FROM(\r\n" + 
+						"SELECT B_NAME, O_NUM, O_DATE\r\n" + 
+						"FROM PRODUCT_STATIC\r\n" + 
+						"WHERE TO_DATE(O_DATE,'RRRR/MM/DD') >= TO_DATE(SYSDATE,'RRRR/MM/DD')-? AND SUBSTR(P_NO, 0,1) = ?\r\n" + 
+						")\r\n" + 
+						"GROUP BY B_NAME";
+				
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, searchDate);
+				pstmt.setString(2, gender);
+				
+			}else if(searchDate != null) {
+				
+				query = "SELECT B_NAME, COUNT(O_NUM) \r\n" + 
+						"FROM(\r\n" + 
+						"SELECT B_NAME, O_NUM, O_DATE\r\n" + 
+						"FROM PRODUCT_STATIC\r\n" + 
+						"WHERE TO_DATE(O_DATE,'RRRR/MM/DD') >= TO_DATE(SYSDATE,'RRRR/MM/DD')-? AND SUBSTR(P_NO, 0,1) = ? AND P_CATEGORY=?\r\n" + 
+						")\r\n" + 
+						"GROUP BY B_NAME";
+				
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, searchDate);
+				pstmt.setString(2, gender);
+				pstmt.setString(3, category);
+				
+			}
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next())
+			{
+				p = new ProductStatic(rset.getString("B_NAME"), rset.getInt("count(o_num)"));
+				System.out.println(searchDate);
+				System.out.println(p);
+				list.add(p);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally
+		{
+			close(pstmt);
+			close(rset);
+		}
+		return list;
+	}
+
+	public ArrayList<SalesManage> searchSales(Connection conn, SalesManage sManage) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<SalesManage> list = new ArrayList<>();
+		SalesManage s = null;
+		
+		String searchDate = sManage.getSearchDate();
+		String gender = sManage.getGender();
+		String category = sManage.getpCategory();
+		String firstDate = sManage.getFirstDate();
+		String secondDate = sManage.getSecondDate();
+		
+		String query = "";
+		try {
+			if(searchDate==null && gender == "" && category == "") {
+				
+				query = "SELECT B_NAME, SUM(P_PRICE) \r\n" + 
+						"FROM(\r\n" + 
+						"SELECT B_NAME, P_PRICE, O_DATE\r\n" + 
+						"FROM PRODUCT_STATIC\r\n" + 
+						"WHERE TO_DATE(O_DATE,'RRRR/MM/DD') BETWEEN TO_DATE(?,'RRRR/MM/DD') AND TO_DATE(?,'RRRR/MM/DD')\r\n" + 
+						")\r\n" + 
+						"GROUP BY B_NAME";
+				
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, firstDate);
+				pstmt.setString(2, secondDate);
+				
+			}else if(searchDate==null && gender == ""){
+				query = "SELECT B_NAME, SUM(P_PRICE) \r\n" + 
+						"FROM(\r\n" + 
+						"SELECT B_NAME, P_PRICE, O_DATE\r\n" + 
+						"FROM PRODUCT_STATIC\r\n" + 
+						"WHERE TO_DATE(O_DATE,'RRRR/MM/DD') BETWEEN TO_DATE(?,'RRRR/MM/DD') AND TO_DATE(?,'RRRR/MM/DD') AND P_CATEGORY = ?\r\n" + 
+						")\r\n" + 
+						"GROUP BY B_NAME";
+				
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, firstDate);
+				pstmt.setString(2, secondDate);
+				pstmt.setString(3, category);
+				
+			}else if(searchDate==null && category == ""){
+				query = "SELECT B_NAME, SUM(P_PRICE) \r\n" + 
+						"FROM(\r\n" + 
+						"SELECT B_NAME, P_PRICE, O_DATE\r\n" + 
+						"FROM PRODUCT_STATIC\r\n" + 
+						"WHERE TO_DATE(O_DATE,'RRRR/MM/DD') BETWEEN TO_DATE(?,'RRRR/MM/DD') AND TO_DATE(?,'RRRR/MM/DD') AND SUBSTR(P_NO, 0,1) = ?\r\n" + 
+						")\r\n" + 
+						"GROUP BY B_NAME";
+				
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, firstDate);
+				pstmt.setString(2, secondDate);
+				pstmt.setString(3, gender);
+			}else if(searchDate==null){
+				query = "SELECT B_NAME, SUM(P_PRICE) \r\n" + 
+						"FROM(\r\n" + 
+						"SELECT B_NAME, P_PRICE, O_DATE\r\n" + 
+						"FROM PRODUCT_STATIC\r\n" + 
+						"WHERE TO_DATE(O_DATE,'RRRR/MM/DD') BETWEEN TO_DATE(?,'RRRR/MM/DD') AND TO_DATE(?,'RRRR/MM/DD') AND SUBSTR(P_NO, 0,1) = ? AND P_CATEGORY = ?\r\n" + 
+						")\r\n" + 
+						"GROUP BY B_NAME";
+				
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, firstDate);
+				pstmt.setString(2, secondDate);
+				pstmt.setString(3, gender);
+				pstmt.setString(4, category);
+			}else if(searchDate != null && gender == "" && category == "") {
+				
+				query = "SELECT B_NAME, SUM(P_PRICE) \r\n" + 
+						"FROM(\r\n" + 
+						"SELECT B_NAME, P_PRICE, O_DATE\r\n" + 
+						"FROM PRODUCT_STATIC\r\n" + 
+						"WHERE TO_DATE(O_DATE,'RRRR/MM/DD') >= TO_DATE(SYSDATE,'RRRR/MM/DD')-?\r\n" + 
+						")\r\n" + 
+						"GROUP BY B_NAME";
+				
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, searchDate);
+				
+			}else if(searchDate != null && gender == "") {
+				
+				query = "SELECT B_NAME, SUM(P_PRICE) \r\n" + 
+						"FROM(\r\n" + 
+						"SELECT B_NAME, P_PRICE, O_DATE\r\n" + 
+						"FROM PRODUCT_STATIC\r\n" + 
+						"WHERE TO_DATE(O_DATE,'RRRR/MM/DD') >= TO_DATE(SYSDATE,'RRRR/MM/DD')-? AND P_CATEGORY = ?\r\n" + 
+						")\r\n" + 
+						"GROUP BY B_NAME";
+				
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, searchDate);
+				pstmt.setString(2, category);
+				
+			}else if(searchDate != null && category=="") {
+				
+				query = "SELECT B_NAME, SUM(P_PRICE) \r\n" + 
+						"FROM(\r\n" + 
+						"SELECT B_NAME, P_PRICE, O_DATE\r\n" + 
+						"FROM PRODUCT_STATIC\r\n" + 
+						"WHERE TO_DATE(O_DATE,'RRRR/MM/DD') >= TO_DATE(SYSDATE,'RRRR/MM/DD')-? AND SUBSTR(P_NO, 0,1) = ?\r\n" + 
+						")\r\n" + 
+						"GROUP BY B_NAME";
+				
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, searchDate);
+				pstmt.setString(2, gender);
+				
+			}else if(searchDate != null) {
+				
+				query = "SELECT B_NAME, SUM(P_PRICE) \r\n" + 
+						"FROM(\r\n" + 
+						"SELECT B_NAME, P_PRICE, O_DATE\r\n" + 
+						"FROM PRODUCT_STATIC\r\n" + 
+						"WHERE TO_DATE(O_DATE,'RRRR/MM/DD') >= TO_DATE(SYSDATE,'RRRR/MM/DD')-? AND SUBSTR(P_NO, 0,1) = ? AND P_CATEGORY=?\r\n" + 
+						")\r\n" + 
+						"GROUP BY B_NAME";
+				
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, searchDate);
+				pstmt.setString(2, gender);
+				pstmt.setString(3, category);
+				
+			}
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next())
+			{
+				s = new SalesManage(rset.getString("B_NAME"), rset.getInt("SUM(P_PRICE)"));
+				list.add(s);
+				System.out.println(searchDate);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally
+		{
+			close(pstmt);
+			close(rset);
+		}
+		return list;
+	}
+
+
 	   public int deleteNotice(Connection conn, String nNo[]) {
 		      Statement stmt =null;
 		      int result = 0;
@@ -1782,5 +2081,6 @@ public class AdminDao {
 		      
 		      return result;
 		   }
+
 }
 	

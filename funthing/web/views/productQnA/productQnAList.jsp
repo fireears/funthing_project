@@ -25,7 +25,7 @@
 	<style>
 	.r-cont-header{
             width: 100%;
-            padding: 20px 20px;
+            padding: 10px 20px;
             border-top: 1px solid #bbb; 
             border-bottom:1px solid #bbb;
         }
@@ -155,9 +155,9 @@
             <div class="r-cont-header">
                
                 <div class="r-cont-text">
-                    <h1>
-                        <b style="color:#0f4a7e;">상품 문의</b>
-                    </h1>
+                    <h2 style="text-align:left;">
+                        <b style="color:#0f4a7e; font-size:20px;">상품 문의</b>
+                    </h2>
                 </div>
 
           <!--       1:1 문의하기 버튼

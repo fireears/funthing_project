@@ -1,11 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="java.util.ArrayList" %>
+    <%@ page import="admin.model.vo.SalesManage" %>
+    <%
+    	ArrayList<SalesManage> list = (ArrayList<SalesManage>)request.getAttribute("list");
+    %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-       
+        
  		<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
@@ -44,8 +49,11 @@
 
             #g_button_area tr:last-child td:nth-of-type(2) { width:20%; }
             #g_button_area tr:last-child td:nth-of-type(4) { width:40%; }
+            /* #g_button_area tr:first-child button { width:100px; height:36px; }
+            #g_button_area tr:first-child input {  height:46px; width:140px; } */
             #g_button_area tr:first-child button { width:100px; height:36px; }
-            #g_button_area tr:first-child input {  height:46px; width:140px; }
+            #submit {  height:46px; width:140px; }
+            #searchDate { width : 10%;}
             #graphWrap #g_button_area tr.g_title, #graphWrap #g_button_area td.g_title { background:#ddd; width:10%; }
 
 
@@ -55,42 +63,44 @@
 <%@ include file="/views/common/adminHeader.jsp" %>
 <h2>매출관리</h2>
   <div id="graphWrap">
-            <form>
-             <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
-        	 <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+            <form method="get" action="<%=request.getContextPath() %>/admin/salesManage">
+            <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+        	<script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
                 <div id="g_button_area">
                     <table>
                         <tr>
                             <td class="g_title">기간별</td>
                             <td colspan="3">
-                                <button value="0">일간</button>
-                                <button value="7">주간</button>
-                                <button value="30">월간</button>
-                                <button value="90">분기별</button>
-                                <input type="date" id="start" name="start"
-                                value="2020-01-01"
-                                min="2010-01-01" max="2021-12-31"> ~ 
-                                <input type="date" id="end" name="end"
-                                value="2020-01-01"
-                                min="2010-01-01" max="2021-12-31">
+                                <input type = "radio" id = "searchDate" name = "searchDate" value="0">일간
+                                <input type = "radio" id = "searchDate" name = "searchDate"value="7">주간
+                                <input type = "radio" id = "searchDate" name = "searchDate"value="30">월간
+                                <input type = "radio" id = "searchDate" name = "searchDate"value="90">분기별
+                                <input type="date" id="start" name="firstDate"
+                                value="2000-01-01"
+                                > ~ 
+                                <input type="date" id="end" name="secondDate"
+                                value="2200-01-01"
+                                >
                             </td>
                             <td rowspan="2" colspan="2" class="g_btn_submit">
-                                <input type="submit" value="조회">
+                                <input type="submit" id = "submit" value="조회">
                             </td>
                         </tr>
+                   <tr>
                         <td class="g_title">성별</td>
                         <td>
-                            <input type = "radio" values="all" id="gender">전체
-                            <input type = "radio" values="male" id="gender">남자
-                            <input type = "radio" values="female" id="gender">여자
+                            <input type = "radio" value=""  id="gender" name = "gender" checked="checked">전체
+                            <input type = "radio" value="M" id="gender" name = "gender">남자
+                            <input type = "radio" value="W" id="gender" name = "gender">여자
                         </td>
                         <td class="g_title">카테고리별</td>
                         <td>
-                            <input type = "checkbox" values="outer">겉옷
-                            <input type = "checkbox" values="outer">상의
-                            <input type = "checkbox" values="outer">하의
-                            <input type = "checkbox" values="outer">데님
-                            <input type = "checkbox" values="outer">원피스
+                            <input type = "radio" id = "category" name = "category" value=""  checked="checked">전체
+                            <input type = "radio" id = "category" name = "category" value="1">겉옷
+                            <input type = "radio" id = "category" name = "category" value="2">상의
+                            <input type = "radio" id = "category" name = "category" value="3">하의
+                            <input type = "radio" id = "category" name = "category" value="4">데님
+                            <input type = "radio" id = "category" name = "category" value="5">원피스
                         </td>
                     </tr>
                     </table>
@@ -109,13 +119,17 @@
                             indexLabel: "{y}",
                                 color: "#546BC1",
                             dataPoints: [
-                                { label: "brand1", y: 100 },
-                                { label: "brand2", y: 50 },
-                                { label: "brand3", y: 80 },
-                                { label: "brand4", y: 90 },
-                                { label: "brand5", y: 40 },
-                                { label: "brand6", y: 20 },
-                                { label: "brand7", y: 120 }
+                            	<%if(!list.isEmpty()) {%>
+                            	<%for(SalesManage s : list) {%>
+                                { label: "<%=s.getbName()%>", y: <%=s.getpPrice()%>},
+                                <%}%>
+                                <%} else {}%>
+                                /* { label: "brand2", y: 0},
+                                { label: "brand3", y: 0},
+                                { label: "brand4", y: 2 },
+                                { label: "brand5", y: 0},
+                                { label: "brand6", y: 0},
+                                { label: "brand7", y: 0} */
                             ]
                         }]
                     };

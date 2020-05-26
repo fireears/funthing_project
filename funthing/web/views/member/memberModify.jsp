@@ -21,72 +21,51 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+		
+		.r-cont-header{
+            width: 100%;
+            padding: 10px 20px;
+            border-top: 1px solid #bbb; 
+            border-bottom:1px solid #bbb;
+        }
 
+        .r-cont-header:after {
+            clear:both;
+            content:"";
+            display:block;
+        }
+
+        .r-cont-text{
+            width: 30%;
+            margin: 0 0 0 0;
+            margin-right: 0;
+            padding: 0 0 0 0;
+            float:left;
+        }
+			
+			
 		body {
 			position:relative !important;
 		}
-		#modify{
-			margin:0 auto;
-			width:700px
-			
-		}
-        #joinform{
-                width: 700px;
-                margin: 0 auto;
-            }
-        #joinForm #modi{
-                margin: 0;
-                padding:0;
-                width: 700px;
-                border-top: 1px solid #444444;
-                border-collapse: collapse;
-            }
-         #modi tr td {
-                border-bottom: 1px solid #444444;
-                padding: 10px;
-            }
-           #modi #lab{
-                background-color: lightgray;
-                color: black;
-                text-align: center;
-                padding: 10px;   
-            }
-           #modi #inp{
-               padding: 10px;
-               padding-left: 110px;
-               padding-right: 100px;
-            }
-           #modi tr td input{
-                border-radius: 5px;
-                height: 30px;
-                width: 280px;
-            }
-            #birth select{
-              height: 30px;
-              border-radius: 5px;
-              width: 80px;
-              float: left;
-              margin-left: 3px ;
-           }
-           #h2{
-               margin-left: 20px;
-           }
-           #h3{
-               float: left;
-               margin-left: 20px;
-           }
-           #hh5{
-               float:right;
-               margin-bottom: 0;
-               color: lightgray;
-           }
-           #agr{
-               
-               margin-left: 20px;
-           }
-           input::-webkit-input-placeholder { 
-                color: lightgray; 
-            }
+		
+		
+		/* #0f4a7e 여기서 부터 진교*/
+		#modify{margin:0 auto; padding:80px;}
+        #joinform{width: 700px;margin: 0 auto;}
+        #modi{margin: 0;padding:0;width: 100%;border-top: 2px solid #0f4a7e;border-collapse: collapse;}
+        #modi tr td {border-bottom: 1px solid #bbb;padding: 10px;}
+        #modi #lab{color: black;text-align: center;font-size:20px;padding: 10px;width:150px;}
+        #modi #inp{padding: 30px;text-align:center;}
+        #modi tr td input{border-radius: 3px;height: 30px;width: 280px;}
+        #birth select{height: 30px;border-radius: 5px;width: 80px;float: left;margin-left: 3px ;}
+        #h2{margin-left: 20px;}
+        #h3{float: left;margin-left: 20px;}
+        #hh5{float:right;margin-bottom: 0;color: lightgray;}
+        #agr{margin-left: 20px;}
+       input::-webkit-input-placeholder{color: lightgray;}
+    
+    	.lastOne{width:300px;}
+    
     </style>
 </head>
 <body>
@@ -99,22 +78,37 @@
 	<%@ include file="../common/myPageSide.jsp" %>
 			<div id="r-cont"> 
 			
+			<!-- 오른쪽 컨텐츠 헤더 영역-->
+            <div class="r-cont-header">
+               
+                <div class="r-cont-text">
+                    <h2 style="text-align:left;">
+                        <b style="color:#0f4a7e; font-size:20px;">회원정보 변경</b>
+                    </h2>
+                </div>
+            
+            </div> <!-- 오른쪽 컨텐츠 헤더 end -->
+			
+			
 			<div id=modify>
 			<form id="joinForm" method="post" action="<%=request.getContextPath() %>/update.me?mNo=<%=member.getmNo()%>">
-		            <h2 id="h2">정보수정</h2>
-		            <hr>
-		            <h3 id="h3">기본정보</h3>
+		         
+		          
 		            <br>
 		            <h5 id="hh5">*은 반드시 적어야 하는 항목</h5>
+		            <br>
+		            <br>
 		            <table id="modi">
 		                <tr>
 		                    <td id="lab">
 		                        <label>*아이디</label>
 		                    </td>
 		                    <td id="inp">
-		                        <input type="text" id="userId" name="userId" required placeholder="4글자 이상 12글자 이하 영문자(소문자)와 숫자" value="<%=userId%>">
-		                        <input type="button" id="idCheck" value="중복확인" style="width: 70px; background: darkgrey; color: white;" onclick="openIdChk()">
+		                        <input type="text" id="userId" name="userId" required placeholder="4글자 이상 12글자 이하 영문자(소문자)와 숫자" value="<%=userId%>"> &nbsp;&nbsp;
 		                    </td>
+		                    <td>
+		                        <input type="button" id="idCheck" value="중복확인" style="width: 100px; background: #0f4a7e; border:none;color: white;" onclick="openIdChk()">
+		                	</td>
 		                </tr>
 		                <tr>
 		                    <td id="lab">
@@ -123,6 +117,7 @@
 		                    <td id="inp"> 
 		                        <input type="password" id="userPwd" name="userPwd" required placeholder="6글자 이상 18글자 이하 영문자(소문자)와 숫자" value="<%=userPwd %>" disabled>
 		                    </td>
+		                    <td class="lastOne"></td>
 		                </tr>
 		               	<!-- <tr>
 		                    <td id="lab"> 
@@ -139,6 +134,7 @@
 		                    <td id="inp">
 		                        <input type="text" id="userName" name="userName" required placeholder="한글로 2글자 이상" value="<%= userName %>">
 		                    </td>
+		                    <td class="lastOne"></td>
 		                </tr>
 		                <tr>
 		                    <td id="lab">
@@ -147,6 +143,7 @@
 		                    <td id="inp">
 		                        <input type="email" id="email" name="email" required value="<%=email %>">
 		                    </td>
+		                    <td class="lastOne"></td>
 		                </tr>
 		                <tr>
 		                    <td id="lab">
@@ -155,14 +152,15 @@
 		                    <td id="inp">
 		                        <input type="tel" id="phone" name="phone" required placeholder="-제외 하고 입력" value="<%=phone%>">
 		                    </td>
+		                    <td class="lastOne"></td>
 		                </tr>
 		                <tr>
 		                    <td id="lab">
 		                    <label>*생년월일</label>
 		                    </td>
 		                    <td id="inp">
-		                        <div id="birth">
-		                            <select id="year" name="year" required >
+		                        <div id="birth" style="padding-left:50px;">
+		                            <select id="year" name="year" required  >
 		                                <option value="년">년</option>
 		                                <option value="2020">2020</option>
 		                                <option value="2019">2019</option>
@@ -287,6 +285,7 @@
 		                            </select>
 		                        </div>
 		                    </td>
+		                    <td class="lastOne"></td>
 		                </tr>
 		               <!--  <tr>
 		                    <td id="lab">
@@ -301,9 +300,9 @@
 		            <br>
 		
 		            <div style="text-align: center;">
-		                <input type="submit" value="수정" id="submit_btn" style="width: 90px; height: 40px; color: white; background: darkgrey; border-radius: 7px;" onclick="insertCheck()">
-		                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-		                <input type="button" value="취소" id="cancel" onclick=cancle(); style="width: 90px; height: 40px; color: black; background-color: lightgray; border-radius: 7px;">
+		                <input type="submit" value="수정" id="submit_btn" style="width: 120px; height: 40px; color: white; background: #0f4a7e; border-radius: 3px; border:none;"  onclick="insertCheck()">
+		                &nbsp; &nbsp;
+		                <input type="button" value="취소" id="cancel" onclick=cancle(); style="width: 120px; height: 40px; color: black; background-color: #bbb;  border-radius: 3px; border:none;">
 		            </div>
 		        </form>
 		            </div>

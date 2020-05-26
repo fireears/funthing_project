@@ -80,8 +80,8 @@ public class PersonalQnAServlet extends HttpServlet {
 			secondDate = "2009/01/01";
 		}
 				
-		
-		// 초기값이 아닌 소비자가 검색 값을 입력했을때
+		// ------------------------------------------------------------------------------------------------------------------------------------------------
+		// 처음셀렉하고 페이징 처리할때
 		if(request.getParameter("searchDate") == null && request.getParameter("firstDate") == "2009/01/01" &&  request.getParameter("secondDate")=="2009/01/01") {
 			searchDate = request.getParameter("searchDate1");
 			firstDate = request.getParameter("firstDate1");
