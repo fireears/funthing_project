@@ -44,18 +44,6 @@
 	                    </tr>
 	                    <tr>
 	                        <th>product_color</th><td><input type="text" name="color" value="<%=p.getP_color() %>" style="background-color: rgb(207, 205, 205);" readonly></td>
-	                        <!-- <th>product_color</th>
-	                        <td>
-	                        	<select name="color" >
-	                        		<option value="BK">BLACK</option>
-	                        		<option value="RD">RED</option>
-	                        		<option value="BL">BLUE</option>
-	                        		<option value="YL">YELLOW</option>
-	                        		<option value="WH">WHITE</option>
-	                        		<option value="KH">KHAKI</option>
-	                        		<option value="GN">GREEN</option>
-	                        	</select>
-	                        </td> -->
 	                        <th>product_size</th><td><input type="text" name="size" value="<%=p.getP_size() %>" style="background-color: rgb(207, 205, 205);" readonly></td>
 	                    </tr>
 	                    <tr>
