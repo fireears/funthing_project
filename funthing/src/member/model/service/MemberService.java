@@ -12,6 +12,7 @@ import member.model.dao.MemberDao;
 import member.model.vo.Member;
 import member.model.vo.MemberPoint;
 import member.model.vo.MemberShoppingBag;
+import payment.model.vo.OrderUpdate;
 
 public class MemberService {
 	// 로그인
@@ -95,16 +96,60 @@ public class MemberService {
 		
 		return result;
 	}
-	public int shoppinglistCount(String userId) {
+	//shoppingbag 페이자 :한솔
+	public int shoppinglistCount(String userNo) {
 		Connection conn = getConnection();
-		int result = new MemberDao().getshoppingbagCount(conn,userId);
+		int result = new MemberDao().getshoppingbagCount(conn,userNo);
 		return result;
 	}
-	public ArrayList<MemberShoppingBag> shoppingbagselectList(String userId) {
+	//shoppingbag 페이자 :한솔
+	public ArrayList<MemberShoppingBag> shoppingbagselectList(String userNo) {
 		Connection conn = getConnection();
-		ArrayList<MemberShoppingBag> list =  new MemberDao().selectshoppingbaglist(userId,conn);
+		ArrayList<String> list1 = new MemberDao().selectshoppingbaglist2(userNo, conn);
+		ArrayList<Integer> list2 = new MemberDao().selectshoppingbaglist3(userNo, conn);
+		ArrayList<MemberShoppingBag> list =  new MemberDao().selectshoppingbaglist(userNo,conn,list1,list2);
 		return list;
 	}
+	//shoppingbag 페이자 :한솔
+	public int shoppingbagInsert(String p_no, int number, String userNo) {
+		Connection conn = getConnection();
+		String sql = new MemberDao().InsertShoppingbag(p_no,conn,number,userNo);
+		int result = new MemberDao().InsertShoppingBagsql(sql,conn);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		} 
+		close(conn);
+		return result;
+	}
+	//shoppingbag 페이자 :한솔
+	public int shoppingbagDelete(String[] check) {
+		Connection conn = getConnection();
+		int result = new MemberDao().DeleteShoppingbag(conn,check);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		} 
+		close(conn);
+		return result;
+	}
+
+
+	
+	// 마이페이지 회원 이름, 등급, 적립금 내역 가져오기_희지
+	public MemberPoint memberInfo(String userNoM) {
+		Connection conn = getConnection();
+		MemberPoint mp = new MemberPoint();
+		
+		mp = new MemberDao().memberInfo(conn, userNoM);
+		
+		close(conn);
+		
+		return mp;
+	}
+
 	//paymentInfo 페이지 : 상원
 	public MemberPoint paymentMemberSearch(String userNo) {
 		Connection conn = getConnection();
@@ -114,6 +159,31 @@ public class MemberService {
 		close(conn);
 		return m;
 	}
+	
+	
+	// 마이 페이지 최근 주문 목록 리스트 카운트_희지
+	public int currentListCount(String userNoM) {
+		Connection conn = getConnection();
+		
+		int currentListCount = new MemberDao().currentListCount(conn, userNoM);
+			
+		close(conn);
+		
+		return currentListCount;
+	}
+	
+	
+	// 마이 페이지 최근 주문 목록 select_희지
+	public ArrayList<OrderUpdate> selectCurrentOrderList(int currentPage, int limit, String userNoM) {
+		Connection conn = getConnection();
+		
+		ArrayList<OrderUpdate> coList = new MemberDao().selectCurrentOrderList(conn,currentPage,limit,userNoM);
+		
+		close(conn);
+		
+		return coList;
+	}
+
 
 
 }

@@ -15,7 +15,7 @@ import payment.model.vo.OrderInfoDetail;
 import personalQnA.model.vo.PersonalInsert;
 import personalQnA.model.vo.PersonalQnA;
 
-
+ 
 
 public class PersonalQnADao {
 	// 일대일문의 삽입 서윤
@@ -150,7 +150,7 @@ public class PersonalQnADao {
 
 				System.out.println("searchDate가 null일때" + searchDate);
 		
-				String query = "SELECT ROWNUM RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
+				String query = "SELECT RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
 						"FROM(SELECT ROWNUM RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
 								"FROM PER_LIST\r\n" + 
 								"WHERE M_NO=?)\r\n" + 
@@ -166,7 +166,7 @@ public class PersonalQnADao {
 				
 			// 클라이언트가 '오늘'선택 했을 때
 			}else if(searchDate != null && searchDate.equals("today")) {
-				String query = "SELECT ROWNUM RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
+				String query = "SELECT RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
 								"FROM(SELECT ROWNUM RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
 									"FROM PER_LIST\r\n" + 
 									"WHERE M_NO=? AND TO_DATE(PER_DATE,'RRRR/MM/DD') = TO_DATE(SYSDATE,'RRRR/MM/DD'))\r\n" + 
@@ -184,7 +184,7 @@ public class PersonalQnADao {
 			// 클라이언트가 '7일' 선택 했을 때
 			}else if(searchDate != null &&  searchDate.equals("week")) {
 				System.out.println("-------------------------week-----------------------");
-				String query =  "SELECT ROWNUM RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
+				String query =  "SELECT RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
 								"FROM(SELECT ROWNUM RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
 									"FROM PER_LIST\r\n" + 
 									"WHERE M_NO=? AND TO_DATE(PER_DATE,'RRRR/MM/DD') >= TO_DATE(SYSDATE,'RRRR/MM/DD')-7)\r\n" + 
@@ -201,7 +201,7 @@ public class PersonalQnADao {
 			// 클라이언트가 '한달' 선택 했을 때
 			}else if(searchDate != null &&  searchDate.equals("month")) {
 				System.out.println("-------------------------month-----------------------ok");
-				String query = "SELECT ROWNUM RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
+				String query = "SELECT RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
 								"FROM(SELECT ROWNUM RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
 									"FROM PER_LIST\r\n" + 
 									"WHERE M_NO=? AND TO_DATE(PER_DATE,'RRRR/MM/DD') >= TO_DATE(SYSDATE,'RRRR/MM/DD')-30)\r\n" + 
@@ -218,7 +218,7 @@ public class PersonalQnADao {
 			// 클라이언트가 '3개월' 선택 했을 때
 			}else if(searchDate != null &&  searchDate.equals("3months")) {
 				System.out.println("-------------------------3months-----------------------ok");
-				String query = "SELECT ROWNUM RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
+				String query = "SELECT RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
 								"FROM(SELECT ROWNUM RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
 									"FROM PER_LIST\r\n" + 
 									"WHERE M_NO=? AND TO_DATE(PER_DATE,'RRRR/MM/DD') >= TO_DATE(SYSDATE,'RRRR/MM/DD')-90)\r\n" + 
@@ -235,7 +235,7 @@ public class PersonalQnADao {
 			// 클라이언트가 '6개월' 선택 했을 때
 			}else if(searchDate != null &&  searchDate.equals("6months")) {
 				System.out.println("-------------------------6months-----------------------");
-				String query = "SELECT ROWNUM RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
+				String query = "SELECT RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
 								"FROM(SELECT ROWNUM RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
 									"FROM PER_LIST\r\n" + 
 									"WHERE M_NO=? AND TO_DATE(PER_DATE,'RRRR/MM/DD') >= TO_DATE(SYSDATE,'RRRR/MM/DD')-180)\r\n" + 
@@ -254,7 +254,7 @@ public class PersonalQnADao {
 			// 클라이언트가 '1년' 선택 했을 때	
 			}else if(searchDate != null &&  searchDate.equals("year")) {
 				System.out.println("-------------------------year-----------------------");
-				String query = "SELECT ROWNUM RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
+				String query = "SELECT RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
 								"FROM(SELECT ROWNUM RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
 									"FROM PER_LIST\r\n" + 
 									"WHERE M_NO=? AND TO_DATE(PER_DATE,'RRRR/MM/DD') >= TO_DATE(SYSDATE,'RRRR/MM/DD')-365)\r\n" + 
@@ -272,7 +272,7 @@ public class PersonalQnADao {
 			}else {
 				System.out.println("캘린더 선택 날자선택");
 				
-				String query = "SELECT ROWNUM RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
+				String query = "SELECT RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
 								"FROM(SELECT ROWNUM RNUM, PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,ADDFILE, O_NO, PER_CATE, PER_DATE \r\n" + 
 									"FROM PER_LIST\r\n" + 
 									"WHERE M_NO=? AND TO_DATE(PER_DATE,'RRRR/MM/DD') BETWEEN TO_DATE(?,'RRRR/MM/DD') AND TO_DATE(?,'RRRR/MM/DD'))\r\n" + 

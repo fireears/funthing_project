@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import payment.model.dao.PaymentDao;
 import payment.model.vo.OrderList;
+import payment.model.vo.Payment;
 
 public class PaymentService {
 	
@@ -47,6 +48,25 @@ public class PaymentService {
 		close(conn);
 		
 		return oList;
+	}
+
+
+	public int insertPayment(Payment p) {
+		Connection conn = getConnection();
+		
+		PaymentDao pDao = new PaymentDao();
+		
+		int result = pDao.insertPayment(conn, p);
+		if(result > 0)
+		{
+			commit(conn);
+		}
+		else
+		{
+			rollback(conn);
+		}
+		close(conn);
+		return result;
 	}
 
 }

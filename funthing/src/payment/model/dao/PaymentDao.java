@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import payment.model.vo.OrderList;
+import payment.model.vo.Payment;
 import personalQnA.model.vo.PersonalQnA;
 
 public class PaymentDao {
@@ -291,6 +292,19 @@ public class PaymentDao {
 		
 		
 		
+	}
+
+
+
+	public int insertPayment(Connection conn, Payment p) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		int result = 0;
+		
+		String query = "INSERT INTO PAYMENT_INFO VALUE()";
+				
+		return 0;
 	}
 
 	

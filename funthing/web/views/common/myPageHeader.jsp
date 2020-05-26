@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%@ page import="member.model.vo.Member"%>
     
+<%
+	Member loginUser4 = (Member)session.getAttribute("loginUser");
+%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -126,7 +131,7 @@
 
     <!-- 마이페이지의 header 부분 (보류)-->
     <div class="header-mypage"> 
-       <div class="area">
+       <div class="area" onclick="goMyPageMain();">
             <h2>MY PAGE</h2>
             <br>
             <h4>Home - MyPage</h4>
@@ -134,6 +139,31 @@
        
     </div>
 
+
+	<script>
+		function goMyPageMain(){
+			location.href="<%=request.getContextPath()%>/myPageMainServlet?userNoM=<%=loginUser4.getmNo()%>";	
+		}
+		
+		$(function(){
+			$(".area").mouseenter(function(){
+				$(this).css({"cursor" : "pointer"});
+				
+				
+			})
+			
+			
+			
+		})
+		
+		
+		
+		
+		
+	
+	
+	
+	</script>
 
 
     

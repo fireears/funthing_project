@@ -8,6 +8,7 @@
 	int number = Integer.valueOf((String)request.getAttribute("number"));
 	DecimalFormat formatter = new DecimalFormat("###,###");
 	MemberPoint mp = (MemberPoint)request.getAttribute("m");
+	String mEmail = (String)request.getAttribute("mEmail");
 	
 	String thumbnail = p.getThumbnail();
 	String pName = p.getpName();
@@ -23,6 +24,8 @@
 	int mPoint = mp.getmPoint();
 	double point_rate = mp.getPoint_rate();
 	
+	
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -31,6 +34,7 @@
 		<title>주문결제</title>
 		<!-- <script  src="http://code.jquery.com/jquery-latest.min.js"></script> -->
 		<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+		<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 		<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 		<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 		<link rel="stylesheet" href="<%=request.getContextPath() %>/css/paymentInfo.css">
@@ -56,7 +60,7 @@
 			
 			
 			
-			#resultPayArea{position: fixed; top: 25%; left: 75%; width: 350px; height: 450px; border: 4px solid #0f4a7e; text-align: center;}
+			#resultPayArea{position: fixed; top: 25%; left: 75%; width: 350px; height: 480px; border: 4px solid #0f4a7e; text-align: center;}
 			#resultPayArea>div{margin: auto; width: 90%;}
 			#resultPayArea>div>table{width: 100%;}
 			#resultPayArea>div>table th{text-align: left;}
@@ -73,7 +77,8 @@
 		<section>
             
             <article id="area">
-                <form action="" method="GET">
+                <form action="<%=request.getContextPath() %>/Payment" id="payment" method="GET">
+                	<input type="hidden" name="mNo" value="<%=mNo %>">
                     <p id="title">주문자 정보</p>
                     <div class="table1">
                         <table>
@@ -89,7 +94,7 @@
                                 <tr>
                                     <th class="ta-1" aria-required="true">이메일</th>
                                     <td>
-	                                    <div class="txt-field"><input type="text" name="m_email" value="<%=loginUser.getmEmail()%>">&nbsp;
+	                                    <div class="txt-field"><input type="text" id="email"name="m_email" value="<%=loginUser.getmEmail()%>">&nbsp;
 		                                    <!-- <select name="">
 		                                    	<option value="naver.com">naver.com</option>
 		                                    </select> -->
@@ -113,7 +118,7 @@
                                 </tr> -->
                                 <tr>
                                     <th class="ta-1" aria-required="true">받으실분</th>
-                                    <td><div class="txt-field"><input type="text" name="rcv_name" maxlength="20"></div></td>
+                                    <td><div class="txt-field"><input type="text" id="rcv_name" name="rcv_name" maxlength="20"></div></td>
                                 </tr>
                                 <tr>
                                     <th class="ta-1" aria-required="true">받으실 곳</th>
@@ -124,7 +129,7 @@
 											<input type="text" id="detailAddress" name="rcv_adrs" placeholder="상세주소">
 											<input type="text" id="extraAddress" placeholder="참고항목">
 											
-											<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+											
 											<script>
 											    function DaumPostcode() {
 											        new daum.Postcode({
@@ -237,38 +242,18 @@
                                 </tr>
                                 <tr>
                                     <th class="ta-1" aria-required="true">적립금 사용</th>
-                                    <td><div class="txt-field"><input type="text" id="point_user" name="point_user" style="width: 100px;">P</div></td>
+                                    <td><div class="txt-field"><input type="text" id="point_user" name="point_use" style="width: 100px;">P</div></td>
                                 </tr>
                                 <tr>
                                     <th class="ta-1" aria-required="true">최종 결제 금액</th>
-                                    <td><div class="txt-field"><div id="result_price">10000원</div></div></td>
-                                </tr>
-                                
-                            </tbody>
-                        </table>
-                    </div>
-
-
-                    <p id="title">결제수단 결제 / 결제</p>
-                    <div class="table1">
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <th class="ta-1" aria-required="true">일반결제</th>
-                                    <td>
-                                        <div class="txt-field1">
-                                            <input type="radio" name="pmnt_mthd" id="pmnt1" value="무통장 입금"><label for="pmnt1">무통장 입금</label>
-                                            <!-- <input type="radio" name="pmnt_mthd" id="pmnt2" value="신용카드"><label for="pmnt2">신용카드</label> -->
-                                            <input type="radio" name="pmnt_mthd" id="pmnt3" value="카카오페이"><label for="pmnt3">카카오페이</label>
-                                        </div>
-                                    </td>
+                                    <td><div class="txt-field"><div id="result_price1"></div></div></td>
                                 </tr>
                                 
                             </tbody>
                         </table>
                     </div>
 					
-					<br><br><br><br>
+					<br><br>
                     <!-- 오른쪽 사이드 결제하기 구역-->
                     <div id="resultPayArea">
                         <div>
@@ -276,15 +261,25 @@
                             <hr>
     
                             <table>
-                                <tr><th>상품 합계 금액</th><td style="text-align: right;">65,600원</td></tr>
-                                <tr><th>배송비</th><td  style="text-align: right;">0원</td></tr>
+                            	<%if(pPrice*number > 50000) { %>
+                                <tr><th>상품 합계 금액</th><td id="totalPrice" style="text-align: right;"><input type="hidden" name="total_price" value="<%=pPrice*number%>"><%=formatter.format(pPrice*number) %>원</td></tr>
+                                <%} else { %>
+                                <tr><th>상품 합계 금액</th><td id="totalPrice" style="text-align: right;"><input type="hidden" name="total_price" value="<%=pPrice*number + 5000%>"><%=formatter.format(pPrice*number +5000) %>원</td></tr>
+                                <%} %>
+                                <%if((pPrice * number) > 50000) {%>
+                                <tr><th>배송비</th><td  style="text-align: right;"><input type="hidden" name="ship_price" value="0">0원</td></tr>
+                                <%} else { %>
+                                <tr><th>배송비</th><td  style="text-align: right;"><input type="hidden" name="ship_price" value="5000">5000원</td></tr>
+                                <%} %>
                             </table>
     
                             <hr>
     
                             <table>
-                                <tr><th>최종 결제 금액</th><td id="resultprice">65,600원</td></tr>
-                                <tr><th>총 적립예정 적립금</th><td><%=pPrice * point_rate %>p</td></tr>
+                                <tr><th>최종 결제 금액</th><td id="resultprice"><input type="hidden" id="expt_price" name="expt_price"><%=formatter.format(pPrice*number) %>원</td></tr>
+                                <tr><th>회원 등급별 적립금</th><td><%=(int)(pPrice * point_rate) %>p</td></tr>
+                                <tr><th>상품별 적립금</th><td><%=pPoint %>p</td></tr>
+                                <tr><th>총 적립예정 적립금</th><td><input type="hidden" name="expt_point" value="<%=(int)((pPrice * point_rate) + pPoint) %>"><%=(int)((pPrice * point_rate) + pPoint) %>p</td></tr>
                             </table>
     
                             <hr>
@@ -308,60 +303,96 @@
         <%@include file="/views/common/footer.jsp" %>
 	</body>
 	
+	<script>
+		$(function(){
+			
+			var IMP=window.IMP;
+			IMP.init('imp33962000');	
+			$("#rcv_name").focus();
+			<%if(pPrice*number > 50000) { %>
+            	var tp = <%=pPrice*number %>;
+            <%} else { %>
+      			var tp = <%=pPrice*number +5000 %>;
+            <%} %>
+			
+			$("#resultprice").text(tp+"원");
+			$("#expt_price").val(tp);
+			$("#result_price1").text(tp+"원");
+			var result;
+			
+			$("#point_user").blur(function(){
+				if($(this).val() > <%=mPoint%>)
+				{
+					alert("사용가능한 적립금을 초과하였습니다.");
+				}
+				else if($(this).val() <= <%=mPoint%>)
+				{
+					/* var tp = $("#totalPrice").text().substring(0,$("#totalPrice").text().length-1); */
+					
+					var pu = $("#point_user").val();
+					result = tp-pu;
+					/* alert(typeof result);
+					var temp = result.substr(1, result.length()-3); */
+					$("#resultprice").text(result+"원");
+					$("#expt_price").val(result);
+					$("#result_price1").text(result+"원");
+				}
+				
+			})
+			$(this).focus();
+		})
+	</script>
 	
 	<!-- 카카오페이 -->
 	<script>
-		$(function(){
-			var IMP=window.IMP;
-			IMP.init('imp33962000');			
-			
-		})
-			
 		$("#pay").click(function(){
 			/* val payMethod = $("input[name=pmnt_mthd]").val(); */
-			if($("input[name=pmnt_mthd]").is(":checked") == true)
-			{
-				var payMethod = $("input[name=pmnt_mthd]:checked").val();
-				
-				if(payMethod == "무통장 입금")
-				{
-					alert("무통장 입금");
-				}
-				
-				else if(payMethod == "카카오페이")
-				{
-					IMP.request_pay({ 
-					    pg : 'kakaopay', // version 1.1.0부터 지원.
-					    pay_method : 'card',
-					    merchant_uid : 'funthing_' + new Date().getTime(),
-					    name : '상품명or주문번호',	// order 테이블에 들어갈  주문명 혹은 주문 번호
-					    amount : 14000,
-					    buyer_email : 'rngus3698@naver.com',
-					    buyer_name : $("#m_name").val(),
-					    buyer_tel : $("#m_tell").val(),
-					    buyer_addr : $("#detailAddress").val(),
-					    buyer_postcode : $("#postcode").val(),
-					    m_redirect_url : '<%=request.getContextPath()%>/PaymentInfo' //결제 완료 후 보낼 컨트롤러의 메소드명
-					}, function(rsp) {
-					    if ( rsp.success ) {
-					        var msg = '결제가 완료되었습니다.';
-					        msg += '고유ID : ' + rsp.imp_uid;
-					        msg += '상점 거래ID : ' + rsp.merchant_uid;
-					        msg += '결제 금액 : ' + rsp.paid_amount + '원';
-					        msg += '카드 승인번호 : ' + rsp.apply_num;
-					        location.href = "<%=request.getContextPath()%>/PaymentInfo";
-					    } else {
-					        var msg = '결제에 실패하였습니다.';
-					        msg += '에러내용 : ' + rsp.error_msg;
-					    }
-					    alert(msg);
-					});	
-					
-				}
-			}
+			alert("결제");
+			<%if(pPrice*number > 50000) { %>
+        		var tp = <%=pPrice*number %>;
+        	<%} else { %>
+  				var tp = <%=pPrice*number +5000 %>;
+        	<%} %>
+			var pu = $("#point_user").val();
+			
+			var result1 = tp - Number(pu);
+			
+			IMP.request_pay({
+			    pg : 'inicis', // version 1.1.0부터 지원.
+			    pay_method : 'card',
+			    merchant_uid : 'merchant_' + new Date().getTime(),
+			    name : 'FUN-THING 결제 테스트',
+			    amount : result1,
+			    buyer_email : '<%=loginUser.getmEmail()%>',
+			    buyer_name : '<%=loginUser.getmName()%>',
+			    buyer_tel : '<%=loginUser.getmTell()%>',
+			    buyer_addr : $("#detailAddress").val(),
+			    buyer_postcode : $("#postcode").val(),
+			    m_redirect_url : 'https://www.yourdomain.com/payments/complete'
+			}, function(rsp) {
+			    if ( rsp.success ) {
+			        var msg = '결제가 완료되었습니다.';
+			        msg += '고유ID : ' + rsp.imp_uid;
+			        msg += '상점 거래ID : ' + rsp.merchant_uid;
+			        msg += '결제 금액 : ' + rsp.paid_amount;
+			        msg += '카드 승인번호 : ' + rsp.apply_num;
+			    } else {
+			        var msg = '결제에 실패하였습니다.';
+			        msg += '에러내용 : ' + rsp.error_msg;
+			    }
+			    alert(msg);
+			    $("#payment").submit();
+			});
+		})
+	</script>
+	<script>
+		
+			
+		
+			
 				
 			
-		})
+		
 		
 		
 	</script>

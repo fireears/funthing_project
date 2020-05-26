@@ -4,12 +4,13 @@
 <html lang="ko">
  <%@ page import="java.util.ArrayList" %>
  <%@ page import="member.model.vo.MemberShoppingBag"%>
+ <%@ page import="board.model.vo.PageInfo" %>
  <%
  ArrayList<MemberShoppingBag> list = (ArrayList<MemberShoppingBag>)request.getAttribute("list");
  %>
     <head>
 
-
+   <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
         <style>
 
             p { margin:0; }
@@ -52,16 +53,17 @@
     </head>
     <body>
     
-    	<%@ include file="../common/header.jsp" %>
+       <%@ include file="../common/header.jsp" %>
     
         <div id="shippingWrap">
             <div class="s_title">
                 <h3>결제 예정 상품</h3>
             </div>
-            <form>
+            <form id="shoppingbagForm" method="get" action="#none">
+            <input type="hidden" name="userNo" value="<%=loginUser.getmNo() %>">
                 <table class="s_table">
                     <tr>
-                        <th><input type="checkbox"></th>
+                        <th><input type="checkbox" id="checkall"></th>
                         <th colspan="2">결제 예정 상품</th>
                         <th>수량</th>
                         <th>금액</th>
@@ -72,30 +74,61 @@
                       <%
           int sum =0;
          if(list!=null){
+            for(int i =0;i<list.size();i++){
+               sum +=list.get(i).getShbag_price()*list.get(i).getShbag_num();
+            }
+                       
                 for(int i =0;i<list.size();i++){%>
-                 	<tr>
-                        <td><input type="checkbox"></td>
+
+                <input type="hidden" name="p_no" value="<%=list.get(i).getP_no()%>">
+                    <tr>                   	
+
+                	<%-- <input type="hidden" value="<%=%>">//상품번호 --%>
+                    <tr>
+
+                        <td><input type="checkbox" name="check" value="<%=list.get(i).getP_name()%>"></td>
                         <td class="imgArea"><img src="<%=request.getContextPath()+"/images/thumbnail/" + list.get(i).getP_thumbnail() + ".jpg" %>" /></td>
                         <td><%=list.get(i).getP_name()%></td>
                         <td><%=list.get(i).getShbag_num()%></td>
-                        <td><%=list.get(i).getShbag_price()%></td>
+                        <td><%=list.get(i).getShbag_price()*list.get(i).getShbag_num()%></td>
                         <td><%=list.get(i).getP_point()%></td>
                         <td><%=sum%></td>
                     </tr> 
                 <% 
-                sum =+list.get(i).getShbag_price();
+                
                 }
+                
                }%>
                    
                     <!-- for문 end -->
                 </table> 
+              
                 <div class="s_btns">
-                    <button type="button" class="l_btn">선택상품삭제</button>
+                    <button type="button" onclick="shoppingBag();"   class="l_btn">선택상품삭제</button>
                     <button type="submit" class="r_btn">결제</button>
                 </div>
             </form>
+            
+  
         </div>
-        
+   
+        <script>
+       function shoppingBag(){         
+            $("#shoppingbagForm").attr("action", "<%=request.getContextPath() %>/MemberShoppingDelete");
+                $("#shoppingbagForm").submit();
+          }
+     
+        $(document).ready(function(){
+            $("#checkall").click(function(){
+                if($("#checkall").prop("checked")){
+                    $("input[name=check]").prop("checked",true);
+                }else{
+                    $("input[name=check]").prop("checked",false);
+                }
+            })
+        })
+        </script>
+
         <%@ include file="../common/footer.jsp"%>
         
     </body>

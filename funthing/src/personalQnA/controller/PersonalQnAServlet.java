@@ -1,3 +1,4 @@
+// 일대일 문의 리스트_희지
 package personalQnA.controller;
 
 import java.io.IOException;
@@ -46,6 +47,9 @@ public class PersonalQnAServlet extends HttpServlet {
 		String searchDate = request.getParameter("searchDate");
 		String firstDate = request.getParameter("firstDate");
 		String secondDate = request.getParameter("secondDate");
+		
+		// 서윤언니 insert 결과 메세지 받기
+		String msg = (String)request.getAttribute("message");
 		
 		
 //		// 이거 뭔지 모르겠어여 -희지
@@ -107,10 +111,20 @@ public class PersonalQnAServlet extends HttpServlet {
 			request.setAttribute("pi", pi);
 			request.setAttribute("userNo", userNo);
 			
+			// insert 성공 시 메세지 같이 jsp파일로 보내기
+		}else if(!list.isEmpty() && msg != null) {
+			view = request.getRequestDispatcher("/views/personalQnA/myPagePerQnAList.jsp");
+			request.setAttribute("list", list);
+			request.setAttribute("pi", pi);
+			request.setAttribute("userNo", userNo);
+			request.setAttribute("msg", msg);
+			
+			
 		}else {
 			view = request.getRequestDispatcher("/views/personalQnA/myPagePerQnAList.jsp");
 			request.setAttribute("list", list);
 			request.setAttribute("pi", pi);
+			request.setAttribute("userNo", userNo);
 		}
 		
 		view.forward(request, response);

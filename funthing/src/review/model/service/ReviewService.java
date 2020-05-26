@@ -1,5 +1,41 @@
 package review.model.service;
 
+import static common.JDBCTemplate.*;
+
+import java.sql.Connection;
+import java.util.ArrayList;
+
+import review.model.dao.ReviewDao;
+import review.model.vo.Review;
+
 public class ReviewService {
+
+	public ArrayList<Review> searchOrder(String revmId, String revpNo) {
+		Connection conn = getConnection();
+		ReviewDao rvDao = new ReviewDao();
+		ArrayList<Review> rvList =  rvDao.searchOrder(conn,revmId,revpNo);
+				
+		return rvList;
+	}
+
+	
+	public int insertReview(Review rv, String revmId) {
+		Connection conn = getConnection();
+		ReviewDao rvDao = new ReviewDao();
+		
+		int result = rvDao.insertReview(conn,rv,revmId);
+
+		if(result > 0){
+			commit(conn);
+		}else{
+			rollback(conn);
+		}
+		
+		return result;
+	}
+
+	
+
+
 
 }

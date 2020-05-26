@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="java.util.ArrayList" %>
+    <%@ page import="admin.model.vo.ProductStatic" %>
+    <%
+    	ArrayList<ProductStatic> list = (ArrayList<ProductStatic>)request.getAttribute("list");
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,7 +63,7 @@
 <%@ include file="/views/common/adminHeader.jsp" %>
 <h2>상품통계</h2>
   <div id="graphWrap">
-            <form>
+            <form method="get" action="<%=request.getContextPath() %>/admin/productStatic">
             <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
         	<script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
                 <div id="g_button_area">
@@ -70,12 +75,12 @@
                                 <input type = "radio" id = "searchDate" name = "searchDate"value="7">주간
                                 <input type = "radio" id = "searchDate" name = "searchDate"value="30">월간
                                 <input type = "radio" id = "searchDate" name = "searchDate"value="90">분기별
-                                <input type="date" id="start" name="start"
-                                value="2020-01-01"
-                                min="2010-01-01" max="2021-12-31"> ~ 
-                                <input type="date" id="end" name="end"
-                                value="2020-01-01"
-                                min="2010-01-01" max="2021-12-31">
+                                <input type="date" id="start" name="firstDate"
+                                value="2000-01-01"
+                                > ~ 
+                                <input type="date" id="end" name="secondDate"
+                                value="2200-01-01"
+                                >
                             </td>
                             <td rowspan="2" colspan="2" class="g_btn_submit">
                                 <input type="submit" id = "submit" value="조회">
@@ -83,17 +88,18 @@
                         </tr>
                         <td class="g_title">성별</td>
                         <td>
-                            <input type = "radio" values="all" id="gender" name = "gender">전체
-                            <input type = "radio" values="male" id="gender" name = "gender">남자
-                            <input type = "radio" values="female" id="gender" name = "gender">여자
+                            <input type = "radio" value=""  id="gender" name = "gender" checked="checked">전체
+                            <input type = "radio" value="M" id="gender" name = "gender">남자
+                            <input type = "radio" value="W" id="gender" name = "gender">여자
                         </td>
                         <td class="g_title">카테고리별</td>
                         <td>
-                            <input type = "checkbox" id = "category" name = "category" values="outer">겉옷
-                            <input type = "checkbox" id = "category" name = "category"values="outer">상의
-                            <input type = "checkbox" id = "category" name = "category"values="outer">하의
-                            <input type = "checkbox" id = "category" name = "category"values="outer">데님
-                            <input type = "checkbox" id = "category" name = "category"values="outer">원피스
+                            <input type = "radio" id = "category" name = "category" value=""  checked="checked">전체
+                            <input type = "radio" id = "category" name = "category" value="1">겉옷
+                            <input type = "radio" id = "category" name = "category" value="2">상의
+                            <input type = "radio" id = "category" name = "category" value="3">하의
+                            <input type = "radio" id = "category" name = "category" value="4">데님
+                            <input type = "radio" id = "category" name = "category" value="5">원피스
                         </td>
                     </tr>
                     </table>
@@ -112,13 +118,17 @@
                             indexLabel: "{y}",
                                 color: "#546BC1",
                             dataPoints: [
-                                { label: "brand1", y: 100 },
-                                { label: "brand2", y: 50 },
-                                { label: "brand3", y: 80 },
-                                { label: "brand4", y: 90 },
-                                { label: "brand5", y: 40 },
-                                { label: "brand6", y: 20 },
-                                { label: "brand7", y: 120 }
+                            	<%if(!list.isEmpty()) {%>
+                            	<%for(ProductStatic p : list) {%>
+                                { label: "<%=p.getbName()%>", y: <%=p.getoNum()%>},
+                                <%}%>
+                                <%} else {}%>
+                                /* { label: "brand2", y: 0},
+                                { label: "brand3", y: 0},
+                                { label: "brand4", y: 2 },
+                                { label: "brand5", y: 0},
+                                { label: "brand6", y: 0},
+                                { label: "brand7", y: 0} */
                             ]
                         }]
                     };
