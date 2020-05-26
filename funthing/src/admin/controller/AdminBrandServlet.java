@@ -89,20 +89,15 @@ public class AdminBrandServlet extends HttpServlet {
 //			
 //		}
 
-		
 		  // 검색창 구현 
 		 String searchVal = request.getParameter("searchVal");
 		 String searchKind = request.getParameter("searchKind");
 		 
+		 if(searchVal == null || searchVal.equals("null"))
+			 searchVal = null;
 		 
-		 if(searchVal != null) { 
-			 searchVal = request.getParameter("searchVal"); 
-		 
-		 }else{ 
-			 searchVal = (String)request.getAttribute("searchVal"); 
-		 }
-		  
-		 
+		 if(searchKind == null || searchKind.equals("null"))
+			 searchKind = null;
 		 
 		  System.out.println("admin brand Servlet searchVal : " + searchVal);
 		  System.out.println("admin brand Servlet searchKind : " + searchKind);
@@ -120,6 +115,8 @@ public class AdminBrandServlet extends HttpServlet {
 			view = request.getRequestDispatcher("/views/admin/adminBrand.jsp");
 			request.setAttribute("list", list);
 			request.setAttribute("pi", pi);
+			request.setAttribute("searchKind", searchKind);
+			request.setAttribute("searchVal", searchVal);
 
 			
 			// update 성공시
@@ -129,7 +126,10 @@ public class AdminBrandServlet extends HttpServlet {
 			request.setAttribute("pi", pi);
 			request.setAttribute("bNo", bNo);
 			request.setAttribute("updateMsg", updateMsg);
-
+			request.setAttribute("searchKind", searchKind);
+			request.setAttribute("searchVal", searchVal);
+			
+			
 			
 			// delete 성공시
 		} else if (!list.isEmpty() && deleteMsg != null) {
@@ -137,7 +137,8 @@ public class AdminBrandServlet extends HttpServlet {
 			request.setAttribute("list", list);
 			request.setAttribute("pi", pi);
 			request.setAttribute("deleteMsg", deleteMsg);
-
+			request.setAttribute("searchKind", searchKind);
+			request.setAttribute("searchVal", searchVal);
 			
 			// insert 성공시
 		} else if (!list.isEmpty() && insertMsg != null) {
@@ -145,12 +146,15 @@ public class AdminBrandServlet extends HttpServlet {
 			request.setAttribute("list", list);
 			request.setAttribute("pi", pi);
 			request.setAttribute("insertMsg", insertMsg);
-
+			request.setAttribute("searchKind", searchKind);
+			request.setAttribute("searchVal", searchVal);
+			
 		} else {
 			view = request.getRequestDispatcher("/views/admin/adminBrand.jsp");
 			request.setAttribute("list", list);
 			request.setAttribute("pi", pi);
-
+			request.setAttribute("searchKind", searchKind);
+			request.setAttribute("searchVal", searchVal);
 		}
 
 		view.forward(request, response);

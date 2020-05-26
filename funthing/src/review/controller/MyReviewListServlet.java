@@ -44,9 +44,9 @@ public class MyReviewListServlet extends HttpServlet {
 		
 		rvList = rvs.reviewSelect(mNo);
 //		
-//		for(int i = 0; i < rvList.size(); i ++) {
-//			System.out.println(rvList.get(i));
-//		}
+		for(int i = 0; i < rvList.size(); i ++) {
+			System.out.println("ser : " + rvList.get(i));
+		}
 		
 		RequestDispatcher view = null;
 		if(!rvList.isEmpty()) {

@@ -107,6 +107,14 @@ String search =(String)request.getAttribute("search");
                       $("#shoppingbagForm").attr("action", "<%=request.getContextPath()%>/admin/NoticeView");
                           $("#shoppingbagForm").submit();
                     }
+                  
+                  $("#checkall").click(function(){
+                      if($("#checkall").prop("checked")){
+                          $("input[name=nNo]").prop("checked",true);
+                      }else{
+                          $("input[name=nNo]").prop("checked",false);
+                      }
+                  })
            </script>
              <div class="pageinArea" align="center">
             <%

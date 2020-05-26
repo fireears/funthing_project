@@ -15,7 +15,7 @@ public class OrderList {
 	private String prcsStatus;	// 주문상태
 	private String mId;			// 회원아이디
 	private Date oDate;			// 주문날짜
-	private String mNo;		// 회원번호
+	private String mNo;			// 회원번호
 	
 	public OrderList() {
 		super();

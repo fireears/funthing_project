@@ -18,21 +18,18 @@ String search =(String)request.getAttribute("search");
     <head>
         <script src = "../js/jquery-3.4.1.min.js"></script>
         <style>
-            #noticeArea{margin: auto; width: 90%;}
-            h3{font-weight:bold; font-size: 40px;}
-            #search{width: 500px; height: 30px; border: 1px solid black; border-radius: 7px; margin-right: 30px;}
-            #searchBtn{height: 33px; width: 80px; border: 0px; border-radius: 7px; background-color: gray; color: white;}
-            #noticelistArea{width: 100%; margin-top: 40px; /*border: 1px solid rgb(208, 206, 206);*/ border-collapse: collapse;}
-            #noticelistArea>tbody>tr{border-bottom: 2px solid black; height: 30px;}
-            #noticelistArea>tbody>tr>td{text-align: center;}
-            #noticelistArea>tbody:first-child{height: 80px;}
+        /* 0f4a7e */
+            #noticeArea{ margin: 0 auto; width: 100%; }
+            #noticeArea h3 { border-top:1px solid #ddd; border-bottom:1px solid #ddd; padding-left:20px; box-sizing:border-box; line-height:96px; color:#0f4a7e; margin-bottom:60px; }
+            #noticeArea table { border-bottom:2px solid #0f4a7e; border-top:2px solid #0f4a7e; line-height:3; text-align:center; }
+            #noticeArea table tr { border-bottom:1px solid #ddd; } 
+            #noticeArea table tr:first-child { border-bottom:1px solid #0f4a7e; }
+            #noticeArea table tr:last-child { border-bottom:0; }
             
-            .pageBtn{margin-top: 10px;}
-            .pageBtn>button{border: 0px; width: 30px; height: 30px; font-weight: 600; size: 10px;}
-            .hansol{width: 100%; height: 150px; background-color:cornsilk; display: none;}
-            tr{width: 100%;}
-            #reviewcontents{float: left; margin-right: 50px;}
-            .cont{ display:none;}
+            #noticeArea form  { margin:20px 0; text-align:right; }
+            #noticeArea form input { margin:0; height:28px; }
+            #searchBtn { height:30px; background:#ddd; border:1px solid #aaa; }
+            #noticeArea .pageinArea button { background:#fff; border:0; }
         </style>
         
 
@@ -52,14 +49,15 @@ String search =(String)request.getAttribute("search");
     
         <section id="noticeArea">
             <h3>REVIEW Search</h3>
-            <form  method="GET" action="<%=request.getContextPath()%>/admin/NoticeView">
-            <input type="text" id="search" name="noticeSearch"  placeholder="검색어를 입력해주세요"> <input type="submit" id="searchBtn" value="SEARCH">
-            
             
             <table id="noticelistArea">
                 <tbody>
                     <tr class="noticehead">
-                        <th>회원번호</th> <th>제목</th> <th>상품번호</th> <th>날짜</th> <th>RATE</th>
+                        <th>회원번호</th>
+                        <th>제목</th>
+                        <th>상품번호</th>
+                        <th>날짜</th>
+                        <th>RATE</th>
                     </tr>
 
                  
@@ -91,12 +89,18 @@ String search =(String)request.getAttribute("search");
                    }%>
                 </tbody>
             </table>
-            </form>
             <script>
                   $("table .noticelist .noticelists").click(function(){
                 $(this).parent().next().toggle();
                   });
            </script>
+           
+           
+            <form  method="GET" action="<%=request.getContextPath()%>/admin/NoticeView">
+            	<input type="text" id="search" name="noticeSearch"  placeholder="검색어를 입력해주세요"> <input type="submit" id="searchBtn" value="SEARCH">
+            
+            </form>
+           
              <div class="pageinArea" align="center">
             <%
             if(search ==null){

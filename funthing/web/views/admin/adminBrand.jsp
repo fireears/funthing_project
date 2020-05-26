@@ -21,6 +21,8 @@
 	String deleteMsg = (String)request.getAttribute("deleteMsg");
 	String insertMsg = (String)request.getAttribute("insertMsg");
 
+	String searchKind = (String)request.getAttribute("searchKind");
+	String searchVal = (String)request.getAttribute("searchVal");
 	
 %>
 
@@ -217,7 +219,7 @@
 		<div class="pagingArea" align="center">
 		
 			<!-- 맨 처음으로 -->
-			<button onclick="location.href='<%=request.getContextPath() %>/admin/brandServlet?currntPage=1'"> << </button>
+			<button onclick="location.href='<%=request.getContextPath() %>/admin/brandServlet?currntPage=1&searchKind=<%=searchKind%>&searchVal=<%=searchVal%>"> << </button>
 		
 		
 			<!-- 이전 페이지로 -->
@@ -225,7 +227,7 @@
 				<button disabled> < </button>
 		
 			<%}else{ %>
-				<button onclick="location.href='<%=request.getContextPath() %>/admin/brandServlet?currentPage=<%=currentPage -1 %>'"> < </button>
+				<button onclick="location.href='<%=request.getContextPath() %>/admin/brandServlet?currentPage=<%=currentPage -1 %>&searchKind=<%=searchKind%>&searchVal=<%=searchVal%>'"> < </button>
 			<%} %>
 		
 		
@@ -235,7 +237,7 @@
 					<button disabled><%=p %></button>
 					
 				<%}else{ %>
-					<button onclick="location.href='<%=request.getContextPath() %>/admin/brandServlet?currentPage=<%=p %>'"><%=p %></button>
+					<button onclick="location.href='<%=request.getContextPath() %>/admin/brandServlet?currentPage=<%=p %>&searchKind=<%=searchKind%>&searchVal=<%=searchVal%>'"><%=p %></button>
 				<%} %>
 			<%} %>
 			
@@ -244,12 +246,12 @@
 			<%if(currentPage == maxPage){ %>
 				<button disabled> > </button>
 			<%}else{ %>
-				<button onclick="location.href='<%=request.getContextPath() %>/admin/brandServlet?currentPage=<%=currentPage + 1 %>'"> > </button>
+				<button onclick="location.href='<%=request.getContextPath() %>/admin/brandServlet?currentPage=<%=currentPage + 1 %>&searchKind=<%=searchKind%>&searchVal=<%=searchVal%>'"> > </button>
 			<%} %>
 		
 		
 			<!-- 맨 뒷 페이지로  -->
-			<button onclick="location.href='<%=request.getContextPath() %>/admin/brandServlet?currentPage=<%=maxPage %>'"> >> </button>
+			<button onclick="location.href='<%=request.getContextPath() %>/admin/brandServlet?currentPage=<%=maxPage %>&searchKind=<%=searchKind%>&searchVal=<%=searchVal%>'"> >> </button>
 		
 	</div>
 	
