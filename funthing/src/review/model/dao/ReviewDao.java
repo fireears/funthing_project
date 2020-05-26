@@ -211,5 +211,58 @@ public class ReviewDao {
 		return rvListView;
 	}
 
+	public ArrayList<Review> reviewSelect(Connection conn, String mNo) {
+		ArrayList<Review> rvList = new ArrayList<>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String query = "SELECT ROWNUM RN, M_NAME, REV_TITLE, P_NO, REV_CONTENTS, REV_DATE, VIEWS_NUM, RATE, REV_PIC_DIR FROM REVIEW R JOIN MEMBER M ON(R.M_NO = M.M_NO) WHERE R.M_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setString(1, mNo);
+
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Review rv = new Review(
+						rs.getString("REV_TITLE"),
+						rs.getString("P_NO"),
+						rs.getString("REV_CONTENTS"),
+						rs.getString("REV_DATE"),
+						rs.getInt("VIEWS_NUM"),
+						rs.getInt("RATE"),
+						rs.getString("REV_PIC_DIR"),
+						rs.getString("M_NAME"),
+						rs.getInt("RN"));
+				
+				rvList.add(rv);
+			}
+
+			// 받아준 rate 숫자형을 문자형으로 변경
+			for(int i = 0; i < rvList.size(); i ++) {
+				switch(rvList.get(i).getRate()) {
+					case 1 : rvList.get(i).setRateStar("★☆☆☆☆"); break;
+					case 2 : rvList.get(i).setRateStar("★★☆☆☆"); break;
+					case 3 : rvList.get(i).setRateStar("★★★☆☆"); break;
+					case 4 : rvList.get(i).setRateStar("★★★★☆"); break;
+					case 5 : rvList.get(i).setRateStar("★★★★★"); break;
+				}
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rs);
+		}
+		
+		return rvList;
+	}
+
 
 }
