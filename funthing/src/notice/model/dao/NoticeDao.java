@@ -82,6 +82,7 @@ public class NoticeDao {
 			pstmt.setInt(1, startRow);
 			pstmt.setInt(2, endRow);
 			ResultSet rs = pstmt.executeQuery();
+			
 			while(rs.next()) {
 				Notice nt = new Notice(rs.getInt("N_NO"), rs.getString("N_TITLE"), rs.getString("N_CONTENTS"),rs.getString("N_DATE"),rs.getString("N_DEL_YN"));	
 				al.add(nt);
@@ -150,10 +151,11 @@ public class NoticeDao {
 				String query = "SELECT COUNT(*) FROM NOTICE  WHERE N_TITLE LIKE '%"+search+"%'";
 				stmt =conn.createStatement();
 				rset=stmt.executeQuery(query);
+				
 				if(rset.next()) {
 					noticeCount = rset.getInt(1);
 				}
-				
+		
 			}else {
 				String query = "SELECT COUNT(*) FROM NOTICE";
 				stmt =conn.createStatement();
