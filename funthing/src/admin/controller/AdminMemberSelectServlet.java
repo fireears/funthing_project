@@ -53,7 +53,7 @@ public class AdminMemberSelectServlet extends HttpServlet {
 			request.setAttribute("mon", mon);
 			request.setAttribute("day", day);
 		}else {
-			view = request.getRequestDispatcher("/views/login/fail.jsp");
+			view = request.getRequestDispatcher("/views/admin/adminMember.jsp");
 			request.setAttribute("msg", "회원조회에 실패");
 		}
 		view.forward(request, response);

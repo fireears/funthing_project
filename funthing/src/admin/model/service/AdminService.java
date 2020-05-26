@@ -61,13 +61,13 @@ public class AdminService {
 	}
 
 	// 주문관리 페이지_혜린	
-	public int getOrderListCount() {
+	public int getOrderListCount(String searchKind, String searchText) {
 
 		Connection conn = getConnection();
 		
 		AdminDao aDao = new AdminDao();
 		
-		int listCount = aDao.getOrderListCount(conn);
+		int listCount = aDao.getOrderListCount(conn, searchKind,searchText);
 		
 		close(conn);
 		
@@ -489,7 +489,7 @@ public class AdminService {
 			return list;
 		}
 		//공지사항 삭제 페이지 한솔 
-		public int deleteNotice(String nNo) {
+		public int deleteNotice(String[] nNo) {
 			Connection conn = getConnection();
 			
 			int result = new AdminDao().deleteNotice(conn, nNo);

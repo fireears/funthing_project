@@ -124,9 +124,10 @@ public class AdminDao {
 			pstmt.setInt(1, startRow);
 			pstmt.setInt(2, endRow);
 		}else if(searchKind != null && searchText != null) {
-			query = "SELECT * FROM ORDER_INFO WHERE "+searchKind+"= ?";
+			/* query = "SELECT * FROM ORDER_INFO WHERE "+searchKind+"= ?"; */
+			query = "select * from order_info where "+searchKind+" like '%"+searchText+"%'";
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, searchText);			
+			/* pstmt.setString(1, searchText); */		
 		}
 			
 			rset = pstmt.executeQuery();
@@ -156,13 +157,18 @@ public class AdminDao {
 	}
 
 	// 주문관리 페이지_혜린	
-	public int getOrderListCount(Connection conn) {
+	public int getOrderListCount(Connection conn, String searchKind, String searchText) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
 		int listCount = 0;
+		String query = null;
+		if(searchText == null && searchKind == null ) {
+			query  = "SELECT COUNT(*) FROM ORDER_INFO";			
+		}else {
+			query = "select count(*) from order_info where "+searchKind+" like '%"+searchText+"%'";
+		}
 		
-		String query = "SELECT COUNT(*) FROM ORDER_INFO";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -243,9 +249,10 @@ public class AdminDao {
 				pstmt = conn.prepareStatement(query);
 				rset =  pstmt.executeQuery();
 			}else if(searchKind != null && searchText != null) {
-				String query = "SELECT COUNT(*) FROM QNA WHERE "+searchKind+"= ?";
+				String query = "SELECT COUNT(*) FROM QNA q join member m on q.m_no = m.m_no join product p on p.p_no = q.p_no2 WHERE "+searchKind+" like '%"+ searchText +"%'";
+				
 				pstmt = conn.prepareStatement(query);
-				pstmt.setString(1, searchText);
+				/* pstmt.setString(1, searchText); */
 				rset =  pstmt.executeQuery();
 			}
 			
@@ -284,7 +291,7 @@ public class AdminDao {
 			String query = null;
 			
 			if(searchKind == null && searchText == null ) {	
-				query = "select QNA_NO, M_ID, M_NAME,P_NO2,p_name ,QNA_TITLE, QNA_CONTENTS, QNA_DATE ,RE_YN	"
+				query = "select rnum, QNA_NO, M_ID, M_NAME,P_NO2,p_name ,QNA_TITLE, QNA_CONTENTS, QNA_DATE ,RE_YN	"
 						+ "from (select QNA_NO, M_ID, M_NAME,P_NO2,p_name ,QNA_TITLE, QNA_CONTENTS, QNA_DATE ,RE_YN, rownum as rnum FROM QNA Q JOIN member M ON Q.M_NO = M.M_NO join product p on q.p_no2 = p.p_no) "
 						+ "where rnum  BETWEEN ? AND ? ";
 						
@@ -292,20 +299,21 @@ public class AdminDao {
 				pstmt.setInt(1, startRow);
 				pstmt.setInt(2, endRow);
 			}else if(searchKind != null && searchText.equals("")) {
-				query = "select QNA_NO, M_ID, M_NAME,P_NO2,p_name ,QNA_TITLE, QNA_CONTENTS, QNA_DATE ,RE_YN	"
+				query = "select rnum, QNA_NO, M_ID, M_NAME,P_NO2,p_name ,QNA_TITLE, QNA_CONTENTS, QNA_DATE ,RE_YN	"
 						+ "from (select QNA_NO, M_ID, M_NAME,P_NO2,p_name ,QNA_TITLE, QNA_CONTENTS, QNA_DATE ,RE_YN, rownum as rnum FROM QNA Q JOIN member M ON Q.M_NO = M.M_NO join product p on q.p_no2 = p.p_no) "
 						+ "where rnum  BETWEEN ? AND ? ";
 				pstmt = conn.prepareStatement(query);
 				pstmt.setInt(1, startRow);
 				pstmt.setInt(2, endRow);
 			}else if(searchKind != null && searchText != null) {
-				query ="select QNA_NO, M_ID, M_NAME,P_NO2,p_name ,QNA_TITLE, QNA_CONTENTS, QNA_DATE ,RE_YN	"
-						+ "from (select QNA_NO, M_ID, M_NAME,P_NO2,p_name ,QNA_TITLE, QNA_CONTENTS, QNA_DATE ,RE_YN, rownum as rnum FROM QNA Q JOIN member M ON Q.M_NO = M.M_NO join product p on q.p_no2 = p.p_no where " + searchKind + " = ?)"
+				query ="select rnum, QNA_NO, M_ID, M_NAME,P_NO2,p_name ,QNA_TITLE, QNA_CONTENTS, QNA_DATE ,RE_YN	"
+						+ "from (select QNA_NO, M_ID, M_NAME,P_NO2,p_name ,QNA_TITLE, QNA_CONTENTS, QNA_DATE ,RE_YN, rownum as rnum FROM QNA Q JOIN member M ON Q.M_NO = M.M_NO join product p on q.p_no2 = p.p_no where "+searchKind+" like '%"+ searchText +"%')"
 						+ "where rnum  BETWEEN ? AND ? ";
 				pstmt = conn.prepareStatement(query);
-				pstmt.setString(1, searchText);	
-				pstmt.setInt(2, startRow);
-				pstmt.setInt(3, endRow);
+				/* pstmt.setString(1, searchText); */
+				/* pstmt.setString(1, searchKind); */
+				pstmt.setInt(1, startRow);
+				pstmt.setInt(2, endRow);
 			}
 			
 			
@@ -313,7 +321,7 @@ public class AdminDao {
 			
 			while(rset.next()) {
 				apq = new AdminProductQnA(
-						
+						rset.getInt("rnum"),
 						rset.getInt("QNA_NO"),
 						rset.getString("M_ID"),
 						rset.getString("M_NAME"),
@@ -739,7 +747,7 @@ public class AdminDao {
 			if(searchKind == null && searchText == null ) {	
 				query= "select rnum,PER_QNA_NO,m_id,m_name,PER_TITLE,PER_CONTENTS, P_NO,p_name,PER_RE_YN,ADDFILE,O_NO,PER_CATE "+
 						"from (select PER_QNA_NO,m_id,m_name,PER_TITLE,PER_CONTENTS, pq.P_NO,p_name,PER_RE_YN,ADDFILE,O_NO,PER_CATE, rownum as rnum from personal_qna pq join member m on pq.m_no = m.m_no join product p on pq.p_no = p.p_no ) "+
-						"where rnum  BETWEEN ? AND ?  order by rnum";
+						"where rnum  BETWEEN ? AND ? ";
 
 						
 				pstmt = conn.prepareStatement(query);
@@ -747,21 +755,21 @@ public class AdminDao {
 				pstmt.setInt(2, endRow);
 			}else if(searchKind != null && searchText.equals("")) {
 				query= "select rnum,PER_QNA_NO,m_id,m_name,PER_TITLE,PER_CONTENTS, P_NO,p_name,PER_RE_YN,ADDFILE,O_NO,PER_CATE "+
-						"from (select PER_QNA_NO,m_id,m_name,PER_TITLE,PER_CONTENTS, pq.P_NO,p_name,PER_RE_YN,ADDFILE,O_NO,PER_CATE, rownum as rnum from personal_qna pq join member m on pq.m_no = m.m_no join product p on pq.p_no = p.p_no ) "+
-						"where rnum  BETWEEN ? AND ?  order by rnum";
+						"from (select PER_QNA_NO,m_id,m_name,PER_TITLE,PER_CONTENTS, pq.P_NO,p_name,PER_RE_YN,ADDFILE,O_NO,PER_CATE, rownum as rnum from personal_qna pq join member m on pq.m_no = m.m_no join product p on pq.p_no = p.p_no  ) "+
+						"where rnum  BETWEEN ? AND ? ";
 				pstmt = conn.prepareStatement(query);
 				pstmt.setInt(1, startRow);
 				pstmt.setInt(2, endRow);
 			}else if(searchKind != null && searchText != null) {
 				query = "select rnum,PER_QNA_NO,m_id,m_name,PER_TITLE,PER_CONTENTS, P_NO,p_name,PER_RE_YN,ADDFILE,O_NO,PER_CATE "+
-						"from (select PER_QNA_NO,m_id,m_name,PER_TITLE,PER_CONTENTS, pq.P_NO,p_name,PER_RE_YN,ADDFILE,O_NO,PER_CATE, rownum as rnum from personal_qna pq join member m on pq.m_no = m.m_no join product p on pq.p_no = p.p_no where " +searchKind +"= ?) "+
-						"where rnum  BETWEEN ? AND ?  order by rnum";
+						"from (select PER_QNA_NO,m_id,m_name,PER_TITLE,PER_CONTENTS, pq.P_NO,p_name,PER_RE_YN,ADDFILE,O_NO,PER_CATE, rownum as rnum from personal_qna pq join member m on pq.m_no = m.m_no join product p on pq.p_no = p.p_no where " +searchKind +" like '%"+searchText+"%'  ) "+
+						"where rnum  BETWEEN ? AND ? ";
 
 				pstmt = conn.prepareStatement(query);
 				/* pstmt.setString(1, searchKind); */
-				 pstmt.setString(1, searchText);  
-				pstmt.setInt(2, startRow);
-				pstmt.setInt(3, endRow);
+				/* pstmt.setString(1, searchText); */  
+				pstmt.setInt(1, startRow);
+				pstmt.setInt(2, endRow);
 				
 			}
 			
@@ -770,7 +778,7 @@ public class AdminDao {
 			
 			while(rset.next()) {
 				pq = new AdmimPersonalQna(
-						
+						rset.getInt("rnum"),
 						rset.getInt("PER_QNA_NO"),
 						rset.getString("m_id"),
 						rset.getString("m_name"),
@@ -848,38 +856,48 @@ public class AdminDao {
 		
 		try {
 			if(userName == null && userId == null ) {	
-				query= "SELECT RNUM, M_NO, M_ID, M_NAME, B_DAY, M_EMAIL, M_TELL, JOIN_DATE, REFERENCE, ALARM_YN, GRADE_CODE, M_POINT, H_POINT, STATUS_YN FROM MEMBERLIST WHERE RNUM BETWEEN ? AND ?";
-						
+				query= " select RNUM, M_NO, M_ID, M_NAME, B_DAY, M_EMAIL, M_TELL, JOIN_DATE, REFERENCE, ALARM_YN, GRADE_CODE, M_POINT, H_POINT, STATUS_YN "
+						+ " from( SELECT rownum rrr, RNUM, M_NO, M_ID, M_NAME, B_DAY, M_EMAIL, M_TELL, JOIN_DATE, REFERENCE, ALARM_YN, GRADE_CODE, M_POINT, H_POINT, STATUS_YN " 
+						+ " FROM MEMBERLIST)"
+						+ " where rrr BETWEEN ? AND ? ";
 				pstmt = conn.prepareStatement(query);
 				pstmt.setInt(1, startRow);
 				pstmt.setInt(2, endRow);
 			}
 			else if(userName == "" && userId== "") {
-				query= "SELECT RNUM, M_NO, M_ID, M_NAME, B_DAY, M_EMAIL, M_TELL, JOIN_DATE, REFERENCE, ALARM_YN, GRADE_CODE, M_POINT, H_POINT, STATUS_YN FROM MEMBERLIST WHERE RNUM BETWEEN ? AND ?";
-				
+				query= " select RNUM, M_NO, M_ID, M_NAME, B_DAY, M_EMAIL, M_TELL, JOIN_DATE, REFERENCE, ALARM_YN, GRADE_CODE, M_POINT, H_POINT, STATUS_YN "
+						+ " from( SELECT rownum rrr, RNUM, M_NO, M_ID, M_NAME, B_DAY, M_EMAIL, M_TELL, JOIN_DATE, REFERENCE, ALARM_YN, GRADE_CODE, M_POINT, H_POINT, STATUS_YN " 
+						+ " FROM MEMBERLIST)"
+						+ " where rrr BETWEEN ? AND ? "; 
 				pstmt = conn.prepareStatement(query);
 				pstmt.setInt(1, startRow);
 				pstmt.setInt(2, endRow);
 			}
 			else if(userName != null && userId == "") {
-				query= "SELECT RNUM, M_NO, M_ID, M_NAME, B_DAY, M_EMAIL, M_TELL, JOIN_DATE, REFERENCE, ALARM_YN, GRADE_CODE, M_POINT, H_POINT, STATUS_YN FROM MEMBERLIST WHERE M_NAME=? AND RNUM BETWEEN ? AND ?";
-				
+				query= " select RNUM, M_NO, M_ID, M_NAME, B_DAY, M_EMAIL, M_TELL, JOIN_DATE, REFERENCE, ALARM_YN, GRADE_CODE, M_POINT, H_POINT, STATUS_YN "
+						+ " from( SELECT rownum rrr, RNUM, M_NO, M_ID, M_NAME, B_DAY, M_EMAIL, M_TELL, JOIN_DATE, REFERENCE, ALARM_YN, GRADE_CODE, M_POINT, H_POINT, STATUS_YN " 
+						+ " FROM MEMBERLIST WHERE M_NAME= ? ) "
+						+ " where rrr BETWEEN ? AND ? "; 
 				pstmt = conn.prepareStatement(query);
 				pstmt.setString(1, userName);
 				pstmt.setInt(2, startRow);
 				pstmt.setInt(3, endRow);
 			}
 			else if(userName == "" && userId != null) {
-				query= "SELECT RNUM, M_NO, M_ID, M_NAME, B_DAY, M_EMAIL, M_TELL, JOIN_DATE, REFERENCE, ALARM_YN, GRADE_CODE, M_POINT, H_POINT, STATUS_YN FROM MEMBERLIST WHERE M_ID=? AND RNUM BETWEEN ? AND ?";
-				
+				query= " select RNUM, M_NO, M_ID, M_NAME, B_DAY, M_EMAIL, M_TELL, JOIN_DATE, REFERENCE, ALARM_YN, GRADE_CODE, M_POINT, H_POINT, STATUS_YN "
+						+ " from( SELECT rownum rrr, RNUM, M_NO, M_ID, M_NAME, B_DAY, M_EMAIL, M_TELL, JOIN_DATE, REFERENCE, ALARM_YN, GRADE_CODE, M_POINT, H_POINT, STATUS_YN " 
+						+ " FROM MEMBERLIST WHERE M_ID= ?) "
+						+ " where rrr BETWEEN ? AND ? "; 
 				pstmt = conn.prepareStatement(query);
 				
 				pstmt.setString(1, userId);
 				pstmt.setInt(2, startRow);
 				pstmt.setInt(3, endRow);
 			}else if(userName != null && userId != null) {
-				query= "SELECT RNUM, M_NO, M_ID, M_NAME, B_DAY, M_EMAIL, M_TELL, JOIN_DATE, REFERENCE, ALARM_YN, GRADE_CODE, M_POINT, H_POINT, STATUS_YN FROM MEMBERLIST WHERE M_NAME=? AND M_ID=? AND RNUM BETWEEN ? AND ?";
-				
+				query= " select RNUM, M_NO, M_ID, M_NAME, B_DAY, M_EMAIL, M_TELL, JOIN_DATE, REFERENCE, ALARM_YN, GRADE_CODE, M_POINT, H_POINT, STATUS_YN "
+						+ " from( SELECT rownum rrr, RNUM, M_NO, M_ID, M_NAME, B_DAY, M_EMAIL, M_TELL, JOIN_DATE, REFERENCE, ALARM_YN, GRADE_CODE, M_POINT, H_POINT, STATUS_YN " 
+						+ " FROM MEMBERLIST WHERE M_NAME= ? AND M_ID = ?) "
+						+ " where rrr BETWEEN ? AND ? "; 
 				pstmt = conn.prepareStatement(query);
 				pstmt.setString(1, userName);
 				pstmt.setString(2, userId);
@@ -1331,9 +1349,9 @@ public class AdminDao {
 				pstmt = conn.prepareStatement(query);
 				rset =  pstmt.executeQuery();
 			}else if(searchKind != null && searchText != null) {
-				String query = "SELECT COUNT(*) FROM PERSONAL_QNA WHERE "+searchKind+"= ?";
+				String query = "SELECT COUNT(*) FROM PERSONAL_QNA WHERE "+searchKind+" like '%"+searchText +"%'";
 				pstmt = conn.prepareStatement(query);
-				pstmt.setString(1, searchText);
+				/* pstmt.setString(1, searchText); */
 				rset =  pstmt.executeQuery();
 			}
 			
@@ -1676,6 +1694,7 @@ public class AdminDao {
 		return list;
 	}
 
+
 	public int deleteNotice(Connection conn, String nNo) {
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -1736,13 +1755,32 @@ public class AdminDao {
 		return blist;
 	}
 	
-	
 
-	
-
-	
-
-	
-	
+	   public int deleteNotice(Connection conn, String nNo[]) {
+		      Statement stmt =null;
+		      int result = 0;
+		      String quary =null;
+		      
+		      
+		      try {
+		          for(int i =0;i<nNo.length;i++) {
+		         stmt=conn.createStatement();
+		         quary = "UPDATE NOTICE SET N_DEL_YN='Y' WHERE N_NO='"+nNo[i]+"'";
+		         
+		         
+		         result += stmt.executeUpdate(quary);
+		          }
+		         
+		         if(result>0) {
+		            conn.commit();
+		         }
+		      } catch (SQLException e) {
+		         e.printStackTrace();
+		      } finally {
+		         close(stmt);
+		      }
+		      
+		      return result;
+		   }
 }
 	

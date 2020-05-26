@@ -82,6 +82,7 @@
                     <th>조회수</th>
                     <th>리뷰 날짜</th>
                 </tr>
+                <%if(!rvList.isEmpty()){ %>
                 <% for(Review rv : rvList){ %>
                 <tr class="rvLine">
                 	<input type="hidden" class="rvNo" name="rvNo" value="<%=rv.getRevNo() %>">
@@ -95,6 +96,12 @@
                     <td><%=rv.getRevDate() %></td>
                 </tr>
                 <%} %>
+                <%}else{ %>
+                <tr>
+                	<td colspan="7">검색 결과가 없습니다.</td>
+                </tr>
+                <%} %>
+                
             </table> 
             <script>
             	$(".rvLine").click(function(){

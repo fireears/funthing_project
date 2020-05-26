@@ -371,7 +371,7 @@
 					<table class="list-tb" id = "list-table">
 						
 						<tr>
-							<th class="tb-zero">번호</th>
+							<!-- <th class="tb-zero">번호</th> -->
 							<th class="tb-first">날짜</th>
 							<th>주문번호</th>
 							<th>상품명/컬러/사이즈</th>
@@ -386,7 +386,7 @@
 							<%-- <input type="hidden" id="listNo" value=<%=ol.getListNo() %>> --%>
 							<input type="hidden" id="userNo" value=<%=loginUser.getmNo()%>>
 							<input type="hidden" id="oNo" value=<%=ol.getO_no()%>>
-							<td class="tb-zero"><%=ol.getrNum()%></td>
+							<%-- <td class="tb-zero"><%=ol.getrNum()%></td> --%>
 							<td class="tb-first"><%=ol.getO_date()%></td>
 							<td ><%=ol.getO_no() %></td>
 							<td><img id="orderImg" src="<%=request.getContextPath()+"/images/thumbnail/" + ol.getThumbnail() + ".jpg" %>"><a href="<%=request.getContextPath()%>/productDateil?pName=<%=ol.getpName() %>"><%=ol.getpName() %>/ <%=ol.getpColor()%> / <%=ol.getpSize() %></td>

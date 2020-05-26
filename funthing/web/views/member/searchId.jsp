@@ -109,7 +109,7 @@
         </form>
         </div>
 		<script>
-		
+		// 회원 정보 없을 시
 		$(function(){
 			
 		 <%if(msg != null){%>
@@ -120,7 +120,7 @@
         
 
         <script>
-        	// 라디오 버튼 선택
+        	// 라디오 버튼 선택(이메일, 휴대폰)
             $('input[type=radio][name=idchk]').on('click',function(){
             var chkValue = $('input[type=radio][name=idchk]:checked').val();
 
@@ -175,7 +175,7 @@
                 $("#pwd").click(function(){
                 	location.href="<%= request.getContextPath()%>/views/member/searchPwd1.jsp";
                 });
-                // 이메일 선택(미완성..)
+                // 이메일 선택
                 $("#selectEmail").change(function(){
                 var sum = $("#email1").val()+$("#selectEmail").val();
                 $("#email1").val(sum);
