@@ -39,6 +39,8 @@ public class AdminMemberListServlet extends HttpServlet {
 		String userName = request.getParameter("userName");	// 아이디 검색 값
 		String userId = request.getParameter("userId");		// 이름 검색 값
 		
+		System.out.println("userName : " + userName);
+		System.out.println("userId : " + userId);
 		if(userName == null || userName.equals("null"))
 			userName = null;
 		if(userId == null || userId.equals("null"))
@@ -88,12 +90,16 @@ public class AdminMemberListServlet extends HttpServlet {
 		RequestDispatcher view = null;
 		if(!list.isEmpty()) {
 			view = request.getRequestDispatcher("/views/admin/adminMember.jsp");
+			request.setAttribute("currentPage", currentPage);
+			request.setAttribute("limit", limit);
 			request.setAttribute("userName", userName);
 			request.setAttribute("userId", userId);
 			request.setAttribute("list", list);
 			request.setAttribute("pi", pi);
 		}else {
 			view = request.getRequestDispatcher("/views/admin/adminMember.jsp");
+			request.setAttribute("currentPage", currentPage);
+			request.setAttribute("limit", limit);
 			request.setAttribute("userName", userName);
 			request.setAttribute("userId", userId);
 			request.setAttribute("list", list);

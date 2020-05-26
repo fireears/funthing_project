@@ -6,7 +6,6 @@
 <%@ page import="java.text.DecimalFormat" %>
 
 <%
-	String msg = (String)request.getAttribute("msg");
 	MemberPoint mp = (MemberPoint)request.getAttribute("mp");
 	ArrayList<OrderUpdate> coList = (ArrayList<OrderUpdate>)request.getAttribute("coList");
 	String userNoM = (String)request.getAttribute("userNoM");
@@ -261,11 +260,6 @@
 	
 	<script>
 	$(function(){
-		
-		 <%if(msg != null){%>
-			alert("<%=msg%>");
-		 <%}%>
-		 
 		 
 		 <%if(muMsg != null){%>
 		 	alert("<%=muMsg%>");

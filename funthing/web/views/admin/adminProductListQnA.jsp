@@ -79,8 +79,8 @@
 			  
 			        <span>
 						 <select id="search_kind" name="searchKind">
-								<option value="m_Id">아이디</option>
-								<option value="p_No2">상품번호</option>
+								<option value="M_ID">아이디</option>
+								<option value="P_NO2">상품번호</option>
 								<option value="RE_YN">답변여부</option>
 					     </select>
 					</span>
@@ -111,7 +111,7 @@
 	            <%for(AdminProductQnA pq : list) {%>  
 	            <tr align="center" class="line">
 	            	<input type="hidden" value="<%=pq.getQnaNo() %>">
-	            	<td><%=pq.getQnaNo() %></td> <td><%=pq.getmId() %></td> <td><%=pq.getpNo() %></td><td><%=pq.getpName()%></td> <td><%=pq.getQnaTitle() %></td> <td><%=pq.getQnaDate() %></td> <td><%=pq.getReYn()%></td> 
+	            	<td><%=pq.getRnum()%></td> <td><%=pq.getmId() %></td> <td><%=pq.getpNo() %></td><td><%=pq.getpName()%></td> <td><%=pq.getQnaTitle() %></td> <td><%=pq.getQnaDate() %></td> <td><%=pq.getReYn()%></td> 
 	            </tr>
 	            <tr class="cont">
 	            	<td colspan="7">

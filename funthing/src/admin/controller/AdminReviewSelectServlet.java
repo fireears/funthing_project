@@ -108,7 +108,9 @@ request.setCharacterEncoding("UTF-8");
 			request.setAttribute("pi", pi);
 			
 		}else {
-			
+			view = request.getRequestDispatcher("/views/admin/adminReviewList.jsp");
+			request.setAttribute("rvList", rvList);
+			request.setAttribute("pi", pi);
 		}
 		view.forward(request, response);
 	}

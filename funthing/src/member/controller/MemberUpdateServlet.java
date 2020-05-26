@@ -41,14 +41,14 @@ public class MemberUpdateServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String phone = request.getParameter("phone");
 		String birth = request.getParameter("year") + request.getParameter("mon") + request.getParameter("day");
-		System.out.println("mNo : " + mNo);
+//		System.out.println("mNo : " + mNo);
 		// 추천인 X
-		System.out.println(birth);
+//		System.out.println(birth);
 		
 		Member m = new Member(userId, userName, email, phone, birth, mNo);
 		
 		int result = new MemberService().updateMember(m);
-		System.out.println("회원 정보 수정 Servlet에서 update 결과 : " + result);
+//		System.out.println("회원 정보 수정 Servlet에서 update 결과 : " + result);
 		
 		RequestDispatcher view = null;
 		

@@ -311,15 +311,19 @@
             
     <%@ include file="../common/footer.jsp" %>
         <script>
+        	// 취소 버튼
         	function cancle(){
         		location.href="<%=request.getContextPath()%>/myPageMainServlet?userNoM=<%=member.getmNo()%>";
         	}
+        	
         	$(function(){
-        		
-        			$("#year").val("<%=year%>").prop("selected",true);
-        			$("#mon").val("<%=mon%>").prop("selected",true);
-        			$("#day").val("<%=day%>").prop("selected",true);
-        			
+       			
+        		// 생년월일
+       			$("#year").val("<%=year%>").prop("selected",true);
+       			$("#mon").val("<%=mon%>").prop("selected",true);
+       			$("#day").val("<%=day%>").prop("selected",true);
+       			
+       			// 아이디 정규화
 	            $("#userid").change(function(){
 	                    var value = $("#userid").val();
 	                    var reg = /^[a-z0-9]{4,12}$/;
@@ -328,45 +332,54 @@
 	                        $("#userid").focus().val('');
 	                    }
 	                });
-	                $("#userpwd").change(function(){
-	                    var value = $("#userpwd").val();
-	                    var reg = /^[a-z0-9]{6,18}$/;
-	                    if(!reg.test(value)){
-	                        alert("영문자와 숫자로 6글자 이상 12글자 이하여야 합니다.");
-	                        $("#userpwd").focus().val('');
-	                    }
-	                });
-	                $("#pwd_check").change(function(){
-	                    var pw1 = $("#userpwd").val();
-	                    var pw2 = $("#pwd_check").val();
-	                    
-	                    if(pw1 == pw2){
-	                        $("#pwd_check").val();
-	                    }else{
-	                        alert("비밀번호가 일치하지 않습니다.");
-	                        $("#pwd_check").focus().val('');
-	                    }
-	                });
-	                $("#username").change(function(){
-	                    var value = $("#username").val();
-	                    var reg = /^[가-힣]{2,4}$/;
-	                    
-	                    if(!reg.test(value)){
-	                        alert("한글로 2글자 이상 입력해주세요.");
-	                        $("#username").focus().val('');
-	                    }
-	                });
-	                $("#phone").change(function(){
-	                    var value = $("#phone").val();
-	                    var reg = /^[0-9]{11}$/;
-	                    
-	                    if(!reg.test(value)){
-	                        alert("-를 제외한 숫자만을 입력해 주세요.");
-	                        $("#phone").focus().val('');
-	                    }
-	                });
+       			
+       			// 비밀번호 정규화
+                $("#userpwd").change(function(){
+                    var value = $("#userpwd").val();
+                    var reg = /^[a-z0-9]{6,18}$/;
+                    if(!reg.test(value)){
+                        alert("영문자와 숫자로 6글자 이상 12글자 이하여야 합니다.");
+                        $("#userpwd").focus().val('');
+                    }
+                });
+       			
+       			// 비밀번호 확인
+                $("#pwd_check").change(function(){
+                    var pw1 = $("#userpwd").val();
+                    var pw2 = $("#pwd_check").val();
+                    
+                    if(pw1 == pw2){
+                        $("#pwd_check").val();
+                    }else{
+                        alert("비밀번호가 일치하지 않습니다.");
+                        $("#pwd_check").focus().val('');
+                    }
+                });
+       			
+       			// 이름
+                $("#username").change(function(){
+                    var value = $("#username").val();
+                    var reg = /^[가-힣]{2,4}$/;
+                    
+                    if(!reg.test(value)){
+                        alert("한글로 2글자 이상 입력해주세요.");
+                        $("#username").focus().val('');
+                    }
+                });
+       			
+       			// 휴대폰
+                $("#phone").change(function(){
+                    var value = $("#phone").val();
+                    var reg = /^[0-9]{11}$/;
+                    
+                    if(!reg.test(value)){
+                        alert("-를 제외한 숫자만을 입력해 주세요.");
+                        $("#phone").focus().val('');
+                    }
+                });
 	                
         	});
+        	
         	 // ajax!
                 $(function(){
                 	// 중복체크 버튼에 대해 ajax처리

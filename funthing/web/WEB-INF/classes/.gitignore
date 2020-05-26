@@ -1,7 +1,6 @@
-/payment/
-/personalQnA/
-/product/
-/productQnA/
-/review/
-/women/
-/wrapper/
+/web/
+/src/
+/.classpath
+/.gitignore
+/.project
+/.settings/

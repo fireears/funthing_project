@@ -76,6 +76,8 @@
 
 
 	<script>
+	
+		// 아이디 
          $("#userid").change(function(){
                     var value = $("#userid").val();
                     var reg = /^[a-z0-9]{4,12}$/;
@@ -84,18 +86,22 @@
                         $("#userid").focus().val('');
                     }
          });
+		
+		// 비밀번호 변경 성공 시
          $(function(){
          <%if(msg != null){%>
 			alert("<%=msg%>");
 		 <%}%>
         	 
          });
+         // 인증 실패 시
          $(function(){
              <%if(msg1 != null){%>
     			alert("<%=msg1%>");
     		 <%}%>
             	 
              });
+         // 비밀번호 변경 실패 시
          $(function(){
              <%if(msg2 != null){%>
     			alert("<%=msg2%>");

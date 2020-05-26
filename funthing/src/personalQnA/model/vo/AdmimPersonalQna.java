@@ -10,7 +10,7 @@ public class AdmimPersonalQna implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -8816689732882316776L;
-		 
+		private int rnum;
 		private int perQnaNo;			// 1:1문의 게시판 번호
 		private String perTitle;		// 게시판  제목
 		private String perContents;		// 게시판 내용
@@ -46,10 +46,10 @@ public class AdmimPersonalQna implements Serializable{
 		}
 
 		// 상품문의 관리자 페이지_혜린
-		public AdmimPersonalQna(int perQnaNo, String mId, String mName,String perTitle, String perContents, String pNo, String pName, 
+		public AdmimPersonalQna(int rnum, int perQnaNo, String mId, String mName,String perTitle, String perContents, String pNo, String pName, 
 				String perReYn, String addFile, String oNo, String perCate) {
 			super();
-			
+			this.rnum = rnum;
 			this.perQnaNo = perQnaNo;
 			this.mName = mName;
 			this.perTitle = perTitle;
@@ -65,6 +65,14 @@ public class AdmimPersonalQna implements Serializable{
 
 		
 	
+
+		public int getRnum() {
+			return rnum;
+		}
+
+		public void setRnum(int rnum) {
+			this.rnum = rnum;
+		}
 
 		public int getPerQnaNo() {
 			return perQnaNo;
