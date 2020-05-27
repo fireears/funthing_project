@@ -286,7 +286,7 @@
     
                             <hr>
                             <br clear="both">
-                            <div style="text-align: left;">
+                            <div class="checkArea" style="text-align: left;">
                                 <input type="checkbox" name="" id="">전체 동의합니다.<br>
                                 <input type="checkbox" name="" id="">구매하실 상품의 결제정보를 확인하였으며, 구매진행에 동의합니다.(필수)<br>
                                 <input type="checkbox" name="" id="">상품 공급사 개인정보 제공 동의에 대한 내용을 확인 하였으며 이에 동의 합니다.(필수)<br>
@@ -307,6 +307,15 @@
    
    <script>
       $(function(){
+    	  // 전체 동의시 나머지  체크박스 체크
+    	  $(".checkArea input:eq(0)").click(function(){
+    		  if($(".checkArea input:eq(0)").is(":checked")){
+    			  $(".checkArea input").prop("checked", true);
+    		  }else{
+    			  $(".checkArea input").prop("checked", false);
+    		  }
+    		  
+    	  });
          
          var IMP=window.IMP;
          IMP.init('imp33962000');   

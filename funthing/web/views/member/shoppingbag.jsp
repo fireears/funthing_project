@@ -29,7 +29,7 @@
 
             #shippingWrap .s_table tr th:nth-child(2) { width:60%; }
 
-            #shippingWrap .s_table tr td { padding:6px 0; }
+            #shippingWrap .s_table tr td { padding:6px 0; vertical-align:middle; }
             #shippingWrap .s_table tr td:nth-child(1) { width:5%; }
             #shippingWrap .s_table tr td:nth-child(2) { width:20%; }
             #shippingWrap .s_table tr td:nth-child(3) { width:40%; text-align: left; }
