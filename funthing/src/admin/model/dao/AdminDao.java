@@ -1016,7 +1016,7 @@ public class AdminDao {
 	}
 
 
-//	public ArrayList<Product> Productsearch(Connection conn, Product p) {
+
 	public ArrayList<Product> Productsearch(Connection conn, Product p, int currentPage, int limit) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -1026,17 +1026,7 @@ public class AdminDao {
 		
 		int startRow = (currentPage - 1)*limit +1;
 		int endRow = startRow + limit -1;
-		
-		String pNo = p.getpNo();
-		String bNo = p.getbNo();
-		int sNo = p.getsNo();
 		String pName = p.getpName();
-		int pCategory = p.getpCategory();
-		int pPrice = p.getpPrice();
-		Date fStartDate = p.getfStartDate();
-		Date fEndDate = p.getfEndDate();
-		String fYn = p.getfYn();
-		
 
 		String query = "SELECT RNUM, P_NO, B_NO, S_NO, P_NAME, P_CATEGORY, RETAIL_PRICE, DC_RATE, P_PRICE, F_YN, F_START_DATE, F_END_DATE\r\n" + 
 						"FROM(\r\n" + 
@@ -1052,15 +1042,14 @@ public class AdminDao {
 		
 		try {
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, pNo);
-			pstmt.setString(2, bNo);
-//			pstmt.setString(3, pName);
-			pstmt.setInt(3, sNo);
-			pstmt.setInt(4, pCategory);
-			pstmt.setInt(5, pPrice);
-			pstmt.setString(6, fYn);
-			pstmt.setDate(7, fStartDate);
-			pstmt.setDate(8, fEndDate);
+			pstmt.setString(1, p.getpNo());
+			pstmt.setString(2, p.getbNo());
+			pstmt.setInt(3, p.getsNo());
+			pstmt.setInt(4, p.getpCategory());
+			pstmt.setInt(5, p.getpPrice());
+			pstmt.setString(6, p.getfYn());
+			pstmt.setDate(7, p.getfStartDate());
+			pstmt.setDate(8, p.getfEndDate());
 			pstmt.setInt(9, startRow);
 			pstmt.setInt(10, endRow);
 			

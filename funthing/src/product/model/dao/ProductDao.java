@@ -86,10 +86,7 @@ public class ProductDao {
 		
 		//누적판매금액으로 best뽑아냄
 		String query = prop.getProperty("bestSelectProduct");
-//		String query = "SELECT THUMBNAIL, P_NAME, P_PRICE, F_START_DATE, F_END_DATE, F_SEL_PRICE\r\n" + 
-//						"FROM PRODUCT\r\n" + 
-//						"GROUP BY THUMBNAIL, P_NAME, P_PRICE, F_START_DATE, F_END_DATE, F_SEL_PRICE\r\n" + 
-//						"ORDER BY F_SEL_PRICE DESC";
+
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -124,11 +121,7 @@ public class ProductDao {
 		Product p = null;
 		
 		String query = prop.getProperty("closeSelectProduct");
-//		String query = "SELECT THUMBNAIL, P_NAME, P_PRICE, F_START_DATE, F_END_DATE\r\n" + 
-//						"FROM PRODUCT\r\n" + 
-//						"WHERE F_END_DATE > SYSDATE\r\n" + 
-//						"GROUP BY THUMBNAIL, P_NAME, P_PRICE, F_START_DATE, F_END_DATE\r\n" + 
-//						"ORDER BY 5 ASC";
+
 		
 		try {
 			pstmt = conn.prepareStatement(query);

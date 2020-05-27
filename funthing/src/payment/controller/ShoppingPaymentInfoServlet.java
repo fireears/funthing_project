@@ -54,17 +54,11 @@ public class ShoppingPaymentInfoServlet extends HttpServlet {
          p = new ShoppingPayment(arrPno[i], arrNumber[i]);
          
          list.add(p);
-      }
-      System.out.println("------------------------------");
-      
+      }      
       
       resultList = pService.searchProducts(list);
       m = new MemberService().paymentMemberSearch(userNo);
       
-      for(ShoppingPayment sp : resultList)
-      {
-         System.out.println(sp);
-      }
       System.out.println(m);
       RequestDispatcher view = null;
       if(!resultList.isEmpty())

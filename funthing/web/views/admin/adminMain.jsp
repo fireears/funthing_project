@@ -209,15 +209,12 @@
 	        	<%} else { %>
 	        		<button onclick="location.href='<%=request.getContextPath() %>/admin/mainView?currentPage=<%=currentPage+1 %>'"> > </button>
 	        	<%} %>
-	        	<button onclick="location.href='<%=request.getContextPath()%>/admin/mainView?currentPage=<%=maxPage%>'"> >> </button>
-	        	
-	        	
+	        	<button onclick="location.href='<%=request.getContextPath()%>/admin/mainView?currentPage=<%=maxPage%>'"> >> </button>	        	
 	        </div>
 	        <%} else { %>
 	        
 	        <div id="pageBtn" align="center">
-	        	<button onclick="location.href='<%=request.getContextPath() %>/admin/mainView?currentPage=<%=1 %>&p_no=<%=product.getpNo()%>&b_no=<%=product.getbNo()%>&s_no=<%=product.getsNo()%>&p_name=<%=product.getpName()%>&pCategory=<%=product.getpCategory()%>&p_price=<%=product.getpPrice()%>&f_start_date=<%=product.getfStartDate()%>&f_end_date=<%=product.getfEndDate()%>&f_yn<%=product.getfYn()%>'"> << </button>
-	        	
+	        	<button onclick="location.href='<%=request.getContextPath() %>/admin/mainView?currentPage=<%=1 %>&p_no=<%=product.getpNo()%>&b_no=<%=product.getbNo()%>&s_no=<%=product.getsNo()%>&p_name=<%=product.getpName()%>&pCategory=<%=product.getpCategory()%>&p_price=<%=product.getpPrice()%>&f_start_date=<%=product.getfStartDate()%>&f_end_date=<%=product.getfEndDate()%>&f_yn<%=product.getfYn()%>'"> << </button>	        	
 	        	<%if(currentPage <= 1) { %>
 	        		<button disabled> < </button>
 	        	<%} else {%>
@@ -225,21 +222,17 @@
 	        	<%} %>
 	        	<%for(int p = startPage; p<=endPage; p++) { %>
 	        	<%	if(p == currentPage) { %>
-	        			<button disabled><%=p %></button>
-	        	
+	        			<button disabled><%=p %></button>	        	
 	        	<%	} else{ %>
 	        			<button onclick="location.href='<%=request.getContextPath()%>/admin/mainView?currentPage=<%=p%>&p_no=<%=product.getpNo()%>&b_no=<%=product.getbNo()%>&s_no=<%=product.getsNo()%>&p_name=<%=product.getpName()%>&pCategory=<%=product.getpCategory()%>&p_price=<%=product.getpPrice()%>&f_start_date=<%=product.getfStartDate()%>&f_end_date=<%=product.getfEndDate()%>&f_yn=<%=product.getfYn()%>'"><%=p %></button>
 	        	<%} %>	
-	        	<%} %>
-	        	
+	        	<%} %>	        	
 	        	<%if(currentPage == maxPage) {%>
 	        		<button disabled> > </button>
 	        	<%} else { %>
 	        		<button onclick="location.href='<%=request.getContextPath() %>/admin/mainView?currentPage=<%=currentPage+1 %>&p_no=<%=product.getpNo()%>&b_no=<%=product.getbNo()%>&s_no=<%=product.getsNo()%>&p_name=<%=product.getpName()%>&pCategory=<%=product.getpCategory()%>&p_price=<%=product.getpPrice()%>&f_start_date=<%=product.getfStartDate()%>&f_end_date=<%=product.getfEndDate()%>&f_yn=<%=product.getfYn()%>'"> > </button>
 	        	<%} %>
 	        	<button onclick="location.href='<%=request.getContextPath()%>/admin/mainView?currentPage=<%=maxPage%>&p_no=<%=product.getpNo()%>&b_no<%=product.getbNo()%>&s_no<%=product.getsNo()%>&p_name<%=product.getpName()%>&pCategory<%=product.getpCategory()%>&p_price<%=product.getpPrice()%>&f_start_date<%=product.getfStartDate()%>&f_end_date<%=product.getfEndDate()%>&f_yn<%=product.getfYn()%>'"> >> </button>
-	        	
-	        	
 	        </div>
 	        <%} %>
 	    </article>
