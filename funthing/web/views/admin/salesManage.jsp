@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ page import="java.util.ArrayList" %>
-    <%@ page import="admin.model.vo.SalesManage" %>
+    <%@ page import="java.util.ArrayList, admin.model.vo.SalesManage" %>
     <%
     	ArrayList<SalesManage> list = (ArrayList<SalesManage>)request.getAttribute("list");
     %>
@@ -108,7 +107,7 @@
 
                 <div id="chartContainer" style="height: 500px; width: 100%; "></div>     <!-- 그래프 js 호출 -->       
 
-                <script>
+  				<script>
                 window.onload = function () {
 
                     var options = {
@@ -119,17 +118,20 @@
                             indexLabel: "{y}",
                                 color: "#546BC1",
                             dataPoints: [
-                            	<%if(!list.isEmpty()) {%>
+                            	<%if(!(list==null)) {%>
+
                             	<%for(SalesManage s : list) {%>
                                 { label: "<%=s.getbName()%>", y: <%=s.getpPrice()%>},
                                 <%}%>
-                                <%} else {}%>
-                                /* { label: "brand2", y: 0},
-                                { label: "brand3", y: 0},
-                                { label: "brand4", y: 2 },
-                                { label: "brand5", y: 0},
-                                { label: "brand6", y: 0},
-                                { label: "brand7", y: 0} */
+                                <%} else {%>
+                                { label: "ACOC", y: 0},
+                                { label: "elito", y: 0},
+                                { label: "Kye", y: 0},
+                                { label: "Clet", y: 0},
+                                { label: "Bouton", y: 0},
+                                { label: "Hier", y: 0},
+                                { label: "Dube", y: 0} 
+                                <%}%>
                             ]
                         }]
                     };
