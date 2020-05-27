@@ -69,7 +69,7 @@
                margin-left: 20px;
            }
            .container {
-                width: 400px;
+                width: 100%;
                 height: 140px;
                 overflow: auto;
                 border: 1px solid black;
@@ -611,7 +611,7 @@
             <br><br><br><br><br>
             <div style="text-align: center;">
                 <input type="button" value="회원가입" id="submit_btn" style="width: 90px; height: 40px; color: white; background: darkgrey; border-radius: 7px;" onclick="check();">
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                
                 <input type="button" value="취소" id="cancel" onclick=cancle(); style="width: 90px; height: 40px; color: black; background-color: lightgray; border-radius: 7px;">
             </div>
         </form>
