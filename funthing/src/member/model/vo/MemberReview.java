@@ -1,6 +1,7 @@
 package member.model.vo;
 
 public class MemberReview {
+	private int rnum;
    private String m_no;
    private String rev_title;
    private String p_no;
@@ -8,7 +9,14 @@ public class MemberReview {
    private String rev_date;
    private int rate;
    
-   public String getM_no() {
+   
+   public int getRnum() {
+	return rnum;
+}
+public void setRnum(int rnum) {
+	this.rnum = rnum;
+}
+public String getM_no() {
       return m_no;
    }
    public void setM_no(String m_no) {
@@ -49,8 +57,9 @@ public class MemberReview {
       return "MemberReview [m_no=" + m_no + ", rev_title=" + rev_title + ", p_no=" + p_no + ", rev_contents="
             + rev_contents + ", rev_date=" + rev_date + ", rate=" + rate + "]";
    }
-   public MemberReview(String m_no, String rev_title, String p_no, String rev_contents, String rev_date, int rate) {
+   public MemberReview(int rnum, String m_no, String rev_title, String p_no, String rev_contents, String rev_date, int rate) {
       super();
+      this.rnum = rnum;
       this.m_no = m_no;
       this.rev_title = rev_title;
       this.p_no = p_no;

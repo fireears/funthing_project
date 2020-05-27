@@ -20,7 +20,7 @@ String search =(String)request.getAttribute("search");
         <style>
         /* 0f4a7e */
             #noticeArea{ margin: 0 auto; width: 100%; }
-            #noticeArea h3 { border-top:1px solid #ddd; border-bottom:1px solid #ddd; padding-left:20px; box-sizing:border-box; line-height:96px; color:#0f4a7e; margin-bottom:60px; }
+            #noticeArea h2 { border-top:1px solid #bbb; border-bottom:1px solid #bbb; padding-left:20px; box-sizing:border-box; line-height:75px; color:#0f4a7e; margin-bottom:60px; }
             #noticeArea table { border-bottom:2px solid #0f4a7e; border-top:2px solid #0f4a7e; line-height:3; text-align:center; }
             #noticeArea table tr { border-bottom:1px solid #ddd; } 
             #noticeArea table tr:first-child { border-bottom:1px solid #0f4a7e; }
@@ -48,12 +48,12 @@ String search =(String)request.getAttribute("search");
     
     
         <section id="noticeArea">
-            <h3>REVIEW Search</h3>
+            <h2 style="text-align:left; font-size:20px;">나의 리뷰</h2>
             
             <table id="noticelistArea">
                 <tbody>
                     <tr class="noticehead">
-                        <th>회원번호</th>
+                        <th>번호</th>
                         <th>제목</th>
                         <th>상품번호</th>
                         <th>날짜</th>
@@ -65,11 +65,22 @@ String search =(String)request.getAttribute("search");
              if(list!=null){
                 for(int i =0;i<list.size();i++){
                    %> <tr class="noticelist">  
-                           <td class="noticelists"><%=list.get(i).getM_no()%></td>
+                           <td class="noticelists"><%=list.get(i).getRnum()%></td>
                            <td class="noticelists"><%=list.get(i).getRev_title()%></td>
                            <td class="noticelists"><%=list.get(i).getP_no()%></td>
                            <td class="noticelists"><%=list.get(i).getRev_date()%></td>
-                           <td class="noticelists"><%=list.get(i).getRate()%></td>
+                            <td class="noticelists">
+                           <% 
+                               switch(list.get(i).getRate()) {
+					               case 1 :%>★☆☆☆☆ <%  break; 
+					               case 2 :%>★★☆☆☆ <%  break; 
+					               case 3 :%>★★★☆☆ <%  break; 
+					               case 4 :%>★★★★☆ <%  break; 
+					               case 5 :%>★★★★★ <%  break; 
+					              
+					            } %>
+                          	</td>
+                          <%-- <td class="noticelists"><%=list.get(i).getRate()%></td> --%>
                          
                        </tr>
                        <tr class="cont">
@@ -96,10 +107,10 @@ String search =(String)request.getAttribute("search");
            </script>
            
            
-            <form  method="GET" action="<%=request.getContextPath()%>/admin/NoticeView">
+            <%-- <form  method="GET" action="<%=request.getContextPath()%>/admin/NoticeView">
             	<input type="text" id="search" name="noticeSearch"  placeholder="검색어를 입력해주세요"> <input type="submit" id="searchBtn" value="SEARCH">
             
-            </form>
+            </form> --%>
            
              <div class="pageinArea" align="center">
             <%

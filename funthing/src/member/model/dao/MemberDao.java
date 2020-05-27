@@ -824,7 +824,7 @@ public class MemberDao {
 	         pstmt.setInt(2, endRow);
 	         ResultSet rs = pstmt.executeQuery();
 	         while(rs.next()) {
-	            MemberReview nt = new MemberReview(rs.getString("m_no"), rs.getString("REV_TITLE"), rs.getString("P_NO"),rs.getString("REV_CONTENTS"),rs.getString("REV_DATE"),rs.getInt("rate"));   
+	            MemberReview nt = new MemberReview(rs.getInt("RN"),rs.getString("m_no"), rs.getString("REV_TITLE"), rs.getString("P_NO"),rs.getString("REV_CONTENTS"),rs.getString("REV_DATE"),rs.getInt("rate"));   
 	            al.add(nt);
 	         }
 	      }else{
@@ -838,7 +838,7 @@ public class MemberDao {
 	         pstmt.setInt(2, endRow);
 	         ResultSet rs = pstmt.executeQuery();
 	         while(rs.next()) {
-	            MemberReview nt = new MemberReview(rs.getString("M_NO"), rs.getString("REV_TITLE"), rs.getString("P_NO"),rs.getString("REV_CONTENTS"),rs.getString("REV_DATE"),rs.getInt("RATE"));         
+	            MemberReview nt = new MemberReview(rs.getInt("RN"),rs.getString("M_NO"), rs.getString("REV_TITLE"), rs.getString("P_NO"),rs.getString("REV_CONTENTS"),rs.getString("REV_DATE"),rs.getInt("RATE"));         
 	            al.add(nt);
 	         }
 	   
