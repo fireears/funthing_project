@@ -12,7 +12,7 @@ int currentPage = pi.getCurrentPage();
 int maxPage = pi.getMaxPage();
 int startPage = pi.getStartPage();
 int endPage = pi.getEndPage();
-
+String msg = (String)request.getAttribute("msg");
 
 
 String search =(String)request.getAttribute("search");
@@ -87,7 +87,7 @@ String search =(String)request.getAttribute("search");
                    }else{
                       %>
                       <tr>
-                            <td>값이 존재하지않습니다.</td>
+                            <td colspan="6">값이 존재하지않습니다.</td>
                       </tr>
                       <%
                    }%>
@@ -115,6 +115,10 @@ String search =(String)request.getAttribute("search");
                           $("input[name=nNo]").prop("checked",false);
                       }
                   })
+                  
+                  <%if(msg != null){%>
+        					alert("<%=msg%>");
+        		 		<%}%>
            </script>
              <div class="pageinArea" align="center">
             <%

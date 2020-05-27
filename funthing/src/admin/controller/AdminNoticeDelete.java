@@ -43,9 +43,9 @@ public class AdminNoticeDelete extends HttpServlet {
       if(result>0) {
          view = request.getRequestDispatcher("/admin/NoticeView");
          request.setAttribute("noticeSearch", null);
-      }else {
-         view = request.getRequestDispatcher(request.getContextPath() +  "views/common/errorPage.jsp");
-         request.setAttribute("msg", "게시판 리스트 조회 실패!");
+      }else if(result<=0||nNo==null){
+         view = request.getRequestDispatcher("/admin/NoticeView");
+         request.setAttribute("msg", "게시판 리스트 삭제실패!");
          
       }
       

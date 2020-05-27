@@ -2047,12 +2047,13 @@ public class AdminDao {
 	}
 
 	   public int deleteNotice(Connection conn, String nNo[]) {
-		      Statement stmt =null;
+		   Statement stmt =null;
 		      int result = 0;
 		      String quary =null;
 		      
 		      
 		      try {
+		    	  if(nNo!=null) {
 		          for(int i =0;i<nNo.length;i++) {
 		         stmt=conn.createStatement();
 		         quary = "UPDATE NOTICE SET N_DEL_YN='Y' WHERE N_NO='"+nNo[i]+"'";
@@ -2060,10 +2061,11 @@ public class AdminDao {
 		         
 		         result += stmt.executeUpdate(quary);
 		          }
-		         
+		    	   
 		         if(result>0) {
 		            conn.commit();
 		         }
+		    }
 		      } catch (SQLException e) {
 		         e.printStackTrace();
 		      } finally {
@@ -2072,6 +2074,5 @@ public class AdminDao {
 		      
 		      return result;
 		   }
-
 }
 	
