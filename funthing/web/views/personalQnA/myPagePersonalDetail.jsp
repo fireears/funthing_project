@@ -91,7 +91,7 @@
                         </tr>
                         <tr>
                             <td>내용</td>
-                            <td><span>상품명 <%= pq.getPerContents() %></span>
+                            <td><span><%= pq.getPerContents() %></span>
                         </tr>
                         <tr>
                             <td>작성자</td>
