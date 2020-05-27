@@ -24,7 +24,7 @@ public class PersonalQnADao {
 //		ResultSet rs = null;
 		int result = 0;
 		
-		String query = "INSERT INTO PERSONAL_QNA VALUES (SEQ_PQ.NEXTVAL, ?, ?, NULL, NULL, ?, 'N', ?, ?, ?, SYSDATE)";
+		String query = "INSERT INTO PERSONAL_QNA VALUES (SEQ_PQ.NEXTVAL, ?, ?, 'W0101001BKS', NULL, ?, 'N', ?, ?, ?, SYSDATE)";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -33,7 +33,7 @@ public class PersonalQnADao {
 			
 			pstmt.setString(1, perQA.getPerTitle());		// 제목
 			pstmt.setString(2, perQA.getPerContents());		// 내용
-			// 상품 번호 NULL
+			// 상품 번호 NULL -> 임의의 상품번호를 넣어준다
 			// 브랜드번호 NULL
 			pstmt.setString(3, q1_num);						// 회원번호
 			// 관리자 답변 유무는 위에서 처리함

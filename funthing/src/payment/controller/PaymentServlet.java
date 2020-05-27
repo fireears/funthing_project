@@ -36,11 +36,9 @@ public class PaymentServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		System.out.println("paymentServlet");
-		
 		
 		PaymentService pService = new PaymentService();
+		
 		try
 		{
 			String[] arrPname = request.getParameterValues("pName");
@@ -60,7 +58,7 @@ public class PaymentServlet extends HttpServlet {
 			
 			
 			
-			int resultM_point = m_point + expt_point - point_use;					//member테이블에 update할 m_point
+			int resultM_point = m_point + expt_point - point_use;	//member테이블에 update할 m_point
 			
 			int point_amount = expt_point;	//point 테이블 update 적립금액
 			int my_point = resultM_point;	//point 테이블에 update
@@ -94,8 +92,6 @@ public class PaymentServlet extends HttpServlet {
 				productList.add(product);
 			}
 			int result_product = pService.updateProduct(productList);
-			
-			System.out.println("p_no : " + pNo);
 
 			//b_no 가져오기
 			String[] b_no = pService.searchBrand(pNo);

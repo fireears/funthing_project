@@ -35,35 +35,21 @@ public class AdminMainServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
 		AdminService aService = new AdminService();
-		
 		//브랜드 번호 명 가져오기
 		ArrayList<Brand> blist = new ArrayList<>();
 		blist = aService.selectBrandNameList();
 		
 		if(request.getParameter("s_no") == null)
 		{
-			
-			System.out.println("-------------------------------");
-//			System.out.println(request.getParameter("adminMainPage"));
 			System.out.println("adminMainServlet");
-			String pNo = (String)request.getAttribute("pNo");
-			String msg = (String)request.getAttribute("msg");
-			
-			
 			int listCount = aService.getListCount();
-			
-//			System.out.println("listCount : " + listCount);
 			
 			int currentPage;
 			int maxPage;
 			int startPage;
 			int endPage;
-			
 			int limit = 20;
-			
 			currentPage = 0;
 			
 			if(request.getParameter("currentPage")!=null)
@@ -73,14 +59,10 @@ public class AdminMainServlet extends HttpServlet {
 			else
 			{
 				currentPage = 1;
-			}
-			//페이지 확인용
-			System.out.println(currentPage);
+			}			
 			
-			maxPage = (int)((double)listCount/limit + 0.95);
-			
-			startPage = ((int)(((double)currentPage/limit + 0.95)-1) * limit) +1;
-			
+			maxPage = (int)((double)listCount/limit + 0.95);			
+			startPage = ((int)(((double)currentPage/limit + 0.95)-1) * limit) +1;			
 			endPage = startPage + limit -1;
 			
 			if(endPage > maxPage)
@@ -88,15 +70,11 @@ public class AdminMainServlet extends HttpServlet {
 				endPage = maxPage;
 			}
 			
-			
 			PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
 			
 			ArrayList<Product> list = new ArrayList<>();
 			
 			list = aService.selectProductList(currentPage, limit);
-			System.out.println("listSize : " + list.size());
-			
-			
 			
 			if(!list.isEmpty())
 			{
@@ -106,15 +84,6 @@ public class AdminMainServlet extends HttpServlet {
 				request.setAttribute("blist", blist);
 				view.forward(request, response);
 			}
-//			else if(!list.isEmpty() && pNo != null)
-//			{
-//				RequestDispatcher view = request.getRequestDispatcher("/views/admin/adminMain.jsp");
-//				request.setAttribute("pi", pi);
-//				request.setAttribute("list", list);
-//				request.setAttribute("pNo", pNo);
-//				request.setAttribute("msg", msg);
-//				view.forward(request, response);
-//			}
 			else
 			{
 				RequestDispatcher view = request.getRequestDispatcher("/views/admin/adminMain.jsp");
@@ -128,8 +97,6 @@ public class AdminMainServlet extends HttpServlet {
 		//상품검색
 		else if(request.getParameter("s_no") != null)
 		{
-			System.out.println("-----------------------------------");
-			System.out.println("product search");
 			ArrayList<Product> list = new ArrayList<>();
 			try
 			{
@@ -144,20 +111,12 @@ public class AdminMainServlet extends HttpServlet {
 				String fYn = request.getParameter("f_yn");
 				
 				Product product = new Product(pNo, bNo, pName, pPrice, pCategory, sNo, fStartDate, fEndDate, fYn);
-				int listCount = aService.getListCount(product);
-
-				System.out.println("sNo : " + sNo);
-				System.out.println(product);
-				System.out.println("listCount : " + listCount);
-				
-				
+				int listCount = aService.getListCount(product);		
 				int currentPage;
 				int maxPage;
 				int startPage;
 				int endPage;
-				
 				int limit = 20;
-				
 				currentPage = 0;
 				
 				if(request.getParameter("currentPage")!=null)
@@ -168,35 +127,21 @@ public class AdminMainServlet extends HttpServlet {
 				{
 					currentPage = 1;
 				}
-				//페이지 확인용
-				System.out.println("currentPage" + currentPage);
 				
 				maxPage = (int)((double)listCount/limit + 0.95);
-				
 				startPage = ((int)(((double)currentPage/limit + 0.95)-1) * limit) +1;
-				
 				endPage = startPage + limit -1;
 				
 				if(endPage > maxPage)
 				{
 					endPage = maxPage;
-				}
-				
-				
+				}				
 				PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
-				System.out.println("currentPage : " + currentPage);
+
 				list = aService.productSearch(currentPage, limit, product);
-				System.out.println("listSize : " + list.size());
-				
-				
 				RequestDispatcher view = null;
 				if(!list.isEmpty())
 				{
-					//DB출력 확인용
-//				for(Product p : list)
-//				{
-//					System.out.println(p);
-//				}
 					view = request.getRequestDispatcher("/views/admin/adminMain.jsp");
 					request.setAttribute("pi", pi);
 					request.setAttribute("list", list);
@@ -207,10 +152,7 @@ public class AdminMainServlet extends HttpServlet {
 				
 				else if(list.isEmpty())
 				{
-					System.out.println("adminMain.jsp 이덩");
-					System.out.println("p : " + product);
 					view = request.getRequestDispatcher("/views/admin/adminMain.jsp");
-					System.out.println("list가 비어있음");
 					request.setAttribute("pi", pi);
 					request.setAttribute("list", list);
 					request.setAttribute("product", product);

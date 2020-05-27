@@ -73,8 +73,13 @@
                             <td><span><%= pq.getmName() %></span></td>
                         </tr>
                          <tr>
+                         <%if(pq.getoNo() == null){ %>
                             <td>주문번호</td>
+                            <td><span>선택하신 주문이 없습니다.</span></td>
+                        <%}else{ %>
+                       		 <td>주문번호</td>
                             <td><span><%= pq.getoNo()%></span></td>
+                        <%} %>
                         </tr>
                         <tr>
                             <td>상품명</td>
@@ -86,7 +91,7 @@
                         </tr>
                         <tr>
                             <td>내용</td>
-                            <td><span>상품명 <%= pq.getPerContents() %></span>
+                            <td><span><%= pq.getPerContents() %></span>
                         </tr>
                         <tr>
                             <td>작성자</td>
@@ -105,10 +110,18 @@
                      	
                         <tr>
                        
-                        <td style="background:white; width:50px;" align="center"><span><%=pq.getPqreId() %></span></td>
+                       <%if(pq.getPqreId() == null && pq.getPqreContent() == null &&  pq.getPqreDate() == null) {%>
+                        <td style="background:white; width:50px;" align="center"><span>답변 대기중 입니다.</span></td>
+                        <td style="width:50px;" align="center"><span>답변 대기중 입니다.</span></td>
+						<td style="width:50px;" align="center"><span>답변 대기중 입니다.</span></td>
+                        <%}else{ %>
+                     	<td style="background:white; width:50px;" align="center"><span><%=pq.getPqreId() %></span></td>
                         <td style="width:50px;" align="center"><span><%=pq.getPqreContent() %></span></td>
 						<td style="width:50px;" align="center"><span><%=pq.getPqreDate() %></span></td>
+                     
+                     	<%} %>
                         </tr>
+                        
                     </table>
                     
                     <div class="q1_btnArea">
