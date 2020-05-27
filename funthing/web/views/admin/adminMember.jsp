@@ -26,11 +26,12 @@
 	<style>
       h2{text-align:center;}
       form{height: 100px; background-color: rgb(199, 196, 196);}
-      #nav_section{margin:auto; width: 60%;}
-      #nav_section ul{height: 100px; margin: auto; width: 100%; padding: 0px;}
-      #nav_section ul li{float: left; list-style-type: none; padding-left: 50px; padding-right: 50px; font-size:18px; line-height: 100px; }
+      #nav_section{margin:auto; text-align:center; }
+      
+      #nav_section ul{height: 100px; margin: auto; width: 100%; padding: 0px; display:inline-block;}
+      #nav_section ul li {list-style-type: none; font-size:18px; line-height: 100px; display:inline-block; margin:0 10px; }
       #nav_section ul li .box{width: 300px; height:30px;}
-      #nav_section ul li:last-child { float:right;}
+      
       
       #area{margin: auto; width: 100%;}
       #area table{width: 100%; border: 1px solid;}

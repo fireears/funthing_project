@@ -37,7 +37,6 @@
 		#nav_section ul{height: 100px; margin: auto; width: 100%; padding: 0px;}
 		#nav_section ul li{float: left; list-style-type: none; padding-left: 20px; padding-right: 10px; line-height: 50px;}
 		#nav_section ul li .box{width: 150px;}
-		#nav_section ul li:last-child { float:right;}
 		
 		#area{margin: auto; width: 100%;}
 		#area table{width: 100%; border: 1px solid;}

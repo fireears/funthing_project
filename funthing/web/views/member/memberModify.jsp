@@ -324,28 +324,28 @@
        			$("#day").val("<%=day%>").prop("selected",true);
        			
        			// 아이디 정규화
-	            $("#userid").change(function(){
-	                    var value = $("#userid").val();
+	            $("#userId").change(function(){
+	                    var value = $("#userId").val();
 	                    var reg = /^[a-z0-9]{4,12}$/;
 	                    if(!reg.test(value)){
 	                        alert("영문자와 숫자로 4글자 이상 12글자 이하여야 합니다.");
-	                        $("#userid").focus().val('');
+	                        $("#userId").focus().val('');
 	                    }
 	                });
        			
        			// 비밀번호 정규화
-                $("#userpwd").change(function(){
-                    var value = $("#userpwd").val();
+                $("#userPwd").change(function(){
+                    var value = $("#userPwd").val();
                     var reg = /^[a-z0-9]{6,18}$/;
                     if(!reg.test(value)){
                         alert("영문자와 숫자로 6글자 이상 12글자 이하여야 합니다.");
-                        $("#userpwd").focus().val('');
+                        $("#userPwd").focus().val('');
                     }
                 });
        			
        			// 비밀번호 확인
                 $("#pwd_check").change(function(){
-                    var pw1 = $("#userpwd").val();
+                    var pw1 = $("#userPwd").val();
                     var pw2 = $("#pwd_check").val();
                     
                     if(pw1 == pw2){
@@ -357,13 +357,13 @@
                 });
        			
        			// 이름
-                $("#username").change(function(){
-                    var value = $("#username").val();
+                $("#userName").change(function(){
+                    var value = $("#userName").val();
                     var reg = /^[가-힣]{2,4}$/;
                     
                     if(!reg.test(value)){
-                        alert("한글로 2글자 이상 입력해주세요.");
-                        $("#username").focus().val('');
+                        alert("한글로 2글자 이상 4글자 이하로 입력해주세요.");
+                        $("#userName").focus().val('');
                     }
                 });
        			

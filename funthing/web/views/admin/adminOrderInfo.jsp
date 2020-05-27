@@ -187,7 +187,9 @@ ul li {
 					
 						<%for (OrderInfo om : searchList) {%>
 							<tr>
-								<input type="hidden" value="<%=om.getmId()%>">
+								
+								<input type="hidden" id="oNo" name="oNo" value="<%=om.getoNo()%>">
+								
 								<td><%=om.getRnum()%></td>
 								<td><%=om.getoNo()%></td>
 								<td><%=om.getmId()%></td>
@@ -259,10 +261,10 @@ ul li {
 								$(this).parent().css({"background" : "white"});
 							}).click(
 									function() {
-										var mid = $(this).parent().children("input").val();
+										var oNo = $(this).parent().children("input").val();
 
 										/* 아이디별 상세내역 출력 */
-										location.href = "<%=request.getContextPath()%>/admin/orderInfoDetail?mid="+ mid 
+										location.href = "<%=request.getContextPath()%>/admin/orderInfoDetail?oNo="+ oNo;
 
 									})
 				})

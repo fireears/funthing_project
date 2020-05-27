@@ -318,9 +318,9 @@
 		                function showRemaining() {
 		                    var now = new Date();
 		                    var distDt = _vDate - now;
-		        
+		        		
 		                    if (distDt < 0) {
-		                        clearInterval(timer);
+		                        clearInterval(timer);	// setInterval()과 함께 사용(시간을 끝내주는 함수)
 		                        document.getElementById(id).textContent = '해당 이벤트가 종료 되었습니다!';
 		                        return;
 		                    }
@@ -330,19 +330,13 @@
 		                    var minutes = Math.floor((distDt % _hour) / _minute);
 		                    var seconds = Math.floor((distDt % _minute) / _second);
 		        
-
 		                    document.getElementById(id).textContent = days + ' d ';
 		                    document.getElementById(id).textContent += hours + ' h ';
 		                    document.getElementById(id).textContent += minutes + ' m ';
 		                    document.getElementById(id).textContent += seconds + ' s ';
 		                }
-		        
-		
-		                timer = setInterval(showRemaining, 1000);
+		                timer = setInterval(showRemaining, 1000);	// 시간 설정 값을 담은 함수
 		            }
-		        
-		            var dateObj = new Date();
-		            
 		            countDownTimer('sample04', '  <%=pd.getfEndDate() %>'); 
 		            /* countDownTimer('sample04', '2020/05/28'); // 2024년 4월 1일까지 */
      			   </script>

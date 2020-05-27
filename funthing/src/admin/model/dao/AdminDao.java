@@ -192,15 +192,16 @@ public class AdminDao {
 	}
 
 	// 주문관리 페이지 상세보기_혜린
-	public OrderInfoDetail selectOrderDetail(Connection conn, String mid) {
+	public OrderInfoDetail selectOrderDetail(Connection conn, String oNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		OrderInfoDetail od = new OrderInfoDetail();
 		
-		String query = "SELECT * FROM ORDER_DETAIL WHERE M_ID = ?";
+		String query = "SELECT * FROM ORDER_DETAIL WHERE O_NO = ?";
+		System.out.println("oNo : " + oNo);
 		try {
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, mid);
+			pstmt.setString(1, oNo);
 			
 			rset = pstmt.executeQuery();
 			
@@ -942,8 +943,8 @@ public class AdminDao {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
-		String query = "INSERT INTO PRODUCT(P_NO, B_NO, THUMBNAIL, P_NAME, P_COLOR, P_SIZE, RETAIL_PRICE, DC_RATE, P_PRICE, P_CATEGORY, S_NO, P_DETAIL, IMG_ROUTER, P_POINT, SHIP_DATE, F_START_DATE, F_END_DATE, F_GOAL, F_YN, CAL_NO)\r\n" + 
-				"VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String query = "INSERT INTO PRODUCT(P_NO, B_NO, THUMBNAIL, P_NAME, P_COLOR, P_SIZE, RETAIL_PRICE, DC_RATE, P_PRICE, P_CATEGORY, S_NO, P_DETAIL, IMG_ROUTER, P_POINT, SHIP_DATE, F_START_DATE, F_END_DATE, F_GOAL, F_SEL_PRICE, F_YN, CAL_NO, F_PRG_RATE)\r\n" + 
+				"VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, ?, ?, 0)";
 		
 		String thumbnail = p.getThumbnail().substring(0, p.getThumbnail().length()-4);
 		String imgRouter = p.getImgRouter().substring(0, p.getImgRouter().length()-4);

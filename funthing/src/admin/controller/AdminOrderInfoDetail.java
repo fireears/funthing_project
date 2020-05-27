@@ -32,10 +32,10 @@ public class AdminOrderInfoDetail extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String mid = request.getParameter("mid");
-		System.out.println("servlet mid : "+ mid);
+		String oNo = request.getParameter("oNo");
 		
-		OrderInfoDetail od = new AdminService().selectOrderDetail(mid);
+		
+		OrderInfoDetail od = new AdminService().selectOrderDetail(oNo);
 		
 		
 		RequestDispatcher view = null;
