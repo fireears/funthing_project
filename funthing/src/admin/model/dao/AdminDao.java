@@ -192,15 +192,16 @@ public class AdminDao {
 	}
 
 	// 주문관리 페이지 상세보기_혜린
-	public OrderInfoDetail selectOrderDetail(Connection conn, String mid) {
+	public OrderInfoDetail selectOrderDetail(Connection conn, String oNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		OrderInfoDetail od = new OrderInfoDetail();
 		
-		String query = "SELECT * FROM ORDER_DETAIL WHERE M_ID = ?";
+		String query = "SELECT * FROM ORDER_DETAIL WHERE O_NO = ?";
+		System.out.println("oNo : " + oNo);
 		try {
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, mid);
+			pstmt.setString(1, oNo);
 			
 			rset = pstmt.executeQuery();
 			

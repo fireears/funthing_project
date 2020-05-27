@@ -280,7 +280,7 @@ public class PaymentDao {
 					}else {
 						System.out.println("캘린더 선택 날자선택");
 						
-						String query = "THUMBNAIL, P_NAME, P_COLOR, P_SIZE,  TOTAL_PRICE, O_NO, O_DATE,RCV_NAME, rcv_adrs, rcv_phone, commentt, M_NO ,PRCS_STATUS,CANCEL_YN, O_NUM "
+						String query = "SELECT THUMBNAIL, P_NAME, P_COLOR, P_SIZE,  TOTAL_PRICE, O_NO, O_DATE,RCV_NAME, rcv_adrs, rcv_phone, commentt, M_NO ,PRCS_STATUS,CANCEL_YN, O_NUM "
 								+ " FROM(SELECT rownum rnum, pd.THUMBNAIL,PD.P_NAME, PD.P_COLOR, PD.P_SIZE,  PI.TOTAL_PRICE, PO.O_NO, PI.O_DATE,pi.RCV_NAME, pI.rcv_adrs, pi.rcv_phone, pi.commentt, M.M_NO ,J.PRCS_STATUS,j.CANCEL_YN,  PO.O_NUM "
 								+ " FROM PRODUCT_ORDER PO "
 								+ " JOIN PAYMENT_INFO PI ON PO.O_NO = PI.O_NO "

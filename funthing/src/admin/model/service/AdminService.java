@@ -78,9 +78,9 @@ public class AdminService {
 	}
 	
 	// 주문관리 페이지 상세보기_혜린
-	public OrderInfoDetail selectOrderDetail(String mid) {
+	public OrderInfoDetail selectOrderDetail(String oNo) {
 		Connection conn = getConnection();
-		OrderInfoDetail od = new AdminDao().selectOrderDetail(conn,mid);
+		OrderInfoDetail od = new AdminDao().selectOrderDetail(conn,oNo);
 		
 		close(conn);
 		

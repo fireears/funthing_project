@@ -22,6 +22,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
       <style>
       .r-cont-header {
          width: 100%;
@@ -419,7 +421,8 @@
                      
                       <div class="modal_content">
                           <h1 style="font-size:x-large;">배송지수정</h1>
-                       
+                       		
+                       		
                             <!-- 배송지 수정 start-->
                              <form method="get" action="<%=request.getContextPath() %>/shippingModify" id="shipForm">
                            <div id="shipping">
@@ -449,8 +452,11 @@
                                        </tr>
                                        <tr>
                                            <th class="corr" align="left">주소</th>
-                                           <td class="corr" id="ship_address"><input type="text"  name="shipAds" value="<%= ou.getRcv_adrs() %>">
-                                           <button type="button" id="addressBtn" name="addressBtn" align="right">주소검색</button></td>
+                                           <td class="corr" id="ship_address">
+                                           <input type="text" id="postcode"><br>
+                                           <input type="text"  name="shipAds" id="detailAddress" value="<%= ou.getRcv_adrs() %>">
+                                           <input type="text" id="extraAddress">
+                                           <button type="button" id="addressBtn" onclick="DaumPostcode();" name="addressBtn" align="right">주소검색</button></td>
                                          
                                        </tr>
                                        <tr>
@@ -468,7 +474,7 @@
                                </div>
                            </div>
                             <div align="center">
-                           <button type="submit" id="updateModi" class="submit"  >배송지 수정</button>                        
+                           <button type="submit" id="updateModi" class="submit">배송지 수정</button>                   
                            <button type="button" id="modal_close_btn1" class="submit">취소</button>
                            </div>
                          </form>
@@ -638,6 +644,47 @@
               location.href="<%=request.getContextPath()%>/shippingModify?mNo=<%=loginUser.getmNo()%>&oNo=" + oNo;  
                 
           } --%>
+          function DaumPostcode() {
+              new daum.Postcode({
+                  oncomplete: function(data) {
+                      var addr = ''; // 주소 변수
+                      var extraAddr = ''; // 참고항목 변수
+                      if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                          addr = data.roadAddress;
+                      } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                          addr = data.jibunAddress;
+                      }
+      
+
+                      if(data.userSelectedType === 'R'){
+                          // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                          // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                          if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                              extraAddr += data.bname;
+                          }
+                          // 건물명이 있고, 공동주택일 경우 추가한다.
+                          if(data.buildingName !== '' && data.apartment === 'Y'){
+                              extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                          }
+                          // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                          if(extraAddr !== ''){
+                              extraAddr = ' (' + extraAddr + ')';
+                          }
+                          // 조합된 참고항목을 해당 필드에 넣는다.
+                          document.getElementById("extraAddress").value = extraAddr;
+                      
+                      } else {
+                          document.getElementById("extraAddress").value = '';
+                      }
+      
+                      // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                      document.getElementById('postcode').value = data.zonecode;
+                      document.getElementById("detailAddress").value = addr;
+                      /* document.getElementById("detailAddress").focus(); */
+                      
+                  }
+              }).open();
+          }
        </script>
        
    </body>
