@@ -107,8 +107,16 @@
     				   
     				   var $cal_sd = $("<li>").attr("class", "cal_sd").text("펀딩 시작 : " + value.fStartdate);
     				   var $cal_ed = $("<li>").attr("class", "cal_ed").text("펀딩 종료 : " + value.fEnddate);
-    				   var $cal_frt = $("<li>").attr("class", "cal_fdRate").text(value.fPrgRate + "% 달성!");
+    				   // var $cal_frt = $("<li>").attr("class", "cal_fdRate").text(value.fPrgRate + "% 달성!");
 
+    				   // 펀딩률 계산
+    				   var $fund = Math.round((value.fSelPrice / value.fGoal) * 100);
+    				   var $cal_frt = $("<li>").attr("class", "cal_fdRate").text($fund + "% 달성!");
+
+    				   
+    				   console.log($fund);
+    				   
+    				   
     				   $cal_img.append($aImg);
     				   $aImg.append($img);	
     				   

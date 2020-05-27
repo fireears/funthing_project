@@ -80,6 +80,18 @@ public class ReviewService {
 	}
 
 
+	public ArrayList<Review> reviewSelect(String mNo) {
+		Connection conn = getConnection();
+		ArrayList<Review> rvList = new ArrayList<>();
+		
+		
+		ReviewDao rd = new ReviewDao();
+		rvList = rd.reviewSelect(conn,mNo);
+		
+		return rvList;
+	}
+
+
 	
 
 

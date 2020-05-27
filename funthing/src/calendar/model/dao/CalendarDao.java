@@ -62,7 +62,7 @@ public class CalendarDao {
 		
 		ArrayList<Product> cList = new ArrayList<>();
 		
-		String query = "SELECT SUBSTR(P_NO,1,8), THUMBNAIL, P_NAME, RETAIL_PRICE, P_PRICE, F_START_DATE, F_END_DATE, F_PRG_RATE FROM PRODUCT WHERE F_START_DATE <= TO_DATE(?, 'YY/MM/DD') AND TO_DATE(?, 'YY/MM/DD') <= F_END_DATE GROUP BY SUBSTR(P_NO,1,8), THUMBNAIL, P_NAME, RETAIL_PRICE, P_PRICE, F_START_DATE, F_END_DATE, F_PRG_RATE";
+		String query = "SELECT SUBSTR(P_NO,1,8), THUMBNAIL, P_NAME, RETAIL_PRICE, P_PRICE, F_START_DATE, F_END_DATE, F_PRG_RATE, F_GOAL, F_SEL_PRICE FROM PRODUCT WHERE F_START_DATE <= TO_DATE(?, 'YY/MM/DD') AND TO_DATE(?, 'YY/MM/DD') <= F_END_DATE GROUP BY SUBSTR(P_NO,1,8), THUMBNAIL, P_NAME, RETAIL_PRICE, P_PRICE, F_START_DATE, F_END_DATE, F_PRG_RATE, F_GOAL, F_SEL_PRICE";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -81,6 +81,8 @@ public class CalendarDao {
 						rs.getInt("P_PRICE"),
 						rs.getDate("F_START_DATE"),
 						rs.getDate("F_END_DATE"),
+						rs.getInt("F_GOAL"),
+						rs.getInt("F_SEL_PRICE"),
 						rs.getInt("F_PRG_RATE"));
 				
 				cList.add(p);
