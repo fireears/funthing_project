@@ -90,7 +90,8 @@ public class MemberReviewSelect extends HttpServlet {
             System.out.println();
          if(list.isEmpty()){
             request.setAttribute("msg","게시판 리스트 조회 실패!");
-            view = request.getRequestDispatcher("adminMain.jsp");
+            
+            view = request.getRequestDispatcher("/views/review/myPageReview.jsp");
          }else{   
             request.setAttribute("list", list);
             request.setAttribute("pi", pi);

@@ -53,7 +53,7 @@ String search =(String)request.getAttribute("search");
             <table id="noticelistArea">
                 <tbody>
                     <tr class="noticehead">
-                        <th>회원번호</th>
+                        <th>번호</th>
                         <th>제목</th>
                         <th>상품번호</th>
                         <th>날짜</th>
@@ -65,11 +65,22 @@ String search =(String)request.getAttribute("search");
              if(list!=null){
                 for(int i =0;i<list.size();i++){
                    %> <tr class="noticelist">  
-                           <td class="noticelists"><%=list.get(i).getM_no()%></td>
+                           <td class="noticelists"><%=list.get(i).getRnum()%></td>
                            <td class="noticelists"><%=list.get(i).getRev_title()%></td>
                            <td class="noticelists"><%=list.get(i).getP_no()%></td>
                            <td class="noticelists"><%=list.get(i).getRev_date()%></td>
-                           <td class="noticelists"><%=list.get(i).getRate()%></td>
+                            <td class="noticelists">
+                           <% 
+                               switch(list.get(i).getRate()) {
+					               case 1 :%>★☆☆☆☆ <%  break; 
+					               case 2 :%>★★☆☆☆ <%  break; 
+					               case 3 :%>★★★☆☆ <%  break; 
+					               case 4 :%>★★★★☆ <%  break; 
+					               case 5 :%>★★★★★ <%  break; 
+					              
+					            } %>
+                          	</td>
+                          <%-- <td class="noticelists"><%=list.get(i).getRate()%></td> --%>
                          
                        </tr>
                        <tr class="cont">
