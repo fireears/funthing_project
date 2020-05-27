@@ -119,17 +119,19 @@
                             indexLabel: "{y}",
                                 color: "#546BC1",
                             dataPoints: [
-                            	<%if(!list.isEmpty()) {%>
+                            	<%if(!(list==null)) {%>
                             	<%for(ProductStatic p : list) {%>
                                 { label: "<%=p.getbName()%>", y: <%=p.getoNum()%>},
                                 <%}%>
-                                <%} else {}%>
-                                /* { label: "brand2", y: 0},
-                                { label: "brand3", y: 0},
-                                { label: "brand4", y: 2 },
-                                { label: "brand5", y: 0},
-                                { label: "brand6", y: 0},
-                                { label: "brand7", y: 0} */
+                                <%} else {%>
+                                { label: "ACOC", y: 0},
+                                { label: "elito", y: 0},
+                                { label: "Kye", y: 0},
+                                { label: "Clet", y: 0},
+                                { label: "Bouton", y: 0},
+                                { label: "Hier", y: 0},
+                                { label: "Dube", y: 0}
+                                <%}%>
                             ]
                         }]
                     };

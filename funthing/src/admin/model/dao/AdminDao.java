@@ -1944,7 +1944,8 @@ public class AdminDao {
 						"FROM(\r\n" + 
 						"SELECT B_NAME, P_PRICE, O_DATE\r\n" + 
 						"FROM PRODUCT_STATIC\r\n" + 
-						"WHERE TO_DATE(O_DATE,'RRRR/MM/DD') BETWEEN TO_DATE(?,'RRRR/MM/DD') AND TO_DATE(?,'RRRR/MM/DD') AND SUBSTR(P_NO, 0,1) = ?\r\n" + 
+						"WHERE TO_DATE(O_DATE,'RRRR/MM/DD') BETWEEN TO_DATE(?,'RRRR/MM/DD') AND TO_DATE(?,'RRRR/MM/DD') "
+						+ "AND SUBSTR(P_NO, 0,1) = ?\r\n" + 
 						")\r\n" + 
 						"GROUP BY B_NAME";
 				
@@ -1957,7 +1958,8 @@ public class AdminDao {
 						"FROM(\r\n" + 
 						"SELECT B_NAME, P_PRICE, O_DATE\r\n" + 
 						"FROM PRODUCT_STATIC\r\n" + 
-						"WHERE TO_DATE(O_DATE,'RRRR/MM/DD') BETWEEN TO_DATE(?,'RRRR/MM/DD') AND TO_DATE(?,'RRRR/MM/DD') AND SUBSTR(P_NO, 0,1) = ? AND P_CATEGORY = ?\r\n" + 
+						"WHERE TO_DATE(O_DATE,'RRRR/MM/DD') BETWEEN TO_DATE(?,'RRRR/MM/DD') AND TO_DATE(?,'RRRR/MM/DD') "
+						+ "AND SUBSTR(P_NO, 0,1) = ? AND P_CATEGORY = ?\r\n" + 
 						")\r\n" + 
 						"GROUP BY B_NAME";
 				
@@ -1985,8 +1987,8 @@ public class AdminDao {
 						"FROM(\r\n" + 
 						"SELECT B_NAME, P_PRICE, O_DATE\r\n" + 
 						"FROM PRODUCT_STATIC\r\n" + 
-						"WHERE TO_DATE(O_DATE,'RRRR/MM/DD') >= TO_DATE(SYSDATE,'RRRR/MM/DD')-? AND P_CATEGORY = ?\r\n" + 
-						")\r\n" + 
+						"WHERE TO_DATE(O_DATE,'RRRR/MM/DD') >= TO_DATE(SYSDATE,'RRRR/MM/DD')-? "
+						+ "AND P_CATEGORY = ?\r\n)\r\n" + 
 						"GROUP BY B_NAME";
 				
 				pstmt = conn.prepareStatement(query);
@@ -1999,8 +2001,8 @@ public class AdminDao {
 						"FROM(\r\n" + 
 						"SELECT B_NAME, P_PRICE, O_DATE\r\n" + 
 						"FROM PRODUCT_STATIC\r\n" + 
-						"WHERE TO_DATE(O_DATE,'RRRR/MM/DD') >= TO_DATE(SYSDATE,'RRRR/MM/DD')-? AND SUBSTR(P_NO, 0,1) = ?\r\n" + 
-						")\r\n" + 
+						"WHERE TO_DATE(O_DATE,'RRRR/MM/DD') >= TO_DATE(SYSDATE,'RRRR/MM/DD')-? "
+						+ "AND SUBSTR(P_NO, 0,1) = ?\r\n)\r\n" + 
 						"GROUP BY B_NAME";
 				
 				pstmt = conn.prepareStatement(query);
@@ -2013,7 +2015,8 @@ public class AdminDao {
 						"FROM(\r\n" + 
 						"SELECT B_NAME, P_PRICE, O_DATE\r\n" + 
 						"FROM PRODUCT_STATIC\r\n" + 
-						"WHERE TO_DATE(O_DATE,'RRRR/MM/DD') >= TO_DATE(SYSDATE,'RRRR/MM/DD')-? AND SUBSTR(P_NO, 0,1) = ? AND P_CATEGORY=?\r\n" + 
+						"WHERE TO_DATE(O_DATE,'RRRR/MM/DD') >= TO_DATE(SYSDATE,'RRRR/MM/DD')-? "
+						+ "AND SUBSTR(P_NO, 0,1) = ? AND P_CATEGORY=?\r\n" + 
 						")\r\n" + 
 						"GROUP BY B_NAME";
 				
@@ -2042,7 +2045,6 @@ public class AdminDao {
 		}
 		return list;
 	}
-
 
 	   public int deleteNotice(Connection conn, String nNo[]) {
 		      Statement stmt =null;
