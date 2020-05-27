@@ -5,8 +5,10 @@
  <%@ page import="java.util.ArrayList" %>
  <%@ page import="member.model.vo.MemberShoppingBag"%>
  <%@ page import="board.model.vo.PageInfo" %>
+  <%@ page import="java.text.DecimalFormat" %>
  <%
  ArrayList<MemberShoppingBag> list = (ArrayList<MemberShoppingBag>)request.getAttribute("list");
+ DecimalFormat formatter = new DecimalFormat("###,###");
  %>
     <head>
 
@@ -83,15 +85,15 @@
 
                 <input type="hidden" name="p_no" value="<%=list.get(i).getP_no()%>">
 
-                    <tr>                   	
+                    <tr>                      
 
                         <td><input type="checkbox" name="check" value="<%=list.get(i).getP_name()%>"></td>
                         <td class="imgArea"><img src="<%=request.getContextPath()+"/images/thumbnail/" + list.get(i).getP_thumbnail() + ".jpg" %>" /></td>
                         <td><%=list.get(i).getP_name()%></td>
                         <td><input type="hidden" name="number" value="<%=list.get(i).getShbag_num()%>"><%=list.get(i).getShbag_num()%></td>
-                        <td><%=list.get(i).getShbag_price()*list.get(i).getShbag_num()%></td>
+                        <td><%=formatter.format(list.get(i).getShbag_price()*list.get(i).getShbag_num())%>원</td>
                         <td><%=list.get(i).getP_point()%></td>
-                        <td><%=sum%></td>
+                        <td><%=formatter.format(sum)%>원</td>
                     </tr> 
                 <% 
                 
