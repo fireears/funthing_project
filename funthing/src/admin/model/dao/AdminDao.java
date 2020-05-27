@@ -2057,7 +2057,6 @@ public class AdminDao {
 		return list;
 	}
 
-
 	   public int deleteNotice(Connection conn, String nNo[]) {
 		      Statement stmt =null;
 		      int result = 0;
