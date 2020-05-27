@@ -640,6 +640,10 @@
             </tbody>
         </table>
     </div>
+	 <div class="sc-btns">
+	     <p class="up"><i class="fas fa-arrow-up"></i></p>
+	     <p class="down"><i class="fas fa-arrow-down"></i></p>
+	 </div>
 </div>
 <%} %>
 <script>

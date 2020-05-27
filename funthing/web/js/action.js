@@ -41,11 +41,11 @@ $(function(){
 
     });
 
-   /* // 위아래 이동하는 버튼
+   // 위아래 이동하는 버튼
     $(".sc-btns").hide();
 
-    var conTp = $(".discover").offset().top - 350;
-    // console.log(conTp);
+    var conTp = $("#section").offset().top - 350;
+     console.log(conTp);
     $(window).scroll(function(){
       if($(document).scrollTop() > conTp){
         $(".sc-btns").fadeIn();
@@ -61,5 +61,5 @@ $(function(){
     $(".sc-btns .down").click(function(){
       $("html").animate({
         scrollTop: $("html").height()}, 300);
-    });*/
+    });
 })

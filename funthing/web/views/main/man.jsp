@@ -104,12 +104,8 @@
 
     #productWrap .product { width:100%; }
     #productWrap .product:after { display:block; content:""; clear:both; }
-    #productWrap .product > li { float:left; width:25%; box-sizing:border-box; padding:0 20px; margin-bottom:60px; }
-<<<<<<< HEAD
-    #productWrap .product li a img { box-sizing:border-box; width:100%; border:1px solid #666; }
-=======
+    #productWrap .product > li { float:left; width:25%; box-sizing:border-box; padding:0 19px; margin-bottom:60px; }
     #productWrap .product li a img { width:100%; }
->>>>>>> refs/remotes/origin/dev616616
 
     #productWrap .product li .prod-cont { margin-top:10px; }
     #productWrap .product li .prod-cont .prod-brand { color:#0f4a7e; }

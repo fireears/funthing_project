@@ -131,12 +131,12 @@
                                 <p class="q1_text">해당글은 비밀글로만 작성이 됩니다.</p>
                             </td>
                         </tr>
-                        <tr>
+                        <!-- tr>
                             <td>자동등록방지</td>
                             <td>
                             	확인?
                             </td>
-                        </tr>
+                        </tr-->
                     </table>
                     <div class="q1_btnArea">
                         <button type="submit" class="btn submit">등록</button>
