@@ -53,7 +53,7 @@
         <br>
         
         <div class="cont">
-        <form method="post" action="<%=request.getContextPath()%>/update.pwd?userId=<%=memberPwd.getmId() %>">
+        <form method="post" id="change" action="<%=request.getContextPath()%>/update.pwd?userId=<%=memberPwd.getmId() %>">
             <h2>비밀번호 찾기</h2>
             <hr style="height: 5px; background: black;">
            
@@ -62,7 +62,7 @@
                 <hr>
                 <br>
                 
-                <input id="userpwd" type="password" name="userPwd" style="width: 300px; height: 25px; border-radius: 8px;" placeholder="새로운 비밀번호를 입력해주세요">
+                <input id="userPwd" type="password" name="userPwd" style="width: 300px; height: 25px; border-radius: 8px;" placeholder="새로운 비밀번호를 입력해주세요">
                 <br>
                 <br>
                 <input id="pwd_check" type="password" name="pwd_check" style="width: 300px; height: 25px; border-radius: 8px;" placeholder="다시 한번 입력해주세요">
@@ -70,7 +70,7 @@
                 <br>
                 <hr>
                 <br>
-                <input type="submit" value="확인" id="clear" style="font-size: 16px;">
+                <input type="button" value="확인" id="clear" style="font-size: 16px;" onclick="changePwd();">
             
         </form>
         </div>
@@ -88,18 +88,19 @@
                     }
                 });
         		
-        		// 비밀번호 체크
-                $("#pwd_check").change(function(){
-                    var pw1 = $("#userPwd").val();
-                    var pw2 = $("#pwd_check").val();
-                    
-                    if(pw1 == pw2){
-                        $("#pwd_check").val();
-                    }else{
-                        alert("비밀번호가 일치하지 않습니다.");
-                        $("#pwd_check").focus().val('');
-                    }
-                });
+        	
+        	// 비밀번호 체크
+        	function changePwd(){
+        		
+                if($("#userPwd").val() == $("#pwd_check").val()){
+                    $("#change").submit();
+                }else{
+                    alert("비밀번호가 일치하지 않습니다.");
+                    $("#pwd_check").focus().val('');
+                }
+  
+        	}
+       		
         		
                 // 인증 번호 성공 시
                 $(function(){
