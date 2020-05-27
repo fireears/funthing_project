@@ -52,6 +52,8 @@
         #ad_reviewListWrap .ad_rvTableWrap table td:nth-child(3) { text-align:left; }
         #ad_reviewListWrap .ad_rvTableWrap table td.rv_tbImg {  }
         #ad_reviewListWrap .ad_rvTableWrap table td.rv_tbImg img { width:50px; border:1px solid #ddd; box-sizing:border-box; }
+        
+        #pageBtn button { background:#fff; border:0; }
     </style>
 </head>
 <body>

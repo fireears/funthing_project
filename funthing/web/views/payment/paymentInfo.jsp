@@ -60,7 +60,7 @@
          
          #title{font-size:20px; font-weight: 600; margin-top:20px; margin-bottom:20px}
          
-         
+         #product td {vertical-align: middle; padding:10px 0;}
          
          
          #resultPayArea{position: fixed; top: 25%; left: 75%; width: 350px; height: 480px; border: 4px solid #0f4a7e; text-align: center;}
@@ -191,14 +191,15 @@
                         <table id="product">
                             <tbody>
                                 <tr>
-                                    <th>상품/옵션 정보(color/size)</th><th>수량</th><th>상품금액</th><th>할인/적립</th><th>합계금액</th><th>배송비</th>
+                                    <th colspan="2">상품/옵션 정보(color/size)</th><th>수량</th><th>상품금액</th><th>할인/적립</th><th>합계금액</th><th>배송비</th>
                                 </tr>
                                 <%if(p != null) { %>
-                                <tr style="line-heigth:150px;">
+                                <tr>
                                 	<input type="hidden" name="pName" value="<%=pName %>">
                                 	<input type="hidden" name="result_price" value="<%=pPrice*number %>">
                                 	<input type="hidden" name="o_num" value="<%=number %>">
-                                    <td align="center"><img src="<%=request.getContextPath()+"/images/thumbnail/" + thumbnail + ".jpg" %>" alt="상품사진" id="productImg" style="width:100px; height:150px;"><span><%=pName %>/<%=color %>/<%=size %></span></td>
+                                	<td><img src="<%=request.getContextPath()+"/images/thumbnail/" + thumbnail + ".jpg" %>" alt="상품사진" id="productImg" style="width:100px; height:150px;"></td>
+                                    <td align="center"><%=pName %>/<%=color %>/<%=size %></td>
                                     <td style="text-align: center; "><div id="num"><%=number %></div></td>
                                     <td style="text-align: center;"><div id="retail_price"><%=formatter.format(retailPrice*number) %></div></td>
                                     <td style="text-align: center;"><div id="dc_point"><%=dcRate %>%/<%=pPoint*number %>p</div></td>
@@ -276,7 +277,7 @@
     
                             <hr>
                             <br clear="both">
-                            <div style="text-align: left;">
+                            <div class="checkArea" style="text-align: left;">
                                 <input type="checkbox" name="" id="">전체 동의합니다.<br>
                                 <input type="checkbox" name="" id="">구매하실 상품의 결제정보를 확인하였으며, 구매진행에 동의합니다.(필수)<br>
                                 <input type="checkbox" name="" id="">상품 공급사 개인정보 제공 동의에 대한 내용을 확인 하였으며 이에 동의 합니다.(필수)<br>
@@ -295,6 +296,15 @@
    
    <script>
       $(function(){
+    	  // 전체 동의시 나머지  체크박스 체크
+    	  $(".checkArea input:eq(0)").click(function(){
+    		  if($(".checkArea input:eq(0)").is(":checked")){
+    			  $(".checkArea input").prop("checked", true);
+    		  }else{
+    			  $(".checkArea input").prop("checked", false);
+    		  }
+    		  
+    	  });
          
          var IMP=window.IMP;
          IMP.init('imp33962000');   

@@ -19,7 +19,7 @@ import member.model.service.MemberService;
 public class IdCheckServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
+    /**  
      * @see HttpServlet#HttpServlet()
      */
     public IdCheckServlet() {
