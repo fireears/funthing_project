@@ -134,24 +134,6 @@ public class PaymentService {
 
 
 
-//	   public int insertPayment(Payment p, String mNo, MemberPoint mp, ArrayList<Product> pNoList) {
-//	      Connection conn = getConnection();
-//	      
-//	      PaymentDao pDao = new PaymentDao();
-//	      
-//	      int result = pDao.insertPayment(conn, p);
-//	      if(result > 0)
-//	      {
-//	         commit(conn);
-//	      }
-//	      else
-//	      {
-//	         rollback(conn);
-//	      }
-//	      close(conn);
-//	      return result;
-//	   }
-
 
 
 	public int updateProduct(ArrayList<Product> productList) {

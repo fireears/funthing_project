@@ -15,7 +15,7 @@
    
    int p_point = 0;
    int totalPrice = 0;
-   try
+   try // 장바구니에서 넘어온 상픔들의 총 가격
    {
       
       if(!resultList.isEmpty())

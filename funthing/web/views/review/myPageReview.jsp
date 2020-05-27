@@ -20,7 +20,7 @@ String search =(String)request.getAttribute("search");
         <style>
         /* 0f4a7e */
             #noticeArea{ margin: 0 auto; width: 100%; }
-            #noticeArea h3 { border-top:1px solid #ddd; border-bottom:1px solid #ddd; padding-left:20px; box-sizing:border-box; line-height:96px; color:#0f4a7e; margin-bottom:60px; }
+            #noticeArea h2 { border-top:1px solid #bbb; border-bottom:1px solid #bbb; padding-left:20px; box-sizing:border-box; line-height:75px; color:#0f4a7e; margin-bottom:60px; }
             #noticeArea table { border-bottom:2px solid #0f4a7e; border-top:2px solid #0f4a7e; line-height:3; text-align:center; }
             #noticeArea table tr { border-bottom:1px solid #ddd; } 
             #noticeArea table tr:first-child { border-bottom:1px solid #0f4a7e; }
@@ -48,7 +48,7 @@ String search =(String)request.getAttribute("search");
     
     
         <section id="noticeArea">
-            <h3>REVIEW Search</h3>
+            <h2 style="text-align:left; font-size:20px;">나의 리뷰</h2>
             
             <table id="noticelistArea">
                 <tbody>
@@ -107,10 +107,10 @@ String search =(String)request.getAttribute("search");
            </script>
            
            
-            <form  method="GET" action="<%=request.getContextPath()%>/admin/NoticeView">
+            <%-- <form  method="GET" action="<%=request.getContextPath()%>/admin/NoticeView">
             	<input type="text" id="search" name="noticeSearch"  placeholder="검색어를 입력해주세요"> <input type="submit" id="searchBtn" value="SEARCH">
             
-            </form>
+            </form> --%>
            
              <div class="pageinArea" align="center">
             <%
