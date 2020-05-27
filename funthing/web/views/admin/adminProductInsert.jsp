@@ -25,7 +25,7 @@
          	<form action="<%=request.getContextPath() %>/admin/productInsert" method="POST" enctype="multipart/form-data">
 	             <table>
 	                 <tr>
-	                     <th>product_no</th><td><input type="text" name="pNo" placeholder="M0101001BKS"></td><th>*brand_no</th><td><input type="text" name="bNo" placeholder="01"></td>
+	                     <th>product_no</th><td><input type="text" name="pNo" placeholder="M0101001BKS"></td><th>*brand_no</th><td><input type="text" name="bNo" value="01"></td>
 	                 </tr>
 	                 <tr>
 	                     <th colspan="4">*Thumbnail</th>
