@@ -58,8 +58,8 @@
    		#search_area{margin:0 auto; text-align:center; padding-top:30px;}
         #searchKind{width:100px; height:40px}
         #searchVal{width:230px; height:35px}
-		#searchBtn{background: grey; color:white; border:0; width:100px; height:40px; font-weight:600; border-radius:5px}
-
+		#searchBtn{background: grey; color:white; border:0; width:100px; height:40px; font-weight:600; border-radius:5px;}
+		#insertBtn{background: grey; color:white; border:0; width:130px; height:40px; font-weight:600; border-radius:5px;}
         
         /* #nav_section ul{heigth:100px; margin:0 auto; width:100%; padding:0px;}
         #nav_section ul li{float:left; padding-left:20px; padding-right:10px; line-height:50px;}
@@ -108,10 +108,15 @@
 	                <span>
 	                	<button type="submit" value="검색" id="searchBtn">검색</button>
 	                </span>
+        			&nbsp;
+        			<span>
+        				<button type="button" onclick="insertBrand();" id="insertBtn">브랜드 신규 등록</button>
+        			</span>
 	                
                </div> 
             </div>
         </form>
+        
 
        	<br>
 		<br>
