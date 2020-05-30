@@ -721,12 +721,12 @@ public class MemberDao {
 		int startRow = (currentPage -1) * limit +1;
 		int endRow = startRow + (limit -1);
 		
-		String query = " SELECT THUMBNAIL, P_NAME, P_COLOR, P_SIZE,  TOTAL_PRICE, O_NO, O_DATE,RCV_NAME, rcv_adrs, rcv_phone, commentt, M_NO ,PRCS_STATUS,CANCEL_YN, O_NUM "
-				+ " FROM(SELECT rownum rnum,pd.THUMBNAIL,PD.P_NAME, PD.P_COLOR, PD.P_SIZE,  PI.TOTAL_PRICE, PO.O_NO, PI.O_DATE,pi.RCV_NAME, pI.rcv_adrs, pi.rcv_phone, pi.commentt, M.M_NO ,J.PRCS_STATUS,j.CANCEL_YN,  PO.O_NUM "
+		String query = " SELECT THUMBNAIL, P_NAME, P_COLOR, P_SIZE,  TOTAL_PRICE, O_NO, O_DATE,RCV_NAME, rcv_adrs, rcv_phone, COMMENTT, M_NO ,PRCS_STATUS,CANCEL_YN, O_NUM "
+				+ " FROM(SELECT ROWNUM RNUM,PD.THUMBNAIL,PD.P_NAME, PD.P_COLOR, PD.P_SIZE,  PI.TOTAL_PRICE, PO.O_NO, PI.O_DATE,PI.RCV_NAME, PI.RCV_ADRS, PI.RCV_PHONE, PI.COMMENTT, M.M_NO, J.PRCS_STATUS, J.CANCEL_YN, PO.O_NUM "
 				+ " FROM PRODUCT_ORDER PO "
 				+ " JOIN PAYMENT_INFO PI ON PO.O_NO = PI.O_NO "
-				+ " JOIN PRODUCT PD ON PO.P_NO = PD.P_NO "
 				+ " JOIN JUMUN J ON PO.O_NO = J.O_NO "
+				+ " JOIN PRODUCT PD ON PO.P_NO = PD.P_NO "
 				+ " JOIN MEMBER M ON PI.M_NO = M.M_NO "
 				+ " WHERE M.M_NO= ?) " 
 				+ " WHERE RNUM BETWEEN ? AND ? " ;

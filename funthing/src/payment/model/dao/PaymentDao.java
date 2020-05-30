@@ -456,14 +456,14 @@ public class PaymentDao {
 
 	}
 
-	public int insertPayment(Connection conn, Payment p) {
+	public int insertPayment(Connection conn, String mNo, Payment p) {
 		PreparedStatement pstmt = null;
 		
 		int result = 0;
 		
 
 		String query = "INSERT INTO PAYMENT_INFO(O_NO, O_DATE, RCV_NAME, RCV_ADRS, RCV_PHONE, COMMENTT, TOTAL_PRICE, POINT_USE, PMNT_MTHD, SHIP_PRICE, PMNT_PRICE, EXPT_POINT, M_NO)\r\n" + 
-				"VALUES('O'||TO_CHAR(SEQ_PAYINFO.NEXTVAL),SYSDATE,?,?,?,?,?,?, 'kakaopay',?,?,?, 'M01')";
+				"VALUES('O'||TO_CHAR(SEQ_PAYINFO.NEXTVAL),SYSDATE,?,?,?,?,?,?, 'kakaopay',?,?,?, ?)";
 
 		
 		try {
@@ -477,6 +477,7 @@ public class PaymentDao {
 			pstmt.setString(7, p.getShip_price());
 			pstmt.setInt(8, p.getPmnt_price());
 			pstmt.setInt(9, p.getExpt_point());
+			pstmt.setString(10, mNo);
 			
 			result = pstmt.executeUpdate();
 			

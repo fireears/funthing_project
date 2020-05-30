@@ -65,6 +65,10 @@ public class PaymentInfoServlet extends HttpServlet {
 			request.setAttribute("pNo", pNo);
 			view.forward(request, response);
 		}
+		else
+		{
+			System.out.println("p == null");
+		}
 	}
 
    /**
