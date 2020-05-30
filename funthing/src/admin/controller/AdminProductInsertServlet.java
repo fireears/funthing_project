@@ -44,21 +44,16 @@ public class AdminProductInsertServlet extends HttpServlet {
 			int maxSize = 1024*1024*10;
 			
 			String root = request.getSession().getServletContext().getRealPath("/");
-			
 			String thumbnailSavePath = root + "/images/thumbnail";
-//			String detailSavePath = root + "/images/detail";
 			System.out.println(thumbnailSavePath);
-//			MultipartRequest detailMultipart = new MultipartRequest(request, detailSavePath, maxSize, "utf-8");
+
 			MultipartRequest Multipart = new MultipartRequest(request, thumbnailSavePath, maxSize, "utf-8", new DefaultFileRenamePolicy());
 			
 			String thumbnail = Multipart.getFilesystemName("thumbnail");
 			String imgRouter = Multipart.getFilesystemName("imgRouter");
 			String bNo = Multipart.getParameter("bNo");
-
-//			String sNo = Multipart.getParameter("sNo");
 			String gender = Multipart.getParameter("gender");
 			String pName = Multipart.getParameter("pName");
-
 			String pCategory = Multipart.getParameter("pCategory");
 			String color = Multipart.getParameter("color");
 			String pSize = Multipart.getParameter("pSize");
@@ -70,7 +65,6 @@ public class AdminProductInsertServlet extends HttpServlet {
 			Date fStartDate = Date.valueOf(Multipart.getParameter("fStartDate"));
 			Date fEndDate = Date.valueOf(Multipart.getParameter("fEndDate"));
 			int fGoal = Integer.valueOf(Multipart.getParameter("fGoal"));
-//			int fSelPrice = Integer.valueOf(Multipart.getParameter("fSelPrice"));
 			String fYn = Multipart.getParameter("fYn");
 			
 			//스타일 넘버 시퀀스 가져오기
