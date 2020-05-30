@@ -942,12 +942,31 @@ public class AdminDao {
 	public int productInsert(Connection conn, Product p) {
 		PreparedStatement pstmt = null;
 		int result = 0;
-		
+		String thumbnail;
+		String imgRouter;
 		String query = "INSERT INTO PRODUCT(P_NO, B_NO, THUMBNAIL, P_NAME, P_COLOR, P_SIZE, RETAIL_PRICE, DC_RATE, P_PRICE, P_CATEGORY, S_NO, P_DETAIL, IMG_ROUTER, P_POINT, SHIP_DATE, F_START_DATE, F_END_DATE, F_GOAL, F_SEL_PRICE, F_YN, CAL_NO, F_PRG_RATE)\r\n" + 
 				"VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, ?, ?, 0)";
+		if(p.getThumbnail() == null && p.getImgRouter() != null)
+		{
+			thumbnail = "";
+			imgRouter = p.getImgRouter().substring(0, p.getImgRouter().length()-4);
+		}
+		else if(p.getThumbnail() != null && p.getImgRouter() == null)
+		{
+			thumbnail = p.getThumbnail().substring(0, p.getThumbnail().length()-4);
+			imgRouter = "";
+		}
+		else if(p.getThumbnail() == null && p.getImgRouter() == null)
+		{
+			thumbnail = "";
+			imgRouter = "";
+		}
+		else
+		{
+			thumbnail = p.getThumbnail().substring(0, p.getThumbnail().length()-4);
+			imgRouter = p.getImgRouter().substring(0, p.getImgRouter().length()-4);
+		}
 		
-		String thumbnail = p.getThumbnail().substring(0, p.getThumbnail().length()-4);
-		String imgRouter = p.getImgRouter().substring(0, p.getImgRouter().length()-4);
 		try {
 			pstmt = conn.prepareStatement(query);
 			
@@ -2075,5 +2094,30 @@ public class AdminDao {
 		      
 		      return result;
 		   }
+
+	public String selectSno(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String query = "SELECT SEQ_SNO.NEXTVAL FROM DUAL";
+		
+		String s_no = "";
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next())
+			{
+				s_no = rset.getString(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("s_no : " + s_no);
+		
+		return s_no;
+	}
 }
 	

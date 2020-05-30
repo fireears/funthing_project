@@ -1647,6 +1647,11 @@ DROP SEQUENCE SEQ_PAYINFO;
 CREATE SEQUENCE SEQ_PAYINFO
 START WITH 1061;
 
+--시퀀스 초기화 PRODUCT S_NO
+DROP SEQUENCE SEQ_SNO;
+CREATE SEQUENCE SEQ_SNO
+START WITH 101;
+
 ------------------------------------------------------------------------------ VIEW TABLE
 
 -- productLIST view 

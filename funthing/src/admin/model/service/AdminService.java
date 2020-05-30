@@ -535,6 +535,15 @@ public class AdminService {
 			close(conn);
 			return blist;
 		}
+
+		public String selectSno() {
+			Connection conn = getConnection();
+			
+			String s_no = new AdminDao().selectSno(conn);
+			
+			close(conn);
+			return s_no;
+		}
 	
 	
 }

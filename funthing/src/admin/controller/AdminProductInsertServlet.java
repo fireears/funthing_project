@@ -36,6 +36,8 @@ public class AdminProductInsertServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("/admin/productInsert");
+		
+		AdminService aService = new AdminService();
 		request.setCharacterEncoding("utf-8");
 		try
 		{
@@ -53,7 +55,7 @@ public class AdminProductInsertServlet extends HttpServlet {
 			String imgRouter = Multipart.getFilesystemName("imgRouter");
 			String bNo = Multipart.getParameter("bNo");
 
-			String sNo = Multipart.getParameter("sNo");
+//			String sNo = Multipart.getParameter("sNo");
 			String gender = Multipart.getParameter("gender");
 			String pName = Multipart.getParameter("pName");
 
@@ -71,15 +73,17 @@ public class AdminProductInsertServlet extends HttpServlet {
 //			int fSelPrice = Integer.valueOf(Multipart.getParameter("fSelPrice"));
 			String fYn = Multipart.getParameter("fYn");
 			
-			String pNo = gender + bNo + pCategory + sNo + color + pSize;
+			//스타일 넘버 시퀀스 가져오기
+			String s_no = aService.selectSno();
+			String pNo = gender + bNo + pCategory + s_no + color + pSize;
 			int pPrice = (int)(double)(retailPrice - ((double)retailPrice * ((double)dcRate * 0.01)));
 			
-			Product p = new Product(pNo, bNo, thumbnail, pName, color, pSize, retailPrice, dcRate, pPrice, Integer.valueOf(pCategory), Integer.valueOf(sNo), pDetail, imgRouter, pPoint, shipDate, fStartDate, fEndDate, fGoal, fYn);
+			Product p = new Product(pNo, bNo, thumbnail, pName, color, pSize, retailPrice, dcRate, pPrice, Integer.valueOf(pCategory), Integer.valueOf(s_no), pDetail, imgRouter, pPoint, shipDate, fStartDate, fEndDate, fGoal, fYn);
 		
 			
 			System.out.println(p);
 			
-			int result = new AdminService().productInsert(p);
+			int result = aService.productInsert(p);
 			System.out.println("productInsert servlet result : " + result);
 			
 			RequestDispatcher view = null;
