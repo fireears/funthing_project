@@ -112,8 +112,9 @@ public class PaymentService {
 		
 		PaymentDao pDao = new PaymentDao();
 		
+		
 		//paymentInfo insert
-		int result = pDao.insertPayment(conn, p);
+		int result = pDao.insertPayment(conn, mNo, p);
 		//jumun insert
 		int result1 = pDao.insertJumun(conn, mNo);
 		//point insert

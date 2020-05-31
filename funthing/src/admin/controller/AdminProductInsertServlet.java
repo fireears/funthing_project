@@ -36,27 +36,24 @@ public class AdminProductInsertServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("/admin/productInsert");
+		
+		AdminService aService = new AdminService();
 		request.setCharacterEncoding("utf-8");
 		try
 		{
 			int maxSize = 1024*1024*10;
 			
 			String root = request.getSession().getServletContext().getRealPath("/");
-			
 			String thumbnailSavePath = root + "/images/thumbnail";
-//			String detailSavePath = root + "/images/detail";
 			System.out.println(thumbnailSavePath);
-//			MultipartRequest detailMultipart = new MultipartRequest(request, detailSavePath, maxSize, "utf-8");
+
 			MultipartRequest Multipart = new MultipartRequest(request, thumbnailSavePath, maxSize, "utf-8", new DefaultFileRenamePolicy());
 			
 			String thumbnail = Multipart.getFilesystemName("thumbnail");
 			String imgRouter = Multipart.getFilesystemName("imgRouter");
 			String bNo = Multipart.getParameter("bNo");
-
-			String sNo = Multipart.getParameter("sNo");
 			String gender = Multipart.getParameter("gender");
 			String pName = Multipart.getParameter("pName");
-
 			String pCategory = Multipart.getParameter("pCategory");
 			String color = Multipart.getParameter("color");
 			String pSize = Multipart.getParameter("pSize");
@@ -68,18 +65,19 @@ public class AdminProductInsertServlet extends HttpServlet {
 			Date fStartDate = Date.valueOf(Multipart.getParameter("fStartDate"));
 			Date fEndDate = Date.valueOf(Multipart.getParameter("fEndDate"));
 			int fGoal = Integer.valueOf(Multipart.getParameter("fGoal"));
-//			int fSelPrice = Integer.valueOf(Multipart.getParameter("fSelPrice"));
 			String fYn = Multipart.getParameter("fYn");
 			
-			String pNo = gender + bNo + pCategory + sNo + color + pSize;
+			//스타일 넘버 시퀀스 가져오기
+			String s_no = aService.selectSno();
+			String pNo = gender + bNo + pCategory + s_no + color + pSize;
 			int pPrice = (int)(double)(retailPrice - ((double)retailPrice * ((double)dcRate * 0.01)));
 			
-			Product p = new Product(pNo, bNo, thumbnail, pName, color, pSize, retailPrice, dcRate, pPrice, Integer.valueOf(pCategory), Integer.valueOf(sNo), pDetail, imgRouter, pPoint, shipDate, fStartDate, fEndDate, fGoal, fYn);
+			Product p = new Product(pNo, bNo, thumbnail, pName, color, pSize, retailPrice, dcRate, pPrice, Integer.valueOf(pCategory), Integer.valueOf(s_no), pDetail, imgRouter, pPoint, shipDate, fStartDate, fEndDate, fGoal, fYn);
 		
 			
 			System.out.println(p);
 			
-			int result = new AdminService().productInsert(p);
+			int result = aService.productInsert(p);
 			System.out.println("productInsert servlet result : " + result);
 			
 			RequestDispatcher view = null;

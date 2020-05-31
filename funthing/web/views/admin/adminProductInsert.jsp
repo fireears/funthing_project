@@ -73,7 +73,6 @@
 	                     <th>price</th><td><input type="text" id="pPrice" name="pPrice" style="background-color: rgb(165, 160, 160);" readonly></td><th>*point</th><td><input type="text" name="pPoint"></td>
 	                 </tr>
 	                 <tr>
-	                     <th>*s_no</th><td><input type="text" name="sNo" value="1"></td>
 	                     <th>*p_category</th>
 	                 	<td>
 	                 		<select name="pCategory" id="pCategory">
@@ -84,6 +83,7 @@
 	                 			<option value="05">ONPICE</option>
 	                 		</select>
 	                 	</td>
+	                 	<th>*f_goal</th><td><input type="text" name="fGoal" value="1000000"></td>
 	                 </tr>
 	                 <tr>
 	                 	<th colspan="4">*product_detail</th>
@@ -101,10 +101,7 @@
 	                     <th>*ship_date</th><td><input type="date" name="shipDate"></td><th>*f_start_date</th><td><input type="date" name="fStartDate"></td>
 	                 </tr>
 	                 <tr>
-	                     <th>*f_end_date</th><td><input type="date" name="fEndDate"></td><th>*f_goal</th><td><input type="text" name="fGoal" value="1000000"></td>
-	                 </tr>
-	                 <tr>
-	                     
+	                     <th>*f_end_date</th><td><input type="date" name="fEndDate"></td>
 	                     <th>*funding_YN</th>
 	                     <td>
 	                     	<select name="fYn">
@@ -113,6 +110,7 @@
 	                     	</select>
                    		 </td>
 	                 </tr>
+	                
 	             </table>
 	             <br><br>
 	             <input type="submit" id="productInsertBtn" value="상품등록">
