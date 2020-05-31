@@ -1,40 +1,40 @@
 
 ---
 -- shoppingbag, calendar,  product_order, no_passbook,  color, untitled, order, payment_info, point
--- MEMBER, REVIEW, BRAND, PRODUCT, QNA, NOTICE, PERSONAL_QNA, GRADE   8°³ TABLE INSERT¿Ï·á.
--- Q&A -> QNA·Î ¼öÁ¤¿Ï·á
--- - 5/12 MEMBER : P_TEL ¼öÁ¤(NUMBER -> NVARCHAR(50)
--- - 5/12 PRODUCT P_COLOR, P_SIZE Ãß°¡
--- - 5/13 UNTITILED, COLOR Å×ÀÌºí »èÁ¦ & ½ÃÄö½º Ãß°¡
--- - 5/14 PRODUCT Å×ÀÌºí INSERT±¸¹® ¼öÁ¤
--- - 5/15 BRNAD Å×ÀÌºí ½ÃÄö½º Ãß°¡
--- - 5/16 PERSONAL_QNA; Å×ÀÌºí °ü¸®ÀÚ¾ÆÀÌµð, ´äº¯³¯Â¥ Ãß°¡(RE_ID, RE_DATE) ¹× INSERT ¼öÁ¤
--- - 5/16 QNA Å×ÀÌºí °ü¸®ÀÚ¾ÆÀÌµð, ´äº¯³¯Â¥ Ãß°¡(RE_ID, RE_DATE) ¹× INSERT ¼öÁ¤
--- - 5/16 PRODUCT VIEW Ãß°¡
--- - 5/16 ORDER_INFO, ORDER_DETAIL VIEW Ãß°¡
--- - 5/16 PERSONAL_QNA Å×ÀÌºí ÁÖ¹®¹øÈ£(O_NO) ¼Ó¼º Ãß°¡, INSERT ¼öÁ¤, SEQ_PR Ãß°¡
--- - 5/16 QNA, PERSONAL_QNA Å×ÀÌºí °ü¸®ÀÚ ´äº¯ °ü·Ã ºÐ¸®
--- - 5/16 	QNARE, PQ_RE Å×ÀÌºí Ãß°¡(°ü¸®ÀÚ ´äº¯ °ü·Ã Å×ÀÌºí)
--- - 5/17 PERSONAL_QNA P_NO, B_NO, ADDFILE, O_NO Á¦¾àÁ¶°Ç NULL·Î º¯°æ
--- - 5/18 ORDER INFO VIEW ¼öÁ¤
--- - 5/18 BRANDLIST VIEW Ãß°¡ ¹× BRAND µ¥ÀÌÅÍ Ãß°¡
--- - 5/18 PERSONAL_QNA ¹®ÀÇ ³¯Â¥ Ãß°¡ ¹× µ¥ÀÌÅÍ ¼öÁ¤
--- - 5/18 MEMBER Å×ÀÌºí M_PWD µ¥ÀÌÅÍ Å¸ÀÔ (NVARCHAR2(50) -> NAVARCHAR2(100)) º¯°æ
--- - 5/18 MEMBER Å×ÀÌºí INSERT ¼öÁ¤
--- - 5/19 PERSONAL_QNA VIEW ¼öÁ¤
--- - 5/19 MEMBER Æù¹øÈ£, JUMUN, POINT¿¡¼­ M_NO ¼öÁ¤
--- - 5/19 MEMBERLIST VIEW Ãß°¡
--- - 5/20 PERSONAL_QNA VIEW ¼öÁ¤ ¹× µ¥ÀÌÅÍ Ãß°¡
--- - 5/20 POINT Å×ÀÌºí ¼Ó¼º Ãß°¡(Àû¸³ À¯Çü) ¹× µ¥ÀÌÅÍ ¼öÁ¤
--- - 5/20 POINT_LIST VIEW Ãß°¡
--- - 5/21 MEMBER µ¥ÀÌÅÍ ¼öÁ¤
--- - 5/22 RECENT_ORDER_INFO VIEW & RECENT_ORDER_DETAIL VIEW Ãß°¡
--- - 5/22 POINT Å×ÀÌºí MY_POINT(ÀÜ¿© Àû¸³±Ý) Ãß°¡ ¹× µ¥ÀÌÅÍ ¼öÁ¤
--- - 5/22 ORDER_LIST VIEW Ãß°¡
--- - 5/23 SEQ_POINT ½ÃÄö½º Ãß°¡
--- - 5/24 SEQ_PQ ¼öÁ¤ 
--- - 5/25 ÇÑ¼ÖÀÌ product NÀ¸·Î ¼öÁ¤
--- - 5/26 PRODUCT_STATIC VIEW Ãß°¡
+-- MEMBER, REVIEW, BRAND, PRODUCT, QNA, NOTICE, PERSONAL_QNA, GRADE   8ï¿½ï¿½ TABLE INSERTï¿½Ï·ï¿½.
+-- Q&A -> QNAï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½
+-- - 5/12 MEMBER : P_TEL ï¿½ï¿½ï¿½ï¿½(NUMBER -> NVARCHAR(50)
+-- - 5/12 PRODUCT P_COLOR, P_SIZE ï¿½ß°ï¿½
+-- - 5/13 UNTITILED, COLOR ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ & ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
+-- - 5/14 PRODUCT ï¿½ï¿½ï¿½Ìºï¿½ INSERTï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+-- - 5/15 BRNAD ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
+-- - 5/16 PERSONAL_QNA; ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ú¾ï¿½ï¿½Ìµï¿½, ï¿½äº¯ï¿½ï¿½Â¥ ï¿½ß°ï¿½(RE_ID, RE_DATE) ï¿½ï¿½ INSERT ï¿½ï¿½ï¿½ï¿½
+-- - 5/16 QNA ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ú¾ï¿½ï¿½Ìµï¿½, ï¿½äº¯ï¿½ï¿½Â¥ ï¿½ß°ï¿½(RE_ID, RE_DATE) ï¿½ï¿½ INSERT ï¿½ï¿½ï¿½ï¿½
+-- - 5/16 PRODUCT VIEW ï¿½ß°ï¿½
+-- - 5/16 ORDER_INFO, ORDER_DETAIL VIEW ï¿½ß°ï¿½
+-- - 5/16 PERSONAL_QNA ï¿½ï¿½ï¿½Ìºï¿½ ï¿½Ö¹ï¿½ï¿½ï¿½È£(O_NO) ï¿½Ó¼ï¿½ ï¿½ß°ï¿½, INSERT ï¿½ï¿½ï¿½ï¿½, SEQ_PR ï¿½ß°ï¿½
+-- - 5/16 QNA, PERSONAL_QNA ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½äº¯ ï¿½ï¿½ï¿½ï¿½ ï¿½Ð¸ï¿½
+-- - 5/16 	QNARE, PQ_RE ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ß°ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½äº¯ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½)
+-- - 5/17 PERSONAL_QNA P_NO, B_NO, ADDFILE, O_NO ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ NULLï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+-- - 5/18 ORDER INFO VIEW ï¿½ï¿½ï¿½ï¿½
+-- - 5/18 BRANDLIST VIEW ï¿½ß°ï¿½ ï¿½ï¿½ BRAND ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
+-- - 5/18 PERSONAL_QNA ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Â¥ ï¿½ß°ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+-- - 5/18 MEMBER ï¿½ï¿½ï¿½Ìºï¿½ M_PWD ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½ (NVARCHAR2(50) -> NAVARCHAR2(100)) ï¿½ï¿½ï¿½ï¿½
+-- - 5/18 MEMBER ï¿½ï¿½ï¿½Ìºï¿½ INSERT ï¿½ï¿½ï¿½ï¿½
+-- - 5/19 PERSONAL_QNA VIEW ï¿½ï¿½ï¿½ï¿½
+-- - 5/19 MEMBER ï¿½ï¿½ï¿½ï¿½È£, JUMUN, POINTï¿½ï¿½ï¿½ï¿½ M_NO ï¿½ï¿½ï¿½ï¿½
+-- - 5/19 MEMBERLIST VIEW ï¿½ß°ï¿½
+-- - 5/20 PERSONAL_QNA VIEW ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
+-- - 5/20 POINT ï¿½ï¿½ï¿½Ìºï¿½ ï¿½Ó¼ï¿½ ï¿½ß°ï¿½(ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½) ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+-- - 5/20 POINT_LIST VIEW ï¿½ß°ï¿½
+-- - 5/21 MEMBER ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+-- - 5/22 RECENT_ORDER_INFO VIEW & RECENT_ORDER_DETAIL VIEW ï¿½ß°ï¿½
+-- - 5/22 POINT ï¿½ï¿½ï¿½Ìºï¿½ MY_POINT(ï¿½Ü¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½) ï¿½ß°ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+-- - 5/22 ORDER_LIST VIEW ï¿½ß°ï¿½
+-- - 5/23 SEQ_POINT ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
+-- - 5/24 SEQ_PQ ï¿½ï¿½ï¿½ï¿½ 
+-- - 5/25 ï¿½Ñ¼ï¿½ï¿½ï¿½ product Nï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+-- - 5/26 PRODUCT_STATIC VIEW ï¿½ß°ï¿½
 
 DROP TABLE PAYMENT_INFO CASCADE CONSTRAINTS;
 DROP TABLE QNA;
@@ -80,32 +80,32 @@ CREATE TABLE MEMBER (
 	H_POINT	NUMBER		NULL
 );
 
-COMMENT ON COLUMN MEMBER.M_NO IS 'È¸¿ø¹øÈ£';
+COMMENT ON COLUMN MEMBER.M_NO IS 'È¸ï¿½ï¿½ï¿½ï¿½È£';
 
-COMMENT ON COLUMN MEMBER.M_ID IS '¾ÆÀÌµð';
+COMMENT ON COLUMN MEMBER.M_ID IS 'ï¿½ï¿½ï¿½Ìµï¿½';
 
-COMMENT ON COLUMN MEMBER.M_PWD IS 'ºñ¹Ð¹øÈ£';
-COMMENT ON COLUMN MEMBER.M_NAME IS '¼º¸í';
+COMMENT ON COLUMN MEMBER.M_PWD IS 'ï¿½ï¿½Ð¹ï¿½È£';
+COMMENT ON COLUMN MEMBER.M_NAME IS 'ï¿½ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN MEMBER.B_DAY IS '»ý³â¿ùÀÏ';
+COMMENT ON COLUMN MEMBER.B_DAY IS 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN MEMBER.M_EMAIL IS 'ÀÌ¸ÞÀÏ';
+COMMENT ON COLUMN MEMBER.M_EMAIL IS 'ï¿½Ì¸ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN MEMBER.JOIN_DATE IS 'È¸¿ø°¡ÀÔ³¯Â¥';
+COMMENT ON COLUMN MEMBER.JOIN_DATE IS 'È¸ï¿½ï¿½ï¿½ï¿½ï¿½Ô³ï¿½Â¥';
 
-COMMENT ON COLUMN MEMBER.REFERENCE IS 'ÃßÃµÀÎ';
+COMMENT ON COLUMN MEMBER.REFERENCE IS 'ï¿½ï¿½Ãµï¿½ï¿½';
 
-COMMENT ON COLUMN MEMBER.GRADE_CODE IS 'µî±ÞÄÚµå';
+COMMENT ON COLUMN MEMBER.GRADE_CODE IS 'ï¿½ï¿½ï¿½ï¿½Úµï¿½';
 
-COMMENT ON COLUMN MEMBER.ALARM_YN IS '¾Ë¸²¼ö½Åµ¿ÀÇ¿©ºÎ';
+COMMENT ON COLUMN MEMBER.ALARM_YN IS 'ï¿½Ë¸ï¿½ï¿½ï¿½ï¿½Åµï¿½ï¿½Ç¿ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN MEMBER.STATUS_YN IS 'È¸¿ø°¡ÀÔÅ»Åð¿©ºÎ';
+COMMENT ON COLUMN MEMBER.STATUS_YN IS 'È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å»ï¿½ð¿©ºï¿½';
 
-COMMENT ON COLUMN MEMBER.M_POINT IS 'Àû¸³±Ý';
+COMMENT ON COLUMN MEMBER.M_POINT IS 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN MEMBER.M_TELL IS 'ÈÞ´ëÆù¹øÈ£';
+COMMENT ON COLUMN MEMBER.M_TELL IS 'ï¿½Þ´ï¿½ï¿½ï¿½ï¿½ï¿½È£';
 
-COMMENT ON COLUMN MEMBER.H_POINT IS '´©Àû°áÁ¦±Ý';
+COMMENT ON COLUMN MEMBER.H_POINT IS 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
 
 CREATE TABLE PRODUCT (
 	P_NO	NVARCHAR2(50)		NOT NULL,
@@ -132,45 +132,45 @@ CREATE TABLE PRODUCT (
 	F_PRG_RATE	NUMBER		NULL
 );
 
-COMMENT ON COLUMN PRODUCT.P_NO IS '»óÇ°¹øÈ£';
+COMMENT ON COLUMN PRODUCT.P_NO IS 'ï¿½ï¿½Ç°ï¿½ï¿½È£';
 
-COMMENT ON COLUMN PRODUCT.B_NO IS 'ºê·£µå¹øÈ£';
+COMMENT ON COLUMN PRODUCT.B_NO IS 'ï¿½ê·£ï¿½ï¿½ï¿½È£';
 
-COMMENT ON COLUMN PRODUCT.THUMBNAIL IS '´ëÇ¥ÀÌ¹ÌÁö';
+COMMENT ON COLUMN PRODUCT.THUMBNAIL IS 'ï¿½ï¿½Ç¥ï¿½Ì¹ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN PRODUCT.P_NAME IS '»óÇ°¸í';
+COMMENT ON COLUMN PRODUCT.P_NAME IS 'ï¿½ï¿½Ç°ï¿½ï¿½';
 
-COMMENT ON COLUMN PRODUCT.RETAIL_PRICE IS '»óÇ°°¡°Ý_Á¤°¡';
+COMMENT ON COLUMN PRODUCT.RETAIL_PRICE IS 'ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN PRODUCT.DC_RATE IS 'ÇÒÀÎÀ²';
+COMMENT ON COLUMN PRODUCT.DC_RATE IS 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN PRODUCT.P_PRICE IS 'ÆÇ¸Å°¡(Á¤°¡-ÇÒÀÎ°¡°Ý)';
+COMMENT ON COLUMN PRODUCT.P_PRICE IS 'ï¿½Ç¸Å°ï¿½(ï¿½ï¿½ï¿½ï¿½-ï¿½ï¿½ï¿½Î°ï¿½ï¿½ï¿½)';
 
-COMMENT ON COLUMN PRODUCT.P_CATEGORY IS '»óÇ°Á¾·ù';
+COMMENT ON COLUMN PRODUCT.P_CATEGORY IS 'ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN PRODUCT.S_NO IS '½ºÅ¸ÀÏ¹øÈ£';
+COMMENT ON COLUMN PRODUCT.S_NO IS 'ï¿½ï¿½Å¸ï¿½Ï¹ï¿½È£';
 
-COMMENT ON COLUMN PRODUCT.P_DETAIL IS '»óÇ°¼³¸í';
+COMMENT ON COLUMN PRODUCT.P_DETAIL IS 'ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN PRODUCT.IMG_ROUTER IS '»óÇ°°æ·Î';
+COMMENT ON COLUMN PRODUCT.IMG_ROUTER IS 'ï¿½ï¿½Ç°ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN PRODUCT.P_POINT IS 'Àû¸³±Ý';
+COMMENT ON COLUMN PRODUCT.P_POINT IS 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN PRODUCT.SHIP_DATE IS '¼øÂ÷Àû¹è¼Û³¯Â¥';
+COMMENT ON COLUMN PRODUCT.SHIP_DATE IS 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Û³ï¿½Â¥';
 
-COMMENT ON COLUMN PRODUCT.F_START_DATE IS 'ÆÝµù ½ÃÀÛ ³¯Â¥';
+COMMENT ON COLUMN PRODUCT.F_START_DATE IS 'ï¿½Ýµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Â¥';
 
-COMMENT ON COLUMN PRODUCT.F_END_DATE IS 'ÆÝµù Á¾·á ³¯Â¥';
+COMMENT ON COLUMN PRODUCT.F_END_DATE IS 'ï¿½Ýµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Â¥';
 
-COMMENT ON COLUMN PRODUCT.F_GOAL IS 'ÆÝµù ¸ñÇ¥';
+COMMENT ON COLUMN PRODUCT.F_GOAL IS 'ï¿½Ýµï¿½ ï¿½ï¿½Ç¥';
 
-COMMENT ON COLUMN PRODUCT.F_SEL_PRICE IS 'ÆÝµù ÆÇ¸Å ±Ý¾×';
+COMMENT ON COLUMN PRODUCT.F_SEL_PRICE IS 'ï¿½Ýµï¿½ ï¿½Ç¸ï¿½ ï¿½Ý¾ï¿½';
 
-COMMENT ON COLUMN PRODUCT.F_YN IS 'ÆÝµù ÁøÇà À¯¹«';
+COMMENT ON COLUMN PRODUCT.F_YN IS 'ï¿½Ýµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN PRODUCT.CAL_NO IS 'Ä¶¸°´õ ¹øÈ£';
+COMMENT ON COLUMN PRODUCT.CAL_NO IS 'Ä¶ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£';
 
-COMMENT ON COLUMN PRODUCT.F_PRG_RATE IS 'ÆÝµù ÁøÇàÀ²';
+COMMENT ON COLUMN PRODUCT.F_PRG_RATE IS 'ï¿½Ýµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
 
 CREATE TABLE QNA (
 	QNA_NO	NUMBER		NOT NULL,
@@ -184,23 +184,23 @@ CREATE TABLE QNA (
    
 );
 
-COMMENT ON COLUMN QNA.QNA_NO IS 'QNA ¹øÈ£';
+COMMENT ON COLUMN QNA.QNA_NO IS 'QNA ï¿½ï¿½È£';
 
-COMMENT ON COLUMN QNA.M_NO IS 'È¸¿ø¹øÈ£';
+COMMENT ON COLUMN QNA.M_NO IS 'È¸ï¿½ï¿½ï¿½ï¿½È£';
 
-COMMENT ON COLUMN QNA.QNA_TITLE IS 'QNA Á¦¸ñ';
+COMMENT ON COLUMN QNA.QNA_TITLE IS 'QNA ï¿½ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN QNA.QNA_CONTENTS IS 'QNA ³»¿ë';
+COMMENT ON COLUMN QNA.QNA_CONTENTS IS 'QNA ï¿½ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN QNA.QNA_DATE IS 'QNA ÀÛ¼º³¯Â¥';
+COMMENT ON COLUMN QNA.QNA_DATE IS 'QNA ï¿½Û¼ï¿½ï¿½ï¿½Â¥';
 
-COMMENT ON COLUMN QNA.P_NO2 IS '»óÇ°¹øÈ£';
+COMMENT ON COLUMN QNA.P_NO2 IS 'ï¿½ï¿½Ç°ï¿½ï¿½È£';
 
-COMMENT ON COLUMN QNA.B_NO IS 'ºê·£µå¹øÈ£';
+COMMENT ON COLUMN QNA.B_NO IS 'ï¿½ê·£ï¿½ï¿½ï¿½È£';
 
-COMMENT ON COLUMN QNA.RE_YN IS '´äº¯¿©ºÎ';
+COMMENT ON COLUMN QNA.RE_YN IS 'ï¿½äº¯ï¿½ï¿½ï¿½ï¿½';
 
--- Ãß°¡
+-- ï¿½ß°ï¿½
 CREATE TABLE QNARE (
 	QNARE_NO		NUMBER			NOT NULL,
 	QNA_NO	NUMBER		NOT NULL,
@@ -210,17 +210,17 @@ CREATE TABLE QNARE (
 	QNARE_DATE	DATE		NULL
 );
 
-COMMENT ON COLUMN "QNARE"."QNARE_NO" IS '´äº¯ ¹øÈ£';
+COMMENT ON COLUMN "QNARE"."QNARE_NO" IS 'ï¿½äº¯ ï¿½ï¿½È£';
 
-COMMENT ON COLUMN "QNARE"."QNA_NO" IS 'QNA ¹øÈ£';
+COMMENT ON COLUMN "QNARE"."QNA_NO" IS 'QNA ï¿½ï¿½È£';
 
-COMMENT ON COLUMN "QNARE"."M_NO" IS 'È¸¿ø¹øÈ£';
+COMMENT ON COLUMN "QNARE"."M_NO" IS 'È¸ï¿½ï¿½ï¿½ï¿½È£';
 
-COMMENT ON COLUMN "QNARE"."QNARE_ID" IS '°ü¸®ÀÚ¾ÆÀÌµð';
+COMMENT ON COLUMN "QNARE"."QNARE_ID" IS 'ï¿½ï¿½ï¿½ï¿½ï¿½Ú¾ï¿½ï¿½Ìµï¿½';
 
-COMMENT ON COLUMN "QNARE"."QNARE_CONTENT" IS '°ü¸®ÀÚ´äº¯³»¿ë';
+COMMENT ON COLUMN "QNARE"."QNARE_CONTENT" IS 'ï¿½ï¿½ï¿½ï¿½ï¿½Ú´äº¯ï¿½ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN "QNARE"."QNARE_DATE" IS '°ü¸®ÀÚ´äº¯³¯Â¥';
+COMMENT ON COLUMN "QNARE"."QNARE_DATE" IS 'ï¿½ï¿½ï¿½ï¿½ï¿½Ú´äº¯ï¿½ï¿½Â¥';
 
 
 CREATE TABLE SHOPPINGBAG (
@@ -232,15 +232,15 @@ CREATE TABLE SHOPPINGBAG (
 	SHBAG_PRICE	NUMBER		NULL
 );
 
-COMMENT ON COLUMN SHOPPINGBAG.M_NO IS 'È¸¿ø¹øÈ£';
+COMMENT ON COLUMN SHOPPINGBAG.M_NO IS 'È¸ï¿½ï¿½ï¿½ï¿½È£';
 
-COMMENT ON COLUMN SHOPPINGBAG.P_NO IS '»óÇ°¹øÈ£';
+COMMENT ON COLUMN SHOPPINGBAG.P_NO IS 'ï¿½ï¿½Ç°ï¿½ï¿½È£';
 
-COMMENT ON COLUMN SHOPPINGBAG.B_NO IS 'ºê·£µå¹øÈ£';
+COMMENT ON COLUMN SHOPPINGBAG.B_NO IS 'ï¿½ê·£ï¿½ï¿½ï¿½È£';
 
-COMMENT ON COLUMN SHOPPINGBAG.SHBAG_NUM IS '¼ö·®';
+COMMENT ON COLUMN SHOPPINGBAG.SHBAG_NUM IS 'ï¿½ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN SHOPPINGBAG.SHBAG_PRICE IS '°¡°Ý';
+COMMENT ON COLUMN SHOPPINGBAG.SHBAG_PRICE IS 'ï¿½ï¿½ï¿½ï¿½';
 
 --CREATE TABLE CALENDAR (
 --	CAL_NO	NVARCHAR2(50)		NOT NULL,
@@ -252,19 +252,19 @@ COMMENT ON COLUMN SHOPPINGBAG.SHBAG_PRICE IS '°¡°Ý';
 --	REVISED_DATE	DATE		NULL
 --);
 --
---COMMENT ON COLUMN CALENDAR.CAL_NO IS 'Ä¶¸°´õ ¹øÈ£';
+--COMMENT ON COLUMN CALENDAR.CAL_NO IS 'Ä¶ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£';
 --
---COMMENT ON COLUMN CALENDAR.CAL_DATE IS '³¯Â¥';
+--COMMENT ON COLUMN CALENDAR.CAL_DATE IS 'ï¿½ï¿½Â¥';
 --
---COMMENT ON COLUMN CALENDAR.P_NO IS '»óÇ°¹øÈ£';
+--COMMENT ON COLUMN CALENDAR.P_NO IS 'ï¿½ï¿½Ç°ï¿½ï¿½È£';
 --
---COMMENT ON COLUMN CALENDAR.P_NAME IS '»óÇ°¸í';
+--COMMENT ON COLUMN CALENDAR.P_NAME IS 'ï¿½ï¿½Ç°ï¿½ï¿½';
 --
---COMMENT ON COLUMN CALENDAR.P_IMG_NAME IS '»óÇ°»çÁø ÀÌ¸§';
+--COMMENT ON COLUMN CALENDAR.P_IMG_NAME IS 'ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½';
 --
---COMMENT ON COLUMN CALENDAR.PUBLIC_YN IS '°ø°³¿©ºÎ';
+--COMMENT ON COLUMN CALENDAR.PUBLIC_YN IS 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
 --
---COMMENT ON COLUMN CALENDAR.REVISED_DATE IS '¼öÁ¤ÀÏÀÚ';
+--COMMENT ON COLUMN CALENDAR.REVISED_DATE IS 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
 
 CREATE TABLE REVIEW (
 	REV_NO	NUMBER		NOT NULL,
@@ -278,19 +278,19 @@ CREATE TABLE REVIEW (
 	REV_PIC_DIR	VARCHAR(255)		NULL
 );
 
-COMMENT ON COLUMN REVIEW.REV_NO IS '¸®ºä°Ô½ÃÆÇ ¹øÈ£';
+COMMENT ON COLUMN REVIEW.REV_NO IS 'ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½È£';
 
-COMMENT ON COLUMN REVIEW.M_NO IS 'È¸¿ø¹øÈ£';
+COMMENT ON COLUMN REVIEW.M_NO IS 'È¸ï¿½ï¿½ï¿½ï¿½È£';
 
-COMMENT ON COLUMN REVIEW.REV_TITLE IS '¸®ºäÁ¦¸ñ';
+COMMENT ON COLUMN REVIEW.REV_TITLE IS 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN REVIEW.P_NO IS '»óÇ°¹øÈ£';
+COMMENT ON COLUMN REVIEW.P_NO IS 'ï¿½ï¿½Ç°ï¿½ï¿½È£';
 
-COMMENT ON COLUMN REVIEW.REV_CONTENTS IS '¸®ºä ³»¿ë';
+COMMENT ON COLUMN REVIEW.REV_CONTENTS IS 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN REVIEW.REV_DATE IS '¸®ºä³¯Â¥';
+COMMENT ON COLUMN REVIEW.REV_DATE IS 'ï¿½ï¿½ï¿½ä³¯Â¥';
 
-COMMENT ON COLUMN REVIEW.VIEWS_NUM IS 'Á¶È¸¼ö';
+COMMENT ON COLUMN REVIEW.VIEWS_NUM IS 'ï¿½ï¿½È¸ï¿½ï¿½';
 
 CREATE TABLE SHIPPING (
 	ADDRESS_NO	NVARCHAR2(50)		NOT NULL,
@@ -300,15 +300,15 @@ CREATE TABLE SHIPPING (
 	DETAIL_ADDRESS	NVARCHAR2(50)		NULL
 );
 
-COMMENT ON COLUMN SHIPPING.ADDRESS_NO IS '¹è¼ÛÁö¹øÈ£';
+COMMENT ON COLUMN SHIPPING.ADDRESS_NO IS 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£';
 
-COMMENT ON COLUMN SHIPPING.M_NO IS 'È¸¿ø¹øÈ£';
+COMMENT ON COLUMN SHIPPING.M_NO IS 'È¸ï¿½ï¿½ï¿½ï¿½È£';
 
-COMMENT ON COLUMN SHIPPING.POSTAL_CODE IS '¿ìÆí¹øÈ£';
+COMMENT ON COLUMN SHIPPING.POSTAL_CODE IS 'ï¿½ï¿½ï¿½ï¿½ï¿½È£';
 
-COMMENT ON COLUMN SHIPPING.ADDRESS IS '±âº»ÁÖ¼Ò';
+COMMENT ON COLUMN SHIPPING.ADDRESS IS 'ï¿½âº»ï¿½Ö¼ï¿½';
 
-COMMENT ON COLUMN SHIPPING.DETAIL_ADDRESS IS '»ó¼¼ÁÖ¼Ò';
+COMMENT ON COLUMN SHIPPING.DETAIL_ADDRESS IS 'ï¿½ï¿½ï¿½Ö¼ï¿½';
 
 CREATE TABLE NOTICE (
 	N_NO	NUMBER		NOT NULL,
@@ -318,15 +318,15 @@ CREATE TABLE NOTICE (
 	N_DEL_YN	NVARCHAR2(10)		NULL
 );
 
-COMMENT ON COLUMN NOTICE.N_NO IS '°øÁö»çÇ× ¹øÈ£';
+COMMENT ON COLUMN NOTICE.N_NO IS 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£';
 
-COMMENT ON COLUMN NOTICE.N_TITLE IS '°øÁö»çÇ× Á¦¸ñ';
+COMMENT ON COLUMN NOTICE.N_TITLE IS 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN NOTICE.N_CONTENTS IS '°øÁö»çÇ× ³»¿ë';
+COMMENT ON COLUMN NOTICE.N_CONTENTS IS 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN NOTICE.N_DATE IS '°øÁö»çÇ× ÀÛ¼º³¯Â¥';
+COMMENT ON COLUMN NOTICE.N_DATE IS 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½ï¿½ï¿½Â¥';
 
-COMMENT ON COLUMN NOTICE.N_DEL_YN IS '°øÁö»çÇ× »èÁ¦¿©ºÎ';
+COMMENT ON COLUMN NOTICE.N_DEL_YN IS 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
 
 CREATE TABLE GRADE (
 	GRADE_CODE	NVARCHAR2(50)		NOT NULL,
@@ -334,11 +334,11 @@ CREATE TABLE GRADE (
 	POINT_RATE	NUMBER		NULL
 );
 
-COMMENT ON COLUMN GRADE.GRADE_CODE IS 'µî±ÞÄÚµå';
+COMMENT ON COLUMN GRADE.GRADE_CODE IS 'ï¿½ï¿½ï¿½ï¿½Úµï¿½';
 
-COMMENT ON COLUMN GRADE.GRADE_NAME IS 'µî±Þ¸í';
+COMMENT ON COLUMN GRADE.GRADE_NAME IS 'ï¿½ï¿½Þ¸ï¿½';
 
-COMMENT ON COLUMN GRADE.POINT_RATE IS 'Àû¸³À²';
+COMMENT ON COLUMN GRADE.POINT_RATE IS 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
 
 CREATE TABLE BRAND (
 	B_NO	NVARCHAR2(50)		NOT NULL,
@@ -351,21 +351,21 @@ CREATE TABLE BRAND (
 	B_LCH_YN	NVARCHAR2(10)		NULL
 );
 
-COMMENT ON COLUMN BRAND.B_NO IS 'ºê·£µå¹øÈ£';
+COMMENT ON COLUMN BRAND.B_NO IS 'ï¿½ê·£ï¿½ï¿½ï¿½È£';
 
-COMMENT ON COLUMN BRAND.B_NAME IS 'ºê·£µåÀÌ¸§';
+COMMENT ON COLUMN BRAND.B_NAME IS 'ï¿½ê·£ï¿½ï¿½ï¿½Ì¸ï¿½';
 
-COMMENT ON COLUMN BRAND.B_CEO IS '´ëÇ¥¸í';
+COMMENT ON COLUMN BRAND.B_CEO IS 'ï¿½ï¿½Ç¥ï¿½ï¿½';
 
-COMMENT ON COLUMN BRAND.B_PHONE IS '¿¬¶ôÃ³';
+COMMENT ON COLUMN BRAND.B_PHONE IS 'ï¿½ï¿½ï¿½ï¿½Ã³';
 
-COMMENT ON COLUMN BRAND.B_ADDRESS IS 'È¸»çÁÖ¼Ò';
+COMMENT ON COLUMN BRAND.B_ADDRESS IS 'È¸ï¿½ï¿½ï¿½Ö¼ï¿½';
 
-COMMENT ON COLUMN BRAND.B_EMAIL IS 'ÀÌ¸ÞÀÏ';
+COMMENT ON COLUMN BRAND.B_EMAIL IS 'ï¿½Ì¸ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN BRAND.B_LCH_DATE IS 'ºê·£µå ÀÔÁ¡³¯Â¥';
+COMMENT ON COLUMN BRAND.B_LCH_DATE IS 'ï¿½ê·£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¥';
 
-COMMENT ON COLUMN BRAND.B_LCH_YN IS 'ºê·£µå ÀÔÁ¡À¯¹«';
+COMMENT ON COLUMN BRAND.B_LCH_YN IS 'ï¿½ê·£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
 
 CREATE TABLE JUMUN (
 	O_NO	NVARCHAR2(50)		NOT NULL,
@@ -375,15 +375,15 @@ CREATE TABLE JUMUN (
 	PAID_YN	NVARCHAR2(50)		NULL
 );
 
-COMMENT ON COLUMN JUMUN.O_NO IS 'ÁÖ¹®¹øÈ£';
+COMMENT ON COLUMN JUMUN.O_NO IS 'ï¿½Ö¹ï¿½ï¿½ï¿½È£';
 
-COMMENT ON COLUMN JUMUN.PRCS_STATUS IS 'Ã³¸®»óÅÂ';
+COMMENT ON COLUMN JUMUN.PRCS_STATUS IS 'Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN JUMUN.CANCEL_YN IS 'Ãë¼Ò ¿©ºÎ';
+COMMENT ON COLUMN JUMUN.CANCEL_YN IS 'ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN JUMUN.M_NO IS 'È¸¿ø¹øÈ£';
+COMMENT ON COLUMN JUMUN.M_NO IS 'È¸ï¿½ï¿½ï¿½ï¿½È£';
 
-COMMENT ON COLUMN JUMUN.PAID_YN IS '°áÁ¦À¯¹«';
+COMMENT ON COLUMN JUMUN.PAID_YN IS 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
 
 CREATE TABLE PRODUCT_ORDER (
 	P_NO	NVARCHAR2(50)		NOT NULL,
@@ -392,13 +392,13 @@ CREATE TABLE PRODUCT_ORDER (
 	O_NUM	NUMBER		NULL
 );
 
-COMMENT ON COLUMN PRODUCT_ORDER.P_NO IS '»óÇ°¹øÈ£';
+COMMENT ON COLUMN PRODUCT_ORDER.P_NO IS 'ï¿½ï¿½Ç°ï¿½ï¿½È£';
 
-COMMENT ON COLUMN PRODUCT_ORDER.O_NO IS 'ÁÖ¹®¹øÈ£';
+COMMENT ON COLUMN PRODUCT_ORDER.O_NO IS 'ï¿½Ö¹ï¿½ï¿½ï¿½È£';
 
-COMMENT ON COLUMN PRODUCT_ORDER.B_NO IS 'ºê·£µå¹øÈ£';
+COMMENT ON COLUMN PRODUCT_ORDER.B_NO IS 'ï¿½ê·£ï¿½ï¿½ï¿½È£';
 
-COMMENT ON COLUMN PRODUCT_ORDER.O_NUM IS '¼ö·®';
+COMMENT ON COLUMN PRODUCT_ORDER.O_NUM IS 'ï¿½ï¿½ï¿½ï¿½';
 
 CREATE TABLE NO_PASSBOOK (
 	O_NO	NVARCHAR2(50)		NOT NULL,
@@ -407,13 +407,13 @@ CREATE TABLE NO_PASSBOOK (
 	AMNT_MONEY	NUMBER		NULL
 );
 
-COMMENT ON COLUMN NO_PASSBOOK.O_NO IS 'ÁÖ¹®¹øÈ£';
+COMMENT ON COLUMN NO_PASSBOOK.O_NO IS 'ï¿½Ö¹ï¿½ï¿½ï¿½È£';
 
-COMMENT ON COLUMN NO_PASSBOOK.O_PMNT_NAME IS 'ÀÔ±ÝÀÚ¸í';
+COMMENT ON COLUMN NO_PASSBOOK.O_PMNT_NAME IS 'ï¿½Ô±ï¿½ï¿½Ú¸ï¿½';
 
-COMMENT ON COLUMN NO_PASSBOOK.O_BANK IS 'ÀÔ±ÝÀºÇà';
+COMMENT ON COLUMN NO_PASSBOOK.O_BANK IS 'ï¿½Ô±ï¿½ï¿½ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN NO_PASSBOOK.AMNT_MONEY IS '±Ý¾×';
+COMMENT ON COLUMN NO_PASSBOOK.AMNT_MONEY IS 'ï¿½Ý¾ï¿½';
 
 CREATE TABLE PAYMENT_INFO (
 	O_NO	NVARCHAR2(50)		NOT NULL,
@@ -432,33 +432,33 @@ CREATE TABLE PAYMENT_INFO (
 	M_NO	NVARCHAR2(50)		NOT NULL
 );
 
-COMMENT ON COLUMN PAYMENT_INFO.O_NO IS 'ÁÖ¹®¹øÈ£';
+COMMENT ON COLUMN PAYMENT_INFO.O_NO IS 'ï¿½Ö¹ï¿½ï¿½ï¿½È£';
 
-COMMENT ON COLUMN PAYMENT_INFO.O_DATE IS 'ÁÖ¹®ÀÏÀÚ';
+COMMENT ON COLUMN PAYMENT_INFO.O_DATE IS 'ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN PAYMENT_INFO.DSTN_CHK IS '¹è¼ÛÁöÈ®ÀÎ';
+COMMENT ON COLUMN PAYMENT_INFO.DSTN_CHK IS 'ï¿½ï¿½ï¿½ï¿½ï¿½È®ï¿½ï¿½';
 
-COMMENT ON COLUMN PAYMENT_INFO.RCV_NAME IS '¹ÞÀ¸½ÇºÐ';
+COMMENT ON COLUMN PAYMENT_INFO.RCV_NAME IS 'ï¿½ï¿½ï¿½ï¿½ï¿½Çºï¿½';
 
-COMMENT ON COLUMN PAYMENT_INFO.RCV_ADRS IS '¹ÞÀ¸½Ç ºÐ ÁÖ¼Ò';
+COMMENT ON COLUMN PAYMENT_INFO.RCV_ADRS IS 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö¼ï¿½';
 
-COMMENT ON COLUMN PAYMENT_INFO.RCV_PHONE IS '¹ÞÀ¸½ÇºÐ ÀüÈ­¹øÈ£';
+COMMENT ON COLUMN PAYMENT_INFO.RCV_PHONE IS 'ï¿½ï¿½ï¿½ï¿½ï¿½Çºï¿½ ï¿½ï¿½È­ï¿½ï¿½È£';
 
-COMMENT ON COLUMN PAYMENT_INFO.COMMENTT IS '³²±â½Ç¸»';
+COMMENT ON COLUMN PAYMENT_INFO.COMMENTT IS 'ï¿½ï¿½ï¿½ï¿½Ç¸ï¿½';
 
-COMMENT ON COLUMN PAYMENT_INFO.TOTAL_PRICE IS '»óÇ°ÇÕ°è ±Ý¾×';
+COMMENT ON COLUMN PAYMENT_INFO.TOTAL_PRICE IS 'ï¿½ï¿½Ç°ï¿½Õ°ï¿½ ï¿½Ý¾ï¿½';
 
-COMMENT ON COLUMN PAYMENT_INFO.POINT_USE IS 'Àû¸³±Ý »ç¿ë';
+COMMENT ON COLUMN PAYMENT_INFO.POINT_USE IS 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN PAYMENT_INFO.PMNT_MTHD IS '°áÁ¦¼ö´Ü ¼³ÅÃ/°áÁ¦';
+COMMENT ON COLUMN PAYMENT_INFO.PMNT_MTHD IS 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN PAYMENT_INFO.SHIP_PRICE IS '¹è¼Ûºñ À¯¹«';
+COMMENT ON COLUMN PAYMENT_INFO.SHIP_PRICE IS 'ï¿½ï¿½Ûºï¿½ ï¿½ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN PAYMENT_INFO.PMNT_PRICE IS 'ÃÖÁ¾ °áÁ¦ ±Ý¾×';
+COMMENT ON COLUMN PAYMENT_INFO.PMNT_PRICE IS 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ý¾ï¿½';
 
-COMMENT ON COLUMN PAYMENT_INFO.EXPT_POINT IS '¾ÖÁ¤ Àû¸³±Ý';
+COMMENT ON COLUMN PAYMENT_INFO.EXPT_POINT IS 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN PAYMENT_INFO.M_NO IS 'È¸¿ø¹øÈ£';
+COMMENT ON COLUMN PAYMENT_INFO.M_NO IS 'È¸ï¿½ï¿½ï¿½ï¿½È£';
 
 CREATE TABLE PERSONAL_QNA (
 	PER_QNA_NO	NUMBER		NOT NULL,
@@ -475,47 +475,47 @@ CREATE TABLE PERSONAL_QNA (
     
 );
 
-COMMENT ON COLUMN PERSONAL_QNA.PER_QNA_NO IS '1:1¹®ÀÇ °Ô½ÃÆÇ ¹øÈ£';
+COMMENT ON COLUMN PERSONAL_QNA.PER_QNA_NO IS '1:1ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½È£';
 
-COMMENT ON COLUMN PERSONAL_QNA.PER_TITLE IS '°Ô½ÃÆÇ Á¦¸ñ';
+COMMENT ON COLUMN PERSONAL_QNA.PER_TITLE IS 'ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN PERSONAL_QNA.PER_CONTENTS IS '°Ô½ÃÆÇ ³»¿ë';
+COMMENT ON COLUMN PERSONAL_QNA.PER_CONTENTS IS 'ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN PERSONAL_QNA.P_NO IS '»óÇ°¹øÈ£';
+COMMENT ON COLUMN PERSONAL_QNA.P_NO IS 'ï¿½ï¿½Ç°ï¿½ï¿½È£';
 
-COMMENT ON COLUMN PERSONAL_QNA.B_NO IS 'ºê·£µå¹øÈ£';
+COMMENT ON COLUMN PERSONAL_QNA.B_NO IS 'ï¿½ê·£ï¿½ï¿½ï¿½È£';
 
-COMMENT ON COLUMN PERSONAL_QNA.M_NO IS 'È¸¿ø¹øÈ£';
+COMMENT ON COLUMN PERSONAL_QNA.M_NO IS 'È¸ï¿½ï¿½ï¿½ï¿½È£';
 
-COMMENT ON COLUMN PERSONAL_QNA.PER_RE_YN IS '°ü¸®ÀÚ ´äº¯ À¯¹«';
+COMMENT ON COLUMN PERSONAL_QNA.PER_RE_YN IS 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½äº¯ ï¿½ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN PERSONAL_QNA.ADDFILE IS 'Ã·ºÎÆÄÀÏ';
+COMMENT ON COLUMN PERSONAL_QNA.ADDFILE IS 'Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN PERSONAL_QNA.PER_QNA_NO IS '1:1¹®ÀÇ °Ô½ÃÆÇ ¹øÈ£';
+COMMENT ON COLUMN PERSONAL_QNA.PER_QNA_NO IS '1:1ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½È£';
 
-COMMENT ON COLUMN PERSONAL_QNA.PER_TITLE IS '°Ô½ÃÆÇ Á¦¸ñ';
+COMMENT ON COLUMN PERSONAL_QNA.PER_TITLE IS 'ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN PERSONAL_QNA.PER_CONTENTS IS '°Ô½ÃÆÇ ³»¿ë';
+COMMENT ON COLUMN PERSONAL_QNA.PER_CONTENTS IS 'ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN PERSONAL_QNA.P_NO IS '»óÇ°¹øÈ£';
+COMMENT ON COLUMN PERSONAL_QNA.P_NO IS 'ï¿½ï¿½Ç°ï¿½ï¿½È£';
 
-COMMENT ON COLUMN PERSONAL_QNA.B_NO IS 'ºê·£µå¹øÈ£';
+COMMENT ON COLUMN PERSONAL_QNA.B_NO IS 'ï¿½ê·£ï¿½ï¿½ï¿½È£';
 
-COMMENT ON COLUMN PERSONAL_QNA.M_NO IS 'È¸¿ø¹øÈ£';
+COMMENT ON COLUMN PERSONAL_QNA.M_NO IS 'È¸ï¿½ï¿½ï¿½ï¿½È£';
 
-COMMENT ON COLUMN PERSONAL_QNA.PER_RE_YN IS '°ü¸®ÀÚ ´äº¯ À¯¹«';
+COMMENT ON COLUMN PERSONAL_QNA.PER_RE_YN IS 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½äº¯ ï¿½ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN PERSONAL_QNA.ADDFILE IS 'Ã·ºÎÆÄÀÏ';
+COMMENT ON COLUMN PERSONAL_QNA.ADDFILE IS 'Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN PERSONAL_QNA.O_NO IS 'ÁÖ¹®¹øÈ£';
+COMMENT ON COLUMN PERSONAL_QNA.O_NO IS 'ï¿½Ö¹ï¿½ï¿½ï¿½È£';
 
-COMMENT ON COLUMN PERSONAL_QNA.PER_CATE IS '¹®ÀÇÀ¯Çü';
+COMMENT ON COLUMN PERSONAL_QNA.PER_CATE IS 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN PERSONAL_QNA.PER_DATE IS '¹®ÀÇ³¯Â¥';
+COMMENT ON COLUMN PERSONAL_QNA.PER_DATE IS 'ï¿½ï¿½ï¿½Ç³ï¿½Â¥';
 
 
 
--- Ãß°¡
+-- ï¿½ß°ï¿½
 CREATE TABLE PQ_RE(
 	PQRE_NO NUMBER		NOT NULL,
 	PQRE_ID	NVARCHAR2(50)		NULL,
@@ -524,15 +524,15 @@ CREATE TABLE PQ_RE(
 	PER_QNA_NO	NUMBER		NOT NULL
 );
 
-COMMENT ON COLUMN "PQ_RE"."PQRE_NO" IS '1:1´äº¯ ¹øÈ£';
+COMMENT ON COLUMN "PQ_RE"."PQRE_NO" IS '1:1ï¿½äº¯ ï¿½ï¿½È£';
 
-COMMENT ON COLUMN "PQ_RE"."PQRE_ID" IS '°ü¸®ÀÚ¾ÆÀÌµð';
+COMMENT ON COLUMN "PQ_RE"."PQRE_ID" IS 'ï¿½ï¿½ï¿½ï¿½ï¿½Ú¾ï¿½ï¿½Ìµï¿½';
 
-COMMENT ON COLUMN "PQ_RE"."PQRE_CONTENT" IS '°ü¸®ÀÚ´äº¯³»¿ë';
+COMMENT ON COLUMN "PQ_RE"."PQRE_CONTENT" IS 'ï¿½ï¿½ï¿½ï¿½ï¿½Ú´äº¯ï¿½ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN "PQ_RE"."PQRE_DATE" IS '°ü¸®ÀÚ ´äº¯³¯Â¥';
+COMMENT ON COLUMN "PQ_RE"."PQRE_DATE" IS 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½äº¯ï¿½ï¿½Â¥';
 
-COMMENT ON COLUMN "PQ_RE"."PER_QNA_NO" IS '1:1¹®ÀÇ °Ô½ÃÆÇ ¹øÈ£';
+COMMENT ON COLUMN "PQ_RE"."PER_QNA_NO" IS '1:1ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½È£';
 
 
 
@@ -548,21 +548,21 @@ CREATE TABLE POINT (
     MY_POINT NUMBER   NULL
 );
 
-COMMENT ON COLUMN POINT.POINT_NO IS 'Àû¸³±Ý ¹øÈ£';
+COMMENT ON COLUMN POINT.POINT_NO IS 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£';
 
-COMMENT ON COLUMN POINT.POINT_DATE IS 'Àû¸³ ³¯Â¥';
+COMMENT ON COLUMN POINT.POINT_DATE IS 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Â¥';
 
-COMMENT ON COLUMN POINT.O_NO IS 'ÁÖ¹®¹øÈ£';
+COMMENT ON COLUMN POINT.O_NO IS 'ï¿½Ö¹ï¿½ï¿½ï¿½È£';
 
-COMMENT ON COLUMN POINT.POINT_CONTENT IS 'Àû¸³±Ý ³»¿ë';
+COMMENT ON COLUMN POINT.POINT_CONTENT IS 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN POINT.POINT_AMOUNT IS 'Àû¸³±Ý¾×';
+COMMENT ON COLUMN POINT.POINT_AMOUNT IS 'ï¿½ï¿½ï¿½ï¿½ï¿½Ý¾ï¿½';
 
-COMMENT ON COLUMN POINT.M_NO IS 'È¸¿ø¹øÈ£';
+COMMENT ON COLUMN POINT.M_NO IS 'È¸ï¿½ï¿½ï¿½ï¿½È£';
 
-COMMENT ON COLUMN POINT.POINT_CATE IS 'Àû¸³±Ý À¯Çü';
+COMMENT ON COLUMN POINT.POINT_CATE IS 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½';
 
-COMMENT ON COLUMN POINT.MY_POINT IS' ÀÜ¿© Àû¸³±Ý';
+COMMENT ON COLUMN POINT.MY_POINT IS' ï¿½Ü¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
 
 
 
@@ -633,7 +633,7 @@ ALTER TABLE POINT ADD CONSTRAINT PK_POINT PRIMARY KEY (
 	POINT_NO
 );
 
--- Ãß°¡
+-- ï¿½ß°ï¿½
 
 ALTER TABLE QNARE ADD CONSTRAINT PK_QNARE PRIMARY KEY (
 	QNARE_NO
@@ -727,797 +727,797 @@ REFERENCES PAYMENT_INFO (
 	O_NO
 );
 
-INSERT INTO MEMBER VALUES('M00','master','NTupD4wLPg81Wj1slgt8rtXywUEpkid8BmmgSmLn39Nfup9GMafcbQD7RNk9MFzAt0nHUB2c6G8mFI0FEBuDJA==','°ü¸®ÀÚ',null,null,SYSDATE,null,'MASTER',null,null,0,0,0);
-INSERT INTO MEMBER VALUES('M01','tytntu','rla123','±èÇý¸°','1994/04/25','tytntu@naver.com','2019/03/03','west2ms','G1','Y','Y',10000,'01012345678',300000);
-INSERT INTO MEMBER VALUES('M02','dkssud','akssk12','ÀÌ¶ö¶ó','1994/03/21','dkssud@naber.com','2018/03/06','','G2','Y','N',12400,'01023422323',1000000);
-INSERT INTO MEMBER VALUES('M03','gktpdy','tlfvkf23','±è¼ÒÇâ','1994/05/12','dkvk12@naber.com','2017/03/23','','G3','Y','Y',13400,'01023299938',20000000);
-INSERT INTO MEMBER VALUES('M04','qksrkq','dnffk34','¿À³ª¶ó','1994/11/23','gkrltlfj2@naber.com','2020/05/03','','G3','Y','N',20000,'01023422323',19999999);
-INSERT INTO MEMBER VALUES('M05','tmqslek','qkffkf34','ÇÒ¹ÌÁö','1994/12/31','tlfgekwjd2@naber.com','2020/05/13','','G3','Y','Y',60000,'01058663948',2000000);
-INSERT INTO MEMBER VALUES('M06','anjfajrdj','rlvfhd3','À¯³ªÀÌ','1994/04/23','dhsmfwjsur@naber.com','2019/07/23','dkssud','G1','Y','N',45000,'01029340394',100000);
-INSERT INTO MEMBER VALUES('M07','rkxdlajrdj','zofenfk2','¿À»ç¶û','1994/01/24','anjajrwl@naber.com','2020/04/01','akssktj','G2','Y','Y',6000,'01034565432',2400000);
+INSERT INTO MEMBER VALUES('M00','master','NTupD4wLPg81Wj1slgt8rtXywUEpkid8BmmgSmLn39Nfup9GMafcbQD7RNk9MFzAt0nHUB2c6G8mFI0FEBuDJA==','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',null,null,SYSDATE,null,'MASTER',null,null,0,0,0);
+INSERT INTO MEMBER VALUES('M01','tytntu','rla123','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','1994/04/25','tytntu@naver.com','2019/03/03','west2ms','G1','Y','Y',10000,'01012345678',300000);
+INSERT INTO MEMBER VALUES('M02','dkssud','akssk12','ï¿½Ì¶ï¿½ï¿½ï¿½','1994/03/21','dkssud@naber.com','2018/03/06','','G2','Y','N',12400,'01023422323',1000000);
+INSERT INTO MEMBER VALUES('M03','gktpdy','tlfvkf23','ï¿½ï¿½ï¿½ï¿½ï¿½','1994/05/12','dkvk12@naber.com','2017/03/23','','G3','Y','Y',13400,'01023299938',20000000);
+INSERT INTO MEMBER VALUES('M04','qksrkq','dnffk34','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','1994/11/23','gkrltlfj2@naber.com','2020/05/03','','G3','Y','N',20000,'01023422323',19999999);
+INSERT INTO MEMBER VALUES('M05','tmqslek','qkffkf34','ï¿½Ò¹ï¿½ï¿½ï¿½','1994/12/31','tlfgekwjd2@naber.com','2020/05/13','','G3','Y','Y',60000,'01058663948',2000000);
+INSERT INTO MEMBER VALUES('M06','anjfajrdj','rlvfhd3','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','1994/04/23','dhsmfwjsur@naber.com','2019/07/23','dkssud','G1','Y','N',45000,'01029340394',100000);
+INSERT INTO MEMBER VALUES('M07','rkxdlajrdj','zofenfk2','ï¿½ï¿½ï¿½ï¿½ï¿½','1994/01/24','anjajrwl@naber.com','2020/04/01','akssktj','G2','Y','Y',6000,'01034565432',2400000);
 
-INSERT INTO MEMBER VALUES('M08','whgdmsrj','tkfkdgdo','±è¿µ¶õ','1994/01/25','zpdldpdlcl@naber.com','2017/03/23','','G2','N','Y',13500,'01023537578',3400000);
-INSERT INTO MEMBER VALUES('M09','rkxdkwjd','zoenfk2','¿¹Áö³ª','1994/02/15','fkffk32@naber.com','2018/03/08','fkfkffk','G3','Y','Y',20000,'01044554332',20000000);
-INSERT INTO MEMBER VALUES('M10','rhkwpsjan','zoenfkx23','¿ì·ç»ç','1994/03/15','zjshvk@naber.com','2019/12/13','whffu','G3','N','Y',23000,'01078783737',2000000);
-INSERT INTO MEMBER VALUES('M11','gkrltlfg','zoenfkx2','±èº¸¸°','1994/06/13','gksmfrmx@naber.com','2020/03/23','','G2','Y','Y',100000,'01047281823',3000000);
-INSERT INTO MEMBER VALUES('M12','dksdud12','zleifn21','±è¹Ì¹Ì','1994/05/25','gkdlzh@naber.com','2019/03/23','','G1','Y','N',12000,'01023045678',100000);
-INSERT INTO MEMBER VALUES('M13','dksrud123','zopekfn2','»ç¶ûÇØ','1994/06/22','akwdmfj@naber.com','2020/03/23','dnffkf','G1','Y','Y',17000,'01023492933',100000);
-INSERT INTO MEMBER VALUES('M14','cnacnwk23','zpoekf44','³ªµÎ¾ß','1994/07/28','dhktekrn@naber.com','2019/05/13','','G1','Y','Y',10000,'01098987878',50000);
-INSERT INTO MEMBER VALUES('M15','shfoqnffj23','zoenfk2','ÈÄÀÎ¾Æ','1994/08/28','whffu@naber.com','2019/08/04','','G1','N','Y',20000,'01023424567',150000);
-INSERT INTO MEMBER VALUES('M16','hhhhhhhdf','zoemfl2','±â¿µ¾Æ','1994/02/20','wnrrptsp@naber.com','2019/04/04','','G1','Y','Y',10000,'01056903847',45000);
-INSERT INTO MEMBER VALUES('M17','tkfkdgo34','fkffkffk23','¿À¾ÈÇÏ','1994/03/15','tglidn@naber.com','2019/03/03','gndkdk','G3','Y','Y',20000,'01045678905',5000000);
-INSERT INTO MEMBER VALUES('M18','tlatlatgo','tlssksek34','À¯Àç¼®','1994/09/05','sodlff@naber.com','2019/02/03','dkvmrl','G2','Y','Y',10000,'01033459348',4500000);
+INSERT INTO MEMBER VALUES('M08','whgdmsrj','tkfkdgdo','ï¿½è¿µï¿½ï¿½','1994/01/25','zpdldpdlcl@naber.com','2017/03/23','','G2','N','Y',13500,'01023537578',3400000);
+INSERT INTO MEMBER VALUES('M09','rkxdkwjd','zoenfk2','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','1994/02/15','fkffk32@naber.com','2018/03/08','fkfkffk','G3','Y','Y',20000,'01044554332',20000000);
+INSERT INTO MEMBER VALUES('M10','rhkwpsjan','zoenfkx23','ï¿½ï¿½ï¿½ï¿½','1994/03/15','zjshvk@naber.com','2019/12/13','whffu','G3','N','Y',23000,'01078783737',2000000);
+INSERT INTO MEMBER VALUES('M11','gkrltlfg','zoenfkx2','ï¿½èº¸ï¿½ï¿½','1994/06/13','gksmfrmx@naber.com','2020/03/23','','G2','Y','Y',100000,'01047281823',3000000);
+INSERT INTO MEMBER VALUES('M12','dksdud12','zleifn21','ï¿½ï¿½Ì¹ï¿½','1994/05/25','gkdlzh@naber.com','2019/03/23','','G1','Y','N',12000,'01023045678',100000);
+INSERT INTO MEMBER VALUES('M13','dksrud123','zopekfn2','ï¿½ï¿½ï¿½ï¿½ï¿½','1994/06/22','akwdmfj@naber.com','2020/03/23','dnffkf','G1','Y','Y',17000,'01023492933',100000);
+INSERT INTO MEMBER VALUES('M14','cnacnwk23','zpoekf44','ï¿½ï¿½ï¿½Î¾ï¿½','1994/07/28','dhktekrn@naber.com','2019/05/13','','G1','Y','Y',10000,'01098987878',50000);
+INSERT INTO MEMBER VALUES('M15','shfoqnffj23','zoenfk2','ï¿½ï¿½ï¿½Î¾ï¿½','1994/08/28','whffu@naber.com','2019/08/04','','G1','N','Y',20000,'01023424567',150000);
+INSERT INTO MEMBER VALUES('M16','hhhhhhhdf','zoemfl2','ï¿½â¿µï¿½ï¿½','1994/02/20','wnrrptsp@naber.com','2019/04/04','','G1','Y','Y',10000,'01056903847',45000);
+INSERT INTO MEMBER VALUES('M17','tkfkdgo34','fkffkffk23','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','1994/03/15','tglidn@naber.com','2019/03/03','gndkdk','G3','Y','Y',20000,'01045678905',5000000);
+INSERT INTO MEMBER VALUES('M18','tlatlatgo','tlssksek34','ï¿½ï¿½ï¿½ç¼®','1994/09/05','sodlff@naber.com','2019/02/03','dkvmrl','G2','Y','Y',10000,'01033459348',4500000);
 
-INSERT INTO MEMBER VALUES('M19','wndrnrdj','rla123','°­È£µ·','1985/07/24','rkdghehs@naver.com','2019/09/04','rkdghehs12','G2','Y','Y',15000,'01012341234',30000);
-INSERT INTO MEMBER VALUES('M20','dmswldms','rla123','ÀºÁöÀº','2001/04/25','dmswldms@naver.com','2018/08/05','dmswldms32','G1','N','Y',10000,'01012341235',20000);
-INSERT INTO MEMBER VALUES('M21','vlgy','rla123','ÇÇÈ¿','2008/04/26','vlgy@naver.com','2019/07/06','vlgy5','G1','Y','Y',10000,'01012341236',20000);
-INSERT INTO MEMBER VALUES('M22','dltnrmd','rla123','ÀÌ¼ö±à','2002/04/27','dltnrmd@naber.com','2018/06/07','dltnrmd54','G1','Y','Y',10000,'01012341237',20000);
-INSERT INTO MEMBER VALUES('M23','rkdalswo','rla123','°­¹ÎÀç','2001/08/25','rkdalswo@naber.com','2017/05/08','rkdalswo1','G1','Y','Y',10000,'01012341238',20000);
-INSERT INTO MEMBER VALUES('M24','rkdgksrn','rla123','°­ÇÑ±¸','1994/06/15','rkdgksrn@naber.com','2018/04/09','rkdgksrn5','G3','Y','Y',20000,'01012341239',40000);
-INSERT INTO MEMBER VALUES('M25','rhrjsdnr','rla123','°í°Ç¿í','1997/08/20','rhrjsdnr@naber.com','2017/03/10','rhrjsdnr1','G1','N','Y',10000,'01012341231',20000);
-INSERT INTO MEMBER VALUES('M26','gusrhkswls','rla123','Çö°üÁø','1998/05/05','gusrhkswls@naber.com','2019/02/11','gusrhkswls3','G2','Y','Y',15000,'01012341232',30000);
-INSERT INTO MEMBER VALUES('M27','rnjswjdgus','rla123','±ÇÁ¤Çö','1999/07/06','rnjswjdgus@naber.com','2019/01/12','rnjswjdgus7','G1','Y','Y',10000,'01012341233',20000);
-INSERT INTO MEMBER VALUES('M28','ghkdrlfgus','rla123','È²±æ¿¬','1999/03/25','ghkdrlfdus@naber.com','2019/12/13','ghkdrlfdus5','G2','Y','Y',15000,'01012341214',30000);
-INSERT INTO MEMBER VALUES('M29','rlatjsrl','rla123','±è¼±±â','1995/01/05','rlatjsrl@naber.com','2019/11/14','rlatjsrl4','G1','N','Y',10000,'01012341224',20000);
-INSERT INTO MEMBER VALUES('M30','rlarjs','rla123','±è°Ç','1993/01/26','rlarjs@naber.com','2019/10/15','rlarjs8','G1','Y','Y',10000,'01012341244',20000);
-INSERT INTO MEMBER VALUES('M31','rlaskarud','rla123','±è³²°æ','1992/01/28','rlaskarud@naber.com','2017/08/17','rlaskarud7','G3','Y','Y',20000,'01012341254',40000);
-INSERT INTO MEMBER VALUES('M32','rlaeotlr','rla123','±è´ë½Ä','1997/02/27','rlaeotlr@naber.com','2019/07/18','rlaeotlr4','G1','N','Y',10000,'01012341264',20000);
-INSERT INTO MEMBER VALUES('M33','rlaalsrn','rla123','±è¹Î±¸','1994/02/15','rlaalsrn@naber.com','2018/06/19','rlaalsrn23','G1','Y','Y',10000,'01012341274',20000);
-INSERT INTO MEMBER VALUES('M34','dldnjsrl','rla123','ÀÌ¿ø±â','1985/08/16','dldnjsrl@naber.com','2019/05/20','dldnjsrl0','G2','Y','Y',15000,'01012341284',30000);
-INSERT INTO MEMBER VALUES('M35','rlaqjatn','rla123','±è¹ü¼ö','1986/09/03','rlaqjatn@naber.com','2018/04/21','rlaqjatn87','G1','Y','Y',10000,'01012341294',20000);
-INSERT INTO MEMBER VALUES('M36','rlaqjawns','rla123','±è¹üÁØ','1987/12/12','rlaqjawns@naber.com','2019/03/22','rlaqjawns9','G1','N','Y',10000,'01012341134',20000);
-INSERT INTO MEMBER VALUES('M37','rlatkddnjs','rla123','±è»ó¿ø','1988/12/25','rlatkddnjs@naber.com','2018/02/23','rlatkddnjs7','G2','Y','Y',15000,'01012341334',30000);
-INSERT INTO MEMBER VALUES('M38','rlatkdgur','rla123','±è»óÇõ','1991/12/11','rlatkdgur@naber.com','2019/01/24','rlatkdgur22','G1','N','Y',10000,'01012341434',20000);
+INSERT INTO MEMBER VALUES('M19','wndrnrdj','rla123','ï¿½ï¿½È£ï¿½ï¿½','1985/07/24','rkdghehs@naver.com','2019/09/04','rkdghehs12','G2','Y','Y',15000,'01012341234',30000);
+INSERT INTO MEMBER VALUES('M20','dmswldms','rla123','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','2001/04/25','dmswldms@naver.com','2018/08/05','dmswldms32','G1','N','Y',10000,'01012341235',20000);
+INSERT INTO MEMBER VALUES('M21','vlgy','rla123','ï¿½ï¿½È¿','2008/04/26','vlgy@naver.com','2019/07/06','vlgy5','G1','Y','Y',10000,'01012341236',20000);
+INSERT INTO MEMBER VALUES('M22','dltnrmd','rla123','ï¿½Ì¼ï¿½ï¿½ï¿½','2002/04/27','dltnrmd@naber.com','2018/06/07','dltnrmd54','G1','Y','Y',10000,'01012341237',20000);
+INSERT INTO MEMBER VALUES('M23','rkdalswo','rla123','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','2001/08/25','rkdalswo@naber.com','2017/05/08','rkdalswo1','G1','Y','Y',10000,'01012341238',20000);
+INSERT INTO MEMBER VALUES('M24','rkdgksrn','rla123','ï¿½ï¿½ï¿½Ñ±ï¿½','1994/06/15','rkdgksrn@naber.com','2018/04/09','rkdgksrn5','G3','Y','Y',20000,'01012341239',40000);
+INSERT INTO MEMBER VALUES('M25','rhrjsdnr','rla123','ï¿½ï¿½Ç¿ï¿½','1997/08/20','rhrjsdnr@naber.com','2017/03/10','rhrjsdnr1','G1','N','Y',10000,'01012341231',20000);
+INSERT INTO MEMBER VALUES('M26','gusrhkswls','rla123','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','1998/05/05','gusrhkswls@naber.com','2019/02/11','gusrhkswls3','G2','Y','Y',15000,'01012341232',30000);
+INSERT INTO MEMBER VALUES('M27','rnjswjdgus','rla123','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','1999/07/06','rnjswjdgus@naber.com','2019/01/12','rnjswjdgus7','G1','Y','Y',10000,'01012341233',20000);
+INSERT INTO MEMBER VALUES('M28','ghkdrlfgus','rla123','È²ï¿½æ¿¬','1999/03/25','ghkdrlfdus@naber.com','2019/12/13','ghkdrlfdus5','G2','Y','Y',15000,'01012341214',30000);
+INSERT INTO MEMBER VALUES('M29','rlatjsrl','rla123','ï¿½è¼±ï¿½ï¿½','1995/01/05','rlatjsrl@naber.com','2019/11/14','rlatjsrl4','G1','N','Y',10000,'01012341224',20000);
+INSERT INTO MEMBER VALUES('M30','rlarjs','rla123','ï¿½ï¿½ï¿½','1993/01/26','rlarjs@naber.com','2019/10/15','rlarjs8','G1','Y','Y',10000,'01012341244',20000);
+INSERT INTO MEMBER VALUES('M31','rlaskarud','rla123','ï¿½è³²ï¿½ï¿½','1992/01/28','rlaskarud@naber.com','2017/08/17','rlaskarud7','G3','Y','Y',20000,'01012341254',40000);
+INSERT INTO MEMBER VALUES('M32','rlaeotlr','rla123','ï¿½ï¿½ï¿½ï¿½','1997/02/27','rlaeotlr@naber.com','2019/07/18','rlaeotlr4','G1','N','Y',10000,'01012341264',20000);
+INSERT INTO MEMBER VALUES('M33','rlaalsrn','rla123','ï¿½ï¿½Î±ï¿½','1994/02/15','rlaalsrn@naber.com','2018/06/19','rlaalsrn23','G1','Y','Y',10000,'01012341274',20000);
+INSERT INTO MEMBER VALUES('M34','dldnjsrl','rla123','ï¿½Ì¿ï¿½ï¿½ï¿½','1985/08/16','dldnjsrl@naber.com','2019/05/20','dldnjsrl0','G2','Y','Y',15000,'01012341284',30000);
+INSERT INTO MEMBER VALUES('M35','rlaqjatn','rla123','ï¿½ï¿½ï¿½ï¿½ï¿½','1986/09/03','rlaqjatn@naber.com','2018/04/21','rlaqjatn87','G1','Y','Y',10000,'01012341294',20000);
+INSERT INTO MEMBER VALUES('M36','rlaqjawns','rla123','ï¿½ï¿½ï¿½ï¿½ï¿½','1987/12/12','rlaqjawns@naber.com','2019/03/22','rlaqjawns9','G1','N','Y',10000,'01012341134',20000);
+INSERT INTO MEMBER VALUES('M37','rlatkddnjs','rla123','ï¿½ï¿½ï¿½ï¿½','1988/12/25','rlatkddnjs@naber.com','2018/02/23','rlatkddnjs7','G2','Y','Y',15000,'01012341334',30000);
+INSERT INTO MEMBER VALUES('M38','rlatkdgur','rla123','ï¿½ï¿½ï¿½ï¿½ï¿½','1991/12/11','rlatkdgur@naber.com','2019/01/24','rlatkdgur22','G1','N','Y',10000,'01012341434',20000);
 
-INSERT INTO MEMBER VALUES ('M39', 'cksal124', 'cksal123', '°­Âù¹Ì', TO_DATE('1995-03-03','YYYY-MM-DD'),
+INSERT INTO MEMBER VALUES ('M39', 'cksal124', 'cksal123', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', TO_DATE('1995-03-03','YYYY-MM-DD'),
 'cksal124@naver.com',TO_DATE('2011-03-03','YYYY-MM-DD'),'violin7665','G1','Y','N',1000,'01011341434',20000);
 
-INSERT INTO MEMBER VALUES ('M40', 'rjsgml124', 'rjsgml123', 'ÀÌ°ÇÈñ', TO_DATE('1995-03-04','YYYY-MM-DD'),
+INSERT INTO MEMBER VALUES ('M40', 'rjsgml124', 'rjsgml123', 'ï¿½Ì°ï¿½ï¿½ï¿½', TO_DATE('1995-03-04','YYYY-MM-DD'),
 'rjsgml124@naver.com',TO_DATE('2011-03-03','YYYY-MM-DD'),'violin7665','G1','N','N',1500,'01012341434',20000);
 
-INSERT INTO MEMBER VALUES ('M41', 'rudtjq124', 'rudtjq123', '±è°æ¼·', TO_DATE('1994-03-13','YYYY-MM-DD'),
+INSERT INTO MEMBER VALUES ('M41', 'rudtjq124', 'rudtjq123', 'ï¿½ï¿½æ¼·', TO_DATE('1994-03-13','YYYY-MM-DD'),
 'rudtjq124@naver.com',TO_DATE('2014-03-09','YYYY-MM-DD'),'violin7665','G2','Y','N',10000,'01013341434',30000);
 
-INSERT INTO MEMBER VALUES ('M42', 'rudwns124', 'rudwns123', 'ÀÌ°æÁØ', TO_DATE('1995-07-03','YYYY-MM-DD'),
+INSERT INTO MEMBER VALUES ('M42', 'rudwns124', 'rudwns123', 'ï¿½Ì°ï¿½ï¿½ï¿½', TO_DATE('1995-07-03','YYYY-MM-DD'),
 'rudwns124@naver.com',TO_DATE('2010-06-04','YYYY-MM-DD'),'violin7665','G1','Y','N',200,'01014341434',20000);
 
-INSERT INTO MEMBER VALUES ('M43', 'rbgus124', 'rbgus123', '±è±ÔÇö', TO_DATE('1997-11-23','YYYY-MM-DD'),
+INSERT INTO MEMBER VALUES ('M43', 'rbgus124', 'rbgus123', 'ï¿½ï¿½ï¿½ï¿½ï¿½', TO_DATE('1997-11-23','YYYY-MM-DD'),
 'rbgus124@naver.com',TO_DATE('2019-05-03','YYYY-MM-DD'),'violin7665','G2','Y','N',1600,'01015341434',30000);
 
-INSERT INTO MEMBER VALUES ('M44', 'rbcjf124', 'rbcjf123', 'ÃÖ±ÔÃ¶', TO_DATE('1994-12-13','YYYY-MM-DD'),
+INSERT INTO MEMBER VALUES ('M44', 'rbcjf124', 'rbcjf123', 'ï¿½Ö±ï¿½Ã¶', TO_DATE('1994-12-13','YYYY-MM-DD'),
 'rbcjf124@naver.com',TO_DATE('2015-03-13','YYYY-MM-DD'),'violin7665','G3','Y','Y',6500,'01016341434',40000);
 
-INSERT INTO MEMBER VALUES ('M45', 'rlgur124', 'rlgur123', '±Ç±âÇõ', TO_DATE('1995-10-12','YYYY-MM-DD'),
+INSERT INTO MEMBER VALUES ('M45', 'rlgur124', 'rlgur123', 'ï¿½Ç±ï¿½ï¿½ï¿½', TO_DATE('1995-10-12','YYYY-MM-DD'),
 'rlgur124@naver.com',TO_DATE('2014-03-16','YYYY-MM-DD'),'violin7665','G1','Y','N',600,'01012741434',20000);
 
-INSERT INTO MEMBER VALUES ('M46', 'dydghks124', 'dydghks123', '±è¿ëÈ¯', TO_DATE('1995-11-03','YYYY-MM-DD'),
+INSERT INTO MEMBER VALUES ('M46', 'dydghks124', 'dydghks123', 'ï¿½ï¿½ï¿½È¯', TO_DATE('1995-11-03','YYYY-MM-DD'),
 'dydghks124@naver.com',TO_DATE('2016-03-03','YYYY-MM-DD'),'violin7665','G2','Y','N',1100,'01082341434',30000);
 
-INSERT INTO MEMBER VALUES ('M47', 'skrud124', 'skrud123', '±è³ª°æ', TO_DATE('1994-01-03','YYYY-MM-DD'),
+INSERT INTO MEMBER VALUES ('M47', 'skrud124', 'skrud123', 'ï¿½è³ªï¿½ï¿½', TO_DATE('1994-01-03','YYYY-MM-DD'),
 'skrud124@naver.com',TO_DATE('2017-07-03','YYYY-MM-DD'),'violin7665','G1','Y','N',1060,'01012941434',20000);
 
-INSERT INTO MEMBER VALUES ('M48', 'gockd124', 'gockd123', '±èÇØÃ¢', TO_DATE('1992-01-13','YYYY-MM-DD'),
+INSERT INTO MEMBER VALUES ('M48', 'gockd124', 'gockd123', 'ï¿½ï¿½ï¿½ï¿½Ã¢', TO_DATE('1992-01-13','YYYY-MM-DD'),
 'gockd124@naver.com',TO_DATE('2019-03-03','YYYY-MM-DD'),'violin7665','G3','Y','N',1900,'01019341434',40000);
 
-INSERT INTO MEMBER VALUES ('M49', 'tmddhks124', 'tmddhks123', '³ë½Â¿Ï', TO_DATE('1995-09-03','YYYY-MM-DD'),
+INSERT INTO MEMBER VALUES ('M49', 'tmddhks124', 'tmddhks123', 'ï¿½ï¿½Â¿ï¿½', TO_DATE('1995-09-03','YYYY-MM-DD'),
 'tmddhks124@naver.com',TO_DATE('2016-02-03','YYYY-MM-DD'),'violin7665','G2','Y','N',1900,'01012241434',30000);
 
-INSERT INTO MEMBER VALUES ('M50', 'rlgh124', 'rlgh123', 'ÀÌ±âÈ£', TO_DATE('1995-06-15','YYYY-MM-DD'),
+INSERT INTO MEMBER VALUES ('M50', 'rlgh124', 'rlgh123', 'ï¿½Ì±ï¿½È£', TO_DATE('1995-06-15','YYYY-MM-DD'),
 'rlgh124@naver.com',TO_DATE('2014-07-15','YYYY-MM-DD'),'violin7665','G2','Y','Y',10800,'01012340434',30000);
 
-INSERT INTO MEMBER VALUES ('M51', 'ekdo124', 'ekdo123', '¼Õ´Ù¾Ö', TO_DATE('1999-02-03','YYYY-MM-DD'),
+INSERT INTO MEMBER VALUES ('M51', 'ekdo124', 'ekdo123', 'ï¿½Õ´Ù¾ï¿½', TO_DATE('1999-02-03','YYYY-MM-DD'),
 'ekdo124@naver.com',TO_DATE('2014-09-03','YYYY-MM-DD'),'violin7665','G2','Y','N',1800,'01012340434',30000);
 
-INSERT INTO MEMBER VALUES ('M52', 'eogns124', 'eogns123', 'Á¤´ëÈÆ', TO_DATE('1995-09-13','YYYY-MM-DD'),
+INSERT INTO MEMBER VALUES ('M52', 'eogns124', 'eogns123', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', TO_DATE('1995-09-13','YYYY-MM-DD'),
 'cksal124@naver.com',TO_DATE('2011-03-03','YYYY-MM-DD'),'violin7665','G3','Y','N',1000,'01010341434',40000);
 
-INSERT INTO MEMBER VALUES ('M53', 'fkstlf124', 'fkstlf123', 'ÀÌ¶õ½Ç', TO_DATE('1998-05-03','YYYY-MM-DD'),
+INSERT INTO MEMBER VALUES ('M53', 'fkstlf124', 'fkstlf123', 'ï¿½Ì¶ï¿½ï¿½ï¿½', TO_DATE('1998-05-03','YYYY-MM-DD'),
 'fkstlf124@naver.com',TO_DATE('2017-05-09','YYYY-MM-DD'),'violin7665','G2','Y','N',700,'01012341404',30000);
 
-INSERT INTO MEMBER VALUES ('M54', 'altjs124', 'altjs123', '¹®¹Ì¼±', TO_DATE('1998-09-09','YYYY-MM-DD'),
+INSERT INTO MEMBER VALUES ('M54', 'altjs124', 'altjs123', 'ï¿½ï¿½ï¿½Ì¼ï¿½', TO_DATE('1998-09-09','YYYY-MM-DD'),
 'altjs124@naver.com',TO_DATE('2020-01-03','YYYY-MM-DD'),'violin7665','G3','Y','N',1100,'01012341034',40000);
 
-INSERT INTO MEMBER VALUES ('M55', 'tpgh124', 'tpgh123', '¹Ú¼¼È£', TO_DATE('1993-06-11','YYYY-MM-DD'),
+INSERT INTO MEMBER VALUES ('M55', 'tpgh124', 'tpgh123', 'ï¿½Ú¼ï¿½È£', TO_DATE('1993-06-11','YYYY-MM-DD'),
 'tpgh124@naver.com',TO_DATE('2019-06-03','YYYY-MM-DD'),'violin7665','G2','N','N',1090,'01012341430',30000);
 
-INSERT INTO MEMBER VALUES ('M56', 'dmswl124', 'dmswl123', 'ÀÌÀºÁö', TO_DATE('1997-05-10','YYYY-MM-DD'),
+INSERT INTO MEMBER VALUES ('M56', 'dmswl124', 'dmswl123', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', TO_DATE('1997-05-10','YYYY-MM-DD'),
 'dmswl124@naver.com',TO_DATE('2016-11-03','YYYY-MM-DD'),'violin7665','G1','Y','N',1000,'01012361434',20000);
 
-INSERT INTO MEMBER VALUES ('M57', 'tpoadl124', 'toadl123', 'ÃÖ»ùÀÌ', TO_DATE('1996-01-03','YYYY-MM-DD'),
+INSERT INTO MEMBER VALUES ('M57', 'tpoadl124', 'toadl123', 'ï¿½Ö»ï¿½ï¿½ï¿½', TO_DATE('1996-01-03','YYYY-MM-DD'),
 'tpoad124@naver.com',TO_DATE('2014-12-03','YYYY-MM-DD'),'violin7665','G3','Y','N',100,'01012341634',40000);
 
-INSERT INTO MEMBER VALUES ('M58', 'thdjs124', 'thdjs123', '½É¼Ò¾ð', TO_DATE('1999-09-09','YYYY-MM-DD'),
+INSERT INTO MEMBER VALUES ('M58', 'thdjs124', 'thdjs123', 'ï¿½É¼Ò¾ï¿½', TO_DATE('1999-09-09','YYYY-MM-DD'),
 'thdjs124@naver.com',TO_DATE('2015-02-13','YYYY-MM-DD'),'violin7665','G2','Y','Y',1800,'01072341474',30000);
 
-INSERT INTO MEMBER VALUES('M59','apple','1234','Á¶ÀÌ','1995/03/20','joy@naver.com','2020/04/29','apple2','G1','Y','Y',1,'01034758922',10);
-INSERT INTO MEMBER VALUES('M60','banana','1234','¾ÆÀÌ¸°','1995/03/21','irin@naver.com','2020/04/28','irin2','G1','Y','Y',2,'01034788922',20);
-INSERT INTO MEMBER VALUES('M61','grape','1234','¿¹¸°','1995/03/22','yerin@naver.com','2020/04/27','yerin2','G1','Y','Y',3,'01034658966',30);
-INSERT INTO MEMBER VALUES('M62','peach','1234','½½±â','1995/03/23','silgy@naver.com','2020/04/26','silgy2','G2','Y','Y',4,'01034788922',40);
-INSERT INTO MEMBER VALUES('M63','mango','1234','À¢µð','1995/03/24','wendy@naver.com','2020/04/25','wendy2','G3','N','Y',5,'01034682655',5000000);
-INSERT INTO MEMBER VALUES('M64','watermelon','1234','Á¦´Ï','1995/03/25','jenny@naver.com','2020/04/24','jenny2','G3','N','Y',6,'01035782456',600000);
-INSERT INTO MEMBER VALUES('M65','applemango','1234','Áö¼ö','1995/03/26','jisoo@naver.com','2020/04/23','applemango2','G3','Y','Y',7,'01087526599',700000);
-INSERT INTO MEMBER VALUES('M66','strawberry','1234','·ÎÁ¦','1995/03/27','rose@naver.com','2020/04/22','strawberry2','G2','Y','Y',8,'01084578922',80);
-INSERT INTO MEMBER VALUES('M67','plum','1234','¸®»ç','1995/03/28','risa@naver.com','2020/04/21','plum2','G1','N','Y',9,'01087542366',90);
-INSERT INTO MEMBER VALUES('M68','melon','1234','È¿Á¤','1996/12/10','hyojeong@naver.com','2020/01/01','melon2','G2','N','Y',10,'01087565677',100);
-INSERT INTO MEMBER VALUES('M69','cherry','1234','¹Ì¹Ì','1996/12/11','mimi@naver.com','2020/01/02','cherry2','G1','Y','Y',11,'01078542365',110);
-INSERT INTO MEMBER VALUES('M70','pineapple','1234','À¯¾Æ','1996/12/13','youare@naver.com','2020/01/03','pineapple','G2','N','Y',12,'01087568922',120);
-INSERT INTO MEMBER VALUES('M71','kiwi','1234','ÁöÈ£','1996/12/14','jiho@naver.com','2020/01/04','kiwi2','G3','Y','Y',13,'01087521456',1300000);
-INSERT INTO MEMBER VALUES('M72','goldkiwi','1234','ºñ´Ï','1996/12/15','bini@naver.com','2020/01/05','goldkiwi2','G1','Y','Y',14,'01087524561',140);
-INSERT INTO MEMBER VALUES('M73','grapfruite','1234','À¯¸®','1996/12/16','yuri@naver.com','2020/01/06','grapfruite2','G2','N','Y',15,'01087546589',150);
-INSERT INTO MEMBER VALUES('M74','tomato','1234','ÅÂ¿¬','1996/12/17','teayeon@naver.com','2020/01/07','tomato2','G3','Y','Y',16,'01078945612',1600000);
-INSERT INTO MEMBER VALUES('M75','pear','1234','Æ¼ÆÄ´Ï','1996/12/18','tiffany@naver.com','2020/01/08','pear2','G1','N','Y',17,'01084512457',170);
-INSERT INTO MEMBER VALUES('M76','blueberry','1234','¼ö¿µ','1996/12/19','suyoung@naver.com','2020/01/09','blueberry2','G2','Y','Y',18,'01087455688',180);
-INSERT INTO MEMBER VALUES('M77','rasberry','1234','½á´Ï','1996/12/20','sunny@naver.com','2020/01/10','rasberry2','G3','N','Y',19,'01087462154',1900000);
+INSERT INTO MEMBER VALUES('M59','apple','1234','ï¿½ï¿½ï¿½ï¿½','1995/03/20','joy@naver.com','2020/04/29','apple2','G1','Y','Y',1,'01034758922',10);
+INSERT INTO MEMBER VALUES('M60','banana','1234','ï¿½ï¿½ï¿½Ì¸ï¿½','1995/03/21','irin@naver.com','2020/04/28','irin2','G1','Y','Y',2,'01034788922',20);
+INSERT INTO MEMBER VALUES('M61','grape','1234','ï¿½ï¿½ï¿½ï¿½','1995/03/22','yerin@naver.com','2020/04/27','yerin2','G1','Y','Y',3,'01034658966',30);
+INSERT INTO MEMBER VALUES('M62','peach','1234','ï¿½ï¿½ï¿½ï¿½','1995/03/23','silgy@naver.com','2020/04/26','silgy2','G2','Y','Y',4,'01034788922',40);
+INSERT INTO MEMBER VALUES('M63','mango','1234','ï¿½ï¿½ï¿½ï¿½','1995/03/24','wendy@naver.com','2020/04/25','wendy2','G3','N','Y',5,'01034682655',5000000);
+INSERT INTO MEMBER VALUES('M64','watermelon','1234','ï¿½ï¿½ï¿½ï¿½','1995/03/25','jenny@naver.com','2020/04/24','jenny2','G3','N','Y',6,'01035782456',600000);
+INSERT INTO MEMBER VALUES('M65','applemango','1234','ï¿½ï¿½ï¿½ï¿½','1995/03/26','jisoo@naver.com','2020/04/23','applemango2','G3','Y','Y',7,'01087526599',700000);
+INSERT INTO MEMBER VALUES('M66','strawberry','1234','ï¿½ï¿½ï¿½ï¿½','1995/03/27','rose@naver.com','2020/04/22','strawberry2','G2','Y','Y',8,'01084578922',80);
+INSERT INTO MEMBER VALUES('M67','plum','1234','ï¿½ï¿½ï¿½ï¿½','1995/03/28','risa@naver.com','2020/04/21','plum2','G1','N','Y',9,'01087542366',90);
+INSERT INTO MEMBER VALUES('M68','melon','1234','È¿ï¿½ï¿½','1996/12/10','hyojeong@naver.com','2020/01/01','melon2','G2','N','Y',10,'01087565677',100);
+INSERT INTO MEMBER VALUES('M69','cherry','1234','ï¿½Ì¹ï¿½','1996/12/11','mimi@naver.com','2020/01/02','cherry2','G1','Y','Y',11,'01078542365',110);
+INSERT INTO MEMBER VALUES('M70','pineapple','1234','ï¿½ï¿½ï¿½ï¿½','1996/12/13','youare@naver.com','2020/01/03','pineapple','G2','N','Y',12,'01087568922',120);
+INSERT INTO MEMBER VALUES('M71','kiwi','1234','ï¿½ï¿½È£','1996/12/14','jiho@naver.com','2020/01/04','kiwi2','G3','Y','Y',13,'01087521456',1300000);
+INSERT INTO MEMBER VALUES('M72','goldkiwi','1234','ï¿½ï¿½ï¿½','1996/12/15','bini@naver.com','2020/01/05','goldkiwi2','G1','Y','Y',14,'01087524561',140);
+INSERT INTO MEMBER VALUES('M73','grapfruite','1234','ï¿½ï¿½ï¿½ï¿½','1996/12/16','yuri@naver.com','2020/01/06','grapfruite2','G2','N','Y',15,'01087546589',150);
+INSERT INTO MEMBER VALUES('M74','tomato','1234','ï¿½Â¿ï¿½','1996/12/17','teayeon@naver.com','2020/01/07','tomato2','G3','Y','Y',16,'01078945612',1600000);
+INSERT INTO MEMBER VALUES('M75','pear','1234','Æ¼ï¿½Ä´ï¿½','1996/12/18','tiffany@naver.com','2020/01/08','pear2','G1','N','Y',17,'01084512457',170);
+INSERT INTO MEMBER VALUES('M76','blueberry','1234','ï¿½ï¿½ï¿½ï¿½','1996/12/19','suyoung@naver.com','2020/01/09','blueberry2','G2','Y','Y',18,'01087455688',180);
+INSERT INTO MEMBER VALUES('M77','rasberry','1234','ï¿½ï¿½ï¿½','1996/12/20','sunny@naver.com','2020/01/10','rasberry2','G3','N','Y',19,'01087462154',1900000);
 
 
-INSERT INTO MEMBER VALUES('M78','west21ms','west21!@#','¾ç¼­À±','1993/04/21','west21ms@gmail.com','2019/05/16',null,'G1','Y','Y',10000,'01078941234',55000000);
-INSERT INTO MEMBER VALUES('M79','dangx2','bowwow22','±è´ó´ó','2000/04/21','dangx2@gmail.com','2020/03/15',null,'G2','N','N',5000,'01058421252',1000000);
-INSERT INTO MEMBER VALUES('M80','du888','du888@@','°ûµÎÆÈ','1960/09/01','du888@gmail.com','2015/12/20',null,'G3','N','Y',25000,'01078521532',2000);
-INSERT INTO MEMBER VALUES('M81','baba123','baba123','¹Ú¹èµ¿','1983/06/20','baba123@naver.com','2009/05/06','du888','G1','Y','N',1100000,'01012521234',100000);
-INSERT INTO MEMBER VALUES('M82','wonder98','abc123','±è³î¶÷','1900/08/11','wowwow010@gmail.com','2006/11/11',null,'G1','Y','Y',100300,'01045678901',5400000);
-INSERT INTO MEMBER VALUES('M83','kim0su','lovegrandma','±è¿µ¼ö','1981/11/21','lovegrandma@gmail.com','2020/04/16',null,'G2','Y','Y',230000,'01015341234',152201);
-INSERT INTO MEMBER VALUES('M84','gondunim7','love0su','ÇÒ¸Ó´Ï','1996/02/09','gondunim7@yahoo.com','2020/05/20',null,'G2','Y','Y',10300,'01025525555',752000);
-INSERT INTO MEMBER VALUES('M85','zeint','128128aa','ÁöÀÎÆ®','1993/05/05','zeint@gmail.com','2012/07/06','west21ms','G2','Y','Y',134,'01052554561',452200);
-INSERT INTO MEMBER VALUES('M86','danmuzi','jjajang','±èÀÚÀå','1986/09/30','jjajangluv@hanmail.net','2015/04/26',null,'G2','N','N',15,'01015325555',22100);
-INSERT INTO MEMBER VALUES('M87','east21mr','east21!@#','³²µ¿À±','1993/04/21','east21mr@gmail.com','2019/05/17','west21ms','G1','N','Y',0,'01075641123',100200);
-INSERT INTO MEMBER VALUES('M88','fivewon','50@@#','¿À¿ø','1983/02/01','5one5one@gmail.com','2011/04/22',null,'G1','Y','Y',10000,'01023452102',530400);
-INSERT INTO MEMBER VALUES('M89','iljowon','dlfwhdnjs11','ÀÏÁ¶¿ø','1977/07/11','100000000000@hanmail.net','2018/03/16','east21mr','G3','Y','Y',22000,'01023458521',320000);
-INSERT INTO MEMBER VALUES('M90','jigubon','jigubon@@','Áö±¸º»','1991/01/01','jigubon@gmail.com','2019/05/16','du888','G3','Y','Y',13000,'01035421235',235200);
-INSERT INTO MEMBER VALUES('M91','ssapable','rksmdgks','°¡´ÉÇÑ','1995/07/31','ssapable@gmail.com','2019/05/16',null,'G3','Y','Y',10000,'01068751456',641000);
-INSERT INTO MEMBER VALUES('M92','kimchi2','likekimchi','±èÄ¡','1988/08/28','kimchi22@gmail.com','2019/05/16',null,'G3','Y','Y',23400,'01045621256',7820000);
-INSERT INTO MEMBER VALUES('M93','twinkle','tw***','´ë¸Ó¸®','1994/01/20','twinkle@gmail.com','2019/05/16',null,'G2','Y','Y',20000,'01078924567',675000);
-INSERT INTO MEMBER VALUES('M94','bibibik','masidda','ÃÖºñºñ','1996/03/21','bibibik@gmail.com','2014/03/10',null,'G2','Y','Y',100,'01025201123',500000);
-INSERT INTO MEMBER VALUES('M95','sol99','solsol22','±èÇÑ¼Ö','1992/01/31','solsol@naver.com','1999/05/13',null,'G2','Y','Y',500,'01024561254',15300000);
-INSERT INTO MEMBER VALUES('M96','baekristal','baebae11','¹è¼öÁ¤','1994/02/28','baekristal@gmail.com','2019/04/26',null,'G3','Y','Y',4000,'01015784223',520030);
+INSERT INTO MEMBER VALUES('M78','west21ms','west21!@#','ï¿½ç¼­ï¿½ï¿½','1993/04/21','west21ms@gmail.com','2019/05/16',null,'G1','Y','Y',10000,'01078941234',55000000);
+INSERT INTO MEMBER VALUES('M79','dangx2','bowwow22','ï¿½ï¿½ï¿½ï¿½','2000/04/21','dangx2@gmail.com','2020/03/15',null,'G2','N','N',5000,'01058421252',1000000);
+INSERT INTO MEMBER VALUES('M80','du888','du888@@','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','1960/09/01','du888@gmail.com','2015/12/20',null,'G3','N','Y',25000,'01078521532',2000);
+INSERT INTO MEMBER VALUES('M81','baba123','baba123','ï¿½Ú¹èµ¿','1983/06/20','baba123@naver.com','2009/05/06','du888','G1','Y','N',1100000,'01012521234',100000);
+INSERT INTO MEMBER VALUES('M82','wonder98','abc123','ï¿½ï¿½ï¿½ï¿½','1900/08/11','wowwow010@gmail.com','2006/11/11',null,'G1','Y','Y',100300,'01045678901',5400000);
+INSERT INTO MEMBER VALUES('M83','kim0su','lovegrandma','ï¿½è¿µï¿½ï¿½','1981/11/21','lovegrandma@gmail.com','2020/04/16',null,'G2','Y','Y',230000,'01015341234',152201);
+INSERT INTO MEMBER VALUES('M84','gondunim7','love0su','ï¿½Ò¸Ó´ï¿½','1996/02/09','gondunim7@yahoo.com','2020/05/20',null,'G2','Y','Y',10300,'01025525555',752000);
+INSERT INTO MEMBER VALUES('M85','zeint','128128aa','ï¿½ï¿½ï¿½ï¿½Æ®','1993/05/05','zeint@gmail.com','2012/07/06','west21ms','G2','Y','Y',134,'01052554561',452200);
+INSERT INTO MEMBER VALUES('M86','danmuzi','jjajang','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','1986/09/30','jjajangluv@hanmail.net','2015/04/26',null,'G2','N','N',15,'01015325555',22100);
+INSERT INTO MEMBER VALUES('M87','east21mr','east21!@#','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','1993/04/21','east21mr@gmail.com','2019/05/17','west21ms','G1','N','Y',0,'01075641123',100200);
+INSERT INTO MEMBER VALUES('M88','fivewon','50@@#','ï¿½ï¿½ï¿½ï¿½','1983/02/01','5one5one@gmail.com','2011/04/22',null,'G1','Y','Y',10000,'01023452102',530400);
+INSERT INTO MEMBER VALUES('M89','iljowon','dlfwhdnjs11','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','1977/07/11','100000000000@hanmail.net','2018/03/16','east21mr','G3','Y','Y',22000,'01023458521',320000);
+INSERT INTO MEMBER VALUES('M90','jigubon','jigubon@@','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','1991/01/01','jigubon@gmail.com','2019/05/16','du888','G3','Y','Y',13000,'01035421235',235200);
+INSERT INTO MEMBER VALUES('M91','ssapable','rksmdgks','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','1995/07/31','ssapable@gmail.com','2019/05/16',null,'G3','Y','Y',10000,'01068751456',641000);
+INSERT INTO MEMBER VALUES('M92','kimchi2','likekimchi','ï¿½ï¿½Ä¡','1988/08/28','kimchi22@gmail.com','2019/05/16',null,'G3','Y','Y',23400,'01045621256',7820000);
+INSERT INTO MEMBER VALUES('M93','twinkle','tw***','ï¿½ï¿½Ó¸ï¿½','1994/01/20','twinkle@gmail.com','2019/05/16',null,'G2','Y','Y',20000,'01078924567',675000);
+INSERT INTO MEMBER VALUES('M94','bibibik','masidda','ï¿½Öºï¿½ï¿½','1996/03/21','bibibik@gmail.com','2014/03/10',null,'G2','Y','Y',100,'01025201123',500000);
+INSERT INTO MEMBER VALUES('M95','sol99','solsol22','ï¿½ï¿½ï¿½Ñ¼ï¿½','1992/01/31','solsol@naver.com','1999/05/13',null,'G2','Y','Y',500,'01024561254',15300000);
+INSERT INTO MEMBER VALUES('M96','baekristal','baebae11','ï¿½ï¿½ï¿½ï¿½ï¿½','1994/02/28','baekristal@gmail.com','2019/04/26',null,'G3','Y','Y',4000,'01015784223',520030);
 
 
 
 
-INSERT INTO REVIEW VALUES (1, 'M46', 'Àß ¹Þ¾Ò¾î¿ä. µü ¸Â¾Æ¿ä.', 'W0101003BKS', '°ÆÁ¤Çß´Âµ¥ Àß ¸Â¾Æ¼­ ÁÁ¾Æ¿ä. ´Ù¸¥ »öµµ »ç°í ½Í¾î¿ä!', '2020/04/21', 0, 5, 'review001');
-INSERT INTO REVIEW VALUES (2, 'M42', '¼±¹°Çß´Âµ¥ ÁÁ¾ÆÇØ¿ä:)', 'M0704094BKS', '³²Ä£ »ýÀÏ¼±¹°·Î »çÁá´Âµ¥ ³Ê¹« ÁÁ¾ÆÇØ¿ä! ±Ùµ¥ ½Ç¹°ÀÌ »çÁøº¸´Ù Ä¢Ä¢ÇØ¿ë', '2020/01/12', 0, 4, 'review002');
-INSERT INTO REVIEW VALUES (3, 'M33', '»çÀÌÁî°¡ Á» Å©³×¿ä', 'M0201052KHL', '½ÇÃøÀÌ¶û ´Þ¶ó¿ä. ±×³É ¿À¹öÇÍÀ¸·Î ÀÔÀ¸·Á°í¿ä.', '2019/11/23', 0, 4, 'review003');
-INSERT INTO REVIEW VALUES (4, 'M01', 'ÁÁ¾Æ¿ä', 'M0201052KHM', '³Ë³ËÇÏ°Ô ¸Â¾Æ¼­ µü ÁÁ¾Æ¿ä', '2020/03/22', 0, 5, NULL);
-INSERT INTO REVIEW VALUES (5, 'M25', '»ö±ò ³Ê¹« ¿¹»µ¿ä', 'W0602043BKM', '´ÙÅ©ºí·¢ÀÌ ¾Æ´Ï¶ó ºû¹Þ¾ÒÀ»¶§ ÀºÀºÇÑ »öÀÌ¿¡¿ä!', '2020/04/22', 0, 5, 'review004');
-INSERT INTO REVIEW VALUES (6, 'M52', 'ÁÁ¾Æ¿ä ÁÁ¾Æ¿ä Â¯ ÁÒ¾Æ¿æ', 'W0503045WHS', 'ÇÏºñÀÎµ¥ ·çÁîÇØ¼­ Æ¼ ¾È³ª°í ³¯¾ÀÇØº¸¿©¿ä. ÀÌ°Å ÀÔÀ¸¸é »ìºüÁ³³Ä°í ¹°¾îºÁ¿ë', '2020/05/05', 0, 5, 'review005');
-INSERT INTO REVIEW VALUES (7, 'M90', '¼Ò¸Å°¡ ³Ê¹« ±æ¾î¿ä', 'M0702098BKS', 'Àå±âÀÚ¶û ³ª°¡¼­ Å»Ãã Ãß¸é µÉµí,,', '2020/03/27', 0, 2, NULL);
-INSERT INTO REVIEW VALUES (8, 'M72', '¿©ÀÚÄ£±¸°¡ ÁÁ¾ÆÇØ¿ä', 'W0205027RDS', '¿©Ä£ ÄðÅæÀÌ¶ó Àß¾î¿ï·Á¿ä ¾ó±¼ È­»çÇØº¸¿©¿ä', '2019/08/30', 0, 5, NULL);
-INSERT INTO REVIEW VALUES (9, 'M53', 'À¯´ÏÅ©ÇÕ´Ï´Ù.', 'M0401065BLM', 'ÆÄ¶õ»ö ¹«½ºÅÁÀº Ã³À½ÀÌ¶ó ´« µü °¨°í Áú·¶´Âµ¥ ´ÙÅ©ÇÑ ÄÃ·¯¶ó ÁÁ½À´Ï´Ù', '2019/12/25', 0, 5, 'review006');
-INSERT INTO REVIEW VALUES (10, 'M17', 'ÇÑÄ¡¼ö ÀÛ°Ô »ç¼¼¿ä', 'W0101019YLM', 'ÈÄ±â º¸°í ÇÑÄ¡¼ö ÀÛ°Ô »ò´Âµ¥ µüÀÌ¿¡¿ä', '2020/03/22', 0, 5, 'review007');
-INSERT INTO REVIEW VALUES (11, 'M67', 'ÀÌ°Ô ¾î¶»°Ô ÆÄ¶õ»öÀÌÁÒ??!!!!', 'W0102016BLM', 'º° ÇÑ°³µµ ¾ÈÁÖ°í ½Í¾î¿ä Ä«Å°»ö ¾Æ´Ñ°¡¿ä??', '2018/11/03', 0, 1, 'review008');
+INSERT INTO REVIEW VALUES (1, 'M46', 'ï¿½ï¿½ ï¿½Þ¾Ò¾ï¿½ï¿½. ï¿½ï¿½ ï¿½Â¾Æ¿ï¿½.', 'W0101003BKS', 'ï¿½ï¿½ï¿½ï¿½ï¿½ß´Âµï¿½ ï¿½ï¿½ ï¿½Â¾Æ¼ï¿½ ï¿½ï¿½ï¿½Æ¿ï¿½. ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Í¾ï¿½ï¿½!', '2020/04/21', 0, 5, 'review001');
+INSERT INTO REVIEW VALUES (2, 'M42', 'ï¿½ï¿½ï¿½ï¿½ï¿½ß´Âµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¿ï¿½:)', 'M0704094BKS', 'ï¿½ï¿½Ä£ ï¿½ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Âµï¿½ ï¿½Ê¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¿ï¿½! ï¿½Ùµï¿½ ï¿½Ç¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä¢Ä¢ï¿½Ø¿ï¿½', '2020/01/12', 0, 4, 'review002');
+INSERT INTO REVIEW VALUES (3, 'M33', 'ï¿½ï¿½ï¿½ï¿½ï¿½î°¡ ï¿½ï¿½ Å©ï¿½×¿ï¿½', 'M0201052KHL', 'ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ ï¿½Þ¶ï¿½ï¿½. ï¿½×³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.', '2019/11/23', 0, 4, 'review003');
+INSERT INTO REVIEW VALUES (4, 'M01', 'ï¿½ï¿½ï¿½Æ¿ï¿½', 'M0201052KHM', 'ï¿½Ë³ï¿½ï¿½Ï°ï¿½ ï¿½Â¾Æ¼ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Æ¿ï¿½', '2020/03/22', 0, 5, NULL);
+INSERT INTO REVIEW VALUES (5, 'M25', 'ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'W0602043BKM', 'ï¿½ï¿½Å©ï¿½ï¿½ï¿½ï¿½ ï¿½Æ´Ï¶ï¿½ ï¿½ï¿½ï¿½Þ¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¿ï¿½ï¿½ï¿½!', '2020/04/22', 0, 5, 'review004');
+INSERT INTO REVIEW VALUES (6, 'M52', 'ï¿½ï¿½ï¿½Æ¿ï¿½ ï¿½ï¿½ï¿½Æ¿ï¿½ Â¯ ï¿½Ò¾Æ¿ï¿½', 'W0503045WHS', 'ï¿½Ïºï¿½ï¿½Îµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ Æ¼ ï¿½È³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Øºï¿½ï¿½ï¿½ï¿½ï¿½. ï¿½Ì°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', '2020/05/05', 0, 5, 'review005');
+INSERT INTO REVIEW VALUES (7, 'M90', 'ï¿½Ò¸Å°ï¿½ ï¿½Ê¹ï¿½ ï¿½ï¿½ï¿½ï¿½', 'M0702098BKS', 'ï¿½ï¿½ï¿½ï¿½Ú¶ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å»ï¿½ï¿½ ï¿½ß¸ï¿½ ï¿½Éµï¿½,,', '2020/03/27', 0, 2, NULL);
+INSERT INTO REVIEW VALUES (8, 'M72', 'ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¿ï¿½', 'W0205027RDS', 'ï¿½ï¿½Ä£ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ ï¿½ß¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ È­ï¿½ï¿½ï¿½Øºï¿½ï¿½ï¿½ï¿½ï¿½', '2019/08/30', 0, 5, NULL);
+INSERT INTO REVIEW VALUES (9, 'M53', 'ï¿½ï¿½ï¿½ï¿½Å©ï¿½Õ´Ï´ï¿½.', 'M0401065BLM', 'ï¿½Ä¶ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½Ì¶ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½ ï¿½ï¿½Å©ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½', '2019/12/25', 0, 5, 'review006');
+INSERT INTO REVIEW VALUES (10, 'M17', 'ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½Û°ï¿½ ï¿½ç¼¼ï¿½ï¿½', 'W0101019YLM', 'ï¿½Ä±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½Û°ï¿½ ï¿½ï¿½Âµï¿½ ï¿½ï¿½ï¿½Ì¿ï¿½ï¿½ï¿½', '2020/03/22', 0, 5, 'review007');
+INSERT INTO REVIEW VALUES (11, 'M67', 'ï¿½Ì°ï¿½ ï¿½î¶»ï¿½ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½??!!!!', 'W0102016BLM', 'ï¿½ï¿½ ï¿½Ñ°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö°ï¿½ ï¿½Í¾ï¿½ï¿½ Ä«Å°ï¿½ï¿½ ï¿½Æ´Ñ°ï¿½ï¿½ï¿½??', '2018/11/03', 0, 1, 'review008');
 
-INSERT INTO BRAND VALUES('01', 'ACOC', '¾ç¼­À±', '010-777-6666', '°æ±âµµ ¼º³²½Ã ´ë¿ÕÆÇ±³·Î', 'west21ms@gmail.com', '2015/07/15', 'Y');
-INSERT INTO BRAND VALUES('02', 'Bouton', '±èÇý¸°', '010-111-1234', '¼­¿ï½Ã °­³²±¸ ³íÇöµ¿', 'lovehr@gmail.com', '2013/02/10', 'Y');
-INSERT INTO BRAND VALUES('03', 'Clet', '½ÅÈñÁö', '02-127-3456', '¼­¿ï½Ã °­³²±¸ ´ëÄ¡µ¿', 'lovehj@gmail.com', '2014/08/23', 'N');
-INSERT INTO BRAND VALUES('04', 'Dube', 'ÃÖ»ó¿ø', '031-428-7777', '°æ±âµµ ÇÏ³²½Ã ¹Ì»ç´ë·Î', 'cutesws2@gmail.com', '2017/12/25', 'N');
-INSERT INTO BRAND VALUES('05', 'elito', 'Á¶ÇÑ¼Ö', '010-7221-5679', '¼­¿ï½Ã °­³²±¸ ·Â»ïµ¿', 'hansolee@gmail.com', '2017/11/13', 'Y');
-INSERT INTO BRAND VALUES('06', 'Hier', '¿ÀÁø±³', '02-123-9876', '¼­¿ï½Ã Áß±¸ ¸íµ¿', 'cute5@gmail.com', '2016/02/25', 'Y');
-INSERT INTO BRAND VALUES('07', 'Kye', '¹èµ¿°ï', '032-333-1230', 'ÀÎÃµ½Ã ¿ËÁø±º ¹é·É¸é', 'bdg1203@gmail.com', '2019/01/11', 'Y');
+INSERT INTO BRAND VALUES('01', 'ACOC', 'ï¿½ç¼­ï¿½ï¿½', '010-777-6666', 'ï¿½ï¿½âµµ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç±ï¿½ï¿½ï¿½', 'west21ms@gmail.com', '2015/07/15', 'Y');
+INSERT INTO BRAND VALUES('02', 'Bouton', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', '010-111-1234', 'ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'lovehr@gmail.com', '2013/02/10', 'Y');
+INSERT INTO BRAND VALUES('03', 'Clet', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', '02-127-3456', 'ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½', 'lovehj@gmail.com', '2014/08/23', 'N');
+INSERT INTO BRAND VALUES('04', 'Dube', 'ï¿½Ö»ï¿½ï¿½', '031-428-7777', 'ï¿½ï¿½âµµ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½Ì»ï¿½ï¿½ï¿½', 'cutesws2@gmail.com', '2017/12/25', 'N');
+INSERT INTO BRAND VALUES('05', 'elito', 'ï¿½ï¿½ï¿½Ñ¼ï¿½', '010-7221-5679', 'ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Â»ïµ¿', 'hansolee@gmail.com', '2017/11/13', 'Y');
+INSERT INTO BRAND VALUES('06', 'Hier', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', '02-123-9876', 'ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß±ï¿½ ï¿½ï¿½', 'cute5@gmail.com', '2016/02/25', 'Y');
+INSERT INTO BRAND VALUES('07', 'Kye', 'ï¿½èµ¿ï¿½ï¿½', '032-333-1230', 'ï¿½ï¿½Ãµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½É¸ï¿½', 'bdg1203@gmail.com', '2019/01/11', 'Y');
 
-INSERT INTO BRAND VALUES('08', 'OSOI', '¾ç¼­À±', '032-333-1230', 'ÀÎÃµ½Ã ¿ËÁø±º ¹é·É¸é', 'bdg1203@gmail.com', '2016/02/25', 'Y');
-INSERT INTO BRAND VALUES('09', 'ZARA', '±èÇý¸°', '032-333-1230', '°æ±âµµ ÇÏ³²½Ã ¹Ì»ç´ë·Î', 'bdg1203@gmail.com', '2019/01/11', 'N');
-INSERT INTO BRAND VALUES('10', 'H&M', '½ÅÈñÁö', '032-333-1230', 'ÀÎÃµ½Ã ¿ËÁø±º ¹é·É¸é', 'lovehr@gmail.com', '2016/02/25', 'N');
-INSERT INTO BRAND VALUES('11', 'SPAO', 'ÃÖ»ó¿ø', '032-333-1230', 'ÀÎÃµ½Ã ¿ËÁø±º ¹é·É¸é', 'bdg1203@gmail.com', '2019/01/11', 'Y');
-INSERT INTO BRAND VALUES('12', 'APC', 'Á¶ÇÑ¼Ö', '032-333-1230', 'ÀÎÃµ½Ã ¿ËÁø±º ¹é·É¸é', 'lovehr@gmail.com', '2019/01/11', 'Y');
-INSERT INTO BRAND VALUES('13', 'AAC', '¿ÀÁø±³', '032-333-1230', 'ÀÎÃµ½Ã ¿ËÁø±º ¹é·É¸é', 'bdg1203@gmail.com', '2016/02/25', 'Y');
-INSERT INTO BRAND VALUES('14', 'AAA', '¹èµ¿°ï', '032-333-1230', '°æ±âµµ ÇÏ³²½Ã ¹Ì»ç´ë·Î', 'bdg1203@gmail.com', '2019/01/11', 'N');
-INSERT INTO BRAND VALUES('15', 'ABIB', '¾ç¼­À±', '032-333-1230', 'ÀÎÃµ½Ã ¿ËÁø±º ¹é·É¸é', 'lovehr@gmail.com', '2019/01/11', 'Y');
-INSERT INTO BRAND VALUES('16', 'BALLY', '±èÇý¸°', '032-333-1230', 'ÀÎÃµ½Ã ¿ËÁø±º ¹é·É¸é', 'bdg1203@gmail.com', '2016/02/25', 'Y');
-INSERT INTO BRAND VALUES('17', 'BUDDY', '½ÅÈñÁö', '032-333-1230', '°æ±âµµ ÇÏ³²½Ã ¹Ì»ç´ë·Î', 'bdg1203@gmail.com', '2019/01/11', 'N');
-INSERT INTO BRAND VALUES('18', 'CAMON', 'ÃÖ»ó¿ø', '032-333-1230', 'ÀÎÃµ½Ã ¿ËÁø±º ¹é·É¸é', 'lovehr@gmail.com', '2016/02/25', 'Y');
-INSERT INTO BRAND VALUES('19', 'CALLO', 'Á¶ÇÑ¼Ö', '032-333-1230', '°æ±âµµ ÇÏ³²½Ã ¹Ì»ç´ë·Î', 'bdg1203@gmail.com', '2019/01/11', 'Y');
-INSERT INTO BRAND VALUES('20', 'DOT', '¿ÀÁø±³', '032-333-1230', 'ÀÎÃµ½Ã ¿ËÁø±º ¹é·É¸é', 'bdg1203@gmail.com', '2016/02/25', 'N');
-INSERT INTO BRAND VALUES('21', 'DUX', '¹èµ¿°ï', '032-333-1230', 'ÀÎÃµ½Ã ¿ËÁø±º ¹é·É¸é', 'lovehr@gmail.com', '2019/01/11', 'N');
-INSERT INTO BRAND VALUES('22', 'EASE', '¾ç¼­À±', '032-333-1230', '°æ±âµµ ÇÏ³²½Ã ¹Ì»ç´ë·Î', 'bdg1203@gmail.com', '2019/01/11', 'Y');
-INSERT INTO BRAND VALUES('23', 'EOTS', '±èÇý¸°', '032-333-1230', 'ÀÎÃµ½Ã ¿ËÁø±º ¹é·É¸é', 'bdg1203@gmail.com', '2016/02/25', 'N');
-INSERT INTO BRAND VALUES('24', 'EOM', '½ÅÈñÁö', '032-333-1230', 'ÀÎÃµ½Ã ¿ËÁø±º ¹é·É¸é', 'lovehr@gmail.com', '2019/01/11', 'Y');
-INSERT INTO BRAND VALUES('25', 'FECT', 'ÃÖ»ó¿ø', '032-333-1230', 'ÀÎÃµ½Ã ¿ËÁø±º ¹é·É¸é', 'bdg1203@gmail.com', '2016/02/25', 'Y');
-INSERT INTO BRAND VALUES('26', 'FENDI', 'Á¶ÇÑ¼Ö', '032-333-1230', 'ÀÎÃµ½Ã ¿ËÁø±º ¹é·É¸é', 'lovehr@gmail.com', '2019/01/11', 'Y');
+INSERT INTO BRAND VALUES('08', 'OSOI', 'ï¿½ç¼­ï¿½ï¿½', '032-333-1230', 'ï¿½ï¿½Ãµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½É¸ï¿½', 'bdg1203@gmail.com', '2016/02/25', 'Y');
+INSERT INTO BRAND VALUES('09', 'ZARA', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', '032-333-1230', 'ï¿½ï¿½âµµ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½Ì»ï¿½ï¿½ï¿½', 'bdg1203@gmail.com', '2019/01/11', 'N');
+INSERT INTO BRAND VALUES('10', 'H&M', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', '032-333-1230', 'ï¿½ï¿½Ãµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½É¸ï¿½', 'lovehr@gmail.com', '2016/02/25', 'N');
+INSERT INTO BRAND VALUES('11', 'SPAO', 'ï¿½Ö»ï¿½ï¿½', '032-333-1230', 'ï¿½ï¿½Ãµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½É¸ï¿½', 'bdg1203@gmail.com', '2019/01/11', 'Y');
+INSERT INTO BRAND VALUES('12', 'APC', 'ï¿½ï¿½ï¿½Ñ¼ï¿½', '032-333-1230', 'ï¿½ï¿½Ãµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½É¸ï¿½', 'lovehr@gmail.com', '2019/01/11', 'Y');
+INSERT INTO BRAND VALUES('13', 'AAC', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', '032-333-1230', 'ï¿½ï¿½Ãµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½É¸ï¿½', 'bdg1203@gmail.com', '2016/02/25', 'Y');
+INSERT INTO BRAND VALUES('14', 'AAA', 'ï¿½èµ¿ï¿½ï¿½', '032-333-1230', 'ï¿½ï¿½âµµ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½Ì»ï¿½ï¿½ï¿½', 'bdg1203@gmail.com', '2019/01/11', 'N');
+INSERT INTO BRAND VALUES('15', 'ABIB', 'ï¿½ç¼­ï¿½ï¿½', '032-333-1230', 'ï¿½ï¿½Ãµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½É¸ï¿½', 'lovehr@gmail.com', '2019/01/11', 'Y');
+INSERT INTO BRAND VALUES('16', 'BALLY', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', '032-333-1230', 'ï¿½ï¿½Ãµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½É¸ï¿½', 'bdg1203@gmail.com', '2016/02/25', 'Y');
+INSERT INTO BRAND VALUES('17', 'BUDDY', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', '032-333-1230', 'ï¿½ï¿½âµµ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½Ì»ï¿½ï¿½ï¿½', 'bdg1203@gmail.com', '2019/01/11', 'N');
+INSERT INTO BRAND VALUES('18', 'CAMON', 'ï¿½Ö»ï¿½ï¿½', '032-333-1230', 'ï¿½ï¿½Ãµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½É¸ï¿½', 'lovehr@gmail.com', '2016/02/25', 'Y');
+INSERT INTO BRAND VALUES('19', 'CALLO', 'ï¿½ï¿½ï¿½Ñ¼ï¿½', '032-333-1230', 'ï¿½ï¿½âµµ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½Ì»ï¿½ï¿½ï¿½', 'bdg1203@gmail.com', '2019/01/11', 'Y');
+INSERT INTO BRAND VALUES('20', 'DOT', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', '032-333-1230', 'ï¿½ï¿½Ãµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½É¸ï¿½', 'bdg1203@gmail.com', '2016/02/25', 'N');
+INSERT INTO BRAND VALUES('21', 'DUX', 'ï¿½èµ¿ï¿½ï¿½', '032-333-1230', 'ï¿½ï¿½Ãµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½É¸ï¿½', 'lovehr@gmail.com', '2019/01/11', 'N');
+INSERT INTO BRAND VALUES('22', 'EASE', 'ï¿½ç¼­ï¿½ï¿½', '032-333-1230', 'ï¿½ï¿½âµµ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½Ì»ï¿½ï¿½ï¿½', 'bdg1203@gmail.com', '2019/01/11', 'Y');
+INSERT INTO BRAND VALUES('23', 'EOTS', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', '032-333-1230', 'ï¿½ï¿½Ãµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½É¸ï¿½', 'bdg1203@gmail.com', '2016/02/25', 'N');
+INSERT INTO BRAND VALUES('24', 'EOM', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', '032-333-1230', 'ï¿½ï¿½Ãµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½É¸ï¿½', 'lovehr@gmail.com', '2019/01/11', 'Y');
+INSERT INTO BRAND VALUES('25', 'FECT', 'ï¿½Ö»ï¿½ï¿½', '032-333-1230', 'ï¿½ï¿½Ãµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½É¸ï¿½', 'bdg1203@gmail.com', '2016/02/25', 'Y');
+INSERT INTO BRAND VALUES('26', 'FENDI', 'ï¿½ï¿½ï¿½Ñ¼ï¿½', '032-333-1230', 'ï¿½ï¿½Ãµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½É¸ï¿½', 'lovehr@gmail.com', '2019/01/11', 'Y');
 
 -- product
-INSERT INTO PRODUCT VALUES('W0101001BKS', '01', 'thumb028', 'Æ®À§µå ´õºí¹öÆ° ÀçÅ¶', 'BK', 'S', 189000, 20, 151200, 01, 001, 'ÈüÀ» µ¤Áö ¾Ê´Â ±æÀÌ°¨À¸·Î µ¥´Ô, ½ºÄ¿Æ®¿¡ ¸ÅÄ¡ÇØµµ Àß ¾î¿ï¸³´Ï´Ù.', 'dt028', 151, '2020/06/30', '2020/05/01', '2020/06/15', 3000000, 1000000 , 'Y', '001', 0);
-INSERT INTO PRODUCT VALUES('W0101001BKM', '01', 'thumb028', 'Æ®À§µå ´õºí¹öÆ° ÀçÅ¶', 'BK', 'M', 189000, 20, 151200, 01, 001, 'ÈüÀ» µ¤Áö ¾Ê´Â ±æÀÌ°¨À¸·Î µ¥´Ô, ½ºÄ¿Æ®¿¡ ¸ÅÄ¡ÇØµµ Àß ¾î¿ï¸³´Ï´Ù.', 'dt028', 151, '2020/06/30', '2020/05/01', '2020/06/15', 3000000, 1000000, 'Y', '001', 0);
-INSERT INTO PRODUCT VALUES('W0101001BKL', '01', 'thumb028', 'Æ®À§µå ´õºí¹öÆ° ÀçÅ¶', 'BK', 'L', 189000, 20, 151200, 01, 001, 'ÈüÀ» µ¤Áö ¾Ê´Â ±æÀÌ°¨À¸·Î µ¥´Ô, ½ºÄ¿Æ®¿¡ ¸ÅÄ¡ÇØµµ Àß ¾î¿ï¸³´Ï´Ù.', 'dt028', 151, '2020/06/30', '2020/05/01', '2020/06/15', 3000000, 1000000, 'Y', '001', 0);
-INSERT INTO PRODUCT VALUES('W0101001RDS', '01', 'thumb028', 'Æ®À§µå ´õºí¹öÆ° ÀçÅ¶', 'RD', 'S', 189000, 20, 151200, 01, 001, 'ÈüÀ» µ¤Áö ¾Ê´Â ±æÀÌ°¨À¸·Î µ¥´Ô, ½ºÄ¿Æ®¿¡ ¸ÅÄ¡ÇØµµ Àß ¾î¿ï¸³´Ï´Ù.', 'dt028', 151, '2020/06/30', '2020/05/01', '2020/06/15', 3000000, 1000000, 'Y', '001', 0);
-INSERT INTO PRODUCT VALUES('W0101001RDM', '01', 'thumb028', 'Æ®À§µå ´õºí¹öÆ° ÀçÅ¶', 'RD', 'M', 189000, 20, 151200, 01, 001, 'ÈüÀ» µ¤Áö ¾Ê´Â ±æÀÌ°¨À¸·Î µ¥´Ô, ½ºÄ¿Æ®¿¡ ¸ÅÄ¡ÇØµµ Àß ¾î¿ï¸³´Ï´Ù.', 'dt028', 151, '2020/06/30', '2020/05/01', '2020/06/15', 3000000, 1000000, 'Y', '001', 0);
-INSERT INTO PRODUCT VALUES('W0101001RDL', '01', 'thumb028', 'Æ®À§µå ´õºí¹öÆ° ÀçÅ¶', 'RD', 'L', 189000, 20, 151200, 01, 001, 'ÈüÀ» µ¤Áö ¾Ê´Â ±æÀÌ°¨À¸·Î µ¥´Ô, ½ºÄ¿Æ®¿¡ ¸ÅÄ¡ÇØµµ Àß ¾î¿ï¸³´Ï´Ù.', 'dt028', 151, '2020/06/30', '2020/05/01', '2020/06/15', 3000000, 1000000, 'Y', '001', 0);
+INSERT INTO PRODUCT VALUES('W0101001BKS', '01', 'thumb028', 'Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Æ° ï¿½ï¿½Å¶', 'BK', 'S', 189000, 20, 151200, 01, 001, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½Ì°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½Ä¿Æ®ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½Øµï¿½ ï¿½ï¿½ ï¿½ï¿½ï¸³ï¿½Ï´ï¿½.', 'dt028', 151, '2020/06/30', '2020/05/01', '2020/06/15', 3000000, 1000000 , 'Y', '001', 0);
+INSERT INTO PRODUCT VALUES('W0101001BKM', '01', 'thumb028', 'Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Æ° ï¿½ï¿½Å¶', 'BK', 'M', 189000, 20, 151200, 01, 001, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½Ì°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½Ä¿Æ®ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½Øµï¿½ ï¿½ï¿½ ï¿½ï¿½ï¸³ï¿½Ï´ï¿½.', 'dt028', 151, '2020/06/30', '2020/05/01', '2020/06/15', 3000000, 1000000, 'Y', '001', 0);
+INSERT INTO PRODUCT VALUES('W0101001BKL', '01', 'thumb028', 'Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Æ° ï¿½ï¿½Å¶', 'BK', 'L', 189000, 20, 151200, 01, 001, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½Ì°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½Ä¿Æ®ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½Øµï¿½ ï¿½ï¿½ ï¿½ï¿½ï¸³ï¿½Ï´ï¿½.', 'dt028', 151, '2020/06/30', '2020/05/01', '2020/06/15', 3000000, 1000000, 'Y', '001', 0);
+INSERT INTO PRODUCT VALUES('W0101001RDS', '01', 'thumb028', 'Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Æ° ï¿½ï¿½Å¶', 'RD', 'S', 189000, 20, 151200, 01, 001, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½Ì°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½Ä¿Æ®ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½Øµï¿½ ï¿½ï¿½ ï¿½ï¿½ï¸³ï¿½Ï´ï¿½.', 'dt028', 151, '2020/06/30', '2020/05/01', '2020/06/15', 3000000, 1000000, 'Y', '001', 0);
+INSERT INTO PRODUCT VALUES('W0101001RDM', '01', 'thumb028', 'Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Æ° ï¿½ï¿½Å¶', 'RD', 'M', 189000, 20, 151200, 01, 001, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½Ì°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½Ä¿Æ®ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½Øµï¿½ ï¿½ï¿½ ï¿½ï¿½ï¸³ï¿½Ï´ï¿½.', 'dt028', 151, '2020/06/30', '2020/05/01', '2020/06/15', 3000000, 1000000, 'Y', '001', 0);
+INSERT INTO PRODUCT VALUES('W0101001RDL', '01', 'thumb028', 'Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Æ° ï¿½ï¿½Å¶', 'RD', 'L', 189000, 20, 151200, 01, 001, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½Ì°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½Ä¿Æ®ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½Øµï¿½ ï¿½ï¿½ ï¿½ï¿½ï¸³ï¿½Ï´ï¿½.', 'dt028', 151, '2020/06/30', '2020/05/01', '2020/06/15', 3000000, 1000000, 'Y', '001', 0);
 
-INSERT INTO PRODUCT VALUES('W0103002BLS', '01', 'thumb017', '¼¼ÀÎÆ® Ã¼Å© ½ºÄ¿Æ®', 'BL', 'S', 79000, 10, 71100, 03, 002, 'ºò Æ÷ÄÏ, ·¹µå Æ÷ÀÎÆ® ½ºÆ¼Ä¡°¡ ¼¼·ÃµÈ »þ³Ú ¶óÀÎ ½ºÄ¿Æ®', 'dt017', 71, '2020/07/25', '2020/06/03', '2020/07/10', 1500000, 750000, 'N', '002', 0);
-INSERT INTO PRODUCT VALUES('W0103002BLM', '01', 'thumb017', '¼¼ÀÎÆ® Ã¼Å© ½ºÄ¿Æ®', 'BL', 'M', 79000, 10, 71100, 03, 002, 'ºò Æ÷ÄÏ, ·¹µå Æ÷ÀÎÆ® ½ºÆ¼Ä¡°¡ ¼¼·ÃµÈ »þ³Ú ¶óÀÎ ½ºÄ¿Æ®', 'dt017', 71, '2020/07/25', '2020/06/03', '2020/07/10', 1500000, 750000, 'N', '002', 0);
-INSERT INTO PRODUCT VALUES('W0103002RDS', '01', 'thumb017', '¼¼ÀÎÆ® Ã¼Å© ½ºÄ¿Æ®', 'RD', 'S', 79000, 10, 71100, 03, 002, 'ºò Æ÷ÄÏ, ·¹µå Æ÷ÀÎÆ® ½ºÆ¼Ä¡°¡ ¼¼·ÃµÈ »þ³Ú ¶óÀÎ ½ºÄ¿Æ®', 'dt017', 71, '2020/07/25', '2020/06/03', '2020/07/10', 1500000, 750000, 'N', '002', 0);
-INSERT INTO PRODUCT VALUES('W0103002RDM', '01', 'thumb017', '¼¼ÀÎÆ® Ã¼Å© ½ºÄ¿Æ®', 'RD', 'M', 79000, 10, 71100, 03, 002, 'ºò Æ÷ÄÏ, ·¹µå Æ÷ÀÎÆ® ½ºÆ¼Ä¡°¡ ¼¼·ÃµÈ »þ³Ú ¶óÀÎ ½ºÄ¿Æ®', 'dt017', 71, '2020/07/25', '2020/06/03', '2020/07/10', 1500000, 750000, 'N', '002', 0);
-INSERT INTO PRODUCT VALUES('W0103002YLS', '01', 'thumb017', '¼¼ÀÎÆ® Ã¼Å© ½ºÄ¿Æ®', 'YL', 'S', 79000, 10, 71100, 03, 002, 'ºò Æ÷ÄÏ, ·¹µå Æ÷ÀÎÆ® ½ºÆ¼Ä¡°¡ ¼¼·ÃµÈ »þ³Ú ¶óÀÎ ½ºÄ¿Æ®', 'dt017', 71, '2020/07/25', '2020/06/03', '2020/07/10', 1500000, 750000, 'N', '002', 0);
-INSERT INTO PRODUCT VALUES('W0103002YLM', '01', 'thumb017', '¼¼ÀÎÆ® Ã¼Å© ½ºÄ¿Æ®', 'YL', 'M', 79000, 10, 71100, 03, 002, 'ºò Æ÷ÄÏ, ·¹µå Æ÷ÀÎÆ® ½ºÆ¼Ä¡°¡ ¼¼·ÃµÈ »þ³Ú ¶óÀÎ ½ºÄ¿Æ®', 'dt017', 71, '2020/07/25', '2020/06/03', '2020/07/10', 1500000, 750000, 'N', '002', 0);
+INSERT INTO PRODUCT VALUES('W0103002BLS', '01', 'thumb017', 'ï¿½ï¿½ï¿½ï¿½Æ® Ã¼Å© ï¿½ï¿½Ä¿Æ®', 'BL', 'S', 79000, 10, 71100, 03, 002, 'ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½Æ¼Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¿Æ®', 'dt017', 71, '2020/07/25', '2020/06/03', '2020/07/10', 1500000, 750000, 'N', '002', 0);
+INSERT INTO PRODUCT VALUES('W0103002BLM', '01', 'thumb017', 'ï¿½ï¿½ï¿½ï¿½Æ® Ã¼Å© ï¿½ï¿½Ä¿Æ®', 'BL', 'M', 79000, 10, 71100, 03, 002, 'ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½Æ¼Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¿Æ®', 'dt017', 71, '2020/07/25', '2020/06/03', '2020/07/10', 1500000, 750000, 'N', '002', 0);
+INSERT INTO PRODUCT VALUES('W0103002RDS', '01', 'thumb017', 'ï¿½ï¿½ï¿½ï¿½Æ® Ã¼Å© ï¿½ï¿½Ä¿Æ®', 'RD', 'S', 79000, 10, 71100, 03, 002, 'ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½Æ¼Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¿Æ®', 'dt017', 71, '2020/07/25', '2020/06/03', '2020/07/10', 1500000, 750000, 'N', '002', 0);
+INSERT INTO PRODUCT VALUES('W0103002RDM', '01', 'thumb017', 'ï¿½ï¿½ï¿½ï¿½Æ® Ã¼Å© ï¿½ï¿½Ä¿Æ®', 'RD', 'M', 79000, 10, 71100, 03, 002, 'ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½Æ¼Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¿Æ®', 'dt017', 71, '2020/07/25', '2020/06/03', '2020/07/10', 1500000, 750000, 'N', '002', 0);
+INSERT INTO PRODUCT VALUES('W0103002YLS', '01', 'thumb017', 'ï¿½ï¿½ï¿½ï¿½Æ® Ã¼Å© ï¿½ï¿½Ä¿Æ®', 'YL', 'S', 79000, 10, 71100, 03, 002, 'ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½Æ¼Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¿Æ®', 'dt017', 71, '2020/07/25', '2020/06/03', '2020/07/10', 1500000, 750000, 'N', '002', 0);
+INSERT INTO PRODUCT VALUES('W0103002YLM', '01', 'thumb017', 'ï¿½ï¿½ï¿½ï¿½Æ® Ã¼Å© ï¿½ï¿½Ä¿Æ®', 'YL', 'M', 79000, 10, 71100, 03, 002, 'ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½Æ¼Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¿Æ®', 'dt017', 71, '2020/07/25', '2020/06/03', '2020/07/10', 1500000, 750000, 'N', '002', 0);
 
-INSERT INTO PRODUCT VALUES('W0101003BKS', '01', 'thumb063', 'µ¥ÀÏ¸® 7 ÆÒÃ÷', 'BK', 'S', 89000, 10, 80100, 03, 003, 'µ¥ÀÏ¸®·Î ÀÔ±â ÁÁÀº ¼¼¹Ì ¿ÍÀÌµå ÆÒÃ÷', 'dt063', 160, '2020/06/30', '2020/05/01', '2020/06/20', 1500000, 800000, 'Y', '003', 0);
-INSERT INTO PRODUCT VALUES('W0101003BKM', '01', 'thumb063', 'µ¥ÀÏ¸® 7 ÆÒÃ÷', 'BK', 'M', 89000, 10, 80100, 03, 003, 'µ¥ÀÏ¸®·Î ÀÔ±â ÁÁÀº ¼¼¹Ì ¿ÍÀÌµå ÆÒÃ÷', 'dt063', 160, '2020/06/30', '2020/05/01', '2020/06/20', 1500000, 800000, 'Y', '003', 0);
-INSERT INTO PRODUCT VALUES('W0101003BKL', '01', 'thumb063', 'µ¥ÀÏ¸® 7 ÆÒÃ÷', 'BK', 'L', 89000, 10, 80100, 03, 003, 'µ¥ÀÏ¸®·Î ÀÔ±â ÁÁÀº ¼¼¹Ì ¿ÍÀÌµå ÆÒÃ÷', 'dt063', 160, '2020/06/30', '2020/05/01', '2020/06/20', 1500000, 800000, 'Y', '003', 0);
-INSERT INTO PRODUCT VALUES('W0101003RDS', '01', 'thumb063', 'µ¥ÀÏ¸® 7 ÆÒÃ÷', 'RD', 'S', 89000, 10, 80100, 03, 003, 'µ¥ÀÏ¸®·Î ÀÔ±â ÁÁÀº ¼¼¹Ì ¿ÍÀÌµå ÆÒÃ÷', 'dt063', 160, '2020/06/30', '2020/05/01', '2020/06/20', 1500000, 800000, 'Y', '003', 0);
-INSERT INTO PRODUCT VALUES('W0101003RDM', '01', 'thumb063', 'µ¥ÀÏ¸® 7 ÆÒÃ÷', 'RD', 'M', 89000, 10, 80100, 03, 003, 'µ¥ÀÏ¸®·Î ÀÔ±â ÁÁÀº ¼¼¹Ì ¿ÍÀÌµå ÆÒÃ÷', 'dt063', 160, '2020/06/30', '2020/05/01', '2020/06/20', 1500000, 800000, 'Y', '003', 0);
-INSERT INTO PRODUCT VALUES('W0101003RDL', '01', 'thumb063', 'µ¥ÀÏ¸® 7 ÆÒÃ÷', 'RD', 'L', 89000, 10, 80100, 03, 003, 'µ¥ÀÏ¸®·Î ÀÔ±â ÁÁÀº ¼¼¹Ì ¿ÍÀÌµå ÆÒÃ÷', 'dt063', 160, '2020/06/30', '2020/05/01', '2020/06/20', 1500000, 800000, 'Y', '003', 0);
-INSERT INTO PRODUCT VALUES('W0101003BLS', '01', 'thumb063', 'µ¥ÀÏ¸® 7 ÆÒÃ÷', 'BL', 'S', 89000, 10, 80100, 03, 003, 'µ¥ÀÏ¸®·Î ÀÔ±â ÁÁÀº ¼¼¹Ì ¿ÍÀÌµå ÆÒÃ÷', 'dt063', 160, '2020/06/30', '2020/05/01', '2020/06/20', 1500000, 800000, 'Y', '003', 0);
-INSERT INTO PRODUCT VALUES('W0101003BLM', '01', 'thumb063', 'µ¥ÀÏ¸® 7 ÆÒÃ÷', 'BL', 'M', 89000, 10, 80100, 03, 003, 'µ¥ÀÏ¸®·Î ÀÔ±â ÁÁÀº ¼¼¹Ì ¿ÍÀÌµå ÆÒÃ÷', 'dt063', 160, '2020/06/30', '2020/05/01', '2020/06/20', 1500000, 800000, 'Y', '003', 0);
-INSERT INTO PRODUCT VALUES('W0101003BLL', '01', 'thumb063', 'µ¥ÀÏ¸® 7 ÆÒÃ÷', 'BL', 'L', 89000, 10, 80100, 03, 003, 'µ¥ÀÏ¸®·Î ÀÔ±â ÁÁÀº ¼¼¹Ì ¿ÍÀÌµå ÆÒÃ÷', 'dt063', 160, '2020/06/30', '2020/05/01', '2020/06/20', 1500000, 800000, 'Y', '003', 0);
+INSERT INTO PRODUCT VALUES('W0101003BKS', '01', 'thumb063', 'ï¿½ï¿½ï¿½Ï¸ï¿½ 7 ï¿½ï¿½ï¿½ï¿½', 'BK', 'S', 89000, 10, 80100, 03, 003, 'ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ ï¿½Ô±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½', 'dt063', 160, '2020/06/30', '2020/05/01', '2020/06/20', 1500000, 800000, 'Y', '003', 0);
+INSERT INTO PRODUCT VALUES('W0101003BKM', '01', 'thumb063', 'ï¿½ï¿½ï¿½Ï¸ï¿½ 7 ï¿½ï¿½ï¿½ï¿½', 'BK', 'M', 89000, 10, 80100, 03, 003, 'ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ ï¿½Ô±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½', 'dt063', 160, '2020/06/30', '2020/05/01', '2020/06/20', 1500000, 800000, 'Y', '003', 0);
+INSERT INTO PRODUCT VALUES('W0101003BKL', '01', 'thumb063', 'ï¿½ï¿½ï¿½Ï¸ï¿½ 7 ï¿½ï¿½ï¿½ï¿½', 'BK', 'L', 89000, 10, 80100, 03, 003, 'ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ ï¿½Ô±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½', 'dt063', 160, '2020/06/30', '2020/05/01', '2020/06/20', 1500000, 800000, 'Y', '003', 0);
+INSERT INTO PRODUCT VALUES('W0101003RDS', '01', 'thumb063', 'ï¿½ï¿½ï¿½Ï¸ï¿½ 7 ï¿½ï¿½ï¿½ï¿½', 'RD', 'S', 89000, 10, 80100, 03, 003, 'ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ ï¿½Ô±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½', 'dt063', 160, '2020/06/30', '2020/05/01', '2020/06/20', 1500000, 800000, 'Y', '003', 0);
+INSERT INTO PRODUCT VALUES('W0101003RDM', '01', 'thumb063', 'ï¿½ï¿½ï¿½Ï¸ï¿½ 7 ï¿½ï¿½ï¿½ï¿½', 'RD', 'M', 89000, 10, 80100, 03, 003, 'ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ ï¿½Ô±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½', 'dt063', 160, '2020/06/30', '2020/05/01', '2020/06/20', 1500000, 800000, 'Y', '003', 0);
+INSERT INTO PRODUCT VALUES('W0101003RDL', '01', 'thumb063', 'ï¿½ï¿½ï¿½Ï¸ï¿½ 7 ï¿½ï¿½ï¿½ï¿½', 'RD', 'L', 89000, 10, 80100, 03, 003, 'ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ ï¿½Ô±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½', 'dt063', 160, '2020/06/30', '2020/05/01', '2020/06/20', 1500000, 800000, 'Y', '003', 0);
+INSERT INTO PRODUCT VALUES('W0101003BLS', '01', 'thumb063', 'ï¿½ï¿½ï¿½Ï¸ï¿½ 7 ï¿½ï¿½ï¿½ï¿½', 'BL', 'S', 89000, 10, 80100, 03, 003, 'ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ ï¿½Ô±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½', 'dt063', 160, '2020/06/30', '2020/05/01', '2020/06/20', 1500000, 800000, 'Y', '003', 0);
+INSERT INTO PRODUCT VALUES('W0101003BLM', '01', 'thumb063', 'ï¿½ï¿½ï¿½Ï¸ï¿½ 7 ï¿½ï¿½ï¿½ï¿½', 'BL', 'M', 89000, 10, 80100, 03, 003, 'ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ ï¿½Ô±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½', 'dt063', 160, '2020/06/30', '2020/05/01', '2020/06/20', 1500000, 800000, 'Y', '003', 0);
+INSERT INTO PRODUCT VALUES('W0101003BLL', '01', 'thumb063', 'ï¿½ï¿½ï¿½Ï¸ï¿½ 7 ï¿½ï¿½ï¿½ï¿½', 'BL', 'L', 89000, 10, 80100, 03, 003, 'ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ ï¿½Ô±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½', 'dt063', 160, '2020/06/30', '2020/05/01', '2020/06/20', 1500000, 800000, 'Y', '003', 0);
 
-INSERT INTO PRODUCT VALUES('W0101004BKM', '01', 'thumb011', 'ÇÁ·»Ä¡ µöÄÃ·¯ Æ®·»Ä¡ ÄÚÆ®', 'BK', 'M', 129000, 30, 90300, 01, 004, '¾îµð¿¡³ª Åö °ÉÃÄµµ ÈüÇÑ ÇÁ·»Ä¡ ½ÃÅ© ½ºÅ¸ÀÏ·Î °£Àý±â ¿ÏÀü Á¤º¹!', 'dt011', 129, '2020/08/23', '2020/06/30', '2020/07/31', 5000000, 4500000, 'N', '004', 0);
-INSERT INTO PRODUCT VALUES('W0101004BKL', '01', 'thumb011', 'ÇÁ·»Ä¡ µöÄÃ·¯ Æ®·»Ä¡ ÄÚÆ®', 'BK', 'L', 129000, 30, 90300, 01, 004, '¾îµð¿¡³ª Åö °ÉÃÄµµ ÈüÇÑ ÇÁ·»Ä¡ ½ÃÅ© ½ºÅ¸ÀÏ·Î °£Àý±â ¿ÏÀü Á¤º¹!', 'dt011', 129, '2020/08/23', '2020/06/30', '2020/07/31', 5000000, 4500000, 'N', '004', 0);
-INSERT INTO PRODUCT VALUES('W0101004BLM', '01', 'thumb011', 'ÇÁ·»Ä¡ µöÄÃ·¯ Æ®·»Ä¡ ÄÚÆ®', 'BL', 'M', 129000, 30, 90300, 01, 004, '¾îµð¿¡³ª Åö °ÉÃÄµµ ÈüÇÑ ÇÁ·»Ä¡ ½ÃÅ© ½ºÅ¸ÀÏ·Î °£Àý±â ¿ÏÀü Á¤º¹!', 'dt011', 129, '2020/08/23', '2020/06/30', '2020/07/31', 5000000, 4500000, 'N', '004', 0);
-INSERT INTO PRODUCT VALUES('W0101004BLL', '01', 'thumb011', 'ÇÁ·»Ä¡ µöÄÃ·¯ Æ®·»Ä¡ ÄÚÆ®', 'BL', 'L', 129000, 30, 90300, 01, 004, '¾îµð¿¡³ª Åö °ÉÃÄµµ ÈüÇÑ ÇÁ·»Ä¡ ½ÃÅ© ½ºÅ¸ÀÏ·Î °£Àý±â ¿ÏÀü Á¤º¹!', 'dt011', 129, '2020/08/23', '2020/06/30', '2020/07/31', 5000000, 4500000, 'N', '004', 0);
-INSERT INTO PRODUCT VALUES('W0101004WHM', '01', 'thumb011', 'ÇÁ·»Ä¡ µöÄÃ·¯ Æ®·»Ä¡ ÄÚÆ®', 'WH', 'M', 129000, 30, 90300, 01, 004, '¾îµð¿¡³ª Åö °ÉÃÄµµ ÈüÇÑ ÇÁ·»Ä¡ ½ÃÅ© ½ºÅ¸ÀÏ·Î °£Àý±â ¿ÏÀü Á¤º¹!', 'dt011', 129, '2020/08/23', '2020/06/30', '2020/07/31', 5000000, 4500000, 'N', '004', 0);
-INSERT INTO PRODUCT VALUES('W0101004WHL', '01', 'thumb011', 'ÇÁ·»Ä¡ µöÄÃ·¯ Æ®·»Ä¡ ÄÚÆ®', 'WH', 'L', 129000, 30, 90300, 01, 004, '¾îµð¿¡³ª Åö °ÉÃÄµµ ÈüÇÑ ÇÁ·»Ä¡ ½ÃÅ© ½ºÅ¸ÀÏ·Î °£Àý±â ¿ÏÀü Á¤º¹!', 'dt011', 129, '2020/08/23', '2020/06/30', '2020/07/31', 5000000, 4500000, 'N', '004', 0);
+INSERT INTO PRODUCT VALUES('W0101004BKM', '01', 'thumb011', 'ï¿½ï¿½ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½Ã·ï¿½ Æ®ï¿½ï¿½Ä¡ ï¿½ï¿½Æ®', 'BK', 'M', 129000, 30, 90300, 01, 004, 'ï¿½ï¿½ð¿¡³ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Äµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ä¡ ï¿½ï¿½Å© ï¿½ï¿½Å¸ï¿½Ï·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½!', 'dt011', 129, '2020/08/23', '2020/06/30', '2020/07/31', 5000000, 4500000, 'N', '004', 0);
+INSERT INTO PRODUCT VALUES('W0101004BKL', '01', 'thumb011', 'ï¿½ï¿½ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½Ã·ï¿½ Æ®ï¿½ï¿½Ä¡ ï¿½ï¿½Æ®', 'BK', 'L', 129000, 30, 90300, 01, 004, 'ï¿½ï¿½ð¿¡³ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Äµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ä¡ ï¿½ï¿½Å© ï¿½ï¿½Å¸ï¿½Ï·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½!', 'dt011', 129, '2020/08/23', '2020/06/30', '2020/07/31', 5000000, 4500000, 'N', '004', 0);
+INSERT INTO PRODUCT VALUES('W0101004BLM', '01', 'thumb011', 'ï¿½ï¿½ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½Ã·ï¿½ Æ®ï¿½ï¿½Ä¡ ï¿½ï¿½Æ®', 'BL', 'M', 129000, 30, 90300, 01, 004, 'ï¿½ï¿½ð¿¡³ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Äµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ä¡ ï¿½ï¿½Å© ï¿½ï¿½Å¸ï¿½Ï·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½!', 'dt011', 129, '2020/08/23', '2020/06/30', '2020/07/31', 5000000, 4500000, 'N', '004', 0);
+INSERT INTO PRODUCT VALUES('W0101004BLL', '01', 'thumb011', 'ï¿½ï¿½ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½Ã·ï¿½ Æ®ï¿½ï¿½Ä¡ ï¿½ï¿½Æ®', 'BL', 'L', 129000, 30, 90300, 01, 004, 'ï¿½ï¿½ð¿¡³ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Äµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ä¡ ï¿½ï¿½Å© ï¿½ï¿½Å¸ï¿½Ï·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½!', 'dt011', 129, '2020/08/23', '2020/06/30', '2020/07/31', 5000000, 4500000, 'N', '004', 0);
+INSERT INTO PRODUCT VALUES('W0101004WHM', '01', 'thumb011', 'ï¿½ï¿½ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½Ã·ï¿½ Æ®ï¿½ï¿½Ä¡ ï¿½ï¿½Æ®', 'WH', 'M', 129000, 30, 90300, 01, 004, 'ï¿½ï¿½ð¿¡³ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Äµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ä¡ ï¿½ï¿½Å© ï¿½ï¿½Å¸ï¿½Ï·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½!', 'dt011', 129, '2020/08/23', '2020/06/30', '2020/07/31', 5000000, 4500000, 'N', '004', 0);
+INSERT INTO PRODUCT VALUES('W0101004WHL', '01', 'thumb011', 'ï¿½ï¿½ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½Ã·ï¿½ Æ®ï¿½ï¿½Ä¡ ï¿½ï¿½Æ®', 'WH', 'L', 129000, 30, 90300, 01, 004, 'ï¿½ï¿½ð¿¡³ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Äµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ä¡ ï¿½ï¿½Å© ï¿½ï¿½Å¸ï¿½Ï·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½!', 'dt011', 129, '2020/08/23', '2020/06/30', '2020/07/31', 5000000, 4500000, 'N', '004', 0);
 
-INSERT INTO PRODUCT VALUES('W0102005WHS', '01', 'thumb001', '¿¡ºì ¹«Áö ÄÚÆ°¼ÅÃ÷', 'WH', 'S', 58000, 30, 40600, 02, 005, 'ÆÄ½ºÅÚ ÄÃ·¯ÀÇ ¹Ú½ÃÇÑ ÇÍ°ú ¿ÍÀÌµåÇÑ Ä¿ÇÁ½º, ¸ö¿¡ µé·¯ºÙÁö ¾Ê´Â ¼ÒÀç', 'dt001', 40, '2020/08/10', '2020/07/01', '2020/07/31', 1200000, 6700000, 'N', '005', 0);
-INSERT INTO PRODUCT VALUES('W0102005WHM', '01', 'thumb001', '¿¡ºì ¹«Áö ÄÚÆ°¼ÅÃ÷', 'WH', 'M', 58000, 30, 40600, 02, 005, 'ÆÄ½ºÅÚ ÄÃ·¯ÀÇ ¹Ú½ÃÇÑ ÇÍ°ú ¿ÍÀÌµåÇÑ Ä¿ÇÁ½º, ¸ö¿¡ µé·¯ºÙÁö ¾Ê´Â ¼ÒÀç', 'dt001', 40, '2020/08/10', '2020/07/01', '2020/07/31', 1200000, 6700000, 'N', '005', 0);
-INSERT INTO PRODUCT VALUES('W0102005WHL', '01', 'thumb001', '¿¡ºì ¹«Áö ÄÚÆ°¼ÅÃ÷', 'WH', 'L', 58000, 30, 40600, 02, 005, 'ÆÄ½ºÅÚ ÄÃ·¯ÀÇ ¹Ú½ÃÇÑ ÇÍ°ú ¿ÍÀÌµåÇÑ Ä¿ÇÁ½º, ¸ö¿¡ µé·¯ºÙÁö ¾Ê´Â ¼ÒÀç', 'dt001', 40, '2020/08/10', '2020/07/01', '2020/07/31', 1200000, 6700000, 'N', '005', 0);
-INSERT INTO PRODUCT VALUES('W0102005YLS', '01', 'thumb001', '¿¡ºì ¹«Áö ÄÚÆ°¼ÅÃ÷', 'YL', 'S', 58000, 30, 40600, 02, 005, 'ÆÄ½ºÅÚ ÄÃ·¯ÀÇ ¹Ú½ÃÇÑ ÇÍ°ú ¿ÍÀÌµåÇÑ Ä¿ÇÁ½º, ¸ö¿¡ µé·¯ºÙÁö ¾Ê´Â ¼ÒÀç', 'dt001', 40, '2020/08/10', '2020/07/01', '2020/07/31', 1200000, 6700000, 'N', '005', 0);
-INSERT INTO PRODUCT VALUES('W0102005YLM', '01', 'thumb001', '¿¡ºì ¹«Áö ÄÚÆ°¼ÅÃ÷', 'YL', 'M', 58000, 30, 40600, 02, 005, 'ÆÄ½ºÅÚ ÄÃ·¯ÀÇ ¹Ú½ÃÇÑ ÇÍ°ú ¿ÍÀÌµåÇÑ Ä¿ÇÁ½º, ¸ö¿¡ µé·¯ºÙÁö ¾Ê´Â ¼ÒÀç', 'dt001', 40, '2020/08/10', '2020/07/01', '2020/07/31', 1200000, 6700000, 'N', '005', 0);
-INSERT INTO PRODUCT VALUES('W0102005YLL', '01', 'thumb001', '¿¡ºì ¹«Áö ÄÚÆ°¼ÅÃ÷', 'YL', 'L', 58000, 30, 40600, 02, 005, 'ÆÄ½ºÅÚ ÄÃ·¯ÀÇ ¹Ú½ÃÇÑ ÇÍ°ú ¿ÍÀÌµåÇÑ Ä¿ÇÁ½º, ¸ö¿¡ µé·¯ºÙÁö ¾Ê´Â ¼ÒÀç', 'dt001', 40, '2020/08/10', '2020/07/01', '2020/07/31', 1200000, 6700000, 'N', '005', 0);
-INSERT INTO PRODUCT VALUES('W0102005KHS', '01', 'thumb001', '¿¡ºì ¹«Áö ÄÚÆ°¼ÅÃ÷', 'KH', 'S', 58000, 30, 40600, 02, 005, 'ÆÄ½ºÅÚ ÄÃ·¯ÀÇ ¹Ú½ÃÇÑ ÇÍ°ú ¿ÍÀÌµåÇÑ Ä¿ÇÁ½º, ¸ö¿¡ µé·¯ºÙÁö ¾Ê´Â ¼ÒÀç', 'dt001', 40, '2020/08/10', '2020/07/01', '2020/07/31', 1200000, 6700000, 'N', '005', 0);
-INSERT INTO PRODUCT VALUES('W0102005KHM', '01', 'thumb001', '¿¡ºì ¹«Áö ÄÚÆ°¼ÅÃ÷', 'KH', 'M', 58000, 30, 40600, 02, 005, 'ÆÄ½ºÅÚ ÄÃ·¯ÀÇ ¹Ú½ÃÇÑ ÇÍ°ú ¿ÍÀÌµåÇÑ Ä¿ÇÁ½º, ¸ö¿¡ µé·¯ºÙÁö ¾Ê´Â ¼ÒÀç', 'dt001', 40, '2020/08/10', '2020/07/01', '2020/07/31', 1200000, 6700000, 'N', '005', 0);
-INSERT INTO PRODUCT VALUES('W0102005KHL', '01', 'thumb001', '¿¡ºì ¹«Áö ÄÚÆ°¼ÅÃ÷', 'KH', 'L', 58000, 30, 40600, 02, 005, 'ÆÄ½ºÅÚ ÄÃ·¯ÀÇ ¹Ú½ÃÇÑ ÇÍ°ú ¿ÍÀÌµåÇÑ Ä¿ÇÁ½º, ¸ö¿¡ µé·¯ºÙÁö ¾Ê´Â ¼ÒÀç', 'dt001', 40, '2020/08/10', '2020/07/01', '2020/07/31', 1200000, 6700000, 'N', '005', 0);
+INSERT INTO PRODUCT VALUES('W0102005WHS', '01', 'thumb001', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ï¿½', 'WH', 'S', 58000, 30, 40600, 02, 005, 'ï¿½Ä½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½Í°ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ Ä¿ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½é·¯ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½ï¿½', 'dt001', 40, '2020/08/10', '2020/07/01', '2020/07/31', 1200000, 6700000, 'N', '005', 0);
+INSERT INTO PRODUCT VALUES('W0102005WHM', '01', 'thumb001', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ï¿½', 'WH', 'M', 58000, 30, 40600, 02, 005, 'ï¿½Ä½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½Í°ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ Ä¿ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½é·¯ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½ï¿½', 'dt001', 40, '2020/08/10', '2020/07/01', '2020/07/31', 1200000, 6700000, 'N', '005', 0);
+INSERT INTO PRODUCT VALUES('W0102005WHL', '01', 'thumb001', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ï¿½', 'WH', 'L', 58000, 30, 40600, 02, 005, 'ï¿½Ä½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½Í°ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ Ä¿ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½é·¯ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½ï¿½', 'dt001', 40, '2020/08/10', '2020/07/01', '2020/07/31', 1200000, 6700000, 'N', '005', 0);
+INSERT INTO PRODUCT VALUES('W0102005YLS', '01', 'thumb001', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ï¿½', 'YL', 'S', 58000, 30, 40600, 02, 005, 'ï¿½Ä½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½Í°ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ Ä¿ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½é·¯ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½ï¿½', 'dt001', 40, '2020/08/10', '2020/07/01', '2020/07/31', 1200000, 6700000, 'N', '005', 0);
+INSERT INTO PRODUCT VALUES('W0102005YLM', '01', 'thumb001', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ï¿½', 'YL', 'M', 58000, 30, 40600, 02, 005, 'ï¿½Ä½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½Í°ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ Ä¿ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½é·¯ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½ï¿½', 'dt001', 40, '2020/08/10', '2020/07/01', '2020/07/31', 1200000, 6700000, 'N', '005', 0);
+INSERT INTO PRODUCT VALUES('W0102005YLL', '01', 'thumb001', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ï¿½', 'YL', 'L', 58000, 30, 40600, 02, 005, 'ï¿½Ä½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½Í°ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ Ä¿ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½é·¯ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½ï¿½', 'dt001', 40, '2020/08/10', '2020/07/01', '2020/07/31', 1200000, 6700000, 'N', '005', 0);
+INSERT INTO PRODUCT VALUES('W0102005KHS', '01', 'thumb001', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ï¿½', 'KH', 'S', 58000, 30, 40600, 02, 005, 'ï¿½Ä½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½Í°ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ Ä¿ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½é·¯ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½ï¿½', 'dt001', 40, '2020/08/10', '2020/07/01', '2020/07/31', 1200000, 6700000, 'N', '005', 0);
+INSERT INTO PRODUCT VALUES('W0102005KHM', '01', 'thumb001', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ï¿½', 'KH', 'M', 58000, 30, 40600, 02, 005, 'ï¿½Ä½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½Í°ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ Ä¿ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½é·¯ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½ï¿½', 'dt001', 40, '2020/08/10', '2020/07/01', '2020/07/31', 1200000, 6700000, 'N', '005', 0);
+INSERT INTO PRODUCT VALUES('W0102005KHL', '01', 'thumb001', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ï¿½', 'KH', 'L', 58000, 30, 40600, 02, 005, 'ï¿½Ä½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½Í°ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ Ä¿ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½é·¯ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½ï¿½', 'dt001', 40, '2020/08/10', '2020/07/01', '2020/07/31', 1200000, 6700000, 'N', '005', 0);
 
-INSERT INTO PRODUCT VALUES('W0105006BKS', '01', 'thumb005', 'Æ®À®Å¬ ¹«µå ¼Å¸µ µå·¹½º', 'BK', 'S', 158000, 20, 126400, 05, 006, '½ºÅ² ÄÃ·¯°¡ »ìÂ¦ ºñÄ¡´Â ±äÆÈ ¿©¸§ µå·¹½º. ¾î±ú ¶óÀÎ¿¡ ÀâÈù ¼Å¸µÀ¸·Î ¿©¼º½º·¯¿ö¿ä:)', 'dt005', 126, '2020/06/12', '2020/05/06', '2020/06/08', 7500000, 800000, 'Y', '006', 0);
-INSERT INTO PRODUCT VALUES('W0105006BKM', '01', 'thumb005', 'Æ®À®Å¬ ¹«µå ¼Å¸µ µå·¹½º', 'BK', 'M', 158000, 20, 126400, 05, 006, '½ºÅ² ÄÃ·¯°¡ »ìÂ¦ ºñÄ¡´Â ±äÆÈ ¿©¸§ µå·¹½º. ¾î±ú ¶óÀÎ¿¡ ÀâÈù ¼Å¸µÀ¸·Î ¿©¼º½º·¯¿ö¿ä:)', 'dt005', 126, '2020/06/12', '2020/05/06', '2020/06/08', 7500000, 800000, 'Y', '006', 0);
-INSERT INTO PRODUCT VALUES('W0105006RDS', '01', 'thumb005', 'Æ®À®Å¬ ¹«µå ¼Å¸µ µå·¹½º', 'RD', 'S', 158000, 20, 126400, 05, 006, '½ºÅ² ÄÃ·¯°¡ »ìÂ¦ ºñÄ¡´Â ±äÆÈ ¿©¸§ µå·¹½º. ¾î±ú ¶óÀÎ¿¡ ÀâÈù ¼Å¸µÀ¸·Î ¿©¼º½º·¯¿ö¿ä:)', 'dt005', 126, '2020/06/12', '2020/05/06', '2020/06/08', 7500000, 800000, 'Y', '006', 0);
-INSERT INTO PRODUCT VALUES('W0105006RDM', '01', 'thumb005', 'Æ®À®Å¬ ¹«µå ¼Å¸µ µå·¹½º', 'RD', 'M', 158000, 20, 126400, 05, 006, '½ºÅ² ÄÃ·¯°¡ »ìÂ¦ ºñÄ¡´Â ±äÆÈ ¿©¸§ µå·¹½º. ¾î±ú ¶óÀÎ¿¡ ÀâÈù ¼Å¸µÀ¸·Î ¿©¼º½º·¯¿ö¿ä:)', 'dt005', 126, '2020/06/12', '2020/05/06', '2020/06/08', 7500000, 800000, 'Y', '006', 0);
-INSERT INTO PRODUCT VALUES('W0105006YLS', '01', 'thumb005', 'Æ®À®Å¬ ¹«µå ¼Å¸µ µå·¹½º', 'YL', 'S', 158000, 20, 126400, 05, 006, '½ºÅ² ÄÃ·¯°¡ »ìÂ¦ ºñÄ¡´Â ±äÆÈ ¿©¸§ µå·¹½º. ¾î±ú ¶óÀÎ¿¡ ÀâÈù ¼Å¸µÀ¸·Î ¿©¼º½º·¯¿ö¿ä:)', 'dt005', 126, '2020/06/12', '2020/05/06', '2020/06/08', 7500000, 800000, 'Y', '006', 0);
-INSERT INTO PRODUCT VALUES('W0105006YLM', '01', 'thumb005', 'Æ®À®Å¬ ¹«µå ¼Å¸µ µå·¹½º', 'YL', 'M', 158000, 20, 126400, 05, 006, '½ºÅ² ÄÃ·¯°¡ »ìÂ¦ ºñÄ¡´Â ±äÆÈ ¿©¸§ µå·¹½º. ¾î±ú ¶óÀÎ¿¡ ÀâÈù ¼Å¸µÀ¸·Î ¿©¼º½º·¯¿ö¿ä:)', 'dt005', 126, '2020/06/12', '2020/05/06', '2020/06/08', 7500000, 800000, 'Y', '006', 0);
-INSERT INTO PRODUCT VALUES('W0105006BLS', '01', 'thumb005', 'Æ®À®Å¬ ¹«µå ¼Å¸µ µå·¹½º', 'BL', 'S', 158000, 20, 126400, 05, 006, '½ºÅ² ÄÃ·¯°¡ »ìÂ¦ ºñÄ¡´Â ±äÆÈ ¿©¸§ µå·¹½º. ¾î±ú ¶óÀÎ¿¡ ÀâÈù ¼Å¸µÀ¸·Î ¿©¼º½º·¯¿ö¿ä:)', 'dt005', 126, '2020/06/12', '2020/05/06', '2020/06/08', 7500000, 800000, 'Y', '006', 0);
-INSERT INTO PRODUCT VALUES('W0105006BLM', '01', 'thumb005', 'Æ®À®Å¬ ¹«µå ¼Å¸µ µå·¹½º', 'BL', 'M', 158000, 20, 126400, 05, 006, '½ºÅ² ÄÃ·¯°¡ »ìÂ¦ ºñÄ¡´Â ±äÆÈ ¿©¸§ µå·¹½º. ¾î±ú ¶óÀÎ¿¡ ÀâÈù ¼Å¸µÀ¸·Î ¿©¼º½º·¯¿ö¿ä:)', 'dt005', 126, '2020/06/12', '2020/05/06', '2020/06/08', 7500000, 800000, 'Y', '006', 0);
+INSERT INTO PRODUCT VALUES('W0105006BKS', '01', 'thumb005', 'Æ®ï¿½ï¿½Å¬ ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ ï¿½å·¹ï¿½ï¿½', 'BK', 'S', 158000, 20, 126400, 05, 006, 'ï¿½ï¿½Å² ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½Â¦ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½å·¹ï¿½ï¿½. ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:)', 'dt005', 126, '2020/06/12', '2020/05/06', '2020/06/08', 7500000, 800000, 'Y', '006', 0);
+INSERT INTO PRODUCT VALUES('W0105006BKM', '01', 'thumb005', 'Æ®ï¿½ï¿½Å¬ ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ ï¿½å·¹ï¿½ï¿½', 'BK', 'M', 158000, 20, 126400, 05, 006, 'ï¿½ï¿½Å² ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½Â¦ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½å·¹ï¿½ï¿½. ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:)', 'dt005', 126, '2020/06/12', '2020/05/06', '2020/06/08', 7500000, 800000, 'Y', '006', 0);
+INSERT INTO PRODUCT VALUES('W0105006RDS', '01', 'thumb005', 'Æ®ï¿½ï¿½Å¬ ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ ï¿½å·¹ï¿½ï¿½', 'RD', 'S', 158000, 20, 126400, 05, 006, 'ï¿½ï¿½Å² ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½Â¦ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½å·¹ï¿½ï¿½. ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:)', 'dt005', 126, '2020/06/12', '2020/05/06', '2020/06/08', 7500000, 800000, 'Y', '006', 0);
+INSERT INTO PRODUCT VALUES('W0105006RDM', '01', 'thumb005', 'Æ®ï¿½ï¿½Å¬ ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ ï¿½å·¹ï¿½ï¿½', 'RD', 'M', 158000, 20, 126400, 05, 006, 'ï¿½ï¿½Å² ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½Â¦ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½å·¹ï¿½ï¿½. ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:)', 'dt005', 126, '2020/06/12', '2020/05/06', '2020/06/08', 7500000, 800000, 'Y', '006', 0);
+INSERT INTO PRODUCT VALUES('W0105006YLS', '01', 'thumb005', 'Æ®ï¿½ï¿½Å¬ ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ ï¿½å·¹ï¿½ï¿½', 'YL', 'S', 158000, 20, 126400, 05, 006, 'ï¿½ï¿½Å² ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½Â¦ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½å·¹ï¿½ï¿½. ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:)', 'dt005', 126, '2020/06/12', '2020/05/06', '2020/06/08', 7500000, 800000, 'Y', '006', 0);
+INSERT INTO PRODUCT VALUES('W0105006YLM', '01', 'thumb005', 'Æ®ï¿½ï¿½Å¬ ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ ï¿½å·¹ï¿½ï¿½', 'YL', 'M', 158000, 20, 126400, 05, 006, 'ï¿½ï¿½Å² ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½Â¦ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½å·¹ï¿½ï¿½. ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:)', 'dt005', 126, '2020/06/12', '2020/05/06', '2020/06/08', 7500000, 800000, 'Y', '006', 0);
+INSERT INTO PRODUCT VALUES('W0105006BLS', '01', 'thumb005', 'Æ®ï¿½ï¿½Å¬ ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ ï¿½å·¹ï¿½ï¿½', 'BL', 'S', 158000, 20, 126400, 05, 006, 'ï¿½ï¿½Å² ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½Â¦ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½å·¹ï¿½ï¿½. ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:)', 'dt005', 126, '2020/06/12', '2020/05/06', '2020/06/08', 7500000, 800000, 'Y', '006', 0);
+INSERT INTO PRODUCT VALUES('W0105006BLM', '01', 'thumb005', 'Æ®ï¿½ï¿½Å¬ ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ ï¿½å·¹ï¿½ï¿½', 'BL', 'M', 158000, 20, 126400, 05, 006, 'ï¿½ï¿½Å² ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½Â¦ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½å·¹ï¿½ï¿½. ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:)', 'dt005', 126, '2020/06/12', '2020/05/06', '2020/06/08', 7500000, 800000, 'Y', '006', 0);
 
-INSERT INTO PRODUCT VALUES('W0105007WHS', '01', 'thumb083', 'ºê¸®µå ¸®³Ù ½½¸´ ¿øÇÇ½º', 'WH', 'S', 78000, 20, 62400, 05, 007, '±¸±èÀÌ Àß °¡Áö ¾Ê´Â °¡°ø ¸®³ÙÀ¸·Î °ÆÁ¤¾øÀÌ ÀÔÀ» ¼ö ÀÖ¾î¿ä. ¾ÕÂÊ ½½¸´À¸·Î È°µ¿¼º ¾÷!', 'dt083', 62, '2020/06/10', '2020/05/12', '2020/06/01', 2000000, 1500000, 'Y', '007', 0);
-INSERT INTO PRODUCT VALUES('W0105007WHM', '01', 'thumb083', 'ºê¸®µå ¸®³Ù ½½¸´ ¿øÇÇ½º', 'WH', 'M', 78000, 20, 62400, 05, 007, '±¸±èÀÌ Àß °¡Áö ¾Ê´Â °¡°ø ¸®³ÙÀ¸·Î °ÆÁ¤¾øÀÌ ÀÔÀ» ¼ö ÀÖ¾î¿ä. ¾ÕÂÊ ½½¸´À¸·Î È°µ¿¼º ¾÷!', 'dt083', 62, '2020/06/10', '2020/05/12', '2020/06/01', 2000000, 1500000, 'Y', '007', 0);
-INSERT INTO PRODUCT VALUES('W0105007WHL', '01', 'thumb083', 'ºê¸®µå ¸®³Ù ½½¸´ ¿øÇÇ½º', 'WH', 'L', 78000, 20, 62400, 05, 007, '±¸±èÀÌ Àß °¡Áö ¾Ê´Â °¡°ø ¸®³ÙÀ¸·Î °ÆÁ¤¾øÀÌ ÀÔÀ» ¼ö ÀÖ¾î¿ä. ¾ÕÂÊ ½½¸´À¸·Î È°µ¿¼º ¾÷!', 'dt083', 62, '2020/06/10', '2020/05/12', '2020/06/01', 2000000, 1500000, 'Y', '007', 0);
-INSERT INTO PRODUCT VALUES('W0105007YLS', '01', 'thumb083', 'ºê¸®µå ¸®³Ù ½½¸´ ¿øÇÇ½º', 'YL', 'S', 78000, 20, 62400, 05, 007, '±¸±èÀÌ Àß °¡Áö ¾Ê´Â °¡°ø ¸®³ÙÀ¸·Î °ÆÁ¤¾øÀÌ ÀÔÀ» ¼ö ÀÖ¾î¿ä. ¾ÕÂÊ ½½¸´À¸·Î È°µ¿¼º ¾÷!', 'dt083', 62, '2020/06/10', '2020/05/12', '2020/06/01', 2000000, 1500000, 'Y', '007', 0);
-INSERT INTO PRODUCT VALUES('W0105007YLM', '01', 'thumb083', 'ºê¸®µå ¸®³Ù ½½¸´ ¿øÇÇ½º', 'YL', 'M', 78000, 20, 62400, 05, 007, '±¸±èÀÌ Àß °¡Áö ¾Ê´Â °¡°ø ¸®³ÙÀ¸·Î °ÆÁ¤¾øÀÌ ÀÔÀ» ¼ö ÀÖ¾î¿ä. ¾ÕÂÊ ½½¸´À¸·Î È°µ¿¼º ¾÷!', 'dt083', 62, '2020/06/10', '2020/05/12', '2020/06/01', 2000000, 1500000, 'Y', '007', 0);
-INSERT INTO PRODUCT VALUES('W0105007YLL', '01', 'thumb083', 'ºê¸®µå ¸®³Ù ½½¸´ ¿øÇÇ½º', 'YL', 'L', 78000, 20, 62400, 05, 007, '±¸±èÀÌ Àß °¡Áö ¾Ê´Â °¡°ø ¸®³ÙÀ¸·Î °ÆÁ¤¾øÀÌ ÀÔÀ» ¼ö ÀÖ¾î¿ä. ¾ÕÂÊ ½½¸´À¸·Î È°µ¿¼º ¾÷!', 'dt083', 62, '2020/06/10', '2020/05/12', '2020/06/01', 2000000, 1500000, 'Y', '007', 0);
-INSERT INTO PRODUCT VALUES('W0105007GNL', '01', 'thumb083', 'ºê¸®µå ¸®³Ù ½½¸´ ¿øÇÇ½º', 'GN', 'L', 78000, 20, 62400, 05, 007, '±¸±èÀÌ Àß °¡Áö ¾Ê´Â °¡°ø ¸®³ÙÀ¸·Î °ÆÁ¤¾øÀÌ ÀÔÀ» ¼ö ÀÖ¾î¿ä. ¾ÕÂÊ ½½¸´À¸·Î È°µ¿¼º ¾÷!', 'dt083', 62, '2020/06/10', '2020/05/12', '2020/06/01', 2000000, 1500000, 'Y', '007', 0);
+INSERT INTO PRODUCT VALUES('W0105007WHS', '01', 'thumb083', 'ï¿½ê¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½', 'WH', 'S', 78000, 20, 62400, 05, 007, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È°ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½!', 'dt083', 62, '2020/06/10', '2020/05/12', '2020/06/01', 2000000, 1500000, 'Y', '007', 0);
+INSERT INTO PRODUCT VALUES('W0105007WHM', '01', 'thumb083', 'ï¿½ê¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½', 'WH', 'M', 78000, 20, 62400, 05, 007, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È°ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½!', 'dt083', 62, '2020/06/10', '2020/05/12', '2020/06/01', 2000000, 1500000, 'Y', '007', 0);
+INSERT INTO PRODUCT VALUES('W0105007WHL', '01', 'thumb083', 'ï¿½ê¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½', 'WH', 'L', 78000, 20, 62400, 05, 007, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È°ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½!', 'dt083', 62, '2020/06/10', '2020/05/12', '2020/06/01', 2000000, 1500000, 'Y', '007', 0);
+INSERT INTO PRODUCT VALUES('W0105007YLS', '01', 'thumb083', 'ï¿½ê¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½', 'YL', 'S', 78000, 20, 62400, 05, 007, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È°ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½!', 'dt083', 62, '2020/06/10', '2020/05/12', '2020/06/01', 2000000, 1500000, 'Y', '007', 0);
+INSERT INTO PRODUCT VALUES('W0105007YLM', '01', 'thumb083', 'ï¿½ê¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½', 'YL', 'M', 78000, 20, 62400, 05, 007, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È°ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½!', 'dt083', 62, '2020/06/10', '2020/05/12', '2020/06/01', 2000000, 1500000, 'Y', '007', 0);
+INSERT INTO PRODUCT VALUES('W0105007YLL', '01', 'thumb083', 'ï¿½ê¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½', 'YL', 'L', 78000, 20, 62400, 05, 007, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È°ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½!', 'dt083', 62, '2020/06/10', '2020/05/12', '2020/06/01', 2000000, 1500000, 'Y', '007', 0);
+INSERT INTO PRODUCT VALUES('W0105007GNL', '01', 'thumb083', 'ï¿½ê¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½', 'GN', 'L', 78000, 20, 62400, 05, 007, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È°ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½!', 'dt083', 62, '2020/06/10', '2020/05/12', '2020/06/01', 2000000, 1500000, 'Y', '007', 0);
 
-INSERT INTO PRODUCT VALUES('W0104008BKS', '01', 'thumb061', 'ÇÏÀÏ¸® µ¥´Ô ¿ÍÀÌµå ÆÒÃ÷', 'BK', 'S', 45000, 30, 31500, 04, 008, 'È÷µç ¹êµù ÇÏÀÌ¿þ½ºÆ®·Î ½Ç¿ë¼ºÀ» Àâ¾Ò½À´Ï´Ù.', 'dt061', 31, '2020/08/14', '2020/06/30', '2020/07/25', 7800000, 6000000, 'N', '008', 0);
-INSERT INTO PRODUCT VALUES('W0104008BKM', '01', 'thumb061', 'ÇÏÀÏ¸® µ¥´Ô ¿ÍÀÌµå ÆÒÃ÷', 'BK', 'M', 45000, 30, 31500, 04, 008, 'È÷µç ¹êµù ÇÏÀÌ¿þ½ºÆ®·Î ½Ç¿ë¼ºÀ» Àâ¾Ò½À´Ï´Ù.', 'dt061', 31, '2020/08/14', '2020/06/30', '2020/07/25', 7800000, 6000000, 'N', '008', 0);
-INSERT INTO PRODUCT VALUES('W0104008BKL', '01', 'thumb061', 'ÇÏÀÏ¸® µ¥´Ô ¿ÍÀÌµå ÆÒÃ÷', 'BK', 'L', 45000, 30, 31500, 04, 008, 'È÷µç ¹êµù ÇÏÀÌ¿þ½ºÆ®·Î ½Ç¿ë¼ºÀ» Àâ¾Ò½À´Ï´Ù.', 'dt061', 31, '2020/08/14', '2020/06/30', '2020/07/25', 7800000, 6000000, 'N', '008', 0);
-INSERT INTO PRODUCT VALUES('W0104008BLS', '01', 'thumb061', 'ÇÏÀÏ¸® µ¥´Ô ¿ÍÀÌµå ÆÒÃ÷', 'BL', 'S', 45000, 30, 31500, 04, 008, 'È÷µç ¹êµù ÇÏÀÌ¿þ½ºÆ®·Î ½Ç¿ë¼ºÀ» Àâ¾Ò½À´Ï´Ù.', 'dt061', 31, '2020/08/14', '2020/06/30', '2020/07/25', 7800000, 6000000, 'N', '008', 0);
-INSERT INTO PRODUCT VALUES('W0104008BLM', '01', 'thumb061', 'ÇÏÀÏ¸® µ¥´Ô ¿ÍÀÌµå ÆÒÃ÷', 'BL', 'M', 45000, 30, 31500, 04, 008, 'È÷µç ¹êµù ÇÏÀÌ¿þ½ºÆ®·Î ½Ç¿ë¼ºÀ» Àâ¾Ò½À´Ï´Ù.', 'dt061', 31, '2020/08/14', '2020/06/30', '2020/07/25', 7800000, 6000000, 'N', '008', 0);
-INSERT INTO PRODUCT VALUES('W0104008BLL', '01', 'thumb061', 'ÇÏÀÏ¸® µ¥´Ô ¿ÍÀÌµå ÆÒÃ÷', 'BL', 'L', 45000, 30, 31500, 04, 008, 'È÷µç ¹êµù ÇÏÀÌ¿þ½ºÆ®·Î ½Ç¿ë¼ºÀ» Àâ¾Ò½À´Ï´Ù.', 'dt061', 31, '2020/08/14', '2020/06/30', '2020/07/25', 7800000, 6000000, 'N', '008', 0);
+INSERT INTO PRODUCT VALUES('W0104008BKS', '01', 'thumb061', 'ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½', 'BK', 'S', 45000, 30, 31500, 04, 008, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¿ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ç¿ë¼ºï¿½ï¿½ ï¿½ï¿½Ò½ï¿½ï¿½Ï´ï¿½.', 'dt061', 31, '2020/08/14', '2020/06/30', '2020/07/25', 7800000, 6000000, 'N', '008', 0);
+INSERT INTO PRODUCT VALUES('W0104008BKM', '01', 'thumb061', 'ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½', 'BK', 'M', 45000, 30, 31500, 04, 008, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¿ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ç¿ë¼ºï¿½ï¿½ ï¿½ï¿½Ò½ï¿½ï¿½Ï´ï¿½.', 'dt061', 31, '2020/08/14', '2020/06/30', '2020/07/25', 7800000, 6000000, 'N', '008', 0);
+INSERT INTO PRODUCT VALUES('W0104008BKL', '01', 'thumb061', 'ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½', 'BK', 'L', 45000, 30, 31500, 04, 008, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¿ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ç¿ë¼ºï¿½ï¿½ ï¿½ï¿½Ò½ï¿½ï¿½Ï´ï¿½.', 'dt061', 31, '2020/08/14', '2020/06/30', '2020/07/25', 7800000, 6000000, 'N', '008', 0);
+INSERT INTO PRODUCT VALUES('W0104008BLS', '01', 'thumb061', 'ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½', 'BL', 'S', 45000, 30, 31500, 04, 008, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¿ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ç¿ë¼ºï¿½ï¿½ ï¿½ï¿½Ò½ï¿½ï¿½Ï´ï¿½.', 'dt061', 31, '2020/08/14', '2020/06/30', '2020/07/25', 7800000, 6000000, 'N', '008', 0);
+INSERT INTO PRODUCT VALUES('W0104008BLM', '01', 'thumb061', 'ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½', 'BL', 'M', 45000, 30, 31500, 04, 008, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¿ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ç¿ë¼ºï¿½ï¿½ ï¿½ï¿½Ò½ï¿½ï¿½Ï´ï¿½.', 'dt061', 31, '2020/08/14', '2020/06/30', '2020/07/25', 7800000, 6000000, 'N', '008', 0);
+INSERT INTO PRODUCT VALUES('W0104008BLL', '01', 'thumb061', 'ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½', 'BL', 'L', 45000, 30, 31500, 04, 008, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¿ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ç¿ë¼ºï¿½ï¿½ ï¿½ï¿½Ò½ï¿½ï¿½Ï´ï¿½.', 'dt061', 31, '2020/08/14', '2020/06/30', '2020/07/25', 7800000, 6000000, 'N', '008', 0);
 
-INSERT INTO PRODUCT VALUES('W0102009BKS', '01', 'thumb003', '¿¤¸® º§ºª ¸®º» ºí¶ó¿ì½º', 'BK', 'S', 37000, 20, 29600, 02, 009, '¼¼·ÃµÈ º§ºª ¼ÒÀç·Î ¼Ò¸ÅÀÇ ¸®º» Æ÷ÀÎÆ®°¡ ±Í¿±½À´Ï´Ù.', 'dt003', 37, '2020/08/04', '2020/06/21', '2020/07/05', 1800000, 900000, 'N', '009', 0);
-INSERT INTO PRODUCT VALUES('W0102009BKM', '01', 'thumb003', '¿¤¸® º§ºª ¸®º» ºí¶ó¿ì½º', 'BK', 'M', 37000, 20, 29600, 02, 009, '¼¼·ÃµÈ º§ºª ¼ÒÀç·Î ¼Ò¸ÅÀÇ ¸®º» Æ÷ÀÎÆ®°¡ ±Í¿±½À´Ï´Ù.', 'dt003', 37, '2020/08/04', '2020/06/21', '2020/07/05', 1800000, 900000, 'N', '009', 0);
-INSERT INTO PRODUCT VALUES('W0102009RDS', '01', 'thumb003', '¿¤¸® º§ºª ¸®º» ºí¶ó¿ì½º', 'RD', 'S', 37000, 20, 29600, 02, 009, '¼¼·ÃµÈ º§ºª ¼ÒÀç·Î ¼Ò¸ÅÀÇ ¸®º» Æ÷ÀÎÆ®°¡ ±Í¿±½À´Ï´Ù.', 'dt003', 37, '2020/08/04', '2020/06/21', '2020/07/05', 1800000, 900000, 'N', '009', 0);
-INSERT INTO PRODUCT VALUES('W0102009RDM', '01', 'thumb003', '¿¤¸® º§ºª ¸®º» ºí¶ó¿ì½º', 'RD', 'M', 37000, 20, 29600, 02, 009, '¼¼·ÃµÈ º§ºª ¼ÒÀç·Î ¼Ò¸ÅÀÇ ¸®º» Æ÷ÀÎÆ®°¡ ±Í¿±½À´Ï´Ù.', 'dt003', 37, '2020/08/04', '2020/06/21', '2020/07/05', 1800000, 900000, 'N', '009', 0);
-INSERT INTO PRODUCT VALUES('W0102009GNS', '01', 'thumb003', '¿¤¸® º§ºª ¸®º» ºí¶ó¿ì½º', 'GN', 'S', 37000, 20, 29600, 02, 009, '¼¼·ÃµÈ º§ºª ¼ÒÀç·Î ¼Ò¸ÅÀÇ ¸®º» Æ÷ÀÎÆ®°¡ ±Í¿±½À´Ï´Ù.', 'dt003', 37, '2020/08/04', '2020/06/21', '2020/07/05', 1800000, 900000, 'N', '009', 0);
-INSERT INTO PRODUCT VALUES('W0102009GNM', '01', 'thumb003', '¿¤¸® º§ºª ¸®º» ºí¶ó¿ì½º', 'GN', 'M', 37000, 20, 29600, 02, 009, '¼¼·ÃµÈ º§ºª ¼ÒÀç·Î ¼Ò¸ÅÀÇ ¸®º» Æ÷ÀÎÆ®°¡ ±Í¿±½À´Ï´Ù.', 'dt003', 37, '2020/08/04', '2020/06/21', '2020/07/05', 1800000, 900000, 'N', '009', 0);
+INSERT INTO PRODUCT VALUES('W0102009BKS', '01', 'thumb003', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ì½º', 'BK', 'S', 37000, 20, 29600, 02, 009, 'ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Í¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.', 'dt003', 37, '2020/08/04', '2020/06/21', '2020/07/05', 1800000, 900000, 'N', '009', 0);
+INSERT INTO PRODUCT VALUES('W0102009BKM', '01', 'thumb003', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ì½º', 'BK', 'M', 37000, 20, 29600, 02, 009, 'ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Í¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.', 'dt003', 37, '2020/08/04', '2020/06/21', '2020/07/05', 1800000, 900000, 'N', '009', 0);
+INSERT INTO PRODUCT VALUES('W0102009RDS', '01', 'thumb003', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ì½º', 'RD', 'S', 37000, 20, 29600, 02, 009, 'ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Í¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.', 'dt003', 37, '2020/08/04', '2020/06/21', '2020/07/05', 1800000, 900000, 'N', '009', 0);
+INSERT INTO PRODUCT VALUES('W0102009RDM', '01', 'thumb003', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ì½º', 'RD', 'M', 37000, 20, 29600, 02, 009, 'ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Í¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.', 'dt003', 37, '2020/08/04', '2020/06/21', '2020/07/05', 1800000, 900000, 'N', '009', 0);
+INSERT INTO PRODUCT VALUES('W0102009GNS', '01', 'thumb003', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ì½º', 'GN', 'S', 37000, 20, 29600, 02, 009, 'ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Í¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.', 'dt003', 37, '2020/08/04', '2020/06/21', '2020/07/05', 1800000, 900000, 'N', '009', 0);
+INSERT INTO PRODUCT VALUES('W0102009GNM', '01', 'thumb003', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ì½º', 'GN', 'M', 37000, 20, 29600, 02, 009, 'ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Í¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.', 'dt003', 37, '2020/08/04', '2020/06/21', '2020/07/05', 1800000, 900000, 'N', '009', 0);
 
-INSERT INTO PRODUCT VALUES('W0101010BKM', '01', 'thumb019', 'Æ®·ÎÀÌµå º£ÀÌÁ÷ Á¡ÆÛ', 'BK', 'M', 189000, 20, 151200, 01, 010, '½ºÆØ±Û°ú ºñµå Àå½Ä, ÀÚ¼ö°¡ µÇ¾î ÀÖ´Â Á¡ÆÛ·Î ÇÏ³ª¸¸ °ÉÃÄµµ À¯´ÏÅ©ÇÕ´Ï´Ù', 'dt019', 300, '2020/06/23', '2020/05/31', '2020/06/13', 3500000, 2000000, 'Y', '010', 0);
-INSERT INTO PRODUCT VALUES('W0101010BKL', '01', 'thumb019', 'Æ®·ÎÀÌµå º£ÀÌÁ÷ Á¡ÆÛ', 'BK', 'L', 189000, 20, 151200, 01, 010, '½ºÆØ±Û°ú ºñµå Àå½Ä, ÀÚ¼ö°¡ µÇ¾î ÀÖ´Â Á¡ÆÛ·Î ÇÏ³ª¸¸ °ÉÃÄµµ À¯´ÏÅ©ÇÕ´Ï´Ù', 'dt019', 300, '2020/06/23', '2020/05/31', '2020/06/13', 3500000, 2000000, 'Y', '010', 0);
-INSERT INTO PRODUCT VALUES('W0101010GRM', '01', 'thumb019', 'Æ®·ÎÀÌµå º£ÀÌÁ÷ Á¡ÆÛ', 'GN', 'M', 189000, 20, 151200, 01, 010, '½ºÆØ±Û°ú ºñµå Àå½Ä, ÀÚ¼ö°¡ µÇ¾î ÀÖ´Â Á¡ÆÛ·Î ÇÏ³ª¸¸ °ÉÃÄµµ À¯´ÏÅ©ÇÕ´Ï´Ù', 'dt019', 300, '2020/06/23', '2020/05/31', '2020/06/13', 3500000, 2000000, 'Y', '010', 0);
-INSERT INTO PRODUCT VALUES('W0101010GRL', '01', 'thumb019', 'Æ®·ÎÀÌµå º£ÀÌÁ÷ Á¡ÆÛ', 'GN', 'L', 189000, 20, 151200, 01, 010, '½ºÆØ±Û°ú ºñµå Àå½Ä, ÀÚ¼ö°¡ µÇ¾î ÀÖ´Â Á¡ÆÛ·Î ÇÏ³ª¸¸ °ÉÃÄµµ À¯´ÏÅ©ÇÕ´Ï´Ù', 'dt019', 300, '2020/06/23', '2020/05/31', '2020/06/13', 3500000, 2000000, 'Y', '010', 0);
-INSERT INTO PRODUCT VALUES('W0101010RDM', '01', 'thumb019', 'Æ®·ÎÀÌµå º£ÀÌÁ÷ Á¡ÆÛ', 'RD', 'M', 189000, 20, 151200, 01, 010, '½ºÆØ±Û°ú ºñµå Àå½Ä, ÀÚ¼ö°¡ µÇ¾î ÀÖ´Â Á¡ÆÛ·Î ÇÏ³ª¸¸ °ÉÃÄµµ À¯´ÏÅ©ÇÕ´Ï´Ù', 'dt019', 300, '2020/06/23', '2020/05/31', '2020/06/13', 3500000, 2000000, 'Y', '010', 0);
-INSERT INTO PRODUCT VALUES('W0101010RDL', '01', 'thumb019', 'Æ®·ÎÀÌµå º£ÀÌÁ÷ Á¡ÆÛ', 'RD', 'L', 189000, 20, 151200, 01, 010, '½ºÆØ±Û°ú ºñµå Àå½Ä, ÀÚ¼ö°¡ µÇ¾î ÀÖ´Â Á¡ÆÛ·Î ÇÏ³ª¸¸ °ÉÃÄµµ À¯´ÏÅ©ÇÕ´Ï´Ù', 'dt019', 300, '2020/06/23', '2020/05/31', '2020/06/13', 3500000, 2000000, 'Y', '010', 0);
-INSERT INTO PRODUCT VALUES('W0101010BLM', '01', 'thumb019', 'Æ®·ÎÀÌµå º£ÀÌÁ÷ Á¡ÆÛ', 'BL', 'M', 189000, 20, 151200, 01, 010, '½ºÆØ±Û°ú ºñµå Àå½Ä, ÀÚ¼ö°¡ µÇ¾î ÀÖ´Â Á¡ÆÛ·Î ÇÏ³ª¸¸ °ÉÃÄµµ À¯´ÏÅ©ÇÕ´Ï´Ù', 'dt019', 300, '2020/06/23', '2020/05/31', '2020/06/13', 3500000, 2000000, 'Y', '010', 0);
-INSERT INTO PRODUCT VALUES('W0101010BLL', '01', 'thumb019', 'Æ®·ÎÀÌµå º£ÀÌÁ÷ Á¡ÆÛ', 'BL', 'L', 189000, 20, 151200, 01, 010, '½ºÆØ±Û°ú ºñµå Àå½Ä, ÀÚ¼ö°¡ µÇ¾î ÀÖ´Â Á¡ÆÛ·Î ÇÏ³ª¸¸ °ÉÃÄµµ À¯´ÏÅ©ÇÕ´Ï´Ù', 'dt019', 300, '2020/06/23', '2020/05/31', '2020/06/13', 3500000, 2000000, 'Y', '010', 0);
+INSERT INTO PRODUCT VALUES('W0101010BKM', '01', 'thumb019', 'Æ®ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'BK', 'M', 189000, 20, 151200, 01, 010, 'ï¿½ï¿½ï¿½Ø±Û°ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½, ï¿½Ú¼ï¿½ï¿½ï¿½ ï¿½Ç¾ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½Û·ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Äµï¿½ ï¿½ï¿½ï¿½ï¿½Å©ï¿½Õ´Ï´ï¿½', 'dt019', 300, '2020/06/23', '2020/05/31', '2020/06/13', 3500000, 2000000, 'Y', '010', 0);
+INSERT INTO PRODUCT VALUES('W0101010BKL', '01', 'thumb019', 'Æ®ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'BK', 'L', 189000, 20, 151200, 01, 010, 'ï¿½ï¿½ï¿½Ø±Û°ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½, ï¿½Ú¼ï¿½ï¿½ï¿½ ï¿½Ç¾ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½Û·ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Äµï¿½ ï¿½ï¿½ï¿½ï¿½Å©ï¿½Õ´Ï´ï¿½', 'dt019', 300, '2020/06/23', '2020/05/31', '2020/06/13', 3500000, 2000000, 'Y', '010', 0);
+INSERT INTO PRODUCT VALUES('W0101010GRM', '01', 'thumb019', 'Æ®ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'GN', 'M', 189000, 20, 151200, 01, 010, 'ï¿½ï¿½ï¿½Ø±Û°ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½, ï¿½Ú¼ï¿½ï¿½ï¿½ ï¿½Ç¾ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½Û·ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Äµï¿½ ï¿½ï¿½ï¿½ï¿½Å©ï¿½Õ´Ï´ï¿½', 'dt019', 300, '2020/06/23', '2020/05/31', '2020/06/13', 3500000, 2000000, 'Y', '010', 0);
+INSERT INTO PRODUCT VALUES('W0101010GRL', '01', 'thumb019', 'Æ®ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'GN', 'L', 189000, 20, 151200, 01, 010, 'ï¿½ï¿½ï¿½Ø±Û°ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½, ï¿½Ú¼ï¿½ï¿½ï¿½ ï¿½Ç¾ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½Û·ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Äµï¿½ ï¿½ï¿½ï¿½ï¿½Å©ï¿½Õ´Ï´ï¿½', 'dt019', 300, '2020/06/23', '2020/05/31', '2020/06/13', 3500000, 2000000, 'Y', '010', 0);
+INSERT INTO PRODUCT VALUES('W0101010RDM', '01', 'thumb019', 'Æ®ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'RD', 'M', 189000, 20, 151200, 01, 010, 'ï¿½ï¿½ï¿½Ø±Û°ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½, ï¿½Ú¼ï¿½ï¿½ï¿½ ï¿½Ç¾ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½Û·ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Äµï¿½ ï¿½ï¿½ï¿½ï¿½Å©ï¿½Õ´Ï´ï¿½', 'dt019', 300, '2020/06/23', '2020/05/31', '2020/06/13', 3500000, 2000000, 'Y', '010', 0);
+INSERT INTO PRODUCT VALUES('W0101010RDL', '01', 'thumb019', 'Æ®ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'RD', 'L', 189000, 20, 151200, 01, 010, 'ï¿½ï¿½ï¿½Ø±Û°ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½, ï¿½Ú¼ï¿½ï¿½ï¿½ ï¿½Ç¾ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½Û·ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Äµï¿½ ï¿½ï¿½ï¿½ï¿½Å©ï¿½Õ´Ï´ï¿½', 'dt019', 300, '2020/06/23', '2020/05/31', '2020/06/13', 3500000, 2000000, 'Y', '010', 0);
+INSERT INTO PRODUCT VALUES('W0101010BLM', '01', 'thumb019', 'Æ®ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'BL', 'M', 189000, 20, 151200, 01, 010, 'ï¿½ï¿½ï¿½Ø±Û°ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½, ï¿½Ú¼ï¿½ï¿½ï¿½ ï¿½Ç¾ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½Û·ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Äµï¿½ ï¿½ï¿½ï¿½ï¿½Å©ï¿½Õ´Ï´ï¿½', 'dt019', 300, '2020/06/23', '2020/05/31', '2020/06/13', 3500000, 2000000, 'Y', '010', 0);
+INSERT INTO PRODUCT VALUES('W0101010BLL', '01', 'thumb019', 'Æ®ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'BL', 'L', 189000, 20, 151200, 01, 010, 'ï¿½ï¿½ï¿½Ø±Û°ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½, ï¿½Ú¼ï¿½ï¿½ï¿½ ï¿½Ç¾ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½Û·ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Äµï¿½ ï¿½ï¿½ï¿½ï¿½Å©ï¿½Õ´Ï´ï¿½', 'dt019', 300, '2020/06/23', '2020/05/31', '2020/06/13', 3500000, 2000000, 'Y', '010', 0);
 
-INSERT INTO PRODUCT VALUES('W0104011BKS', '01', 'thumb060', '¿øµð ¸Ó¸ÞÀÌµå ½ºÄ¿Æ®', 'BK', 'S', 79000, 20, 63200, 04, 011, '»çÀÌµåÀÇ ºò ¹öÆ° Æ÷ÀÎÆ®, °ñ¹Ý ¶óÀÎÀº Àâ¾ÆÁÖ¾î ³¯¾ÀÇØ º¸¿©¿ä!', 'dt060', 63, '2020/06/30', '2020/05/22', '2020/06/20', 3500000, 1000000, 'Y', '011', 0);
-INSERT INTO PRODUCT VALUES('W0104011BKM', '01', 'thumb060', '¿øµð ¸Ó¸ÞÀÌµå ½ºÄ¿Æ®', 'BK', 'M', 79000, 20, 63200, 04, 011, '»çÀÌµåÀÇ ºò ¹öÆ° Æ÷ÀÎÆ®, °ñ¹Ý ¶óÀÎÀº Àâ¾ÆÁÖ¾î ³¯¾ÀÇØ º¸¿©¿ä!', 'dt060', 63, '2020/06/30', '2020/05/22', '2020/06/20', 3500000, 1000000, 'Y', '011', 0);
-INSERT INTO PRODUCT VALUES('W0104011BKL', '01', 'thumb060', '¿øµð ¸Ó¸ÞÀÌµå ½ºÄ¿Æ®', 'BK', 'L', 79000, 20, 63200, 04, 011, '»çÀÌµåÀÇ ºò ¹öÆ° Æ÷ÀÎÆ®, °ñ¹Ý ¶óÀÎÀº Àâ¾ÆÁÖ¾î ³¯¾ÀÇØ º¸¿©¿ä!', 'dt060', 63, '2020/06/30', '2020/05/22', '2020/06/20', 3500000, 1000000, 'Y', '011', 0);
-INSERT INTO PRODUCT VALUES('W0104011RDS', '01', 'thumb060', '¿øµð ¸Ó¸ÞÀÌµå ½ºÄ¿Æ®', 'RD', 'S', 79000, 20, 63200, 04, 011, '»çÀÌµåÀÇ ºò ¹öÆ° Æ÷ÀÎÆ®, °ñ¹Ý ¶óÀÎÀº Àâ¾ÆÁÖ¾î ³¯¾ÀÇØ º¸¿©¿ä!', 'dt060', 63, '2020/06/30', '2020/05/22', '2020/06/20', 3500000, 1000000, 'Y', '011', 0);
-INSERT INTO PRODUCT VALUES('W0104011RDM', '01', 'thumb060', '¿øµð ¸Ó¸ÞÀÌµå ½ºÄ¿Æ®', 'RD', 'M', 79000, 20, 63200, 04, 011, '»çÀÌµåÀÇ ºò ¹öÆ° Æ÷ÀÎÆ®, °ñ¹Ý ¶óÀÎÀº Àâ¾ÆÁÖ¾î ³¯¾ÀÇØ º¸¿©¿ä!', 'dt060', 63, '2020/06/30', '2020/05/22', '2020/06/20', 3500000, 1000000, 'Y', '011', 0);
-INSERT INTO PRODUCT VALUES('W0104011RDL', '01', 'thumb060', '¿øµð ¸Ó¸ÞÀÌµå ½ºÄ¿Æ®', 'RD', 'L', 79000, 20, 63200, 04, 011, '»çÀÌµåÀÇ ºò ¹öÆ° Æ÷ÀÎÆ®, °ñ¹Ý ¶óÀÎÀº Àâ¾ÆÁÖ¾î ³¯¾ÀÇØ º¸¿©¿ä!', 'dt060', 63, '2020/06/30', '2020/05/22', '2020/06/20', 3500000, 1000000, 'Y', '011', 0);
+INSERT INTO PRODUCT VALUES('W0104011BKS', '01', 'thumb060', 'ï¿½ï¿½ï¿½ï¿½ ï¿½Ó¸ï¿½ï¿½Ìµï¿½ ï¿½ï¿½Ä¿Æ®', 'BK', 'S', 79000, 20, 63200, 04, 011, 'ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½Æ®, ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!', 'dt060', 63, '2020/06/30', '2020/05/22', '2020/06/20', 3500000, 1000000, 'Y', '011', 0);
+INSERT INTO PRODUCT VALUES('W0104011BKM', '01', 'thumb060', 'ï¿½ï¿½ï¿½ï¿½ ï¿½Ó¸ï¿½ï¿½Ìµï¿½ ï¿½ï¿½Ä¿Æ®', 'BK', 'M', 79000, 20, 63200, 04, 011, 'ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½Æ®, ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!', 'dt060', 63, '2020/06/30', '2020/05/22', '2020/06/20', 3500000, 1000000, 'Y', '011', 0);
+INSERT INTO PRODUCT VALUES('W0104011BKL', '01', 'thumb060', 'ï¿½ï¿½ï¿½ï¿½ ï¿½Ó¸ï¿½ï¿½Ìµï¿½ ï¿½ï¿½Ä¿Æ®', 'BK', 'L', 79000, 20, 63200, 04, 011, 'ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½Æ®, ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!', 'dt060', 63, '2020/06/30', '2020/05/22', '2020/06/20', 3500000, 1000000, 'Y', '011', 0);
+INSERT INTO PRODUCT VALUES('W0104011RDS', '01', 'thumb060', 'ï¿½ï¿½ï¿½ï¿½ ï¿½Ó¸ï¿½ï¿½Ìµï¿½ ï¿½ï¿½Ä¿Æ®', 'RD', 'S', 79000, 20, 63200, 04, 011, 'ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½Æ®, ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!', 'dt060', 63, '2020/06/30', '2020/05/22', '2020/06/20', 3500000, 1000000, 'Y', '011', 0);
+INSERT INTO PRODUCT VALUES('W0104011RDM', '01', 'thumb060', 'ï¿½ï¿½ï¿½ï¿½ ï¿½Ó¸ï¿½ï¿½Ìµï¿½ ï¿½ï¿½Ä¿Æ®', 'RD', 'M', 79000, 20, 63200, 04, 011, 'ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½Æ®, ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!', 'dt060', 63, '2020/06/30', '2020/05/22', '2020/06/20', 3500000, 1000000, 'Y', '011', 0);
+INSERT INTO PRODUCT VALUES('W0104011RDL', '01', 'thumb060', 'ï¿½ï¿½ï¿½ï¿½ ï¿½Ó¸ï¿½ï¿½Ìµï¿½ ï¿½ï¿½Ä¿Æ®', 'RD', 'L', 79000, 20, 63200, 04, 011, 'ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½Æ®, ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!', 'dt060', 63, '2020/06/30', '2020/05/22', '2020/06/20', 3500000, 1000000, 'Y', '011', 0);
 
-INSERT INTO PRODUCT VALUES('W0102012BKS', '01', 'thumb055', '½ÇÅ° ¹é ½½¸´ ºí¶ó¿ì½º', 'BK', 'S', 95000, 30, 66500, 02, 012, '¸öÀÇ ½¦ÀÔ¿¡ ¸ÂÃç ºÎµå·´°Ô ¶³¾îÁö´Â ½ÇÅ© ºí¶ó¿ì½º', 'dt055', 66, '2020/07/10', '2020/06/30', '2020/07/01', 2800000, 2000000, 'N', '012', 0);
-INSERT INTO PRODUCT VALUES('W0102012BKM', '01', 'thumb055', '½ÇÅ° ¹é ½½¸´ ºí¶ó¿ì½º', 'BK', 'M', 95000, 30, 66500, 02, 012, '¸öÀÇ ½¦ÀÔ¿¡ ¸ÂÃç ºÎµå·´°Ô ¶³¾îÁö´Â ½ÇÅ© ºí¶ó¿ì½º', 'dt055', 66, '2020/07/10', '2020/06/30', '2020/07/01', 2800000, 2000000, 'N', '012', 0);
-INSERT INTO PRODUCT VALUES('W0102012BKL', '01', 'thumb055', '½ÇÅ° ¹é ½½¸´ ºí¶ó¿ì½º', 'BK', 'L', 95000, 30, 66500, 02, 012, '¸öÀÇ ½¦ÀÔ¿¡ ¸ÂÃç ºÎµå·´°Ô ¶³¾îÁö´Â ½ÇÅ© ºí¶ó¿ì½º', 'dt055', 66, '2020/07/10', '2020/06/30', '2020/07/01', 2800000, 2000000, 'N', '012', 0);
-INSERT INTO PRODUCT VALUES('W0102012BLS', '01', 'thumb055', '½ÇÅ° ¹é ½½¸´ ºí¶ó¿ì½º', 'BL', 'S', 95000, 30, 66500, 02, 012, '¸öÀÇ ½¦ÀÔ¿¡ ¸ÂÃç ºÎµå·´°Ô ¶³¾îÁö´Â ½ÇÅ© ºí¶ó¿ì½º', 'dt055', 66, '2020/07/10', '2020/06/30', '2020/07/01', 2800000, 2000000, 'N', '012', 0);
-INSERT INTO PRODUCT VALUES('W0102012BLM', '01', 'thumb055', '½ÇÅ° ¹é ½½¸´ ºí¶ó¿ì½º', 'BL', 'M', 95000, 30, 66500, 02, 012, '¸öÀÇ ½¦ÀÔ¿¡ ¸ÂÃç ºÎµå·´°Ô ¶³¾îÁö´Â ½ÇÅ© ºí¶ó¿ì½º', 'dt055', 66, '2020/07/10', '2020/06/30', '2020/07/01', 2800000, 2000000, 'N', '012', 0);
-INSERT INTO PRODUCT VALUES('W0102012BLL', '01', 'thumb055', '½ÇÅ° ¹é ½½¸´ ºí¶ó¿ì½º', 'BL', 'L', 95000, 30, 66500, 02, 012, '¸öÀÇ ½¦ÀÔ¿¡ ¸ÂÃç ºÎµå·´°Ô ¶³¾îÁö´Â ½ÇÅ© ºí¶ó¿ì½º', 'dt055', 66, '2020/07/10', '2020/06/30', '2020/07/01', 2800000, 2000000, 'N', '012', 0);
-INSERT INTO PRODUCT VALUES('W0102012GNS', '01', 'thumb055', '½ÇÅ° ¹é ½½¸´ ºí¶ó¿ì½º', 'GN', 'S', 95000, 30, 66500, 02, 012, '¸öÀÇ ½¦ÀÔ¿¡ ¸ÂÃç ºÎµå·´°Ô ¶³¾îÁö´Â ½ÇÅ© ºí¶ó¿ì½º', 'dt055', 66, '2020/07/10', '2020/06/30', '2020/07/01', 2800000, 2000000, 'N', '012', 0);
-INSERT INTO PRODUCT VALUES('W0102012GNM', '01', 'thumb055', '½ÇÅ° ¹é ½½¸´ ºí¶ó¿ì½º', 'GN', 'M', 95000, 30, 66500, 02, 012, '¸öÀÇ ½¦ÀÔ¿¡ ¸ÂÃç ºÎµå·´°Ô ¶³¾îÁö´Â ½ÇÅ© ºí¶ó¿ì½º', 'dt055', 66, '2020/07/10', '2020/06/30', '2020/07/01', 2800000, 2000000, 'N', '012', 0);
-INSERT INTO PRODUCT VALUES('W0102012GNL', '01', 'thumb055', '½ÇÅ° ¹é ½½¸´ ºí¶ó¿ì½º', 'GN', 'L', 95000, 30, 66500, 02, 012, '¸öÀÇ ½¦ÀÔ¿¡ ¸ÂÃç ºÎµå·´°Ô ¶³¾îÁö´Â ½ÇÅ© ºí¶ó¿ì½º', 'dt055', 66, '2020/07/10', '2020/06/30', '2020/07/01', 2800000, 2000000, 'N', '012', 0);
+INSERT INTO PRODUCT VALUES('W0102012BKS', '01', 'thumb055', 'ï¿½ï¿½Å° ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ì½º', 'BK', 'S', 95000, 30, 66500, 02, 012, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ô¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Îµå·´ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å© ï¿½ï¿½ï¿½ì½º', 'dt055', 66, '2020/07/10', '2020/06/30', '2020/07/01', 2800000, 2000000, 'N', '012', 0);
+INSERT INTO PRODUCT VALUES('W0102012BKM', '01', 'thumb055', 'ï¿½ï¿½Å° ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ì½º', 'BK', 'M', 95000, 30, 66500, 02, 012, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ô¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Îµå·´ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å© ï¿½ï¿½ï¿½ì½º', 'dt055', 66, '2020/07/10', '2020/06/30', '2020/07/01', 2800000, 2000000, 'N', '012', 0);
+INSERT INTO PRODUCT VALUES('W0102012BKL', '01', 'thumb055', 'ï¿½ï¿½Å° ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ì½º', 'BK', 'L', 95000, 30, 66500, 02, 012, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ô¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Îµå·´ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å© ï¿½ï¿½ï¿½ì½º', 'dt055', 66, '2020/07/10', '2020/06/30', '2020/07/01', 2800000, 2000000, 'N', '012', 0);
+INSERT INTO PRODUCT VALUES('W0102012BLS', '01', 'thumb055', 'ï¿½ï¿½Å° ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ì½º', 'BL', 'S', 95000, 30, 66500, 02, 012, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ô¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Îµå·´ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å© ï¿½ï¿½ï¿½ì½º', 'dt055', 66, '2020/07/10', '2020/06/30', '2020/07/01', 2800000, 2000000, 'N', '012', 0);
+INSERT INTO PRODUCT VALUES('W0102012BLM', '01', 'thumb055', 'ï¿½ï¿½Å° ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ì½º', 'BL', 'M', 95000, 30, 66500, 02, 012, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ô¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Îµå·´ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å© ï¿½ï¿½ï¿½ì½º', 'dt055', 66, '2020/07/10', '2020/06/30', '2020/07/01', 2800000, 2000000, 'N', '012', 0);
+INSERT INTO PRODUCT VALUES('W0102012BLL', '01', 'thumb055', 'ï¿½ï¿½Å° ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ì½º', 'BL', 'L', 95000, 30, 66500, 02, 012, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ô¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Îµå·´ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å© ï¿½ï¿½ï¿½ì½º', 'dt055', 66, '2020/07/10', '2020/06/30', '2020/07/01', 2800000, 2000000, 'N', '012', 0);
+INSERT INTO PRODUCT VALUES('W0102012GNS', '01', 'thumb055', 'ï¿½ï¿½Å° ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ì½º', 'GN', 'S', 95000, 30, 66500, 02, 012, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ô¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Îµå·´ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å© ï¿½ï¿½ï¿½ì½º', 'dt055', 66, '2020/07/10', '2020/06/30', '2020/07/01', 2800000, 2000000, 'N', '012', 0);
+INSERT INTO PRODUCT VALUES('W0102012GNM', '01', 'thumb055', 'ï¿½ï¿½Å° ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ì½º', 'GN', 'M', 95000, 30, 66500, 02, 012, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ô¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Îµå·´ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å© ï¿½ï¿½ï¿½ì½º', 'dt055', 66, '2020/07/10', '2020/06/30', '2020/07/01', 2800000, 2000000, 'N', '012', 0);
+INSERT INTO PRODUCT VALUES('W0102012GNL', '01', 'thumb055', 'ï¿½ï¿½Å° ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ì½º', 'GN', 'L', 95000, 30, 66500, 02, 012, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ô¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Îµå·´ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å© ï¿½ï¿½ï¿½ì½º', 'dt055', 66, '2020/07/10', '2020/06/30', '2020/07/01', 2800000, 2000000, 'N', '012', 0);
 
-INSERT INTO PRODUCT VALUES('W0105013BKS', '01', 'thumb081', 'ÀÚ°¡µå ÇÃ¶ó¿ö ·Õ ¿øÇÇ½º', 'BK', 'S', 125000, 20, 100000, 05, 013, 'Ä³ÁÖ¾óÇÑ ¹«µå·Î È°¿ëµµ°¡ ³ôÀº ÇÃ¶ó¿ö ÀÚ°¡µå ÆÐÅÏ ¿øÇÇ½º', 'dt081', 100, '2020/06/22', '2020/05/28', '2020/06/17', 4000000, 1000000, 'N', '013', 0);
-INSERT INTO PRODUCT VALUES('W0105013BKM', '01', 'thumb081', 'ÀÚ°¡µå ÇÃ¶ó¿ö ·Õ ¿øÇÇ½º', 'BK', 'M', 125000, 20, 100000, 05, 013, 'Ä³ÁÖ¾óÇÑ ¹«µå·Î È°¿ëµµ°¡ ³ôÀº ÇÃ¶ó¿ö ÀÚ°¡µå ÆÐÅÏ ¿øÇÇ½º', 'dt081', 100, '2020/06/22', '2020/05/28', '2020/06/17', 4000000, 1000000, 'N', '013', 0);
-INSERT INTO PRODUCT VALUES('W0105013BKL', '01', 'thumb081', 'ÀÚ°¡µå ÇÃ¶ó¿ö ·Õ ¿øÇÇ½º', 'BK', 'L', 125000, 20, 100000, 05, 013, 'Ä³ÁÖ¾óÇÑ ¹«µå·Î È°¿ëµµ°¡ ³ôÀº ÇÃ¶ó¿ö ÀÚ°¡µå ÆÐÅÏ ¿øÇÇ½º', 'dt081', 100, '2020/06/22', '2020/05/28', '2020/06/17', 4000000, 1000000, 'N', '013', 0);
-INSERT INTO PRODUCT VALUES('W0105013BLS', '01', 'thumb081', 'ÀÚ°¡µå ÇÃ¶ó¿ö ·Õ ¿øÇÇ½º', 'BL', 'S', 125000, 20, 100000, 05, 013, 'Ä³ÁÖ¾óÇÑ ¹«µå·Î È°¿ëµµ°¡ ³ôÀº ÇÃ¶ó¿ö ÀÚ°¡µå ÆÐÅÏ ¿øÇÇ½º', 'dt081', 100, '2020/06/22', '2020/05/28', '2020/06/17', 4000000, 1000000, 'N', '013', 0);
-INSERT INTO PRODUCT VALUES('W0105013BLM', '01', 'thumb081', 'ÀÚ°¡µå ÇÃ¶ó¿ö ·Õ ¿øÇÇ½º', 'BL', 'M', 125000, 20, 100000, 05, 013, 'Ä³ÁÖ¾óÇÑ ¹«µå·Î È°¿ëµµ°¡ ³ôÀº ÇÃ¶ó¿ö ÀÚ°¡µå ÆÐÅÏ ¿øÇÇ½º', 'dt081', 100, '2020/06/22', '2020/05/28', '2020/06/17', 4000000, 1000000, 'N', '013', 0);
-INSERT INTO PRODUCT VALUES('W0105013BLL', '01', 'thumb081', 'ÀÚ°¡µå ÇÃ¶ó¿ö ·Õ ¿øÇÇ½º', 'BL', 'L', 125000, 20, 100000, 05, 013, 'Ä³ÁÖ¾óÇÑ ¹«µå·Î È°¿ëµµ°¡ ³ôÀº ÇÃ¶ó¿ö ÀÚ°¡µå ÆÐÅÏ ¿øÇÇ½º', 'dt081', 100, '2020/06/22', '2020/05/28', '2020/06/17', 4000000, 1000000, 'N', '013', 0);
-INSERT INTO PRODUCT VALUES('W0105013RDS', '01', 'thumb081', 'ÀÚ°¡µå ÇÃ¶ó¿ö ·Õ ¿øÇÇ½º', 'RD', 'S', 125000, 20, 100000, 05, 013, 'Ä³ÁÖ¾óÇÑ ¹«µå·Î È°¿ëµµ°¡ ³ôÀº ÇÃ¶ó¿ö ÀÚ°¡µå ÆÐÅÏ ¿øÇÇ½º', 'dt081', 100, '2020/06/22', '2020/05/28', '2020/06/17', 4000000, 1000000, 'N', '013', 0);
-INSERT INTO PRODUCT VALUES('W0105013RDM', '01', 'thumb081', 'ÀÚ°¡µå ÇÃ¶ó¿ö ·Õ ¿øÇÇ½º', 'RD', 'M', 125000, 20, 100000, 05, 013, 'Ä³ÁÖ¾óÇÑ ¹«µå·Î È°¿ëµµ°¡ ³ôÀº ÇÃ¶ó¿ö ÀÚ°¡µå ÆÐÅÏ ¿øÇÇ½º', 'dt081', 100, '2020/06/22', '2020/05/28', '2020/06/17', 4000000, 1000000, 'N', '013', 0);
-INSERT INTO PRODUCT VALUES('W0105013RDL', '01', 'thumb081', 'ÀÚ°¡µå ÇÃ¶ó¿ö ·Õ ¿øÇÇ½º', 'RD', 'L', 125000, 20, 100000, 05, 013, 'Ä³ÁÖ¾óÇÑ ¹«µå·Î È°¿ëµµ°¡ ³ôÀº ÇÃ¶ó¿ö ÀÚ°¡µå ÆÐÅÏ ¿øÇÇ½º', 'dt081', 100, '2020/06/22', '2020/05/28', '2020/06/17', 4000000, 1000000, 'N', '013', 0);
-INSERT INTO PRODUCT VALUES('W0105013YLS', '01', 'thumb081', 'ÀÚ°¡µå ÇÃ¶ó¿ö ·Õ ¿øÇÇ½º', 'YL', 'S', 125000, 20, 100000, 05, 013, 'Ä³ÁÖ¾óÇÑ ¹«µå·Î È°¿ëµµ°¡ ³ôÀº ÇÃ¶ó¿ö ÀÚ°¡µå ÆÐÅÏ ¿øÇÇ½º', 'dt081', 100, '2020/06/22', '2020/05/28', '2020/06/17', 4000000, 1000000, 'N', '013', 0);
-INSERT INTO PRODUCT VALUES('W0105013YLM', '01', 'thumb081', 'ÀÚ°¡µå ÇÃ¶ó¿ö ·Õ ¿øÇÇ½º', 'YL', 'M', 125000, 20, 100000, 05, 013, 'Ä³ÁÖ¾óÇÑ ¹«µå·Î È°¿ëµµ°¡ ³ôÀº ÇÃ¶ó¿ö ÀÚ°¡µå ÆÐÅÏ ¿øÇÇ½º', 'dt081', 100, '2020/06/22', '2020/05/28', '2020/06/17', 4000000, 1000000, 'N', '013', 0);
-INSERT INTO PRODUCT VALUES('W0105013YLL', '01', 'thumb081', 'ÀÚ°¡µå ÇÃ¶ó¿ö ·Õ ¿øÇÇ½º', 'YL', 'L', 125000, 20, 100000, 05, 013, 'Ä³ÁÖ¾óÇÑ ¹«µå·Î È°¿ëµµ°¡ ³ôÀº ÇÃ¶ó¿ö ÀÚ°¡µå ÆÐÅÏ ¿øÇÇ½º', 'dt081', 100, '2020/06/22', '2020/05/28', '2020/06/17', 4000000, 1000000, 'N', '013', 0);
+INSERT INTO PRODUCT VALUES('W0105013BKS', '01', 'thumb081', 'ï¿½Ú°ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½', 'BK', 'S', 125000, 20, 100000, 05, 013, 'Ä³ï¿½Ö¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ È°ï¿½ëµµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ ï¿½Ú°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½', 'dt081', 100, '2020/06/22', '2020/05/28', '2020/06/17', 4000000, 1000000, 'N', '013', 0);
+INSERT INTO PRODUCT VALUES('W0105013BKM', '01', 'thumb081', 'ï¿½Ú°ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½', 'BK', 'M', 125000, 20, 100000, 05, 013, 'Ä³ï¿½Ö¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ È°ï¿½ëµµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ ï¿½Ú°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½', 'dt081', 100, '2020/06/22', '2020/05/28', '2020/06/17', 4000000, 1000000, 'N', '013', 0);
+INSERT INTO PRODUCT VALUES('W0105013BKL', '01', 'thumb081', 'ï¿½Ú°ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½', 'BK', 'L', 125000, 20, 100000, 05, 013, 'Ä³ï¿½Ö¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ È°ï¿½ëµµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ ï¿½Ú°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½', 'dt081', 100, '2020/06/22', '2020/05/28', '2020/06/17', 4000000, 1000000, 'N', '013', 0);
+INSERT INTO PRODUCT VALUES('W0105013BLS', '01', 'thumb081', 'ï¿½Ú°ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½', 'BL', 'S', 125000, 20, 100000, 05, 013, 'Ä³ï¿½Ö¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ È°ï¿½ëµµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ ï¿½Ú°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½', 'dt081', 100, '2020/06/22', '2020/05/28', '2020/06/17', 4000000, 1000000, 'N', '013', 0);
+INSERT INTO PRODUCT VALUES('W0105013BLM', '01', 'thumb081', 'ï¿½Ú°ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½', 'BL', 'M', 125000, 20, 100000, 05, 013, 'Ä³ï¿½Ö¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ È°ï¿½ëµµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ ï¿½Ú°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½', 'dt081', 100, '2020/06/22', '2020/05/28', '2020/06/17', 4000000, 1000000, 'N', '013', 0);
+INSERT INTO PRODUCT VALUES('W0105013BLL', '01', 'thumb081', 'ï¿½Ú°ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½', 'BL', 'L', 125000, 20, 100000, 05, 013, 'Ä³ï¿½Ö¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ È°ï¿½ëµµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ ï¿½Ú°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½', 'dt081', 100, '2020/06/22', '2020/05/28', '2020/06/17', 4000000, 1000000, 'N', '013', 0);
+INSERT INTO PRODUCT VALUES('W0105013RDS', '01', 'thumb081', 'ï¿½Ú°ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½', 'RD', 'S', 125000, 20, 100000, 05, 013, 'Ä³ï¿½Ö¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ È°ï¿½ëµµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ ï¿½Ú°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½', 'dt081', 100, '2020/06/22', '2020/05/28', '2020/06/17', 4000000, 1000000, 'N', '013', 0);
+INSERT INTO PRODUCT VALUES('W0105013RDM', '01', 'thumb081', 'ï¿½Ú°ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½', 'RD', 'M', 125000, 20, 100000, 05, 013, 'Ä³ï¿½Ö¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ È°ï¿½ëµµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ ï¿½Ú°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½', 'dt081', 100, '2020/06/22', '2020/05/28', '2020/06/17', 4000000, 1000000, 'N', '013', 0);
+INSERT INTO PRODUCT VALUES('W0105013RDL', '01', 'thumb081', 'ï¿½Ú°ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½', 'RD', 'L', 125000, 20, 100000, 05, 013, 'Ä³ï¿½Ö¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ È°ï¿½ëµµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ ï¿½Ú°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½', 'dt081', 100, '2020/06/22', '2020/05/28', '2020/06/17', 4000000, 1000000, 'N', '013', 0);
+INSERT INTO PRODUCT VALUES('W0105013YLS', '01', 'thumb081', 'ï¿½Ú°ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½', 'YL', 'S', 125000, 20, 100000, 05, 013, 'Ä³ï¿½Ö¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ È°ï¿½ëµµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ ï¿½Ú°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½', 'dt081', 100, '2020/06/22', '2020/05/28', '2020/06/17', 4000000, 1000000, 'N', '013', 0);
+INSERT INTO PRODUCT VALUES('W0105013YLM', '01', 'thumb081', 'ï¿½Ú°ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½', 'YL', 'M', 125000, 20, 100000, 05, 013, 'Ä³ï¿½Ö¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ È°ï¿½ëµµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ ï¿½Ú°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½', 'dt081', 100, '2020/06/22', '2020/05/28', '2020/06/17', 4000000, 1000000, 'N', '013', 0);
+INSERT INTO PRODUCT VALUES('W0105013YLL', '01', 'thumb081', 'ï¿½Ú°ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½', 'YL', 'L', 125000, 20, 100000, 05, 013, 'Ä³ï¿½Ö¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ È°ï¿½ëµµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ ï¿½Ú°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½', 'dt081', 100, '2020/06/22', '2020/05/28', '2020/06/17', 4000000, 1000000, 'N', '013', 0);
 
-INSERT INTO PRODUCT VALUES('W0103014BKS', '01', 'thumb064', 'Æ÷·¹½ºÆ® º¸ÀÌÇÍ ÄÚÆ° ÆÒÃ÷', 'BK', 'S', 75000, 40, 45000, 03, 014, '½ÉÇÃÇÏ°í °í±Þ½º·¯¿î ¹«µåÀÇ ÄÚÆ° ÆÒÃ÷. º£ÀÌÁ÷ÇÑ µðÀÚÀÎÀ¸·Î ÄÃ·¯º°·Î ¼ÒÀåÇÏ±â ÁÁÀº ¾ÆÀÌÅÛ.', 'dt064', 45, '2020/05/01', '2020/04/15', '2020/04/30', 2000000, 1500000, 'Y', '014', 0);
-INSERT INTO PRODUCT VALUES('W0103014BKM', '01', 'thumb064', 'Æ÷·¹½ºÆ® º¸ÀÌÇÍ ÄÚÆ° ÆÒÃ÷', 'BK', 'M', 75000, 40, 45000, 03, 014, '½ÉÇÃÇÏ°í °í±Þ½º·¯¿î ¹«µåÀÇ ÄÚÆ° ÆÒÃ÷. º£ÀÌÁ÷ÇÑ µðÀÚÀÎÀ¸·Î ÄÃ·¯º°·Î ¼ÒÀåÇÏ±â ÁÁÀº ¾ÆÀÌÅÛ.', 'dt064', 45, '2020/05/01', '2020/04/15', '2020/04/30', 2000000, 1500000, 'Y', '014', 0);
-INSERT INTO PRODUCT VALUES('W0103014BLS', '01', 'thumb064', 'Æ÷·¹½ºÆ® º¸ÀÌÇÍ ÄÚÆ° ÆÒÃ÷', 'BK', 'L', 75000, 40, 45000, 03, 014, '½ÉÇÃÇÏ°í °í±Þ½º·¯¿î ¹«µåÀÇ ÄÚÆ° ÆÒÃ÷. º£ÀÌÁ÷ÇÑ µðÀÚÀÎÀ¸·Î ÄÃ·¯º°·Î ¼ÒÀåÇÏ±â ÁÁÀº ¾ÆÀÌÅÛ.', 'dt064', 45, '2020/05/01', '2020/04/15', '2020/04/30', 2000000, 1500000, 'Y', '014', 0);
-INSERT INTO PRODUCT VALUES('W0103014BLM', '01', 'thumb064', 'Æ÷·¹½ºÆ® º¸ÀÌÇÍ ÄÚÆ° ÆÒÃ÷', 'BL', 'S', 75000, 40, 45000, 03, 014, '½ÉÇÃÇÏ°í °í±Þ½º·¯¿î ¹«µåÀÇ ÄÚÆ° ÆÒÃ÷. º£ÀÌÁ÷ÇÑ µðÀÚÀÎÀ¸·Î ÄÃ·¯º°·Î ¼ÒÀåÇÏ±â ÁÁÀº ¾ÆÀÌÅÛ.', 'dt064', 45, '2020/05/01', '2020/04/15', '2020/04/30', 2000000, 1500000, 'Y', '014', 0);
-INSERT INTO PRODUCT VALUES('W0103014WHS', '01', 'thumb064', 'Æ÷·¹½ºÆ® º¸ÀÌÇÍ ÄÚÆ° ÆÒÃ÷', 'BL', 'M', 75000, 40, 45000, 03, 014, '½ÉÇÃÇÏ°í °í±Þ½º·¯¿î ¹«µåÀÇ ÄÚÆ° ÆÒÃ÷. º£ÀÌÁ÷ÇÑ µðÀÚÀÎÀ¸·Î ÄÃ·¯º°·Î ¼ÒÀåÇÏ±â ÁÁÀº ¾ÆÀÌÅÛ.', 'dt064', 45, '2020/05/01', '2020/04/15', '2020/04/30', 2000000, 1500000, 'Y', '014', 0);
-INSERT INTO PRODUCT VALUES('W0103014WHM', '01', 'thumb064', 'Æ÷·¹½ºÆ® º¸ÀÌÇÍ ÄÚÆ° ÆÒÃ÷', 'BL', 'L', 75000, 40, 45000, 03, 014, '½ÉÇÃÇÏ°í °í±Þ½º·¯¿î ¹«µåÀÇ ÄÚÆ° ÆÒÃ÷. º£ÀÌÁ÷ÇÑ µðÀÚÀÎÀ¸·Î ÄÃ·¯º°·Î ¼ÒÀåÇÏ±â ÁÁÀº ¾ÆÀÌÅÛ.', 'dt064', 45, '2020/05/01', '2020/04/15', '2020/04/30', 2000000, 1500000, 'Y', '014', 0);
-INSERT INTO PRODUCT VALUES('W0103014GNS', '01', 'thumb064', 'Æ÷·¹½ºÆ® º¸ÀÌÇÍ ÄÚÆ° ÆÒÃ÷', 'GN', 'S', 75000, 40, 45000, 03, 014, '½ÉÇÃÇÏ°í °í±Þ½º·¯¿î ¹«µåÀÇ ÄÚÆ° ÆÒÃ÷. º£ÀÌÁ÷ÇÑ µðÀÚÀÎÀ¸·Î ÄÃ·¯º°·Î ¼ÒÀåÇÏ±â ÁÁÀº ¾ÆÀÌÅÛ.', 'dt064', 45, '2020/05/01', '2020/04/15', '2020/04/30', 2000000, 1500000, 'Y', '014', 0);
-INSERT INTO PRODUCT VALUES('W0103014GNM', '01', 'thumb064', 'Æ÷·¹½ºÆ® º¸ÀÌÇÍ ÄÚÆ° ÆÒÃ÷', 'GN', 'M', 75000, 40, 45000, 03, 014, '½ÉÇÃÇÏ°í °í±Þ½º·¯¿î ¹«µåÀÇ ÄÚÆ° ÆÒÃ÷. º£ÀÌÁ÷ÇÑ µðÀÚÀÎÀ¸·Î ÄÃ·¯º°·Î ¼ÒÀåÇÏ±â ÁÁÀº ¾ÆÀÌÅÛ.', 'dt064', 45, '2020/05/01', '2020/04/15', '2020/04/30', 2000000, 1500000, 'Y', '014', 0);
+INSERT INTO PRODUCT VALUES('W0103014BKS', '01', 'thumb064', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½', 'BK', 'S', 75000, 40, 45000, 03, 014, 'ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½Þ½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.', 'dt064', 45, '2020/05/01', '2020/04/15', '2020/04/30', 2000000, 1500000, 'Y', '014', 0);
+INSERT INTO PRODUCT VALUES('W0103014BKM', '01', 'thumb064', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½', 'BK', 'M', 75000, 40, 45000, 03, 014, 'ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½Þ½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.', 'dt064', 45, '2020/05/01', '2020/04/15', '2020/04/30', 2000000, 1500000, 'Y', '014', 0);
+INSERT INTO PRODUCT VALUES('W0103014BLS', '01', 'thumb064', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½', 'BK', 'L', 75000, 40, 45000, 03, 014, 'ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½Þ½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.', 'dt064', 45, '2020/05/01', '2020/04/15', '2020/04/30', 2000000, 1500000, 'Y', '014', 0);
+INSERT INTO PRODUCT VALUES('W0103014BLM', '01', 'thumb064', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½', 'BL', 'S', 75000, 40, 45000, 03, 014, 'ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½Þ½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.', 'dt064', 45, '2020/05/01', '2020/04/15', '2020/04/30', 2000000, 1500000, 'Y', '014', 0);
+INSERT INTO PRODUCT VALUES('W0103014WHS', '01', 'thumb064', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½', 'BL', 'M', 75000, 40, 45000, 03, 014, 'ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½Þ½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.', 'dt064', 45, '2020/05/01', '2020/04/15', '2020/04/30', 2000000, 1500000, 'Y', '014', 0);
+INSERT INTO PRODUCT VALUES('W0103014WHM', '01', 'thumb064', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½', 'BL', 'L', 75000, 40, 45000, 03, 014, 'ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½Þ½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.', 'dt064', 45, '2020/05/01', '2020/04/15', '2020/04/30', 2000000, 1500000, 'Y', '014', 0);
+INSERT INTO PRODUCT VALUES('W0103014GNS', '01', 'thumb064', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½', 'GN', 'S', 75000, 40, 45000, 03, 014, 'ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½Þ½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.', 'dt064', 45, '2020/05/01', '2020/04/15', '2020/04/30', 2000000, 1500000, 'Y', '014', 0);
+INSERT INTO PRODUCT VALUES('W0103014GNM', '01', 'thumb064', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½', 'GN', 'M', 75000, 40, 45000, 03, 014, 'ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½Þ½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.', 'dt064', 45, '2020/05/01', '2020/04/15', '2020/04/30', 2000000, 1500000, 'Y', '014', 0);
 
-INSERT INTO PRODUCT VALUES('W0104015BKS', '01', 'thumb067', 'ÇÍ ¿ö½Ì ½ºÆ®·¹ÀÌÆ® µ¥´Ô ÆÒÃ÷', 'BK', 'S', 88000, 30, 61600, 04, 015, 'ºóÆ¼ÁöÇÑ ¿ö½ÌÀÇ ½ºÆ®·¹ÀÌÆ® µ¥´Ô ÆÒÃ÷. ÅºÅºÇÏ°í ¿ì¼öÇÑ ½ÅÃà¼ºÀ¸·Î Æí¾ÈÇÑ Âø¿ë°¨.', 'dt067', 61, '2020/05/26', '2020/04/28', '2020/05/20', 2800000, 2100000, 'Y', '015', 0);
-INSERT INTO PRODUCT VALUES('W0104015BKM', '01', 'thumb067', 'ÇÍ ¿ö½Ì ½ºÆ®·¹ÀÌÆ® µ¥´Ô ÆÒÃ÷', 'BK', 'M', 88000, 30, 61600, 04, 015, 'ºóÆ¼ÁöÇÑ ¿ö½ÌÀÇ ½ºÆ®·¹ÀÌÆ® µ¥´Ô ÆÒÃ÷. ÅºÅºÇÏ°í ¿ì¼öÇÑ ½ÅÃà¼ºÀ¸·Î Æí¾ÈÇÑ Âø¿ë°¨.', 'dt067', 61, '2020/05/26', '2020/04/28', '2020/05/20', 2800000, 2100000, 'Y', '015', 0);
-INSERT INTO PRODUCT VALUES('W0104015BKL', '01', 'thumb067', 'ÇÍ ¿ö½Ì ½ºÆ®·¹ÀÌÆ® µ¥´Ô ÆÒÃ÷', 'BK', 'L', 88000, 30, 61600, 04, 015, 'ºóÆ¼ÁöÇÑ ¿ö½ÌÀÇ ½ºÆ®·¹ÀÌÆ® µ¥´Ô ÆÒÃ÷. ÅºÅºÇÏ°í ¿ì¼öÇÑ ½ÅÃà¼ºÀ¸·Î Æí¾ÈÇÑ Âø¿ë°¨.', 'dt067', 61, '2020/05/26', '2020/04/28', '2020/05/20', 2800000, 2100000, 'Y', '015', 0);
-INSERT INTO PRODUCT VALUES('W0104015BLS', '01', 'thumb067', 'ÇÍ ¿ö½Ì ½ºÆ®·¹ÀÌÆ® µ¥´Ô ÆÒÃ÷', 'BL', 'S', 88000, 30, 61600, 04, 015, 'ºóÆ¼ÁöÇÑ ¿ö½ÌÀÇ ½ºÆ®·¹ÀÌÆ® µ¥´Ô ÆÒÃ÷. ÅºÅºÇÏ°í ¿ì¼öÇÑ ½ÅÃà¼ºÀ¸·Î Æí¾ÈÇÑ Âø¿ë°¨.', 'dt067', 61, '2020/05/26', '2020/04/28', '2020/05/20', 2800000, 2100000, 'Y', '015', 0);
-INSERT INTO PRODUCT VALUES('W0104015BLM', '01', 'thumb067', 'ÇÍ ¿ö½Ì ½ºÆ®·¹ÀÌÆ® µ¥´Ô ÆÒÃ÷', 'BL', 'M', 88000, 30, 61600, 04, 015, 'ºóÆ¼ÁöÇÑ ¿ö½ÌÀÇ ½ºÆ®·¹ÀÌÆ® µ¥´Ô ÆÒÃ÷. ÅºÅºÇÏ°í ¿ì¼öÇÑ ½ÅÃà¼ºÀ¸·Î Æí¾ÈÇÑ Âø¿ë°¨.', 'dt067', 61, '2020/05/26', '2020/04/28', '2020/05/20', 2800000, 2100000, 'Y', '015', 0);
-INSERT INTO PRODUCT VALUES('W0104015BLL', '01', 'thumb067', 'ÇÍ ¿ö½Ì ½ºÆ®·¹ÀÌÆ® µ¥´Ô ÆÒÃ÷', 'BL', 'L', 88000, 30, 61600, 04, 015, 'ºóÆ¼ÁöÇÑ ¿ö½ÌÀÇ ½ºÆ®·¹ÀÌÆ® µ¥´Ô ÆÒÃ÷. ÅºÅºÇÏ°í ¿ì¼öÇÑ ½ÅÃà¼ºÀ¸·Î Æí¾ÈÇÑ Âø¿ë°¨.', 'dt067', 61, '2020/05/26', '2020/04/28', '2020/05/20', 2800000, 2100000, 'Y', '015', 0);
-INSERT INTO PRODUCT VALUES('W0104015WHS', '01', 'thumb067', 'ÇÍ ¿ö½Ì ½ºÆ®·¹ÀÌÆ® µ¥´Ô ÆÒÃ÷', 'WH', 'S', 88000, 30, 61600, 04, 015, 'ºóÆ¼ÁöÇÑ ¿ö½ÌÀÇ ½ºÆ®·¹ÀÌÆ® µ¥´Ô ÆÒÃ÷. ÅºÅºÇÏ°í ¿ì¼öÇÑ ½ÅÃà¼ºÀ¸·Î Æí¾ÈÇÑ Âø¿ë°¨.', 'dt067', 61, '2020/05/26', '2020/04/28', '2020/05/20', 2800000, 2100000, 'Y', '015', 0);
-INSERT INTO PRODUCT VALUES('W0104015WHM', '01', 'thumb067', 'ÇÍ ¿ö½Ì ½ºÆ®·¹ÀÌÆ® µ¥´Ô ÆÒÃ÷', 'WH', 'M', 88000, 30, 61600, 04, 015, 'ºóÆ¼ÁöÇÑ ¿ö½ÌÀÇ ½ºÆ®·¹ÀÌÆ® µ¥´Ô ÆÒÃ÷. ÅºÅºÇÏ°í ¿ì¼öÇÑ ½ÅÃà¼ºÀ¸·Î Æí¾ÈÇÑ Âø¿ë°¨.', 'dt067', 61, '2020/05/26', '2020/04/28', '2020/05/20', 2800000, 2100000, 'Y', '015', 0);
-INSERT INTO PRODUCT VALUES('W0104015WHL', '01', 'thumb067', 'ÇÍ ¿ö½Ì ½ºÆ®·¹ÀÌÆ® µ¥´Ô ÆÒÃ÷', 'WH', 'L', 88000, 30, 61600, 04, 015, 'ºóÆ¼ÁöÇÑ ¿ö½ÌÀÇ ½ºÆ®·¹ÀÌÆ® µ¥´Ô ÆÒÃ÷. ÅºÅºÇÏ°í ¿ì¼öÇÑ ½ÅÃà¼ºÀ¸·Î Æí¾ÈÇÑ Âø¿ë°¨.', 'dt067', 61, '2020/05/26', '2020/04/28', '2020/05/20', 2800000, 2100000, 'Y', '015', 0);
-
-
-INSERT INTO PRODUCT VALUES('W0102016WHS', '01', 'thumb002', '½ÇÅ° µå¶óÀÌ ÇÁ¸± ¸®º» ºí¶ó¿ì½º','WH','S',138000, 20, 110400, 04, 016, '½Ã¿øÇÏ°í °¡º­¿î ½ÇÅ© ºí¶ó¿ì½º. S/S ½ÃÁð Æ÷ÀÎÆ® ÁÖ±â ÁÁÀº Â÷ºÐÇÑ ÄÃ·¯ ±¸¼º.', 'dt002', 110, '2020/05/18', '2020/04/12', '2020/05/10', 6300000, 5000000, 'Y', '016', 0);
-INSERT INTO PRODUCT VALUES('W0102016WHM', '01', 'thumb002', '½ÇÅ° µå¶óÀÌ ÇÁ¸± ¸®º» ºí¶ó¿ì½º','WH','M',138000, 20, 110400, 04, 016, '½Ã¿øÇÏ°í °¡º­¿î ½ÇÅ© ºí¶ó¿ì½º. S/S ½ÃÁð Æ÷ÀÎÆ® ÁÖ±â ÁÁÀº Â÷ºÐÇÑ ÄÃ·¯ ±¸¼º.', 'dt002', 110, '2020/05/18', '2020/04/12', '2020/05/10', 6300000, 5000000, 'Y', '016', 0);
-INSERT INTO PRODUCT VALUES('W0102016WHL', '01', 'thumb002', '½ÇÅ° µå¶óÀÌ ÇÁ¸± ¸®º» ºí¶ó¿ì½º','WH','L',138000, 20, 110400, 04, 016, '½Ã¿øÇÏ°í °¡º­¿î ½ÇÅ© ºí¶ó¿ì½º. S/S ½ÃÁð Æ÷ÀÎÆ® ÁÖ±â ÁÁÀº Â÷ºÐÇÑ ÄÃ·¯ ±¸¼º.', 'dt002', 110, '2020/05/18', '2020/04/12', '2020/05/10', 6300000, 5000000, 'Y', '016', 0);
-INSERT INTO PRODUCT VALUES('W0102016BKS', '01', 'thumb002', '½ÇÅ° µå¶óÀÌ ÇÁ¸± ¸®º» ºí¶ó¿ì½º','BK','S',138000, 20, 110400, 04, 016, '½Ã¿øÇÏ°í °¡º­¿î ½ÇÅ© ºí¶ó¿ì½º. S/S ½ÃÁð Æ÷ÀÎÆ® ÁÖ±â ÁÁÀº Â÷ºÐÇÑ ÄÃ·¯ ±¸¼º.', 'dt002', 110, '2020/05/18', '2020/04/12', '2020/05/10', 6300000, 5000000, 'Y', '016', 0);
-INSERT INTO PRODUCT VALUES('W0102016BKM', '01', 'thumb002', '½ÇÅ° µå¶óÀÌ ÇÁ¸± ¸®º» ºí¶ó¿ì½º','BK','M',138000, 20, 110400, 04, 016, '½Ã¿øÇÏ°í °¡º­¿î ½ÇÅ© ºí¶ó¿ì½º. S/S ½ÃÁð Æ÷ÀÎÆ® ÁÖ±â ÁÁÀº Â÷ºÐÇÑ ÄÃ·¯ ±¸¼º.', 'dt002', 110, '2020/05/18', '2020/04/12', '2020/05/10', 6300000, 5000000, 'Y', '016', 0);
-INSERT INTO PRODUCT VALUES('W0102016BKL', '01', 'thumb002', '½ÇÅ° µå¶óÀÌ ÇÁ¸± ¸®º» ºí¶ó¿ì½º','BK','L',138000, 20, 110400, 04, 016, '½Ã¿øÇÏ°í °¡º­¿î ½ÇÅ© ºí¶ó¿ì½º. S/S ½ÃÁð Æ÷ÀÎÆ® ÁÖ±â ÁÁÀº Â÷ºÐÇÑ ÄÃ·¯ ±¸¼º.', 'dt002', 110, '2020/05/18', '2020/04/12', '2020/05/10', 6300000, 5000000, 'Y', '016', 0);
-INSERT INTO PRODUCT VALUES('W0102016BLS', '01', 'thumb002', '½ÇÅ° µå¶óÀÌ ÇÁ¸± ¸®º» ºí¶ó¿ì½º','BL','S',138000, 20, 110400, 04, 016, '½Ã¿øÇÏ°í °¡º­¿î ½ÇÅ© ºí¶ó¿ì½º. S/S ½ÃÁð Æ÷ÀÎÆ® ÁÖ±â ÁÁÀº Â÷ºÐÇÑ ÄÃ·¯ ±¸¼º.', 'dt002', 110, '2020/05/18', '2020/04/12', '2020/05/10', 6300000, 5000000, 'Y', '016', 0);
-INSERT INTO PRODUCT VALUES('W0102016BLM', '01', 'thumb002', '½ÇÅ° µå¶óÀÌ ÇÁ¸± ¸®º» ºí¶ó¿ì½º','BL','M',138000, 20, 110400, 04, 016, '½Ã¿øÇÏ°í °¡º­¿î ½ÇÅ© ºí¶ó¿ì½º. S/S ½ÃÁð Æ÷ÀÎÆ® ÁÖ±â ÁÁÀº Â÷ºÐÇÑ ÄÃ·¯ ±¸¼º.', 'dt002', 110, '2020/05/18', '2020/04/12', '2020/05/10', 6300000, 5000000, 'Y', '016', 0);
-INSERT INTO PRODUCT VALUES('W0102016BLL', '01', 'thumb002', '½ÇÅ° µå¶óÀÌ ÇÁ¸± ¸®º» ºí¶ó¿ì½º','BL','L',138000, 20, 110400, 04, 016, '½Ã¿øÇÏ°í °¡º­¿î ½ÇÅ© ºí¶ó¿ì½º. S/S ½ÃÁð Æ÷ÀÎÆ® ÁÖ±â ÁÁÀº Â÷ºÐÇÑ ÄÃ·¯ ±¸¼º.', 'dt002', 110, '2020/05/18', '2020/04/12', '2020/05/10', 6300000, 5000000, 'Y', '016', 0);
-INSERT INTO PRODUCT VALUES('W0102016GNS', '01', 'thumb002', '½ÇÅ° µå¶óÀÌ ÇÁ¸± ¸®º» ºí¶ó¿ì½º','GN','S',138000, 20, 110400, 04, 016, '½Ã¿øÇÏ°í °¡º­¿î ½ÇÅ© ºí¶ó¿ì½º. S/S ½ÃÁð Æ÷ÀÎÆ® ÁÖ±â ÁÁÀº Â÷ºÐÇÑ ÄÃ·¯ ±¸¼º.', 'dt002', 110, '2020/05/18', '2020/04/12', '2020/05/10', 6300000, 5000000, 'Y', '016', 0);
-INSERT INTO PRODUCT VALUES('W0102016GNM', '01', 'thumb002', '½ÇÅ° µå¶óÀÌ ÇÁ¸± ¸®º» ºí¶ó¿ì½º','GN','M',138000, 20, 110400, 04, 016, '½Ã¿øÇÏ°í °¡º­¿î ½ÇÅ© ºí¶ó¿ì½º. S/S ½ÃÁð Æ÷ÀÎÆ® ÁÖ±â ÁÁÀº Â÷ºÐÇÑ ÄÃ·¯ ±¸¼º.', 'dt002', 110, '2020/05/18', '2020/04/12', '2020/05/10', 6300000, 5000000, 'Y', '016', 0);
-INSERT INTO PRODUCT VALUES('W0102016GNL', '01', 'thumb002', '½ÇÅ° µå¶óÀÌ ÇÁ¸± ¸®º» ºí¶ó¿ì½º','GN','L',138000, 20, 110400, 04, 016, '½Ã¿øÇÏ°í °¡º­¿î ½ÇÅ© ºí¶ó¿ì½º. S/S ½ÃÁð Æ÷ÀÎÆ® ÁÖ±â ÁÁÀº Â÷ºÐÇÑ ÄÃ·¯ ±¸¼º.', 'dt002', 110, '2020/05/18', '2020/04/12', '2020/05/10', 6300000, 5000000, 'Y', '016', 0);
-
-INSERT INTO PRODUCT VALUES('W0103017BLS', '01', 'thumb055', 'ÇÁ¸° ÆÝÄª ¹öÆ° ½ºÄ¿Æ®','BL','S',73000, 20, 58400, 03, 017, '½ÉÇÃÇÑ µðÀÚÀÎÀ¸·Î ¼Õ½±°Ô ÄÚµðÇÒ ¼ö ÀÖ´Â ÆÝÄª ½ºÄ¿Æ®. Æ÷¸ÖÇÑ ÀÚÄÏ°ú ÄÚµðÇØ º¸¼¼¿ä!', 'dt055', 58, '2020/05/20', '2020/04/28', '2020/05/14', 2500000, 1500000, 'Y', '017', 0);
-INSERT INTO PRODUCT VALUES('W0103017BLM', '01', 'thumb055', 'ÇÁ¸° ÆÝÄª ¹öÆ° ½ºÄ¿Æ®','BL','M',73000, 20, 58400, 03, 017, '½ÉÇÃÇÑ µðÀÚÀÎÀ¸·Î ¼Õ½±°Ô ÄÚµðÇÒ ¼ö ÀÖ´Â ÆÝÄª ½ºÄ¿Æ®. Æ÷¸ÖÇÑ ÀÚÄÏ°ú ÄÚµðÇØ º¸¼¼¿ä!', 'dt055', 58, '2020/05/20', '2020/04/28', '2020/05/14', 2500000, 1500000, 'Y', '017', 0);
-INSERT INTO PRODUCT VALUES('W0103017RDS', '01', 'thumb055', 'ÇÁ¸° ÆÝÄª ¹öÆ° ½ºÄ¿Æ®','RD','S',73000, 20, 58400, 03, 017, '½ÉÇÃÇÑ µðÀÚÀÎÀ¸·Î ¼Õ½±°Ô ÄÚµðÇÒ ¼ö ÀÖ´Â ÆÝÄª ½ºÄ¿Æ®. Æ÷¸ÖÇÑ ÀÚÄÏ°ú ÄÚµðÇØ º¸¼¼¿ä!', 'dt055', 58, '2020/05/20', '2020/04/28', '2020/05/14', 2500000, 1500000, 'Y', '017', 0);
-INSERT INTO PRODUCT VALUES('W0103017RDM', '01', 'thumb055', 'ÇÁ¸° ÆÝÄª ¹öÆ° ½ºÄ¿Æ®','RD','M',73000, 20, 58400, 03, 017, '½ÉÇÃÇÑ µðÀÚÀÎÀ¸·Î ¼Õ½±°Ô ÄÚµðÇÒ ¼ö ÀÖ´Â ÆÝÄª ½ºÄ¿Æ®. Æ÷¸ÖÇÑ ÀÚÄÏ°ú ÄÚµðÇØ º¸¼¼¿ä!', 'dt055', 58, '2020/05/20', '2020/04/28', '2020/05/14', 2500000, 1500000, 'Y', '017', 0);
-INSERT INTO PRODUCT VALUES('W0103017GNS', '01', 'thumb055', 'ÇÁ¸° ÆÝÄª ¹öÆ° ½ºÄ¿Æ®','GN','S',73000, 20, 58400, 03, 017, '½ÉÇÃÇÑ µðÀÚÀÎÀ¸·Î ¼Õ½±°Ô ÄÚµðÇÒ ¼ö ÀÖ´Â ÆÝÄª ½ºÄ¿Æ®. Æ÷¸ÖÇÑ ÀÚÄÏ°ú ÄÚµðÇØ º¸¼¼¿ä!', 'dt055', 58, '2020/05/20', '2020/04/28', '2020/05/14', 2500000, 1500000, 'Y', '017', 0);
-INSERT INTO PRODUCT VALUES('W0103017GNM', '01', 'thumb055', 'ÇÁ¸° ÆÝÄª ¹öÆ° ½ºÄ¿Æ®','GN','M',73000, 20, 58400, 03, 017, '½ÉÇÃÇÑ µðÀÚÀÎÀ¸·Î ¼Õ½±°Ô ÄÚµðÇÒ ¼ö ÀÖ´Â ÆÝÄª ½ºÄ¿Æ®. Æ÷¸ÖÇÑ ÀÚÄÏ°ú ÄÚµðÇØ º¸¼¼¿ä!', 'dt055', 58, '2020/05/20', '2020/04/28', '2020/05/14', 2500000, 1500000, 'Y', '017', 0);
-INSERT INTO PRODUCT VALUES('W0103017YLS', '01', 'thumb055', 'ÇÁ¸° ÆÝÄª ¹öÆ° ½ºÄ¿Æ®','YL','S',73000, 20, 58400, 03, 017, '½ÉÇÃÇÑ µðÀÚÀÎÀ¸·Î ¼Õ½±°Ô ÄÚµðÇÒ ¼ö ÀÖ´Â ÆÝÄª ½ºÄ¿Æ®. Æ÷¸ÖÇÑ ÀÚÄÏ°ú ÄÚµðÇØ º¸¼¼¿ä!', 'dt055', 58, '2020/05/20', '2020/04/28', '2020/05/14', 2500000, 1500000, 'Y', '017', 0);
-INSERT INTO PRODUCT VALUES('W0103017YLM', '01', 'thumb055', 'ÇÁ¸° ÆÝÄª ¹öÆ° ½ºÄ¿Æ®','YL','M',73000, 20, 58400, 03, 017, '½ÉÇÃÇÑ µðÀÚÀÎÀ¸·Î ¼Õ½±°Ô ÄÚµðÇÒ ¼ö ÀÖ´Â ÆÝÄª ½ºÄ¿Æ®. Æ÷¸ÖÇÑ ÀÚÄÏ°ú ÄÚµðÇØ º¸¼¼¿ä!', 'dt055', 58, '2020/05/20', '2020/04/28', '2020/05/14', 2500000, 1500000, 'Y', '017', 0);
-
-INSERT INTO PRODUCT VALUES('W0103018BKS', '01', 'thumb081', '¸¶¸° ÇÃ·Î·² ½ºÆ®¸µ ·Õ½ºÄ¿Æ®','BK','S',128000, 30, 102400, 03, 018, 'µÞ ¹êµù. È­»çÇÑ ÇÃ¶ó¿ö ÆÐÅÏÀÇ ·Õ½ºÄ¿Æ®. »çÀÌµå ½ºÆ®¸µ µðÅ×ÀÏ·Î ´Ù¾çÇÑ ÄÚµð °¡´É.', 'dt081', 102, '2020/05/30', '2020/05/07', '2020/05/24', 4000000, 2000000, 'Y', '018', 0);
-INSERT INTO PRODUCT VALUES('W0103018BKM', '01', 'thumb081', '¸¶¸° ÇÃ·Î·² ½ºÆ®¸µ ·Õ½ºÄ¿Æ®','BK','M',128000, 30, 102400, 03, 018, 'µÞ ¹êµù. È­»çÇÑ ÇÃ¶ó¿ö ÆÐÅÏÀÇ ·Õ½ºÄ¿Æ®. »çÀÌµå ½ºÆ®¸µ µðÅ×ÀÏ·Î ´Ù¾çÇÑ ÄÚµð °¡´É.', 'dt081', 102, '2020/05/30', '2020/05/07', '2020/05/24', 4000000, 2000000, 'Y', '018', 0);
-INSERT INTO PRODUCT VALUES('W0103018BKL', '01', 'thumb081', '¸¶¸° ÇÃ·Î·² ½ºÆ®¸µ ·Õ½ºÄ¿Æ®','BK','L',128000, 30, 102400, 03, 018, 'µÞ ¹êµù. È­»çÇÑ ÇÃ¶ó¿ö ÆÐÅÏÀÇ ·Õ½ºÄ¿Æ®. »çÀÌµå ½ºÆ®¸µ µðÅ×ÀÏ·Î ´Ù¾çÇÑ ÄÚµð °¡´É.', 'dt081', 102, '2020/05/30', '2020/05/07', '2020/05/24', 4000000, 2000000, 'Y', '018', 0);
-INSERT INTO PRODUCT VALUES('W0103018BLS', '01', 'thumb081', '¸¶¸° ÇÃ·Î·² ½ºÆ®¸µ ·Õ½ºÄ¿Æ®','BL','S',128000, 30, 102400, 03, 018, 'µÞ ¹êµù. È­»çÇÑ ÇÃ¶ó¿ö ÆÐÅÏÀÇ ·Õ½ºÄ¿Æ®. »çÀÌµå ½ºÆ®¸µ µðÅ×ÀÏ·Î ´Ù¾çÇÑ ÄÚµð °¡´É.', 'dt081', 102, '2020/05/30', '2020/05/07', '2020/05/24', 4000000, 2000000, 'Y', '018', 0);
-INSERT INTO PRODUCT VALUES('W0103018BLM', '01', 'thumb081', '¸¶¸° ÇÃ·Î·² ½ºÆ®¸µ ·Õ½ºÄ¿Æ®','BL','M',128000, 30, 102400, 03, 018, 'µÞ ¹êµù. È­»çÇÑ ÇÃ¶ó¿ö ÆÐÅÏÀÇ ·Õ½ºÄ¿Æ®. »çÀÌµå ½ºÆ®¸µ µðÅ×ÀÏ·Î ´Ù¾çÇÑ ÄÚµð °¡´É.', 'dt081', 102, '2020/05/30', '2020/05/07', '2020/05/24', 4000000, 2000000, 'Y', '018', 0);
-INSERT INTO PRODUCT VALUES('W0103018BLL', '01', 'thumb081', '¸¶¸° ÇÃ·Î·² ½ºÆ®¸µ ·Õ½ºÄ¿Æ®','BL','L',128000, 30, 102400, 03, 018, 'µÞ ¹êµù. È­»çÇÑ ÇÃ¶ó¿ö ÆÐÅÏÀÇ ·Õ½ºÄ¿Æ®. »çÀÌµå ½ºÆ®¸µ µðÅ×ÀÏ·Î ´Ù¾çÇÑ ÄÚµð °¡´É.', 'dt081', 102, '2020/05/30', '2020/05/07', '2020/05/24', 4000000, 2000000, 'Y', '018', 0);
-
-INSERT INTO PRODUCT VALUES('W0101019BKS', '01', 'thumb021', 'Á¦´©½º ½ºÅÄ´Ùµå ½Ì±Û ÀçÅ¶','BK','S',98000, 10, 88200, 01, 019, 'Ä³ÁÖ¾óÇÏ°í È°¿ëµµ°¡ ³ôÀº ÀÚÄÏ. Àû´çÈ÷ ¿©À¯ÀÖ´Â ¹Ú½ÃÇÍÀ¸·Î ¸Ú½º·¯¿î ½Ç·ç¿§ ¿¬Ãâ.', 'dt021', 98, '2020/06/01', '2020/05/10', '2020/05/27', 5000000, 3000000, 'Y', '019', 0);
-INSERT INTO PRODUCT VALUES('W0101019BKM', '01', 'thumb021', 'Á¦´©½º ½ºÅÄ´Ùµå ½Ì±Û ÀçÅ¶','BK','M',98000, 10, 88200, 01, 019, 'Ä³ÁÖ¾óÇÏ°í È°¿ëµµ°¡ ³ôÀº ÀÚÄÏ. Àû´çÈ÷ ¿©À¯ÀÖ´Â ¹Ú½ÃÇÍÀ¸·Î ¸Ú½º·¯¿î ½Ç·ç¿§ ¿¬Ãâ.', 'dt021', 98, '2020/06/01', '2020/05/10', '2020/05/27', 5000000, 3000000, 'Y', '019', 0);
-INSERT INTO PRODUCT VALUES('W0101019BLS', '01', 'thumb021', 'Á¦´©½º ½ºÅÄ´Ùµå ½Ì±Û ÀçÅ¶','BL','S',98000, 10, 88200, 01, 019, 'Ä³ÁÖ¾óÇÏ°í È°¿ëµµ°¡ ³ôÀº ÀÚÄÏ. Àû´çÈ÷ ¿©À¯ÀÖ´Â ¹Ú½ÃÇÍÀ¸·Î ¸Ú½º·¯¿î ½Ç·ç¿§ ¿¬Ãâ.', 'dt021', 98, '2020/06/01', '2020/05/10', '2020/05/27', 5000000, 3000000, 'Y', '019', 0);
-INSERT INTO PRODUCT VALUES('W0101019BLM', '01', 'thumb021', 'Á¦´©½º ½ºÅÄ´Ùµå ½Ì±Û ÀçÅ¶','BL','M',98000, 10, 88200, 01, 019, 'Ä³ÁÖ¾óÇÏ°í È°¿ëµµ°¡ ³ôÀº ÀÚÄÏ. Àû´çÈ÷ ¿©À¯ÀÖ´Â ¹Ú½ÃÇÍÀ¸·Î ¸Ú½º·¯¿î ½Ç·ç¿§ ¿¬Ãâ.', 'dt021', 98, '2020/06/01', '2020/05/10', '2020/05/27', 5000000, 3000000, 'Y', '019', 0);
-INSERT INTO PRODUCT VALUES('W0101019GNS', '01', 'thumb021', 'Á¦´©½º ½ºÅÄ´Ùµå ½Ì±Û ÀçÅ¶','GN','S',98000, 10, 88200, 01, 019, 'Ä³ÁÖ¾óÇÏ°í È°¿ëµµ°¡ ³ôÀº ÀÚÄÏ. Àû´çÈ÷ ¿©À¯ÀÖ´Â ¹Ú½ÃÇÍÀ¸·Î ¸Ú½º·¯¿î ½Ç·ç¿§ ¿¬Ãâ.', 'dt021', 98, '2020/06/01', '2020/05/10', '2020/05/27', 5000000, 3000000, 'Y', '019', 0);
-INSERT INTO PRODUCT VALUES('W0101019GNM', '01', 'thumb021', 'Á¦´©½º ½ºÅÄ´Ùµå ½Ì±Û ÀçÅ¶','GN','M',98000, 10, 88200, 01, 019, 'Ä³ÁÖ¾óÇÏ°í È°¿ëµµ°¡ ³ôÀº ÀÚÄÏ. Àû´çÈ÷ ¿©À¯ÀÖ´Â ¹Ú½ÃÇÍÀ¸·Î ¸Ú½º·¯¿î ½Ç·ç¿§ ¿¬Ãâ.', 'dt021', 98, '2020/06/01', '2020/05/10', '2020/05/27', 5000000, 3000000, 'Y', '019', 0);
-INSERT INTO PRODUCT VALUES('W0101019YLS', '01', 'thumb021', 'Á¦´©½º ½ºÅÄ´Ùµå ½Ì±Û ÀçÅ¶','YL','S',98000, 10, 88200, 01, 019, 'Ä³ÁÖ¾óÇÏ°í È°¿ëµµ°¡ ³ôÀº ÀÚÄÏ. Àû´çÈ÷ ¿©À¯ÀÖ´Â ¹Ú½ÃÇÍÀ¸·Î ¸Ú½º·¯¿î ½Ç·ç¿§ ¿¬Ãâ.', 'dt021', 98, '2020/06/01', '2020/05/10', '2020/05/27', 5000000, 3000000, 'Y', '019', 0);
-INSERT INTO PRODUCT VALUES('W0101019YLM', '01', 'thumb021', 'Á¦´©½º ½ºÅÄ´Ùµå ½Ì±Û ÀçÅ¶','YL','M',98000, 10, 88200, 01, 019, 'Ä³ÁÖ¾óÇÏ°í È°¿ëµµ°¡ ³ôÀº ÀÚÄÏ. Àû´çÈ÷ ¿©À¯ÀÖ´Â ¹Ú½ÃÇÍÀ¸·Î ¸Ú½º·¯¿î ½Ç·ç¿§ ¿¬Ãâ.', 'dt021', 98, '2020/06/01', '2020/05/10', '2020/05/27', 5000000, 3000000, 'Y', '019', 0);
-INSERT INTO PRODUCT VALUES('W0105020BKS', '01', 'thumb091', 'Ä³½Ã ½ºÄù¾î³Ø ¹Ì´Ï ¿øÇÇ½º','BK','S',118000, 10, 106200, 05, 020, '½¬Æù ¹ÝÆÈ ¹Ì´Ï ¿øÇÇ½º. Åæ ´Ù¿îµÈ Ã¼Å© ÆÐÅÏÀ¸·Î ´ÜÁ¤ÇÏ°í ±ò²ûÇÏ°Ô ÄÚµð °¡´ÉÇÕ´Ï´Ù.', 'dt091', 100, '2020/06/11', '2020/05/20', '2020/05/30', 2000000, 800000, 'Y', '020', 0);
-INSERT INTO PRODUCT VALUES('W0105020BKM', '01', 'thumb091', 'Ä³½Ã ½ºÄù¾î³Ø ¹Ì´Ï ¿øÇÇ½º','BK','M',118000, 10, 106200, 05, 020, '½¬Æù ¹ÝÆÈ ¹Ì´Ï ¿øÇÇ½º. Åæ ´Ù¿îµÈ Ã¼Å© ÆÐÅÏÀ¸·Î ´ÜÁ¤ÇÏ°í ±ò²ûÇÏ°Ô ÄÚµð °¡´ÉÇÕ´Ï´Ù.', 'dt091', 100, '2020/06/11', '2020/05/20', '2020/05/30', 2000000, 800000, 'Y', '020', 0);
-INSERT INTO PRODUCT VALUES('W0105020BKL', '01', 'thumb091', 'Ä³½Ã ½ºÄù¾î³Ø ¹Ì´Ï ¿øÇÇ½º','BK','L',118000, 10, 106200, 05, 020, '½¬Æù ¹ÝÆÈ ¹Ì´Ï ¿øÇÇ½º. Åæ ´Ù¿îµÈ Ã¼Å© ÆÐÅÏÀ¸·Î ´ÜÁ¤ÇÏ°í ±ò²ûÇÏ°Ô ÄÚµð °¡´ÉÇÕ´Ï´Ù.', 'dt091', 100, '2020/06/11', '2020/05/20', '2020/05/30', 2000000, 800000, 'Y', '020', 0);
-INSERT INTO PRODUCT VALUES('W0105020YLS', '01', 'thumb091', 'Ä³½Ã ½ºÄù¾î³Ø ¹Ì´Ï ¿øÇÇ½º','YL','S',118000, 10, 106200, 05, 020, '½¬Æù ¹ÝÆÈ ¹Ì´Ï ¿øÇÇ½º. Åæ ´Ù¿îµÈ Ã¼Å© ÆÐÅÏÀ¸·Î ´ÜÁ¤ÇÏ°í ±ò²ûÇÏ°Ô ÄÚµð °¡´ÉÇÕ´Ï´Ù.', 'dt091', 100, '2020/06/11', '2020/05/20', '2020/05/30', 2000000, 800000, 'Y', '020', 0);
-INSERT INTO PRODUCT VALUES('W0105020YLM', '01', 'thumb091', 'Ä³½Ã ½ºÄù¾î³Ø ¹Ì´Ï ¿øÇÇ½º','YL','M',118000, 10, 106200, 05, 020, '½¬Æù ¹ÝÆÈ ¹Ì´Ï ¿øÇÇ½º. Åæ ´Ù¿îµÈ Ã¼Å© ÆÐÅÏÀ¸·Î ´ÜÁ¤ÇÏ°í ±ò²ûÇÏ°Ô ÄÚµð °¡´ÉÇÕ´Ï´Ù.', 'dt091', 100, '2020/06/11', '2020/05/20', '2020/05/30', 2000000, 800000, 'Y', '020', 0);
-INSERT INTO PRODUCT VALUES('W0105020GNS', '01', 'thumb091', 'Ä³½Ã ½ºÄù¾î³Ø ¹Ì´Ï ¿øÇÇ½º','GN','S',118000, 10, 106200, 05, 020, '½¬Æù ¹ÝÆÈ ¹Ì´Ï ¿øÇÇ½º. Åæ ´Ù¿îµÈ Ã¼Å© ÆÐÅÏÀ¸·Î ´ÜÁ¤ÇÏ°í ±ò²ûÇÏ°Ô ÄÚµð °¡´ÉÇÕ´Ï´Ù.', 'dt091', 100, '2020/06/11', '2020/05/20', '2020/05/30', 2000000, 800000, 'Y', '020', 0);
-INSERT INTO PRODUCT VALUES('W0105020GNM', '01', 'thumb091', 'Ä³½Ã ½ºÄù¾î³Ø ¹Ì´Ï ¿øÇÇ½º','GN','M',118000, 10, 106200, 05, 020, '½¬Æù ¹ÝÆÈ ¹Ì´Ï ¿øÇÇ½º. Åæ ´Ù¿îµÈ Ã¼Å© ÆÐÅÏÀ¸·Î ´ÜÁ¤ÇÏ°í ±ò²ûÇÏ°Ô ÄÚµð °¡´ÉÇÕ´Ï´Ù.', 'dt091', 100, '2020/06/11', '2020/05/20', '2020/05/30', 2000000, 800000, 'Y', '020', 0);
-INSERT INTO PRODUCT VALUES('W0105020BLS', '01', 'thumb091', 'Ä³½Ã ½ºÄù¾î³Ø ¹Ì´Ï ¿øÇÇ½º','BL','S',118000, 10, 106200, 05, 020, '½¬Æù ¹ÝÆÈ ¹Ì´Ï ¿øÇÇ½º. Åæ ´Ù¿îµÈ Ã¼Å© ÆÐÅÏÀ¸·Î ´ÜÁ¤ÇÏ°í ±ò²ûÇÏ°Ô ÄÚµð °¡´ÉÇÕ´Ï´Ù.', 'dt091', 100, '2020/06/11', '2020/05/20', '2020/05/30', 2000000, 800000, 'Y', '020', 0);
-INSERT INTO PRODUCT VALUES('W0105020BLM', '01', 'thumb091', 'Ä³½Ã ½ºÄù¾î³Ø ¹Ì´Ï ¿øÇÇ½º','BL','M',118000, 10, 106200, 05, 020, '½¬Æù ¹ÝÆÈ ¹Ì´Ï ¿øÇÇ½º. Åæ ´Ù¿îµÈ Ã¼Å© ÆÐÅÏÀ¸·Î ´ÜÁ¤ÇÏ°í ±ò²ûÇÏ°Ô ÄÚµð °¡´ÉÇÕ´Ï´Ù.', 'dt091', 100, '2020/06/11', '2020/05/20', '2020/05/30', 2000000, 800000, 'Y', '020', 0);
+INSERT INTO PRODUCT VALUES('W0104015BKS', '01', 'thumb067', 'ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'BK', 'S', 88000, 30, 61600, 04, 015, 'ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. ÅºÅºï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½à¼ºï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ë°¨.', 'dt067', 61, '2020/05/26', '2020/04/28', '2020/05/20', 2800000, 2100000, 'Y', '015', 0);
+INSERT INTO PRODUCT VALUES('W0104015BKM', '01', 'thumb067', 'ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'BK', 'M', 88000, 30, 61600, 04, 015, 'ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. ÅºÅºï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½à¼ºï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ë°¨.', 'dt067', 61, '2020/05/26', '2020/04/28', '2020/05/20', 2800000, 2100000, 'Y', '015', 0);
+INSERT INTO PRODUCT VALUES('W0104015BKL', '01', 'thumb067', 'ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'BK', 'L', 88000, 30, 61600, 04, 015, 'ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. ÅºÅºï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½à¼ºï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ë°¨.', 'dt067', 61, '2020/05/26', '2020/04/28', '2020/05/20', 2800000, 2100000, 'Y', '015', 0);
+INSERT INTO PRODUCT VALUES('W0104015BLS', '01', 'thumb067', 'ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'BL', 'S', 88000, 30, 61600, 04, 015, 'ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. ÅºÅºï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½à¼ºï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ë°¨.', 'dt067', 61, '2020/05/26', '2020/04/28', '2020/05/20', 2800000, 2100000, 'Y', '015', 0);
+INSERT INTO PRODUCT VALUES('W0104015BLM', '01', 'thumb067', 'ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'BL', 'M', 88000, 30, 61600, 04, 015, 'ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. ÅºÅºï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½à¼ºï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ë°¨.', 'dt067', 61, '2020/05/26', '2020/04/28', '2020/05/20', 2800000, 2100000, 'Y', '015', 0);
+INSERT INTO PRODUCT VALUES('W0104015BLL', '01', 'thumb067', 'ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'BL', 'L', 88000, 30, 61600, 04, 015, 'ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. ÅºÅºï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½à¼ºï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ë°¨.', 'dt067', 61, '2020/05/26', '2020/04/28', '2020/05/20', 2800000, 2100000, 'Y', '015', 0);
+INSERT INTO PRODUCT VALUES('W0104015WHS', '01', 'thumb067', 'ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'WH', 'S', 88000, 30, 61600, 04, 015, 'ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. ÅºÅºï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½à¼ºï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ë°¨.', 'dt067', 61, '2020/05/26', '2020/04/28', '2020/05/20', 2800000, 2100000, 'Y', '015', 0);
+INSERT INTO PRODUCT VALUES('W0104015WHM', '01', 'thumb067', 'ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'WH', 'M', 88000, 30, 61600, 04, 015, 'ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. ÅºÅºï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½à¼ºï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ë°¨.', 'dt067', 61, '2020/05/26', '2020/04/28', '2020/05/20', 2800000, 2100000, 'Y', '015', 0);
+INSERT INTO PRODUCT VALUES('W0104015WHL', '01', 'thumb067', 'ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'WH', 'L', 88000, 30, 61600, 04, 015, 'ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. ÅºÅºï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½à¼ºï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ë°¨.', 'dt067', 61, '2020/05/26', '2020/04/28', '2020/05/20', 2800000, 2100000, 'Y', '015', 0);
 
 
--- 021~040(ÇÑ¼Ö)
+INSERT INTO PRODUCT VALUES('W0102016WHS', '01', 'thumb002', 'ï¿½ï¿½Å° ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ì½º','WH','S',138000, 20, 110400, 04, 016, 'ï¿½Ã¿ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å© ï¿½ï¿½ï¿½ì½º. S/S ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ö±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½.', 'dt002', 110, '2020/05/18', '2020/04/12', '2020/05/10', 6300000, 5000000, 'Y', '016', 0);
+INSERT INTO PRODUCT VALUES('W0102016WHM', '01', 'thumb002', 'ï¿½ï¿½Å° ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ì½º','WH','M',138000, 20, 110400, 04, 016, 'ï¿½Ã¿ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å© ï¿½ï¿½ï¿½ì½º. S/S ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ö±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½.', 'dt002', 110, '2020/05/18', '2020/04/12', '2020/05/10', 6300000, 5000000, 'Y', '016', 0);
+INSERT INTO PRODUCT VALUES('W0102016WHL', '01', 'thumb002', 'ï¿½ï¿½Å° ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ì½º','WH','L',138000, 20, 110400, 04, 016, 'ï¿½Ã¿ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å© ï¿½ï¿½ï¿½ì½º. S/S ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ö±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½.', 'dt002', 110, '2020/05/18', '2020/04/12', '2020/05/10', 6300000, 5000000, 'Y', '016', 0);
+INSERT INTO PRODUCT VALUES('W0102016BKS', '01', 'thumb002', 'ï¿½ï¿½Å° ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ì½º','BK','S',138000, 20, 110400, 04, 016, 'ï¿½Ã¿ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å© ï¿½ï¿½ï¿½ì½º. S/S ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ö±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½.', 'dt002', 110, '2020/05/18', '2020/04/12', '2020/05/10', 6300000, 5000000, 'Y', '016', 0);
+INSERT INTO PRODUCT VALUES('W0102016BKM', '01', 'thumb002', 'ï¿½ï¿½Å° ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ì½º','BK','M',138000, 20, 110400, 04, 016, 'ï¿½Ã¿ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å© ï¿½ï¿½ï¿½ì½º. S/S ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ö±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½.', 'dt002', 110, '2020/05/18', '2020/04/12', '2020/05/10', 6300000, 5000000, 'Y', '016', 0);
+INSERT INTO PRODUCT VALUES('W0102016BKL', '01', 'thumb002', 'ï¿½ï¿½Å° ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ì½º','BK','L',138000, 20, 110400, 04, 016, 'ï¿½Ã¿ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å© ï¿½ï¿½ï¿½ì½º. S/S ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ö±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½.', 'dt002', 110, '2020/05/18', '2020/04/12', '2020/05/10', 6300000, 5000000, 'Y', '016', 0);
+INSERT INTO PRODUCT VALUES('W0102016BLS', '01', 'thumb002', 'ï¿½ï¿½Å° ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ì½º','BL','S',138000, 20, 110400, 04, 016, 'ï¿½Ã¿ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å© ï¿½ï¿½ï¿½ì½º. S/S ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ö±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½.', 'dt002', 110, '2020/05/18', '2020/04/12', '2020/05/10', 6300000, 5000000, 'Y', '016', 0);
+INSERT INTO PRODUCT VALUES('W0102016BLM', '01', 'thumb002', 'ï¿½ï¿½Å° ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ì½º','BL','M',138000, 20, 110400, 04, 016, 'ï¿½Ã¿ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å© ï¿½ï¿½ï¿½ì½º. S/S ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ö±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½.', 'dt002', 110, '2020/05/18', '2020/04/12', '2020/05/10', 6300000, 5000000, 'Y', '016', 0);
+INSERT INTO PRODUCT VALUES('W0102016BLL', '01', 'thumb002', 'ï¿½ï¿½Å° ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ì½º','BL','L',138000, 20, 110400, 04, 016, 'ï¿½Ã¿ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å© ï¿½ï¿½ï¿½ì½º. S/S ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ö±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½.', 'dt002', 110, '2020/05/18', '2020/04/12', '2020/05/10', 6300000, 5000000, 'Y', '016', 0);
+INSERT INTO PRODUCT VALUES('W0102016GNS', '01', 'thumb002', 'ï¿½ï¿½Å° ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ì½º','GN','S',138000, 20, 110400, 04, 016, 'ï¿½Ã¿ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å© ï¿½ï¿½ï¿½ì½º. S/S ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ö±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½.', 'dt002', 110, '2020/05/18', '2020/04/12', '2020/05/10', 6300000, 5000000, 'Y', '016', 0);
+INSERT INTO PRODUCT VALUES('W0102016GNM', '01', 'thumb002', 'ï¿½ï¿½Å° ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ì½º','GN','M',138000, 20, 110400, 04, 016, 'ï¿½Ã¿ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å© ï¿½ï¿½ï¿½ì½º. S/S ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ö±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½.', 'dt002', 110, '2020/05/18', '2020/04/12', '2020/05/10', 6300000, 5000000, 'Y', '016', 0);
+INSERT INTO PRODUCT VALUES('W0102016GNL', '01', 'thumb002', 'ï¿½ï¿½Å° ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ì½º','GN','L',138000, 20, 110400, 04, 016, 'ï¿½Ã¿ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å© ï¿½ï¿½ï¿½ì½º. S/S ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ö±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½.', 'dt002', 110, '2020/05/18', '2020/04/12', '2020/05/10', 6300000, 5000000, 'Y', '016', 0);
 
-INSERT INTO PRODUCT VALUES('W0201021RDS', '01' ,'thumb007','º§¸®µÞ¸®º» Æ®·»Ä¡ÄÚÆ®', 'RD', 'S', 130000,10,117000,01,021,'¾ã°í °¡º­¿î ¿ø´Ü¿¡ ¼Ò¸Å ·Ñ¾÷ µðÅ×ÀÏ±îÁö ´õÇØÁ® ¿©¸§±îÁö »ê¶æÇÏ°Ô Áñ±â½Ç ¼ö ÀÖ´Â ¾ÆÀÌÅÛ!' ,'dt007',250,TO_DATE('2020-05-30','YYYY-MM-DD'),TO_DATE('2020-05-01','YYYY-MM-DD'),TO_DATE('2020-05-20','YYYY-MM-DD'),1000000,500000,'N',021,0);
-INSERT INTO PRODUCT VALUES('W0201021WHS','01','thumb007' ,'º§¸®µÞ¸®º» Æ®·»Ä¡ÄÚÆ®', 'WH', 'S', 130000,10,117000,01,021,'¾ã°í °¡º­¿î ¿ø´Ü¿¡ ¼Ò¸Å ·Ñ¾÷ µðÅ×ÀÏ±îÁö ´õÇØÁ® ¿©¸§±îÁö »ê¶æÇÏ°Ô Áñ±â½Ç ¼ö ÀÖ´Â ¾ÆÀÌÅÛ!','dt007',250,TO_DATE('2020-05-30','YYYY-MM-DD'),TO_DATE('2020-05-01','YYYY-MM-DD'),TO_DATE('2020-05-20','YYYY-MM-DD'),1000000,500000,'N',021,0);
-INSERT INTO PRODUCT VALUES('W0201021RDM','01','thumb007' ,'º§¸®µÞ¸®º» Æ®·»Ä¡ÄÚÆ®', 'RD', 'M', 130000,10,117000,01,021,'¾ã°í °¡º­¿î ¿ø´Ü¿¡ ¼Ò¸Å ·Ñ¾÷ µðÅ×ÀÏ±îÁö ´õÇØÁ® ¿©¸§±îÁö »ê¶æÇÏ°Ô Áñ±â½Ç ¼ö ÀÖ´Â ¾ÆÀÌÅÛ!' ,'dt007',250,TO_DATE('2020-05-30','YYYY-MM-DD'),TO_DATE('2020-05-01','YYYY-MM-DD'),TO_DATE('2020-05-20','YYYY-MM-DD'),1000000,500000,'N',021,0);
-INSERT INTO PRODUCT VALUES('W0201021WHM','01','thumb007' ,'º§¸®µÞ¸®º» Æ®·»Ä¡ÄÚÆ®', 'WH', 'M', 130000,10,117000,01,021,'¾ã°í °¡º­¿î ¿ø´Ü¿¡ ¼Ò¸Å ·Ñ¾÷ µðÅ×ÀÏ±îÁö ´õÇØÁ® ¿©¸§±îÁö »ê¶æÇÏ°Ô Áñ±â½Ç ¼ö ÀÖ´Â ¾ÆÀÌÅÛ!' ,'dt007',250,TO_DATE('2020-05-30','YYYY-MM-DD'),TO_DATE('2020-05-01','YYYY-MM-DD'),TO_DATE('2020-05-20','YYYY-MM-DD'),1000000,500000,'N',021,0);
-INSERT INTO PRODUCT VALUES('W0201021RDL','01','thumb007' ,' º§¸®µÞ¸®º» Æ®·»Ä¡ÄÚÆ®', 'RD', 'L', 130000,10,117000,01,021,'¾ã°í °¡º­¿î ¿ø´Ü¿¡ ¼Ò¸Å ·Ñ¾÷ µðÅ×ÀÏ±îÁö ´õÇØÁ® ¿©¸§±îÁö »ê¶æÇÏ°Ô Áñ±â½Ç ¼ö ÀÖ´Â ¾ÆÀÌÅÛ!' ,'dt007',250,TO_DATE('2020-05-30','YYYY-MM-DD'),TO_DATE('2020-05-01','YYYY-MM-DD'),TO_DATE('2020-05-20','YYYY-MM-DD'),1000000,500000,'N',021,0);
-INSERT INTO PRODUCT VALUES('W0201021WHL','01','thumb007' ,'º§¸®µÞ¸®º» Æ®·»Ä¡ÄÚÆ®', 'WH', 'L', 130000,10,117000,01,021,'¾ã°í °¡º­¿î ¿ø´Ü¿¡ ¼Ò¸Å ·Ñ¾÷ µðÅ×ÀÏ±îÁö ´õÇØÁ® ¿©¸§±îÁö »ê¶æÇÏ°Ô Áñ±â½Ç ¼ö ÀÖ´Â ¾ÆÀÌÅÛ!' ,'dt007',250,TO_DATE('2020-05-30','YYYY-MM-DD'),TO_DATE('2020-05-01','YYYY-MM-DD'),TO_DATE('2020-05-20','YYYY-MM-DD'),1000000,500000,'N',021,0);
+INSERT INTO PRODUCT VALUES('W0103017BLS', '01', 'thumb055', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Äª ï¿½ï¿½Æ° ï¿½ï¿½Ä¿Æ®','BL','S',73000, 20, 58400, 03, 017, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Õ½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½Äª ï¿½ï¿½Ä¿Æ®. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Úµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!', 'dt055', 58, '2020/05/20', '2020/04/28', '2020/05/14', 2500000, 1500000, 'Y', '017', 0);
+INSERT INTO PRODUCT VALUES('W0103017BLM', '01', 'thumb055', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Äª ï¿½ï¿½Æ° ï¿½ï¿½Ä¿Æ®','BL','M',73000, 20, 58400, 03, 017, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Õ½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½Äª ï¿½ï¿½Ä¿Æ®. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Úµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!', 'dt055', 58, '2020/05/20', '2020/04/28', '2020/05/14', 2500000, 1500000, 'Y', '017', 0);
+INSERT INTO PRODUCT VALUES('W0103017RDS', '01', 'thumb055', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Äª ï¿½ï¿½Æ° ï¿½ï¿½Ä¿Æ®','RD','S',73000, 20, 58400, 03, 017, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Õ½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½Äª ï¿½ï¿½Ä¿Æ®. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Úµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!', 'dt055', 58, '2020/05/20', '2020/04/28', '2020/05/14', 2500000, 1500000, 'Y', '017', 0);
+INSERT INTO PRODUCT VALUES('W0103017RDM', '01', 'thumb055', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Äª ï¿½ï¿½Æ° ï¿½ï¿½Ä¿Æ®','RD','M',73000, 20, 58400, 03, 017, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Õ½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½Äª ï¿½ï¿½Ä¿Æ®. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Úµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!', 'dt055', 58, '2020/05/20', '2020/04/28', '2020/05/14', 2500000, 1500000, 'Y', '017', 0);
+INSERT INTO PRODUCT VALUES('W0103017GNS', '01', 'thumb055', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Äª ï¿½ï¿½Æ° ï¿½ï¿½Ä¿Æ®','GN','S',73000, 20, 58400, 03, 017, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Õ½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½Äª ï¿½ï¿½Ä¿Æ®. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Úµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!', 'dt055', 58, '2020/05/20', '2020/04/28', '2020/05/14', 2500000, 1500000, 'Y', '017', 0);
+INSERT INTO PRODUCT VALUES('W0103017GNM', '01', 'thumb055', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Äª ï¿½ï¿½Æ° ï¿½ï¿½Ä¿Æ®','GN','M',73000, 20, 58400, 03, 017, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Õ½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½Äª ï¿½ï¿½Ä¿Æ®. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Úµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!', 'dt055', 58, '2020/05/20', '2020/04/28', '2020/05/14', 2500000, 1500000, 'Y', '017', 0);
+INSERT INTO PRODUCT VALUES('W0103017YLS', '01', 'thumb055', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Äª ï¿½ï¿½Æ° ï¿½ï¿½Ä¿Æ®','YL','S',73000, 20, 58400, 03, 017, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Õ½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½Äª ï¿½ï¿½Ä¿Æ®. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Úµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!', 'dt055', 58, '2020/05/20', '2020/04/28', '2020/05/14', 2500000, 1500000, 'Y', '017', 0);
+INSERT INTO PRODUCT VALUES('W0103017YLM', '01', 'thumb055', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Äª ï¿½ï¿½Æ° ï¿½ï¿½Ä¿Æ®','YL','M',73000, 20, 58400, 03, 017, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Õ½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½Äª ï¿½ï¿½Ä¿Æ®. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Úµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!', 'dt055', 58, '2020/05/20', '2020/04/28', '2020/05/14', 2500000, 1500000, 'Y', '017', 0);
 
-INSERT INTO PRODUCT VALUES('W0205022RDS','03','thumb081', '´õ³×ÇÁ ÇÃ¶ó¿ö¿øÇÇ½º', 'RD', 'S', 65000,15,55250,03,022,'ÀÜÀÜÇÑ ÇÃ¶ó¿öÆÐÅÏ°ú ¿ìµå¹öÆ°À¸·Î »ç¶û½º·¯¿î ¿øÇÇ½º!','dt081',100,TO_DATE('2020-06-30','YYYY-MM-DD'),TO_DATE('2020-05-15','YYYY-MM-DD'),TO_DATE('2020-06-15','YYYY-MM-DD'),3000000,2000000,'Y',022,0);
-INSERT INTO PRODUCT VALUES('W0205022WHS','03','thumb081','´õ³×ÇÁ ÇÃ¶ó¿ö¿øÇÇ½º', 'WH', 'S', 65000,15,55250 ,03,022,'ÀÜÀÜÇÑ ÇÃ¶ó¿öÆÐÅÏ°ú ¿ìµå¹öÆ°À¸·Î »ç¶û½º·¯¿î ¿øÇÇ½º','dt081',100,TO_DATE('2020-06-30','YYYY-MM-DD'),TO_DATE('2020-05-15','YYYY-MM-DD'),TO_DATE('2020-06-15','YYYY-MM-DD'),3000000,2000000,'Y',022,0);
-INSERT INTO PRODUCT VALUES('W0205022RDM','03','thumb081','´õ³×ÇÁ ÇÃ¶ó¿ö¿øÇÇ½º', 'RD' , 'M', 65000,15,55250 ,03,022,'ÀÜÀÜÇÑ ÇÃ¶ó¿öÆÐÅÏ°ú ¿ìµå¹öÆ°À¸·Î »ç¶û½º·¯¿î ¿øÇÇ½º','dt081',100,TO_DATE('2020-06-30','YYYY-MM-DD'),TO_DATE('2020-05-15','YYYY-MM-DD'),TO_DATE('2020-06-15','YYYY-MM-DD'),3000000,2000000,'Y',022,0);
-INSERT INTO PRODUCT VALUES('W0205022WHM','03','thumb081','´õ³×ÇÁ ÇÃ¶ó¿ö¿øÇÇ½º', 'WH', 'M', 65000,15,55250 ,03,022,'ÀÜÀÜÇÑ ÇÃ¶ó¿öÆÐÅÏ°ú ¿ìµå¹öÆ°À¸·Î »ç¶û½º·¯¿î ¿øÇÇ½º','dt081',100,TO_DATE('2020-06-30','YYYY-MM-DD'),TO_DATE('2020-05-15','YYYY-MM-DD'),TO_DATE('2020-06-15','YYYY-MM-DD'),3000000,2000000,'Y',022,0);
-INSERT INTO PRODUCT VALUES('W0205022RDL','03','thumb081','´õ³×ÇÁ ÇÃ¶ó¿ö¿øÇÇ½º', 'RD', 'L', 65000,15,55250 ,03,022,'ÀÜÀÜÇÑ ÇÃ¶ó¿öÆÐÅÏ°ú ¿ìµå¹öÆ°À¸·Î »ç¶û½º·¯¿î ¿øÇÇ½º','dt081',100,TO_DATE('2020-06-30','YYYY-MM-DD'),TO_DATE('2020-05-15','YYYY-MM-DD'),TO_DATE('2020-06-15','YYYY-MM-DD'),3000000,2000000,'Y',022,0);
-INSERT INTO PRODUCT VALUES('W0205022WHL','03','thumb081','´õ³×ÇÁ ÇÃ¶ó¿ö¿øÇÇ½º', 'WH', 'L', 65000,15,55250 ,03,022,'ÀÜÀÜÇÑ ÇÃ¶ó¿öÆÐÅÏ°ú ¿ìµå¹öÆ°À¸·Î »ç¶û½º·¯¿î ¿øÇÇ½º','dt081',100,TO_DATE('2020-06-30','YYYY-MM-DD'),TO_DATE('2020-05-15','YYYY-MM-DD'),TO_DATE('2020-06-15','YYYY-MM-DD'),3000000,2000000,'Y',022,0);
+INSERT INTO PRODUCT VALUES('W0103018BKS', '01', 'thumb081', 'ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·Î·ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Õ½ï¿½Ä¿Æ®','BK','S',128000, 30, 102400, 03, 018, 'ï¿½ï¿½ ï¿½ï¿½ï¿½. È­ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Õ½ï¿½Ä¿Æ®. ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ ï¿½Ù¾ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½.', 'dt081', 102, '2020/05/30', '2020/05/07', '2020/05/24', 4000000, 2000000, 'Y', '018', 0);
+INSERT INTO PRODUCT VALUES('W0103018BKM', '01', 'thumb081', 'ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·Î·ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Õ½ï¿½Ä¿Æ®','BK','M',128000, 30, 102400, 03, 018, 'ï¿½ï¿½ ï¿½ï¿½ï¿½. È­ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Õ½ï¿½Ä¿Æ®. ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ ï¿½Ù¾ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½.', 'dt081', 102, '2020/05/30', '2020/05/07', '2020/05/24', 4000000, 2000000, 'Y', '018', 0);
+INSERT INTO PRODUCT VALUES('W0103018BKL', '01', 'thumb081', 'ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·Î·ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Õ½ï¿½Ä¿Æ®','BK','L',128000, 30, 102400, 03, 018, 'ï¿½ï¿½ ï¿½ï¿½ï¿½. È­ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Õ½ï¿½Ä¿Æ®. ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ ï¿½Ù¾ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½.', 'dt081', 102, '2020/05/30', '2020/05/07', '2020/05/24', 4000000, 2000000, 'Y', '018', 0);
+INSERT INTO PRODUCT VALUES('W0103018BLS', '01', 'thumb081', 'ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·Î·ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Õ½ï¿½Ä¿Æ®','BL','S',128000, 30, 102400, 03, 018, 'ï¿½ï¿½ ï¿½ï¿½ï¿½. È­ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Õ½ï¿½Ä¿Æ®. ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ ï¿½Ù¾ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½.', 'dt081', 102, '2020/05/30', '2020/05/07', '2020/05/24', 4000000, 2000000, 'Y', '018', 0);
+INSERT INTO PRODUCT VALUES('W0103018BLM', '01', 'thumb081', 'ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·Î·ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Õ½ï¿½Ä¿Æ®','BL','M',128000, 30, 102400, 03, 018, 'ï¿½ï¿½ ï¿½ï¿½ï¿½. È­ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Õ½ï¿½Ä¿Æ®. ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ ï¿½Ù¾ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½.', 'dt081', 102, '2020/05/30', '2020/05/07', '2020/05/24', 4000000, 2000000, 'Y', '018', 0);
+INSERT INTO PRODUCT VALUES('W0103018BLL', '01', 'thumb081', 'ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·Î·ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Õ½ï¿½Ä¿Æ®','BL','L',128000, 30, 102400, 03, 018, 'ï¿½ï¿½ ï¿½ï¿½ï¿½. È­ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Õ½ï¿½Ä¿Æ®. ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ ï¿½Ù¾ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½.', 'dt081', 102, '2020/05/30', '2020/05/07', '2020/05/24', 4000000, 2000000, 'Y', '018', 0);
 
-INSERT INTO PRODUCT VALUES('M0202023BKS','05','thumb023','À¯´ÏÅ© ´ýºí ¶ó¿îµå Æ¼¼ÅÃ÷', 'BK', 'S', 20000,20,16000 ,03,023,'´ÜÇ° ¹× ÀÌ³Ê·Î ÀÔ±â ÁÁÀº º£ÀÌÁ÷ Æ¼¼ÅÃ÷','dt023',150,TO_DATE('2020-07-01','YYYY-MM-DD'),TO_DATE('2020-05-20','YYYY-MM-DD'),TO_DATE('2020-06-05','YYYY-MM-DD'),4000000,2500000,'N',023,0);
-INSERT INTO PRODUCT VALUES('M0202023WHS','05','thumb023','À¯´ÏÅ© ´ýºí ¶ó¿îµå Æ¼¼ÅÃ÷', 'WH', 'S', 20000,20,16000 ,03,023,'´ÜÇ° ¹× ÀÌ³Ê·Î ÀÔ±â ÁÁÀº º£ÀÌÁ÷ Æ¼¼ÅÃ÷','dt023',150,TO_DATE('2020-07-01','YYYY-MM-DD'),TO_DATE('2020-05-20','YYYY-MM-DD'),TO_DATE('2020-06-05','YYYY-MM-DD'),4000000,2500000,'N',023,0);
-INSERT INTO PRODUCT VALUES('M0202023BLS','05','thumb023','À¯´ÏÅ© ´ýºí ¶ó¿îµå Æ¼¼ÅÃ÷', 'BK', 'S', 20000,20,16000 ,03,023,'´ÜÇ° ¹× ÀÌ³Ê·Î ÀÔ±â ÁÁÀº º£ÀÌÁ÷ Æ¼¼ÅÃ÷','dt023',150,TO_DATE('2020-07-01','YYYY-MM-DD'),TO_DATE('2020-05-20','YYYY-MM-DD'),TO_DATE('2020-06-05','YYYY-MM-DD'),4000000,2500000,'N',023,0);
-INSERT INTO PRODUCT VALUES('M0202023BKM','05','thumb023','À¯´ÏÅ© ´ýºí ¶ó¿îµå Æ¼¼ÅÃ÷', 'BK', 'M', 20000,20,16000 ,03,023,'´ÜÇ° ¹× ÀÌ³Ê·Î ÀÔ±â ÁÁÀº º£ÀÌÁ÷ Æ¼¼ÅÃ÷','dt023',150,TO_DATE('2020-07-01','YYYY-MM-DD'),TO_DATE('2020-05-20','YYYY-MM-DD'),TO_DATE('2020-06-05','YYYY-MM-DD'),4000000,2500000,'N',023,0);
-INSERT INTO PRODUCT VALUES('M0202023WHM','05','thumb023','À¯´ÏÅ© ´ýºí ¶ó¿îµå Æ¼¼ÅÃ÷', 'WH', 'M', 20000,20,16000 ,03,023,'´ÜÇ° ¹× ÀÌ³Ê·Î ÀÔ±â ÁÁÀº º£ÀÌÁ÷ Æ¼¼ÅÃ÷','dt023',150,TO_DATE('2020-07-01','YYYY-MM-DD'),TO_DATE('2020-05-20','YYYY-MM-DD'),TO_DATE('2020-06-05','YYYY-MM-DD'),4000000,2500000,'N',023,0);
-INSERT INTO PRODUCT VALUES('M0202023BLM','05','thumb023','À¯´ÏÅ© ´ýºí ¶ó¿îµå Æ¼¼ÅÃ÷', 'BK', 'M', 20000,20,16000 ,03,023,'´ÜÇ° ¹× ÀÌ³Ê·Î ÀÔ±â ÁÁÀº º£ÀÌÁ÷ Æ¼¼ÅÃ÷','dt023',150,TO_DATE('2020-07-01','YYYY-MM-DD'),TO_DATE('2020-05-20','YYYY-MM-DD'),TO_DATE('2020-06-05','YYYY-MM-DD'),4000000,2500000,'N',023,0);
-INSERT INTO PRODUCT VALUES('M0202023BKL','05','thumb023','À¯´ÏÅ© ´ýºí ¶ó¿îµå Æ¼¼ÅÃ÷', 'BK', 'L', 20000,20,16000 ,03,023,'´ÜÇ° ¹× ÀÌ³Ê·Î ÀÔ±â ÁÁÀº º£ÀÌÁ÷ Æ¼¼ÅÃ÷','dt023',150,TO_DATE('2020-07-01','YYYY-MM-DD'),TO_DATE('2020-05-20','YYYY-MM-DD'),TO_DATE('2020-06-05','YYYY-MM-DD'),4000000,2500000,'N',023,0);
-INSERT INTO PRODUCT VALUES('M0202023WHL','05','thumb023','À¯´ÏÅ© ´ýºí ¶ó¿îµå Æ¼¼ÅÃ÷', 'WH', 'L', 20000,20,16000 ,03,023,'´ÜÇ° ¹× ÀÌ³Ê·Î ÀÔ±â ÁÁÀº º£ÀÌÁ÷ Æ¼¼ÅÃ÷','dt023',150,TO_DATE('2020-07-01','YYYY-MM-DD'),TO_DATE('2020-05-20','YYYY-MM-DD'),TO_DATE('2020-06-05','YYYY-MM-DD'),4000000,2500000,'N',023,0);
+INSERT INTO PRODUCT VALUES('W0101019BKS', '01', 'thumb021', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ä´Ùµï¿½ ï¿½Ì±ï¿½ ï¿½ï¿½Å¶','BK','S',98000, 10, 88200, 01, 019, 'Ä³ï¿½Ö¾ï¿½ï¿½Ï°ï¿½ È°ï¿½ëµµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç·ç¿§ ï¿½ï¿½ï¿½ï¿½.', 'dt021', 98, '2020/06/01', '2020/05/10', '2020/05/27', 5000000, 3000000, 'Y', '019', 0);
+INSERT INTO PRODUCT VALUES('W0101019BKM', '01', 'thumb021', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ä´Ùµï¿½ ï¿½Ì±ï¿½ ï¿½ï¿½Å¶','BK','M',98000, 10, 88200, 01, 019, 'Ä³ï¿½Ö¾ï¿½ï¿½Ï°ï¿½ È°ï¿½ëµµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç·ç¿§ ï¿½ï¿½ï¿½ï¿½.', 'dt021', 98, '2020/06/01', '2020/05/10', '2020/05/27', 5000000, 3000000, 'Y', '019', 0);
+INSERT INTO PRODUCT VALUES('W0101019BLS', '01', 'thumb021', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ä´Ùµï¿½ ï¿½Ì±ï¿½ ï¿½ï¿½Å¶','BL','S',98000, 10, 88200, 01, 019, 'Ä³ï¿½Ö¾ï¿½ï¿½Ï°ï¿½ È°ï¿½ëµµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç·ç¿§ ï¿½ï¿½ï¿½ï¿½.', 'dt021', 98, '2020/06/01', '2020/05/10', '2020/05/27', 5000000, 3000000, 'Y', '019', 0);
+INSERT INTO PRODUCT VALUES('W0101019BLM', '01', 'thumb021', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ä´Ùµï¿½ ï¿½Ì±ï¿½ ï¿½ï¿½Å¶','BL','M',98000, 10, 88200, 01, 019, 'Ä³ï¿½Ö¾ï¿½ï¿½Ï°ï¿½ È°ï¿½ëµµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç·ç¿§ ï¿½ï¿½ï¿½ï¿½.', 'dt021', 98, '2020/06/01', '2020/05/10', '2020/05/27', 5000000, 3000000, 'Y', '019', 0);
+INSERT INTO PRODUCT VALUES('W0101019GNS', '01', 'thumb021', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ä´Ùµï¿½ ï¿½Ì±ï¿½ ï¿½ï¿½Å¶','GN','S',98000, 10, 88200, 01, 019, 'Ä³ï¿½Ö¾ï¿½ï¿½Ï°ï¿½ È°ï¿½ëµµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç·ç¿§ ï¿½ï¿½ï¿½ï¿½.', 'dt021', 98, '2020/06/01', '2020/05/10', '2020/05/27', 5000000, 3000000, 'Y', '019', 0);
+INSERT INTO PRODUCT VALUES('W0101019GNM', '01', 'thumb021', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ä´Ùµï¿½ ï¿½Ì±ï¿½ ï¿½ï¿½Å¶','GN','M',98000, 10, 88200, 01, 019, 'Ä³ï¿½Ö¾ï¿½ï¿½Ï°ï¿½ È°ï¿½ëµµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç·ç¿§ ï¿½ï¿½ï¿½ï¿½.', 'dt021', 98, '2020/06/01', '2020/05/10', '2020/05/27', 5000000, 3000000, 'Y', '019', 0);
+INSERT INTO PRODUCT VALUES('W0101019YLS', '01', 'thumb021', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ä´Ùµï¿½ ï¿½Ì±ï¿½ ï¿½ï¿½Å¶','YL','S',98000, 10, 88200, 01, 019, 'Ä³ï¿½Ö¾ï¿½ï¿½Ï°ï¿½ È°ï¿½ëµµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç·ç¿§ ï¿½ï¿½ï¿½ï¿½.', 'dt021', 98, '2020/06/01', '2020/05/10', '2020/05/27', 5000000, 3000000, 'Y', '019', 0);
+INSERT INTO PRODUCT VALUES('W0101019YLM', '01', 'thumb021', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ä´Ùµï¿½ ï¿½Ì±ï¿½ ï¿½ï¿½Å¶','YL','M',98000, 10, 88200, 01, 019, 'Ä³ï¿½Ö¾ï¿½ï¿½Ï°ï¿½ È°ï¿½ëµµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç·ç¿§ ï¿½ï¿½ï¿½ï¿½.', 'dt021', 98, '2020/06/01', '2020/05/10', '2020/05/27', 5000000, 3000000, 'Y', '019', 0);
+INSERT INTO PRODUCT VALUES('W0105020BKS', '01', 'thumb091', 'Ä³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½','BK','S',118000, 10, 106200, 05, 020, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½. ï¿½ï¿½ ï¿½Ù¿ï¿½ï¿½ Ã¼Å© ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.', 'dt091', 100, '2020/06/11', '2020/05/20', '2020/05/30', 2000000, 800000, 'Y', '020', 0);
+INSERT INTO PRODUCT VALUES('W0105020BKM', '01', 'thumb091', 'Ä³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½','BK','M',118000, 10, 106200, 05, 020, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½. ï¿½ï¿½ ï¿½Ù¿ï¿½ï¿½ Ã¼Å© ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.', 'dt091', 100, '2020/06/11', '2020/05/20', '2020/05/30', 2000000, 800000, 'Y', '020', 0);
+INSERT INTO PRODUCT VALUES('W0105020BKL', '01', 'thumb091', 'Ä³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½','BK','L',118000, 10, 106200, 05, 020, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½. ï¿½ï¿½ ï¿½Ù¿ï¿½ï¿½ Ã¼Å© ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.', 'dt091', 100, '2020/06/11', '2020/05/20', '2020/05/30', 2000000, 800000, 'Y', '020', 0);
+INSERT INTO PRODUCT VALUES('W0105020YLS', '01', 'thumb091', 'Ä³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½','YL','S',118000, 10, 106200, 05, 020, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½. ï¿½ï¿½ ï¿½Ù¿ï¿½ï¿½ Ã¼Å© ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.', 'dt091', 100, '2020/06/11', '2020/05/20', '2020/05/30', 2000000, 800000, 'Y', '020', 0);
+INSERT INTO PRODUCT VALUES('W0105020YLM', '01', 'thumb091', 'Ä³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½','YL','M',118000, 10, 106200, 05, 020, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½. ï¿½ï¿½ ï¿½Ù¿ï¿½ï¿½ Ã¼Å© ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.', 'dt091', 100, '2020/06/11', '2020/05/20', '2020/05/30', 2000000, 800000, 'Y', '020', 0);
+INSERT INTO PRODUCT VALUES('W0105020GNS', '01', 'thumb091', 'Ä³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½','GN','S',118000, 10, 106200, 05, 020, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½. ï¿½ï¿½ ï¿½Ù¿ï¿½ï¿½ Ã¼Å© ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.', 'dt091', 100, '2020/06/11', '2020/05/20', '2020/05/30', 2000000, 800000, 'Y', '020', 0);
+INSERT INTO PRODUCT VALUES('W0105020GNM', '01', 'thumb091', 'Ä³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½','GN','M',118000, 10, 106200, 05, 020, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½. ï¿½ï¿½ ï¿½Ù¿ï¿½ï¿½ Ã¼Å© ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.', 'dt091', 100, '2020/06/11', '2020/05/20', '2020/05/30', 2000000, 800000, 'Y', '020', 0);
+INSERT INTO PRODUCT VALUES('W0105020BLS', '01', 'thumb091', 'Ä³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½','BL','S',118000, 10, 106200, 05, 020, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½. ï¿½ï¿½ ï¿½Ù¿ï¿½ï¿½ Ã¼Å© ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.', 'dt091', 100, '2020/06/11', '2020/05/20', '2020/05/30', 2000000, 800000, 'Y', '020', 0);
+INSERT INTO PRODUCT VALUES('W0105020BLM', '01', 'thumb091', 'Ä³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½','BL','M',118000, 10, 106200, 05, 020, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½. ï¿½ï¿½ ï¿½Ù¿ï¿½ï¿½ Ã¼Å© ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.', 'dt091', 100, '2020/06/11', '2020/05/20', '2020/05/30', 2000000, 800000, 'Y', '020', 0);
 
-INSERT INTO PRODUCT VALUES('M0202024WHS', '02', 'thumb080', 'ÇÏ¾á Å¥Æ¼»ÇÂ¦ °õµ¹ÀÌ Æ¼¼ÅÃ÷','WH','S', 200000, 30, 140000, 02, 024, '°õµ¹ÀÌ°¡ ³Ê¹«±Í¿©¿ò', 'dt080', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 1000000, 200000, 'N', '024', 0);
-INSERT INTO PRODUCT VALUES('M0202024WHM', '02', 'thumb080', 'ÇÏ¾á Å¥Æ¼»ÇÂ¦ °õµ¹ÀÌ Æ¼¼ÅÃ÷','WH','M', 200000, 30, 140000, 02, 024, '°õµ¹ÀÌ°¡ ³Ê¹«±Í¿©¿ò', 'dt080', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 1000000, 200000, 'N', '024', 0);
-INSERT INTO PRODUCT VALUES('M0202024WHL', '02', 'thumb080', 'ÇÏ¾á Å¥Æ¼»ÇÂ¦ °õµ¹ÀÌ Æ¼¼ÅÃ÷', 'WH','L',200000, 30, 140000, 02, 024, '°õµ¹ÀÌ°¡ ³Ê¹«±Í¿©¿ò', 'dt080', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 1000000, 200000, 'N', '024', 0);
 
-INSERT INTO PRODUCT VALUES('M0202025WHS', '02', 'thumb095', 'ÃÊ ¼½½Ã Å¸ÀÌÆ® V³Ø','WH','S', 200000, 30, 140000, 02, 025, '¿À´Ã¹ãÀº ³ªÀÇ °Í', 'dt095', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 1000000, 300000, 'N', '025', 0);
-INSERT INTO PRODUCT VALUES('M0202025WHM', '02', 'thumb095', 'ÃÊ ¼½½Ã Å¸ÀÌÆ® V³Ø','WH','M', 200000, 30, 140000, 02, 025, '¿À´Ã¹ãÀº ³ªÀÇ °Í', 'dt095', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 1000000, 300000, 'N', '025', 0);
-INSERT INTO PRODUCT VALUES('M0202025WHL', '02', 'thumb095', 'ÃÊ ¼½½Ã Å¸ÀÌÆ® V³Ø', 'WH','L',200000, 30, 140000, 02, 025, '¿À´Ã¹ãÀº ³ªÀÇ °Í', 'dt095', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 1000000, 300000, 'N', '025', 0);
+-- 021~040(ï¿½Ñ¼ï¿½)
 
---INSERT INTO PRODUCT VALUES('M0201026WHS', '02', 'thumb026', 'ÇÏ¾á µû¶æ Ç«½Å ¹«½ºÅÁ ','WH','S', 200000, 30, 140000, 01, 026, 'ÀÔ°í »ê°¡¸é °õÀÎÁÙ¾Ë°í µµ¸Á°¨', 'dt026', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 10000000, 0, 'N', '026', 0);
---INSERT INTO PRODUCT VALUES('M0201026WHM', '02', 'thumb026', 'ÇÏ¾á µû¶æ Ç«½Å ¹«½ºÅÁ','WH','M', 200000, 30, 140000, 01, 026, 'ÀÔ°í »ê°¡¸é °õÀÎÁÙ¾Ë°í µµ¸Á°¨', 'dt026', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 10000000, 0, 'N', '026', 0);
---INSERT INTO PRODUCT VALUES('M0201026WHL', '02', 'thumb026', 'ÇÏ¾á µû¶æ Ç«½Å ¹«½ºÅÁ', 'WH','L',200000, 30, 140000, 01, 026, 'ÀÔ°í »ê°¡¸é °õÀÎÁÙ¾Ë°í µµ¸Á°¨', 'dt026', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 10000000, 0, 'N', '026', 0);
+INSERT INTO PRODUCT VALUES('W0201021RDS', '01' ,'thumb007','ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½ï¿½ï¿½ Æ®ï¿½ï¿½Ä¡ï¿½ï¿½Æ®', 'RD', 'S', 130000,10,117000,01,021,'ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ü¿ï¿½ ï¿½Ò¸ï¿½ ï¿½Ñ¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!' ,'dt007',250,TO_DATE('2020-05-30','YYYY-MM-DD'),TO_DATE('2020-05-01','YYYY-MM-DD'),TO_DATE('2020-05-20','YYYY-MM-DD'),1000000,500000,'N',021,0);
+INSERT INTO PRODUCT VALUES('W0201021WHS','01','thumb007' ,'ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½ï¿½ï¿½ Æ®ï¿½ï¿½Ä¡ï¿½ï¿½Æ®', 'WH', 'S', 130000,10,117000,01,021,'ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ü¿ï¿½ ï¿½Ò¸ï¿½ ï¿½Ñ¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!','dt007',250,TO_DATE('2020-05-30','YYYY-MM-DD'),TO_DATE('2020-05-01','YYYY-MM-DD'),TO_DATE('2020-05-20','YYYY-MM-DD'),1000000,500000,'N',021,0);
+INSERT INTO PRODUCT VALUES('W0201021RDM','01','thumb007' ,'ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½ï¿½ï¿½ Æ®ï¿½ï¿½Ä¡ï¿½ï¿½Æ®', 'RD', 'M', 130000,10,117000,01,021,'ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ü¿ï¿½ ï¿½Ò¸ï¿½ ï¿½Ñ¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!' ,'dt007',250,TO_DATE('2020-05-30','YYYY-MM-DD'),TO_DATE('2020-05-01','YYYY-MM-DD'),TO_DATE('2020-05-20','YYYY-MM-DD'),1000000,500000,'N',021,0);
+INSERT INTO PRODUCT VALUES('W0201021WHM','01','thumb007' ,'ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½ï¿½ï¿½ Æ®ï¿½ï¿½Ä¡ï¿½ï¿½Æ®', 'WH', 'M', 130000,10,117000,01,021,'ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ü¿ï¿½ ï¿½Ò¸ï¿½ ï¿½Ñ¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!' ,'dt007',250,TO_DATE('2020-05-30','YYYY-MM-DD'),TO_DATE('2020-05-01','YYYY-MM-DD'),TO_DATE('2020-05-20','YYYY-MM-DD'),1000000,500000,'N',021,0);
+INSERT INTO PRODUCT VALUES('W0201021RDL','01','thumb007' ,' ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½ï¿½ï¿½ Æ®ï¿½ï¿½Ä¡ï¿½ï¿½Æ®', 'RD', 'L', 130000,10,117000,01,021,'ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ü¿ï¿½ ï¿½Ò¸ï¿½ ï¿½Ñ¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!' ,'dt007',250,TO_DATE('2020-05-30','YYYY-MM-DD'),TO_DATE('2020-05-01','YYYY-MM-DD'),TO_DATE('2020-05-20','YYYY-MM-DD'),1000000,500000,'N',021,0);
+INSERT INTO PRODUCT VALUES('W0201021WHL','01','thumb007' ,'ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½ï¿½ï¿½ Æ®ï¿½ï¿½Ä¡ï¿½ï¿½Æ®', 'WH', 'L', 130000,10,117000,01,021,'ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ü¿ï¿½ ï¿½Ò¸ï¿½ ï¿½Ñ¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!' ,'dt007',250,TO_DATE('2020-05-30','YYYY-MM-DD'),TO_DATE('2020-05-01','YYYY-MM-DD'),TO_DATE('2020-05-20','YYYY-MM-DD'),1000000,500000,'N',021,0);
+
+INSERT INTO PRODUCT VALUES('W0205022RDS','03','thumb081', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½Ç½ï¿½', 'RD', 'S', 65000,15,55250,03,022,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½!','dt081',100,TO_DATE('2020-06-30','YYYY-MM-DD'),TO_DATE('2020-05-15','YYYY-MM-DD'),TO_DATE('2020-06-15','YYYY-MM-DD'),3000000,2000000,'Y',022,0);
+INSERT INTO PRODUCT VALUES('W0205022WHS','03','thumb081','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½Ç½ï¿½', 'WH', 'S', 65000,15,55250 ,03,022,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½','dt081',100,TO_DATE('2020-06-30','YYYY-MM-DD'),TO_DATE('2020-05-15','YYYY-MM-DD'),TO_DATE('2020-06-15','YYYY-MM-DD'),3000000,2000000,'Y',022,0);
+INSERT INTO PRODUCT VALUES('W0205022RDM','03','thumb081','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½Ç½ï¿½', 'RD' , 'M', 65000,15,55250 ,03,022,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½','dt081',100,TO_DATE('2020-06-30','YYYY-MM-DD'),TO_DATE('2020-05-15','YYYY-MM-DD'),TO_DATE('2020-06-15','YYYY-MM-DD'),3000000,2000000,'Y',022,0);
+INSERT INTO PRODUCT VALUES('W0205022WHM','03','thumb081','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½Ç½ï¿½', 'WH', 'M', 65000,15,55250 ,03,022,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½','dt081',100,TO_DATE('2020-06-30','YYYY-MM-DD'),TO_DATE('2020-05-15','YYYY-MM-DD'),TO_DATE('2020-06-15','YYYY-MM-DD'),3000000,2000000,'Y',022,0);
+INSERT INTO PRODUCT VALUES('W0205022RDL','03','thumb081','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½Ç½ï¿½', 'RD', 'L', 65000,15,55250 ,03,022,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½','dt081',100,TO_DATE('2020-06-30','YYYY-MM-DD'),TO_DATE('2020-05-15','YYYY-MM-DD'),TO_DATE('2020-06-15','YYYY-MM-DD'),3000000,2000000,'Y',022,0);
+INSERT INTO PRODUCT VALUES('W0205022WHL','03','thumb081','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½Ç½ï¿½', 'WH', 'L', 65000,15,55250 ,03,022,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½','dt081',100,TO_DATE('2020-06-30','YYYY-MM-DD'),TO_DATE('2020-05-15','YYYY-MM-DD'),TO_DATE('2020-06-15','YYYY-MM-DD'),3000000,2000000,'Y',022,0);
+
+INSERT INTO PRODUCT VALUES('M0202023BKS','05','thumb023','ï¿½ï¿½ï¿½ï¿½Å© ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½', 'BK', 'S', 20000,20,16000 ,03,023,'ï¿½ï¿½Ç° ï¿½ï¿½ ï¿½Ì³Ê·ï¿½ ï¿½Ô±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½','dt023',150,TO_DATE('2020-07-01','YYYY-MM-DD'),TO_DATE('2020-05-20','YYYY-MM-DD'),TO_DATE('2020-06-05','YYYY-MM-DD'),4000000,2500000,'N',023,0);
+INSERT INTO PRODUCT VALUES('M0202023WHS','05','thumb023','ï¿½ï¿½ï¿½ï¿½Å© ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½', 'WH', 'S', 20000,20,16000 ,03,023,'ï¿½ï¿½Ç° ï¿½ï¿½ ï¿½Ì³Ê·ï¿½ ï¿½Ô±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½','dt023',150,TO_DATE('2020-07-01','YYYY-MM-DD'),TO_DATE('2020-05-20','YYYY-MM-DD'),TO_DATE('2020-06-05','YYYY-MM-DD'),4000000,2500000,'N',023,0);
+INSERT INTO PRODUCT VALUES('M0202023BLS','05','thumb023','ï¿½ï¿½ï¿½ï¿½Å© ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½', 'BK', 'S', 20000,20,16000 ,03,023,'ï¿½ï¿½Ç° ï¿½ï¿½ ï¿½Ì³Ê·ï¿½ ï¿½Ô±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½','dt023',150,TO_DATE('2020-07-01','YYYY-MM-DD'),TO_DATE('2020-05-20','YYYY-MM-DD'),TO_DATE('2020-06-05','YYYY-MM-DD'),4000000,2500000,'N',023,0);
+INSERT INTO PRODUCT VALUES('M0202023BKM','05','thumb023','ï¿½ï¿½ï¿½ï¿½Å© ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½', 'BK', 'M', 20000,20,16000 ,03,023,'ï¿½ï¿½Ç° ï¿½ï¿½ ï¿½Ì³Ê·ï¿½ ï¿½Ô±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½','dt023',150,TO_DATE('2020-07-01','YYYY-MM-DD'),TO_DATE('2020-05-20','YYYY-MM-DD'),TO_DATE('2020-06-05','YYYY-MM-DD'),4000000,2500000,'N',023,0);
+INSERT INTO PRODUCT VALUES('M0202023WHM','05','thumb023','ï¿½ï¿½ï¿½ï¿½Å© ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½', 'WH', 'M', 20000,20,16000 ,03,023,'ï¿½ï¿½Ç° ï¿½ï¿½ ï¿½Ì³Ê·ï¿½ ï¿½Ô±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½','dt023',150,TO_DATE('2020-07-01','YYYY-MM-DD'),TO_DATE('2020-05-20','YYYY-MM-DD'),TO_DATE('2020-06-05','YYYY-MM-DD'),4000000,2500000,'N',023,0);
+INSERT INTO PRODUCT VALUES('M0202023BLM','05','thumb023','ï¿½ï¿½ï¿½ï¿½Å© ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½', 'BK', 'M', 20000,20,16000 ,03,023,'ï¿½ï¿½Ç° ï¿½ï¿½ ï¿½Ì³Ê·ï¿½ ï¿½Ô±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½','dt023',150,TO_DATE('2020-07-01','YYYY-MM-DD'),TO_DATE('2020-05-20','YYYY-MM-DD'),TO_DATE('2020-06-05','YYYY-MM-DD'),4000000,2500000,'N',023,0);
+INSERT INTO PRODUCT VALUES('M0202023BKL','05','thumb023','ï¿½ï¿½ï¿½ï¿½Å© ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½', 'BK', 'L', 20000,20,16000 ,03,023,'ï¿½ï¿½Ç° ï¿½ï¿½ ï¿½Ì³Ê·ï¿½ ï¿½Ô±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½','dt023',150,TO_DATE('2020-07-01','YYYY-MM-DD'),TO_DATE('2020-05-20','YYYY-MM-DD'),TO_DATE('2020-06-05','YYYY-MM-DD'),4000000,2500000,'N',023,0);
+INSERT INTO PRODUCT VALUES('M0202023WHL','05','thumb023','ï¿½ï¿½ï¿½ï¿½Å© ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½', 'WH', 'L', 20000,20,16000 ,03,023,'ï¿½ï¿½Ç° ï¿½ï¿½ ï¿½Ì³Ê·ï¿½ ï¿½Ô±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½','dt023',150,TO_DATE('2020-07-01','YYYY-MM-DD'),TO_DATE('2020-05-20','YYYY-MM-DD'),TO_DATE('2020-06-05','YYYY-MM-DD'),4000000,2500000,'N',023,0);
+
+INSERT INTO PRODUCT VALUES('M0202024WHS', '02', 'thumb080', 'ï¿½Ï¾ï¿½ Å¥Æ¼ï¿½ï¿½Â¦ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½','WH','S', 200000, 30, 140000, 02, 024, 'ï¿½ï¿½ï¿½ï¿½ï¿½Ì°ï¿½ ï¿½Ê¹ï¿½ï¿½Í¿ï¿½ï¿½ï¿½', 'dt080', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 1000000, 200000, 'N', '024', 0);
+INSERT INTO PRODUCT VALUES('M0202024WHM', '02', 'thumb080', 'ï¿½Ï¾ï¿½ Å¥Æ¼ï¿½ï¿½Â¦ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½','WH','M', 200000, 30, 140000, 02, 024, 'ï¿½ï¿½ï¿½ï¿½ï¿½Ì°ï¿½ ï¿½Ê¹ï¿½ï¿½Í¿ï¿½ï¿½ï¿½', 'dt080', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 1000000, 200000, 'N', '024', 0);
+INSERT INTO PRODUCT VALUES('M0202024WHL', '02', 'thumb080', 'ï¿½Ï¾ï¿½ Å¥Æ¼ï¿½ï¿½Â¦ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½', 'WH','L',200000, 30, 140000, 02, 024, 'ï¿½ï¿½ï¿½ï¿½ï¿½Ì°ï¿½ ï¿½Ê¹ï¿½ï¿½Í¿ï¿½ï¿½ï¿½', 'dt080', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 1000000, 200000, 'N', '024', 0);
+
+INSERT INTO PRODUCT VALUES('M0202025WHS', '02', 'thumb095', 'ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½Æ® Vï¿½ï¿½','WH','S', 200000, 30, 140000, 02, 025, 'ï¿½ï¿½ï¿½Ã¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½', 'dt095', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 1000000, 300000, 'N', '025', 0);
+INSERT INTO PRODUCT VALUES('M0202025WHM', '02', 'thumb095', 'ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½Æ® Vï¿½ï¿½','WH','M', 200000, 30, 140000, 02, 025, 'ï¿½ï¿½ï¿½Ã¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½', 'dt095', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 1000000, 300000, 'N', '025', 0);
+INSERT INTO PRODUCT VALUES('M0202025WHL', '02', 'thumb095', 'ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½Æ® Vï¿½ï¿½', 'WH','L',200000, 30, 140000, 02, 025, 'ï¿½ï¿½ï¿½Ã¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½', 'dt095', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 1000000, 300000, 'N', '025', 0);
+
+--INSERT INTO PRODUCT VALUES('M0201026WHS', '02', 'thumb026', 'ï¿½Ï¾ï¿½ ï¿½ï¿½ï¿½ï¿½ Ç«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ','WH','S', 200000, 30, 140000, 01, 026, 'ï¿½Ô°ï¿½ ï¿½ê°¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ù¾Ë°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt026', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 10000000, 0, 'N', '026', 0);
+--INSERT INTO PRODUCT VALUES('M0201026WHM', '02', 'thumb026', 'ï¿½Ï¾ï¿½ ï¿½ï¿½ï¿½ï¿½ Ç«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','WH','M', 200000, 30, 140000, 01, 026, 'ï¿½Ô°ï¿½ ï¿½ê°¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ù¾Ë°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt026', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 10000000, 0, 'N', '026', 0);
+--INSERT INTO PRODUCT VALUES('M0201026WHL', '02', 'thumb026', 'ï¿½Ï¾ï¿½ ï¿½ï¿½ï¿½ï¿½ Ç«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'WH','L',200000, 30, 140000, 01, 026, 'ï¿½Ô°ï¿½ ï¿½ê°¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ù¾Ë°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt026', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 10000000, 0, 'N', '026', 0);
    
-INSERT INTO PRODUCT VALUES('M0204027BKS', '02', 'thumb077', 'ºí·¢ ½½¸² ½½·º½º','BK','S', 200000, 30, 140000, 04, 027, '³Ê¹« ±ò²ûÇØ¼­ ¸éÁ¢¶§µµ ÀÌ°ÅÀÔ°í°¨', 'dt077', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 2000000, 550000, 'N', '027', 0);
-INSERT INTO PRODUCT VALUES('M0204027BKM', '02', 'thumb077', 'ºí·¢ ½½¸² ½½·º½º','BK','M', 200000, 30, 140000,04, 027, '³Ê¹« ±ò²ûÇØ¼­ ¸éÁ¢¶§µµ ÀÌ°ÅÀÔ°í°¨', 'dt077', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 2000000, 550000, 'N', '027', 0);
-INSERT INTO PRODUCT VALUES('M0204027BKL', '02', 'thumb077', 'ºí·¢ ½½¸² ½½·º½º', 'BK','L',200000, 30, 140000, 04, 027, '³Ê¹« ±ò²ûÇØ¼­ ¸éÁ¢¶§µµ ÀÌ°ÅÀÔ°í°¨', 'dt077', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 2000000, 550000, 'N', '027', 0);
+INSERT INTO PRODUCT VALUES('M0204027BKS', '02', 'thumb077', 'ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','BK','S', 200000, 30, 140000, 04, 027, 'ï¿½Ê¹ï¿½ ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì°ï¿½ï¿½Ô°ï¿½', 'dt077', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 2000000, 550000, 'N', '027', 0);
+INSERT INTO PRODUCT VALUES('M0204027BKM', '02', 'thumb077', 'ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','BK','M', 200000, 30, 140000,04, 027, 'ï¿½Ê¹ï¿½ ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì°ï¿½ï¿½Ô°ï¿½', 'dt077', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 2000000, 550000, 'N', '027', 0);
+INSERT INTO PRODUCT VALUES('M0204027BKL', '02', 'thumb077', 'ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'BK','L',200000, 30, 140000, 04, 027, 'ï¿½Ê¹ï¿½ ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì°ï¿½ï¿½Ô°ï¿½', 'dt077', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 2000000, 550000, 'N', '027', 0);
 
-INSERT INTO PRODUCT VALUES('M0201028BKS', '02', 'thumb047', 'ºí·¢ ½ÃÅ© ·ÕÄÚÆ®','BK','S', 200000, 30, 140000, 01, 028, 'µµ±úºñ °øÀ¯ÇÍ ±¸Çö°¡´É ±×·±µ¥ °øÀ¯¸¸ °¡´É', 'dt047', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 1000000, 560000, 'N', '028', 0);
-INSERT INTO PRODUCT VALUES('M0201028BKM', '02', 'thumb047', 'ºí·¢ ½ÃÅ© ·ÕÄÚÆ®','BK','M', 200000, 30, 140000, 01, 028, 'µµ±úºñ °øÀ¯ÇÍ ±¸Çö°¡´É ±×·±µ¥ °øÀ¯¸¸ °¡´É', 'dt047', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 1000000, 560000, 'N', '028', 0);
-INSERT INTO PRODUCT VALUES('M0201028BKL', '02', 'thumb047', 'ºí·¢ ½ÃÅ© ·ÕÄÚÆ®', 'BK','L',200000, 30, 140000, 01, 028, 'µµ±úºñ °øÀ¯ÇÍ ±¸Çö°¡´É ±×·±µ¥ °øÀ¯¸¸ °¡´É', 'dt047', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 1000000, 560000, 'N', '028', 0);
+INSERT INTO PRODUCT VALUES('M0201028BKS', '02', 'thumb047', 'ï¿½ï¿½ ï¿½ï¿½Å© ï¿½ï¿½ï¿½ï¿½Æ®','BK','S', 200000, 30, 140000, 01, 028, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'dt047', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 1000000, 560000, 'N', '028', 0);
+INSERT INTO PRODUCT VALUES('M0201028BKM', '02', 'thumb047', 'ï¿½ï¿½ ï¿½ï¿½Å© ï¿½ï¿½ï¿½ï¿½Æ®','BK','M', 200000, 30, 140000, 01, 028, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'dt047', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 1000000, 560000, 'N', '028', 0);
+INSERT INTO PRODUCT VALUES('M0201028BKL', '02', 'thumb047', 'ï¿½ï¿½ ï¿½ï¿½Å© ï¿½ï¿½ï¿½ï¿½Æ®', 'BK','L',200000, 30, 140000, 01, 028, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'dt047', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 1000000, 560000, 'N', '028', 0);
 
-INSERT INTO PRODUCT VALUES('M0202029WHS', '02', 'thumb094', 'µ¥ÀÏ¸® ·¹ÀÌ¾îµå ³ª½Ã','WH','S', 200000, 30, 140000, 02, 029, 'ÀÔÀ¸¸é ¿©¸§¿¡µµ Ãß¿ò', 'dt094', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 3000000, 1500000, 'N', '029', 0);
-INSERT INTO PRODUCT VALUES('M0202029WHM', '02', 'thumb094', 'µ¥ÀÏ¸® ·¹ÀÌ¾îµå ³ª½Ã','WH','M', 200000, 30, 140000, 02, 029, 'ÀÔÀ¸¸é ¿©¸§¿¡µµ Ãß¿ò', 'dt094', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 3000000, 1500000, 'N', '029', 0);
-INSERT INTO PRODUCT VALUES('M0202029WHL', '02', 'thumb094', 'µ¥ÀÏ¸® ·¹ÀÌ¾îµå ³ª½Ã', 'WH','L',200000, 30, 140000, 02, 029, 'ÀÔÀ¸¸é ¿©¸§¿¡µµ Ãß¿ò', 'dt094', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 3000000, 1500000, 'N', '029', 0);
+INSERT INTO PRODUCT VALUES('M0202029WHS', '02', 'thumb094', 'ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½','WH','S', 200000, 30, 140000, 02, 029, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¿ï¿½', 'dt094', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 3000000, 1500000, 'N', '029', 0);
+INSERT INTO PRODUCT VALUES('M0202029WHM', '02', 'thumb094', 'ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½','WH','M', 200000, 30, 140000, 02, 029, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¿ï¿½', 'dt094', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 3000000, 1500000, 'N', '029', 0);
+INSERT INTO PRODUCT VALUES('M0202029WHL', '02', 'thumb094', 'ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'WH','L',200000, 30, 140000, 02, 029, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¿ï¿½', 'dt094', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 3000000, 1500000, 'N', '029', 0);
 
-INSERT INTO PRODUCT VALUES('W0202030WHS', '02', 'thumb070', 'ÅÙ¼¿½ÉÇÃ·¹ÅÍ¸µ¹ÝÆÈÆ¼','WH','S', 200000, 30, 140000, 02, 030, '»ì¶û»ì¶û ¹«½¼°èÀý¿¡ ÀÔ¾îµµ º½ ´À³¦ ³²', 'dt070', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 4000000, 2000000, 'N', '030', 0);
-INSERT INTO PRODUCT VALUES('W0202030WHM', '02', 'thumb070', 'ÅÙ¼¿½ÉÇÃ·¹ÅÍ¸µ¹ÝÆÈÆ¼','WH','M', 200000, 30, 140000, 02, 030, '»ì¶û»ì¶û ¹«½¼°èÀý¿¡ ÀÔ¾îµµ º½ ´À³¦ ³²', 'dt070', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 4000000, 2000000, 'N', '030', 0);
-INSERT INTO PRODUCT VALUES('W0202030WHL', '02', 'thumb070', 'ÅÙ¼¿½ÉÇÃ·¹ÅÍ¸µ¹ÝÆÈÆ¼', 'WH','L',200000, 30, 140000, 02, 030, '»ì¶û»ì¶û ¹«½¼°èÀý¿¡ ÀÔ¾îµµ º½ ´À³¦ ³²', 'dt070', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 4000000, 2000000, 'N', '030', 0);
+INSERT INTO PRODUCT VALUES('W0202030WHS', '02', 'thumb070', 'ï¿½Ù¼ï¿½ï¿½ï¿½ï¿½Ã·ï¿½ï¿½Í¸ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼','WH','S', 200000, 30, 140000, 02, 030, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¾îµµ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½', 'dt070', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 4000000, 2000000, 'N', '030', 0);
+INSERT INTO PRODUCT VALUES('W0202030WHM', '02', 'thumb070', 'ï¿½Ù¼ï¿½ï¿½ï¿½ï¿½Ã·ï¿½ï¿½Í¸ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼','WH','M', 200000, 30, 140000, 02, 030, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¾îµµ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½', 'dt070', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 4000000, 2000000, 'N', '030', 0);
+INSERT INTO PRODUCT VALUES('W0202030WHL', '02', 'thumb070', 'ï¿½Ù¼ï¿½ï¿½ï¿½ï¿½Ã·ï¿½ï¿½Í¸ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼', 'WH','L',200000, 30, 140000, 02, 030, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¾îµµ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½', 'dt070', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 4000000, 2000000, 'N', '030', 0);
 
-INSERT INTO PRODUCT VALUES('M0202031WHS', '02', 'thumb062', '²Ê¹è±â Â¥ÀÓÆ÷ÀÎÆ® ºêÀÌ³Ø¹ÝÆÈ´ÏÆ®','WH','S', 200000, 30, 140000, 02, 031, '°¡À»¿¡ °¡µð°Ç °ÉÄ¡¸é °¡À»ºÐÀ§±âµµ ½Ô°¡´É', 'dt062', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 5000000, 3500000, 'N', '031', 0);
-INSERT INTO PRODUCT VALUES('M0202031WHM', '02', 'thumb062', '²Ê¹è±â Â¥ÀÓÆ÷ÀÎÆ® ºêÀÌ³Ø¹ÝÆÈ´ÏÆ®','WH','M', 200000, 30, 140000, 02, 031, '°¡À»¿¡ °¡µð°Ç °ÉÄ¡¸é °¡À»ºÐÀ§±âµµ ½Ô°¡´É', 'dt062', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 5000000, 3500000, 'N', '031', 0);
-INSERT INTO PRODUCT VALUES('M0202031WHL', '02', 'thumb062', '²Ê¹è±â Â¥ÀÓÆ÷ÀÎÆ® ºêÀÌ³Ø¹ÝÆÈ´ÏÆ®', 'WH','L',200000, 30, 140000, 02, 031, '°¡À»¿¡ °¡µð°Ç °ÉÄ¡¸é °¡À»ºÐÀ§±âµµ ½Ô°¡´É', 'dt062', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 5000000, 3500000, 'N', '031', 0);
+INSERT INTO PRODUCT VALUES('M0202031WHS', '02', 'thumb062', 'ï¿½Ê¹ï¿½ï¿½ Â¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½Ì³Ø¹ï¿½ï¿½È´ï¿½Æ®','WH','S', 200000, 30, 140000, 02, 031, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½âµµ ï¿½Ô°ï¿½ï¿½ï¿½', 'dt062', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 5000000, 3500000, 'N', '031', 0);
+INSERT INTO PRODUCT VALUES('M0202031WHM', '02', 'thumb062', 'ï¿½Ê¹ï¿½ï¿½ Â¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½Ì³Ø¹ï¿½ï¿½È´ï¿½Æ®','WH','M', 200000, 30, 140000, 02, 031, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½âµµ ï¿½Ô°ï¿½ï¿½ï¿½', 'dt062', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 5000000, 3500000, 'N', '031', 0);
+INSERT INTO PRODUCT VALUES('M0202031WHL', '02', 'thumb062', 'ï¿½Ê¹ï¿½ï¿½ Â¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½Ì³Ø¹ï¿½ï¿½È´ï¿½Æ®', 'WH','L',200000, 30, 140000, 02, 031, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½âµµ ï¿½Ô°ï¿½ï¿½ï¿½', 'dt062', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 5000000, 3500000, 'N', '031', 0);
 
-INSERT INTO PRODUCT VALUES('W0202032WHS', '02', 'thumb086', '½Ã½º·ç·Ñ¸µ´ÏÆ®Æ¼','WH','S', 200000, 30, 140000, 02, 032, 'ÀÔÀ¸¸é °Ü¿ï¿¡µµ ÇÏÅÂÇÏÅÂ', 'dt086', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 5000000, 800000, 'N', '032', 0);
-INSERT INTO PRODUCT VALUES('W0202032WHM', '02', 'thumb086', '½Ã½º·ç·Ñ¸µ´ÏÆ®Æ¼','WH','M', 200000, 30, 140000, 02, 032, 'ÀÔÀ¸¸é °Ü¿ï¿¡µµ ÇÏÅÂÇÏÅÂ', 'dt086', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 5000000, 800000, 'N', '032', 0);
-INSERT INTO PRODUCT VALUES('W0202032WHL', '02', 'thumb086', '½Ã½º·ç·Ñ¸µ´ÏÆ®Æ¼', 'WH','L',200000, 30, 140000, 02, 032, 'ÀÔÀ¸¸é °Ü¿ï¿¡µµ ÇÏÅÂÇÏÅÂ', 'dt086', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 5000000, 800000, 'N', '032', 0);
+INSERT INTO PRODUCT VALUES('W0202032WHS', '02', 'thumb086', 'ï¿½Ã½ï¿½ï¿½ï¿½Ñ¸ï¿½ï¿½ï¿½Æ®Æ¼','WH','S', 200000, 30, 140000, 02, 032, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ü¿ï¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt086', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 5000000, 800000, 'N', '032', 0);
+INSERT INTO PRODUCT VALUES('W0202032WHM', '02', 'thumb086', 'ï¿½Ã½ï¿½ï¿½ï¿½Ñ¸ï¿½ï¿½ï¿½Æ®Æ¼','WH','M', 200000, 30, 140000, 02, 032, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ü¿ï¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt086', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 5000000, 800000, 'N', '032', 0);
+INSERT INTO PRODUCT VALUES('W0202032WHL', '02', 'thumb086', 'ï¿½Ã½ï¿½ï¿½ï¿½Ñ¸ï¿½ï¿½ï¿½Æ®Æ¼', 'WH','L',200000, 30, 140000, 02, 032, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ü¿ï¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt086', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 5000000, 800000, 'N', '032', 0);
 
-INSERT INTO PRODUCT VALUES('W0202033WHS', '02', 'thumb055', '½Ã¶óÇÁ¸®¹Ì¾öº£ÀÌÁ÷¸°³ÙÆ¼¼ÅÃ÷','WH','S', 200000, 30, 140000, 02, 033, 'È­ÀåÇÏ±â ±ÍÂúÀ» ¶§ ÀÌ°ÅÀÔ°í ¸ðÀÚ¸é ³¡', 'dt055', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 5000000, 4000000, 'N', '033', 0);
-INSERT INTO PRODUCT VALUES('W0202033WHM', '02', 'thumb055', '½Ã¶óÇÁ¸®¹Ì¾öº£ÀÌÁ÷¸°³ÙÆ¼¼ÅÃ÷','WH','M', 200000, 30, 140000, 02, 033, 'È­ÀåÇÏ±â ±ÍÂúÀ» ¶§ ÀÌ°ÅÀÔ°í ¸ðÀÚ¸é ³¡', 'dt055', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 5000000, 4000000, 'N', '033', 0);
-INSERT INTO PRODUCT VALUES('W0202033WHL', '02', 'thumb055', '½Ã¶óÇÁ¸®¹Ì¾öº£ÀÌÁ÷¸°³ÙÆ¼¼ÅÃ÷', 'WH','L',200000, 30, 140000, 02, 033, 'È­ÀåÇÏ±â ±ÍÂúÀ» ¶§ ÀÌ°ÅÀÔ°í ¸ðÀÚ¸é ³¡', 'dt055', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 5000000, 4000000, 'N', '033', 0);
+INSERT INTO PRODUCT VALUES('W0202033WHS', '02', 'thumb055', 'ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½ï¿½','WH','S', 200000, 30, 140000, 02, 033, 'È­ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ì°ï¿½ï¿½Ô°ï¿½ ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½', 'dt055', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 5000000, 4000000, 'N', '033', 0);
+INSERT INTO PRODUCT VALUES('W0202033WHM', '02', 'thumb055', 'ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½ï¿½','WH','M', 200000, 30, 140000, 02, 033, 'È­ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ì°ï¿½ï¿½Ô°ï¿½ ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½', 'dt055', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 5000000, 4000000, 'N', '033', 0);
+INSERT INTO PRODUCT VALUES('W0202033WHL', '02', 'thumb055', 'ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½ï¿½', 'WH','L',200000, 30, 140000, 02, 033, 'È­ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ì°ï¿½ï¿½Ô°ï¿½ ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½', 'dt055', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 5000000, 4000000, 'N', '033', 0);
 
-INSERT INTO PRODUCT VALUES('W0202034WHS', '02', 'thumb069', '¹Ú½ÃÇÍ¿·Æ®ÀÓÆ÷ÀÎÆ®Æ¼¼ÅÃ÷','WH','S', 200000, 30, 140000, 02, 034, 'ÀÔÀ¸¸é ³²½É µµº®»ý±è', 'dt069', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 8000000, 6000000, 'N', '034', 0);
-INSERT INTO PRODUCT VALUES('W0202034WHM', '02', 'thumb069', '¹Ú½ÃÇÍ¿·Æ®ÀÓÆ÷ÀÎÆ®Æ¼¼ÅÃ÷','WH','M', 200000, 30, 140000, 02, 034, 'ÀÔÀ¸¸é ³²½É µµº®»ý±è', 'dt069', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 8000000, 6000000, 'N', '034', 0);
-INSERT INTO PRODUCT VALUES('W0202034WHL', '02', 'thumb069', '¹Ú½ÃÇÍ¿·Æ®ÀÓÆ÷ÀÎÆ®Æ¼¼ÅÃ÷', 'WH','L',200000, 30, 140000, 02, 034, 'ÀÔÀ¸¸é ³²½É µµº®»ý±è', 'dt069', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 8000000, 6000000, 'N', '034', 0);
+INSERT INTO PRODUCT VALUES('W0202034WHS', '02', 'thumb069', 'ï¿½Ú½ï¿½ï¿½Í¿ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®Æ¼ï¿½ï¿½ï¿½ï¿½','WH','S', 200000, 30, 140000, 02, 034, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt069', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 8000000, 6000000, 'N', '034', 0);
+INSERT INTO PRODUCT VALUES('W0202034WHM', '02', 'thumb069', 'ï¿½Ú½ï¿½ï¿½Í¿ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®Æ¼ï¿½ï¿½ï¿½ï¿½','WH','M', 200000, 30, 140000, 02, 034, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt069', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 8000000, 6000000, 'N', '034', 0);
+INSERT INTO PRODUCT VALUES('W0202034WHL', '02', 'thumb069', 'ï¿½Ú½ï¿½ï¿½Í¿ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®Æ¼ï¿½ï¿½ï¿½ï¿½', 'WH','L',200000, 30, 140000, 02, 034, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt069', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 8000000, 6000000, 'N', '034', 0);
 
 
 
-INSERT INTO PRODUCT VALUES('M0202035WHS', '02', 'thumb096', 'ÆÄ¸á¶ó·¹ÅÍ¸µ Æ¼','WH','S', 200000, 30, 140000, 02, 035, '°¡º±Áö¸¸ ºÐÀ§±â°¡ ÆÄ¸á¶óÇØÁü', 'dt096', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 10000000, 300000, 'N', '035', 0);
-INSERT INTO PRODUCT VALUES('M0202035WHM', '02', 'thumb096', 'ÆÄ¸á¶ó·¹ÅÍ¸µ Æ¼','WH','M', 200000, 30, 140000, 02, 035, '°¡º±Áö¸¸ ºÐÀ§±â°¡ ÆÄ¸á¶óÇØÁü', 'dt096', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 10000000, 300000, 'N', '035', 0);
-INSERT INTO PRODUCT VALUES('M0202035WHL', '02', 'thumb096', 'ÆÄ¸á¶ó·¹ÅÍ¸µ Æ¼', 'WH','L',200000, 30, 140000, 02, 035, '°¡º±Áö¸¸ ºÐÀ§±â°¡ ÆÄ¸á¶óÇØÁü', 'dt096', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 10000000, 300000, 'N', '035', 0);
+INSERT INTO PRODUCT VALUES('M0202035WHS', '02', 'thumb096', 'ï¿½Ä¸ï¿½ï¿½ï¿½Í¸ï¿½ Æ¼','WH','S', 200000, 30, 140000, 02, 035, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½â°¡ ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt096', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 10000000, 300000, 'N', '035', 0);
+INSERT INTO PRODUCT VALUES('M0202035WHM', '02', 'thumb096', 'ï¿½Ä¸ï¿½ï¿½ï¿½Í¸ï¿½ Æ¼','WH','M', 200000, 30, 140000, 02, 035, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½â°¡ ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt096', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 10000000, 300000, 'N', '035', 0);
+INSERT INTO PRODUCT VALUES('M0202035WHL', '02', 'thumb096', 'ï¿½Ä¸ï¿½ï¿½ï¿½Í¸ï¿½ Æ¼', 'WH','L',200000, 30, 140000, 02, 035, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½â°¡ ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt096', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 10000000, 300000, 'N', '035', 0);
 
-INSERT INTO PRODUCT VALUES('M0202036WHS', '02', 'thumb044', '½Ã½º·çÆÛÇÁ ´ÏÆ®','WH','S', 200000, 30, 140000, 02, 036, '´ÏÆ®¶ó¼­ ´õ ¼½½ÃÇÔ', 'dt044', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 10000000, 560000, 'N', '036', 0);
-INSERT INTO PRODUCT VALUES('M0202036WHM', '02', 'thumb044', '½Ã½º·çÆÛÇÁ ´ÏÆ®','WH','M', 200000, 30, 140000, 02, 036, '´ÏÆ®¶ó¼­ ´õ ¼½½ÃÇÔ', 'dt044', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 10000000, 560000, 'N', '036', 0);
-INSERT INTO PRODUCT VALUES('M0202036WHL', '02', 'thumb044', '½Ã½º·çÆÛÇÁ ´ÏÆ®', 'WH','L',200000, 30, 140000, 02, 036, '´ÏÆ®¶ó¼­ ´õ ¼½½ÃÇÔ', 'dt044', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 10000000, 560000, 'N', '036', 0);
+INSERT INTO PRODUCT VALUES('M0202036WHS', '02', 'thumb044', 'ï¿½Ã½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®','WH','S', 200000, 30, 140000, 02, 036, 'ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt044', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 10000000, 560000, 'N', '036', 0);
+INSERT INTO PRODUCT VALUES('M0202036WHM', '02', 'thumb044', 'ï¿½Ã½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®','WH','M', 200000, 30, 140000, 02, 036, 'ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt044', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 10000000, 560000, 'N', '036', 0);
+INSERT INTO PRODUCT VALUES('M0202036WHL', '02', 'thumb044', 'ï¿½Ã½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®', 'WH','L',200000, 30, 140000, 02, 036, 'ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt044', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 10000000, 560000, 'N', '036', 0);
 
-INSERT INTO PRODUCT VALUES('W0202037BKS', '02', 'thumb056', '¿£Á©ÆÛÇÁ¼Ò¸Å Æ¼','BK','S', 200000, 30, 140000, 02, 037, '¼û°ÜÀÖ´ø ³ªÀÇ ¿©½Å¹Ì¸¦ ÀÏ±ú¿öÁÜ', 'dt056', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 20000000, 3300000, 'N', '037', 0);
-INSERT INTO PRODUCT VALUES('W0202037BKM', '02', 'thumb056', '¿£Á©ÆÛÇÁ¼Ò¸Å Æ¼','BK','M', 200000, 30, 140000, 02, 037, '¼û°ÜÀÖ´ø ³ªÀÇ ¿©½Å¹Ì¸¦ ÀÏ±ú¿öÁÜ', 'dt056', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 20000000, 3300000, 'N', '037', 0);
-INSERT INTO PRODUCT VALUES('W0202037BKL', '02', 'thumb056', '¿£Á©ÆÛÇÁ¼Ò¸Å Æ¼', 'BK','L',200000, 30, 140000, 02, 037, '¼û°ÜÀÖ´ø ³ªÀÇ ¿©½Å¹Ì¸¦ ÀÏ±ú¿öÁÜ', 'dt056', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 20000000, 3300000, 'N', '037', 0);
+INSERT INTO PRODUCT VALUES('W0202037BKS', '02', 'thumb056', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò¸ï¿½ Æ¼','BK','S', 200000, 30, 140000, 02, 037, 'ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Å¹Ì¸ï¿½ ï¿½Ï±ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt056', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 20000000, 3300000, 'N', '037', 0);
+INSERT INTO PRODUCT VALUES('W0202037BKM', '02', 'thumb056', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò¸ï¿½ Æ¼','BK','M', 200000, 30, 140000, 02, 037, 'ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Å¹Ì¸ï¿½ ï¿½Ï±ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt056', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 20000000, 3300000, 'N', '037', 0);
+INSERT INTO PRODUCT VALUES('W0202037BKL', '02', 'thumb056', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò¸ï¿½ Æ¼', 'BK','L',200000, 30, 140000, 02, 037, 'ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Å¹Ì¸ï¿½ ï¿½Ï±ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt056', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 20000000, 3300000, 'N', '037', 0);
 
-INSERT INTO PRODUCT VALUES('W0202038WHS', '02', 'thumb004', '½ÉÇÃ¿©¸®ÇÍ ³ª½Ã','WH','S', 200000, 30, 140000, 02, 038, 'Ã»¼ø¹Ì »Õ»Õ °¡µæ~»õ ÀÌ¹ÌÁö Ã¢Ãâ', 'dt004', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 15000000, 10000000, 'N', '038', 0);
-INSERT INTO PRODUCT VALUES('W0202038WHM', '02', 'thumb004', '½ÉÇÃ¿©¸®ÇÍ ³ª½Ã','WH','M', 200000, 30, 140000, 02, 038, 'Ã»¼ø¹Ì »Õ»Õ °¡µæ~»õ ÀÌ¹ÌÁö Ã¢Ãâ', 'dt004', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 15000000, 10000000, 'N', '038', 0);
-INSERT INTO PRODUCT VALUES('W0202038WHL', '02', 'thumb004', '½ÉÇÃ¿©¸®ÇÍ ³ª½Ã', 'WH','L',200000, 30, 140000, 02, 038, 'Ã»¼ø¹Ì »Õ»Õ °¡µæ~»õ ÀÌ¹ÌÁö Ã¢Ãâ', 'dt004', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 150000000, 10000000, 'N', '038', 0);
+INSERT INTO PRODUCT VALUES('W0202038WHS', '02', 'thumb004', 'ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½','WH','S', 200000, 30, 140000, 02, 038, 'Ã»ï¿½ï¿½ï¿½ï¿½ ï¿½Õ»ï¿½ ï¿½ï¿½ï¿½ï¿½~ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ Ã¢ï¿½ï¿½', 'dt004', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 15000000, 10000000, 'N', '038', 0);
+INSERT INTO PRODUCT VALUES('W0202038WHM', '02', 'thumb004', 'ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½','WH','M', 200000, 30, 140000, 02, 038, 'Ã»ï¿½ï¿½ï¿½ï¿½ ï¿½Õ»ï¿½ ï¿½ï¿½ï¿½ï¿½~ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ Ã¢ï¿½ï¿½', 'dt004', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 15000000, 10000000, 'N', '038', 0);
+INSERT INTO PRODUCT VALUES('W0202038WHL', '02', 'thumb004', 'ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'WH','L',200000, 30, 140000, 02, 038, 'Ã»ï¿½ï¿½ï¿½ï¿½ ï¿½Õ»ï¿½ ï¿½ï¿½ï¿½ï¿½~ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ Ã¢ï¿½ï¿½', 'dt004', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 150000000, 10000000, 'N', '038', 0);
 
-INSERT INTO PRODUCT VALUES('W0202039WHS', '02', 'thumb002', 'ÀÌ»Û½Ã½º·ç¹ÝÆÈ ´ÏÆ®','WH','S', 200000, 30, 140000, 02, 039, 'ÀÔÀ¸¸é ÀÏ´Ü ÇÑ ¸í ²¿ÀÓ', 'dt002', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 3000000, 175000, 'N', '039', 0);
-INSERT INTO PRODUCT VALUES('W0202039WHM', '02', 'thumb002', 'ÀÌ»Û½Ã½º·ç¹ÝÆÈ ´ÏÆ®','WH','M', 200000, 30, 140000, 02, 039, 'ÀÔÀ¸¸é ÀÏ´Ü ÇÑ ¸í ²¿ÀÓ', 'dt002', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 3000000, 175000, 'N', '039', 0);
-INSERT INTO PRODUCT VALUES('W0202039WHL', '02', 'thumb002', 'ÀÌ»Û½Ã½º·ç¹ÝÆÈ ´ÏÆ®', 'WH','L',200000, 30, 140000, 02, 039, 'ÀÔÀ¸¸é ÀÏ´Ü ÇÑ ¸í ²¿ÀÓ', 'dt002', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 3000000, 175000, 'N', '039', 0);
+INSERT INTO PRODUCT VALUES('W0202039WHS', '02', 'thumb002', 'ï¿½Ì»Û½Ã½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®','WH','S', 200000, 30, 140000, 02, 039, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'dt002', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 3000000, 175000, 'N', '039', 0);
+INSERT INTO PRODUCT VALUES('W0202039WHM', '02', 'thumb002', 'ï¿½Ì»Û½Ã½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®','WH','M', 200000, 30, 140000, 02, 039, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'dt002', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 3000000, 175000, 'N', '039', 0);
+INSERT INTO PRODUCT VALUES('W0202039WHL', '02', 'thumb002', 'ï¿½Ì»Û½Ã½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®', 'WH','L',200000, 30, 140000, 02, 039, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'dt002', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 3000000, 175000, 'N', '039', 0);
 
-INSERT INTO PRODUCT VALUES('W0202040WHS', '02', 'thumb065', 'ÀÚ¼ö¼Å¸µÆÛÇÁ¼Ò¸Å ´ÏÆ®','WH','S', 200000, 30, 140000, 02, 040, 'Æ÷ÀÎÆ® ÀÚ¼öµðÀÚÀÎÀ¸·Î ÀÌ»Ý°¡µæ~ Áö±ÝºÎÅÍ ¿©¸§±îÁö ÇÔ²²ÇØ¿ä', 'dt065', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 4700000, 1569000, 'N', '040', 0);
-INSERT INTO PRODUCT VALUES('W0202040WHM', '02', 'thumb065', 'ÀÚ¼ö¼Å¸µÆÛÇÁ¼Ò¸Å ´ÏÆ®','WH','M', 200000, 30, 140000, 02, 040, 'Æ÷ÀÎÆ® ÀÚ¼öµðÀÚÀÎÀ¸·Î ÀÌ»Ý°¡µæ~ Áö±ÝºÎÅÍ ¿©¸§±îÁö ÇÔ²²ÇØ¿ä', 'dt065', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 4700000, 1569000, 'N', '040', 0);
-INSERT INTO PRODUCT VALUES('W0202040WHL', '02', 'thumb065', 'ÀÚ¼ö¼Å¸µÆÛÇÁ¼Ò¸Å ´ÏÆ®', 'WH','L',200000, 30, 140000, 02, 040, 'Æ÷ÀÎÆ® ÀÚ¼öµðÀÚÀÎÀ¸·Î ÀÌ»Ý°¡µæ~ Áö±ÝºÎÅÍ ¿©¸§±îÁö ÇÔ²²ÇØ¿ä', 'dt065', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 4700000, 1569000, 'N', '040', 0);
+INSERT INTO PRODUCT VALUES('W0202040WHS', '02', 'thumb065', 'ï¿½Ú¼ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò¸ï¿½ ï¿½ï¿½Æ®','WH','S', 200000, 30, 140000, 02, 040, 'ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ú¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì»Ý°ï¿½ï¿½ï¿½~ ï¿½ï¿½ï¿½Ýºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô²ï¿½ï¿½Ø¿ï¿½', 'dt065', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 4700000, 1569000, 'N', '040', 0);
+INSERT INTO PRODUCT VALUES('W0202040WHM', '02', 'thumb065', 'ï¿½Ú¼ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò¸ï¿½ ï¿½ï¿½Æ®','WH','M', 200000, 30, 140000, 02, 040, 'ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ú¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì»Ý°ï¿½ï¿½ï¿½~ ï¿½ï¿½ï¿½Ýºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô²ï¿½ï¿½Ø¿ï¿½', 'dt065', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 4700000, 1569000, 'N', '040', 0);
+INSERT INTO PRODUCT VALUES('W0202040WHL', '02', 'thumb065', 'ï¿½Ú¼ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò¸ï¿½ ï¿½ï¿½Æ®', 'WH','L',200000, 30, 140000, 02, 040, 'ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ú¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì»Ý°ï¿½ï¿½ï¿½~ ï¿½ï¿½ï¿½Ýºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô²ï¿½ï¿½Ø¿ï¿½', 'dt065', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 4700000, 1569000, 'N', '040', 0);
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
--- ÈñÁö
-INSERT INTO PRODUCT VALUES('M0701041WHS', '07', 'thumb097', '¼ÅÃ÷ ¹Ø´Ü ÄÉÀÌºí °¡µð°Ç','WH','S', 800000, 10, 720000, 01, 041, '¼ÅÃ÷ ·¹ÀÌ¾îµå µðÅ×ÀÏÀÌ µ¸º¸ÀÓ', 'dt097', 8000, '2020/07/01', '2020/06/01', '2020/06/15', 10000000, 5670000, 'N', '041', 0);
-INSERT INTO PRODUCT VALUES('M0701041WHM', '07', 'thumb097', '¼ÅÃ÷ ¹Ø´Ü ÄÉÀÌºí °¡µð°Ç','WH','M',800000, 10, 720000, 01, 041, '¼ÅÃ÷ ·¹ÀÌ¾îµå µðÅ×ÀÏÀÌ µ¸º¸ÀÓ', 'dt097', 8000, '2020/07/01', '2020/06/01', '2020/06/15', 10000000, 5670000, 'N', '041', 0);
-INSERT INTO PRODUCT VALUES('M0701041YLS', '07', 'thumb097', '¼ÅÃ÷ ¹Ø´Ü ÄÉÀÌºí °¡µð°Ç','YL','S',800000, 10, 720000, 01, 041, '¼ÅÃ÷ ·¹ÀÌ¾îµå µðÅ×ÀÏÀÌ µ¸º¸ÀÓ', 'dt097', 8000, '2020/07/01', '2020/06/01', '2020/06/15', 10000000, 5670000, 'N', '041', 0);
-INSERT INTO PRODUCT VALUES('M0701041YLM', '07', 'thumb097', '¼ÅÃ÷ ¹Ø´Ü ÄÉÀÌºí °¡µð°Ç','YL','M',800000, 10, 720000, 01, 041, '¼ÅÃ÷ ·¹ÀÌ¾îµå µðÅ×ÀÏÀÌ µ¸º¸ÀÓ', 'dt097', 8000, '2020/07/01', '2020/06/01', '2020/06/15', 10000000, 5670000, 'N', '041', 0);
+-- ï¿½ï¿½ï¿½ï¿½
+INSERT INTO PRODUCT VALUES('M0701041WHS', '07', 'thumb097', 'ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½','WH','S', 800000, 10, 720000, 01, 041, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt097', 8000, '2020/07/01', '2020/06/01', '2020/06/15', 10000000, 5670000, 'N', '041', 0);
+INSERT INTO PRODUCT VALUES('M0701041WHM', '07', 'thumb097', 'ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½','WH','M',800000, 10, 720000, 01, 041, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt097', 8000, '2020/07/01', '2020/06/01', '2020/06/15', 10000000, 5670000, 'N', '041', 0);
+INSERT INTO PRODUCT VALUES('M0701041YLS', '07', 'thumb097', 'ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½','YL','S',800000, 10, 720000, 01, 041, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt097', 8000, '2020/07/01', '2020/06/01', '2020/06/15', 10000000, 5670000, 'N', '041', 0);
+INSERT INTO PRODUCT VALUES('M0701041YLM', '07', 'thumb097', 'ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½','YL','M',800000, 10, 720000, 01, 041, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt097', 8000, '2020/07/01', '2020/06/01', '2020/06/15', 10000000, 5670000, 'N', '041', 0);
 
-INSERT INTO PRODUCT VALUES('W0605042BKS', '06', 'thumb087', '¿ÀÇÂ¹é °¡¿À¸®ÇÍ ¿øÇÇ½º','BK','S',600000, 10, 540000, 05, 042, '¿ÀÇÂ¹é µðÅ×ÀÏÀÌ µ¸º¸ÀÓ', 'dt087', 6000, '2020/07/01', '2020/06/01', '2020/06/15', 12600000, 600000, 'N', '042', 0);
-INSERT INTO PRODUCT VALUES('W0605042BKM', '06', 'thumb087', '¿ÀÇÂ¹é °¡¿À¸®ÇÍ ¿øÇÇ½º','BK','M',600000, 10, 540000, 05, 042, '¿ÀÇÂ¹é µðÅ×ÀÏÀÌ µ¸º¸ÀÓ', 'dt087', 6000, '2020/07/01', '2020/06/01', '2020/06/15', 12600000, 600000, 'N', '042', 0);
+INSERT INTO PRODUCT VALUES('W0605042BKS', '06', 'thumb087', 'ï¿½ï¿½ï¿½Â¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½','BK','S',600000, 10, 540000, 05, 042, 'ï¿½ï¿½ï¿½Â¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt087', 6000, '2020/07/01', '2020/06/01', '2020/06/15', 12600000, 600000, 'N', '042', 0);
+INSERT INTO PRODUCT VALUES('W0605042BKM', '06', 'thumb087', 'ï¿½ï¿½ï¿½Â¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½','BK','M',600000, 10, 540000, 05, 042, 'ï¿½ï¿½ï¿½Â¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt087', 6000, '2020/07/01', '2020/06/01', '2020/06/15', 12600000, 600000, 'N', '042', 0);
 
-INSERT INTO PRODUCT VALUES('W0602043BKS', '06', 'thumb026', 'ÁÖ¸§ Æ÷ÀÎÆ® ·¡±Û·± ´ÏÆ®','BK','S',300000, 10, 270000, 02, 043, 'ÁÖ¸§ µðÅ×ÀÏÀÌ µ¸º¸ÀÓ', 'dt026', 3000, '2020/09/01', '2020/08/01', '2020/08/15', 8000000, 704000, 'N', '043', 0);
-INSERT INTO PRODUCT VALUES('W0602043BKM', '06', 'thumb026', 'ÁÖ¸§ Æ÷ÀÎÆ® ·¡±Û·± ´ÏÆ®','BK','M',300000, 10, 270000, 02, 043, 'ÁÖ¸§ µðÅ×ÀÏÀÌ µ¸º¸ÀÓ', 'dt026', 3000, '2020/09/01', '2020/08/01', '2020/08/15', 8000000, 704000, 'N', '043', 0);
-INSERT INTO PRODUCT VALUES('W0602043BKL', '06', 'thumb026', 'ÁÖ¸§ Æ÷ÀÎÆ® ·¡±Û·± ´ÏÆ®','BK','L',300000, 10, 270000, 02, 043, 'ÁÖ¸§ µðÅ×ÀÏÀÌ µ¸º¸ÀÓ', 'dt026', 3000, '2020/09/01', '2020/08/01', '2020/08/15', 8000000, 704000, 'N', '043', 0);
+INSERT INTO PRODUCT VALUES('W0602043BKS', '06', 'thumb026', 'ï¿½Ö¸ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½Û·ï¿½ ï¿½ï¿½Æ®','BK','S',300000, 10, 270000, 02, 043, 'ï¿½Ö¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt026', 3000, '2020/09/01', '2020/08/01', '2020/08/15', 8000000, 704000, 'N', '043', 0);
+INSERT INTO PRODUCT VALUES('W0602043BKM', '06', 'thumb026', 'ï¿½Ö¸ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½Û·ï¿½ ï¿½ï¿½Æ®','BK','M',300000, 10, 270000, 02, 043, 'ï¿½Ö¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt026', 3000, '2020/09/01', '2020/08/01', '2020/08/15', 8000000, 704000, 'N', '043', 0);
+INSERT INTO PRODUCT VALUES('W0602043BKL', '06', 'thumb026', 'ï¿½Ö¸ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½Û·ï¿½ ï¿½ï¿½Æ®','BK','L',300000, 10, 270000, 02, 043, 'ï¿½Ö¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt026', 3000, '2020/09/01', '2020/08/01', '2020/08/15', 8000000, 704000, 'N', '043', 0);
 
-INSERT INTO PRODUCT VALUES('W0502044WHS', '05', 'thumb025', '¹Ø´Ü Æ÷ÀÎÆ® Å©·ç³Ø ¸ÇÅõ¸Ç Æ¼¼ÅÃ÷','WH','S',500000, 10, 450000, 02, 044, '¹Ø´Ü µðÅ×ÀÏÀÌ µ¸º¸ÀÓ', 'dt025', 5000, '2020/09/01', '2020/08/01', '2020/08/15', 34000000, 0, 'N', '044', 0);
-INSERT INTO PRODUCT VALUES('W0502044WHM', '05', 'thumb025', '¹Ø´Ü Æ÷ÀÎÆ® Å©·ç³Ø ¸ÇÅõ¸Ç Æ¼¼ÅÃ÷','WH','M',500000, 10, 450000, 02, 044, '¹Ø´Ü µðÅ×ÀÏÀÌ µ¸º¸ÀÓ', 'dt025', 5000, '2020/09/01', '2020/08/01', '2020/08/15', 34000000, 0, 'N', '044', 0);
-INSERT INTO PRODUCT VALUES('W0502044BLS', '05', 'thumb025', '¹Ø´Ü Æ÷ÀÎÆ® Å©·ç³Ø ¸ÇÅõ¸Ç Æ¼¼ÅÃ÷','BL','S',500000, 10, 450000, 02, 044, '¹Ø´Ü µðÅ×ÀÏÀÌ µ¸º¸ÀÓ', 'dt025', 5000, '2020/09/01', '2020/08/01', '2020/08/15', 34000000, 0, 'N', '044', 0);
-INSERT INTO PRODUCT VALUES('W0502044BLM', '05', 'thumb025', '¹Ø´Ü Æ÷ÀÎÆ® Å©·ç³Ø ¸ÇÅõ¸Ç Æ¼¼ÅÃ÷','BL','M',500000, 10, 450000, 02, 044, '¹Ø´Ü µðÅ×ÀÏÀÌ µ¸º¸ÀÓ', 'dt025', 5000, '2020/09/01', '2020/08/01', '2020/08/15', 34000000, 0, 'N', '044', 0);
+INSERT INTO PRODUCT VALUES('W0502044WHS', '05', 'thumb025', 'ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® Å©ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½','WH','S',500000, 10, 450000, 02, 044, 'ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt025', 5000, '2020/09/01', '2020/08/01', '2020/08/15', 34000000, 0, 'N', '044', 0);
+INSERT INTO PRODUCT VALUES('W0502044WHM', '05', 'thumb025', 'ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® Å©ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½','WH','M',500000, 10, 450000, 02, 044, 'ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt025', 5000, '2020/09/01', '2020/08/01', '2020/08/15', 34000000, 0, 'N', '044', 0);
+INSERT INTO PRODUCT VALUES('W0502044BLS', '05', 'thumb025', 'ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® Å©ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½','BL','S',500000, 10, 450000, 02, 044, 'ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt025', 5000, '2020/09/01', '2020/08/01', '2020/08/15', 34000000, 0, 'N', '044', 0);
+INSERT INTO PRODUCT VALUES('W0502044BLM', '05', 'thumb025', 'ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® Å©ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½','BL','M',500000, 10, 450000, 02, 044, 'ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt025', 5000, '2020/09/01', '2020/08/01', '2020/08/15', 34000000, 0, 'N', '044', 0);
 
-INSERT INTO PRODUCT VALUES('W0503045BKS', '05', 'thumb025', 'µð½ºÆ®·ÎÀÌµå ¿ÍÀÌµå ÆÒÃ÷','BK','S',700000, 30, 490000, 03, 045, 'Çã¸® ¹êµù µðÅ×ÀÏ·Î Âø¿ëÀÌ °£ÆíÇÔ', 'dt068', 5000, '2020/06/01', '2020/05/01', '2020/05/15', 6600000, 4790000, 'N', '045', 0);
-INSERT INTO PRODUCT VALUES('W0503045BKM', '05', 'thumb025', 'µð½ºÆ®·ÎÀÌµå ¿ÍÀÌµå ÆÒÃ÷','BK','M',700000, 30, 490000, 03, 045, 'Çã¸® ¹êµù µðÅ×ÀÏ·Î Âø¿ëÀÌ °£ÆíÇÔ', 'dt068', 5000, '2020/06/01', '2020/05/01', '2020/05/15', 6600000, 4790000, 'N', '045', 0);
-INSERT INTO PRODUCT VALUES('W0503045WHS', '05', 'thumb025', 'µð½ºÆ®·ÎÀÌµå ¿ÍÀÌµå ÆÒÃ÷','WH','S',700000, 30, 490000, 03, 045, 'Çã¸® ¹êµù µðÅ×ÀÏ·Î Âø¿ëÀÌ °£ÆíÇÔ', 'dt068', 5000, '2020/06/01', '2020/05/01', '2020/05/15', 6600000, 4790000, 'N', '045', 0);
-INSERT INTO PRODUCT VALUES('W0503045WHM', '05', 'thumb025', 'µð½ºÆ®·ÎÀÌµå ¿ÍÀÌµå ÆÒÃ÷','WH','M',700000, 30, 490000, 03, 045, 'Çã¸® ¹êµù µðÅ×ÀÏ·Î Âø¿ëÀÌ °£ÆíÇÔ', 'dt068', 5000, '2020/06/01', '2020/05/01', '2020/05/15', 6600000, 4790000, 'N', '045', 0);
+INSERT INTO PRODUCT VALUES('W0503045BKS', '05', 'thumb025', 'ï¿½ï¿½Æ®ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½','BK','S',700000, 30, 490000, 03, 045, 'ï¿½ã¸® ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt068', 5000, '2020/06/01', '2020/05/01', '2020/05/15', 6600000, 4790000, 'N', '045', 0);
+INSERT INTO PRODUCT VALUES('W0503045BKM', '05', 'thumb025', 'ï¿½ï¿½Æ®ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½','BK','M',700000, 30, 490000, 03, 045, 'ï¿½ã¸® ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt068', 5000, '2020/06/01', '2020/05/01', '2020/05/15', 6600000, 4790000, 'N', '045', 0);
+INSERT INTO PRODUCT VALUES('W0503045WHS', '05', 'thumb025', 'ï¿½ï¿½Æ®ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½','WH','S',700000, 30, 490000, 03, 045, 'ï¿½ã¸® ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt068', 5000, '2020/06/01', '2020/05/01', '2020/05/15', 6600000, 4790000, 'N', '045', 0);
+INSERT INTO PRODUCT VALUES('W0503045WHM', '05', 'thumb025', 'ï¿½ï¿½Æ®ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½','WH','M',700000, 30, 490000, 03, 045, 'ï¿½ã¸® ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt068', 5000, '2020/06/01', '2020/05/01', '2020/05/15', 6600000, 4790000, 'N', '045', 0);
 
-INSERT INTO PRODUCT VALUES('W0405046BLS', '04', 'thumb088', '¼Å¸µ µðÅ×ÀÏ ÄÚµç ¿øÇÇ½º','BL','S',400000, 30, 280000, 05, 046, '½ºÆ®¸µÀ¸·Î ¿¬ÃâµÇ´Â ÁÖ¸§ µðÅ×ÀÏ', 'dt088', 6000, '2020/05/20', '2020/04/15', '2020/05/01', 10000000, 2800000, 'Y', '046', 35);
-INSERT INTO PRODUCT VALUES('W0405046BLM', '04', 'thumb088', '¼Å¸µ µðÅ×ÀÏ ÄÚµç ¿øÇÇ½º','BL','M',400000, 30, 280000, 05, 046, '½ºÆ®¸µÀ¸·Î ¿¬ÃâµÇ´Â ÁÖ¸§ µðÅ×ÀÏ', 'dt088', 6000, '2020/05/20', '2020/04/15', '2020/05/01', 10000000, 2800000, 'Y', '046', 35);
-INSERT INTO PRODUCT VALUES('W0405046BLL', '04', 'thumb088', '¼Å¸µ µðÅ×ÀÏ ÄÚµç ¿øÇÇ½º','BL','L',400000, 30, 280000, 05, 046, '½ºÆ®¸µÀ¸·Î ¿¬ÃâµÇ´Â ÁÖ¸§ µðÅ×ÀÏ', 'dt088', 6000, '2020/05/20', '2020/04/15', '2020/05/01', 10000000, 2800000, 'Y', '046', 35);
+INSERT INTO PRODUCT VALUES('W0405046BLS', '04', 'thumb088', 'ï¿½Å¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½Ç½ï¿½','BL','S',400000, 30, 280000, 05, 046, 'ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ ï¿½Ö¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt088', 6000, '2020/05/20', '2020/04/15', '2020/05/01', 10000000, 2800000, 'Y', '046', 35);
+INSERT INTO PRODUCT VALUES('W0405046BLM', '04', 'thumb088', 'ï¿½Å¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½Ç½ï¿½','BL','M',400000, 30, 280000, 05, 046, 'ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ ï¿½Ö¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt088', 6000, '2020/05/20', '2020/04/15', '2020/05/01', 10000000, 2800000, 'Y', '046', 35);
+INSERT INTO PRODUCT VALUES('W0405046BLL', '04', 'thumb088', 'ï¿½Å¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½Ç½ï¿½','BL','L',400000, 30, 280000, 05, 046, 'ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ ï¿½Ö¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt088', 6000, '2020/05/20', '2020/04/15', '2020/05/01', 10000000, 2800000, 'Y', '046', 35);
 
-INSERT INTO PRODUCT VALUES('W0402047BKS', '04', 'thumb089', '¾À ½ºÆ®¶óÀÌÇÁ ¹ÝÆÈ Æ¼¼ÅÃ÷','BK','S',200000, 30, 140000, 02, 047, 'Ä³ÁÖ¾óÇÑ ¹«µåÀÇ ¹ÝÆÈ Æ¼¼ÅÃ÷', 'dt089', 2000, '2020/07/01', '2020/06/01', '2020/06/15', 10000000, 12000000, 'N', '047', 0);
-INSERT INTO PRODUCT VALUES('W0402047BKM', '04', 'thumb089', '¾À ½ºÆ®¶óÀÌÇÁ ¹ÝÆÈ Æ¼¼ÅÃ÷','BK','M',200000, 30, 140000, 02, 047, 'Ä³ÁÖ¾óÇÑ ¹«µåÀÇ ¹ÝÆÈ Æ¼¼ÅÃ÷', 'dt089', 2000, '2020/07/01', '2020/06/01', '2020/06/15', 10000000, 12000000, 'N', '047', 0);
-INSERT INTO PRODUCT VALUES('W0402047BKL', '04', 'thumb089', '¾À ½ºÆ®¶óÀÌÇÁ ¹ÝÆÈ Æ¼¼ÅÃ÷','BK','L',200000, 30, 140000, 02, 047, 'Ä³ÁÖ¾óÇÑ ¹«µåÀÇ ¹ÝÆÈ Æ¼¼ÅÃ÷', 'dt089', 2000, '2020/07/01', '2020/06/01', '2020/06/15', 10000000, 12000000, 'N', '047', 0);
+INSERT INTO PRODUCT VALUES('W0402047BKS', '04', 'thumb089', 'ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½','BK','S',200000, 30, 140000, 02, 047, 'Ä³ï¿½Ö¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½', 'dt089', 2000, '2020/07/01', '2020/06/01', '2020/06/15', 10000000, 12000000, 'N', '047', 0);
+INSERT INTO PRODUCT VALUES('W0402047BKM', '04', 'thumb089', 'ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½','BK','M',200000, 30, 140000, 02, 047, 'Ä³ï¿½Ö¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½', 'dt089', 2000, '2020/07/01', '2020/06/01', '2020/06/15', 10000000, 12000000, 'N', '047', 0);
+INSERT INTO PRODUCT VALUES('W0402047BKL', '04', 'thumb089', 'ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½','BK','L',200000, 30, 140000, 02, 047, 'Ä³ï¿½Ö¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½', 'dt089', 2000, '2020/07/01', '2020/06/01', '2020/06/15', 10000000, 12000000, 'N', '047', 0);
 
-INSERT INTO PRODUCT VALUES('W0403048WHS', '04', 'thumb073', 'Æ®·¹ÀÌ´× ÇÏÇÁ ÆÒÃ÷','WH','S',400000, 30, 280000, 03, 048, '¾Æ¿ô ½ºÆ®¸µ µðÅ×ÀÏÀÌ Ä³ÁÖ¾óÇÑ ´À³¦À» ÁÜ', 'dt073', 4000, '2020/07/15', '2020/06/15', '2020/06/30', 3300000, 1450000, 'N', '048', 0);
-INSERT INTO PRODUCT VALUES('W0403048WHM', '04', 'thumb073', 'Æ®·¹ÀÌ´× ÇÏÇÁ ÆÒÃ÷','WH','M',400000, 30, 280000, 03, 048, '¾Æ¿ô ½ºÆ®¸µ µðÅ×ÀÏÀÌ Ä³ÁÖ¾óÇÑ ´À³¦À» ÁÜ', 'dt073', 4000, '2020/07/15', '2020/06/15', '2020/06/30', 3300000, 1450000, 'N', '048', 0);
-INSERT INTO PRODUCT VALUES('W0403048WHL', '04', 'thumb073', 'Æ®·¹ÀÌ´× ÇÏÇÁ ÆÒÃ÷','WH','L',400000, 30, 280000, 03, 048, '¾Æ¿ô ½ºÆ®¸µ µðÅ×ÀÏÀÌ Ä³ÁÖ¾óÇÑ ´À³¦À» ÁÜ', 'dt073', 4000, '2020/07/15', '2020/06/15', '2020/06/30', 3300000, 1450000, 'N', '048', 0);
+INSERT INTO PRODUCT VALUES('W0403048WHS', '04', 'thumb073', 'Æ®ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½','WH','S',400000, 30, 280000, 03, 048, 'ï¿½Æ¿ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä³ï¿½Ö¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½', 'dt073', 4000, '2020/07/15', '2020/06/15', '2020/06/30', 3300000, 1450000, 'N', '048', 0);
+INSERT INTO PRODUCT VALUES('W0403048WHM', '04', 'thumb073', 'Æ®ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½','WH','M',400000, 30, 280000, 03, 048, 'ï¿½Æ¿ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä³ï¿½Ö¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½', 'dt073', 4000, '2020/07/15', '2020/06/15', '2020/06/30', 3300000, 1450000, 'N', '048', 0);
+INSERT INTO PRODUCT VALUES('W0403048WHL', '04', 'thumb073', 'Æ®ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½','WH','L',400000, 30, 280000, 03, 048, 'ï¿½Æ¿ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä³ï¿½Ö¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½', 'dt073', 4000, '2020/07/15', '2020/06/15', '2020/06/30', 3300000, 1450000, 'N', '048', 0);
 
-INSERT INTO PRODUCT VALUES('W0305049BKS', '03', 'thumb081', '±Û·Î½Ã ¹ÝÆÈ ·Õ ¿øÇÇ½º','BK','S',900000, 30, 630000, 05, 049, '±Û·Î½ÃÇÑ ±¤ÅÃ°¨ÀÌ µ¸º¸ÀÓ', 'dt081', 9000, '2020/07/15', '2020/06/15', '2020/06/30', 20000000, 1780000, 'N', '049', 0);
-INSERT INTO PRODUCT VALUES('W0305049BKM', '03', 'thumb081', '±Û·Î½Ã ¹ÝÆÈ ·Õ ¿øÇÇ½º','BK','M',900000, 30, 630000, 05, 049, '±Û·Î½ÃÇÑ ±¤ÅÃ°¨ÀÌ µ¸º¸ÀÓ', 'dt081', 9000, '2020/07/15', '2020/06/15', '2020/06/30', 20000000, 1780000, 'N', '049', 0);
-INSERT INTO PRODUCT VALUES('W0305049BKL', '03', 'thumb081', '±Û·Î½Ã ¹ÝÆÈ ·Õ ¿øÇÇ½º','BK','L',900000, 30, 630000, 05, 049, '±Û·Î½ÃÇÑ ±¤ÅÃ°¨ÀÌ µ¸º¸ÀÓ', 'dt081', 9000, '2020/07/15', '2020/06/15', '2020/06/30', 20000000, 1780000, 'N', '049', 0);
+INSERT INTO PRODUCT VALUES('W0305049BKS', '03', 'thumb081', 'ï¿½Û·Î½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½','BK','S',900000, 30, 630000, 05, 049, 'ï¿½Û·Î½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt081', 9000, '2020/07/15', '2020/06/15', '2020/06/30', 20000000, 1780000, 'N', '049', 0);
+INSERT INTO PRODUCT VALUES('W0305049BKM', '03', 'thumb081', 'ï¿½Û·Î½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½','BK','M',900000, 30, 630000, 05, 049, 'ï¿½Û·Î½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt081', 9000, '2020/07/15', '2020/06/15', '2020/06/30', 20000000, 1780000, 'N', '049', 0);
+INSERT INTO PRODUCT VALUES('W0305049BKL', '03', 'thumb081', 'ï¿½Û·Î½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½','BK','L',900000, 30, 630000, 05, 049, 'ï¿½Û·Î½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt081', 9000, '2020/07/15', '2020/06/15', '2020/06/30', 20000000, 1780000, 'N', '049', 0);
 
-INSERT INTO PRODUCT VALUES('M0301050KHS', '03', 'thumb049', '°Ô´õ ¿þÀÌ½ºÆ® ÀÚÄÏ','KH','S',700000, 30, 490000, 01, 050, '¼Ò¸Å°¡ »ìÂ¦ ±ä ¿À¹ö»çÀÌÁî ÀÚÄÏ', 'dt049', 7000, '2020/09/01', '2020/08/01', '2020/08/15', 2050000, 1340000, 'N', '050', 0);
-INSERT INTO PRODUCT VALUES('M0301050KHM', '03', 'thumb049', '°Ô´õ ¿þÀÌ½ºÆ® ÀÚÄÏ','KH','M',700000, 30, 490000, 01, 050, '¼Ò¸Å°¡ »ìÂ¦ ±ä ¿À¹ö»çÀÌÁî ÀÚÄÏ', 'dt049', 7000, '2020/09/01', '2020/08/01', '2020/08/15', 2050000, 1340000, 'N', '050', 0);
-INSERT INTO PRODUCT VALUES('M0301050KHL', '03', 'thumb049', '°Ô´õ ¿þÀÌ½ºÆ® ÀÚÄÏ','KH','L',700000, 30, 490000, 01, 050, '¼Ò¸Å°¡ »ìÂ¦ ±ä ¿À¹ö»çÀÌÁî ÀÚÄÏ', 'dt049', 7000, '2020/09/01', '2020/08/01', '2020/08/15', 2050000, 1340000, 'N', '050', 0);
+INSERT INTO PRODUCT VALUES('M0301050KHS', '03', 'thumb049', 'ï¿½Ô´ï¿½ ï¿½ï¿½ï¿½Ì½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½','KH','S',700000, 30, 490000, 01, 050, 'ï¿½Ò¸Å°ï¿½ ï¿½ï¿½Â¦ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'dt049', 7000, '2020/09/01', '2020/08/01', '2020/08/15', 2050000, 1340000, 'N', '050', 0);
+INSERT INTO PRODUCT VALUES('M0301050KHM', '03', 'thumb049', 'ï¿½Ô´ï¿½ ï¿½ï¿½ï¿½Ì½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½','KH','M',700000, 30, 490000, 01, 050, 'ï¿½Ò¸Å°ï¿½ ï¿½ï¿½Â¦ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'dt049', 7000, '2020/09/01', '2020/08/01', '2020/08/15', 2050000, 1340000, 'N', '050', 0);
+INSERT INTO PRODUCT VALUES('M0301050KHL', '03', 'thumb049', 'ï¿½Ô´ï¿½ ï¿½ï¿½ï¿½Ì½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½','KH','L',700000, 30, 490000, 01, 050, 'ï¿½Ò¸Å°ï¿½ ï¿½ï¿½Â¦ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'dt049', 7000, '2020/09/01', '2020/08/01', '2020/08/15', 2050000, 1340000, 'N', '050', 0);
 
-INSERT INTO PRODUCT VALUES('M0304051BLS', '03', 'thumb078', '³»Ãß·² ¹Ø´Ü ¹öÆ°¾÷ µ¥´ÔÆÒÃ÷','BL','S',300000, 30, 210000, 04, 051, '¿ö½Ì µðÅ×ÀÏÀÌ µ¸º¸ÀÓ', 'dt078', 5000, '2020/10/01', '2020/09/01', '2020/09/15', 7000000, 2245000, 'N', '051', 0);
-INSERT INTO PRODUCT VALUES('M0304051BLM', '03', 'thumb078', '³»Ãß·² ¹Ø´Ü ¹öÆ°¾÷ µ¥´ÔÆÒÃ÷','BL','M',300000, 30, 210000, 04, 051, '¿ö½Ì µðÅ×ÀÏÀÌ µ¸º¸ÀÓ', 'dt078', 5000, '2020/10/01', '2020/09/01', '2020/09/15', 7000000, 2245000, 'N', '051', 0);
-INSERT INTO PRODUCT VALUES('M0304051BLL', '03', 'thumb078', '³»Ãß·² ¹Ø´Ü ¹öÆ°¾÷ µ¥´ÔÆÒÃ÷','BL','L',300000, 30, 210000, 04, 051, '¿ö½Ì µðÅ×ÀÏÀÌ µ¸º¸ÀÓ', 'dt078', 5000, '2020/10/01', '2020/09/01', '2020/09/15', 7000000, 2245000, 'N', '051', 0);
+INSERT INTO PRODUCT VALUES('M0304051BLS', '03', 'thumb078', 'ï¿½ï¿½ï¿½ß·ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½Æ°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','BL','S',300000, 30, 210000, 04, 051, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt078', 5000, '2020/10/01', '2020/09/01', '2020/09/15', 7000000, 2245000, 'N', '051', 0);
+INSERT INTO PRODUCT VALUES('M0304051BLM', '03', 'thumb078', 'ï¿½ï¿½ï¿½ß·ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½Æ°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','BL','M',300000, 30, 210000, 04, 051, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt078', 5000, '2020/10/01', '2020/09/01', '2020/09/15', 7000000, 2245000, 'N', '051', 0);
+INSERT INTO PRODUCT VALUES('M0304051BLL', '03', 'thumb078', 'ï¿½ï¿½ï¿½ß·ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½Æ°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','BL','L',300000, 30, 210000, 04, 051, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt078', 5000, '2020/10/01', '2020/09/01', '2020/09/15', 7000000, 2245000, 'N', '051', 0);
 
-INSERT INTO PRODUCT VALUES('M0201052BKS', '02', 'thumb047', '·Î°í ÇÁ¸°Æ® ÈÄµå ÀÚÄÏ','BK','S',200000, 30, 140000, 01, 052, '·Î°í ÇÁ¸°Æ® µðÅ×ÀÏÀÌ µ¸º¸ÀÓ', 'dt047', 3000, '2020/09/15', '2020/08/01', '2020/08/15', 10000000, 7000000, 'N', '052', 0);
-INSERT INTO PRODUCT VALUES('M0201052BKM', '02', 'thumb047', '·Î°í ÇÁ¸°Æ® ÈÄµå ÀÚÄÏ','BK','M',200000, 30, 140000, 01, 052, '·Î°í ÇÁ¸°Æ® µðÅ×ÀÏÀÌ µ¸º¸ÀÓ', 'dt047', 3000, '2020/09/15', '2020/08/01', '2020/08/15', 10000000, 7000000, 'N', '052', 0);
-INSERT INTO PRODUCT VALUES('M0201052BKL', '02', 'thumb047', '·Î°í ÇÁ¸°Æ® ÈÄµå ÀÚÄÏ','BK','L',200000, 30, 140000, 01, 052, '·Î°í ÇÁ¸°Æ® µðÅ×ÀÏÀÌ µ¸º¸ÀÓ', 'dt047', 3000, '2020/09/15', '2020/08/01', '2020/08/15', 10000000, 7000000, 'N', '052', 0);
-INSERT INTO PRODUCT VALUES('M0201052KHS', '02', 'thumb047', '·Î°í ÇÁ¸°Æ® ÈÄµå ÀÚÄÏ','KH','S',200000, 30, 140000, 01, 052, '·Î°í ÇÁ¸°Æ® µðÅ×ÀÏÀÌ µ¸º¸ÀÓ', 'dt047', 3000, '2020/09/15', '2020/08/01', '2020/08/15', 10000000, 7000000, 'N', '052', 0);
-INSERT INTO PRODUCT VALUES('M0201052KHM', '02', 'thumb047', '·Î°í ÇÁ¸°Æ® ÈÄµå ÀÚÄÏ','KH','M',200000, 30, 140000, 01, 052, '·Î°í ÇÁ¸°Æ® µðÅ×ÀÏÀÌ µ¸º¸ÀÓ', 'dt047', 3000, '2020/09/15', '2020/08/01', '2020/08/15', 10000000, 7000000, 'N', '052', 0);
-INSERT INTO PRODUCT VALUES('M0201052KHL', '02', 'thumb047', '·Î°í ÇÁ¸°Æ® ÈÄµå ÀÚÄÏ','KH','L',200000, 30, 140000, 01, 052, '·Î°í ÇÁ¸°Æ® µðÅ×ÀÏÀÌ µ¸º¸ÀÓ', 'dt047', 3000, '2020/09/15', '2020/08/01', '2020/08/15', 10000000, 7000000, 'N', '052', 0);
+INSERT INTO PRODUCT VALUES('M0201052BKS', '02', 'thumb047', 'ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Äµï¿½ ï¿½ï¿½ï¿½ï¿½','BK','S',200000, 30, 140000, 01, 052, 'ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt047', 3000, '2020/09/15', '2020/08/01', '2020/08/15', 10000000, 7000000, 'N', '052', 0);
+INSERT INTO PRODUCT VALUES('M0201052BKM', '02', 'thumb047', 'ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Äµï¿½ ï¿½ï¿½ï¿½ï¿½','BK','M',200000, 30, 140000, 01, 052, 'ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt047', 3000, '2020/09/15', '2020/08/01', '2020/08/15', 10000000, 7000000, 'N', '052', 0);
+INSERT INTO PRODUCT VALUES('M0201052BKL', '02', 'thumb047', 'ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Äµï¿½ ï¿½ï¿½ï¿½ï¿½','BK','L',200000, 30, 140000, 01, 052, 'ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt047', 3000, '2020/09/15', '2020/08/01', '2020/08/15', 10000000, 7000000, 'N', '052', 0);
+INSERT INTO PRODUCT VALUES('M0201052KHS', '02', 'thumb047', 'ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Äµï¿½ ï¿½ï¿½ï¿½ï¿½','KH','S',200000, 30, 140000, 01, 052, 'ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt047', 3000, '2020/09/15', '2020/08/01', '2020/08/15', 10000000, 7000000, 'N', '052', 0);
+INSERT INTO PRODUCT VALUES('M0201052KHM', '02', 'thumb047', 'ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Äµï¿½ ï¿½ï¿½ï¿½ï¿½','KH','M',200000, 30, 140000, 01, 052, 'ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt047', 3000, '2020/09/15', '2020/08/01', '2020/08/15', 10000000, 7000000, 'N', '052', 0);
+INSERT INTO PRODUCT VALUES('M0201052KHL', '02', 'thumb047', 'ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Äµï¿½ ï¿½ï¿½ï¿½ï¿½','KH','L',200000, 30, 140000, 01, 052, 'ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt047', 3000, '2020/09/15', '2020/08/01', '2020/08/15', 10000000, 7000000, 'N', '052', 0);
 
-INSERT INTO PRODUCT VALUES('M0202053WHS', '02', 'thumb067', '¸µ Àå½Ä ¹ÝÆÈ Æ¼¼ÅÃ÷','WH','S', 200000, 30, 140000, 02, 053, '¸µ Àå½Ä µðÅ×ÀÏÀÌ µ¸º¸ÀÓ', 'dt067', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 7800000, 2429000, 'N', '053', 0);
-INSERT INTO PRODUCT VALUES('M0202053WHM', '02', 'thumb067', '¸µ Àå½Ä ¹ÝÆÈ Æ¼¼ÅÃ÷','WH','M', 200000, 30, 140000, 02, 053, '¸µ Àå½Ä µðÅ×ÀÏÀÌ µ¸º¸ÀÓ', 'dt067', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 7800000, 2429000, 'N', '053', 0);
-INSERT INTO PRODUCT VALUES('M0202053WHL', '02', 'thumb067', '¸µ Àå½Ä ¹ÝÆÈ Æ¼¼ÅÃ÷', 'WH','L',200000, 30, 140000, 02, 053, '¸µ Àå½Ä µðÅ×ÀÏÀÌ µ¸º¸ÀÓ', 'dt067', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 7800000, 2429000, 'N', '053', 0);
+INSERT INTO PRODUCT VALUES('M0202053WHS', '02', 'thumb067', 'ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½','WH','S', 200000, 30, 140000, 02, 053, 'ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt067', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 7800000, 2429000, 'N', '053', 0);
+INSERT INTO PRODUCT VALUES('M0202053WHM', '02', 'thumb067', 'ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½','WH','M', 200000, 30, 140000, 02, 053, 'ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt067', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 7800000, 2429000, 'N', '053', 0);
+INSERT INTO PRODUCT VALUES('M0202053WHL', '02', 'thumb067', 'ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½', 'WH','L',200000, 30, 140000, 02, 053, 'ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt067', 3000, '2020/08/01', '2020/07/01', '2020/07/20', 7800000, 2429000, 'N', '053', 0);
 
-INSERT INTO PRODUCT VALUES('M0201054BLS', '02', 'thumb095', 'ºò ·Î°í ·¡±Û·± ÄÚÄ¡ ÀÚÄÏ','BL','S', 500000, 30, 350000, 01, 054, 'µÞ ¸é¿¡ ºò ÀÚ¼ö ·Î°í µðÅ×ÀÏÀÌ µ¸º¸ÀÓ', 'dt095', 5000, '2020/10/01', '2020/09/01', '2020/09/20', 20000000, 0, 'N', '054', 0);
-INSERT INTO PRODUCT VALUES('M0201054BLM', '02', 'thumb095', 'ºò ·Î°í ·¡±Û·± ÄÚÄ¡ ÀÚÄÏ','BL','M', 500000, 30, 350000, 01, 054, 'µÞ ¸é¿¡ ºò ÀÚ¼ö ·Î°í µðÅ×ÀÏÀÌ µ¸º¸ÀÓ', 'dt095', 5000, '2020/10/01', '2020/09/01', '2020/09/20', 20000000, 0, 'N', '054', 0);
-INSERT INTO PRODUCT VALUES('M0201054BLL', '02', 'thumb095', 'ºò ·Î°í ·¡±Û·± ÄÚÄ¡ ÀÚÄÏ','BL','L', 500000, 30, 350000, 01, 054, 'µÞ ¸é¿¡ ºò ÀÚ¼ö ·Î°í µðÅ×ÀÏÀÌ µ¸º¸ÀÓ', 'dt095', 5000, '2020/10/01', '2020/09/01', '2020/09/20', 20000000, 0, 'N', '054', 0);
+INSERT INTO PRODUCT VALUES('M0201054BLS', '02', 'thumb095', 'ï¿½ï¿½ ï¿½Î°ï¿½ ï¿½ï¿½ï¿½Û·ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½','BL','S', 500000, 30, 350000, 01, 054, 'ï¿½ï¿½ ï¿½é¿¡ ï¿½ï¿½ ï¿½Ú¼ï¿½ ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt095', 5000, '2020/10/01', '2020/09/01', '2020/09/20', 20000000, 0, 'N', '054', 0);
+INSERT INTO PRODUCT VALUES('M0201054BLM', '02', 'thumb095', 'ï¿½ï¿½ ï¿½Î°ï¿½ ï¿½ï¿½ï¿½Û·ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½','BL','M', 500000, 30, 350000, 01, 054, 'ï¿½ï¿½ ï¿½é¿¡ ï¿½ï¿½ ï¿½Ú¼ï¿½ ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt095', 5000, '2020/10/01', '2020/09/01', '2020/09/20', 20000000, 0, 'N', '054', 0);
+INSERT INTO PRODUCT VALUES('M0201054BLL', '02', 'thumb095', 'ï¿½ï¿½ ï¿½Î°ï¿½ ï¿½ï¿½ï¿½Û·ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½','BL','L', 500000, 30, 350000, 01, 054, 'ï¿½ï¿½ ï¿½é¿¡ ï¿½ï¿½ ï¿½Ú¼ï¿½ ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt095', 5000, '2020/10/01', '2020/09/01', '2020/09/20', 20000000, 0, 'N', '054', 0);
 
-INSERT INTO PRODUCT VALUES('M0104055BLS', '01', 'thumb079', '¶óÀÌÆ® ¿ö½Ãµå ¼ô µ¥´ÔÆÒÃ÷','BL','S', 500000, 30, 350000, 04, 055, '¶óÀÌÆ®ÇÑ ¿ö½Ì°¨ÀÌ µ¸º¸ÀÓ', 'dt079', 6000, '2020/08/01', '2020/07/01', '2020/07/15', 10000000, 900000, 'N', '055', 0);
-INSERT INTO PRODUCT VALUES('M0104055BLM', '01', 'thumb079', '¶óÀÌÆ® ¿ö½Ãµå ¼ô µ¥´ÔÆÒÃ÷','BL','M', 500000, 30, 350000, 04, 055, '¶óÀÌÆ®ÇÑ ¿ö½Ì°¨ÀÌ µ¸º¸ÀÓ', 'dt079', 6000, '2020/08/01', '2020/07/01', '2020/07/15', 10000000, 900000, 'N', '055', 0);
-INSERT INTO PRODUCT VALUES('M0104055BLL', '01', 'thumb079', '¶óÀÌÆ® ¿ö½Ãµå ¼ô µ¥´ÔÆÒÃ÷','BL','L',500000, 30, 350000, 04, 055, '¶óÀÌÆ®ÇÑ ¿ö½Ì°¨ÀÌ µ¸º¸ÀÓ', 'dt079', 6000, '2020/08/01', '2020/07/01', '2020/07/15', 10000000, 900000, 'N', '055', 0);
+INSERT INTO PRODUCT VALUES('M0104055BLS', '01', 'thumb079', 'ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','BL','S', 500000, 30, 350000, 04, 055, 'ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½Ì°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt079', 6000, '2020/08/01', '2020/07/01', '2020/07/15', 10000000, 900000, 'N', '055', 0);
+INSERT INTO PRODUCT VALUES('M0104055BLM', '01', 'thumb079', 'ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','BL','M', 500000, 30, 350000, 04, 055, 'ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½Ì°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt079', 6000, '2020/08/01', '2020/07/01', '2020/07/15', 10000000, 900000, 'N', '055', 0);
+INSERT INTO PRODUCT VALUES('M0104055BLL', '01', 'thumb079', 'ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','BL','L',500000, 30, 350000, 04, 055, 'ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½Ì°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt079', 6000, '2020/08/01', '2020/07/01', '2020/07/15', 10000000, 900000, 'N', '055', 0);
 
-INSERT INTO PRODUCT VALUES('M0102056BKS', '01', 'thumb080', '·¹ÀÌ¾î ¹Ø´Ü ¹ÝÆÈ Æ¼¼ÅÃ÷','BK','S', 100000, 30, 70000, 02, 056, 'ºêÀÌ³Ø µðÅ×ÀÏÀÌ µ¸º¸ÀÓ', 'dt080', 2000, '2020/08/01', '2020/07/01', '2020/07/15', 26000000, 9900000, 'N', '056', 0);
-INSERT INTO PRODUCT VALUES('M0102056BKM', '01', 'thumb080', '·¹ÀÌ¾î ¹Ø´Ü ¹ÝÆÈ Æ¼¼ÅÃ÷','BK','M', 100000, 30, 70000, 02, 056, 'ºêÀÌ³Ø µðÅ×ÀÏÀÌ µ¸º¸ÀÓ', 'dt080', 2000, '2020/08/01', '2020/07/01', '2020/07/15', 26000000, 9900000, 'N', '056', 0);
-INSERT INTO PRODUCT VALUES('M0102056BKL', '01', 'thumb080', '·¹ÀÌ¾î ¹Ø´Ü ¹ÝÆÈ Æ¼¼ÅÃ÷','BK','L', 100000, 30, 70000, 02, 056, 'ºêÀÌ³Ø µðÅ×ÀÏÀÌ µ¸º¸ÀÓ', 'dt080', 2000, '2020/08/01', '2020/07/01', '2020/07/15', 26000000, 9900000, 'N', '056', 0);
+INSERT INTO PRODUCT VALUES('M0102056BKS', '01', 'thumb080', 'ï¿½ï¿½ï¿½Ì¾ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½','BK','S', 100000, 30, 70000, 02, 056, 'ï¿½ï¿½ï¿½Ì³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt080', 2000, '2020/08/01', '2020/07/01', '2020/07/15', 26000000, 9900000, 'N', '056', 0);
+INSERT INTO PRODUCT VALUES('M0102056BKM', '01', 'thumb080', 'ï¿½ï¿½ï¿½Ì¾ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½','BK','M', 100000, 30, 70000, 02, 056, 'ï¿½ï¿½ï¿½Ì³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt080', 2000, '2020/08/01', '2020/07/01', '2020/07/15', 26000000, 9900000, 'N', '056', 0);
+INSERT INTO PRODUCT VALUES('M0102056BKL', '01', 'thumb080', 'ï¿½ï¿½ï¿½Ì¾ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½','BK','L', 100000, 30, 70000, 02, 056, 'ï¿½ï¿½ï¿½Ì³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt080', 2000, '2020/08/01', '2020/07/01', '2020/07/15', 26000000, 9900000, 'N', '056', 0);
 
-INSERT INTO PRODUCT VALUES('M0101057BKS', '01', 'thumb039', '1987 ÆÐÄ¡ Áý¾÷ ÀÚÄÏ','BK','S', 400000, 30, 280000, 01, 057, '1987 ÆÐÄ¡ µðÅ×ÀÏÀÌ µ¸º¸ÀÓ', 'dt039', 4000, '2020/11/01', '2020/10/01', '2020/10/15', 20500000, 2340000, 'N', '057', 0);
-INSERT INTO PRODUCT VALUES('M0101057BKM', '01', 'thumb039', '1987 ÆÐÄ¡ Áý¾÷ ÀÚÄÏ','BK','M', 400000, 30, 280000, 01, 057, '1987 ÆÐÄ¡ µðÅ×ÀÏÀÌ µ¸º¸ÀÓ', 'dt039', 4000, '2020/11/01', '2020/10/01', '2020/10/15', 20500000, 2340000, 'N', '057', 0);
-INSERT INTO PRODUCT VALUES('M0101057BLS', '01', 'thumb039', '1987 ÆÐÄ¡ Áý¾÷ ÀÚÄÏ','BL','S', 400000, 30, 280000, 01, 057, '1987 ÆÐÄ¡ µðÅ×ÀÏÀÌ µ¸º¸ÀÓ', 'dt039', 4000, '2020/11/01', '2020/10/01', '2020/10/15', 20500000, 2340000, 'N', '057', 0);
-INSERT INTO PRODUCT VALUES('M0101057BLM', '01', 'thumb039', '1987 ÆÐÄ¡ Áý¾÷ ÀÚÄÏ','BL','M', 400000, 30, 280000, 01, 057, '1987 ÆÐÄ¡ µðÅ×ÀÏÀÌ µ¸º¸ÀÓ', 'dt039', 4000, '2020/11/01', '2020/10/01', '2020/10/15', 20500000, 2340000, 'N', '057', 0);
+INSERT INTO PRODUCT VALUES('M0101057BKS', '01', 'thumb039', '1987 ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½','BK','S', 400000, 30, 280000, 01, 057, '1987 ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt039', 4000, '2020/11/01', '2020/10/01', '2020/10/15', 20500000, 2340000, 'N', '057', 0);
+INSERT INTO PRODUCT VALUES('M0101057BKM', '01', 'thumb039', '1987 ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½','BK','M', 400000, 30, 280000, 01, 057, '1987 ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt039', 4000, '2020/11/01', '2020/10/01', '2020/10/15', 20500000, 2340000, 'N', '057', 0);
+INSERT INTO PRODUCT VALUES('M0101057BLS', '01', 'thumb039', '1987 ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½','BL','S', 400000, 30, 280000, 01, 057, '1987 ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt039', 4000, '2020/11/01', '2020/10/01', '2020/10/15', 20500000, 2340000, 'N', '057', 0);
+INSERT INTO PRODUCT VALUES('M0101057BLM', '01', 'thumb039', '1987 ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½','BL','M', 400000, 30, 280000, 01, 057, '1987 ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt039', 4000, '2020/11/01', '2020/10/01', '2020/10/15', 20500000, 2340000, 'N', '057', 0);
 
-INSERT INTO PRODUCT VALUES('M0103058KHS', '01', 'thumb074', 'O¸µ È÷µç Ä¡³ëÆÒÃ÷','KH','S', 30000, 30, 21000, 03, 058, 'O¸µ Àå½Ä µðÅ×ÀÏÀÌ µ¸º¸ÀÓ', 'dt074', 3000, '2020/08/01', '2020/07/01', '2020/07/15', 10000000, 2700000, 'N', '058', 0);
-INSERT INTO PRODUCT VALUES('M0103058KHM', '01', 'thumb074', 'O¸µ È÷µç Ä¡³ëÆÒÃ÷','KH','M', 30000, 30, 21000, 03, 058, 'O¸µ Àå½Ä µðÅ×ÀÏÀÌ µ¸º¸ÀÓ', 'dt074', 3000, '2020/08/01', '2020/07/01', '2020/07/15', 10000000, 2700000, 'N', '058', 0);
-INSERT INTO PRODUCT VALUES('M0103058KHL', '01', 'thumb074', 'O¸µ È÷µç Ä¡³ëÆÒÃ÷','KH','L', 30000, 30, 21000, 03, 058, 'O¸µ Àå½Ä µðÅ×ÀÏÀÌ µ¸º¸ÀÓ', 'dt074', 3000, '2020/08/01', '2020/07/01', '2020/07/15', 10000000, 2700000, 'N', '058', 0);
+INSERT INTO PRODUCT VALUES('M0103058KHS', '01', 'thumb074', 'Oï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ä¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','KH','S', 30000, 30, 21000, 03, 058, 'Oï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt074', 3000, '2020/08/01', '2020/07/01', '2020/07/15', 10000000, 2700000, 'N', '058', 0);
+INSERT INTO PRODUCT VALUES('M0103058KHM', '01', 'thumb074', 'Oï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ä¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','KH','M', 30000, 30, 21000, 03, 058, 'Oï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt074', 3000, '2020/08/01', '2020/07/01', '2020/07/15', 10000000, 2700000, 'N', '058', 0);
+INSERT INTO PRODUCT VALUES('M0103058KHL', '01', 'thumb074', 'Oï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ä¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','KH','L', 30000, 30, 21000, 03, 058, 'Oï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt074', 3000, '2020/08/01', '2020/07/01', '2020/07/15', 10000000, 2700000, 'N', '058', 0);
 
-INSERT INTO PRODUCT VALUES('M0101059KHS', '01', 'thumb035', 'ÀÌÁß Å¬·ÎÂ¡ ÇÊµå ¼ÅÃ÷','KH','S', 70000, 30, 49000, 01, 059, 'ÀÌÁß Å¬·ÎÂ¡ µðÅ×ÀÏÀ» °¡Áø Æ®·»µðÇÑ ¹«µå°¡ µ¸º¸ÀÓ', 'dt035', 7000, '2020/10/15', '2020/09/01', '2020/09/20', 2000000, 1804000, 'N', '059', 0);
-INSERT INTO PRODUCT VALUES('M0101059KHM', '01', 'thumb035', 'ÀÌÁß Å¬·ÎÂ¡ ÇÊµå ¼ÅÃ÷','KH','M', 70000, 30, 49000, 01, 059, 'ÀÌÁß Å¬·ÎÂ¡ µðÅ×ÀÏÀ» °¡Áø Æ®·»µðÇÑ ¹«µå°¡ µ¸º¸ÀÓ', 'dt035', 7000, '2020/10/15', '2020/09/01', '2020/09/20', 2000000, 1804000, 'N', '059', 0);
-INSERT INTO PRODUCT VALUES('M0101059KHL', '01', 'thumb035', 'ÀÌÁß Å¬·ÎÂ¡ ÇÊµå ¼ÅÃ÷','KH','L', 70000, 30, 49000, 01, 059, 'ÀÌÁß Å¬·ÎÂ¡ µðÅ×ÀÏÀ» °¡Áø Æ®·»µðÇÑ ¹«µå°¡ µ¸º¸ÀÓ', 'dt035', 7000, '2020/10/15', '2020/09/01', '2020/09/20', 2000000, 1804000, 'N', '059', 0);
+INSERT INTO PRODUCT VALUES('M0101059KHS', '01', 'thumb035', 'ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½Â¡ ï¿½Êµï¿½ ï¿½ï¿½ï¿½ï¿½','KH','S', 70000, 30, 49000, 01, 059, 'ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½Â¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½å°¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt035', 7000, '2020/10/15', '2020/09/01', '2020/09/20', 2000000, 1804000, 'N', '059', 0);
+INSERT INTO PRODUCT VALUES('M0101059KHM', '01', 'thumb035', 'ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½Â¡ ï¿½Êµï¿½ ï¿½ï¿½ï¿½ï¿½','KH','M', 70000, 30, 49000, 01, 059, 'ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½Â¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½å°¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt035', 7000, '2020/10/15', '2020/09/01', '2020/09/20', 2000000, 1804000, 'N', '059', 0);
+INSERT INTO PRODUCT VALUES('M0101059KHL', '01', 'thumb035', 'ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½Â¡ ï¿½Êµï¿½ ï¿½ï¿½ï¿½ï¿½','KH','L', 70000, 30, 49000, 01, 059, 'ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½Â¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½å°¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt035', 7000, '2020/10/15', '2020/09/01', '2020/09/20', 2000000, 1804000, 'N', '059', 0);
 
-INSERT INTO PRODUCT VALUES('M0503060BKS', '05', 'thumb080', '½ºÆ®¸µ ¹è±â ¿ï ÆÒÃ÷','BK','S', 50000, 30, 35000, 03, 060, '¹è±âÇÍ µðÅ×ÀÏ·Î Æ÷ÀÎÆ®¸¦ ´õÇÔ', 'dt080', 5000, '2020/11/15', '2020/10/01', '2020/10/20', 2000000, 340000, 'N', '060', 0);
-INSERT INTO PRODUCT VALUES('M0503060BKM', '05', 'thumb080', '½ºÆ®¸µ ¹è±â ¿ï ÆÒÃ÷','BK','M', 50000, 30, 35000, 03, 060, '¹è±âÇÍ µðÅ×ÀÏ·Î Æ÷ÀÎÆ®¸¦ ´õÇÔ', 'dt080', 5000, '2020/11/15', '2020/10/01', '2020/10/20', 2000000, 340000, 'N', '060', 0);
-INSERT INTO PRODUCT VALUES('M0503060BKL', '05', 'thumb080', '½ºÆ®¸µ ¹è±â ¿ï ÆÒÃ÷','BK','L', 50000, 30, 35000, 03, 060, '¹è±âÇÍ µðÅ×ÀÏ·Î Æ÷ÀÎÆ®¸¦ ´õÇÔ', 'dt080', 5000, '2020/11/15', '2020/10/01', '2020/10/20', 2000000, 340000, 'N', '060', 0);
+INSERT INTO PRODUCT VALUES('M0503060BKS', '05', 'thumb080', 'ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½','BK','S', 50000, 30, 35000, 03, 060, 'ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'dt080', 5000, '2020/11/15', '2020/10/01', '2020/10/20', 2000000, 340000, 'N', '060', 0);
+INSERT INTO PRODUCT VALUES('M0503060BKM', '05', 'thumb080', 'ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½','BK','M', 50000, 30, 35000, 03, 060, 'ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'dt080', 5000, '2020/11/15', '2020/10/01', '2020/10/20', 2000000, 340000, 'N', '060', 0);
+INSERT INTO PRODUCT VALUES('M0503060BKL', '05', 'thumb080', 'ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½','BK','L', 50000, 30, 35000, 03, 060, 'ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'dt080', 5000, '2020/11/15', '2020/10/01', '2020/10/20', 2000000, 340000, 'N', '060', 0);
 
 
 
 --61~70
 
-INSERT INTO PRODUCT VALUES('M0401061BKS', '04', 'thumb046', 'ÆÄ¸®¿£ ºÎÅ¬ ¹«½ºÅÁ', 'BK', 'S', 100000, 10, 90000, 01, 061, '±ò²ûÇÑ µðÀÚÀÎÀÇ °¨¼ºÀûÀÎ ¹«½ºÅÁÀÔ´Ï´Ù.', 'dt046', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 1870000, 'N', '061', 0);
-INSERT INTO PRODUCT VALUES('M0401061BKM', '04', 'thumb046', 'ÆÄ¸®¿£ ºÎÅ¬ ¹«½ºÅÁ', 'BK', 'M', 100000, 10, 90000, 01, 061, '±ò²ûÇÑ µðÀÚÀÎÀÇ °¨¼ºÀûÀÎ ¹«½ºÅÁÀÔ´Ï´Ù.', 'dt046', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 1870000, 'N', '061', 0);
-INSERT INTO PRODUCT VALUES('M0401061BKL', '04', 'thumb046', 'ÆÄ¸®¿£ ºÎÅ¬ ¹«½ºÅÁ', 'BK', 'L', 100000, 10, 90000, 01, 061, '±ò²ûÇÑ µðÀÚÀÎÀÇ °¨¼ºÀûÀÎ ¹«½ºÅÁÀÔ´Ï´Ù.', 'dt046', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 1870000, 'N', '061', 0);
+INSERT INTO PRODUCT VALUES('M0401061BKS', '04', 'thumb046', 'ï¿½Ä¸ï¿½ï¿½ï¿½ ï¿½ï¿½Å¬ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'BK', 'S', 100000, 10, 90000, 01, 061, 'ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.', 'dt046', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 1870000, 'N', '061', 0);
+INSERT INTO PRODUCT VALUES('M0401061BKM', '04', 'thumb046', 'ï¿½Ä¸ï¿½ï¿½ï¿½ ï¿½ï¿½Å¬ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'BK', 'M', 100000, 10, 90000, 01, 061, 'ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.', 'dt046', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 1870000, 'N', '061', 0);
+INSERT INTO PRODUCT VALUES('M0401061BKL', '04', 'thumb046', 'ï¿½Ä¸ï¿½ï¿½ï¿½ ï¿½ï¿½Å¬ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'BK', 'L', 100000, 10, 90000, 01, 061, 'ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.', 'dt046', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 1870000, 'N', '061', 0);
 
-INSERT INTO PRODUCT VALUES('M0401062BKS', '04', 'thumb075', '·Ñ¸® ÄÚµà·ÎÀÌ ÀçÅ¶', 'BK', 'S', 1100000, 10, 900000, 01, 062, 'ÆÐµùÀÇ µû¶æÇÔ°ú ¹«½ºÅÁÀÇ ½ºÅ¸ÀÏÀ» ÇÑ ¹ø¿¡ Ã¬°å½À´Ï´Ù.', 'dt075', 151, '2020/07/30', '2020/04/01', '2020/07/25', 31000000, 11900000, 'N', '062', 0);
-INSERT INTO PRODUCT VALUES('M0401062BKM', '04', 'thumb075', '·Ñ¸® ÄÚµà·ÎÀÌ ÀçÅ¶', 'BK', 'M', 1100000, 10, 900000, 01, 062, 'ÆÐµùÀÇ µû¶æÇÔ°ú ¹«½ºÅÁÀÇ ½ºÅ¸ÀÏÀ» ÇÑ ¹ø¿¡ Ã¬°å½À´Ï´Ù.', 'dt075', 151, '2020/07/30', '2020/04/01', '2020/07/25', 31000000, 11900000, 'N', '062', 0);
-INSERT INTO PRODUCT VALUES('M0401062RDS', '04', 'thumb075', '·Ñ¸® ÄÚµà·ÎÀÌ ÀçÅ¶', 'RD', 'S', 1100000, 10, 900000, 01, 062, 'ÆÐµùÀÇ µû¶æÇÔ°ú ¹«½ºÅÁÀÇ ½ºÅ¸ÀÏÀ» ÇÑ ¹ø¿¡ Ã¬°å½À´Ï´Ù.', 'dt075', 151, '2020/07/30', '2020/04/01', '2020/07/25', 31000000, 11900000, 'N', '062', 0);
-INSERT INTO PRODUCT VALUES('M0401062RDM', '04', 'thumb075', '·Ñ¸® ÄÚµà·ÎÀÌ ÀçÅ¶', 'RD', 'M', 1100000, 10, 900000, 01, 062, 'ÆÐµùÀÇ µû¶æÇÔ°ú ¹«½ºÅÁÀÇ ½ºÅ¸ÀÏÀ» ÇÑ ¹ø¿¡ Ã¬°å½À´Ï´Ù.', 'dt075', 151, '2020/07/30', '2020/04/01', '2020/07/25', 31000000, 11900000, 'N', '062', 0);
-INSERT INTO PRODUCT VALUES('M0401062GNS', '04', 'thumb075', '·Ñ¸® ÄÚµà·ÎÀÌ ÀçÅ¶', 'GN', 'S', 1100000, 10, 900000, 01, 062, 'ÆÐµùÀÇ µû¶æÇÔ°ú ¹«½ºÅÁÀÇ ½ºÅ¸ÀÏÀ» ÇÑ ¹ø¿¡ Ã¬°å½À´Ï´Ù.', 'dt075', 151, '2020/07/30', '2020/04/01', '2020/07/25', 31000000, 11900000, 'N', '062', 0);
-INSERT INTO PRODUCT VALUES('M0401062GNM', '04', 'thumb075', '·Ñ¸® ÄÚµà·ÎÀÌ ÀçÅ¶', 'GN', 'M', 1100000, 10, 900000, 01, 062, 'ÆÐµùÀÇ µû¶æÇÔ°ú ¹«½ºÅÁÀÇ ½ºÅ¸ÀÏÀ» ÇÑ ¹ø¿¡ Ã¬°å½À´Ï´Ù.', 'dt075', 151, '2020/07/30', '2020/04/01', '2020/07/25', 31000000, 11900000, 'N', '062', 0);
+INSERT INTO PRODUCT VALUES('M0401062BKS', '04', 'thumb075', 'ï¿½Ñ¸ï¿½ ï¿½Úµï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¶', 'BK', 'S', 1100000, 10, 900000, 01, 062, 'ï¿½Ðµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã¬ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.', 'dt075', 151, '2020/07/30', '2020/04/01', '2020/07/25', 31000000, 11900000, 'N', '062', 0);
+INSERT INTO PRODUCT VALUES('M0401062BKM', '04', 'thumb075', 'ï¿½Ñ¸ï¿½ ï¿½Úµï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¶', 'BK', 'M', 1100000, 10, 900000, 01, 062, 'ï¿½Ðµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã¬ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.', 'dt075', 151, '2020/07/30', '2020/04/01', '2020/07/25', 31000000, 11900000, 'N', '062', 0);
+INSERT INTO PRODUCT VALUES('M0401062RDS', '04', 'thumb075', 'ï¿½Ñ¸ï¿½ ï¿½Úµï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¶', 'RD', 'S', 1100000, 10, 900000, 01, 062, 'ï¿½Ðµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã¬ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.', 'dt075', 151, '2020/07/30', '2020/04/01', '2020/07/25', 31000000, 11900000, 'N', '062', 0);
+INSERT INTO PRODUCT VALUES('M0401062RDM', '04', 'thumb075', 'ï¿½Ñ¸ï¿½ ï¿½Úµï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¶', 'RD', 'M', 1100000, 10, 900000, 01, 062, 'ï¿½Ðµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã¬ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.', 'dt075', 151, '2020/07/30', '2020/04/01', '2020/07/25', 31000000, 11900000, 'N', '062', 0);
+INSERT INTO PRODUCT VALUES('M0401062GNS', '04', 'thumb075', 'ï¿½Ñ¸ï¿½ ï¿½Úµï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¶', 'GN', 'S', 1100000, 10, 900000, 01, 062, 'ï¿½Ðµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã¬ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.', 'dt075', 151, '2020/07/30', '2020/04/01', '2020/07/25', 31000000, 11900000, 'N', '062', 0);
+INSERT INTO PRODUCT VALUES('M0401062GNM', '04', 'thumb075', 'ï¿½Ñ¸ï¿½ ï¿½Úµï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¶', 'GN', 'M', 1100000, 10, 900000, 01, 062, 'ï¿½Ðµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã¬ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.', 'dt075', 151, '2020/07/30', '2020/04/01', '2020/07/25', 31000000, 11900000, 'N', '062', 0);
 
-INSERT INTO PRODUCT VALUES('M0401063BKS', '04', 'thumb041', 'ÇÁ¶óÇÏ ÄÚÆ° ´õºí ºí·¹ÀÌÁ®', 'BK', 'S', 98000, 10, 90000, 01, 063, '°í±Þ ¸°³Ù ¼ÒÀç·Î Á¦ÀÛµÈ Ä÷¸®Æ¼ ³ôÀº ÀÚÄÏÀÔ´Ï´Ù', 'dt041', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 167000, 'N', '063', 0);
-INSERT INTO PRODUCT VALUES('M0401063BKM', '04', 'thumb041', 'ÇÁ¶óÇÏ ÄÚÆ° ´õºí ºí·¹ÀÌÁ®', 'BK', 'M', 98000, 10, 90000, 01, 063, '°í±Þ ¸°³Ù ¼ÒÀç·Î Á¦ÀÛµÈ Ä÷¸®Æ¼ ³ôÀº ÀÚÄÏÀÔ´Ï´Ù', 'dt041', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 167000, 'N', '063', 0);
-INSERT INTO PRODUCT VALUES('M0401063BKL', '04', 'thumb041', 'ÇÁ¶óÇÏ ÄÚÆ° ´õºí ºí·¹ÀÌÁ®', 'BK', 'L', 98000, 10, 90000, 01, 063, '°í±Þ ¸°³Ù ¼ÒÀç·Î Á¦ÀÛµÈ Ä÷¸®Æ¼ ³ôÀº ÀÚÄÏÀÔ´Ï´Ù', 'dt041', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 167000, 'N', '063', 0);
-INSERT INTO PRODUCT VALUES('M0401063BLS', '04', 'thumb041', 'ÇÁ¶óÇÏ ÄÚÆ° ´õºí ºí·¹ÀÌÁ®', 'BL', 'S', 98000, 10, 90000, 01, 063, '°í±Þ ¸°³Ù ¼ÒÀç·Î Á¦ÀÛµÈ Ä÷¸®Æ¼ ³ôÀº ÀÚÄÏÀÔ´Ï´Ù', 'dt041', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 167000, 'N', '063', 0);
-INSERT INTO PRODUCT VALUES('M0401063BLM', '04', 'thumb041', 'ÇÁ¶óÇÏ ÄÚÆ° ´õºí ºí·¹ÀÌÁ®', 'BL', 'M', 98000, 10, 90000, 01, 063, '°í±Þ ¸°³Ù ¼ÒÀç·Î Á¦ÀÛµÈ Ä÷¸®Æ¼ ³ôÀº ÀÚÄÏÀÔ´Ï´Ù', 'dt041', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 167000, 'N', '063', 0);
-INSERT INTO PRODUCT VALUES('M0401063BLL', '04', 'thumb041', 'ÇÁ¶óÇÏ ÄÚÆ° ´õºí ºí·¹ÀÌÁ®', 'BL', 'L', 98000, 10, 90000, 01, 063, '°í±Þ ¸°³Ù ¼ÒÀç·Î Á¦ÀÛµÈ Ä÷¸®Æ¼ ³ôÀº ÀÚÄÏÀÔ´Ï´Ù', 'dt041', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 167000, 'N', '063', 0);
-
-
-INSERT INTO PRODUCT VALUES('M0401064BLS', '04', 'thumb038', '·±´ø µöÄÃ·¯ ½Ì±Û ÄÚÆ®', 'BL', 'S', 210000, 10, 189000, 01, 064, 'º½,¿©¸§ ½ÃÁð ÄÚµð ¸ÅÄªÇÏ±â ÁÁÀº 4°¡Áö ÄÃ·¯.', 'dt038', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 2800000, 'N', '064', 0);
-INSERT INTO PRODUCT VALUES('M0401064BLM', '04', 'thumb038', '·±´ø µöÄÃ·¯ ½Ì±Û ÄÚÆ®', 'BL', 'M', 210000, 10, 189000, 01, 064, 'º½,¿©¸§ ½ÃÁð ÄÚµð ¸ÅÄªÇÏ±â ÁÁÀº 4°¡Áö ÄÃ·¯.', 'dt038', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 2800000, 'N', '064', 0);
-INSERT INTO PRODUCT VALUES('M0401064BLL', '04', 'thumb038', '·±´ø µöÄÃ·¯ ½Ì±Û ÄÚÆ®', 'BL', 'L', 210000, 10, 189000, 01, 064, 'º½,¿©¸§ ½ÃÁð ÄÚµð ¸ÅÄªÇÏ±â ÁÁÀº 4°¡Áö ÄÃ·¯.', 'dt038', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 2800000, 'N', '064', 0);
-INSERT INTO PRODUCT VALUES('M0401064RDS', '04', 'thumb038', '·±´ø µöÄÃ·¯ ½Ì±Û ÄÚÆ®', 'RD', 'S', 210000, 10, 189000, 01, 064, 'º½,¿©¸§ ½ÃÁð ÄÚµð ¸ÅÄªÇÏ±â ÁÁÀº 4°¡Áö ÄÃ·¯.', 'dt038', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 2800000, 'N', '064', 0);
-INSERT INTO PRODUCT VALUES('M0401064RDM', '04', 'thumb038', '·±´ø µöÄÃ·¯ ½Ì±Û ÄÚÆ®', 'RD', 'M', 210000, 10, 189000, 01, 064, 'º½,¿©¸§ ½ÃÁð ÄÚµð ¸ÅÄªÇÏ±â ÁÁÀº 4°¡Áö ÄÃ·¯.', 'dt038', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 2800000, 'N', '064', 0);
-INSERT INTO PRODUCT VALUES('M0401064RDL', '04', 'thumb038', '·±´ø µöÄÃ·¯ ½Ì±Û ÄÚÆ®', 'RD', 'L', 210000, 10, 189000, 01, 064, 'º½,¿©¸§ ½ÃÁð ÄÚµð ¸ÅÄªÇÏ±â ÁÁÀº 4°¡Áö ÄÃ·¯.', 'dt038', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 2800000, 'N', '064', 0);
-INSERT INTO PRODUCT VALUES('M0401064YLS', '04', 'thumb038', '·±´ø µöÄÃ·¯ ½Ì±Û ÄÚÆ®', 'YL', 'S', 210000, 10, 189000, 01, 064, 'º½,¿©¸§ ½ÃÁð ÄÚµð ¸ÅÄªÇÏ±â ÁÁÀº 4°¡Áö ÄÃ·¯.', 'dt038', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 2800000, 'N', '064', 0);
-INSERT INTO PRODUCT VALUES('M0401064YLM', '04', 'thumb038', '·±´ø µöÄÃ·¯ ½Ì±Û ÄÚÆ®', 'YL', 'M', 210000, 10, 189000, 01, 064, 'º½,¿©¸§ ½ÃÁð ÄÚµð ¸ÅÄªÇÏ±â ÁÁÀº 4°¡Áö ÄÃ·¯.', 'dt038', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 2800000, 'N', '064', 0);
-INSERT INTO PRODUCT VALUES('M0401064YLL', '04', 'thumb038', '·±´ø µöÄÃ·¯ ½Ì±Û ÄÚÆ®', 'YL', 'L', 210000, 10, 189000, 01, 064, 'º½,¿©¸§ ½ÃÁð ÄÚµð ¸ÅÄªÇÏ±â ÁÁÀº 4°¡Áö ÄÃ·¯.', 'dt038', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 2800000, 'N', '064', 0);
-
-INSERT INTO PRODUCT VALUES('M0401065BLM', '04', 'thumb040', '½ºÅÚ¸® ¿ÍÀÌµå Ä«¶ó ÀçÅ¶', 'BL', 'M', 110000, 10, 98000, 01, 065, 'Àû´çÇÑ ±âÀå°¨¿¡ ¼¼¹Ì ¿À¹öÇÑ ÇÍ.', 'dt040', 151, '2020/07/30', '2020/04/01', '2020/07/25', 4500000, 120000, 'N', '065', 0);
-INSERT INTO PRODUCT VALUES('M0401065GRM', '04', 'thumb040', '½ºÅÚ¸® ¿ÍÀÌµå Ä«¶ó ÀçÅ¶', 'GN', 'M', 110000, 10, 98000, 01, 065, 'Àû´çÇÑ ±âÀå°¨¿¡ ¼¼¹Ì ¿À¹öÇÑ ÇÍ.', 'dt040', 151, '2020/07/30', '2020/04/01', '2020/07/25', 4500000, 120000, 'N', '065', 0);
-INSERT INTO PRODUCT VALUES('M0401065KHM', '04', 'thumb040', '½ºÅÚ¸® ¿ÍÀÌµå Ä«¶ó ÀçÅ¶', 'KH', 'M', 110000, 10, 98000, 01, 065, 'Àû´çÇÑ ±âÀå°¨¿¡ ¼¼¹Ì ¿À¹öÇÑ ÇÍ.', 'dt040', 151, '2020/07/30', '2020/04/01', '2020/07/25', 4500000, 120000, 'N', '065', 0);
-
-INSERT INTO PRODUCT VALUES('M0401066BKL', '04', 'thumb037', 'À©µð ÀçÅ¶', 'BK', 'L', 138000, 10, 76000, 01, 066, 'º½,°¡À» µ¥ÀÏ¸®·èÀ¸·Î ÀÔ±â ÁÁÀº ÄÃ·¯¿Í µðÀÚÀÎ', 'dt037', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3800000, 120000, 'N', '066', 0);
-INSERT INTO PRODUCT VALUES('M0401066BLL', '04', 'thumb037', 'À©µð ÀçÅ¶', 'BL', 'L', 138000, 10, 76000, 01, 066, 'º½,°¡À» µ¥ÀÏ¸®·èÀ¸·Î ÀÔ±â ÁÁÀº ÄÃ·¯¿Í µðÀÚÀÎ', 'dt037', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3800000, 120000, 'N', '066', 0);
+INSERT INTO PRODUCT VALUES('M0401063BKS', '04', 'thumb041', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'BK', 'S', 98000, 10, 90000, 01, 063, 'ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ûµï¿½ ï¿½ï¿½ï¿½ï¿½Æ¼ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½', 'dt041', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 167000, 'N', '063', 0);
+INSERT INTO PRODUCT VALUES('M0401063BKM', '04', 'thumb041', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'BK', 'M', 98000, 10, 90000, 01, 063, 'ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ûµï¿½ ï¿½ï¿½ï¿½ï¿½Æ¼ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½', 'dt041', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 167000, 'N', '063', 0);
+INSERT INTO PRODUCT VALUES('M0401063BKL', '04', 'thumb041', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'BK', 'L', 98000, 10, 90000, 01, 063, 'ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ûµï¿½ ï¿½ï¿½ï¿½ï¿½Æ¼ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½', 'dt041', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 167000, 'N', '063', 0);
+INSERT INTO PRODUCT VALUES('M0401063BLS', '04', 'thumb041', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'BL', 'S', 98000, 10, 90000, 01, 063, 'ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ûµï¿½ ï¿½ï¿½ï¿½ï¿½Æ¼ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½', 'dt041', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 167000, 'N', '063', 0);
+INSERT INTO PRODUCT VALUES('M0401063BLM', '04', 'thumb041', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'BL', 'M', 98000, 10, 90000, 01, 063, 'ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ûµï¿½ ï¿½ï¿½ï¿½ï¿½Æ¼ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½', 'dt041', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 167000, 'N', '063', 0);
+INSERT INTO PRODUCT VALUES('M0401063BLL', '04', 'thumb041', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'BL', 'L', 98000, 10, 90000, 01, 063, 'ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ûµï¿½ ï¿½ï¿½ï¿½ï¿½Æ¼ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½', 'dt041', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 167000, 'N', '063', 0);
 
 
+INSERT INTO PRODUCT VALUES('M0401064BLS', '04', 'thumb038', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã·ï¿½ ï¿½Ì±ï¿½ ï¿½ï¿½Æ®', 'BL', 'S', 210000, 10, 189000, 01, 064, 'ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½Äªï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ 4ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½.', 'dt038', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 2800000, 'N', '064', 0);
+INSERT INTO PRODUCT VALUES('M0401064BLM', '04', 'thumb038', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã·ï¿½ ï¿½Ì±ï¿½ ï¿½ï¿½Æ®', 'BL', 'M', 210000, 10, 189000, 01, 064, 'ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½Äªï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ 4ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½.', 'dt038', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 2800000, 'N', '064', 0);
+INSERT INTO PRODUCT VALUES('M0401064BLL', '04', 'thumb038', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã·ï¿½ ï¿½Ì±ï¿½ ï¿½ï¿½Æ®', 'BL', 'L', 210000, 10, 189000, 01, 064, 'ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½Äªï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ 4ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½.', 'dt038', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 2800000, 'N', '064', 0);
+INSERT INTO PRODUCT VALUES('M0401064RDS', '04', 'thumb038', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã·ï¿½ ï¿½Ì±ï¿½ ï¿½ï¿½Æ®', 'RD', 'S', 210000, 10, 189000, 01, 064, 'ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½Äªï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ 4ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½.', 'dt038', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 2800000, 'N', '064', 0);
+INSERT INTO PRODUCT VALUES('M0401064RDM', '04', 'thumb038', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã·ï¿½ ï¿½Ì±ï¿½ ï¿½ï¿½Æ®', 'RD', 'M', 210000, 10, 189000, 01, 064, 'ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½Äªï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ 4ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½.', 'dt038', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 2800000, 'N', '064', 0);
+INSERT INTO PRODUCT VALUES('M0401064RDL', '04', 'thumb038', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã·ï¿½ ï¿½Ì±ï¿½ ï¿½ï¿½Æ®', 'RD', 'L', 210000, 10, 189000, 01, 064, 'ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½Äªï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ 4ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½.', 'dt038', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 2800000, 'N', '064', 0);
+INSERT INTO PRODUCT VALUES('M0401064YLS', '04', 'thumb038', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã·ï¿½ ï¿½Ì±ï¿½ ï¿½ï¿½Æ®', 'YL', 'S', 210000, 10, 189000, 01, 064, 'ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½Äªï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ 4ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½.', 'dt038', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 2800000, 'N', '064', 0);
+INSERT INTO PRODUCT VALUES('M0401064YLM', '04', 'thumb038', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã·ï¿½ ï¿½Ì±ï¿½ ï¿½ï¿½Æ®', 'YL', 'M', 210000, 10, 189000, 01, 064, 'ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½Äªï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ 4ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½.', 'dt038', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 2800000, 'N', '064', 0);
+INSERT INTO PRODUCT VALUES('M0401064YLL', '04', 'thumb038', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã·ï¿½ ï¿½Ì±ï¿½ ï¿½ï¿½Æ®', 'YL', 'L', 210000, 10, 189000, 01, 064, 'ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½Äªï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ 4ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½.', 'dt038', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 2800000, 'N', '064', 0);
 
-INSERT INTO PRODUCT VALUES('M0401067WM', '04', 'thumb076', '¿¡ÄÚÆÛ º§ºª ½ºÄ«Àò', 'WH', 'M', 180000, 20, 144000, 01, 067, 'º½¿¡ Âø¿ëÇÏ±â ÁÁÀº Æ®·£µð ÇÍÀÇ ÀÚ¼ö ½ºÄ«Àò', 'dt076', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 180000, 'Y', '067', 0);
-INSERT INTO PRODUCT VALUES('M0401067BKM', '04', 'thumb076', '¿¡ÄÚÆÛ º§ºª ½ºÄ«Àò', 'BK', 'M', 180000, 20, 144000, 01, 067, 'º½¿¡ Âø¿ëÇÏ±â ÁÁÀº Æ®·£µð ÇÍÀÇ ÀÚ¼ö ½ºÄ«Àò', 'dt076', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 180000, 'Y', '067', 0);
-INSERT INTO PRODUCT VALUES('M0401067RDM', '04', 'thumb076', '¿¡ÄÚÆÛ º§ºª ½ºÄ«Àò', 'RD', 'M', 180000, 20, 144000, 01, 067, 'º½¿¡ Âø¿ëÇÏ±â ÁÁÀº Æ®·£µð ÇÍÀÇ ÀÚ¼ö ½ºÄ«Àò', 'dt076', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 180000, 'Y', '067', 0);
+INSERT INTO PRODUCT VALUES('M0401065BLM', '04', 'thumb040', 'ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ Ä«ï¿½ï¿½ ï¿½ï¿½Å¶', 'BL', 'M', 110000, 10, 98000, 01, 065, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½å°¨ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½.', 'dt040', 151, '2020/07/30', '2020/04/01', '2020/07/25', 4500000, 120000, 'N', '065', 0);
+INSERT INTO PRODUCT VALUES('M0401065GRM', '04', 'thumb040', 'ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ Ä«ï¿½ï¿½ ï¿½ï¿½Å¶', 'GN', 'M', 110000, 10, 98000, 01, 065, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½å°¨ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½.', 'dt040', 151, '2020/07/30', '2020/04/01', '2020/07/25', 4500000, 120000, 'N', '065', 0);
+INSERT INTO PRODUCT VALUES('M0401065KHM', '04', 'thumb040', 'ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ Ä«ï¿½ï¿½ ï¿½ï¿½Å¶', 'KH', 'M', 110000, 10, 98000, 01, 065, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½å°¨ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½.', 'dt040', 151, '2020/07/30', '2020/04/01', '2020/07/25', 4500000, 120000, 'N', '065', 0);
 
-INSERT INTO PRODUCT VALUES('M0401068WHM', '04', 'thumb040', '¿ÀºêÁ¦ À£·Ð ¼ôÆÐµù', 'WH', 'M', 180000, 20, 144000, 01, 068, '¼ôÇÑ ±âÀå¿¡ ´Ù¸®°¡ ±æ¾îº¸¿©¿ä!', 'dt040', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 360000, 'Y', '068', 0);
-INSERT INTO PRODUCT VALUES('M0401068RDM', '04', 'thumb040', '¿ÀºêÁ¦ À£·Ð ¼ôÆÐµù', 'RD', 'M', 180000, 20, 144000, 01, 068, '¼ôÇÑ ±âÀå¿¡ ´Ù¸®°¡ ±æ¾îº¸¿©¿ä!', 'dt040', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 360000, 'Y', '068', 0);
+INSERT INTO PRODUCT VALUES('M0401066BKL', '04', 'thumb037', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¶', 'BK', 'L', 138000, 10, 76000, 01, 066, 'ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt037', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3800000, 120000, 'N', '066', 0);
+INSERT INTO PRODUCT VALUES('M0401066BLL', '04', 'thumb037', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¶', 'BL', 'L', 138000, 10, 76000, 01, 066, 'ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt037', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3800000, 120000, 'N', '066', 0);
 
-INSERT INTO PRODUCT VALUES('M0401069BKM', '04', 'thumb047', 'ÇÏÀÎµð ÄÚÆ® ÆÐµù', 'BK', 'M', 180000, 20, 144000, 01, 069, 'ÆÐµùÃ³·³ µû¶æ! ÄÚÆ®Ã³·³ ¸Ú½º·´°Ô!', 'dt047', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 360000, 'Y', '069', 0);
-INSERT INTO PRODUCT VALUES('M0401069BKL', '04', 'thumb047', 'ÇÏÀÎµð ÄÚÆ® ÆÐµù', 'BK', 'L', 180000, 20, 144000, 01, 069, 'ÆÐµùÃ³·³ µû¶æ! ÄÚÆ®Ã³·³ ¸Ú½º·´°Ô!', 'dt047', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 360000, 'Y', '069', 0);
-INSERT INTO PRODUCT VALUES('M0401069WHM', '04', 'thumb047', 'ÇÏÀÎµð ÄÚÆ® ÆÐµù', 'WH', 'M', 180000, 20, 144000, 01, 069, 'ÆÐµùÃ³·³ µû¶æ! ÄÚÆ®Ã³·³ ¸Ú½º·´°Ô!', 'dt047', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 360000, 'Y', '069', 0);
-INSERT INTO PRODUCT VALUES('M0401069WHL', '04', 'thumb047', 'ÇÏÀÎµð ÄÚÆ® ÆÐµù', 'WH', 'L', 180000, 20, 144000, 01, 069, 'ÆÐµùÃ³·³ µû¶æ! ÄÚÆ®Ã³·³ ¸Ú½º·´°Ô!', 'dt047', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 360000, 'Y', '069', 0);
-INSERT INTO PRODUCT VALUES('M0401069GNM', '04', 'thumb047', 'ÇÏÀÎµð ÄÚÆ® ÆÐµù', 'GN', 'M', 180000, 20, 144000, 01, 069, 'ÆÐµùÃ³·³ µû¶æ! ÄÚÆ®Ã³·³ ¸Ú½º·´°Ô!', 'dt047', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 360000, 'Y', '069', 0);
-INSERT INTO PRODUCT VALUES('M0401069GNL', '04', 'thumb047', 'ÇÏÀÎµð ÄÚÆ® ÆÐµù', 'GN', 'L', 180000, 20, 144000, 01, 069, 'ÆÐµùÃ³·³ µû¶æ! ÄÚÆ®Ã³·³ ¸Ú½º·´°Ô!', 'dt047', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 360000, 'Y', '069', 0);
-INSERT INTO PRODUCT VALUES('M0401069YLM', '04', 'thumb047', 'ÇÏÀÎµð ÄÚÆ® ÆÐµù', 'YL', 'M', 180000, 20, 144000, 01, 069, 'ÆÐµùÃ³·³ µû¶æ! ÄÚÆ®Ã³·³ ¸Ú½º·´°Ô!', 'dt047', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 360000, 'Y', '069', 0);
-INSERT INTO PRODUCT VALUES('M0401069YLL', '04', 'thumb047', 'ÇÏÀÎµð ÄÚÆ® ÆÐµù', 'YL', 'L', 180000, 20, 144000, 01, 069, 'ÆÐµùÃ³·³ µû¶æ! ÄÚÆ®Ã³·³ ¸Ú½º·´°Ô!', 'dt047', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 360000, 'Y', '069', 0);
 
-INSERT INTO PRODUCT VALUES('M0401070BKS', '04', 'thumb043', 'Æ®¶óÀÌ¾ó ÄÚÆ° ·ÕÆ®·»Ä¡', 'BK', 'S', 180000, 20, 144000, 01, 070, '°£Àý±â °¡º±°í ±ò²ûÇÏ°Ô ÄÚµð °¡´ÉÇÕ´Ï´Ù.', 'dt043', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 540000, 'Y', '070', 0);
-INSERT INTO PRODUCT VALUES('M0401070BKM', '04', 'thumb043', 'Æ®¶óÀÌ¾ó ÄÚÆ° ·ÕÆ®·»Ä¡', 'BK', 'M', 180000, 20, 144000, 01, 070, '°£Àý±â °¡º±°í ±ò²ûÇÏ°Ô ÄÚµð °¡´ÉÇÕ´Ï´Ù.', 'dt043', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 540000, 'Y', '070', 0);
-INSERT INTO PRODUCT VALUES('M0401070BKL', '04', 'thumb043', 'Æ®¶óÀÌ¾ó ÄÚÆ° ·ÕÆ®·»Ä¡', 'BK', 'L', 180000, 20, 144000, 01, 070, '°£Àý±â °¡º±°í ±ò²ûÇÏ°Ô ÄÚµð °¡´ÉÇÕ´Ï´Ù.', 'dt043', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 540000, 'Y', '070', 0);
-INSERT INTO PRODUCT VALUES('M0401070KHS', '04', 'thumb043', 'Æ®¶óÀÌ¾ó ÄÚÆ° ·ÕÆ®·»Ä¡', 'KH', 'S', 180000, 20, 144000, 01, 070, '°£Àý±â °¡º±°í ±ò²ûÇÏ°Ô ÄÚµð °¡´ÉÇÕ´Ï´Ù.', 'dt043', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 540000, 'Y', '070', 0);
-INSERT INTO PRODUCT VALUES('M0401070KHM', '04', 'thumb043', 'Æ®¶óÀÌ¾ó ÄÚÆ° ·ÕÆ®·»Ä¡', 'KH', 'M', 180000, 20, 144000, 01, 070, '°£Àý±â °¡º±°í ±ò²ûÇÏ°Ô ÄÚµð °¡´ÉÇÕ´Ï´Ù.', 'dt043', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 540000, 'Y', '070', 0);
-INSERT INTO PRODUCT VALUES('M0401070KHL', '04', 'thumb043', 'Æ®¶óÀÌ¾ó ÄÚÆ° ·ÕÆ®·»Ä¡', 'KH', 'L', 180000, 20, 144000, 01, 070, '°£Àý±â °¡º±°í ±ò²ûÇÏ°Ô ÄÚµð °¡´ÉÇÕ´Ï´Ù.', 'dt043', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 540000, 'Y', '070', 0);
+
+INSERT INTO PRODUCT VALUES('M0401067WM', '04', 'thumb076', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä«ï¿½ï¿½', 'WH', 'M', 180000, 20, 144000, 01, 067, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ú¼ï¿½ ï¿½ï¿½Ä«ï¿½ï¿½', 'dt076', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 180000, 'Y', '067', 0);
+INSERT INTO PRODUCT VALUES('M0401067BKM', '04', 'thumb076', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä«ï¿½ï¿½', 'BK', 'M', 180000, 20, 144000, 01, 067, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ú¼ï¿½ ï¿½ï¿½Ä«ï¿½ï¿½', 'dt076', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 180000, 'Y', '067', 0);
+INSERT INTO PRODUCT VALUES('M0401067RDM', '04', 'thumb076', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä«ï¿½ï¿½', 'RD', 'M', 180000, 20, 144000, 01, 067, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ú¼ï¿½ ï¿½ï¿½Ä«ï¿½ï¿½', 'dt076', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 180000, 'Y', '067', 0);
+
+INSERT INTO PRODUCT VALUES('M0401068WHM', '04', 'thumb040', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ðµï¿½', 'WH', 'M', 180000, 20, 144000, 01, 068, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½å¿¡ ï¿½Ù¸ï¿½ï¿½ï¿½ ï¿½ï¿½îº¸ï¿½ï¿½ï¿½ï¿½!', 'dt040', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 360000, 'Y', '068', 0);
+INSERT INTO PRODUCT VALUES('M0401068RDM', '04', 'thumb040', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ðµï¿½', 'RD', 'M', 180000, 20, 144000, 01, 068, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½å¿¡ ï¿½Ù¸ï¿½ï¿½ï¿½ ï¿½ï¿½îº¸ï¿½ï¿½ï¿½ï¿½!', 'dt040', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 360000, 'Y', '068', 0);
+
+INSERT INTO PRODUCT VALUES('M0401069BKM', '04', 'thumb047', 'ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½Æ® ï¿½Ðµï¿½', 'BK', 'M', 180000, 20, 144000, 01, 069, 'ï¿½Ðµï¿½Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½! ï¿½ï¿½Æ®Ã³ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½!', 'dt047', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 360000, 'Y', '069', 0);
+INSERT INTO PRODUCT VALUES('M0401069BKL', '04', 'thumb047', 'ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½Æ® ï¿½Ðµï¿½', 'BK', 'L', 180000, 20, 144000, 01, 069, 'ï¿½Ðµï¿½Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½! ï¿½ï¿½Æ®Ã³ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½!', 'dt047', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 360000, 'Y', '069', 0);
+INSERT INTO PRODUCT VALUES('M0401069WHM', '04', 'thumb047', 'ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½Æ® ï¿½Ðµï¿½', 'WH', 'M', 180000, 20, 144000, 01, 069, 'ï¿½Ðµï¿½Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½! ï¿½ï¿½Æ®Ã³ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½!', 'dt047', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 360000, 'Y', '069', 0);
+INSERT INTO PRODUCT VALUES('M0401069WHL', '04', 'thumb047', 'ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½Æ® ï¿½Ðµï¿½', 'WH', 'L', 180000, 20, 144000, 01, 069, 'ï¿½Ðµï¿½Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½! ï¿½ï¿½Æ®Ã³ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½!', 'dt047', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 360000, 'Y', '069', 0);
+INSERT INTO PRODUCT VALUES('M0401069GNM', '04', 'thumb047', 'ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½Æ® ï¿½Ðµï¿½', 'GN', 'M', 180000, 20, 144000, 01, 069, 'ï¿½Ðµï¿½Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½! ï¿½ï¿½Æ®Ã³ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½!', 'dt047', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 360000, 'Y', '069', 0);
+INSERT INTO PRODUCT VALUES('M0401069GNL', '04', 'thumb047', 'ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½Æ® ï¿½Ðµï¿½', 'GN', 'L', 180000, 20, 144000, 01, 069, 'ï¿½Ðµï¿½Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½! ï¿½ï¿½Æ®Ã³ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½!', 'dt047', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 360000, 'Y', '069', 0);
+INSERT INTO PRODUCT VALUES('M0401069YLM', '04', 'thumb047', 'ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½Æ® ï¿½Ðµï¿½', 'YL', 'M', 180000, 20, 144000, 01, 069, 'ï¿½Ðµï¿½Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½! ï¿½ï¿½Æ®Ã³ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½!', 'dt047', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 360000, 'Y', '069', 0);
+INSERT INTO PRODUCT VALUES('M0401069YLL', '04', 'thumb047', 'ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½Æ® ï¿½Ðµï¿½', 'YL', 'L', 180000, 20, 144000, 01, 069, 'ï¿½Ðµï¿½Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½! ï¿½ï¿½Æ®Ã³ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½!', 'dt047', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 360000, 'Y', '069', 0);
+
+INSERT INTO PRODUCT VALUES('M0401070BKS', '04', 'thumb043', 'Æ®ï¿½ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½Æ®ï¿½ï¿½Ä¡', 'BK', 'S', 180000, 20, 144000, 01, 070, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.', 'dt043', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 540000, 'Y', '070', 0);
+INSERT INTO PRODUCT VALUES('M0401070BKM', '04', 'thumb043', 'Æ®ï¿½ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½Æ®ï¿½ï¿½Ä¡', 'BK', 'M', 180000, 20, 144000, 01, 070, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.', 'dt043', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 540000, 'Y', '070', 0);
+INSERT INTO PRODUCT VALUES('M0401070BKL', '04', 'thumb043', 'Æ®ï¿½ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½Æ®ï¿½ï¿½Ä¡', 'BK', 'L', 180000, 20, 144000, 01, 070, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.', 'dt043', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 540000, 'Y', '070', 0);
+INSERT INTO PRODUCT VALUES('M0401070KHS', '04', 'thumb043', 'Æ®ï¿½ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½Æ®ï¿½ï¿½Ä¡', 'KH', 'S', 180000, 20, 144000, 01, 070, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.', 'dt043', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 540000, 'Y', '070', 0);
+INSERT INTO PRODUCT VALUES('M0401070KHM', '04', 'thumb043', 'Æ®ï¿½ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½Æ®ï¿½ï¿½Ä¡', 'KH', 'M', 180000, 20, 144000, 01, 070, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.', 'dt043', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 540000, 'Y', '070', 0);
+INSERT INTO PRODUCT VALUES('M0401070KHL', '04', 'thumb043', 'Æ®ï¿½ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½Æ®ï¿½ï¿½Ä¡', 'KH', 'L', 180000, 20, 144000, 01, 070, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.', 'dt043', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 540000, 'Y', '070', 0);
 
 
 --
-INSERT INTO PRODUCT VALUES('M0401071KHS', '04', 'thumb034', 'Ã¼ÀÎ Å×Å© ´Ù¿î Á¡ÆÛ', 'KH', 'S', 180000, 20, 144000, 01, 071, 'ºê¸´Áö ·Î°í µðÅ×ÀÏ·Î Æ÷ÀÎÆ®¸¦ ´õÇÑ µðÀÚÀÎ.', 'dt034', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 180000, 'Y', '067', 0);
-INSERT INTO PRODUCT VALUES('M0401071KHM', '04', 'thumb034', 'Ã¼ÀÎ Å×Å© ´Ù¿î Á¡ÆÛ', 'KH', 'M', 180000, 20, 144000, 01, 071, 'ºê¸´Áö ·Î°í µðÅ×ÀÏ·Î Æ÷ÀÎÆ®¸¦ ´õÇÑ µðÀÚÀÎ.', 'dt034', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 180000, 'Y', '067', 0);
-INSERT INTO PRODUCT VALUES('M0401071KHL', '04', 'thumb034', 'Ã¼ÀÎ Å×Å© ´Ù¿î Á¡ÆÛ', 'KH', 'L', 180000, 20, 144000, 01, 071, 'ºê¸´Áö ·Î°í µðÅ×ÀÏ·Î Æ÷ÀÎÆ®¸¦ ´õÇÑ µðÀÚÀÎ.', 'dt034', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 180000, 'Y', '067', 0);
+INSERT INTO PRODUCT VALUES('M0401071KHS', '04', 'thumb034', 'Ã¼ï¿½ï¿½ ï¿½ï¿½Å© ï¿½Ù¿ï¿½ ï¿½ï¿½ï¿½ï¿½', 'KH', 'S', 180000, 20, 144000, 01, 071, 'ï¿½ê¸´ï¿½ï¿½ ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.', 'dt034', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 180000, 'Y', '067', 0);
+INSERT INTO PRODUCT VALUES('M0401071KHM', '04', 'thumb034', 'Ã¼ï¿½ï¿½ ï¿½ï¿½Å© ï¿½Ù¿ï¿½ ï¿½ï¿½ï¿½ï¿½', 'KH', 'M', 180000, 20, 144000, 01, 071, 'ï¿½ê¸´ï¿½ï¿½ ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.', 'dt034', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 180000, 'Y', '067', 0);
+INSERT INTO PRODUCT VALUES('M0401071KHL', '04', 'thumb034', 'Ã¼ï¿½ï¿½ ï¿½ï¿½Å© ï¿½Ù¿ï¿½ ï¿½ï¿½ï¿½ï¿½', 'KH', 'L', 180000, 20, 144000, 01, 071, 'ï¿½ê¸´ï¿½ï¿½ ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.', 'dt034', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 180000, 'Y', '067', 0);
 
 
-INSERT INTO PRODUCT VALUES('M0401072KHS', '04', 'thumb093', 'Ä«¸¦ ÇÇÄÉ Æ¼¼ÅÃ÷', 'KH', 'S', 180000, 20, 144000, 01, 072, '»çÀÌµå ¶óÀÎ°ú ½½¸´ µðÅ×ÀÏÀÌ ¸Ú½º·¯¿ò.', 'dt093', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 360000, 'Y', '067', 0);
-INSERT INTO PRODUCT VALUES('M0401072KHM', '04', 'thumb093', 'Ä«¸¦ ÇÇÄÉ Æ¼¼ÅÃ÷', 'KH', 'M', 180000, 20, 144000, 01, 072, '»çÀÌµå ¶óÀÎ°ú ½½¸´ µðÅ×ÀÏÀÌ ¸Ú½º·¯¿ò.', 'dt093', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 360000, 'Y', '067', 0);
-INSERT INTO PRODUCT VALUES('M0401072KHL', '04', 'thumb093', 'Ä«¸¦ ÇÇÄÉ Æ¼¼ÅÃ÷', 'KH', 'L', 180000, 20, 144000, 01, 072, '»çÀÌµå ¶óÀÎ°ú ½½¸´ µðÅ×ÀÏÀÌ ¸Ú½º·¯¿ò.', 'dt093', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 360000, 'Y', '067', 0);
+INSERT INTO PRODUCT VALUES('M0401072KHS', '04', 'thumb093', 'Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½', 'KH', 'S', 180000, 20, 144000, 01, 072, 'ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½.', 'dt093', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 360000, 'Y', '067', 0);
+INSERT INTO PRODUCT VALUES('M0401072KHM', '04', 'thumb093', 'Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½', 'KH', 'M', 180000, 20, 144000, 01, 072, 'ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½.', 'dt093', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 360000, 'Y', '067', 0);
+INSERT INTO PRODUCT VALUES('M0401072KHL', '04', 'thumb093', 'Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½', 'KH', 'L', 180000, 20, 144000, 01, 072, 'ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½.', 'dt093', 200, '2020/08/30', '2020/05/01', '2020/08/25', 3000000, 360000, 'Y', '067', 0);
 
 
-INSERT INTO PRODUCT VALUES('M0402073RDS', '04', 'thumb072', 'Å©¸®½ºÅÍ Á®Áö Æ¼¼ÅÃ÷', 'RD', 'S', 34000, 10, 30600, 02, 073, 'Ä«¶ó ·Î°í ÀÚ¼ö µðÅ×ÀÏÀÌ µ¸º¸ÀÓ.', 'dt072', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 34000, 'N', '073', 0);
-INSERT INTO PRODUCT VALUES('M0402073RDM', '04', 'thumb072', 'Å©¸®½ºÅÍ Á®Áö Æ¼¼ÅÃ÷', 'RD', 'M', 34000, 10, 30600, 02, 073, 'Ä«¶ó ·Î°í ÀÚ¼ö µðÅ×ÀÏÀÌ µ¸º¸ÀÓ.', 'dt072', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 34000, 'N', '073', 0);
-INSERT INTO PRODUCT VALUES('M0402073BKS', '04', 'thumb072', 'Å©¸®½ºÅÍ Á®Áö Æ¼¼ÅÃ÷', 'BK', 'S', 34000, 10, 30600, 02, 073, 'Ä«¶ó ·Î°í ÀÚ¼ö µðÅ×ÀÏÀÌ µ¸º¸ÀÓ.', 'dt072', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 34000, 'N', '073', 0);
-INSERT INTO PRODUCT VALUES('M0402073BKM', '04', 'thumb072', 'Å©¸®½ºÅÍ Á®Áö Æ¼¼ÅÃ÷', 'BK', 'M', 34000, 10, 30600, 02, 073, 'Ä«¶ó ·Î°í ÀÚ¼ö µðÅ×ÀÏÀÌ µ¸º¸ÀÓ.', 'dt072', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 34000, 'N', '073', 0);
+INSERT INTO PRODUCT VALUES('M0402073RDS', '04', 'thumb072', 'Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½', 'RD', 'S', 34000, 10, 30600, 02, 073, 'Ä«ï¿½ï¿½ ï¿½Î°ï¿½ ï¿½Ú¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.', 'dt072', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 34000, 'N', '073', 0);
+INSERT INTO PRODUCT VALUES('M0402073RDM', '04', 'thumb072', 'Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½', 'RD', 'M', 34000, 10, 30600, 02, 073, 'Ä«ï¿½ï¿½ ï¿½Î°ï¿½ ï¿½Ú¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.', 'dt072', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 34000, 'N', '073', 0);
+INSERT INTO PRODUCT VALUES('M0402073BKS', '04', 'thumb072', 'Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½', 'BK', 'S', 34000, 10, 30600, 02, 073, 'Ä«ï¿½ï¿½ ï¿½Î°ï¿½ ï¿½Ú¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.', 'dt072', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 34000, 'N', '073', 0);
+INSERT INTO PRODUCT VALUES('M0402073BKM', '04', 'thumb072', 'Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½', 'BK', 'M', 34000, 10, 30600, 02, 073, 'Ä«ï¿½ï¿½ ï¿½Î°ï¿½ ï¿½Ú¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.', 'dt072', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 34000, 'N', '073', 0);
 
 
-INSERT INTO PRODUCT VALUES('M0402074RDS', '04', 'thumb066', '¾Ùºó ½ºÆ®·¹Ä¡ ÆÒÃ÷', 'RD', 'S', 34000, 10, 30600, 02, 073, 'ÀÜ ½ºÄù¾î ÆÐÅÏ µðÅ×ÀÏÀ» °¡Áü.', 'dt066', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 68000, 'N', '073', 0);
-INSERT INTO PRODUCT VALUES('M0402074RDM', '04', 'thumb066', '¾Ùºó ½ºÆ®·¹Ä¡ ÆÒÃ÷', 'RD', 'M', 34000, 10, 30600, 02, 073, 'ÀÜ ½ºÄù¾î ÆÐÅÏ µðÅ×ÀÏÀ» °¡Áü.', 'dt066', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 68000, 'N', '073', 0);
-INSERT INTO PRODUCT VALUES('M0402074RDL', '04', 'thumb066', '¾Ùºó ½ºÆ®·¹Ä¡ ÆÒÃ÷', 'RD', 'L', 34000, 10, 30600, 02, 073, 'ÀÜ ½ºÄù¾î ÆÐÅÏ µðÅ×ÀÏÀ» °¡Áü', 'dt066', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 68000, 'N', '073', 0);
+INSERT INTO PRODUCT VALUES('M0402074RDS', '04', 'thumb066', 'ï¿½Ùºï¿½ ï¿½ï¿½Æ®ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½', 'RD', 'S', 34000, 10, 30600, 02, 073, 'ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.', 'dt066', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 68000, 'N', '073', 0);
+INSERT INTO PRODUCT VALUES('M0402074RDM', '04', 'thumb066', 'ï¿½Ùºï¿½ ï¿½ï¿½Æ®ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½', 'RD', 'M', 34000, 10, 30600, 02, 073, 'ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.', 'dt066', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 68000, 'N', '073', 0);
+INSERT INTO PRODUCT VALUES('M0402074RDL', '04', 'thumb066', 'ï¿½Ùºï¿½ ï¿½ï¿½Æ®ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½', 'RD', 'L', 34000, 10, 30600, 02, 073, 'ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'dt066', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 68000, 'N', '073', 0);
 
 
-INSERT INTO PRODUCT VALUES('M0402075BLS', '04', 'thumb045', '»çÀÌ¸Õ ±¸½º´Ù¿î ½ºÀ® ÀÚÄÏ', 'BL', 'S', 34000, 10, 30600, 02, 073, 'ÇÁ·ÐÆ® ¹è»ö ¶óÀÎ µðÅ×ÀÏÀ» °¡Áü.', 'dt045', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 68000, 'N', '073', 0);
-INSERT INTO PRODUCT VALUES('M0402075BLM', '04', 'thumb045', '»çÀÌ¸Õ ±¸½º´Ù¿î ½ºÀ® ÀÚÄÏ', 'BL', 'M', 34000, 10, 30600, 02, 073, 'ÇÁ·ÐÆ® ¹è»ö ¶óÀÎ µðÅ×ÀÏÀ» °¡Áü.', 'dt045', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 68000, 'N', '073', 0);
-INSERT INTO PRODUCT VALUES('M0402075GRS', '04', 'thumb045', '»çÀÌ¸Õ ±¸½º´Ù¿î ½ºÀ® ÀÚÄÏ', 'GN', 'S', 34000, 10, 30600, 02, 073, 'ÇÁ·ÐÆ® ¹è»ö ¶óÀÎ µðÅ×ÀÏÀ» °¡Áü.', 'dt045', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 68000, 'N', '073', 0);
-INSERT INTO PRODUCT VALUES('M0402075GRM', '04', 'thumb045', '»çÀÌ¸Õ ±¸½º´Ù¿î ½ºÀ® ÀÚÄÏ', 'GN', 'M', 34000, 10, 30600, 02, 073, 'ÇÁ·ÐÆ® ¹è»ö ¶óÀÎ µðÅ×ÀÏÀ» °¡Áü.', 'dt045', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 68000, 'N', '073', 0);
+INSERT INTO PRODUCT VALUES('M0402075BLS', '04', 'thumb045', 'ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ù¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'BL', 'S', 34000, 10, 30600, 02, 073, 'ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.', 'dt045', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 68000, 'N', '073', 0);
+INSERT INTO PRODUCT VALUES('M0402075BLM', '04', 'thumb045', 'ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ù¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'BL', 'M', 34000, 10, 30600, 02, 073, 'ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.', 'dt045', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 68000, 'N', '073', 0);
+INSERT INTO PRODUCT VALUES('M0402075GRS', '04', 'thumb045', 'ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ù¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'GN', 'S', 34000, 10, 30600, 02, 073, 'ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.', 'dt045', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 68000, 'N', '073', 0);
+INSERT INTO PRODUCT VALUES('M0402075GRM', '04', 'thumb045', 'ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ù¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'GN', 'M', 34000, 10, 30600, 02, 073, 'ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.', 'dt045', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 68000, 'N', '073', 0);
 
 
-INSERT INTO PRODUCT VALUES('M0402076WHS', '04', 'thumb100', '·ÎÀÌ Å¬¸° ÇÏÇÁ ÇÇÄÉ ¼ÅÃ÷', 'WH', 'S', 34000, 10, 30600, 02, 073, 'ÄÃ·¯ ¹è»ö ¶óÀÌ´×ÀÌ µ¸º¸ÀÌ´Â Ä³ÁÖ¾óÇÑ ¹«µå.', 'dt100', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 68000, 'N', '073', 0);
-INSERT INTO PRODUCT VALUES('M0402076WHM', '04', 'thumb100', '·ÎÀÌ Å¬¸° ÇÏÇÁ ÇÇÄÉ ¼ÅÃ÷', 'WH', 'M', 34000, 10, 30600, 02, 073, 'ÄÃ·¯ ¹è»ö ¶óÀÌ´×ÀÌ µ¸º¸ÀÌ´Â Ä³ÁÖ¾óÇÑ ¹«µå.', 'dt100', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 68000, 'N', '073', 0);
-INSERT INTO PRODUCT VALUES('M0402076WHL', '04', 'thumb100', '·ÎÀÌ Å¬¸° ÇÏÇÁ ÇÇÄÉ ¼ÅÃ÷', 'WH', 'L', 34000, 10, 30600, 02, 073, 'ÄÃ·¯ ¹è»ö ¶óÀÌ´×ÀÌ µ¸º¸ÀÌ´Â Ä³ÁÖ¾óÇÑ ¹«µå.', 'dt100', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 68000, 'N', '073', 0);
+INSERT INTO PRODUCT VALUES('M0402076WHS', '04', 'thumb100', 'ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'WH', 'S', 34000, 10, 30600, 02, 073, 'ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½ Ä³ï¿½Ö¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.', 'dt100', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 68000, 'N', '073', 0);
+INSERT INTO PRODUCT VALUES('M0402076WHM', '04', 'thumb100', 'ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'WH', 'M', 34000, 10, 30600, 02, 073, 'ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½ Ä³ï¿½Ö¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.', 'dt100', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 68000, 'N', '073', 0);
+INSERT INTO PRODUCT VALUES('M0402076WHL', '04', 'thumb100', 'ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'WH', 'L', 34000, 10, 30600, 02, 073, 'ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½ Ä³ï¿½Ö¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.', 'dt100', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 68000, 'N', '073', 0);
 
 
-INSERT INTO PRODUCT VALUES('M0402077WHS', '04', 'thumb050', '»ç¹«¿¤ ¸Þ½¬ ÀÚÄÏ', 'WH', 'S', 34000, 10, 30600, 02, 073, 'ÄÃ·¯ ¹è»ö µðÅ×ÀÏ°ú ·¹ÅÍ¸µ ·Î°í µðÅ×ÀÏÀÌ µ¸º¸ÀÓ.', 'dt050', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 102000, 'N', '073', 0);
-INSERT INTO PRODUCT VALUES('M0402077WHM', '04', 'thumb050', '»ç¹«¿¤ ¸Þ½¬ ÀÚÄÏ', 'WH', 'M', 34000, 10, 30600, 02, 073, 'ÄÃ·¯ ¹è»ö µðÅ×ÀÏ°ú ·¹ÅÍ¸µ ·Î°í µðÅ×ÀÏÀÌ µ¸º¸ÀÓ.', 'dt050', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 102000, 'N', '073', 0);
-INSERT INTO PRODUCT VALUES('M0402077WHL', '04', 'thumb050', '»ç¹«¿¤ ¸Þ½¬ ÀÚÄÏ', 'WH', 'L', 34000, 10, 30600, 02, 073, 'ÄÃ·¯ ¹è»ö µðÅ×ÀÏ°ú ·¹ÅÍ¸µ ·Î°í µðÅ×ÀÏÀÌ µ¸º¸ÀÓ.', 'dt050', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 102000, 'N', '073', 0);
+INSERT INTO PRODUCT VALUES('M0402077WHS', '04', 'thumb050', 'ï¿½ç¹«ï¿½ï¿½ ï¿½Þ½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'WH', 'S', 34000, 10, 30600, 02, 073, 'ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.', 'dt050', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 102000, 'N', '073', 0);
+INSERT INTO PRODUCT VALUES('M0402077WHM', '04', 'thumb050', 'ï¿½ç¹«ï¿½ï¿½ ï¿½Þ½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'WH', 'M', 34000, 10, 30600, 02, 073, 'ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.', 'dt050', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 102000, 'N', '073', 0);
+INSERT INTO PRODUCT VALUES('M0402077WHL', '04', 'thumb050', 'ï¿½ç¹«ï¿½ï¿½ ï¿½Þ½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'WH', 'L', 34000, 10, 30600, 02, 073, 'ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.', 'dt050', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 102000, 'N', '073', 0);
 
 
-INSERT INTO PRODUCT VALUES('M0402078KHS', '04', 'thumb094', '·çÅ© ·¹±Ö·¯ÇÍ ÇÇÄÉ ¼ÅÃ÷', 'KH', 'S', 34000, 10, 30600, 02, 073, '³Ø¶óÀÎ¿¡ ºê¸´Áö ·Î°í µðÅ×ÀÏÀÌ µ¸º¸ÀÓ.', 'dt094', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 102000, 'N', '073', 0);
-INSERT INTO PRODUCT VALUES('M0402078KHM', '04', 'thumb094', '·çÅ© ·¹±Ö·¯ÇÍ ÇÇÄÉ ¼ÅÃ÷', 'KH', 'M', 34000, 10, 30600, 02, 073, '³Ø¶óÀÎ¿¡ ºê¸´Áö ·Î°í µðÅ×ÀÏÀÌ µ¸º¸ÀÓ.', 'dt094', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 102000, 'N', '073', 0);
-INSERT INTO PRODUCT VALUES('M0402078WHS', '04', 'thumb094', '·çÅ© ·¹±Ö·¯ÇÍ ÇÇÄÉ ¼ÅÃ÷', 'WH', 'S', 34000, 10, 30600, 02, 073, '³Ø¶óÀÎ¿¡ ºê¸´Áö ·Î°í µðÅ×ÀÏÀÌ µ¸º¸ÀÓ.', 'dt094', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 102000, 'N', '073', 0);
-INSERT INTO PRODUCT VALUES('M0402078WHM', '04', 'thumb094', '·çÅ© ·¹±Ö·¯ÇÍ ÇÇÄÉ ¼ÅÃ÷', 'WH', 'M', 34000, 10, 30600, 02, 073, '³Ø¶óÀÎ¿¡ ºê¸´Áö ·Î°í µðÅ×ÀÏÀÌ µ¸º¸ÀÓ.', 'dt094', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 102000, 'N', '073', 0);
+INSERT INTO PRODUCT VALUES('M0402078KHS', '04', 'thumb094', 'ï¿½ï¿½Å© ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'KH', 'S', 34000, 10, 30600, 02, 073, 'ï¿½Ø¶ï¿½ï¿½Î¿ï¿½ ï¿½ê¸´ï¿½ï¿½ ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.', 'dt094', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 102000, 'N', '073', 0);
+INSERT INTO PRODUCT VALUES('M0402078KHM', '04', 'thumb094', 'ï¿½ï¿½Å© ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'KH', 'M', 34000, 10, 30600, 02, 073, 'ï¿½Ø¶ï¿½ï¿½Î¿ï¿½ ï¿½ê¸´ï¿½ï¿½ ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.', 'dt094', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 102000, 'N', '073', 0);
+INSERT INTO PRODUCT VALUES('M0402078WHS', '04', 'thumb094', 'ï¿½ï¿½Å© ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'WH', 'S', 34000, 10, 30600, 02, 073, 'ï¿½Ø¶ï¿½ï¿½Î¿ï¿½ ï¿½ê¸´ï¿½ï¿½ ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.', 'dt094', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 102000, 'N', '073', 0);
+INSERT INTO PRODUCT VALUES('M0402078WHM', '04', 'thumb094', 'ï¿½ï¿½Å© ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'WH', 'M', 34000, 10, 30600, 02, 073, 'ï¿½Ø¶ï¿½ï¿½Î¿ï¿½ ï¿½ê¸´ï¿½ï¿½ ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.', 'dt094', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 102000, 'N', '073', 0);
 
 
-INSERT INTO PRODUCT VALUES('M0402079GNS', '04', 'thumb098', 'Æ®·ÎÀÌ Å¬¸° ÇÇÄÉ Æ¼¼ÅÃ÷', 'GN', 'S', 34000, 10, 30600, 02, 073, '¹Ì´Ï ·Î°í µðÅ×ÀÏÀ» °¡Áø Æ®·»µðÇÑ ¹«µå.', 'dt098', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 102000, 'N', '073', 0);
-INSERT INTO PRODUCT VALUES('M0402079GNM', '04', 'thumb098', 'Æ®·ÎÀÌ Å¬¸° ÇÇÄÉ Æ¼¼ÅÃ÷', 'GN', 'M', 34000, 10, 30600, 02, 073, '¹Ì´Ï ·Î°í µðÅ×ÀÏÀ» °¡Áø Æ®·»µðÇÑ ¹«µå.', 'dt098', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 102000, 'N', '073', 0);
-INSERT INTO PRODUCT VALUES('M0402079GNL', '04', 'thumb098', 'Æ®·ÎÀÌ Å¬¸° ÇÇÄÉ Æ¼¼ÅÃ÷', 'GN', 'L', 34000, 10, 30600, 02, 073, '¹Ì´Ï ·Î°í µðÅ×ÀÏÀ» °¡Áø Æ®·»µðÇÑ ¹«µå.', 'dt098', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 102000, 'N', '073', 0);
+INSERT INTO PRODUCT VALUES('M0402079GNS', '04', 'thumb098', 'Æ®ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½', 'GN', 'S', 34000, 10, 30600, 02, 073, 'ï¿½Ì´ï¿½ ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.', 'dt098', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 102000, 'N', '073', 0);
+INSERT INTO PRODUCT VALUES('M0402079GNM', '04', 'thumb098', 'Æ®ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½', 'GN', 'M', 34000, 10, 30600, 02, 073, 'ï¿½Ì´ï¿½ ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.', 'dt098', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 102000, 'N', '073', 0);
+INSERT INTO PRODUCT VALUES('M0402079GNL', '04', 'thumb098', 'Æ®ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ¼ï¿½ï¿½ï¿½ï¿½', 'GN', 'L', 34000, 10, 30600, 02, 073, 'ï¿½Ì´ï¿½ ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.', 'dt098', 50, '2020/10/01', '2020/06/01', '2020/09/25', 500000, 102000, 'N', '073', 0);
 
 
-INSERT INTO PRODUCT VALUES('M0403080BKS', '04', 'thumb044', 'Æú ÇÏÀÌºê¸®µå º£½ºÆ®', 'BK', 'S', 30000, 15, 25500, 03, 073, 'ÅØ½ºÃÄ ¹è»ö µðÅ×ÀÏÀÌ µ¸º¸ÀÓ.', 'dt044', 30, '2020/07/30', '2020/04/20', '2020/07/25', 400000, 100000, 'Y', '080', 25);
-INSERT INTO PRODUCT VALUES('M0403080BKM', '04', 'thumb044', 'Æú ÇÏÀÌºê¸®µå º£½ºÆ®', 'BK', 'M', 30000, 15, 25500, 03, 073, 'ÅØ½ºÃÄ ¹è»ö µðÅ×ÀÏÀÌ µ¸º¸ÀÓ.', 'dt044', 30, '2020/07/30', '2020/04/20', '2020/07/25', 400000, 100000, 'Y', '080', 25);
-INSERT INTO PRODUCT VALUES('M0403080RDS', '04', 'thumb044', 'Æú ÇÏÀÌºê¸®µå º£½ºÆ®', 'RD', 'S', 30000, 15, 25500, 03, 073, 'ÅØ½ºÃÄ ¹è»ö µðÅ×ÀÏÀÌ µ¸º¸ÀÓ.', 'dt044', 30, '2020/07/30', '2020/04/20', '2020/07/25', 400000, 100000, 'Y', '080', 25);
-INSERT INTO PRODUCT VALUES('M0403080RDM', '04', 'thumb044', 'Æú ÇÏÀÌºê¸®µå º£½ºÆ®', 'RD', 'M', 30000, 15, 25500, 03, 073, 'ÅØ½ºÃÄ ¹è»ö µðÅ×ÀÏÀÌ µ¸º¸ÀÓ.', 'dt044', 30, '2020/07/30', '2020/04/20', '2020/07/25', 400000, 100000, 'Y', '080', 25);
+INSERT INTO PRODUCT VALUES('M0403080BKS', '04', 'thumb044', 'ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºê¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®', 'BK', 'S', 30000, 15, 25500, 03, 073, 'ï¿½Ø½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.', 'dt044', 30, '2020/07/30', '2020/04/20', '2020/07/25', 400000, 100000, 'Y', '080', 25);
+INSERT INTO PRODUCT VALUES('M0403080BKM', '04', 'thumb044', 'ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºê¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®', 'BK', 'M', 30000, 15, 25500, 03, 073, 'ï¿½Ø½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.', 'dt044', 30, '2020/07/30', '2020/04/20', '2020/07/25', 400000, 100000, 'Y', '080', 25);
+INSERT INTO PRODUCT VALUES('M0403080RDS', '04', 'thumb044', 'ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºê¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®', 'RD', 'S', 30000, 15, 25500, 03, 073, 'ï¿½Ø½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.', 'dt044', 30, '2020/07/30', '2020/04/20', '2020/07/25', 400000, 100000, 'Y', '080', 25);
+INSERT INTO PRODUCT VALUES('M0403080RDM', '04', 'thumb044', 'ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºê¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®', 'RD', 'M', 30000, 15, 25500, 03, 073, 'ï¿½Ø½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.', 'dt044', 30, '2020/07/30', '2020/04/20', '2020/07/25', 400000, 100000, 'Y', '080', 25);
 
 
-INSERT INTO PRODUCT VALUES('M0701081BKS', '07', 'thumb039', '¿À¹öÇÍ ÇÁ¸®´ý¼ôÆÐµù','BK','S', 100000, 10, 90000, 01, 081, '¾öÃ»³­ µû¶æÇÔ ¹Ï°í »ç¼Åµµ µË´Ï´Ù.', 'dt039', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 270000, 'N', '081', 0);
-INSERT INTO PRODUCT VALUES('M0701081BKM', '07', 'thumb039', '¿À¹öÇÍ ÇÁ¸®´ý¼ôÆÐµù','BK','M', 100000, 10, 90000, 01, 081, '¾öÃ»³­ µû¶æÇÔ ¹Ï°í »ç¼Åµµ µË´Ï´Ù.', 'dt039', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 270000, 'N', '081', 0);
-INSERT INTO PRODUCT VALUES('M0701081BLL', '07', 'thumb039', '¿À¹öÇÍ ÇÁ¸®´ý¼ôÆÐµù','BL','L', 100000, 10, 90000, 01, 081, '¾öÃ»³­ µû¶æÇÔ ¹Ï°í »ç¼Åµµ µË´Ï´Ù.', 'dt039', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 270000, 'N', '081', 0);
+INSERT INTO PRODUCT VALUES('M0701081BKS', '07', 'thumb039', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½','BK','S', 100000, 10, 90000, 01, 081, 'ï¿½ï¿½Ã»ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï°ï¿½ ï¿½ï¿½Åµï¿½ ï¿½Ë´Ï´ï¿½.', 'dt039', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 270000, 'N', '081', 0);
+INSERT INTO PRODUCT VALUES('M0701081BKM', '07', 'thumb039', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½','BK','M', 100000, 10, 90000, 01, 081, 'ï¿½ï¿½Ã»ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï°ï¿½ ï¿½ï¿½Åµï¿½ ï¿½Ë´Ï´ï¿½.', 'dt039', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 270000, 'N', '081', 0);
+INSERT INTO PRODUCT VALUES('M0701081BLL', '07', 'thumb039', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½','BL','L', 100000, 10, 90000, 01, 081, 'ï¿½ï¿½Ã»ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï°ï¿½ ï¿½ï¿½Åµï¿½ ï¿½Ë´Ï´ï¿½.', 'dt039', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 270000, 'N', '081', 0);
 
-INSERT INTO PRODUCT VALUES('M0701082BKS', '07', 'thumb033', 'À§µå ¾ÆÅ©¸± ºêÀÌ³Ø °¡µð°Ç','BK','S', 100000, 10, 90000, 01, 082, 'º½¿¡ µü ÀÔ±â ÁÁÀº ¿¹»Û °¡µð°Ç', 'dt033', 151, '2020/07/20', '2020/04/01', '2020/07/15', 3000000, 270000, 'Y', '082', 0);
-INSERT INTO PRODUCT VALUES('M0701082BKM', '07', 'thumb033', 'À§µå ¾ÆÅ©¸± ºêÀÌ³Ø °¡µð°Ç','BK','M', 100000, 10, 90000, 01, 082, 'º½¿¡ µü ÀÔ±â ÁÁÀº ¿¹»Û °¡µð°Ç', 'dt033', 151, '2020/07/20', '2020/04/01', '2020/07/15', 3000000, 270000, 'Y', '082', 0);
-INSERT INTO PRODUCT VALUES('M0701082BLL', '07', 'thumb033', 'À§µå ¾ÆÅ©¸± ºêÀÌ³Ø °¡µð°Ç','BL','L', 100000, 10, 90000, 01, 082, 'º½¿¡ µü ÀÔ±â ÁÁÀº ¿¹»Û °¡µð°Ç', 'dt033', 151, '2020/07/20', '2020/04/01', '2020/07/15', 3000000, 270000, 'Y', '082', 0);
+INSERT INTO PRODUCT VALUES('M0701082BKS', '07', 'thumb033', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½ ï¿½ï¿½ï¿½Ì³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½','BK','S', 100000, 10, 90000, 01, 082, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ô±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt033', 151, '2020/07/20', '2020/04/01', '2020/07/15', 3000000, 270000, 'Y', '082', 0);
+INSERT INTO PRODUCT VALUES('M0701082BKM', '07', 'thumb033', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½ ï¿½ï¿½ï¿½Ì³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½','BK','M', 100000, 10, 90000, 01, 082, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ô±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt033', 151, '2020/07/20', '2020/04/01', '2020/07/15', 3000000, 270000, 'Y', '082', 0);
+INSERT INTO PRODUCT VALUES('M0701082BLL', '07', 'thumb033', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½ ï¿½ï¿½ï¿½Ì³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½','BL','L', 100000, 10, 90000, 01, 082, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ô±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt033', 151, '2020/07/20', '2020/04/01', '2020/07/15', 3000000, 270000, 'Y', '082', 0);
 
-INSERT INTO PRODUCT VALUES('M0702083BKS', '07', 'thumb096', 'µ¥ÀÏ¸® ¹ÝÆÈ Ä«¶óÆ¼','BK','S', 100000, 10, 90000, 01, 083, 'Ä¿ÇÃ·èÀ¸·Î µüÀÌ´Ù!', 'dt096', 151, '2020/07/10', '2020/04/02', '2020/07/20', 3000000, 270000, 'N', '083', 0);
-INSERT INTO PRODUCT VALUES('M0702083BKM', '07', 'thumb096', 'µ¥ÀÏ¸® ¹ÝÆÈ Ä«¶óÆ¼','BK','M', 100000, 10, 90000, 01, 083, 'Ä¿ÇÃ·èÀ¸·Î µüÀÌ´Ù!', 'dt096', 151, '2020/07/10', '2020/04/02', '2020/07/20', 3000000, 270000, 'N', '083', 0);
-INSERT INTO PRODUCT VALUES('M0702083BLL', '07', 'thumb096', 'µ¥ÀÏ¸® ¹ÝÆÈ Ä«¶óÆ¼','BL','L', 100000, 10, 90000, 01, 083, 'Ä¿ÇÃ·èÀ¸·Î µüÀÌ´Ù!', 'dt096', 151, '2020/07/10', '2020/04/02', '2020/07/20', 3000000, 270000, 'N', '083', 0);
+INSERT INTO PRODUCT VALUES('M0702083BKS', '07', 'thumb096', 'ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½ï¿½Æ¼','BK','S', 100000, 10, 90000, 01, 083, 'Ä¿ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì´ï¿½!', 'dt096', 151, '2020/07/10', '2020/04/02', '2020/07/20', 3000000, 270000, 'N', '083', 0);
+INSERT INTO PRODUCT VALUES('M0702083BKM', '07', 'thumb096', 'ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½ï¿½Æ¼','BK','M', 100000, 10, 90000, 01, 083, 'Ä¿ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì´ï¿½!', 'dt096', 151, '2020/07/10', '2020/04/02', '2020/07/20', 3000000, 270000, 'N', '083', 0);
+INSERT INTO PRODUCT VALUES('M0702083BLL', '07', 'thumb096', 'ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½ï¿½Æ¼','BL','L', 100000, 10, 90000, 01, 083, 'Ä¿ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì´ï¿½!', 'dt096', 151, '2020/07/10', '2020/04/02', '2020/07/20', 3000000, 270000, 'N', '083', 0);
 
-INSERT INTO PRODUCT VALUES('M0702084BKS', '07', 'thumb071', '¸®¹öÇ® ¶ó¿îµå ¹ÝÆÈÆ¼','BK','S', 100000, 10, 90000, 01, 084, 'ÆíÇÑÇÑ ¹ÝÆÈÆ¼', 'dt071', 151, '2020/06/30', '2020/04/03', '2020/07/19', 3000000, 270000, 'N', '084', 0);
-INSERT INTO PRODUCT VALUES('M0702084BKM', '07', 'thumb071', '¸®¹öÇ® ¶ó¿îµå ¹ÝÆÈÆ¼','BK','M', 100000, 10, 90000, 01, 084, 'ÆíÇÑÇÑ ¹ÝÆÈÆ¼', 'dt071', 151, '2020/06/30', '2020/04/03', '2020/07/19', 3000000, 270000, 'N', '084', 0);
-INSERT INTO PRODUCT VALUES('M0702084BLL', '07', 'thumb071', '¸®¹öÇ® ¶ó¿îµå ¹ÝÆÈÆ¼','BL','L', 100000, 10, 90000, 01, 084, 'ÆíÇÑÇÑ ¹ÝÆÈÆ¼', 'dt071', 151, '2020/06/30', '2020/04/03', '2020/07/19', 3000000, 270000, 'N', '084', 0);
+INSERT INTO PRODUCT VALUES('M0702084BKS', '07', 'thumb071', 'ï¿½ï¿½ï¿½ï¿½Ç® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ¼','BK','S', 100000, 10, 90000, 01, 084, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ¼', 'dt071', 151, '2020/06/30', '2020/04/03', '2020/07/19', 3000000, 270000, 'N', '084', 0);
+INSERT INTO PRODUCT VALUES('M0702084BKM', '07', 'thumb071', 'ï¿½ï¿½ï¿½ï¿½Ç® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ¼','BK','M', 100000, 10, 90000, 01, 084, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ¼', 'dt071', 151, '2020/06/30', '2020/04/03', '2020/07/19', 3000000, 270000, 'N', '084', 0);
+INSERT INTO PRODUCT VALUES('M0702084BLL', '07', 'thumb071', 'ï¿½ï¿½ï¿½ï¿½Ç® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ¼','BL','L', 100000, 10, 90000, 01, 084, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ¼', 'dt071', 151, '2020/06/30', '2020/04/03', '2020/07/19', 3000000, 270000, 'N', '084', 0);
 
-INSERT INTO PRODUCT VALUES('M0703085BKS', '07', 'thumb075', 'µ¥ÀÏ¸® ¿ö½ÌÄ«°í ¹êµù ¹Ý¹ÙÁö','BK','S', 100000, 10, 90000, 01, 085, '¾ÆÀÌ ÆíÇÏ´Ù ¹êµùÀ¸·Î ÆíÇØÁø ÇÑÃþ ¹Ý¹ÙÁö', 'dt075', 151, '2020/06/30', '2020/04/01', '2020/07/25', 3000000, 270000, 'N', '085', 0);
-INSERT INTO PRODUCT VALUES('M0703085BKM', '07', 'thumb0875', 'µ¥ÀÏ¸® ¿ö½ÌÄ«°í ¹êµù ¹Ý¹ÙÁö','BK','M', 100000, 10, 90000, 01, 085, '¾ÆÀÌ ÆíÇÏ´Ù ¹êµùÀ¸·Î ÆíÇØÁø ÇÑÃþ ¹Ý¹ÙÁö', 'dt075', 151, '2020/06/30', '2020/04/01', '2020/07/25', 3000000, 270000, 'N', '085', 0);
-INSERT INTO PRODUCT VALUES('M0703085BLL', '07', 'thumb075', 'µ¥ÀÏ¸® ¿ö½ÌÄ«°í ¹êµù ¹Ý¹ÙÁö','BK','L', 100000, 10, 90000, 01, 085, '¾ÆÀÌ ÆíÇÏ´Ù ¹êµùÀ¸·Î ÆíÇØÁø ÇÑÃþ ¹Ý¹ÙÁö', 'dt075', 151, '2020/06/30', '2020/04/01', '2020/07/25', 3000000, 270000, 'N', '085', 0);
+INSERT INTO PRODUCT VALUES('M0703085BKS', '07', 'thumb075', 'ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ý¹ï¿½ï¿½ï¿½','BK','S', 100000, 10, 90000, 01, 085, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ý¹ï¿½ï¿½ï¿½', 'dt075', 151, '2020/06/30', '2020/04/01', '2020/07/25', 3000000, 270000, 'N', '085', 0);
+INSERT INTO PRODUCT VALUES('M0703085BKM', '07', 'thumb0875', 'ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ý¹ï¿½ï¿½ï¿½','BK','M', 100000, 10, 90000, 01, 085, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ý¹ï¿½ï¿½ï¿½', 'dt075', 151, '2020/06/30', '2020/04/01', '2020/07/25', 3000000, 270000, 'N', '085', 0);
+INSERT INTO PRODUCT VALUES('M0703085BLL', '07', 'thumb075', 'ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ý¹ï¿½ï¿½ï¿½','BK','L', 100000, 10, 90000, 01, 085, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ý¹ï¿½ï¿½ï¿½', 'dt075', 151, '2020/06/30', '2020/04/01', '2020/07/25', 3000000, 270000, 'N', '085', 0);
 
-INSERT INTO PRODUCT VALUES('M0703086BKS', '07', 'thumb073', 'À¯´Ï¾ð Ã¼Å© ¹êµù¹ÙÁö','BK','S', 100000, 10, 90000, 01, 086, '¹ÙµÏÆÇÀ¸·Î ½áµµ µÉ¹ýÇÑ Ã¼Å©¹êµù¹ÙÁö', 'dt073', 151, '2020/07/29', '2020/04/02', '2020/07/26', 3000000, 270000, 'Y', '086', 0);
-INSERT INTO PRODUCT VALUES('M0703086BKM', '07', 'thumb073', 'À¯´Ï¾ð Ã¼Å© ¹êµù¹ÙÁö','BK','M', 100000, 10, 90000, 01, 086, '¹ÙµÏÆÇÀ¸·Î ½áµµ µÉ¹ýÇÑ Ã¼Å©¹êµù¹ÙÁö', 'dt073', 151, '2020/07/29', '2020/04/02', '2020/07/26', 3000000, 270000, 'Y', '086', 0);
-INSERT INTO PRODUCT VALUES('M0703086BLL', '07', 'thumb073', 'À¯´Ï¾ð Ã¼Å© ¹êµù¹ÙÁö','BL','L', 100000, 10, 90000, 01, 086, '¹ÙµÏÆÇÀ¸·Î ½áµµ µÉ¹ýÇÑ Ã¼Å©¹êµù¹ÙÁö', 'dt073', 151, '2020/07/29', '2020/04/02', '2020/07/26', 3000000, 270000, 'Y', '086', 0);
+INSERT INTO PRODUCT VALUES('M0703086BKS', '07', 'thumb073', 'ï¿½ï¿½ï¿½Ï¾ï¿½ Ã¼Å© ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','BK','S', 100000, 10, 90000, 01, 086, 'ï¿½Ùµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½áµµ ï¿½É¹ï¿½ï¿½ï¿½ Ã¼Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt073', 151, '2020/07/29', '2020/04/02', '2020/07/26', 3000000, 270000, 'Y', '086', 0);
+INSERT INTO PRODUCT VALUES('M0703086BKM', '07', 'thumb073', 'ï¿½ï¿½ï¿½Ï¾ï¿½ Ã¼Å© ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','BK','M', 100000, 10, 90000, 01, 086, 'ï¿½Ùµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½áµµ ï¿½É¹ï¿½ï¿½ï¿½ Ã¼Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt073', 151, '2020/07/29', '2020/04/02', '2020/07/26', 3000000, 270000, 'Y', '086', 0);
+INSERT INTO PRODUCT VALUES('M0703086BLL', '07', 'thumb073', 'ï¿½ï¿½ï¿½Ï¾ï¿½ Ã¼Å© ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','BL','L', 100000, 10, 90000, 01, 086, 'ï¿½Ùµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½áµµ ï¿½É¹ï¿½ï¿½ï¿½ Ã¼Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt073', 151, '2020/07/29', '2020/04/02', '2020/07/26', 3000000, 270000, 'Y', '086', 0);
 
-INSERT INTO PRODUCT VALUES('M0704087BKS', '07', 'thumb006', 'È÷µç¹êµù ½½¸² µ¥´ÔÆÒÃ÷','BK','S', 100000, 10, 90000, 01, 087, '¸¹ÀÌ Âõ¾îÁ®¼­ ½Ã¿øÇØ¿ä', 'dt006', 151, '2020/07/28', '2020/04/03', '2020/07/24', 3000000, 180000, 'N', '087', 0);
-INSERT INTO PRODUCT VALUES('M0704087BKM', '07', 'thumb006', 'È÷µç¹êµù ½½¸² µ¥´ÔÆÒÃ÷','BK','M', 100000, 10, 90000, 01, 087, '¸¹ÀÌ Âõ¾îÁ®¼­ ½Ã¿øÇØ¿ä', 'dt006', 151, '2020/07/28', '2020/04/03', '2020/07/24', 3000000, 180000, 'N', '087', 0);
-INSERT INTO PRODUCT VALUES('M0704087BLL', '07', 'thumb006', 'È÷µç¹êµù ½½¸² µ¥´ÔÆÒÃ÷','BL','L', 100000, 10, 90000, 01, 087, '¸¹ÀÌ Âõ¾îÁ®¼­ ½Ã¿øÇØ¿ä', 'dt006', 151, '2020/07/28', '2020/04/03', '2020/07/24', 3000000, 180000, 'N', '087', 0);
+INSERT INTO PRODUCT VALUES('M0704087BKS', '07', 'thumb006', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','BK','S', 100000, 10, 90000, 01, 087, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¿ï¿½ï¿½Ø¿ï¿½', 'dt006', 151, '2020/07/28', '2020/04/03', '2020/07/24', 3000000, 180000, 'N', '087', 0);
+INSERT INTO PRODUCT VALUES('M0704087BKM', '07', 'thumb006', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','BK','M', 100000, 10, 90000, 01, 087, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¿ï¿½ï¿½Ø¿ï¿½', 'dt006', 151, '2020/07/28', '2020/04/03', '2020/07/24', 3000000, 180000, 'N', '087', 0);
+INSERT INTO PRODUCT VALUES('M0704087BLL', '07', 'thumb006', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','BL','L', 100000, 10, 90000, 01, 087, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¿ï¿½ï¿½Ø¿ï¿½', 'dt006', 151, '2020/07/28', '2020/04/03', '2020/07/24', 3000000, 180000, 'N', '087', 0);
 
-INSERT INTO PRODUCT VALUES('M0704088BKS', '07', 'thumb078', '³ë¸Ö¿ö½Ì ½½¸²ÇÍ ÄÆÆÃÁø','BK','S', 100000, 10, 90000, 01, 088, '´©±¸µç Àß¾î¿ï¸®°Ô ¸¸µå´Â ¹ÙÁö', 'dt078', 151, '2020/07/27', '2020/04/04', '2020/07/24', 3000000, 180000, 'Y', '088', 0);
-INSERT INTO PRODUCT VALUES('M0704088BKM', '07', 'thumb078', '³ë¸Ö¿ö½Ì ½½¸²ÇÍ ÄÆÆÃÁø','BK','M', 100000, 10, 90000, 01, 088, '´©±¸µç Àß¾î¿ï¸®°Ô ¸¸µå´Â ¹ÙÁö', 'dt078', 151, '2020/07/27', '2020/04/04', '2020/07/24', 3000000, 180000, 'Y', '088', 0);
-INSERT INTO PRODUCT VALUES('M0704088BLL', '07', 'thumb078', '³ë¸Ö¿ö½Ì ½½¸²ÇÍ ÄÆÆÃÁø','BL','L', 100000, 10, 90000, 01, 088, '´©±¸µç Àß¾î¿ï¸®°Ô ¸¸µå´Â ¹ÙÁö', 'dt078', 151, '2020/07/27', '2020/04/04', '2020/07/24', 3000000, 180000, 'Y', '088', 0);
+INSERT INTO PRODUCT VALUES('M0704088BKS', '07', 'thumb078', 'ï¿½ï¿½Ö¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','BK','S', 100000, 10, 90000, 01, 088, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¾ï¿½ï¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'dt078', 151, '2020/07/27', '2020/04/04', '2020/07/24', 3000000, 180000, 'Y', '088', 0);
+INSERT INTO PRODUCT VALUES('M0704088BKM', '07', 'thumb078', 'ï¿½ï¿½Ö¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','BK','M', 100000, 10, 90000, 01, 088, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¾ï¿½ï¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'dt078', 151, '2020/07/27', '2020/04/04', '2020/07/24', 3000000, 180000, 'Y', '088', 0);
+INSERT INTO PRODUCT VALUES('M0704088BLL', '07', 'thumb078', 'ï¿½ï¿½Ö¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','BL','L', 100000, 10, 90000, 01, 088, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¾ï¿½ï¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'dt078', 151, '2020/07/27', '2020/04/04', '2020/07/24', 3000000, 180000, 'Y', '088', 0);
 
-INSERT INTO PRODUCT VALUES('M0701089BKS', '07', 'thumb045', 'À¯½º ¿À¹öÇÍ ´ëµð ½Ì±Û ÀÚÄÏ','BK','S', 100000, 10, 90000, 01, 089, '´©°¡ ÀÔ¾îµµ Àß ¾î¿ï¸®´Â ÀÚÄÏ', 'dt045', 151, '2020/07/26', '2020/04/05', '2020/07/23', 3000000, 180000, 'N', '089', 0);
-INSERT INTO PRODUCT VALUES('M0701089BKM', '07', 'thumb045', 'À¯½º ¿À¹öÇÍ ´ëµð ½Ì±Û ÀÚÄÏ','BK','M', 100000, 10, 90000, 01, 089, '´©°¡ ÀÔ¾îµµ Àß ¾î¿ï¸®´Â ÀÚÄÏ', 'dt045', 151, '2020/07/26', '2020/04/05', '2020/07/23', 3000000, 180000, 'N', '089', 0);
-INSERT INTO PRODUCT VALUES('M0701089BLL', '07', 'thumb045', 'À¯½º ¿À¹öÇÍ ´ëµð ½Ì±Û ÀÚÄÏ','BL','L', 100000, 10, 90000, 01, 089, '´©°¡ ÀÔ¾îµµ Àß ¾î¿ï¸®´Â ÀÚÄÏ', 'dt045', 151, '2020/07/26', '2020/04/05', '2020/07/23', 3000000, 180000, 'N', '089', 0);
+INSERT INTO PRODUCT VALUES('M0701089BKS', '07', 'thumb045', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ì±ï¿½ ï¿½ï¿½ï¿½ï¿½','BK','S', 100000, 10, 90000, 01, 089, 'ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¾îµµ ï¿½ï¿½ ï¿½ï¿½ï¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'dt045', 151, '2020/07/26', '2020/04/05', '2020/07/23', 3000000, 180000, 'N', '089', 0);
+INSERT INTO PRODUCT VALUES('M0701089BKM', '07', 'thumb045', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ì±ï¿½ ï¿½ï¿½ï¿½ï¿½','BK','M', 100000, 10, 90000, 01, 089, 'ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¾îµµ ï¿½ï¿½ ï¿½ï¿½ï¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'dt045', 151, '2020/07/26', '2020/04/05', '2020/07/23', 3000000, 180000, 'N', '089', 0);
+INSERT INTO PRODUCT VALUES('M0701089BLL', '07', 'thumb045', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ì±ï¿½ ï¿½ï¿½ï¿½ï¿½','BL','L', 100000, 10, 90000, 01, 089, 'ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¾îµµ ï¿½ï¿½ ï¿½ï¿½ï¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'dt045', 151, '2020/07/26', '2020/04/05', '2020/07/23', 3000000, 180000, 'N', '089', 0);
 
-INSERT INTO PRODUCT VALUES('M0701090BKS', '07', 'thumb049', 'µ¥ÀÏ¸® ÈÄµå Å»ºÎÂø Ã»ÀÚÄÏ','BK','S', 100000, 10, 90000, 01, 090, 'Å©~ ¸ðÀÚ¸¦ ³»¸¾´ë·ç Å»ºÎÂø!', 'dt049', 151, '2020/07/25', '2020/03/28', '2020/07/22', 3000000, 180000, 'N', '090', 0);
-INSERT INTO PRODUCT VALUES('M0701090BKM', '07', 'thumb049', 'µ¥ÀÏ¸® ÈÄµå Å»ºÎÂø Ã»ÀÚÄÏ','BK','M', 100000, 10, 90000, 01, 090, 'Å©~ ¸ðÀÚ¸¦ ³»¸¾´ë·ç Å»ºÎÂø!', 'dt049', 151, '2020/07/25', '2020/03/28', '2020/07/22', 3000000, 180000, 'N', '090', 0);
-INSERT INTO PRODUCT VALUES('M0701090BLL', '07', 'thumb049', 'µ¥ÀÏ¸® ÈÄµå Å»ºÎÂø Ã»ÀÚÄÏ','BL','L', 100000, 10, 90000, 01, 090, 'Å©~ ¸ðÀÚ¸¦ ³»¸¾´ë·ç Å»ºÎÂø!', 'dt049', 151, '2020/07/25', '2020/03/28', '2020/07/22', 3000000, 180000, 'N', '090', 0);
+INSERT INTO PRODUCT VALUES('M0701090BKS', '07', 'thumb049', 'ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½Äµï¿½ Å»ï¿½ï¿½ï¿½ï¿½ Ã»ï¿½ï¿½ï¿½ï¿½','BK','S', 100000, 10, 90000, 01, 090, 'Å©~ ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å»ï¿½ï¿½ï¿½ï¿½!', 'dt049', 151, '2020/07/25', '2020/03/28', '2020/07/22', 3000000, 180000, 'N', '090', 0);
+INSERT INTO PRODUCT VALUES('M0701090BKM', '07', 'thumb049', 'ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½Äµï¿½ Å»ï¿½ï¿½ï¿½ï¿½ Ã»ï¿½ï¿½ï¿½ï¿½','BK','M', 100000, 10, 90000, 01, 090, 'Å©~ ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å»ï¿½ï¿½ï¿½ï¿½!', 'dt049', 151, '2020/07/25', '2020/03/28', '2020/07/22', 3000000, 180000, 'N', '090', 0);
+INSERT INTO PRODUCT VALUES('M0701090BLL', '07', 'thumb049', 'ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½Äµï¿½ Å»ï¿½ï¿½ï¿½ï¿½ Ã»ï¿½ï¿½ï¿½ï¿½','BL','L', 100000, 10, 90000, 01, 090, 'Å©~ ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å»ï¿½ï¿½ï¿½ï¿½!', 'dt049', 151, '2020/07/25', '2020/03/28', '2020/07/22', 3000000, 180000, 'N', '090', 0);
 
-INSERT INTO PRODUCT VALUES('M0702091BKS', '07', 'thumb096', 'ÄÃ·º¼Ç ·¹ÅÍ¸µ ¹ÝÆÈÆ¼','BK','S', 100000, 10, 90000, 01, 091, 'Âü ½ÉÇÃÇÑ ¹ÝÆÈÆ¼', 'dt096', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 180000, 'N', '091', 0);
-INSERT INTO PRODUCT VALUES('M0702091BKM', '07', 'thumb096', 'ÄÃ·º¼Ç ·¹ÅÍ¸µ ¹ÝÆÈÆ¼','BK','M', 100000, 10, 90000, 01, 091, 'Âü ½ÉÇÃÇÑ ¹ÝÆÈÆ¼', 'dt096', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 180000, 'N', '091', 0);
-INSERT INTO PRODUCT VALUES('M0702091BLL', '07', 'thumb096', 'ÄÃ·º¼Ç ·¹ÅÍ¸µ ¹ÝÆÈÆ¼','BL','L', 100000, 10, 90000, 01, 091, 'Âü ½ÉÇÃÇÑ ¹ÝÆÈÆ¼', 'dt096', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 180000, 'N', '091', 0);
+INSERT INTO PRODUCT VALUES('M0702091BKS', '07', 'thumb096', 'ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½Æ¼','BK','S', 100000, 10, 90000, 01, 091, 'ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ¼', 'dt096', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 180000, 'N', '091', 0);
+INSERT INTO PRODUCT VALUES('M0702091BKM', '07', 'thumb096', 'ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½Æ¼','BK','M', 100000, 10, 90000, 01, 091, 'ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ¼', 'dt096', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 180000, 'N', '091', 0);
+INSERT INTO PRODUCT VALUES('M0702091BLL', '07', 'thumb096', 'ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½Æ¼','BL','L', 100000, 10, 90000, 01, 091, 'ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ¼', 'dt096', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 180000, 'N', '091', 0);
 
-INSERT INTO PRODUCT VALUES('M0702092BKS', '07', 'thumb080', '½ºÄù¾î ¿À¹öÇÍ ¹ÝÆÈÆ¼','BK','S', 100000, 10, 90000, 01, 092, '¾ÆÀÌ ½Ã¿øÇØ¶ó ¹Ù¶÷ÀÌ Àß ÅëÇÏ´Â ¹ÝÆÈÆ¼ÀÔ´Ï´Ù.', 'dt080', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 180000, 'Y', '092', 0);
-INSERT INTO PRODUCT VALUES('M0702092BKM', '07', 'thumb080', '½ºÄù¾î ¿À¹öÇÍ ¹ÝÆÈÆ¼','BK','M', 100000, 10, 90000, 01, 092, '¾ÆÀÌ ½Ã¿øÇØ¶ó ¹Ù¶÷ÀÌ Àß ÅëÇÏ´Â ¹ÝÆÈÆ¼ÀÔ´Ï´Ù.', 'dt080', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 180000, 'Y', '092', 0);
-INSERT INTO PRODUCT VALUES('M0702092BLL', '07', 'thumb080', '½ºÄù¾î ¿À¹öÇÍ ¹ÝÆÈÆ¼','BL','L', 100000, 10, 90000, 01, 092, '¾ÆÀÌ ½Ã¿øÇØ¶ó ¹Ù¶÷ÀÌ Àß ÅëÇÏ´Â ¹ÝÆÈÆ¼ÀÔ´Ï´Ù.', 'dt080', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 180000, 'Y', '092', 0);
+INSERT INTO PRODUCT VALUES('M0702092BKS', '07', 'thumb080', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ¼','BK','S', 100000, 10, 90000, 01, 092, 'ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¿ï¿½ï¿½Ø¶ï¿½ ï¿½Ù¶ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½Æ¼ï¿½Ô´Ï´ï¿½.', 'dt080', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 180000, 'Y', '092', 0);
+INSERT INTO PRODUCT VALUES('M0702092BKM', '07', 'thumb080', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ¼','BK','M', 100000, 10, 90000, 01, 092, 'ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¿ï¿½ï¿½Ø¶ï¿½ ï¿½Ù¶ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½Æ¼ï¿½Ô´Ï´ï¿½.', 'dt080', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 180000, 'Y', '092', 0);
+INSERT INTO PRODUCT VALUES('M0702092BLL', '07', 'thumb080', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ¼','BL','L', 100000, 10, 90000, 01, 092, 'ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¿ï¿½ï¿½Ø¶ï¿½ ï¿½Ù¶ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½Æ¼ï¿½Ô´Ï´ï¿½.', 'dt080', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 180000, 'Y', '092', 0);
 
-INSERT INTO PRODUCT VALUES('M0703093BKS', '07', 'thumb075', '¸°³Ù 5ºÎ ¹êµù ¹Ý¹ÙÁö', 'BK','S',100000, 10, 90000, 01, 093, '¿©¸§¿£ ¿ª½Ã ¹Ý¹ÙÁöÁö', 'dt075', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 180000, 'N', '093', 0);
-INSERT INTO PRODUCT VALUES('M0703093BKM', '07', 'thumb075', '¸°³Ù 5ºÎ ¹êµù ¹Ý¹ÙÁö','BK','M', 100000, 10, 90000, 01, 093, '¿©¸§¿£ ¿ª½Ã ¹Ý¹ÙÁöÁö', 'dt075', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 180000, 'N', '093', 0);
-INSERT INTO PRODUCT VALUES('M0703093BLL', '07', 'thumb075', '¸°³Ù 5ºÎ ¹êµù ¹Ý¹ÙÁö','BL','L', 100000, 10, 90000, 01, 093, '¿©¸§¿£ ¿ª½Ã ¹Ý¹ÙÁöÁö', 'dt075', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 180000, 'N', '093', 0);
+INSERT INTO PRODUCT VALUES('M0703093BKS', '07', 'thumb075', 'ï¿½ï¿½ï¿½ï¿½ 5ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ý¹ï¿½ï¿½ï¿½', 'BK','S',100000, 10, 90000, 01, 093, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ý¹ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt075', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 180000, 'N', '093', 0);
+INSERT INTO PRODUCT VALUES('M0703093BKM', '07', 'thumb075', 'ï¿½ï¿½ï¿½ï¿½ 5ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ý¹ï¿½ï¿½ï¿½','BK','M', 100000, 10, 90000, 01, 093, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ý¹ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt075', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 180000, 'N', '093', 0);
+INSERT INTO PRODUCT VALUES('M0703093BLL', '07', 'thumb075', 'ï¿½ï¿½ï¿½ï¿½ 5ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ý¹ï¿½ï¿½ï¿½','BL','L', 100000, 10, 90000, 01, 093, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ý¹ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt075', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 180000, 'N', '093', 0);
 
-INSERT INTO PRODUCT VALUES('M0704094BKS', '07', 'thumb038', 'µ¥ÀÏ ¿ÍÀÌµå µ¥´Ô ÆÒÃ÷','BK','S', 100000, 10, 90000, 01, 094, 'ÅëÀÌ ³Ð±¸³ª~', 'dt038', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 90000, 'N', '094', 0);
-INSERT INTO PRODUCT VALUES('M0704094BKM', '07', 'thumb038', 'µ¥ÀÏ ¿ÍÀÌµå µ¥´Ô ÆÒÃ÷','BK','M', 100000, 10, 90000, 01, 094, 'ÅëÀÌ ³Ð±¸³ª~', 'dt038', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 90000, 'N', '094', 0);
-INSERT INTO PRODUCT VALUES('M0704094BLL', '07', 'thumb038', 'µ¥ÀÏ ¿ÍÀÌµå µ¥´Ô ÆÒÃ÷','BL','L', 100000, 10, 90000, 01, 094, 'ÅëÀÌ ³Ð±¸³ª~', 'dt038', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 90000, 'N', '094', 0);
+INSERT INTO PRODUCT VALUES('M0704094BKS', '07', 'thumb038', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½','BK','S', 100000, 10, 90000, 01, 094, 'ï¿½ï¿½ï¿½ï¿½ ï¿½Ð±ï¿½ï¿½ï¿½~', 'dt038', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 90000, 'N', '094', 0);
+INSERT INTO PRODUCT VALUES('M0704094BKM', '07', 'thumb038', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½','BK','M', 100000, 10, 90000, 01, 094, 'ï¿½ï¿½ï¿½ï¿½ ï¿½Ð±ï¿½ï¿½ï¿½~', 'dt038', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 90000, 'N', '094', 0);
+INSERT INTO PRODUCT VALUES('M0704094BLL', '07', 'thumb038', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½','BL','L', 100000, 10, 90000, 01, 094, 'ï¿½ï¿½ï¿½ï¿½ ï¿½Ð±ï¿½ï¿½ï¿½~', 'dt038', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 90000, 'N', '094', 0);
 
-INSERT INTO PRODUCT VALUES('M0703095BKS', '07', 'thumb079', 'Æí¾ÈÇÑ ¸°³Ù ½½¸² ½½·¢½º','BK','S', 100000, 10, 90000, 01, 095, '»óÇ°ÀÌ¸§°ú °°ÀÌ ¾öÃ» ÆíÇÏ´Ù!', 'dt079', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 90000, 'N', '095', 0);
-INSERT INTO PRODUCT VALUES('M0703095BKM', '07', 'thumb079', 'Æí¾ÈÇÑ ¸°³Ù ½½¸² ½½·¢½º','BK','M', 100000, 10, 90000, 01, 095, '»óÇ°ÀÌ¸§°ú °°ÀÌ ¾öÃ» ÆíÇÏ´Ù!', 'dt079', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 90000, 'N', '095', 0);
-INSERT INTO PRODUCT VALUES('M0703095BLL', '07', 'thumb079', 'Æí¾ÈÇÑ ¸°³Ù ½½¸² ½½·¢½º','BL','L', 100000, 10, 90000,01, 095, '»óÇ°ÀÌ¸§°ú °°ÀÌ ¾öÃ» ÆíÇÏ´Ù!', 'dt079', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 90000, 'N', '095', 0);
+INSERT INTO PRODUCT VALUES('M0703095BKS', '07', 'thumb079', 'ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','BK','S', 100000, 10, 90000, 01, 095, 'ï¿½ï¿½Ç°ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã» ï¿½ï¿½ï¿½Ï´ï¿½!', 'dt079', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 90000, 'N', '095', 0);
+INSERT INTO PRODUCT VALUES('M0703095BKM', '07', 'thumb079', 'ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','BK','M', 100000, 10, 90000, 01, 095, 'ï¿½ï¿½Ç°ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã» ï¿½ï¿½ï¿½Ï´ï¿½!', 'dt079', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 90000, 'N', '095', 0);
+INSERT INTO PRODUCT VALUES('M0703095BLL', '07', 'thumb079', 'ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','BL','L', 100000, 10, 90000,01, 095, 'ï¿½ï¿½Ç°ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã» ï¿½ï¿½ï¿½Ï´ï¿½!', 'dt079', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 90000, 'N', '095', 0);
 
-INSERT INTO PRODUCT VALUES('M0704096BKS', '07', 'thumb078', 'ºí¶û ·Ñ¾÷ µ¥´Ô', 'BK','S', 100000, 10, 90000, 01, 096, '¾îµð¿¡ ÀÔ¾îµµ Àß¾î¿ï¸°´Ù', 'dt078', 151, '2020/06/30', '2020/03/01', '2020/06/25', 3000000, 180000, 'N', '096', 0);
-INSERT INTO PRODUCT VALUES('M0704096BKM', '07', 'thumb078', 'ºí¶û ·Ñ¾÷ µ¥´Ô', 'BK','M', 100000, 10, 9000, 01, 096, '¾îµð¿¡ ÀÔ¾îµµ Àß¾î¿ï¸°´Ù', 'dt078', 151, '2020/06/30', '2020/03/01', '2020/06/25', 3000000, 180000,  'N', '096', 0);
-INSERT INTO PRODUCT VALUES('M0704096BLL', '07', 'thumb078', 'ºí¶û ·Ñ¾÷ µ¥´Ô', 'BL','L', 100000, 10, 90000, 01, 096, '¾îµð¿¡ ÀÔ¾îµµ Àß¾î¿ï¸°´Ù', 'dt078', 151, '2020/06/30', '2020/03/01', '2020/06/25', 3000000, 180000,  'N', '096', 0);
+INSERT INTO PRODUCT VALUES('M0704096BKS', '07', 'thumb078', 'ï¿½ï¿½ï¿½ ï¿½Ñ¾ï¿½ ï¿½ï¿½ï¿½ï¿½', 'BK','S', 100000, 10, 90000, 01, 096, 'ï¿½ï¿½ï¿½ ï¿½Ô¾îµµ ï¿½ß¾ï¿½ï¸°ï¿½ï¿½', 'dt078', 151, '2020/06/30', '2020/03/01', '2020/06/25', 3000000, 180000, 'N', '096', 0);
+INSERT INTO PRODUCT VALUES('M0704096BKM', '07', 'thumb078', 'ï¿½ï¿½ï¿½ ï¿½Ñ¾ï¿½ ï¿½ï¿½ï¿½ï¿½', 'BK','M', 100000, 10, 9000, 01, 096, 'ï¿½ï¿½ï¿½ ï¿½Ô¾îµµ ï¿½ß¾ï¿½ï¸°ï¿½ï¿½', 'dt078', 151, '2020/06/30', '2020/03/01', '2020/06/25', 3000000, 180000,  'N', '096', 0);
+INSERT INTO PRODUCT VALUES('M0704096BLL', '07', 'thumb078', 'ï¿½ï¿½ï¿½ ï¿½Ñ¾ï¿½ ï¿½ï¿½ï¿½ï¿½', 'BL','L', 100000, 10, 90000, 01, 096, 'ï¿½ï¿½ï¿½ ï¿½Ô¾îµµ ï¿½ß¾ï¿½ï¸°ï¿½ï¿½', 'dt078', 151, '2020/06/30', '2020/03/01', '2020/06/25', 3000000, 180000,  'N', '096', 0);
 
-INSERT INTO PRODUCT VALUES('M0701097BKS', '07', 'thumb046', 'Ä³Ä¡ ÇÇ±×¸ÕÆ® ÈÄµå Áý¾÷','BK','S', 100000, 10, 90000, 01, 097, 'Áý ¾Õ Àá±ñ ³ª°¥ ¶§ ÀÔ±â ÁÁÀº ÈÄµåÁý¾÷', 'dt046', 151, '2020/05/30', '2020/02/01', '2020/05/25', 3000000, 180000, 'Y', '097', 0);
-INSERT INTO PRODUCT VALUES('M0701097GNM', '07', 'thumb046', 'Ä³Ä¡ ÇÇ±×¸ÕÆ® ÈÄµå Áý¾÷','GN','M', 100000, 10, 90000, 01, 097, 'Áý ¾Õ Àá±ñ ³ª°¥ ¶§ ÀÔ±â ÁÁÀº ÈÄµåÁý¾÷', 'dt046', 151, '2020/05/30', '2020/02/01', '2020/05/25', 3000000, 180000, 'Y', '097', 0);
-INSERT INTO PRODUCT VALUES('M0701097BLL', '07', 'thumb046', 'Ä³Ä¡ ÇÇ±×¸ÕÆ® ÈÄµå Áý¾÷','BL','L', 100000, 10, 90000, 01, 097, 'Áý ¾Õ Àá±ñ ³ª°¥ ¶§ ÀÔ±â ÁÁÀº ÈÄµåÁý¾÷', 'dt046', 151, '2020/05/30', '2020/02/01', '2020/05/25', 3000000, 180000, 'Y', '097', 0);
+INSERT INTO PRODUCT VALUES('M0701097BKS', '07', 'thumb046', 'Ä³Ä¡ ï¿½Ç±×¸ï¿½Æ® ï¿½Äµï¿½ ï¿½ï¿½ï¿½ï¿½','BK','S', 100000, 10, 90000, 01, 097, 'ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ô±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Äµï¿½ï¿½ï¿½ï¿½ï¿½', 'dt046', 151, '2020/05/30', '2020/02/01', '2020/05/25', 3000000, 180000, 'Y', '097', 0);
+INSERT INTO PRODUCT VALUES('M0701097GNM', '07', 'thumb046', 'Ä³Ä¡ ï¿½Ç±×¸ï¿½Æ® ï¿½Äµï¿½ ï¿½ï¿½ï¿½ï¿½','GN','M', 100000, 10, 90000, 01, 097, 'ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ô±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Äµï¿½ï¿½ï¿½ï¿½ï¿½', 'dt046', 151, '2020/05/30', '2020/02/01', '2020/05/25', 3000000, 180000, 'Y', '097', 0);
+INSERT INTO PRODUCT VALUES('M0701097BLL', '07', 'thumb046', 'Ä³Ä¡ ï¿½Ç±×¸ï¿½Æ® ï¿½Äµï¿½ ï¿½ï¿½ï¿½ï¿½','BL','L', 100000, 10, 90000, 01, 097, 'ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ô±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Äµï¿½ï¿½ï¿½ï¿½ï¿½', 'dt046', 151, '2020/05/30', '2020/02/01', '2020/05/25', 3000000, 180000, 'Y', '097', 0);
 
-INSERT INTO PRODUCT VALUES('M0702098BKS', '07', 'thumb048', '³×¿Â ¿À¹öÇÍ ¸ÇÅõ¸Ç','BK','S', 100000, 10, 90000, 01, 098, 'º¸±â¸¸ ÇØµµ µû¶æÇÑ ¸ÇÅõ¸Ç', 'dt048', 151, '2020/04/30', '2020/01/01', '2020/04/25', 3000000, 180000, 'N', '098', 0);
-INSERT INTO PRODUCT VALUES('M0702098BKM', '07', 'thumb048', '³×¿Â ¿À¹öÇÍ ¸ÇÅõ¸Ç','BK','M', 100000, 10, 90000, 01, 098, 'º¸±â¸¸ ÇØµµ µû¶æÇÑ ¸ÇÅõ¸Ç', 'dt048', 151, '2020/04/30', '2020/01/01', '2020/04/25', 3000000, 180000, 'N', '098', 0);
-INSERT INTO PRODUCT VALUES('M0702098BLL', '07', 'thumb048', '³×¿Â ¿À¹öÇÍ ¸ÇÅõ¸Ç','BL','L', 100000, 10, 90000, 01, 098, 'º¸±â¸¸ ÇØµµ µû¶æÇÑ ¸ÇÅõ¸Ç', 'dt048', 151, '2020/04/30', '2020/01/01', '2020/04/25', 3000000, 180000, 'N', '098', 0);
+INSERT INTO PRODUCT VALUES('M0702098BKS', '07', 'thumb048', 'ï¿½×¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','BK','S', 100000, 10, 90000, 01, 098, 'ï¿½ï¿½ï¿½â¸¸ ï¿½Øµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt048', 151, '2020/04/30', '2020/01/01', '2020/04/25', 3000000, 180000, 'N', '098', 0);
+INSERT INTO PRODUCT VALUES('M0702098BKM', '07', 'thumb048', 'ï¿½×¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','BK','M', 100000, 10, 90000, 01, 098, 'ï¿½ï¿½ï¿½â¸¸ ï¿½Øµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt048', 151, '2020/04/30', '2020/01/01', '2020/04/25', 3000000, 180000, 'N', '098', 0);
+INSERT INTO PRODUCT VALUES('M0702098BLL', '07', 'thumb048', 'ï¿½×¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','BL','L', 100000, 10, 90000, 01, 098, 'ï¿½ï¿½ï¿½â¸¸ ï¿½Øµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'dt048', 151, '2020/04/30', '2020/01/01', '2020/04/25', 3000000, 180000, 'N', '098', 0);
 
-INSERT INTO PRODUCT VALUES('M0703099BKS', '07', 'thumb077', 'ÇÏÆÛ ½½¸² ÄÚÆ° ½½·¢½º','BK','S', 100000, 10, 90000, 01, 099, '°í³ð Âü ½½¸²ÇÏ³×', 'dt077', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 90000, 'N', '099', 0);
-INSERT INTO PRODUCT VALUES('M0703099BKM', '07', 'thumb077', 'ÇÏÆÛ ½½¸² ÄÚÆ° ½½·¢½º','BK','M', 100000, 10, 90000, 01, 099, '°í³ð Âü ½½¸²ÇÏ³×', 'dt077', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 90000, 'N', '099', 0);
-INSERT INTO PRODUCT VALUES('M0703099BLL', '07', 'thumb077', 'ÇÏÆÛ ½½¸² ÄÚÆ° ½½·¢½º','BL','L', 100000, 10, 90000, 01, 099, '°í³ð Âü ½½¸²ÇÏ³×', 'dt077', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 90000, 'N', '099', 0);
+INSERT INTO PRODUCT VALUES('M0703099BKS', '07', 'thumb077', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','BK','S', 100000, 10, 90000, 01, 099, 'ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï³ï¿½', 'dt077', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 90000, 'N', '099', 0);
+INSERT INTO PRODUCT VALUES('M0703099BKM', '07', 'thumb077', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','BK','M', 100000, 10, 90000, 01, 099, 'ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï³ï¿½', 'dt077', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 90000, 'N', '099', 0);
+INSERT INTO PRODUCT VALUES('M0703099BLL', '07', 'thumb077', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','BL','L', 100000, 10, 90000, 01, 099, 'ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï³ï¿½', 'dt077', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 90000, 'N', '099', 0);
 
-INSERT INTO PRODUCT VALUES('M0701100BKS', '07', 'thumb042', 'µðÆÞÆ® ¼ô ÆÐµù','BK','S', 100000, 10, 90000, 01, 100, 'ÀÌ ÆÐµù¸¸ ÀÖÀ¸¸é °Ü¿ï µûÀ© ¹«¼·Áö ¾Ê´Ù!', 'dt042', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 90000, 'Y', '100', 0);
-INSERT INTO PRODUCT VALUES('M0701100GNM', '07', 'thumb042', 'µðÆÞÆ® ¼ô ÆÐµù','GN','M', 100000, 10, 90000, 01, 100, 'ÀÌ ÆÐµù¸¸ ÀÖÀ¸¸é °Ü¿ï µûÀ© ¹«¼·Áö ¾Ê´Ù!', 'dt042', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 90000, 'Y', '100', 0);
-INSERT INTO PRODUCT VALUES('M0701100BLL', '07', 'thumb042', 'µðÆÞÆ® ¼ô ÆÐµù','BL','L', 100000, 10, 90000, 01, 100, 'ÀÌ ÆÐµù¸¸ ÀÖÀ¸¸é °Ü¿ï µûÀ© ¹«¼·Áö ¾Ê´Ù!', 'dt042', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 90000, 'Y', '100', 0);
-
-
-
+INSERT INTO PRODUCT VALUES('M0701100BKS', '07', 'thumb042', 'ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ ï¿½Ðµï¿½','BK','S', 100000, 10, 90000, 01, 100, 'ï¿½ï¿½ ï¿½Ðµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ü¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½!', 'dt042', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 90000, 'Y', '100', 0);
+INSERT INTO PRODUCT VALUES('M0701100GNM', '07', 'thumb042', 'ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ ï¿½Ðµï¿½','GN','M', 100000, 10, 90000, 01, 100, 'ï¿½ï¿½ ï¿½Ðµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ü¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½!', 'dt042', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 90000, 'Y', '100', 0);
+INSERT INTO PRODUCT VALUES('M0701100BLL', '07', 'thumb042', 'ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ ï¿½Ðµï¿½','BL','L', 100000, 10, 90000, 01, 100, 'ï¿½ï¿½ ï¿½Ðµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ü¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½!', 'dt042', 151, '2020/07/30', '2020/04/01', '2020/07/25', 3000000, 90000, 'Y', '100', 0);
 
 
 
 
-INSERT INTO NOTICE VALUES (1, 'Ä«Ä«¿À ·Î±×ÀÎ ¾÷µ¥ÀÌÆ® Áß','½Ã°£ÀÌ ¾ø¾î ÇÏÁö ¸øÇß½À´Ï´Ù. ±â´Ù·Á ÁÖ¼¼¿ä~','2020/01/01','N');
-INSERT INTO NOTICE VALUES (2, 'ºñ¹Ð¹øÈ£ Ã£±â ¾÷µ¥ÀÌÆ® Áß','final¶§ µµÀüÇØº¸µµ·Ï ÇÏÁö¿ä','2020/01/02','N');
-INSERT INTO NOTICE VALUES (3, '¿©¸§ ½Å»óÇ° ¼¼ÀÏ ÁØºñÁß','¼¼ÀÏÀº »óÇ°¿¡¼­ È®ÀÎÇÏ¼¼¿ä','2020/01/03','N');
-INSERT INTO NOTICE VALUES (4, '°¡À» ½Å»óÇ° ¼¼ÀÏ ÁØºñÁß','¼¼ÀÏÀº »óÇ°¿¡¼­ È®ÀÎÇÏ¼¼¿ä','2020/01/04','N');
-INSERT INTO NOTICE VALUES (5, '°Ü¿ï ½Å»óÇ° ¼¼ÀÏ ÁØºñÁß','¼¼ÀÏÀº »óÇ°¿¡¼­ È®ÀÎÇÏ¼¼¿ä','2020/01/05','N');
-INSERT INTO NOTICE VALUES (6, 'º½ ½Å»óÇ° ¼¼ÀÏ ÁØºñÁß','¼¼ÀÏÀº »óÇ°¿¡¼­ È®ÀÎÇÏ¼¼¿ä','2020/01/06','N');
-INSERT INTO NOTICE VALUES (7, 'ÀÌ¹ø´ÞÀÇ º£½ºÆ® »óÇ°','»óÇ°¿¡¼­ È®ÀÎÇÏ¼¼¿ä','2020/01/07','N');
-INSERT INTO NOTICE VALUES (8, '2020.05.27~2020.06.01±îÁö ÆäÀÌÁö Á¡°Ë','´õ ÁÁ¾ÆÁø FUN-THINGÀ» ±â´ëÇØ ÁÖ¼¼¿ä','2020/01/08','N');
-INSERT INTO NOTICE VALUES (9, 'È¸¿øµî±Þ Á¶Á¤','0~1000000:ºê·ÐÁî,1000000~2000000:½Ç¹ö, 2000000~:°ñµå','2020/01/09','N');
-INSERT INTO NOTICE VALUES (10, 'È¸¿øµî±Þ¿¡ µû¸¥ Àû¸³±Ý Á¶Á¤','ºê·ÐÁî : 10000, ½Ç¹ö:20000, °ñµå:30000','2020/01/10','N');
 
 
 
-INSERT INTO PERSONAL_QNA VALUES(1,'¹è¼Û¹®ÀÇ µå·Á¿ä','ÅÃ¹èÇãºê¿¡¸¸ 3ÀÏÂ²µ¥ ÀÌ°Ô ¹«½¼ÀÏÀÌ´ç°¡','M0402077WHM','04','M34','N','', 'O1001','¹è¼Û¹®ÀÇ','2020/05/18');
-INSERT INTO PERSONAL_QNA VALUES(2,'Á¦Ç°ÀÌ »óÇß³×¿ä', '±â»Û¸¶À½À¸·Î È®ÀÎÀ» Çß´Âµ¥ »óÇ°ÀÌ »óÇØ¼­ Á¦±âºÐµµ µ¢´Ù¶ó »óÇß¾î¿ä', 'W0101001BKS', '01', 'M35', 'N', 'dt001','O1002', '¹è¼Û¹®ÀÇ','2020/04/18');
-INSERT INTO PERSONAL_QNA VALUES(3,'ÁÖ¹®ÇÑÁö 2ÁÖ³²Áþ ¿Ö Àú´Â ¸ø¹Þ¾ÒÁÒ?(¤¸¤¡¤¤)', '¤·¤·', 'W0103002BLS', '01', 'M36',  'N', 'dt002','O1003', '¹è¼Û¹®ÀÇ','2020/05/01');
-INSERT INTO PERSONAL_QNA VALUES(4, '»çÁøÀÌ¶û ¸¹ÀÌ Æ²¸®³×¿ä', '³»µ· ³»³ö »ç±â¾Æ´Ô?', 'W0101003BKL', '01', 'M37',  'N', 'dt003', 'O1004','°áÁ¦¹®ÀÇ','2020/04/01');
-INSERT INTO PERSONAL_QNA VALUES(5,'´Ôµé ±×·¯´Â°Å ¾Æ´Ï¿¡¿ä', 'ÀßÁ» ÇÏ¼¼¿©', 'W0101004BKL', '01', 'M01',  'N', 'dt004','O1005', '°èÁ¤¹®ÀÇ','2020/03/01');
-INSERT INTO PERSONAL_QNA VALUES(6,'±ÞÇØ¿ä 8282', '¿ÊÀÌ ³Ê¹« ÀÌ»µ¿ë <3<3', 'W0102005WHL', '01', 'M02',  'N', 'dt005', 'O1006','±âÅ¸¹®ÀÇ','2020/02/18');
-INSERT INTO PERSONAL_QNA VALUES(7,'¹è¼ÛÀ» ±â´Ù¸°Áö ¾î¾ð 100¸¸³â', '¾ðÁ¦¿ÀÁÒ?', 'W0105006RDM', '01', 'M01',  'N', 'dt006','O1007', '±âÅ¸¹®ÀÇ','2020/01/18');
-INSERT INTO PERSONAL_QNA VALUES(8,'¹è¼Û Ãâ¹ßÇÏ±ä ÇÏ´Â°ÅÁÒ...?', '±Ã±ÝÇÏ³×¿¬', 'W0105007WHL', '01', 'M01', 'N', 'dt007','O1008','±âÅ¸¹®ÀÇ','2020/02/18');
-INSERT INTO PERSONAL_QNA VALUES(9,'¿Ê »çÀÌÁî ¹®ÀÇ µå·Á¿©', 'ºÐ¸í ¸ÂÀ»°Í°°¾Ò´Âµ¥ ½ÇÂøÇØº¸´Ï ¾È¸Â¾Æ¿© ¾îÄ«ÁÒ?', 'W0102012BLS', '01', 'M09', 'Y', 'dt012','O1009','°ÇÀÇ','2020/05/10');
-INSERT INTO PERSONAL_QNA VALUES(10,'¸·»ó ¿ÊÀ» ¹Þ¾Æº¸´Ï±ñ', 'Á¶¸í»¡ÀÎ°¡ Á¦°¡ ¿øÇÏ´ø »ö»óÀÌ ¾È³ª¿À³×¿ä Ã¥ÀÓÁö½ÃÁÒ', 'M0401070KHS', '04', 'M18', 'N', 'dt070','O1010', '°ÇÀÇ','2020/05/03');
-INSERT INTO PERSONAL_QNA VALUES(11,'È¤½Ã Áö±ÝÀÌ¶óµµ ¹è¼ÛÁö ¹Ù²Ü¼ö ÀÖÀ»±î¿ä?', '¹Ù²Ü¼ö ÀÖ³Ä?', 'M0403080BKM', '04', 'M01', 'Y', 'dt080','O1011', '°èÁ¤¹®ÀÇ','2020/05/20'); 
-INSERT INTO PERSONAL_QNA VALUES(12,'È¤½Ã Áö±ÝÀÌ¶óµµ ¹è¼ÛÁö ¹Ù²Ü¼ö ÀÖÀ»±î¿ä?', '¹Ù²Ü¼ö ÀÖ³Ä?', 'M0403080BKM', '04', 'M01', 'Y', 'dt080','O1011', '°èÁ¤¹®ÀÇ','2020/05/01'); 
-INSERT INTO PERSONAL_QNA VALUES(13,'È¤½Ã Áö±ÝÀÌ¶óµµ ¹è¼ÛÁö ¹Ù²Ü¼ö ÀÖÀ»±î¿ä?', '¹Ù²Ü¼ö ÀÖ³Ä?', 'M0403080BKM', '04', 'M01', 'Y', 'dt080','O1011', '°èÁ¤¹®ÀÇ','2020/05/14'); 
-INSERT INTO PERSONAL_QNA VALUES(14,'È¤½Ã Áö±ÝÀÌ¶óµµ ¹è¼ÛÁö ¹Ù²Ü¼ö ÀÖÀ»±î¿ä?', '¹Ù²Ü¼ö ÀÖ³Ä?', 'M0403080BKM', '04', 'M01', 'Y', 'dt080','O1011', '°èÁ¤¹®ÀÇ','2020/05/15'); 
-INSERT INTO PERSONAL_QNA VALUES(15,'È¤½Ã Áö±ÝÀÌ¶óµµ ¹è¼ÛÁö ¹Ù²Ü¼ö ÀÖÀ»±î¿ä?', '¹Ù²Ü¼ö ÀÖ³Ä?', 'M0403080BKM', '04', 'M01', 'Y', 'dt080','O1011', '°èÁ¤¹®ÀÇ','2020/05/03'); 
-INSERT INTO PERSONAL_QNA VALUES(16,'È¤½Ã Áö±ÝÀÌ¶óµµ ¹è¼ÛÁö ¹Ù²Ü¼ö ÀÖÀ»±î¿ä?', '¹Ù²Ü¼ö ÀÖ³Ä?', 'M0403080BKM', '04', 'M01', 'Y', 'dt080','O1011', '°èÁ¤¹®ÀÇ','2020/04/05'); 
-INSERT INTO PERSONAL_QNA VALUES(17,'È¤½Ã Áö±ÝÀÌ¶óµµ ¹è¼ÛÁö ¹Ù²Ü¼ö ÀÖÀ»±î¿ä?', '¹Ù²Ü¼ö ÀÖ³Ä?', 'M0403080BKM', '04', 'M01', 'Y', 'dt080','O1011', '°èÁ¤¹®ÀÇ','2020/03/05'); 
-INSERT INTO PERSONAL_QNA VALUES(18,'È¤½Ã Áö±ÝÀÌ¶óµµ ¹è¼ÛÁö ¹Ù²Ü¼ö ÀÖÀ»±î¿ä?', '¹Ù²Ü¼ö ÀÖ³Ä?', 'M0403080BKM', '04', 'M01', 'Y', 'dt080','O1011', '°èÁ¤¹®ÀÇ','2020/02/05'); 
-INSERT INTO PERSONAL_QNA VALUES(19,'È¤½Ã Áö±ÝÀÌ¶óµµ ¹è¼ÛÁö ¹Ù²Ü¼ö ÀÖÀ»±î¿ä?', '¹Ù²Ü¼ö ÀÖ³Ä?', 'M0403080BKM', '04', 'M01', 'Y', 'dt080','O1011', '°èÁ¤¹®ÀÇ','2020/01/05'); 
-INSERT INTO PERSONAL_QNA VALUES(20,'È¤½Ã Áö±ÝÀÌ¶óµµ ¹è¼ÛÁö ¹Ù²Ü¼ö ÀÖÀ»±î¿ä?', '¹Ù²Ü¼ö ÀÖ³Ä?', 'M0403080BKM', '04', 'M01', 'Y', 'dt080','O1011', '°èÁ¤¹®ÀÇ','2019/06/05'); 
-INSERT INTO PERSONAL_QNA VALUES(21,'È¤½Ã Áö±ÝÀÌ¶óµµ ¹è¼ÛÁö ¹Ù²Ü¼ö ÀÖÀ»±î¿ä?', '¹Ù²Ü¼ö ÀÖ³Ä?', 'M0403080BKM', '04', 'M01', 'Y', 'dt080','O1011', '°èÁ¤¹®ÀÇ','2019/07/05'); 
+INSERT INTO NOTICE VALUES (1, 'Ä«Ä«ï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½','ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½. ï¿½ï¿½Ù·ï¿½ ï¿½Ö¼ï¿½ï¿½ï¿½~','2020/01/01','N');
+INSERT INTO NOTICE VALUES (2, 'ï¿½ï¿½Ð¹ï¿½È£ Ã£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½','finalï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Øºï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','2020/01/02','N');
+INSERT INTO NOTICE VALUES (3, 'ï¿½ï¿½ï¿½ï¿½ ï¿½Å»ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ ï¿½Øºï¿½ï¿½ï¿½','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½','2020/01/03','N');
+INSERT INTO NOTICE VALUES (4, 'ï¿½ï¿½ï¿½ï¿½ ï¿½Å»ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ ï¿½Øºï¿½ï¿½ï¿½','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½','2020/01/04','N');
+INSERT INTO NOTICE VALUES (5, 'ï¿½Ü¿ï¿½ ï¿½Å»ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ ï¿½Øºï¿½ï¿½ï¿½','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½','2020/01/05','N');
+INSERT INTO NOTICE VALUES (6, 'ï¿½ï¿½ ï¿½Å»ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ ï¿½Øºï¿½ï¿½ï¿½','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½','2020/01/06','N');
+INSERT INTO NOTICE VALUES (7, 'ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½Ç°','ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½','2020/01/07','N');
+INSERT INTO NOTICE VALUES (8, '2020.05.27~2020.06.01ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½','ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ FUN-THINGï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½ï¿½ï¿½','2020/01/08','N');
+INSERT INTO NOTICE VALUES (9, 'È¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½','0~1000000:ï¿½ï¿½ï¿½ï¿½ï¿½,1000000~2000000:ï¿½Ç¹ï¿½, 2000000~:ï¿½ï¿½ï¿½','2020/01/09','N');
+INSERT INTO NOTICE VALUES (10, 'È¸ï¿½ï¿½ï¿½ï¿½Þ¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½','ï¿½ï¿½ï¿½ï¿½ï¿½ : 10000, ï¿½Ç¹ï¿½:20000, ï¿½ï¿½ï¿½:30000','2020/01/10','N');
+
+
+
+INSERT INTO PERSONAL_QNA VALUES(1,'ï¿½ï¿½Û¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½','ï¿½Ã¹ï¿½ï¿½ï¿½ê¿¡ï¿½ï¿½ 3ï¿½ï¿½Â²ï¿½ï¿½ ï¿½Ì°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ç°¡','M0402077WHM','04','M34','N','', 'O1001','ï¿½ï¿½Û¹ï¿½ï¿½ï¿½','2020/05/18');
+INSERT INTO PERSONAL_QNA VALUES(2,'ï¿½ï¿½Ç°ï¿½ï¿½ ï¿½ï¿½ï¿½ß³×¿ï¿½', 'ï¿½ï¿½Û¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½ï¿½ ï¿½ß´Âµï¿½ ï¿½ï¿½Ç°ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½Ðµï¿½ ï¿½ï¿½ï¿½Ù¶ï¿½ ï¿½ï¿½ï¿½ß¾ï¿½ï¿½', 'W0101001BKS', '01', 'M35', 'N', 'dt001','O1002', 'ï¿½ï¿½Û¹ï¿½ï¿½ï¿½','2020/04/18');
+INSERT INTO PERSONAL_QNA VALUES(3,'ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½ 2ï¿½Ö³ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Þ¾ï¿½ï¿½ï¿½?(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)', 'ï¿½ï¿½ï¿½ï¿½', 'W0103002BLS', '01', 'M36',  'N', 'dt002','O1003', 'ï¿½ï¿½Û¹ï¿½ï¿½ï¿½','2020/05/01');
+INSERT INTO PERSONAL_QNA VALUES(4, 'ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ²ï¿½ï¿½ï¿½×¿ï¿½', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ´ï¿½?', 'W0101003BKL', '01', 'M37',  'N', 'dt003', 'O1004','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','2020/04/01');
+INSERT INTO PERSONAL_QNA VALUES(5,'ï¿½Ôµï¿½ ï¿½×·ï¿½ï¿½Â°ï¿½ ï¿½Æ´Ï¿ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¼ï¿½ï¿½ï¿½', 'W0101004BKL', '01', 'M01',  'N', 'dt004','O1005', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','2020/03/01');
+INSERT INTO PERSONAL_QNA VALUES(6,'ï¿½ï¿½ï¿½Ø¿ï¿½ 8282', 'ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¹ï¿½ ï¿½Ì»ï¿½ï¿½ï¿½ <3<3', 'W0102005WHL', '01', 'M02',  'N', 'dt005', 'O1006','ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½','2020/02/18');
+INSERT INTO PERSONAL_QNA VALUES(7,'ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ù¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ 100ï¿½ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?', 'W0105006RDM', '01', 'M01',  'N', 'dt006','O1007', 'ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½','2020/01/18');
+INSERT INTO PERSONAL_QNA VALUES(8,'ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½Ï´Â°ï¿½ï¿½ï¿½...?', 'ï¿½Ã±ï¿½ï¿½Ï³×¿ï¿½', 'W0105007WHL', '01', 'M01', 'N', 'dt007','O1008','ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½','2020/02/18');
+INSERT INTO PERSONAL_QNA VALUES(9,'ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½', 'ï¿½Ð¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í°ï¿½ï¿½Ò´Âµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Øºï¿½ï¿½ï¿½ ï¿½È¸Â¾Æ¿ï¿½ ï¿½ï¿½Ä«ï¿½ï¿½?', 'W0102012BLS', '01', 'M09', 'Y', 'dt012','O1009','ï¿½ï¿½ï¿½ï¿½','2020/05/10');
+INSERT INTO PERSONAL_QNA VALUES(10,'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Æºï¿½ï¿½Ï±ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½È³ï¿½ï¿½ï¿½ï¿½×¿ï¿½ Ã¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'M0401070KHS', '04', 'M18', 'N', 'dt070','O1010', 'ï¿½ï¿½ï¿½ï¿½','2020/05/03');
+INSERT INTO PERSONAL_QNA VALUES(11,'È¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²Ü¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?', 'ï¿½Ù²Ü¼ï¿½ ï¿½Ö³ï¿½?', 'M0403080BKM', '04', 'M01', 'Y', 'dt080','O1011', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','2020/05/20'); 
+INSERT INTO PERSONAL_QNA VALUES(12,'È¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²Ü¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?', 'ï¿½Ù²Ü¼ï¿½ ï¿½Ö³ï¿½?', 'M0403080BKM', '04', 'M01', 'Y', 'dt080','O1011', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','2020/05/01'); 
+INSERT INTO PERSONAL_QNA VALUES(13,'È¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²Ü¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?', 'ï¿½Ù²Ü¼ï¿½ ï¿½Ö³ï¿½?', 'M0403080BKM', '04', 'M01', 'Y', 'dt080','O1011', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','2020/05/14'); 
+INSERT INTO PERSONAL_QNA VALUES(14,'È¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²Ü¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?', 'ï¿½Ù²Ü¼ï¿½ ï¿½Ö³ï¿½?', 'M0403080BKM', '04', 'M01', 'Y', 'dt080','O1011', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','2020/05/15'); 
+INSERT INTO PERSONAL_QNA VALUES(15,'È¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²Ü¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?', 'ï¿½Ù²Ü¼ï¿½ ï¿½Ö³ï¿½?', 'M0403080BKM', '04', 'M01', 'Y', 'dt080','O1011', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','2020/05/03'); 
+INSERT INTO PERSONAL_QNA VALUES(16,'È¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²Ü¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?', 'ï¿½Ù²Ü¼ï¿½ ï¿½Ö³ï¿½?', 'M0403080BKM', '04', 'M01', 'Y', 'dt080','O1011', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','2020/04/05'); 
+INSERT INTO PERSONAL_QNA VALUES(17,'È¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²Ü¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?', 'ï¿½Ù²Ü¼ï¿½ ï¿½Ö³ï¿½?', 'M0403080BKM', '04', 'M01', 'Y', 'dt080','O1011', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','2020/03/05'); 
+INSERT INTO PERSONAL_QNA VALUES(18,'È¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²Ü¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?', 'ï¿½Ù²Ü¼ï¿½ ï¿½Ö³ï¿½?', 'M0403080BKM', '04', 'M01', 'Y', 'dt080','O1011', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','2020/02/05'); 
+INSERT INTO PERSONAL_QNA VALUES(19,'È¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²Ü¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?', 'ï¿½Ù²Ü¼ï¿½ ï¿½Ö³ï¿½?', 'M0403080BKM', '04', 'M01', 'Y', 'dt080','O1011', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','2020/01/05'); 
+INSERT INTO PERSONAL_QNA VALUES(20,'È¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²Ü¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?', 'ï¿½Ù²Ü¼ï¿½ ï¿½Ö³ï¿½?', 'M0403080BKM', '04', 'M01', 'Y', 'dt080','O1011', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','2019/06/05'); 
+INSERT INTO PERSONAL_QNA VALUES(21,'È¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²Ü¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?', 'ï¿½Ù²Ü¼ï¿½ ï¿½Ö³ï¿½?', 'M0403080BKM', '04', 'M01', 'Y', 'dt080','O1011', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','2019/07/05'); 
 
 
 
@@ -1526,51 +1526,51 @@ INSERT INTO GRADE VALUES ('G2', 'SILVER', 0.03);
 INSERT INTO GRADE VALUES ('G3', 'GOLD', 0.05);
 INSERT INTO GRADE VALUES ('MASTER', 'MASTER', 0);
 
-INSERT INTO PAYMENT_INFO VALUES('O1001','20/05/01',NULL,'±èÇý¸°','°æ±âµµ °í¾ç½Ã','01041135999','°æºñ½Ç¿¡ ³öÁÖ¼¼¿ä',350000,10000,'Ä«µå','Y',340000,3500,'M34');
-INSERT INTO PAYMENT_INFO VALUES('O1002','20/05/02',NULL,'¾ç¼­À±','°æ±âµµ ºÐ´ç½Ã','01039238455','°æºñ½Ç¿¡ ³öÁÖ¼¼¿ä',670000,10000,'Ä«µå','Y',660000,6700,'M35');
-INSERT INTO PAYMENT_INFO VALUES('O1003','20/05/03',NULL,'Á¶ÇÑ¼Ö','°æ±âµµ ÀÇÁ¤ºÎ½Ã','0100341837','°æºñ½Ç¿¡ ³öÁÖ¼¼¿ä',780000,10000,'Ä«µå','Y',770000,7800,'M36');
-INSERT INTO PAYMENT_INFO VALUES('O1004','20/05/04',NULL,'¿ÀÁø±³','°æ±âµµ ¾È¾ç½Ã','01019283789','°æºñ½Ç¿¡ ³öÁÖ¼¼¿ä',680000,10000,'Ä«µå','Y',670000,6800,'M37');
-INSERT INTO PAYMENT_INFO VALUES('O1005','20/05/05',NULL,'½ÅÈñÁö','°æ±âµµ ¼ö¿ø½Ã','01041135999','°æºñ½Ç¿¡ ³öÁÖ¼¼¿ä',770000,10000,'Ä«µå','Y',760000,7700,'M02');
-INSERT INTO PAYMENT_INFO VALUES('O1006','20/05/06',NULL,'¹èµ¿°ï','°æ±âµµ ½ÃÈï½Ã','01041345454','°æºñ½Ç¿¡ ³öÁÖ¼¼¿ä',160000,10000,'¹«ÅëÀåÀÔ±Ý','Y',150000,1600,'M02');
-INSERT INTO PAYMENT_INFO VALUES('O1007','20/05/07',NULL,'ÃÖ»ó¿ø','¼­¿ï Å×ÇØ¶õ·Î','01012354323','Áý¾Õ¿¡ ³öÁÖ¼¼¿ä',220000,20000,'¹«ÅëÀåÀÔ±Ý','Y',200000,2200,'M04');
-INSERT INTO PAYMENT_INFO VALUES('O1008','20/05/08',NULL,'±è°è¿¬','¼­¿ï Á¾·Î','01054455664','3-5½Ã¿¡ Áý¿¡ÀÖ½À´Ï´Ù.',380000,30000,'¹«ÅëÀåÀÔ±Ý','Y',350000,3800,'M07');
-INSERT INTO PAYMENT_INFO VALUES('O1009','20/05/09',NULL,'±è°æ¼·','°æ±âµµ ÆÄÁÖ½Ã','01041656234','°æºñ½Ç¿¡ ³öÁÖ¼¼¿ä',490000,40000,'¹«ÅëÀåÀÔ±Ý','Y',450000,4900,'M09');
-INSERT INTO PAYMENT_INFO VALUES('O1010','20/05/10',NULL,'Á¶¼º±Õ','°æ±âµµ ¾È»ê½Ã','01023435554','°æºñ½Ç¿¡ ³öÁÖ¼¼¿ä',550000,50000,'¹«ÅëÀåÀÔ±Ý','Y',500000,5500,'M18');
+INSERT INTO PAYMENT_INFO VALUES('O1001','20/05/01',NULL,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½ï¿½ï¿½ï¿½','01041135999','ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',350000,10000,'Ä«ï¿½ï¿½','Y',340000,3500,'M34');
+INSERT INTO PAYMENT_INFO VALUES('O1002','20/05/02',NULL,'ï¿½ç¼­ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½Ð´ï¿½ï¿½','01039238455','ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',670000,10000,'Ä«ï¿½ï¿½','Y',660000,6700,'M35');
+INSERT INTO PAYMENT_INFO VALUES('O1003','20/05/03',NULL,'ï¿½ï¿½ï¿½Ñ¼ï¿½','ï¿½ï¿½âµµ ï¿½ï¿½ï¿½ï¿½ï¿½Î½ï¿½','0100341837','ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',780000,10000,'Ä«ï¿½ï¿½','Y',770000,7800,'M36');
+INSERT INTO PAYMENT_INFO VALUES('O1004','20/05/04',NULL,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½È¾ï¿½ï¿½','01019283789','ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',680000,10000,'Ä«ï¿½ï¿½','Y',670000,6800,'M37');
+INSERT INTO PAYMENT_INFO VALUES('O1005','20/05/05',NULL,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','01041135999','ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',770000,10000,'Ä«ï¿½ï¿½','Y',760000,7700,'M02');
+INSERT INTO PAYMENT_INFO VALUES('O1006','20/05/06',NULL,'ï¿½èµ¿ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½ï¿½ï¿½ï¿½ï¿½','01041345454','ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',160000,10000,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½','Y',150000,1600,'M02');
+INSERT INTO PAYMENT_INFO VALUES('O1007','20/05/07',NULL,'ï¿½Ö»ï¿½ï¿½','ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¶ï¿½ï¿½ï¿½','01012354323','ï¿½ï¿½ï¿½Õ¿ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',220000,20000,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½','Y',200000,2200,'M04');
+INSERT INTO PAYMENT_INFO VALUES('O1008','20/05/08',NULL,'ï¿½ï¿½è¿¬','ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½','01054455664','3-5ï¿½Ã¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö½ï¿½ï¿½Ï´ï¿½.',380000,30000,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½','Y',350000,3800,'M07');
+INSERT INTO PAYMENT_INFO VALUES('O1009','20/05/09',NULL,'ï¿½ï¿½æ¼·','ï¿½ï¿½âµµ ï¿½ï¿½ï¿½Ö½ï¿½','01041656234','ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',490000,40000,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½','Y',450000,4900,'M09');
+INSERT INTO PAYMENT_INFO VALUES('O1010','20/05/10',NULL,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½È»ï¿½ï¿½','01023435554','ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½','Y',500000,5500,'M18');
 
--- Á¤º¸ Ãß°¡ ¹× ¼öÁ¤
-INSERT INTO POINT VALUES('POINT01','2020/01/01','O1001','»óÇ° ±¸¸Å ÈÄ Àû¸³','10000','M34','±¸¸ÅÀû¸³',10000);
-INSERT INTO POINT VALUES('POINT02','2020/01/02','O1002','»óÇ° ±¸¸Å ÈÄ Àû¸³','15000','M35','±¸¸ÅÀû¸³',15000);
-INSERT INTO POINT VALUES('POINT03','2020/01/03','O1003','»óÇ° ±¸¸Å ÈÄ Àû¸³','20000','M36','±¸¸ÅÀû¸³',20000);
-INSERT INTO POINT VALUES('POINT04','2020/01/04','O1004','»óÇ° ±¸¸Å ÈÄ Àû¸³','15000','M37','±¸¸ÅÀû¸³',15000);
-INSERT INTO POINT VALUES('POINT05','2020/01/05','O1005','»óÇ° ±¸¸Å ÈÄ Àû¸³','10000','M01','±¸¸ÅÀû¸³',20000);
-INSERT INTO POINT VALUES('POINT06','2020/01/06','O1006','»óÇ° ±¸¸Å ÈÄ Àû¸³','10000','M02','±¸¸ÅÀû¸³',10000);
-INSERT INTO POINT VALUES('POINT07','2020/01/07','O1007','»óÇ° ±¸¸Å ÈÄ Àû¸³','15000','M04','±¸¸ÅÀû¸³',15000);
-INSERT INTO POINT VALUES('POINT08','2020/01/08','O1008','»óÇ° ±¸¸Å ÈÄ Àû¸³','10000','M07','±¸¸ÅÀû¸³',10000);
-INSERT INTO POINT VALUES('POINT09','2020/01/09','O1009','»óÇ° ±¸¸Å ÈÄ Àû¸³','20000','M09','±¸¸ÅÀû¸³',20000);
-INSERT INTO POINT VALUES('POINT10','2020/01/10','O1010','»óÇ° ±¸¸Å ÈÄ Àû¸³','10000','M18','±¸¸ÅÀû¸³',10000);
-
-
+-- ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+INSERT INTO POINT VALUES('POINT01','2020/01/01','O1001','ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½','10000','M34','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',10000);
+INSERT INTO POINT VALUES('POINT02','2020/01/02','O1002','ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½','15000','M35','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',15000);
+INSERT INTO POINT VALUES('POINT03','2020/01/03','O1003','ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½','20000','M36','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',20000);
+INSERT INTO POINT VALUES('POINT04','2020/01/04','O1004','ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½','15000','M37','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',15000);
+INSERT INTO POINT VALUES('POINT05','2020/01/05','O1005','ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½','10000','M01','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',20000);
+INSERT INTO POINT VALUES('POINT06','2020/01/06','O1006','ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½','10000','M02','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',10000);
+INSERT INTO POINT VALUES('POINT07','2020/01/07','O1007','ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½','15000','M04','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',15000);
+INSERT INTO POINT VALUES('POINT08','2020/01/08','O1008','ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½','10000','M07','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',10000);
+INSERT INTO POINT VALUES('POINT09','2020/01/09','O1009','ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½','20000','M09','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',20000);
+INSERT INTO POINT VALUES('POINT10','2020/01/10','O1010','ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½','10000','M18','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',10000);
 
 
 
--- Ã³¸®»óÅÂ : ÁÖ¹®¿Ï·á, °áÁ¦¿Ï·á, ¹è¼ÛÁß, ¹è¼Û¿Ï·á
 
-INSERT INTO JUMUN VALUES('O1001','¹è¼Û¿Ï·á','N','M34','Y' );
-INSERT INTO JUMUN VALUES('O1002','°áÁ¦¿Ï·á','N','M35','Y' );
-INSERT INTO JUMUN VALUES('O1003','ÁÖ¹®¿Ï·á','N','M36','N' );
-INSERT INTO JUMUN VALUES('O1004','¹è¼ÛÁß','N','M37','Y' );
-INSERT INTO JUMUN VALUES('O1005','¹è¼ÛÁß','N','M01','Y' );
-INSERT INTO JUMUN VALUES('O1006','¹è¼Û¿Ï·á','N','M02','Y' );
-INSERT INTO JUMUN VALUES('O1007','ÁÖ¹®¿Ï·á','N','M04','N' );
-INSERT INTO JUMUN VALUES('O1008','¹è¼ÛÁß','N','M07','Y' );
-INSERT INTO JUMUN VALUES('O1009','ÁÖ¹®¿Ï·á','N','M09','N' );
-INSERT INTO JUMUN VALUES('O1010','ÁÖ¹®¿Ï·á','Y','M18','N' );
 
-INSERT INTO NO_PASSBOOK VALUES('O1006', '½ÅÈñÁö', '¿ì¸®', 150000);
-INSERT INTO NO_PASSBOOK VALUES('O1007', '¹èµ¿°ï', 'ÇÏ³ª', 200000);
-INSERT INTO NO_PASSBOOK VALUES('O1008', 'Á¶ÇÑ¼Ö', 'ÇÏ³ª', 350000);
-INSERT INTO NO_PASSBOOK VALUES('O1009', 'Á¶ÇÑ¼Ö', '³óÇù', 450000);
-INSERT INTO NO_PASSBOOK VALUES('O1010', 'Á¶ÇÑ¼Ö', 'Ä«Ä«¿À', 500000);
+-- Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : ï¿½Ö¹ï¿½ï¿½Ï·ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½Û¿Ï·ï¿½
+
+INSERT INTO JUMUN VALUES('O1001','ï¿½ï¿½Û¿Ï·ï¿½','N','M34','Y' );
+INSERT INTO JUMUN VALUES('O1002','ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½','N','M35','Y' );
+INSERT INTO JUMUN VALUES('O1003','ï¿½Ö¹ï¿½ï¿½Ï·ï¿½','N','M36','N' );
+INSERT INTO JUMUN VALUES('O1004','ï¿½ï¿½ï¿½ï¿½ï¿½','N','M37','Y' );
+INSERT INTO JUMUN VALUES('O1005','ï¿½ï¿½ï¿½ï¿½ï¿½','N','M01','Y' );
+INSERT INTO JUMUN VALUES('O1006','ï¿½ï¿½Û¿Ï·ï¿½','N','M02','Y' );
+INSERT INTO JUMUN VALUES('O1007','ï¿½Ö¹ï¿½ï¿½Ï·ï¿½','N','M04','N' );
+INSERT INTO JUMUN VALUES('O1008','ï¿½ï¿½ï¿½ï¿½ï¿½','N','M07','Y' );
+INSERT INTO JUMUN VALUES('O1009','ï¿½Ö¹ï¿½ï¿½Ï·ï¿½','N','M09','N' );
+INSERT INTO JUMUN VALUES('O1010','ï¿½Ö¹ï¿½ï¿½Ï·ï¿½','Y','M18','N' );
+
+INSERT INTO NO_PASSBOOK VALUES('O1006', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'ï¿½ì¸®', 150000);
+INSERT INTO NO_PASSBOOK VALUES('O1007', 'ï¿½èµ¿ï¿½ï¿½', 'ï¿½Ï³ï¿½', 200000);
+INSERT INTO NO_PASSBOOK VALUES('O1008', 'ï¿½ï¿½ï¿½Ñ¼ï¿½', 'ï¿½Ï³ï¿½', 350000);
+INSERT INTO NO_PASSBOOK VALUES('O1009', 'ï¿½ï¿½ï¿½Ñ¼ï¿½', 'ï¿½ï¿½ï¿½ï¿½', 450000);
+INSERT INTO NO_PASSBOOK VALUES('O1010', 'ï¿½ï¿½ï¿½Ñ¼ï¿½', 'Ä«Ä«ï¿½ï¿½', 500000);
 
 INSERT INTO PRODUCT_ORDER VALUES('M0403080BKM', 'O1001', '04', '1');
 INSERT INTO PRODUCT_ORDER VALUES('M0401070KHS', 'O1002', '04', '1');
@@ -1583,72 +1583,72 @@ INSERT INTO PRODUCT_ORDER VALUES('W0101003BKL', 'O1008', '01', '1');
 INSERT INTO PRODUCT_ORDER VALUES('W0103002BLS', 'O1009', '01', '1');
 INSERT INTO PRODUCT_ORDER VALUES('W0101001BKS', 'O1010', '01', '1');
 
--- QNA¹øÈ£, È¸¿ø¹øÈ£, QNA Á¦¸ñ, QNA ³»¿ë, QNA ÀÛ¼º³¯Â¥, »óÇ°¹øÈ£, ºê·£µå ¹øÈ£, ´äº¯¿©ºÎ, °ü¸®ÀÚ´äº¯³»¿ë 
-INSERT INTO QNA VALUES(1,'M23','ÆÈ ±æÀÌ ¹®ÀÇ ÀÔ´Ï´Ù.','ÀÌ »óÇ° ÆÈ ±æÀÌ°¡ ¾î¶»°Ô µÇ³ª¿ä?','2020/04/21','M0702098BKS','07','Y');
-INSERT INTO QNA VALUES(2,'M64','»óÇ° ¸®¿À´õ ¹®ÀÇ ÀÔ´Ï´Ù.','ÀÌÈÄ ¸®¿À´õ °èÈ¹ÀÌ ÀÖÀ¸½Å°¡¿ä?','2020/04/25','M0701100GNM','07','Y');
-INSERT INTO QNA VALUES(3,'M12','¾Æ´õ ÄÃ·¯ ¹®ÀÇ ÀÔ´Ï´Ù.','¾Æ´õÄÃ·¯ ÁøÇà °èÈ¹ÀÌ ÀÖÀ¸½Å°¡¿ä?','2020/03/20','M0703099BKM','07','Y');
-INSERT INTO QNA VALUES(4,'M48','ÆÝµù Á¶±â ¸¶°¨ ¹®ÀÇ ÀÔ´Ï´Ù.','ÆÝµùÀÌ Á¶±â ¸¶°¨µÉ ½Ã ¹è¼Û ³¯Â¥°¡ »¡¶óÁö³ª¿ä?','2020/04/12','W0105007WHM','07','Y');
-INSERT INTO QNA VALUES(5,'M37','¸¶°¨Ã³¸® ¹®ÀÇ ÀÔ´Ï´Ù.','¸¶°¨Ã³¸®°¡ Àß µÇ ÀÖ³ª¿ä?','2020/04/05','W0102012BLS','01','Y');
-INSERT INTO QNA VALUES(6,'M82','»óÇ° ¼ÒÀç ¹®ÀÇ ÀÔ´Ï´Ù.','¼ÒÀç°¡ ¾î¶»°Ô µÇ³ª¿ä?','2020/03/22','W0102005WHL','01','Y');
-INSERT INTO QNA VALUES(7,'M27','³×Å©¶óÀÎÀÌ ¹®ÀÇ ÀÔ´Ï´Ù.','³×Å©¶óÀÎÀÌ Àß ´Ã¾î³ª³ª¿ä?','2020/02/15','W0101004BKL','01','Y');
-INSERT INTO QNA VALUES(8,'M36','¿ÊÀÇ µÎ²² ¹®ÀÇ ÀÔ´Ï´Ù.','¿ÊÀÌ ¾ã³ª¿ä?','2020/01/03','W0105006RDM','01','Y');
+-- QNAï¿½ï¿½È£, È¸ï¿½ï¿½ï¿½ï¿½È£, QNA ï¿½ï¿½ï¿½ï¿½, QNA ï¿½ï¿½ï¿½ï¿½, QNA ï¿½Û¼ï¿½ï¿½ï¿½Â¥, ï¿½ï¿½Ç°ï¿½ï¿½È£, ï¿½ê·£ï¿½ï¿½ ï¿½ï¿½È£, ï¿½äº¯ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½Ú´äº¯ï¿½ï¿½ï¿½ï¿½ 
+INSERT INTO QNA VALUES(1,'M23','ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô´Ï´ï¿½.','ï¿½ï¿½ ï¿½ï¿½Ç° ï¿½ï¿½ ï¿½ï¿½ï¿½Ì°ï¿½ ï¿½î¶»ï¿½ï¿½ ï¿½Ç³ï¿½ï¿½ï¿½?','2020/04/21','M0702098BKS','07','Y');
+INSERT INTO QNA VALUES(2,'M64','ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô´Ï´ï¿½.','ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¹ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Å°ï¿½ï¿½ï¿½?','2020/04/25','M0701100GNM','07','Y');
+INSERT INTO QNA VALUES(3,'M12','ï¿½Æ´ï¿½ ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô´Ï´ï¿½.','ï¿½Æ´ï¿½ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¹ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Å°ï¿½ï¿½ï¿½?','2020/03/20','M0703099BKM','07','Y');
+INSERT INTO QNA VALUES(4,'M48','ï¿½Ýµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô´Ï´ï¿½.','ï¿½Ýµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½Â¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?','2020/04/12','W0105007WHM','07','Y');
+INSERT INTO QNA VALUES(5,'M37','ï¿½ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô´Ï´ï¿½.','ï¿½ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö³ï¿½ï¿½ï¿½?','2020/04/05','W0102012BLS','01','Y');
+INSERT INTO QNA VALUES(6,'M82','ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô´Ï´ï¿½.','ï¿½ï¿½ï¿½ç°¡ ï¿½î¶»ï¿½ï¿½ ï¿½Ç³ï¿½ï¿½ï¿½?','2020/03/22','W0102005WHL','01','Y');
+INSERT INTO QNA VALUES(7,'M27','ï¿½ï¿½Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô´Ï´ï¿½.','ï¿½ï¿½Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ã¾î³ªï¿½ï¿½ï¿½ï¿½?','2020/02/15','W0101004BKL','01','Y');
+INSERT INTO QNA VALUES(8,'M36','ï¿½ï¿½ï¿½ï¿½ ï¿½Î²ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô´Ï´ï¿½.','ï¿½ï¿½ï¿½ï¿½ ï¿½ã³ªï¿½ï¿½?','2020/01/03','W0105006RDM','01','Y');
 
--- ½ÃÄö½º ÃÊ±âÈ­ NOTICE
+-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ NOTICE
 DROP SEQUENCE SEQ_NOTI;
 CREATE SEQUENCE SEQ_NOTI
 START WITH 11;
 
--- ½ÃÄö½º ÃÊ±âÈ­ REVIEW
+-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ REVIEW
 DROP SEQUENCE SEQ_REV;
 CREATE SEQUENCE SEQ_REV
 START WITH 12;
 
--- ½ÃÄö½º ÃÊ±âÈ­ QNA
+-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ QNA
 DROP SEQUENCE SEQ_QNA;
 CREATE SEQUENCE SEQ_QNA
 START WITH 9;
 
--- ½ÃÄö½º ÃÊ±âÈ­ PERSONAL_QNA
+-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ PERSONAL_QNA
 DROP SEQUENCE SEQ_PQ;
 CREATE SEQUENCE SEQ_PQ
 START WITH 22;
 
--- ½ÃÄö½º ÃÊ±âÈ­ BRAND
+-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ BRAND
 DROP SEQUENCE SEQ_BR;
 CREATE SEQUENCE SEQ_BR
 START WITH 27;
 
--- ½ÃÄö½º ÃÊ±âÈ­ PERSONAL_QNA
+-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ PERSONAL_QNA
 DROP SEQUENCE SEQ_PR;
 --CREATE SEQUENCE SEQ_PR
 --START WITH 23;
 
--- ½ÃÄö½º ÃÊ±âÈ­ QNARE
+-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ QNARE
 DROP SEQUENCE SEQ_QNARE;
 CREATE SEQUENCE SEQ_QNARE
 START WITH 2;
 
--- ½ÃÄö½º ÃÊ±âÈ­ PQRE
+-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ PQRE
 DROP SEQUENCE SEQ_PQRE;
 CREATE SEQUENCE SEQ_PQRE
 START WITH 1;
 
--- ½ÃÄö½º ÃÊ±âÈ­ MEMBER
+-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ MEMBER
 DROP SEQUENCE SEQ_MEM;
 CREATE SEQUENCE SEQ_MEM
 START WITH 97;
 
--- ½ÃÄö½º ÃÊ±âÈ­ POINT
+-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ POINT
 DROP SEQUENCE SEQ_POINT;
 CREATE SEQUENCE SEQ_POINT
 START WITH 20;
 
---½ÃÄö½º ÃÊ±âÈ­ PAYMENTINFO
+--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ PAYMENTINFO
 DROP SEQUENCE SEQ_PAYINFO;
 CREATE SEQUENCE SEQ_PAYINFO
 START WITH 1061;
 
---½ÃÄö½º ÃÊ±âÈ­ PRODUCT S_NO
+--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ PRODUCT S_NO
 DROP SEQUENCE SEQ_SNO;
 CREATE SEQUENCE SEQ_SNO
 START WITH 101;
@@ -1660,12 +1660,16 @@ DROP VIEW PRODUCTLIST;
 
 CREATE VIEW PRODUCTLIST AS
 SELECT ROWNUM RNUM, P_NO, P_NAME, P_CATEGORY, RETAIL_PRICE, DC_RATE, P_PRICE, F_YN, F_START_DATE, F_END_DATE, S_NO, B_NO
-FROM PRODUCT;
+FROM (
+        SELECT ROWNUM RNUM, P_NO, P_NAME, P_CATEGORY, RETAIL_PRICE, DC_RATE, P_PRICE, F_YN, F_START_DATE, F_END_DATE, S_NO, B_NO
+        FROM PRODUCT
+        ORDER BY 1 DESC
+     );
 
 -- order info view 
 
 DROP VIEW ORDER_INFO;
--- ¹øÈ£ È¸¿ø¾ÆÀÌµð °áÁ¦¹æ¹ý °áÁ¦À¯¹« ¹è¼Û´Ü°è ÃÑÇÕ°è Ãë¼Ò¿©ºÎ
+-- ï¿½ï¿½È£ È¸ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Û´Ü°ï¿½ ï¿½ï¿½ï¿½Õ°ï¿½ ï¿½ï¿½Ò¿ï¿½ï¿½ï¿½
 
 CREATE VIEW ORDER_INFO AS
 SELECT ROWNUM RNUM, O_NO, M_ID , PMNT_MTHD , PAID_YN ,
@@ -1677,22 +1681,22 @@ JOIN MEMBER M ON (PI.M_NO = M.M_NO)
 JOIN JUMUN J ON (PI.O_NO = J.O_NO)
 ORDER BY PI.O_NO DESC);
 
--- ¹øÈ£ È¸¿ø¾ÆÀÌµð °áÁ¦¹æ¹ý °áÁ¦À¯¹« ¹è¼Û´Ü°è ÃÑÇÕ°è Ãë¼Ò¿©ºÎ
-COMMENT ON COLUMN ORDER_INFO.RNUM is 'ÁÖ¹®°ü¸®¹øÈ£';
-COMMENT ON COLUMN ORDER_INFO.O_NO is 'ÁÖ¹®¹øÈ£';
-COMMENT ON COLUMN ORDER_INFO.M_ID is 'È¸¿ø¾ÆÀÌµð';
-COMMENT ON COLUMN ORDER_INFO.PMNT_MTHD is '°áÁ¦¹æ¹ý';
-COMMENT ON COLUMN ORDER_INFO.PAID_YN is '°áÁ¦À¯¹«';
-COMMENT ON COLUMN ORDER_INFO.PRCS_STATUS is '¹è¼Û´Ü°è';
-COMMENT ON COLUMN ORDER_INFO.PMNT_PRICE is 'ÃÑ ÇÕ°è';
-COMMENT ON COLUMN ORDER_INFO.CANCEL_YN is 'Ãë¼Ò¿©ºÎ';
+-- ï¿½ï¿½È£ È¸ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Û´Ü°ï¿½ ï¿½ï¿½ï¿½Õ°ï¿½ ï¿½ï¿½Ò¿ï¿½ï¿½ï¿½
+COMMENT ON COLUMN ORDER_INFO.RNUM is 'ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£';
+COMMENT ON COLUMN ORDER_INFO.O_NO is 'ï¿½Ö¹ï¿½ï¿½ï¿½È£';
+COMMENT ON COLUMN ORDER_INFO.M_ID is 'È¸ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½';
+COMMENT ON COLUMN ORDER_INFO.PMNT_MTHD is 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN ORDER_INFO.PAID_YN is 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN ORDER_INFO.PRCS_STATUS is 'ï¿½ï¿½Û´Ü°ï¿½';
+COMMENT ON COLUMN ORDER_INFO.PMNT_PRICE is 'ï¿½ï¿½ ï¿½Õ°ï¿½';
+COMMENT ON COLUMN ORDER_INFO.CANCEL_YN is 'ï¿½ï¿½Ò¿ï¿½ï¿½ï¿½';
 
 -- order info detail view
 
--- ÁÖ¹®¹øÈ£ ÁÖ¹®ÀÏÀÚ ¹ÞÀ¸½ÇºÐ¼ºÇÔ ÁÖ¼Ò ÀüÈ­¹øÈ£ ³²±â½Ç¸» »óÇ°¹øÈ£ ¼ö·® »óÇ°ÇÕ°è±Ý¾× Àû¸³±Ý»ç¿ë °áÁ¦¼ö´Ü ¹è¼ÛºñÀ¯¹«  ÃÖÁ¾°áÁ¦±Ý¾× ¿¹Á¤Àû¸³±Ý
---SELECT P.O_NO "ÁÖ¹®¹øÈ£", P.O_DATE "ÁÖ¹®ÀÏÀÚ", P.RCV_NAME "¹ÞÀ»»ç¶÷ÀÌ¸§", P.RCV_ADRS "ÁÖ¼Ò",
---P.RCV_PHONE "ÀüÈ­¹øÈ£", P.COMMENTT "³²±â½Ç¸»", P.EXPT_POINT "¿¹Á¤Àû¸³±Ý", PO.P_NO "»óÇ°¹øÈ£", 
---PO.O_NUM "»óÇ°¼ö·®", P.TOTAL_PRICE "»óÇ°ÃÑÇÕ°è",P.POINT_USE "Àû¸³±Ý»ç¿ë", P.PMNT_PRICE "ÃÖÁ¾°áÁ¦±Ý¾×",
+-- ï¿½Ö¹ï¿½ï¿½ï¿½È£ ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ÇºÐ¼ï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½ ï¿½ï¿½È­ï¿½ï¿½È£ ï¿½ï¿½ï¿½ï¿½Ç¸ï¿½ ï¿½ï¿½Ç°ï¿½ï¿½È£ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç°ï¿½Õ°ï¿½Ý¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ý»ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ûºï¿½ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+--SELECT P.O_NO "ï¿½Ö¹ï¿½ï¿½ï¿½È£", P.O_DATE "ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½", P.RCV_NAME "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½", P.RCV_ADRS "ï¿½Ö¼ï¿½",
+--P.RCV_PHONE "ï¿½ï¿½È­ï¿½ï¿½È£", P.COMMENTT "ï¿½ï¿½ï¿½ï¿½Ç¸ï¿½", P.EXPT_POINT "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", PO.P_NO "ï¿½ï¿½Ç°ï¿½ï¿½È£", 
+--PO.O_NUM "ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½", P.TOTAL_PRICE "ï¿½ï¿½Ç°ï¿½ï¿½ï¿½Õ°ï¿½",P.POINT_USE "ï¿½ï¿½ï¿½ï¿½ï¿½Ý»ï¿½ï¿½", P.PMNT_PRICE "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¾ï¿½",
 --M.M_ID
 --FROM PAYMENT_INFO P
 --JOIN PRODUCT_ORDER PO ON P.O_NO = PO.O_NO
@@ -1709,23 +1713,23 @@ JOIN PRODUCT_ORDER PO ON P.O_NO = PO.O_NO
 JOIN MEMBER M ON P.M_NO = M.M_NO;
 
 
-COMMENT ON COLUMN ORDER_DETAIL.O_NO is 'ÁÖ¹®¹øÈ£';
-COMMENT ON COLUMN ORDER_DETAIL.O_DATE is 'ÁÖ¹®ÀÏÀÚ';
-COMMENT ON COLUMN ORDER_DETAIL.RCV_NAME is '¹ÞÀ»»ç¶÷¼ºÇÔ';
-COMMENT ON COLUMN ORDER_DETAIL.RCV_ADRS is 'ÁÖ¼Ò';
-COMMENT ON COLUMN ORDER_DETAIL.RCV_PHONE is 'ÀüÈ­¹øÈ£';
-COMMENT ON COLUMN ORDER_DETAIL.COMMENTT is '³²±â½Ç¸»';
-COMMENT ON COLUMN ORDER_DETAIL.EXPT_POINT is '¿¹Á¤Àû¸³±Ý';
-COMMENT ON COLUMN ORDER_DETAIL.P_NO is '»óÇ°¹øÈ£';
-COMMENT ON COLUMN ORDER_DETAIL.O_NUM is '»óÇ°¼ö·®';
-COMMENT ON COLUMN ORDER_DETAIL.TOTAL_PRICE is '»óÇ°ÃÑÇÕ°è';
-COMMENT ON COLUMN ORDER_DETAIL.POINT_USE is 'Àû¸³±Ý»ç¿ë';
-COMMENT ON COLUMN ORDER_DETAIL.PMNT_PRICE is 'ÃÖÁ¾°áÁ¦±Ý¾×';
-COMMENT ON COLUMN ORDER_DETAIL.M_ID is 'È¸¿ø¾ÆÀÌµð';
+COMMENT ON COLUMN ORDER_DETAIL.O_NO is 'ï¿½Ö¹ï¿½ï¿½ï¿½È£';
+COMMENT ON COLUMN ORDER_DETAIL.O_DATE is 'ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN ORDER_DETAIL.RCV_NAME is 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN ORDER_DETAIL.RCV_ADRS is 'ï¿½Ö¼ï¿½';
+COMMENT ON COLUMN ORDER_DETAIL.RCV_PHONE is 'ï¿½ï¿½È­ï¿½ï¿½È£';
+COMMENT ON COLUMN ORDER_DETAIL.COMMENTT is 'ï¿½ï¿½ï¿½ï¿½Ç¸ï¿½';
+COMMENT ON COLUMN ORDER_DETAIL.EXPT_POINT is 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN ORDER_DETAIL.P_NO is 'ï¿½ï¿½Ç°ï¿½ï¿½È£';
+COMMENT ON COLUMN ORDER_DETAIL.O_NUM is 'ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN ORDER_DETAIL.TOTAL_PRICE is 'ï¿½ï¿½Ç°ï¿½ï¿½ï¿½Õ°ï¿½';
+COMMENT ON COLUMN ORDER_DETAIL.POINT_USE is 'ï¿½ï¿½ï¿½ï¿½ï¿½Ý»ï¿½ï¿½';
+COMMENT ON COLUMN ORDER_DETAIL.PMNT_PRICE is 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¾ï¿½';
+COMMENT ON COLUMN ORDER_DETAIL.M_ID is 'È¸ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½';
 
 
 
--- ºê·£µå °ü¸®ÀÚ ÆäÀÌÁö BRANDLIST VIEW »ý¼º
+-- ï¿½ê·£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ BRANDLIST VIEW ï¿½ï¿½ï¿½ï¿½
 
 DROP VIEW BRANDLIST;
 
@@ -1733,15 +1737,15 @@ CREATE VIEW BRANDLIST AS
 SELECT ROWNUM RNUM, B_NO, B_NAME, B_CEO, B_PHONE, B_ADDRESS, B_EMAIL, B_LCH_DATE, B_LCH_YN
 FROM BRAND;
 
-COMMENT ON COLUMN BRANDLIST.RNUM IS '¹øÈ£';
-COMMENT ON COLUMN BRANDLIST.B_NO IS 'ºê·£µå ÄÚµå¹øÈ£';
-COMMENT ON COLUMN BRANDLIST.B_NAME IS 'ºê·£µå ¸í';
-COMMENT ON COLUMN BRANDLIST.B_CEO IS '´ëÇ¥ ¸í';
-COMMENT ON COLUMN BRANDLIST.B_PHONE IS '¿¬¶ôÃ³';
-COMMENT ON COLUMN BRANDLIST.B_ADDRESS IS 'È¸»ç ÁÖ¼Ò';
-COMMENT ON COLUMN BRANDLIST.B_EMAIL IS 'ÀÌ¸ÞÀÏ';
-COMMENT ON COLUMN BRANDLIST.B_LCH_DATE IS 'ÀÔÁ¡ ³¯Â¥';
-COMMENT ON COLUMN BRANDLIST.B_LCH_YN IS 'ÀÔÁ¡ À¯¹«';
+COMMENT ON COLUMN BRANDLIST.RNUM IS 'ï¿½ï¿½È£';
+COMMENT ON COLUMN BRANDLIST.B_NO IS 'ï¿½ê·£ï¿½ï¿½ ï¿½Úµï¿½ï¿½È£';
+COMMENT ON COLUMN BRANDLIST.B_NAME IS 'ï¿½ê·£ï¿½ï¿½ ï¿½ï¿½';
+COMMENT ON COLUMN BRANDLIST.B_CEO IS 'ï¿½ï¿½Ç¥ ï¿½ï¿½';
+COMMENT ON COLUMN BRANDLIST.B_PHONE IS 'ï¿½ï¿½ï¿½ï¿½Ã³';
+COMMENT ON COLUMN BRANDLIST.B_ADDRESS IS 'È¸ï¿½ï¿½ ï¿½Ö¼ï¿½';
+COMMENT ON COLUMN BRANDLIST.B_EMAIL IS 'ï¿½Ì¸ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN BRANDLIST.B_LCH_DATE IS 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Â¥';
+COMMENT ON COLUMN BRANDLIST.B_LCH_YN IS 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½';
 
 
 
@@ -1759,18 +1763,18 @@ FROM (SELECT PER_QNA_NO, PER_TITLE, PER_CONTENTS, P_NO, B_NO, M_NO, PER_RE_YN ,A
 FROM PERSONAL_QNA 
 ORDER BY PER_DATE DESC);
 
-COMMENT ON COLUMN PER_LIST.RNUM IS '¹øÈ£';
-COMMENT ON COLUMN PER_LIST.PER_QNA_NO IS '°Ô½ÃÆÇ ¹øÈ£';
-COMMENT ON COLUMN PER_LIST.PER_TITLE IS '°Ô½ÃÆÇ Á¦¸ñ';
-COMMENT ON COLUMN PER_LIST.PER_CONTENTS IS '°Ô½ÃÆÇ ³»¿ë';
-COMMENT ON COLUMN PER_LIST.P_NO IS '»óÇ°¹øÈ£';
-COMMENT ON COLUMN PER_LIST.B_NO IS 'ºê·£µå¹øÈ£';
-COMMENT ON COLUMN PER_LIST.M_NO IS 'È¸¿ø¹øÈ£';
-COMMENT ON COLUMN PER_LIST.PER_RE_YN IS '°ü¸®ÀÚ ´äº¯ À¯¹«';
-COMMENT ON COLUMN PER_LIST.ADDFILE IS 'Ã·ºÎÆÄÀÏ';
-COMMENT ON COLUMN PER_LIST.O_NO IS 'ÁÖ¹®¹øÈ£';
-COMMENT ON COLUMN PER_LIST.PER_CATE IS '¹®ÀÇÀ¯Çü';
-COMMENT ON COLUMN PER_LIST.PER_DATE IS '¹®ÀÇ³¯Â¥';
+COMMENT ON COLUMN PER_LIST.RNUM IS 'ï¿½ï¿½È£';
+COMMENT ON COLUMN PER_LIST.PER_QNA_NO IS 'ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½È£';
+COMMENT ON COLUMN PER_LIST.PER_TITLE IS 'ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN PER_LIST.PER_CONTENTS IS 'ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN PER_LIST.P_NO IS 'ï¿½ï¿½Ç°ï¿½ï¿½È£';
+COMMENT ON COLUMN PER_LIST.B_NO IS 'ï¿½ê·£ï¿½ï¿½ï¿½È£';
+COMMENT ON COLUMN PER_LIST.M_NO IS 'È¸ï¿½ï¿½ï¿½ï¿½È£';
+COMMENT ON COLUMN PER_LIST.PER_RE_YN IS 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½äº¯ ï¿½ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN PER_LIST.ADDFILE IS 'Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN PER_LIST.O_NO IS 'ï¿½Ö¹ï¿½ï¿½ï¿½È£';
+COMMENT ON COLUMN PER_LIST.PER_CATE IS 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN PER_LIST.PER_DATE IS 'ï¿½ï¿½ï¿½Ç³ï¿½Â¥';
 
 -- MEMBERLIST VIEW
 
@@ -1780,23 +1784,23 @@ CREATE VIEW MEMBERLIST AS
 SELECT ROWNUM RNUM, M_NO, M_ID, M_NAME, B_DAY, M_EMAIL, M_TELL, JOIN_DATE, REFERENCE, ALARM_YN, GRADE_CODE, M_POINT, H_POINT, STATUS_YN
 FROM MEMBER;
 
-COMMENT ON COLUMN MEMBERLIST.RNUM IS '¹øÈ£';
-COMMENT ON COLUMN MEMBERLIST.M_NO IS 'È¸¿ø¹øÈ£';
-COMMENT ON COLUMN MEMBERLIST.M_ID IS '¾ÆÀÌµð';
-COMMENT ON COLUMN MEMBERLIST.M_NAME IS '¼º¸í';
-COMMENT ON COLUMN MEMBERLIST.B_DAY IS '»ý³â¿ùÀÏ';
-COMMENT ON COLUMN MEMBERLIST.M_EMAIL IS 'ÀÌ¸ÞÀÏ';
-COMMENT ON COLUMN MEMBERLIST.M_TELL IS 'ÈÞ´ëÆù¹øÈ£';
-COMMENT ON COLUMN MEMBERLIST.JOIN_DATE IS 'È¸¿ø°¡ÀÔ³¯Â¥';
-COMMENT ON COLUMN MEMBERLIST.REFERENCE IS 'ÃßÃµÀÎ';
-COMMENT ON COLUMN MEMBERLIST.ALARM_YN IS '¾Ë¶÷¼ö½Åµ¿ÀÇ¿©ºÎ';
-COMMENT ON COLUMN MEMBERLIST.GRADE_CODE IS 'µî±ÞÄÚµå';
-COMMENT ON COLUMN MEMBERLIST.M_POINT IS 'Àû¸³±Ý';
-COMMENT ON COLUMN MEMBERLIST.H_POINT IS '´©Àû°áÁ¦±Ý';
-COMMENT ON COLUMN MEMBERLIST.STATUS_YN IS 'È¸¿ø°¡ÀÔÅ»ÅðÀ¯¹«';
+COMMENT ON COLUMN MEMBERLIST.RNUM IS 'ï¿½ï¿½È£';
+COMMENT ON COLUMN MEMBERLIST.M_NO IS 'È¸ï¿½ï¿½ï¿½ï¿½È£';
+COMMENT ON COLUMN MEMBERLIST.M_ID IS 'ï¿½ï¿½ï¿½Ìµï¿½';
+COMMENT ON COLUMN MEMBERLIST.M_NAME IS 'ï¿½ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN MEMBERLIST.B_DAY IS 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN MEMBERLIST.M_EMAIL IS 'ï¿½Ì¸ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN MEMBERLIST.M_TELL IS 'ï¿½Þ´ï¿½ï¿½ï¿½ï¿½ï¿½È£';
+COMMENT ON COLUMN MEMBERLIST.JOIN_DATE IS 'È¸ï¿½ï¿½ï¿½ï¿½ï¿½Ô³ï¿½Â¥';
+COMMENT ON COLUMN MEMBERLIST.REFERENCE IS 'ï¿½ï¿½Ãµï¿½ï¿½';
+COMMENT ON COLUMN MEMBERLIST.ALARM_YN IS 'ï¿½Ë¶ï¿½ï¿½ï¿½ï¿½Åµï¿½ï¿½Ç¿ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN MEMBERLIST.GRADE_CODE IS 'ï¿½ï¿½ï¿½ï¿½Úµï¿½';
+COMMENT ON COLUMN MEMBERLIST.M_POINT IS 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN MEMBERLIST.H_POINT IS 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN MEMBERLIST.STATUS_YN IS 'È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
 
 
--- MEMBERÀÇ Æ÷ÀÎÆ® ³»¿ª È®ÀÎÇÏ´Â POINT°ü·Ã VIEW
+-- MEMBERï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½Ï´ï¿½ POINTï¿½ï¿½ï¿½ï¿½ VIEW
 DROP VIEW POINT_LIST;
 
 CREATE VIEW POINT_LIST AS 
@@ -1806,19 +1810,19 @@ FROM POINT P
 JOIN MEMBER M ON (P.M_NO = M.M_NO)
 ORDER BY P.POINT_DATE DESC);
 
-COMMENT ON COLUMN POINT_LIST.RNUM IS '¹øÈ£';
-COMMENT ON COLUMN POINT_LIST.POINT_NO IS 'Àû¸³±Ý ¹øÈ£';
-COMMENT ON COLUMN POINT_LIST.POINT_DATE IS 'Àû¸³ ³¯Â¥';
-COMMENT ON COLUMN POINT_LIST.O_NO IS 'ÁÖ¹® ¹øÈ£';
-COMMENT ON COLUMN POINT_LIST.POINT_CONTENT IS 'Àû¸³±Ý ³»¿ë';
-COMMENT ON COLUMN POINT_LIST.POINT_AMOUNT IS 'Àû¸³±Ý¾×';
-COMMENT ON COLUMN POINT_LIST.M_NO IS 'È¸¿ø¹øÈ£';
-COMMENT ON COLUMN POINT_LIST.POINT_CATE IS 'Àû¸³±Ý À¯Çü';
-COMMENT ON COLUMN POINT_LIST.M_POINT IS 'È¸¿ø Å×ÀÌºí Àû¸³±Ý';
-COMMENT ON COLUMN POINT_LIST.MY_POINT IS 'ÀÜ¿© Àû¸³±Ý';
+COMMENT ON COLUMN POINT_LIST.RNUM IS 'ï¿½ï¿½È£';
+COMMENT ON COLUMN POINT_LIST.POINT_NO IS 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£';
+COMMENT ON COLUMN POINT_LIST.POINT_DATE IS 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Â¥';
+COMMENT ON COLUMN POINT_LIST.O_NO IS 'ï¿½Ö¹ï¿½ ï¿½ï¿½È£';
+COMMENT ON COLUMN POINT_LIST.POINT_CONTENT IS 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN POINT_LIST.POINT_AMOUNT IS 'ï¿½ï¿½ï¿½ï¿½ï¿½Ý¾ï¿½';
+COMMENT ON COLUMN POINT_LIST.M_NO IS 'È¸ï¿½ï¿½ï¿½ï¿½È£';
+COMMENT ON COLUMN POINT_LIST.POINT_CATE IS 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN POINT_LIST.M_POINT IS 'È¸ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN POINT_LIST.MY_POINT IS 'ï¿½Ü¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
 
 
--- RECEENT_ORDER_INFO VIEW(ÁÖ¹® ¸ñ·Ï ºä)
+-- RECEENT_ORDER_INFO VIEW(ï¿½Ö¹ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½)
 
 DROP VIEW RECENT_ORDER_INFO;
 
@@ -1833,22 +1837,22 @@ JOIN JUMUN J ON (PI.O_NO = J.O_NO)
 ORDER BY PI.O_NO DESC);
 
 
--- ¹øÈ£ È¸¿ø¾ÆÀÌµð °áÁ¦¹æ¹ý °áÁ¦À¯¹« ¹è¼Û´Ü°è ÃÑÇÕ°è Ãë¼Ò¿©ºÎ
-COMMENT ON COLUMN RECENT_ORDER_INFO.RNUM is 'ÁÖ¹®°ü¸®¹øÈ£';
-COMMENT ON COLUMN RECENT_ORDER_INFO.O_DATE is 'ÁÖ¹®³¯Â¥';
-COMMENT ON COLUMN RECENT_ORDER_INFO.O_NO is 'ÁÖ¹®¹øÈ£';
-COMMENT ON COLUMN RECENT_ORDER_INFO.M_ID is 'È¸¿ø¾ÆÀÌµð';
-COMMENT ON COLUMN RECENT_ORDER_INFO.M_NAME is 'È¸¿øÀÌ¸§';
-COMMENT ON COLUMN RECENT_ORDER_INFO.PMNT_MTHD is '°áÁ¦¹æ¹ý';
-COMMENT ON COLUMN RECENT_ORDER_INFO.PAID_YN is '°áÁ¦À¯¹«';
-COMMENT ON COLUMN RECENT_ORDER_INFO.PRCS_STATUS is '¹è¼Û´Ü°è';
-COMMENT ON COLUMN RECENT_ORDER_INFO.PMNT_PRICE is 'ÃÑ ÇÕ°è';
-COMMENT ON COLUMN RECENT_ORDER_INFO.CANCEL_YN is 'Ãë¼Ò¿©ºÎ';
+-- ï¿½ï¿½È£ È¸ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Û´Ü°ï¿½ ï¿½ï¿½ï¿½Õ°ï¿½ ï¿½ï¿½Ò¿ï¿½ï¿½ï¿½
+COMMENT ON COLUMN RECENT_ORDER_INFO.RNUM is 'ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£';
+COMMENT ON COLUMN RECENT_ORDER_INFO.O_DATE is 'ï¿½Ö¹ï¿½ï¿½ï¿½Â¥';
+COMMENT ON COLUMN RECENT_ORDER_INFO.O_NO is 'ï¿½Ö¹ï¿½ï¿½ï¿½È£';
+COMMENT ON COLUMN RECENT_ORDER_INFO.M_ID is 'È¸ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½';
+COMMENT ON COLUMN RECENT_ORDER_INFO.M_NAME is 'È¸ï¿½ï¿½ï¿½Ì¸ï¿½';
+COMMENT ON COLUMN RECENT_ORDER_INFO.PMNT_MTHD is 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN RECENT_ORDER_INFO.PAID_YN is 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN RECENT_ORDER_INFO.PRCS_STATUS is 'ï¿½ï¿½Û´Ü°ï¿½';
+COMMENT ON COLUMN RECENT_ORDER_INFO.PMNT_PRICE is 'ï¿½ï¿½ ï¿½Õ°ï¿½';
+COMMENT ON COLUMN RECENT_ORDER_INFO.CANCEL_YN is 'ï¿½ï¿½Ò¿ï¿½ï¿½ï¿½';
         
 
 
 
--- RECENT_ORDER_DETAIL VIEW(ÁÖ¹® ¸ñ·Ï µðÅ×ÀÏ ºä)
+-- RECENT_ORDER_DETAIL VIEW(ï¿½Ö¹ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½)
 
 DROP VIEW RECENT_ORDER_DETAIL;
 
@@ -1861,26 +1865,26 @@ JOIN PRODUCT_ORDER PO ON P.O_NO = PO.O_NO
 JOIN MEMBER M ON P.M_NO = M.M_NO;
 
 
-COMMENT ON COLUMN RECENT_ORDER_DETAIL.O_NO is 'ÁÖ¹®¹øÈ£';
-COMMENT ON COLUMN RECENT_ORDER_DETAIL.O_DATE is 'ÁÖ¹®ÀÏÀÚ';
-COMMENT ON COLUMN RECENT_ORDER_DETAIL.RCV_NAME is '¹ÞÀ»»ç¶÷¼ºÇÔ';
-COMMENT ON COLUMN RECENT_ORDER_DETAIL.RCV_ADRS is 'ÁÖ¼Ò';
-COMMENT ON COLUMN RECENT_ORDER_DETAIL.RCV_PHONE is 'ÀüÈ­¹øÈ£';
-COMMENT ON COLUMN RECENT_ORDER_DETAIL.COMMENTT is '³²±â½Ç¸»';
-COMMENT ON COLUMN RECENT_ORDER_DETAIL.EXPT_POINT is '¿¹Á¤Àû¸³±Ý';
-COMMENT ON COLUMN RECENT_ORDER_DETAIL.P_NO is '»óÇ°¹øÈ£';
-COMMENT ON COLUMN RECENT_ORDER_DETAIL.O_NUM is '»óÇ°¼ö·®';
-COMMENT ON COLUMN RECENT_ORDER_DETAIL.TOTAL_PRICE is '»óÇ°ÃÑÇÕ°è';
-COMMENT ON COLUMN RECENT_ORDER_DETAIL.POINT_USE is 'Àû¸³±Ý»ç¿ë';
-COMMENT ON COLUMN RECENT_ORDER_DETAIL.PMNT_PRICE is 'ÃÖÁ¾°áÁ¦±Ý¾×';
-COMMENT ON COLUMN RECENT_ORDER_DETAIL.M_ID is 'È¸¿ø¾ÆÀÌµð';
-COMMENT ON COLUMN RECENT_ORDER_DETAIL.M_NAME is 'È¸¿øÀÌ¸§';
+COMMENT ON COLUMN RECENT_ORDER_DETAIL.O_NO is 'ï¿½Ö¹ï¿½ï¿½ï¿½È£';
+COMMENT ON COLUMN RECENT_ORDER_DETAIL.O_DATE is 'ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN RECENT_ORDER_DETAIL.RCV_NAME is 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN RECENT_ORDER_DETAIL.RCV_ADRS is 'ï¿½Ö¼ï¿½';
+COMMENT ON COLUMN RECENT_ORDER_DETAIL.RCV_PHONE is 'ï¿½ï¿½È­ï¿½ï¿½È£';
+COMMENT ON COLUMN RECENT_ORDER_DETAIL.COMMENTT is 'ï¿½ï¿½ï¿½ï¿½Ç¸ï¿½';
+COMMENT ON COLUMN RECENT_ORDER_DETAIL.EXPT_POINT is 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN RECENT_ORDER_DETAIL.P_NO is 'ï¿½ï¿½Ç°ï¿½ï¿½È£';
+COMMENT ON COLUMN RECENT_ORDER_DETAIL.O_NUM is 'ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN RECENT_ORDER_DETAIL.TOTAL_PRICE is 'ï¿½ï¿½Ç°ï¿½ï¿½ï¿½Õ°ï¿½';
+COMMENT ON COLUMN RECENT_ORDER_DETAIL.POINT_USE is 'ï¿½ï¿½ï¿½ï¿½ï¿½Ý»ï¿½ï¿½';
+COMMENT ON COLUMN RECENT_ORDER_DETAIL.PMNT_PRICE is 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¾ï¿½';
+COMMENT ON COLUMN RECENT_ORDER_DETAIL.M_ID is 'È¸ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½';
+COMMENT ON COLUMN RECENT_ORDER_DETAIL.M_NAME is 'È¸ï¿½ï¿½ï¿½Ì¸ï¿½';
 
 
---INSERT INTO PERSONAL_QNA VALUES(SEQ_PQ.NEXTVAL, 'HI', 'CONTENT', NULL, NULL, 'M01', 'N', NULL, NULL, '¹è¼Û¹®ÀÇ', NULL);
+--INSERT INTO PERSONAL_QNA VALUES(SEQ_PQ.NEXTVAL, 'HI', 'CONTENT', NULL, NULL, 'M01', 'N', NULL, NULL, 'ï¿½ï¿½Û¹ï¿½ï¿½ï¿½', NULL);
 
 
---¸¶ÀÌÆäÀÌÁö ÁÖ¹®¸ñ·Ï ºä--
+--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½--
 
 DROP VIEW ORDER_LIST;
 
@@ -1894,17 +1898,17 @@ JOIN MEMBER M ON P.M_NO = M.M_NO;
 
 
 
-COMMENT ON COLUMN ORDER_LIST.O_NO IS 'ÁÖ¹®¹øÈ£';
-COMMENT ON COLUMN ORDER_LIST.O_DATE IS 'ÁÖ¹®³¯Â¥';
-COMMENT ON COLUMN ORDER_LIST.P_NAME IS '»óÇ°¸í';
-COMMENT ON COLUMN ORDER_LIST.P_COLOR IS '»óÇ°»ö»ó';
-COMMENT ON COLUMN ORDER_LIST.P_SIZE IS '»óÇ°»çÀÌÁî';
-COMMENT ON COLUMN ORDER_LIST.P_PRICE IS '»óÇ°°¡°Ý';
-COMMENT ON COLUMN ORDER_LIST.O_NUM IS '»óÇ°¼ö·®';
-COMMENT ON COLUMN ORDER_LIST.PRCS_STATUS IS 'ÁÖ¹®»óÅÂ';
-COMMENT ON COLUMN ORDER_LIST.M_NO IS 'È¸¿ø¹øÈ£';
+COMMENT ON COLUMN ORDER_LIST.O_NO IS 'ï¿½Ö¹ï¿½ï¿½ï¿½È£';
+COMMENT ON COLUMN ORDER_LIST.O_DATE IS 'ï¿½Ö¹ï¿½ï¿½ï¿½Â¥';
+COMMENT ON COLUMN ORDER_LIST.P_NAME IS 'ï¿½ï¿½Ç°ï¿½ï¿½';
+COMMENT ON COLUMN ORDER_LIST.P_COLOR IS 'ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN ORDER_LIST.P_SIZE IS 'ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN ORDER_LIST.P_PRICE IS 'ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN ORDER_LIST.O_NUM IS 'ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN ORDER_LIST.PRCS_STATUS IS 'ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN ORDER_LIST.M_NO IS 'È¸ï¿½ï¿½ï¿½ï¿½È£';
 
------ °ü¸®ÀÚÆäÀÌÁö ¸ÅÃâ°ü¸® ºä-----
+----- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½-----
 
 CREATE VIEW PRODUCT_STATIC AS
 SELECT P.B_NO, P.P_CATEGORY, PO.O_NUM, PI.O_DATE, P.P_NO, P.P_PRICE, B.B_NAME
@@ -1913,115 +1917,115 @@ JOIN PAYMENT_INFO PI ON PO.O_NO = PI.O_NO
 JOIN PRODUCT P ON PO.P_NO = P.P_NO
 JOIN BRAND B ON P.B_NO = B.B_NO;
 
-COMMENT ON COLUMN PRODUCT_STATIC.B_NO IS 'ºê·£µå¹øÈ£';
-COMMENT ON COLUMN PRODUCT_STATIC.P_CATEGORY IS '»óÇ°Á¾·ù';
-COMMENT ON COLUMN PRODUCT_STATIC.O_NUM IS 'ÁÖ¹®¼ö·®';
-COMMENT ON COLUMN PRODUCT_STATIC.O_DATE IS 'ÁÖ¹®³¯Â¥';
-COMMENT ON COLUMN PRODUCT_STATIC.P_NO IS '»óÇ°¹øÈ£';
-COMMENT ON COLUMN PRODUCT_STATIC.P_PRICE IS '»óÇ°°¡°Ý';
-COMMENT ON COLUMN PRODUCT_STATIC.B_NAME IS 'ºê·£µå¸í';
+COMMENT ON COLUMN PRODUCT_STATIC.B_NO IS 'ï¿½ê·£ï¿½ï¿½ï¿½È£';
+COMMENT ON COLUMN PRODUCT_STATIC.P_CATEGORY IS 'ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN PRODUCT_STATIC.O_NUM IS 'ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN PRODUCT_STATIC.O_DATE IS 'ï¿½Ö¹ï¿½ï¿½ï¿½Â¥';
+COMMENT ON COLUMN PRODUCT_STATIC.P_NO IS 'ï¿½ï¿½Ç°ï¿½ï¿½È£';
+COMMENT ON COLUMN PRODUCT_STATIC.P_PRICE IS 'ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN PRODUCT_STATIC.B_NAME IS 'ï¿½ê·£ï¿½ï¿½ï¿½';
 
-INSERT INTO PAYMENT_INFO VALUES('O1011','20/04/16',NULL,'¿ø¹Ý','°æ±âµµ ÀÎÃµ½Ã','01023435517','°æºñ½Ç¿¡ ³öÁÖ¼¼¿ä',550000,50000,'¹«ÅëÀåÀÔ±Ý','Y',500000,5500,'M21');
-INSERT INTO PAYMENT_INFO VALUES('O1012','20/03/11',NULL,'¿øºó','°æ±âµµ ÀÎÃµ½Ã','01023435517','°æºñ½Ç¿¡ ³öÁÖ¼¼¿ä',550000,50000,'¹«ÅëÀåÀÔ±Ý','Y',500000,5500,'M22');
-INSERT INTO PAYMENT_INFO VALUES('O1013','20/02/12',NULL,'±èµ¿¼ø','°æ±âµµ ºÎÃµ½Ã','01023435582','°æºñ½Ç¿¡ ³öÁÖ¼¼¿ä',550000,50000,'Ä«µå','Y',500000,5500,'M23');
-INSERT INTO PAYMENT_INFO VALUES('O1014','20/01/13',NULL,'È«±¤¹Î','°æ±âµµ ¾È»ê½Ã','01023435539','°æºñ½Ç¿¡ ³öÁÖ¼¼¿ä',550000,50000,'Ä«µå','Y',500000,5500,'M24');
-INSERT INTO PAYMENT_INFO VALUES('O1015','20/03/14',NULL,'ÃÖÅÂ¼º','°­¿øµµ °­¸ª½Ã','01023435620','°æºñ½Ç¿¡ ³öÁÖ¼¼¿ä',550000,50000,'Ä«µå','Y',500000,5500,'M25');
-INSERT INTO PAYMENT_INFO VALUES('O1016','20/02/15',NULL,'ÃÖÅÂ½Ä','°­¿øµµ °­¸ª½Ã','01023435361','°æºñ½Ç¿¡ ³öÁÖ¼¼¿ä',550000,50000,'Ä«µå','Y',500000,5500,'M26');
-INSERT INTO PAYMENT_INFO VALUES('O1017','20/01/16',NULL,'°­°­¹Î','°­¿øµµ °­¸ª½Ã','01023435562','°æºñ½Ç¿¡ ³öÁÖ¼¼¿ä',550000,50000,'Ä«µå','Y',500000,5500,'M27');
-INSERT INTO PAYMENT_INFO VALUES('O1018','20/04/17',NULL,'¹Ú±ºÀÚ','°­¿øµµ °­¸ª½Ã','01023435263','°æºñ½Ç¿¡ ³öÁÖ¼¼¿ä',550000,50000,'Ä«µå','Y',500000,5500,'M28');
-INSERT INTO PAYMENT_INFO VALUES('O1019','20/05/28',NULL,'¸¶¿µ¿õ','°­¿øµµ °­¸ª½Ã','01023435135','°æºñ½Ç¿¡ ³öÁÖ¼¼¿ä',550000,50000,'Ä«µå','Y',500000,5500,'M29');
-INSERT INTO PAYMENT_INFO VALUES('O1020','20/04/08',NULL,'°­°Ç¸¶','°­¿øµµ °­¸ª½Ã','01023435127','°æºñ½Ç¿¡ ³öÁÖ¼¼¿ä',550000,50000,'Ä«µå','Y',500000,5500,'M30');
-INSERT INTO PAYMENT_INFO VALUES('O1021','20/03/28',NULL,'Àü»çµ¶','°­¿øµµ °­¸ª½Ã','01023435417','°æºñ½Ç¿¡ ³öÁÖ¼¼¿ä',550000,50000,'Ä«µå','Y',500000,5500,'M31');
-INSERT INTO PAYMENT_INFO VALUES('O1022','20/02/28',NULL,'Ä§Âø¸Ç','°æ±âµµ ºÎÃµ½Ã','01023435527','°æºñ½Ç¿¡ ³öÁÖ¼¼¿ä',550000,50000,'Ä«µå','Y',500000,5500,'M32');
-INSERT INTO PAYMENT_INFO VALUES('O1023','20/01/08',NULL,'°­Ç³','°æ±âµµ ºÎÃµ½Ã','01023435457','°æºñ½Ç¿¡ ³öÁÖ¼¼¿ä',550000,50000,'Ä«µå','Y',500000,5500,'M33');
-INSERT INTO PAYMENT_INFO VALUES('O1024','20/01/28',NULL,'±èÀ¯ºñ','°æ±âµµ ºÎÃµ½Ã','01023436457','Çö°ü¿¡ ³öÁÖ¼¼¿ä',550000,50000,'Ä«µå','Y',500000,5500,'M34');
-INSERT INTO PAYMENT_INFO VALUES('O1025','20/02/08',NULL,'ÃÖÀåºñ','°æ±âµµ ºÎÃµ½Ã','01023435347','Çö°ü¿¡ ³öÁÖ¼¼¿ä',550000,50000,'Ä«µå','Y',500000,5500,'M35');
-INSERT INTO PAYMENT_INFO VALUES('O1026','20/03/14',NULL,'¹Ú°ü¿ì','°æ±âµµ ºÎÃµ½Ã','01023431257','Çö°ü¿¡ ³öÁÖ¼¼¿ä',550000,50000,'¹«ÅëÀåÀÔ±Ý','Y',500000,5500,'M36');
-INSERT INTO PAYMENT_INFO VALUES('O1027','20/04/15',NULL,'¸ñ¿µ¼º','°æ±âµµ ºÎÃµ½Ã','01023432457','Çö°ü¿¡ ³öÁÖ¼¼¿ä',550000,50000,'¹«ÅëÀåÀÔ±Ý','Y',500000,5500,'M37');
-INSERT INTO PAYMENT_INFO VALUES('O1028','20/05/16',NULL,'È²Ãæ','°æ±âµµ ºÎÃµ½Ã','01023435457','Çö°ü¿¡ ³öÁÖ¼¼¿ä',550000,50000,'¹«ÅëÀåÀÔ±Ý','Y',500000,5500,'M38');
-INSERT INTO PAYMENT_INFO VALUES('O1029','20/05/17',NULL,'ÀÌÈ­Å¸','°æ±âµµ ¾È¾ç½Ã','01023435557','Çö°ü¿¡ ³öÁÖ¼¼¿ä',550000,50000,'¹«ÅëÀåÀÔ±Ý','Y',500000,5500,'M39');
-INSERT INTO PAYMENT_INFO VALUES('O1030','20/04/18',NULL,'°íÃÊ¼±','°æ±âµµ ¾È¾ç½Ã','01023435107','Çö°ü¿¡ ³öÁÖ¼¼¿ä',550000,50000,'¹«ÅëÀåÀÔ±Ý','Y',500000,5500,'M40');
-INSERT INTO PAYMENT_INFO VALUES('O1031','20/03/19',NULL,'¸¶µ¿Å¹','°æ±âµµ ¾È¾ç½Ã','01023435397','Çö°ü¿¡ ³öÁÖ¼¼¿ä',550000,50000,'¹«ÅëÀåÀÔ±Ý','Y',500000,5500,'M41');
-INSERT INTO PAYMENT_INFO VALUES('O1032','20/02/20',NULL,'±è¶ó±¸','°æ±âµµ ¾È¾ç½Ã','01023435307','Çö°ü¿¡ ³öÁÖ¼¼¿ä',550000,50000,'¹«ÅëÀåÀÔ±Ý','Y',500000,5500,'M42');
-INSERT INTO PAYMENT_INFO VALUES('O1033','20/01/21',NULL,'¹è¼ø½Å','°æ±âµµ ¾È¾ç½Ã','01023435397','Çö°ü¿¡ ³öÁÖ¼¼¿ä',550000,50000,'¹«ÅëÀåÀÔ±Ý','Y',500000,5500,'M43');
-INSERT INTO PAYMENT_INFO VALUES('O1034','20/01/22',NULL,'ÃÖ°ß','°æ±âµµ ¾È¾ç½Ã','01023435027','Çö°ü¿¡ ³öÁÖ¼¼¿ä',550000,50000,'¹«ÅëÀåÀÔ±Ý','Y',500000,5500,'M44');
-INSERT INTO PAYMENT_INFO VALUES('O1035','20/02/23',NULL,'±èµ¿¿í','°æ±âµµ ¾È¾ç½Ã','01023435877','¹®¾Õ¿¡ ³öÁÖ¼¼¿ä',550000,50000,'¹«ÅëÀåÀÔ±Ý','Y',500000,5500,'M45');
-INSERT INTO PAYMENT_INFO VALUES('O1036','20/03/24',NULL,'¹Ú»ç¶ó','°æ±âµµ ¾È¾ç½Ã','01023435827','¹®¾Õ¿¡ ³öÁÖ¼¼¿ä',550000,50000,'¹«ÅëÀåÀÔ±Ý','Y',500000,5500,'M46');
-INSERT INTO PAYMENT_INFO VALUES('O1037','20/04/25',NULL,'ÀÌ°¡¶÷','°æ±âµµ ¾È¾ç½Ã','01023439257','¹®¾Õ¿¡ ³öÁÖ¼¼¿ä',550000,50000,'¹«ÅëÀåÀÔ±Ý','Y',500000,5500,'M47');
-INSERT INTO PAYMENT_INFO VALUES('O1038','20/05/26',NULL,'ÃÖÀ±°æ','°æ±âµµ ¾È¾ç½Ã','01023430357','¹®¾Õ¿¡ ³öÁÖ¼¼¿ä',550000,50000,'¹«ÅëÀåÀÔ±Ý','Y',500000,5500,'M48');
-INSERT INTO PAYMENT_INFO VALUES('O1039','20/05/26',NULL,'±èÀ¯³ª','°æ±âµµ ¾È¾ç½Ã','01023449557','¹®¾Õ¿¡ ³öÁÖ¼¼¿ä',550000,50000,'¹«ÅëÀåÀÔ±Ý','Y',500000,5500,'M49');
-INSERT INTO PAYMENT_INFO VALUES('O1040','20/04/29',NULL,'±è¼öºó','°æ±âµµ ¾È¾ç½Ã','01023293557','¹®¾Õ¿¡ ³öÁÖ¼¼¿ä',550000,50000,'Ä«µå','Y',500000,5500,'M50');
-INSERT INTO PAYMENT_INFO VALUES('O1041','20/03/11',NULL,'ÀÌ´Ù¼Ø','°æ±âµµ ¼ö¿ø½Ã','01023419557','¹®¾Õ¿¡ ³öÁÖ¼¼¿ä',550000,50000,'Ä«µå','Y',500000,5500,'M51');
-INSERT INTO PAYMENT_INFO VALUES('O1042','20/02/12',NULL,'ÃÖ¹®Á¤','°æ±âµµ ¼ö¿ø½Ã','01023043557','¹®¾Õ¿¡ ³öÁÖ¼¼¿ä',550000,50000,'Ä«µå','Y',500000,5500,'M52');
-INSERT INTO PAYMENT_INFO VALUES('O1043','20/02/13',NULL,'¼³ÈñÁø','°æ±âµµ ¼ö¿ø½Ã','01023459557','¹®¾Õ¿¡ ³öÁÖ¼¼¿ä',550000,50000,'Ä«µå','Y',500000,5500,'M53');
-INSERT INTO PAYMENT_INFO VALUES('O1044','20/03/14',NULL,'ÀÌ½½±â','°æ±âµµ ¼ö¿ø½Ã','01023432957','ÃâÀÔ±¸¿¡ ³öÁÖ¼¼¿ä',550000,50000,'Ä«µå','Y',500000,5500,'M54');
-INSERT INTO PAYMENT_INFO VALUES('O1045','20/04/15',NULL,'Á¶¹Ì¿µ','°æ±âµµ ¼ö¿ø½Ã','01023273557','ÃâÀÔ±¸¿¡ ³öÁÖ¼¼¿ä',550000,50000,'Ä«µå','Y',500000,5500,'M55');
-INSERT INTO PAYMENT_INFO VALUES('O1046','20/05/16',NULL,'Å¹¼ÒÀ±','°æ±âµµ ¼ö¿ø½Ã','01023491557','ÃâÀÔ±¸¿¡ ³öÁÖ¼¼¿ä',550000,50000,'Ä«µå','Y',500000,5500,'M56');
-INSERT INTO PAYMENT_INFO VALUES('O1047','20/05/17',NULL,'ÀÌ¿¹Àº','°æ±âµµ ¼ö¿ø½Ã','01023409557','ÃâÀÔ±¸¿¡ ³öÁÖ¼¼¿ä',550000,50000,'Ä«µå','Y',500000,5500,'M57');
-INSERT INTO PAYMENT_INFO VALUES('O1048','20/04/18',NULL,'ÃÖ¿ÁÈñ','°æ±âµµ ¼ö¿ø½Ã','01028343557','ÃâÀÔ±¸¿¡ ³öÁÖ¼¼¿ä',550000,50000,'¹«ÅëÀåÀÔ±Ý','Y',500000,5500,'M58');
-INSERT INTO PAYMENT_INFO VALUES('O1049','20/03/19',NULL,'¹Ú¹üÁØ','°æ±âµµ ¼ö¿ø½Ã','01023953557','ÃâÀÔ±¸¿¡ ³öÁÖ¼¼¿ä',550000,50000,'Ä«µå','Y',500000,5500,'M59');
-INSERT INTO PAYMENT_INFO VALUES('O1050','20/02/08',NULL,'ÃÖÈ£¼ø','°æ±âµµ ¼ö¿ø½Ã','01023963557','ÃâÀÔ±¸¿¡ ³öÁÖ¼¼¿ä',550000,50000,'¹«ÅëÀåÀÔ±Ý','Y',500000,5500,'M60');
-INSERT INTO PAYMENT_INFO VALUES('O1051','20/02/28',NULL,'ÀÌÀºÁ¤','°æ±âµµ ±ºÆ÷½Ã','01023407557','ÃâÀÔ±¸¿¡ ³öÁÖ¼¼¿ä',550000,50000,'Ä«µå','Y',500000,5500,'M61');
-INSERT INTO PAYMENT_INFO VALUES('O1052','20/03/28',NULL,'ÃÖÀÎ±â','°æ±âµµ ±ºÆ÷½Ã','01023494557','ÃâÀÔ±¸¿¡ ³öÁÖ¼¼¿ä',550000,50000,'¹«ÅëÀåÀÔ±Ý','Y',500000,5500,'M62');
-INSERT INTO PAYMENT_INFO VALUES('O1053','20/04/28',NULL,'ÃÖÀçÈ£','°æ±âµµ ±ºÆ÷½Ã','01023023557','ÃâÀÔ±¸¿¡ ³öÁÖ¼¼¿ä',550000,50000,'¹«ÅëÀåÀÔ±Ý','Y',500000,5500,'M63');
-INSERT INTO PAYMENT_INFO VALUES('O1054','20/05/28',NULL,'ÀÌÁö¼º','°æ±âµµ ±ºÆ÷½Ã','01090343557','ÅÃ¹èº¸°üÇÔ¿¡ ³öÁÖ¼¼¿ä',550000,50000,'¹«ÅëÀåÀÔ±Ý','Y',500000,5500,'M64');
-INSERT INTO PAYMENT_INFO VALUES('O1055','20/05/18',NULL,'ÃÖÃ¢¼ö','°æ±âµµ ±ºÆ÷½Ã','01098343557','ÅÃ¹èº¸°üÇÔ¿¡ ³öÁÖ¼¼¿ä',550000,50000,'Ä«µå','Y',500000,5500,'M65');
-INSERT INTO PAYMENT_INFO VALUES('O1056','20/04/08',NULL,'ÀÌÁö¿ë','°æ±âµµ ±ºÆ÷½Ã','01025543557','ÅÃ¹èº¸°üÇÔ¿¡ ³öÁÖ¼¼¿ä',550000,50000,'¹«ÅëÀåÀÔ±Ý','Y',500000,5500,'M66');
-INSERT INTO PAYMENT_INFO VALUES('O1057','20/03/08',NULL,'¹ÚÅÂÈÆ','°æ±âµµ ±ºÆ÷½Ã','01029843557','ÅÃ¹èº¸°üÇÔ¿¡ ³öÁÖ¼¼¿ä',550000,50000,'Ä«µå','Y',500000,5500,'M67');
-INSERT INTO PAYMENT_INFO VALUES('O1058','20/02/28',NULL,'¹ÚÇý³ª','°æ±âµµ ±ºÆ÷½Ã','01020943557','ÅÃ¹èº¸°üÇÔ¿¡ ³öÁÖ¼¼¿ä',550000,50000,'¹«ÅëÀåÀÔ±Ý','Y',500000,5500,'M68');
-INSERT INTO PAYMENT_INFO VALUES('O1059','20/02/28',NULL,'À¯ÇöÁø','°æ±âµµ ±ºÆ÷½Ã','01029543557','ÅÃ¹èº¸°üÇÔ¿¡ ³öÁÖ¼¼¿ä',550000,50000,'Ä«µå','Y',500000,5500,'M69');
-INSERT INTO PAYMENT_INFO VALUES('O1060','20/03/08',NULL,'ÀÌ´ÙÇö','°æ±âµµ ±ºÆ÷½Ã','01081343557','ÅÃ¹èº¸°üÇÔ¿¡ ³öÁÖ¼¼¿ä',550000,50000,'¹«ÅëÀåÀÔ±Ý','Y',500000,5500,'M70');
+INSERT INTO PAYMENT_INFO VALUES('O1011','20/04/16',NULL,'ï¿½ï¿½ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½ï¿½Ãµï¿½ï¿½','01023435517','ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½','Y',500000,5500,'M21');
+INSERT INTO PAYMENT_INFO VALUES('O1012','20/03/11',NULL,'ï¿½ï¿½ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½ï¿½Ãµï¿½ï¿½','01023435517','ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½','Y',500000,5500,'M22');
+INSERT INTO PAYMENT_INFO VALUES('O1013','20/02/12',NULL,'ï¿½èµ¿ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½ï¿½Ãµï¿½ï¿½','01023435582','ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'Ä«ï¿½ï¿½','Y',500000,5500,'M23');
+INSERT INTO PAYMENT_INFO VALUES('O1014','20/01/13',NULL,'È«ï¿½ï¿½ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½È»ï¿½ï¿½','01023435539','ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'Ä«ï¿½ï¿½','Y',500000,5500,'M24');
+INSERT INTO PAYMENT_INFO VALUES('O1015','20/03/14',NULL,'ï¿½ï¿½ï¿½Â¼ï¿½','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','01023435620','ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'Ä«ï¿½ï¿½','Y',500000,5500,'M25');
+INSERT INTO PAYMENT_INFO VALUES('O1016','20/02/15',NULL,'ï¿½ï¿½ï¿½Â½ï¿½','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','01023435361','ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'Ä«ï¿½ï¿½','Y',500000,5500,'M26');
+INSERT INTO PAYMENT_INFO VALUES('O1017','20/01/16',NULL,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','01023435562','ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'Ä«ï¿½ï¿½','Y',500000,5500,'M27');
+INSERT INTO PAYMENT_INFO VALUES('O1018','20/04/17',NULL,'ï¿½Ú±ï¿½ï¿½ï¿½','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','01023435263','ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'Ä«ï¿½ï¿½','Y',500000,5500,'M28');
+INSERT INTO PAYMENT_INFO VALUES('O1019','20/05/28',NULL,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','01023435135','ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'Ä«ï¿½ï¿½','Y',500000,5500,'M29');
+INSERT INTO PAYMENT_INFO VALUES('O1020','20/04/08',NULL,'ï¿½ï¿½ï¿½Ç¸ï¿½','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','01023435127','ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'Ä«ï¿½ï¿½','Y',500000,5500,'M30');
+INSERT INTO PAYMENT_INFO VALUES('O1021','20/03/28',NULL,'ï¿½ï¿½ï¿½çµ¶','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','01023435417','ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'Ä«ï¿½ï¿½','Y',500000,5500,'M31');
+INSERT INTO PAYMENT_INFO VALUES('O1022','20/02/28',NULL,'Ä§ï¿½ï¿½ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½ï¿½Ãµï¿½ï¿½','01023435527','ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'Ä«ï¿½ï¿½','Y',500000,5500,'M32');
+INSERT INTO PAYMENT_INFO VALUES('O1023','20/01/08',NULL,'ï¿½ï¿½Ç³','ï¿½ï¿½âµµ ï¿½ï¿½Ãµï¿½ï¿½','01023435457','ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'Ä«ï¿½ï¿½','Y',500000,5500,'M33');
+INSERT INTO PAYMENT_INFO VALUES('O1024','20/01/28',NULL,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½ï¿½Ãµï¿½ï¿½','01023436457','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'Ä«ï¿½ï¿½','Y',500000,5500,'M34');
+INSERT INTO PAYMENT_INFO VALUES('O1025','20/02/08',NULL,'ï¿½ï¿½ï¿½ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½ï¿½Ãµï¿½ï¿½','01023435347','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'Ä«ï¿½ï¿½','Y',500000,5500,'M35');
+INSERT INTO PAYMENT_INFO VALUES('O1026','20/03/14',NULL,'ï¿½Ú°ï¿½ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½ï¿½Ãµï¿½ï¿½','01023431257','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½','Y',500000,5500,'M36');
+INSERT INTO PAYMENT_INFO VALUES('O1027','20/04/15',NULL,'ï¿½ñ¿µ¼ï¿½','ï¿½ï¿½âµµ ï¿½ï¿½Ãµï¿½ï¿½','01023432457','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½','Y',500000,5500,'M37');
+INSERT INTO PAYMENT_INFO VALUES('O1028','20/05/16',NULL,'È²ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½ï¿½Ãµï¿½ï¿½','01023435457','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½','Y',500000,5500,'M38');
+INSERT INTO PAYMENT_INFO VALUES('O1029','20/05/17',NULL,'ï¿½ï¿½È­Å¸','ï¿½ï¿½âµµ ï¿½È¾ï¿½ï¿½','01023435557','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½','Y',500000,5500,'M39');
+INSERT INTO PAYMENT_INFO VALUES('O1030','20/04/18',NULL,'ï¿½ï¿½ï¿½Ê¼ï¿½','ï¿½ï¿½âµµ ï¿½È¾ï¿½ï¿½','01023435107','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½','Y',500000,5500,'M40');
+INSERT INTO PAYMENT_INFO VALUES('O1031','20/03/19',NULL,'ï¿½ï¿½ï¿½ï¿½Å¹','ï¿½ï¿½âµµ ï¿½È¾ï¿½ï¿½','01023435397','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½','Y',500000,5500,'M41');
+INSERT INTO PAYMENT_INFO VALUES('O1032','20/02/20',NULL,'ï¿½ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½È¾ï¿½ï¿½','01023435307','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½','Y',500000,5500,'M42');
+INSERT INTO PAYMENT_INFO VALUES('O1033','20/01/21',NULL,'ï¿½ï¿½ï¿½ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½È¾ï¿½ï¿½','01023435397','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½','Y',500000,5500,'M43');
+INSERT INTO PAYMENT_INFO VALUES('O1034','20/01/22',NULL,'ï¿½Ö°ï¿½','ï¿½ï¿½âµµ ï¿½È¾ï¿½ï¿½','01023435027','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½','Y',500000,5500,'M44');
+INSERT INTO PAYMENT_INFO VALUES('O1035','20/02/23',NULL,'ï¿½èµ¿ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½È¾ï¿½ï¿½','01023435877','ï¿½ï¿½ï¿½Õ¿ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½','Y',500000,5500,'M45');
+INSERT INTO PAYMENT_INFO VALUES('O1036','20/03/24',NULL,'ï¿½Ú»ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½È¾ï¿½ï¿½','01023435827','ï¿½ï¿½ï¿½Õ¿ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½','Y',500000,5500,'M46');
+INSERT INTO PAYMENT_INFO VALUES('O1037','20/04/25',NULL,'ï¿½Ì°ï¿½ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½È¾ï¿½ï¿½','01023439257','ï¿½ï¿½ï¿½Õ¿ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½','Y',500000,5500,'M47');
+INSERT INTO PAYMENT_INFO VALUES('O1038','20/05/26',NULL,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½È¾ï¿½ï¿½','01023430357','ï¿½ï¿½ï¿½Õ¿ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½','Y',500000,5500,'M48');
+INSERT INTO PAYMENT_INFO VALUES('O1039','20/05/26',NULL,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½È¾ï¿½ï¿½','01023449557','ï¿½ï¿½ï¿½Õ¿ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½','Y',500000,5500,'M49');
+INSERT INTO PAYMENT_INFO VALUES('O1040','20/04/29',NULL,'ï¿½ï¿½ï¿½ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½È¾ï¿½ï¿½','01023293557','ï¿½ï¿½ï¿½Õ¿ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'Ä«ï¿½ï¿½','Y',500000,5500,'M50');
+INSERT INTO PAYMENT_INFO VALUES('O1041','20/03/11',NULL,'ï¿½Ì´Ù¼ï¿½','ï¿½ï¿½âµµ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','01023419557','ï¿½ï¿½ï¿½Õ¿ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'Ä«ï¿½ï¿½','Y',500000,5500,'M51');
+INSERT INTO PAYMENT_INFO VALUES('O1042','20/02/12',NULL,'ï¿½Ö¹ï¿½ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','01023043557','ï¿½ï¿½ï¿½Õ¿ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'Ä«ï¿½ï¿½','Y',500000,5500,'M52');
+INSERT INTO PAYMENT_INFO VALUES('O1043','20/02/13',NULL,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','01023459557','ï¿½ï¿½ï¿½Õ¿ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'Ä«ï¿½ï¿½','Y',500000,5500,'M53');
+INSERT INTO PAYMENT_INFO VALUES('O1044','20/03/14',NULL,'ï¿½Ì½ï¿½ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','01023432957','ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'Ä«ï¿½ï¿½','Y',500000,5500,'M54');
+INSERT INTO PAYMENT_INFO VALUES('O1045','20/04/15',NULL,'ï¿½ï¿½ï¿½Ì¿ï¿½','ï¿½ï¿½âµµ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','01023273557','ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'Ä«ï¿½ï¿½','Y',500000,5500,'M55');
+INSERT INTO PAYMENT_INFO VALUES('O1046','20/05/16',NULL,'Å¹ï¿½ï¿½ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','01023491557','ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'Ä«ï¿½ï¿½','Y',500000,5500,'M56');
+INSERT INTO PAYMENT_INFO VALUES('O1047','20/05/17',NULL,'ï¿½Ì¿ï¿½ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','01023409557','ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'Ä«ï¿½ï¿½','Y',500000,5500,'M57');
+INSERT INTO PAYMENT_INFO VALUES('O1048','20/04/18',NULL,'ï¿½Ö¿ï¿½ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','01028343557','ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½','Y',500000,5500,'M58');
+INSERT INTO PAYMENT_INFO VALUES('O1049','20/03/19',NULL,'ï¿½Ú¹ï¿½ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','01023953557','ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'Ä«ï¿½ï¿½','Y',500000,5500,'M59');
+INSERT INTO PAYMENT_INFO VALUES('O1050','20/02/08',NULL,'ï¿½ï¿½È£ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','01023963557','ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½','Y',500000,5500,'M60');
+INSERT INTO PAYMENT_INFO VALUES('O1051','20/02/28',NULL,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','01023407557','ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'Ä«ï¿½ï¿½','Y',500000,5500,'M61');
+INSERT INTO PAYMENT_INFO VALUES('O1052','20/03/28',NULL,'ï¿½ï¿½ï¿½Î±ï¿½','ï¿½ï¿½âµµ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','01023494557','ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½','Y',500000,5500,'M62');
+INSERT INTO PAYMENT_INFO VALUES('O1053','20/04/28',NULL,'ï¿½ï¿½ï¿½ï¿½È£','ï¿½ï¿½âµµ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','01023023557','ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½','Y',500000,5500,'M63');
+INSERT INTO PAYMENT_INFO VALUES('O1054','20/05/28',NULL,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','01090343557','ï¿½Ã¹èº¸ï¿½ï¿½ï¿½Ô¿ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½','Y',500000,5500,'M64');
+INSERT INTO PAYMENT_INFO VALUES('O1055','20/05/18',NULL,'ï¿½ï¿½Ã¢ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','01098343557','ï¿½Ã¹èº¸ï¿½ï¿½ï¿½Ô¿ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'Ä«ï¿½ï¿½','Y',500000,5500,'M65');
+INSERT INTO PAYMENT_INFO VALUES('O1056','20/04/08',NULL,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','01025543557','ï¿½Ã¹èº¸ï¿½ï¿½ï¿½Ô¿ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½','Y',500000,5500,'M66');
+INSERT INTO PAYMENT_INFO VALUES('O1057','20/03/08',NULL,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','01029843557','ï¿½Ã¹èº¸ï¿½ï¿½ï¿½Ô¿ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'Ä«ï¿½ï¿½','Y',500000,5500,'M67');
+INSERT INTO PAYMENT_INFO VALUES('O1058','20/02/28',NULL,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','01020943557','ï¿½Ã¹èº¸ï¿½ï¿½ï¿½Ô¿ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½','Y',500000,5500,'M68');
+INSERT INTO PAYMENT_INFO VALUES('O1059','20/02/28',NULL,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','01029543557','ï¿½Ã¹èº¸ï¿½ï¿½ï¿½Ô¿ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'Ä«ï¿½ï¿½','Y',500000,5500,'M69');
+INSERT INTO PAYMENT_INFO VALUES('O1060','20/03/08',NULL,'ï¿½Ì´ï¿½ï¿½ï¿½','ï¿½ï¿½âµµ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','01081343557','ï¿½Ã¹èº¸ï¿½ï¿½ï¿½Ô¿ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½',550000,50000,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½','Y',500000,5500,'M70');
 
-INSERT INTO JUMUN VALUES('O1011','¹è¼Û¿Ï·á','N','M21','Y' );
-INSERT INTO JUMUN VALUES('O1012','¹è¼Û¿Ï·á','N','M22','Y' );
-INSERT INTO JUMUN VALUES('O1013','¹è¼Û¿Ï·á','N','M23','Y' );
-INSERT INTO JUMUN VALUES('O1014','¹è¼Û¿Ï·á','N','M24','Y' );
-INSERT INTO JUMUN VALUES('O1015','¹è¼Û¿Ï·á','N','M25','Y' );
-INSERT INTO JUMUN VALUES('O1016','¹è¼Û¿Ï·á','N','M26','Y' );
-INSERT INTO JUMUN VALUES('O1017','¹è¼Û¿Ï·á','N','M27','Y' );
-INSERT INTO JUMUN VALUES('O1018','¹è¼Û¿Ï·á','N','M28','Y' );
-INSERT INTO JUMUN VALUES('O1019','¹è¼Û¿Ï·á','N','M29','Y' );
-INSERT INTO JUMUN VALUES('O1020','¹è¼Û¿Ï·á','N','M30','Y' );
-INSERT INTO JUMUN VALUES('O1021','¹è¼Û¿Ï·á','N','M31','Y' );
-INSERT INTO JUMUN VALUES('O1022','¹è¼Û¿Ï·á','N','M32','Y' );
-INSERT INTO JUMUN VALUES('O1023','¹è¼Û¿Ï·á','N','M33','Y' );
-INSERT INTO JUMUN VALUES('O1024','¹è¼Û¿Ï·á','N','M34','Y' );
-INSERT INTO JUMUN VALUES('O1025','¹è¼Û¿Ï·á','N','M35','Y' );
-INSERT INTO JUMUN VALUES('O1026','¹è¼Û¿Ï·á','N','M36','Y' );
-INSERT INTO JUMUN VALUES('O1027','¹è¼Û¿Ï·á','N','M37','Y' );
-INSERT INTO JUMUN VALUES('O1028','¹è¼Û¿Ï·á','N','M38','Y' );
-INSERT INTO JUMUN VALUES('O1029','¹è¼Û¿Ï·á','N','M39','Y' );
-INSERT INTO JUMUN VALUES('O1030','¹è¼Û¿Ï·á','N','M40','Y' );
-INSERT INTO JUMUN VALUES('O1031','¹è¼Û¿Ï·á','N','M41','Y' );
-INSERT INTO JUMUN VALUES('O1032','¹è¼Û¿Ï·á','N','M42','Y' );
-INSERT INTO JUMUN VALUES('O1033','¹è¼Û¿Ï·á','N','M43','Y' );
-INSERT INTO JUMUN VALUES('O1034','¹è¼Û¿Ï·á','N','M44','Y' );
-INSERT INTO JUMUN VALUES('O1035','¹è¼Û¿Ï·á','N','M45','Y' );
-INSERT INTO JUMUN VALUES('O1036','¹è¼Û¿Ï·á','N','M46','Y' );
-INSERT INTO JUMUN VALUES('O1037','¹è¼Û¿Ï·á','N','M47','Y' );
-INSERT INTO JUMUN VALUES('O1038','¹è¼Û¿Ï·á','N','M48','Y' );
-INSERT INTO JUMUN VALUES('O1039','¹è¼Û¿Ï·á','N','M49','Y' );
-INSERT INTO JUMUN VALUES('O1040','¹è¼Û¿Ï·á','N','M50','Y' );
-INSERT INTO JUMUN VALUES('O1041','¹è¼Û¿Ï·á','N','M51','Y' );
-INSERT INTO JUMUN VALUES('O1042','¹è¼Û¿Ï·á','N','M52','Y' );
-INSERT INTO JUMUN VALUES('O1043','¹è¼Û¿Ï·á','N','M53','Y' );
-INSERT INTO JUMUN VALUES('O1044','¹è¼Û¿Ï·á','N','M54','Y' );
-INSERT INTO JUMUN VALUES('O1045','¹è¼Û¿Ï·á','N','M55','Y' );
-INSERT INTO JUMUN VALUES('O1046','¹è¼Û¿Ï·á','N','M56','Y' );
-INSERT INTO JUMUN VALUES('O1047','¹è¼Û¿Ï·á','N','M57','Y' );
-INSERT INTO JUMUN VALUES('O1048','¹è¼Û¿Ï·á','N','M58','Y' );
-INSERT INTO JUMUN VALUES('O1049','¹è¼Û¿Ï·á','N','M59','Y' );
-INSERT INTO JUMUN VALUES('O1050','¹è¼Û¿Ï·á','N','M60','Y' );
-INSERT INTO JUMUN VALUES('O1051','¹è¼Û¿Ï·á','N','M61','Y' );
-INSERT INTO JUMUN VALUES('O1052','¹è¼Û¿Ï·á','N','M62','Y' );
-INSERT INTO JUMUN VALUES('O1053','¹è¼Û¿Ï·á','N','M63','Y' );
-INSERT INTO JUMUN VALUES('O1054','¹è¼Û¿Ï·á','N','M64','Y' );
-INSERT INTO JUMUN VALUES('O1055','¹è¼Û¿Ï·á','N','M65','Y' );
-INSERT INTO JUMUN VALUES('O1056','¹è¼Û¿Ï·á','N','M66','Y' );
-INSERT INTO JUMUN VALUES('O1057','¹è¼Û¿Ï·á','N','M67','Y' );
-INSERT INTO JUMUN VALUES('O1058','¹è¼Û¿Ï·á','N','M68','Y' );
-INSERT INTO JUMUN VALUES('O1059','¹è¼Û¿Ï·á','N','M69','Y' );
-INSERT INTO JUMUN VALUES('O1060','¹è¼Û¿Ï·á','N','M70','Y' );
+INSERT INTO JUMUN VALUES('O1011','ï¿½ï¿½Û¿Ï·ï¿½','N','M21','Y' );
+INSERT INTO JUMUN VALUES('O1012','ï¿½ï¿½Û¿Ï·ï¿½','N','M22','Y' );
+INSERT INTO JUMUN VALUES('O1013','ï¿½ï¿½Û¿Ï·ï¿½','N','M23','Y' );
+INSERT INTO JUMUN VALUES('O1014','ï¿½ï¿½Û¿Ï·ï¿½','N','M24','Y' );
+INSERT INTO JUMUN VALUES('O1015','ï¿½ï¿½Û¿Ï·ï¿½','N','M25','Y' );
+INSERT INTO JUMUN VALUES('O1016','ï¿½ï¿½Û¿Ï·ï¿½','N','M26','Y' );
+INSERT INTO JUMUN VALUES('O1017','ï¿½ï¿½Û¿Ï·ï¿½','N','M27','Y' );
+INSERT INTO JUMUN VALUES('O1018','ï¿½ï¿½Û¿Ï·ï¿½','N','M28','Y' );
+INSERT INTO JUMUN VALUES('O1019','ï¿½ï¿½Û¿Ï·ï¿½','N','M29','Y' );
+INSERT INTO JUMUN VALUES('O1020','ï¿½ï¿½Û¿Ï·ï¿½','N','M30','Y' );
+INSERT INTO JUMUN VALUES('O1021','ï¿½ï¿½Û¿Ï·ï¿½','N','M31','Y' );
+INSERT INTO JUMUN VALUES('O1022','ï¿½ï¿½Û¿Ï·ï¿½','N','M32','Y' );
+INSERT INTO JUMUN VALUES('O1023','ï¿½ï¿½Û¿Ï·ï¿½','N','M33','Y' );
+INSERT INTO JUMUN VALUES('O1024','ï¿½ï¿½Û¿Ï·ï¿½','N','M34','Y' );
+INSERT INTO JUMUN VALUES('O1025','ï¿½ï¿½Û¿Ï·ï¿½','N','M35','Y' );
+INSERT INTO JUMUN VALUES('O1026','ï¿½ï¿½Û¿Ï·ï¿½','N','M36','Y' );
+INSERT INTO JUMUN VALUES('O1027','ï¿½ï¿½Û¿Ï·ï¿½','N','M37','Y' );
+INSERT INTO JUMUN VALUES('O1028','ï¿½ï¿½Û¿Ï·ï¿½','N','M38','Y' );
+INSERT INTO JUMUN VALUES('O1029','ï¿½ï¿½Û¿Ï·ï¿½','N','M39','Y' );
+INSERT INTO JUMUN VALUES('O1030','ï¿½ï¿½Û¿Ï·ï¿½','N','M40','Y' );
+INSERT INTO JUMUN VALUES('O1031','ï¿½ï¿½Û¿Ï·ï¿½','N','M41','Y' );
+INSERT INTO JUMUN VALUES('O1032','ï¿½ï¿½Û¿Ï·ï¿½','N','M42','Y' );
+INSERT INTO JUMUN VALUES('O1033','ï¿½ï¿½Û¿Ï·ï¿½','N','M43','Y' );
+INSERT INTO JUMUN VALUES('O1034','ï¿½ï¿½Û¿Ï·ï¿½','N','M44','Y' );
+INSERT INTO JUMUN VALUES('O1035','ï¿½ï¿½Û¿Ï·ï¿½','N','M45','Y' );
+INSERT INTO JUMUN VALUES('O1036','ï¿½ï¿½Û¿Ï·ï¿½','N','M46','Y' );
+INSERT INTO JUMUN VALUES('O1037','ï¿½ï¿½Û¿Ï·ï¿½','N','M47','Y' );
+INSERT INTO JUMUN VALUES('O1038','ï¿½ï¿½Û¿Ï·ï¿½','N','M48','Y' );
+INSERT INTO JUMUN VALUES('O1039','ï¿½ï¿½Û¿Ï·ï¿½','N','M49','Y' );
+INSERT INTO JUMUN VALUES('O1040','ï¿½ï¿½Û¿Ï·ï¿½','N','M50','Y' );
+INSERT INTO JUMUN VALUES('O1041','ï¿½ï¿½Û¿Ï·ï¿½','N','M51','Y' );
+INSERT INTO JUMUN VALUES('O1042','ï¿½ï¿½Û¿Ï·ï¿½','N','M52','Y' );
+INSERT INTO JUMUN VALUES('O1043','ï¿½ï¿½Û¿Ï·ï¿½','N','M53','Y' );
+INSERT INTO JUMUN VALUES('O1044','ï¿½ï¿½Û¿Ï·ï¿½','N','M54','Y' );
+INSERT INTO JUMUN VALUES('O1045','ï¿½ï¿½Û¿Ï·ï¿½','N','M55','Y' );
+INSERT INTO JUMUN VALUES('O1046','ï¿½ï¿½Û¿Ï·ï¿½','N','M56','Y' );
+INSERT INTO JUMUN VALUES('O1047','ï¿½ï¿½Û¿Ï·ï¿½','N','M57','Y' );
+INSERT INTO JUMUN VALUES('O1048','ï¿½ï¿½Û¿Ï·ï¿½','N','M58','Y' );
+INSERT INTO JUMUN VALUES('O1049','ï¿½ï¿½Û¿Ï·ï¿½','N','M59','Y' );
+INSERT INTO JUMUN VALUES('O1050','ï¿½ï¿½Û¿Ï·ï¿½','N','M60','Y' );
+INSERT INTO JUMUN VALUES('O1051','ï¿½ï¿½Û¿Ï·ï¿½','N','M61','Y' );
+INSERT INTO JUMUN VALUES('O1052','ï¿½ï¿½Û¿Ï·ï¿½','N','M62','Y' );
+INSERT INTO JUMUN VALUES('O1053','ï¿½ï¿½Û¿Ï·ï¿½','N','M63','Y' );
+INSERT INTO JUMUN VALUES('O1054','ï¿½ï¿½Û¿Ï·ï¿½','N','M64','Y' );
+INSERT INTO JUMUN VALUES('O1055','ï¿½ï¿½Û¿Ï·ï¿½','N','M65','Y' );
+INSERT INTO JUMUN VALUES('O1056','ï¿½ï¿½Û¿Ï·ï¿½','N','M66','Y' );
+INSERT INTO JUMUN VALUES('O1057','ï¿½ï¿½Û¿Ï·ï¿½','N','M67','Y' );
+INSERT INTO JUMUN VALUES('O1058','ï¿½ï¿½Û¿Ï·ï¿½','N','M68','Y' );
+INSERT INTO JUMUN VALUES('O1059','ï¿½ï¿½Û¿Ï·ï¿½','N','M69','Y' );
+INSERT INTO JUMUN VALUES('O1060','ï¿½ï¿½Û¿Ï·ï¿½','N','M70','Y' );
 
 
 

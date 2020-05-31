@@ -216,7 +216,7 @@ public class MemberDao {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
-		String query = "INSERT INTO MEMBER VALUES('M'||SEQ_MEM.NEXTVAL,?,?,?,TO_CHAR(TO_DATE(?,'YYYY/MM/DD'),'YY/MM/DD'),?,SYSDATE,?,'G3',?,'Y',135000,?,3450000)";
+		String query = "INSERT INTO MEMBER VALUES('M'||SEQ_MEM.NEXTVAL,?,?,?,TO_CHAR(TO_DATE(?,'YYYY/MM/DD'),'YY/MM/DD'),?,SYSDATE,?,'G1',?,'Y',10000,?,10000)";
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, member.getmId());

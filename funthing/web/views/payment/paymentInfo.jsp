@@ -120,7 +120,7 @@
                                     <td>
                                         <div class="txt-field">
                                             <input type="text" id="postcode" placeholder="우편번호">
-                                 <input type="button" onclick="DaumPostcode()" value="우편번호 찾기" style="height:25px; width:100px"><br>
+                                 <input type="button" onclick="DaumPostcode()" id="postSearch" value="우편번호 찾기" style="height:25px; width:100px"><br>
                                  <input type="text" id="detailAddress" name="rcv_adrs" placeholder="상세주소">
                                  <input type="text" id="extraAddress" placeholder="참고항목">
                                  
@@ -173,7 +173,7 @@
                                 </tr>
                                 <tr>
                                     <th class="ta-1" aria-required="true">전화번호</th>
-                                    <td><div class="txt-field"><input type="text" name="rcv_phone" maxlength="20" placeholder="'-'없이 입력해주세요."></div></td>
+                                    <td><div class="txt-field"><input type="text" id="rcv_phone" name="rcv_phone" maxlength="20" placeholder="'-'없이 입력해주세요."></div></td>
                                 </tr>
                                 <tr>
                                     <th class="ta-1" aria-required="true">남기실 말씀</th>
@@ -296,6 +296,42 @@
    
    <script>
       $(function(){
+    	  
+    	  //이름 유효성 검사
+    	  $("#rcv_name").change(function(){
+	          var value = $("#rcv_name").val();
+	          var reg = /^[가-힣]{3,4}$/;
+	          if(!reg.test(value)){
+	              alert("이름을 3자에서 4자 정확히 입력해주세요.");
+	              $("#rcv_name").focus().val('');
+	          }
+          });
+    	  
+    	  /* //주소 검색
+    	  $("#detailAddress").blur(function(){
+    		  var value = $("detailAddress").val();
+    		  if(value == "")
+   			  {
+    			  alert("주소를 입력해주세요.");
+    			  $("#postSearch").click(function(){
+    				  
+    			  })
+   			  
+   			  }
+    	  }) */
+    	  
+    	  //전화번호 유효성 검사
+    	  $("#rcv_phone").change(function(){
+	          var value = $("#rcv_phone").val();
+	          var reg = /^[0-9]{11,11}$/;
+	          if(!reg.test(value)){
+	              alert("전화번호를 정확히 입력해주세요.");
+	              $("#rcv_phone").focus().val('');
+	          }
+          });
+    	  
+    	  
+    	  
     	  // 전체 동의시 나머지  체크박스 체크
     	  $(".checkArea input:eq(0)").click(function(){
     		  if($(".checkArea input:eq(0)").is(":checked")){

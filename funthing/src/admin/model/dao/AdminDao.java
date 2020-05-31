@@ -63,7 +63,7 @@ public class AdminDao {
 		
 		int startRow = (currentPage - 1)*limit +1;
 		int endRow = startRow + limit -1;
-		String query = "SELECT RNUM, P_NO, P_NAME, P_CATEGORY, RETAIL_PRICE, DC_RATE, P_PRICE, F_YN, F_START_DATE, F_END_DATE FROM PRODUCTLIST WHERE RNUM BETWEEN ? AND ?";
+		String query = "SELECT RNUM, P_NO, P_NAME, P_CATEGORY, RETAIL_PRICE, DC_RATE, P_PRICE, F_YN, F_START_DATE, F_END_DATE FROM PRODUCTLIST WHERE RNUM BETWEEN ? AND ? ORDER BY 1";
 		
 //		System.out.println("새로 list담자");
 		try {
