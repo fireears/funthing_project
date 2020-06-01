@@ -1,4 +1,4 @@
----
+----
 -- shoppingbag, calendar,  product_order, no_passbook,  color, untitled, order, payment_info, point
 -- MEMBER, REVIEW, BRAND, PRODUCT, QNA, NOTICE, PERSONAL_QNA, GRADE   8개 TABLE INSERT완료.
 -- Q&A -> QNA로 수정완료
