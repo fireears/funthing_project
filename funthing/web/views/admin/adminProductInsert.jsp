@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>FUN-THING</title>
+<title>FUN-THING ADMIN 상품등록</title>
 <style>
 	#productInsert{margin: auto; width: 80%;}
 	#productInsert table{width: 100%; border:1px solid rgb(165, 160, 160); border-collapse: collapse;}

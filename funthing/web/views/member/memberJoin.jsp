@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>FUN-THING 회원가입</title>
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <style>
             

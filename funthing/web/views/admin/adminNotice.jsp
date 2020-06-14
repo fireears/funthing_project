@@ -22,6 +22,7 @@ String search =(String)request.getAttribute("search");
 <!DOCTYPE html>
 <html lang="ko">
     <head>
+    <title>FUN-THING ADMIN NOTICE</title>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
         <style>
             #noticeArea{margin: auto; width: 90%;}

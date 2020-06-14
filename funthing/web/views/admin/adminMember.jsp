@@ -21,7 +21,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>FUN-THING ADMIN MEMBER</title>
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<style>
       h2{text-align:center;}
