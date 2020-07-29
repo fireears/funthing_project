@@ -38,6 +38,7 @@
 		 */
 		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+			System.out.println("메인 서블릿");
 			ProductService pService = new ProductService();
 			ProductQnAService qService = new ProductQnAService();
 			NoticeService nService = new NoticeService();
