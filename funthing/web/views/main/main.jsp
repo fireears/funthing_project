@@ -112,7 +112,7 @@
 	                <h2 id="title">CLOSE TO COMPLETION</h2>
 	                <ul class="product">
 	                	<%if(closeProduct != null) { %>
-	                	<%	for(int i = 0; i<8; i++) { %>
+	                	<%	for(int i = 0; i<closeProduct.size(); i++) { %>
 	                	<%		Product p = closeProduct.get(i);
 	                			
 			                	String thumbnail = p.getThumbnail();
